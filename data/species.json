@@ -1,5 +1,115 @@
 {
     "species": {
+        "red-junglefowl": {
+            "key": "red-junglefowl",
+            "name": "Red Junglefowl",
+            "tags": [
+                "Junglefowl",
+                "Fowl",
+                "Chicken"
+            ],
+            "family": "Pheasants, Partridges & Fowls"
+        },
+        "lesser-yellownape": {
+            "key": "lesser-yellownape",
+            "name": "Lesser Yellownape",
+            "tags": [
+                "Yellownape",
+                "Woodpecker"
+            ],
+            "family": "Woodpeckers"
+        },
+        "white-throated-laughingthrush": {
+            "key": "white-throated-laughingthrush",
+            "name": "White-throated Laughingthrush",
+            "tags": [
+                "Laughingthrush"
+            ],
+            "family": "Laughingthrushes"
+        },
+        "rufous-chinned-laughingthrush": {
+            "key": "rufous-chinned-laughingthrush",
+            "name": "Rufous-chinned Laughingthrush",
+            "tags": [
+                "Laughingthrush"
+            ],
+            "family": "Laughingthrushes"
+        },
+        "striated-laughingthrush": {
+            "key": "striated-laughingthrush",
+            "name": "Striated Laughingthrush",
+            "tags": [
+                "Laughingthrush"
+            ],
+            "family": "Laughingthrushes"
+        },
+        "red-billed-leiothrix": {
+            "key": "red-billed-leiothrix",
+            "name": "Red-billed Leiothrix",
+            "tags": [
+                "Leiothrix",
+                "Laughingthrush"
+            ],
+            "family": "Laughingthrushes"
+        },
+        "mountain-bulbul": {
+            "key": "mountain-bulbul",
+            "name": "Mountain Bulbul",
+            "tags": [
+                "Bulbul"
+            ],
+            "family": "Bulbuls"
+        },
+        "ashy-bulbul": {
+            "key": "ashy-bulbul",
+            "name": "Ashy Bulbul",
+            "tags": [
+                "Bulbul"
+            ],
+            "family": "Bulbuls"
+        },
+        "rufous-throated-partridge": {
+            "key": "rufous-throated-partridge",
+            "name": "Rufous-throated Partridge",
+            "tags": [
+                "Partridge"
+            ],
+            "family": "Pheasants, Partridges & Fowls"
+        },
+        "green-sandpiper": {
+            "key": "green-sandpiper",
+            "name": "Green Sandpiper",
+            "tags": [
+                "Sandpiper"
+            ],
+            "family": "Sandpipers"
+        },
+        "tickells-thrush": {
+            "key": "tickells-thrush",
+            "name": "Tickell's Thrush",
+            "tags": [
+                "Thrush"
+            ],
+            "family": "Thrushes"
+        },
+        "bar-winged-flycatcher-shrike": {
+            "key": "bar-winged-flycatcher-shrike",
+            "name": "Bar-winged Flycatcher-shrike",
+            "tags": [
+                "Flycatcher-shrike",
+                "Shrike",
+                "Flycatcher"
+            ],
+            "family": "Flycatcher-shrikes"
+        },
+        "black-throated-sunbird": {
+            "key": "black-throated-sunbird",
+            "name": "Black-throated Sunbird",
+            "tags": [
+                "Sunbird"
+            ],
+            "family": "Sunbirds"
+        },
         "red-rumped-swallow": {
             "key": "red-rumped-swallow",
             "name": "Red-rumped Swallow",

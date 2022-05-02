@@ -188,11 +188,24 @@ function initAutocomplete() {
 }
 
 function fillStats() {
-	$(".sightings-count").html(data.filteredBirds
-			.filter(b => !b.hidden).length);
-	$(".species-count").html([...new Set(data.filteredBirds
-			.filter(b => !b.hidden)
-			.map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))].length);
+	$(".sightings-count").html(data.filteredBirds.length);
+
+	var selectedSpecies = [...new Set(data.filteredBirds.map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))];
+	$(".species-count").html(selectedSpecies.length);
+
+	var filters = getFilters();
+	if(filters.date || filters.place) {
+		var oldestDate = data.filteredBirds[0].date;
+		data.filteredBirds.forEach(function(b) {
+			if(b.date<oldestDate) oldestDate = b.date;
+		});
+		var oldSpecies = [...new Set(data.birds.filter(b => b.date<oldestDate).map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))]
+		var newSpecies = selectedSpecies.filter(s => oldSpecies.indexOf(s)<0);
+		$(".new-species-count").parent().show();
+		$(".new-species-count").html(newSpecies.length);
+	} else {
+		$(".new-species-count").parent().hide();
+	}
 }
 
 function sortByOnChange(value) {
