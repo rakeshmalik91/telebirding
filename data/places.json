@@ -1,0 +1,72 @@
+{
+  "countries": {
+    "IN": {
+      "name": "India",
+      "states": {
+        "AP": {
+          "name": "Andhra Pradesh"
+        },
+        "AR": {
+          "name": "Arunachal Pradesh"
+        },
+        "AS": {
+          "name": "Assam"
+        },
+        "GA": {
+          "name": "Goa"
+        },
+        "GJ": {
+          "name": "Gujarat"
+        },
+        "HP": {
+          "name": "Himachal Pradesh"
+        },
+        "JK": {
+          "name": "Jammu & Kashmir"
+        },
+        "KA": {
+          "name": "Karnataka"
+        },
+        "KL": {
+          "name": "Kerala"
+        },
+        "LA": {
+          "name": "Ladakh"
+        },
+        "LD": {
+          "name": "Lakshadweep Islands"
+        },
+        "MP": {
+          "name": "Madhya Pradesh"
+        },
+        "MH": {
+          "name": "Maharastra"
+        },
+        "ML": {
+          "name": "Meghalaya"
+        },
+        "OR": {
+          "name": "Odisha"
+        },
+        "PY": {
+          "name": "Pondicherry"
+        },
+        "SK": {
+          "name": "Sikkim"
+        },
+        "TN": {
+          "name": "Tamil Nadu"
+        },
+        "UK": {
+          "name": "Uttarakhand"
+        },
+        "UP": {
+          "name": "Uttar Pradesh"
+        },
+        "WB": {
+          "name": "West Bengal"
+        }
+      }
+    }
+  }
+}

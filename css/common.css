@@ -1,0 +1,186 @@
+body {
+	margin: 0px;
+	scroll-behavior: smooth;
+	background-color: #64768a;
+  overflow-x: hidden;
+}
+
+h1 {
+	color: #bedde4;
+}
+
+@font-face {
+	font-family: 'Calibri';
+	src: url('../fonts/Calibri.ttf') format('truetype');
+}
+div, span {
+	font-family: 'Calibri';
+}
+
+img {
+	-webkit-user-select: none;      
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  -webkit-user-drag: none; 
+	-moz-user-drag: none;
+	-ms-user-drag: none;
+  user-drag: none;
+}
+
+/* preload images */
+body::after{
+   position: absolute; 
+   width: 0; 
+   height: 0; 
+   overflow: hidden; 
+   z-index: -1;
+   content: url('../icons/loading.gif');
+}
+
+.hidden {
+	display: none;
+}
+
+button, input {
+  align-items: center;
+  background-color: #dddddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0; */
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  /* -webkit-user-select: none; */
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  opacity: 0.4;
+}
+
+@media screen and (orientation:landscape) and (min-width:1199px) { 
+	input { 
+		width: 350px;
+	}
+	button, input {
+		font-size: 16px;
+		padding: 3px 10px;
+	}
+}
+@media screen and (orientation:landscape) and (max-width:1200px) { 
+	input { 
+		width: 200px;
+	}
+	button, input {
+		font-size: 16px;
+		padding: 3px 10px;
+	}
+}
+@media screen and (orientation:portrait) { 
+	input { 
+		width: 80px;
+	} 
+	button, input {
+		font-size: 10px;
+		padding: 3px;
+	}
+}
+
+button:hover, input:hover {
+  opacity: 1;
+}
+
+button:hover, button:focus, input:hover, input:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+input:focus {
+  background-color: #ffffff;
+  opacity: 0.8;
+}
+
+button:hover, input:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+  opacity: 0.8;
+}
+
+.autocomplete-items div {
+	background-color: #ffffff;
+	font-size: 16px;
+	padding-left: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	/* border-radius: .25rem; */
+}
+
+.autocomplete-items div:hover, .autocomplete-items div.autocomplete-active {
+	background-color: #e1eadd;
+}
+
+
+
+.button-active {
+  background-color: #bedde4;
+  opacity: 1;
+}
+
+
+
+input + .button-clear {
+	position: absolute;
+	right: calc(0% + 7px);
+	padding-top: 5px;
+	border: none;
+	border-radius: .25rem; 
+	opacity: 0;
+	color: #bc7e7e;
+}
+input.button-active + .button-clear {
+	background-color: #d3e5e9;
+	opacity: 1;
+}
+input + .button-clear:before {
+	content: "✕";
+}
+
+
+
+div.one-column {
+	display: inline-block;
+	width: 100%;
+}
+
+div.two-column {
+	display: inline-block;
+	width: 50%;
+}
+
+div.three-column {
+	display: inline-block;
+	width: 33.33%;
+}
+
+div.four-column {
+	display: inline-block;
+	width: 25%;
+}

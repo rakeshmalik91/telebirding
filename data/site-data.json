@@ -1,0 +1,78 @@
+{
+    "featured": [
+        {
+            "src": "featured-images/1.jpg",
+            "titleLine1": "Blue Rock Thrush, Shivkhola Forest",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Blue Rock Thrush"
+        },
+        {
+            "src": "featured-images/7.jpg",
+            "titleLine1": "Oriental Pied Hornbill, Shivkhola Forest",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Oriental Pied Hornbill"
+        },
+        {
+            "src": "featured-images/9.jpg",
+            "titleLine1": "Purple Sunbird, Bhimtal",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Purple Sunbird"
+        },
+        {
+            "src": "featured-images/2.jpg",
+            "titleLine1": "Rufous-necked Hornbill, Latpanchar",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Rufous-necked Hornbill"
+        },
+        {
+            "src": "featured-images/4.jpg",
+            "titleLine1": "Whiskered Tern, Mangalajodi Wetlands",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Whiskered Tern"
+        },
+        {
+            "src": "featured-images/5.jpg",
+            "titleLine1": "Streak-throated Swallow and Bank Swallow, Mangalajodi Wetlands",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Streak-throated Swallow and Bank Swallow"
+        },
+        {
+            "src": "featured-images/6.jpg",
+            "titleLine1": "Bronze-winged Jacana, Mangalajodi Wetlands",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Bronze-winged Jacana"
+        },
+        {
+            "src": "featured-images/3.jpg",
+            "titleLine1": "Grey Heron, Mangalajodi Wetlands",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Grey Heron"
+        },
+        {
+            "src": "featured-images/8.jpg",
+            "titleLine1": "Collared Kingfisher, Bhitarkanika National Park",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Collared Kingfisher"
+        },
+        {
+            "src": "featured-images/10.jpg",
+            "titleLine1": "Barn Owl, Bhitarkanika National Park",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Barn Owl"
+        }
+    ],
+    "trips": [
+        {
+            "title": "Latpanchar-Gajoldoba-Shivkhola, West Bengal | Dec 2021",
+            "youtubeVideoId": "rcn8NojlOxg"
+        },
+        {
+            "title": "Bhitarkanika National Park, Odisha | Oct 2021",
+            "youtubeVideoId": "FSuHmoQfSQU"
+        },
+        {
+            "title": "Ranganathittu Bird Sanctuary, Karnataka | Dec 2017",
+            "youtubeVideoId": "rEshkm6j9i0"
+        }
+    ]
+}

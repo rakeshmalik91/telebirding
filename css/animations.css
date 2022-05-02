@@ -1,0 +1,156 @@
+.home .featured, .explore-menu, .videos {
+  transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+}
+
+
+
+.fadein {
+  animation-name: fadein;
+    -webkit-animation-name: fadein;
+    -moz-animation-name: fadein;
+    -ms-animation-name: fadein;
+  animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -ms-animation-duration: 0.5s;
+}
+@-webkit-keyframes fadein {
+  0% 	{opacity: 0;}
+  100% 	{opacity: 1;}
+}
+@-moz-keyframes fadein {
+  0% 	{opacity: 0;}
+  100% 	{opacity: 1;}
+}
+@-ms-keyframes fadein {
+  0% 	{opacity: 0;}
+  100% 	{opacity: 1;}
+}
+@keyframes fadein {
+  0% 	{opacity: 0;}
+  100% 	{opacity: 1;}
+}
+
+.fadeout {
+  animation-name: fadeout;
+    -webkit-animation-name: fadeout;
+    -moz-animation-name: fadeout;
+    -ms-animation-name: fadeout;
+  animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -ms-animation-duration: 0.5s;
+}
+@-webkit-keyframes fadeout {
+  0%  {}
+  100%  {opacity: 0;}
+}
+@-moz-keyframes fadeout {
+  0%  {}
+  100%  {opacity: 0;}
+}
+@-ms-keyframes fadeout {
+  0%  {}
+  100%  {opacity: 0;}
+}
+@keyframes fadeout {
+  0%  {}
+  100%  {opacity: 0;}
+}
+
+
+
+.carousal-animation {
+  animation-name: carousal-animation;
+    -webkit-animation-name: carousal-animation;
+    -moz-animation-name: carousal-animation;
+    -ms-animation-name: carousal-animation;
+  animation-duration: 15s;
+    -webkit-animation-duration: 15s;
+    -moz-animation-duration: 15s;
+    -ms-animation-duration: 15s;
+}
+@-webkit-keyframes carousal-animation {
+  0% 	{opacity: 0;}
+  20% 	{opacity: 1;}
+  90% 	{opacity: 1;}
+  100% 	{opacity: 0;}
+}
+@-moz-keyframes carousal-animation {
+  0% 	{opacity: 0;}
+  20% 	{opacity: 1;}
+  90% 	{opacity: 1;}
+  100% 	{opacity: 0;}
+}
+@-ms-keyframes carousal-animation {
+  0% 	{opacity: 0;}
+  20% 	{opacity: 1;}
+  90% 	{opacity: 1;}
+  100% 	{opacity: 0;}
+}
+@keyframes carousal-animation {
+  0% 	{opacity: 0;}
+  20% 	{opacity: 1;}
+  90% 	{opacity: 1;}
+  100% 	{opacity: 0;}
+}
+
+
+
+.slide-in {
+  animation-name: slide-in;
+    -webkit-animation-name: slide-in;
+    -moz-animation-name: slide-in;
+    -ms-animation-name: slide-in;
+  animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    -moz-animation-duration: 0.3s;
+    -ms-animation-duration: 0.3s;
+}
+@-webkit-keyframes slide-in {
+  0%  {transform: translateX(100vw);}
+  100%  {transform: translateX(0);}
+}
+@-moz-keyframes slide-in {
+  0%  {transform: translateX(100vw);}
+  100%  {transform: translateX(0);}
+}
+@-ms-keyframes slide-in {
+  0%  {transform: translateX(100vw);}
+  100%  {transform: translateX(0);}
+}
+@keyframes slide-in {
+  0%  {transform: translateX(100vw);}
+  100%  {transform: translateX(0);}
+}
+
+
+.slide-out {
+  animation-name: slide-out;
+    -webkit-animation-name: slide-out;
+    -moz-animation-name: slide-out;
+    -ms-animation-name: slide-out;
+  animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    -moz-animation-duration: 0.3s;
+    -ms-animation-duration: 0.3s;
+}
+@-webkit-keyframes slide-out {
+  0%  {transform: translateX(0);}
+  100%  {transform: translateX(100vw);}
+}
+@-moz-keyframes slide-out {
+  0%  {transform: translateX(0);}
+  100%  {transform: translateX(100vw);}
+}
+@-ms-keyframes slide-out {
+  0%  {transform: translateX(0);}
+  100%  {transform: translateX(100vw);}
+}
+@keyframes slide-out {
+  0%  {transform: translateX(0);}
+  100%  {transform: translateX(100vw);}
+}
