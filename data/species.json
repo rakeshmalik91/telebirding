@@ -1,5 +1,13 @@
 {
     "species": {
+        "rufous-bellied-woodpecker": {
+            "key": "rufous-bellied-woodpecker",
+            "name": "Rufous-bellied Woodpecker",
+            "tags": [
+                "Woodpecker"
+            ],
+            "family": "Woodpeckers"
+        },
         "red-junglefowl": {
             "key": "red-junglefowl",
             "name": "Red Junglefowl",
