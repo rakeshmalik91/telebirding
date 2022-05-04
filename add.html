@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<title>Telebirding</title>
+
+		<meta charset="UTF-8">
+		
+		<meta name="description" content="Birdwatching Catalog by Rakesh Malik">
+		<meta name="keywords" content="Birdwatching, Birding, Bird, Birds, Telebirding, Rakesh Malik, Rakesh, Bird Sanctuary, Bird Photo, Bird Details, Bird Watching, Bird Photography, Sattal, Bhimtal, Latpanchar, Gajoldoba, Mangalaodi, Bhitarkanika">
+		<meta name="author" content="Rakesh Malik">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 
+
+		<meta name="application-name" content="Telebirding">
+		<meta name="msapplication-tooltip" content="Birdwatching Catalog by Rakesh Malik">
+		<meta name="msapplication-TileImage" content="icons/favicon-64x64.png">
+
+		<meta property="og:description" content="Telebirding">
+		<meta property="og:description" content="Birdwatching Catalog by Rakesh Malik">
+		
+		<link rel="icon" type="image/png" href="icons/favicon-48x48.png">
+		<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
+		<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
+		
+		<style>
+			body {
+				background-color: #111b26;
+			}
+			h1, div {
+				color: white;
+				margin-top: 2px;
+				display: inline-block;
+				margin-right: 50px;
+			}
+			span {
+				display: inline-block;
+				width: 200px;
+			}
+			input {
+				width: 400px;
+			}
+			button {
+				margin-top: 5px;
+			}
+			textarea {
+				margin-top: 10px;
+				width: 400px;
+				height: 300px;
+				background-color: #111b26;
+				color: white;
+			}
+		</style>
+		
+		<script type="text/javascript" charset="UTF-8" src="scripts/jquery.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="scripts/moment.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="scripts/util.js"></script>
+
+		<script type="text/javascript">
+			var data = {};
+			var files, key, species;
+			$(document).ready(function() {
+				readJSONFiles([getData("data/birds.json"), getData("data/species.json")], function(json) {
+					data = json;
+					['date', 'place', 'city', 'state', 'country'].forEach(function(prop) {
+						$("#" + prop).val(data.birds[0][prop]);
+					});
+				});
+
+				$("#file").change(function() {
+					files = $("#file")[0].files
+					var filename = files[0].name;
+
+					key = filename.split('.')[0];
+					$("#key").val(key);
+
+					var tokens = key.split('-');
+					species = key;
+					for(var i = 0; i < tokens.length; i++) {
+						var search = tokens.slice(0, i+1).join('-');
+						if(Object.keys(data.species).indexOf(search) >= 0) {
+							species = search;
+							break;
+						}
+					}
+					$("#species").val(species);
+
+					$("#gender").val(filename.indexOf('female')>=0 ? 'F' : filename.indexOf('male')>=0 ? 'M' : '');
+					$("#plumage").val(filename.indexOf('non-breeding')>=0 ? 'Non-Breeding' : filename.indexOf('breeding')>=0 ? 'Breeding' : '');
+					$("#age").val(filename.indexOf('juvenile')>=0 ? 'Juvenile' : filename.indexOf('immature')>=0 ? 'Immature' : '');
+
+					$("#tags").val(capitalize(species.split("-").slice(-1)[0]));
+					$("#family").val(capitalize(plural(species.split("-").slice(-1)[0])));
+
+					$("#submit").click();
+				});
+
+				$("input").change(function() {
+					if(files == null) return;
+
+					var json1 = {};
+					json1[species] = {
+						key: species,
+						name: capitalize(species.replace('-', ' ')),
+						tags: $("#tags").val().split(/,[ ]*/),
+						family: $("#family").val()
+					};
+					$('#output1').val(JSON.stringify(json1, null, 2));
+
+					var json2 = {};
+					['key', 'name', 'gender', 'variation', 'age', 'plumage', 'subspecies', 'date', 'place', 'city', 'state', 'country'].forEach(function(prop) {
+						json2[prop] = $("#" + prop).val() || undefined;
+					});
+					json2.media = [];
+					Array.from(files).forEach(f => json2.media.push({src: "images/" + f.name}));
+					$('#output2').val(JSON.stringify([json2], null, 2));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Add Bird</h1>
+		<br>
+		<div><span>Upload Image: </span><input id="file" type="file" multiple/></div>
+		<br>
+		<br>
+		<div><span>Key: </span><input id="key" type="text"/></div>
+		<div><span>Species: </span><input id="species" type="text"/></div>
+		<div><span>Gender: </span><input id="gender" type="text"/></div>
+		<div><span>Variation: </span><input id="variation" type="text"/></div>
+		<div><span>Age: </span><input id="age" type="text"/></div>
+		<div><span>Plumage: </span><input id="plumage" type="text"/></div>
+		<div><span>Subspecies: </span><input id="subspecies" type="text"/></div>
+		<div><span>Date: </span><input id="date" type="text"/></div>
+		<div><span>Place: </span><input id="place" type="text"/></div>
+		<div><span>City: </span><input id="city" type="text"/></div>
+		<div><span>State: </span><input id="state" type="text"/></div>
+		<div><span>Country: </span><input id="country" type="text"/></div>
+		<br>
+		<br>
+		<div><span>Tags: </span><input id="tags" type="text"/></div>
+		<div><span>Family: </span><input id="family" type="text"/></div>
+		<br>
+		<br>
+		<textarea  id="output1"></textarea>
+		<textarea  id="output2"></textarea>
+	</body>
+</html>
