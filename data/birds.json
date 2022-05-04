@@ -37,6 +37,9 @@
       "media": [
         {
           "src": "images/striated-laughingthrush.jpg"
+        },
+        {
+          "src": "images/striated-laughingthrush-2.jpg"
         }
       ]
     },
@@ -64,6 +67,47 @@
       "media": [
         {
           "src": "images/ultramarine-flycatcher-male-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "orange-headed-thrush-5",
+      "species": "orange-headed-thrush",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "variation": "Orange-headed",
+      "media": [
+        {
+          "src": "images/orange-headed-thrush-5.jpg"
+        }
+      ]
+    },
+    {
+      "key": "wedge-tailed-green-pigeon",
+      "species": "wedge-tailed-green-pigeon",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/wedge-tailed-green-pigeon.jpg"
+        }
+      ]
+    },
+    {
+      "key": "blue-throated-blue-flycatcher-male-2",
+      "species": "blue-throated-blue-flycatcher",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/blue-throated-blue-flycatcher-male-2.jpg"
         }
       ]
     },
@@ -131,6 +175,9 @@
       "country": "IN",
       "media": [
         {
+          "src": "images/rufous-chinned-laughingthrush-2.jpg"
+        },
+        {
           "src": "images/rufous-chinned-laughingthrush.jpg"
         }
       ]
@@ -178,6 +225,32 @@
       "media": [
         {
           "src": "images/red-junglefowl-male.jpg"
+        }
+      ]
+    },
+    {
+      "key": "emerald-dove",
+      "species": "emerald-dove",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/emerald-dove.jpg"
+        }
+      ]
+    },
+    {
+      "key": "crested-kingfisher-2",
+      "species": "crested-kingfisher",
+      "date": "30-04-2022",
+      "city": "Chafi",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/crested-kingfisher-2.jpg"
         }
       ]
     },
@@ -231,6 +304,9 @@
       "country": "IN",
       "gender": "M",
       "media": [
+        {
+          "src": "images/tickells-thrush-male-2.jpg"
+        },
         {
           "src": "images/tickells-thrush-male.jpg"
         }
@@ -2786,21 +2862,6 @@
       ]
     },
     {
-      "hidden": true,
-      "key": "emerald-dove",
-      "species": "emerald-dove",
-      "date": "21-12-2021",
-      "place": "Mahananda Wildlife Sanctuary",
-      "city": "Darjeeling",
-      "state": "WB",
-      "country": "IN",
-      "media": [
-        {
-          "src": "images/emerald-dove.jpg"
-        }
-      ]
-    },
-    {
       "key": "eurasian-tree-sparrow-male",
       "species": "eurasian-tree-sparrow",
       "gender": "M",
@@ -3521,16 +3582,28 @@
       ]
     },
     {
+      "key": "red-vented-bulbul-4",
+      "species": "red-vented-bulbul",
+      "date": "10-07-2021",
+      "city": "Howrah",
+      "state": "WB",
+      "country": "IN",
+      "variation": "Black-cheeked",
+      "media": [
+        {
+          "src": "images/red-vented-bulbul-4.jpg"
+        }
+      ]
+    },
+    {
       "key": "red-vented-bulbul-3",
       "species": "red-vented-bulbul",
       "date": "10-07-2021",
       "city": "Howrah",
       "state": "WB",
       "country": "IN",
+      "variation": "Brown-cheeked",
       "media": [
-        {
-          "src": "images/red-vented-bulbul-4.jpg"
-        },
         {
           "src": "images/red-vented-bulbul-3.jpg"
         }
@@ -5445,6 +5518,7 @@
       "place": "Thattekad Bird Sanctuary",
       "state": "KL",
       "country": "IN",
+      "variation": "White-throated",
       "media": [
         {
           "src": "images/orange-headed-thrush-4.jpg"
@@ -7038,6 +7112,7 @@
       "place": "Munnar",
       "state": "KL",
       "country": "IN",
+      "variation": "Black-cheeked",
       "media": [
         {
           "src": "images/red-vented-bulbul-2.jpg"
@@ -7118,6 +7193,7 @@
       "city": "Howrah",
       "state": "WB",
       "country": "IN",
+      "variation": "Brown-cheeked",
       "media": [
         {
           "src": "images/red-vented-bulbul.jpg"
@@ -7415,6 +7491,7 @@
       "place": "Yercaud",
       "state": "TN",
       "country": "IN",
+      "variation": "White-throated",
       "media": [
         {
           "src": "images/orange-headed-thrush.jpg"

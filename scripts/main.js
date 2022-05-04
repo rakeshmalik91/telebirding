@@ -476,7 +476,7 @@ function renderExploreMenu() {
 	if($('.explore-menu').html() == '') {
 		data.families.forEach(function(family, i) {
 			var span = "<span>" + family.name + "</span>";
-			var img = "<img src='" + family.imagesrc + "' alt='" + family.name + "'></img>";
+			var img = "<img src='" + getMedia(family.imagesrc) + "' alt='" + family.name + "'></img>";
 			var div = "<div class='bird-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + span + img + "</div>";
 			$('.explore-menu').append(div);
 		});

@@ -1,5 +1,15 @@
 {
     "species": {
+        "wedge-tailed-green-pigeon": {
+            "key": "wedge-tailed-green-pigeon",
+            "name": "Wedge-tailed Green Pigeon",
+            "tags": [
+                "Pigeon",
+                "Dove",
+                "Green Pigeon"
+            ],
+            "family": "Doves & Pigeons"
+        },
         "rufous-bellied-woodpecker": {
             "key": "rufous-bellied-woodpecker",
             "name": "Rufous-bellied Woodpecker",
@@ -2928,7 +2938,7 @@
         },
         "blue-winged-minla": {
             "key": "blue-winged-minla",
-            "name": "Blue-winged Minla",
+            "name": "Blue-winged Minla/Siva",
             "tags": [
                 "Minla",
                 "Siva",
