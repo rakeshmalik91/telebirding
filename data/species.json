@@ -1,5 +1,14 @@
 {
     "species": {
+        "brown-wood-owl": {
+            "key": "brown-wood-owl",
+            "name": "Brown Wood Owl",
+            "tags": [
+                "Wood Owl",
+                "Owl"
+            ],
+            "family": "Owls"
+        },
         "wedge-tailed-green-pigeon": {
             "key": "wedge-tailed-green-pigeon",
             "name": "Wedge-tailed Green Pigeon",

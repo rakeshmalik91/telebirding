@@ -1,6 +1,216 @@
 {
   "birds": [
     {
+      "key": "brown-wood-owl",
+      "species": "brown-wood-owl",
+      "date": "07-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/brown-wood-owl.jpg"
+        },
+        {
+          "src": "images/brown-wood-owl-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "asian-paradise-flycatcher-white-male-2",
+      "species": "asian-paradise-flycatcher",
+      "date": "07-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "variation": "White",
+      "media": [
+        {
+          "src": "images/asian-paradise-flycatcher-white-male-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "asian-paradise-flycatcher-rufous-female-2",
+      "species": "asian-paradise-flycatcher",
+      "date": "07-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "variation": "Rufous",
+      "media": [
+        {
+          "src": "images/asian-paradise-flycatcher-rufous-female-2.jpg"
+        },
+        {
+          "src": "images/asian-paradise-flycatcher-rufous-female-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "long-tailed-minivet-male-2",
+      "species": "long-tailed-minivet",
+      "date": "07-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/long-tailed-minivet-male-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "wedge-tailed-green-pigeon",
+      "species": "wedge-tailed-green-pigeon",
+      "date": "07-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/wedge-tailed-green-pigeon.jpg"
+        }
+      ]
+    },
+    {
+      "key": "brown-fronted-woodpecker-female-2",
+      "species": "brown-fronted-woodpecker",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/brown-fronted-woodpecker-female-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "brown-fronted-woodpecker-male-2",
+      "species": "brown-fronted-woodpecker",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/brown-fronted-woodpecker-male-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "lesser-yellownape",
+      "species": "lesser-yellownape",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/lesser-yellownape-2.jpg"
+        },
+        {
+          "src": "images/lesser-yellownape.jpg"
+        }
+      ]
+    },
+    {
+      "key": "red-junglefowl-female",
+      "species": "red-junglefowl",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/red-junglefowl-female.jpg"
+        }
+      ]
+    },
+    {
+      "key": "red-junglefowl-juvenile",
+      "species": "red-junglefowl",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "age": "Juvenile",
+      "media": [
+        {
+          "src": "images/red-junglefowl-juvenile.jpg"
+        }
+      ]
+    },
+    {
+      "key": "orange-headed-thrush-5",
+      "species": "orange-headed-thrush",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "variation": "Orange-headed",
+      "media": [
+        {
+          "src": "images/orange-headed-thrush-6.jpg"
+        },
+        {
+          "src": "images/orange-headed-thrush-5.jpg"
+        }
+      ]
+    },
+    {
+      "key": "fulvous-breasted-woodpecker-male-2",
+      "species": "fulvous-breasted-woodpecker",
+      "date": "06-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/fulvous-breasted-woodpecker-male-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "plum-headed-parakeet-male-2",
+      "species": "plum-headed-parakeet",
+      "date": "06-05-2022",
+      "city": "Bhimtal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/plum-headed-parakeet-male-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "black-francolin-male",
+      "species": "black-francolin",
+      "date": "05-05-2022",
+      "city": "Chafi",
+      "state": "UK",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/black-francolin-male-2.jpg"
+        },
+        {
+          "src": "images/black-francolin-male.jpg"
+        }
+      ]
+    },
+    {
       "key": "rufous-bellied-woodpecker-female",
       "species": "rufous-bellied-woodpecker",
       "date": "03-05-2022",
@@ -71,33 +281,6 @@
       ]
     },
     {
-      "key": "orange-headed-thrush-5",
-      "species": "orange-headed-thrush",
-      "date": "01-05-2022",
-      "city": "Sattal",
-      "state": "UK",
-      "country": "IN",
-      "variation": "Orange-headed",
-      "media": [
-        {
-          "src": "images/orange-headed-thrush-5.jpg"
-        }
-      ]
-    },
-    {
-      "key": "wedge-tailed-green-pigeon",
-      "species": "wedge-tailed-green-pigeon",
-      "date": "01-05-2022",
-      "city": "Sattal",
-      "state": "UK",
-      "country": "IN",
-      "media": [
-        {
-          "src": "images/wedge-tailed-green-pigeon.jpg"
-        }
-      ]
-    },
-    {
       "key": "blue-throated-blue-flycatcher-male-2",
       "species": "blue-throated-blue-flycatcher",
       "date": "01-05-2022",
@@ -124,19 +307,6 @@
         },
         {
           "src": "images/red-billed-leiothrix-2.jpg"
-        }
-      ]
-    },
-    {
-      "key": "lesser-yellownape",
-      "species": "lesser-yellownape",
-      "date": "01-05-2022",
-      "city": "Sattal",
-      "state": "UK",
-      "country": "IN",
-      "media": [
-        {
-          "src": "images/lesser-yellownape.jpg"
         }
       ]
     },
@@ -278,6 +448,9 @@
       "media": [
         {
           "src": "images/orange-bellied-leafbird-male-2.jpg"
+        },
+        {
+          "src": "images/orange-bellied-leafbird-male-3.jpg"
         }
       ]
     },
@@ -322,19 +495,6 @@
       "media": [
         {
           "src": "images/blue-robin-2.jpg"
-        }
-      ]
-    },
-    {
-      "key": "long-tailed-minivet-male-2",
-      "species": "long-tailed-minivet",
-      "date": "30-04-2022",
-      "city": "Sattal",
-      "state": "UK",
-      "country": "IN",
-      "media": [
-        {
-          "src": "images/long-tailed-minivet-male-2.jpg"
         }
       ]
     },
@@ -429,20 +589,9 @@
       "media": [
         {
           "src": "images/purple-sunbird-male-2.jpg"
-        }
-      ]
-    },
-    {
-      "key": "black-francolin-male",
-      "species": "black-francolin",
-      "date": "28-04-2022",
-      "city": "Bhimtal",
-      "state": "UK",
-      "country": "IN",
-      "gender": "M",
-      "media": [
+        },
         {
-          "src": "images/black-francolin-male.jpg"
+          "src": "images/purple-sunbird-male-3.jpg"
         }
       ]
     },
@@ -560,20 +709,6 @@
       "media": [
         {
           "src": "images/plum-headed-parakeet-female-2.jpg"
-        }
-      ]
-    },
-    {
-      "key": "plum-headed-parakeet-male-2",
-      "species": "plum-headed-parakeet",
-      "date": "26-04-2022",
-      "city": "Bhimtal",
-      "state": "UK",
-      "country": "IN",
-      "gender": "M",
-      "media": [
-        {
-          "src": "images/plum-headed-parakeet-male-2.jpg"
         }
       ]
     },
