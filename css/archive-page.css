@@ -36,7 +36,8 @@
 }
 
 .bird-image img {
-	object-fit: scale-down;
+	/*object-fit: scale-down;*/
+	object-fit: fill;
 	/*pointer-events: none;*/
 	opacity: 0;
   -webkit-transition: all 1s ease; 

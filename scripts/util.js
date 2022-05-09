@@ -1,9 +1,16 @@
+var FILE_CACHE = {};
+
 function readTextFile(file, callback) {
+	if(FILE_CACHE[file]) {
+		callback(FILE_CACHE[file]);
+		return;
+	}
 	var rawFile = new XMLHttpRequest();
 	rawFile.overrideMimeType("application/json");
 	rawFile.open("GET", file, true);
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4 && rawFile.status == "200") {
+			FILE_CACHE[file] = rawFile.responseText;
 			callback(rawFile.responseText);
 		}
 	}
@@ -144,17 +151,13 @@ function invalidName(place) {
 var FIREBASE_ENABLED = true;
 
 function getMedia(path) {
+		return getData(path);
+}
+
+function getData(path) {
 		if(FIREBASE_ENABLED) {
 			return "https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/" + path.replaceAll("/", "%2F") + "?alt=media";
 		} else {
 			return path;
 		}
-}
-
-function getData(path) {
-		//if(FIREBASE_ENABLED) {
-		//	return "https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/" + path.replaceAll("/", "%2F") + "?alt=media";
-		//} else {
-			return path;
-		//}
 }
