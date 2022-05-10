@@ -1,5 +1,13 @@
 {
     "species": {
+        "dark-sided-thrush": {
+            "key": "dark-sided-thrush",
+            "name": "Dark-sided Thrush",
+            "tags": [
+                "Thrush"
+            ],
+            "family": "Thrushes"
+        },
         "brown-wood-owl": {
             "key": "brown-wood-owl",
             "name": "Brown Wood Owl",

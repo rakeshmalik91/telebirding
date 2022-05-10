@@ -1,6 +1,57 @@
 {
   "birds": [
     {
+      "key": "dark-sided-thrush",
+      "species": "dark-sided-thrush",
+      "date": "10-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/dark-sided-thrush.jpg"
+        },
+        {
+          "src": "images/dark-sided-thrush-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "bar-tailed-treecreeper-3",
+      "species": "bar-tailed-treecreeper",
+      "date": "10-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/bar-tailed-treecreeper-3.jpg"
+        },
+        {
+          "src": "images/bar-tailed-treecreeper-4.jpg"
+        },
+        {
+          "src": "images/bar-tailed-treecreeper-5.jpg"
+        }
+      ]
+    },
+    {
+      "key": "red-rumped-swallow",
+      "species": "red-rumped-swallow",
+      "date": "10-05-2022",
+      "city": "Bhimtal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/red-rumped-swallow-2.jpg"
+        },
+        {
+          "src": "images/red-rumped-swallow.jpg"
+        }
+      ]
+    },
+    {
       "key": "brown-wood-owl",
       "species": "brown-wood-owl",
       "date": "07-05-2022",
@@ -682,19 +733,6 @@
       "media": [
         {
           "src": "images/black-chinned-babbler.jpg"
-        }
-      ]
-    },
-    {
-      "key": "red-rumped-swallow",
-      "species": "red-rumped-swallow",
-      "date": "26-04-2022",
-      "city": "Bhimtal",
-      "state": "UK",
-      "country": "IN",
-      "media": [
-        {
-          "src": "images/red-rumped-swallow.jpg"
         }
       ]
     },
