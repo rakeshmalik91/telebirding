@@ -247,7 +247,7 @@
       "key": "plum-headed-parakeet-male-2",
       "species": "plum-headed-parakeet",
       "date": "06-05-2022",
-      "city": "Bhimtal",
+      "city": "Sattal",
       "state": "UK",
       "country": "IN",
       "gender": "M",
@@ -459,6 +459,34 @@
       "media": [
         {
           "src": "images/red-junglefowl-male.jpg"
+        }
+      ]
+    },
+    {
+      "key": "grey-winged-blackbird-female-3",
+      "species": "grey-winged-blackbird",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/grey-winged-blackbird-female-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "tickells-thrush-female",
+      "species": "tickells-thrush",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/tickells-thrush-female.jpg"
         }
       ]
     },

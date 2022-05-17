@@ -25,3 +25,17 @@ firebase serve --only hosting
 ```
 firebase deploy
 ```
+
+### File structure in Fire Storage
+- data
+    - birds.json
+    - species.json
+    - families.json
+    - places.json
+    - site-data.json
+- images
+    - *.jpg
+- videos
+    - *.mp4
+- featured-images
+    - *.jpg
