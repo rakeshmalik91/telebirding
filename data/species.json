@@ -1,5 +1,13 @@
 {
     "species": {
+        "velvet-fronted-nuthatch": {
+            "key": "velvet-fronted-nuthatch",
+            "name": "Velvet-fronted Nuthatch",
+            "tags": [
+                "Nuthatch"
+            ],
+            "family": "Treecreepers, Wallcreepers & Nuthatches"
+        },
         "dark-sided-thrush": {
             "key": "dark-sided-thrush",
             "name": "Dark-sided Thrush",

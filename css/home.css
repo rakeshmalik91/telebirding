@@ -280,14 +280,14 @@
 		margin-right: 5px;
 	}
 	.explore-menu .bird-family, .explore-menu .bird-family img {
-		height: 100px;
-		width: 300px;
+		height: 80px;
+		width: 400px;
 	}
 	/*.explore-menu .bird-family:hover, */.explore-menu .bird-family:hover img {
-		height: 180px;
-		width: 350px;
+		height: 200px;
+		/*width: 450px;*/
 		position: absolute;
-		transform: translateY(-30px)/* translateX(-1vw)*/;
+		transform: translateY(-60px)/* translateX(-1vw)*/;
 	}
 	.explore-menu .bird-family:hover {
 		overflow: visible;
