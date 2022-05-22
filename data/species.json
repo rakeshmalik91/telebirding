@@ -1056,9 +1056,9 @@
             ],
             "family": "Thick-knees"
         },
-        "asian-paradise-flycatcher": {
-            "key": "asian-paradise-flycatcher",
-            "name": "Asian Paradise Flycatcher",
+        "indian-paradise-flycatcher": {
+            "key": "indian-paradise-flycatcher",
+            "name": "Indian Paradise Flycatcher",
             "tags": [
                 "Flycatcher",
                 "Paradise Flycatcher",
@@ -1101,14 +1101,6 @@
                 "Flycatcher"
             ],
             "family": "Old World Flycatchers"
-        },
-        "asian-palm-swift": {
-            "key": "asian-palm-swift",
-            "name": "Asian Palm Swift",
-            "tags": [
-                "Swift"
-            ],
-            "family": "Swifts"
         },
         "black-winged-stilt": {
             "key": "black-winged-stilt",
@@ -2844,9 +2836,10 @@
         },
         "black-lored-tit": {
             "key": "black-lored-tit",
-            "name": "Black Lored Tit",
+            "name": "Black-lored Tit",
             "tags": [
-                "Tit"
+                "Tit",
+                "Indian Yellow Tit"
             ],
             "family": "Tits"
         },

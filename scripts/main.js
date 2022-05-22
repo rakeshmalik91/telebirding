@@ -15,9 +15,21 @@ var HOME = "home";
 var ARCHIVE = "archive";
 var EXPLORE_MENU = "explore_menu";
 var EXPLORE_PAGE = "explore_page";
+var MAP_MENU = "map_menu";
+var MAP = "map";
 var VIDEOS = "videos";
 var ABOUT = "about";
 var currentPage = HOME;
+
+var pageNames = {};
+pageNames[HOME] = "Home";
+pageNames[ARCHIVE] = "Feed";
+pageNames[EXPLORE_MENU] = "Explore Birds";
+pageNames[EXPLORE_PAGE] = "Explore Birds";
+pageNames[MAP_MENU] = "Bird Map";
+pageNames[MAP] = "Bird Map";
+pageNames[VIDEOS] = "Videos";
+pageNames[ABOUT] = "About";
 
 
 function getSpeciesCount(birds) {
@@ -462,11 +474,16 @@ function clearFilter(type) {
 }
 
 function triggerFilter(type, value) {
-	if($('.filter').is(':visible')) {
+	if(type == 'place' && currentPage == MAP_MENU) {
+		showPage(MAP, {place: value});
 		setFilter(type, value);
-		filterOnChange(type);
+	} else {
+		if($('.filter').is(':visible')) {
+			setFilter(type, value);
+			filterOnChange(type);
+		}
+		hideRightPane();
 	}
-	hideRightPane();
 }
 
 function renderExploreMenu() {
@@ -474,9 +491,10 @@ function renderExploreMenu() {
 	$('.explore-menu').addClass('expanded');
 
 	if($('.explore-menu').html() == '') {
+		$('.explore-menu').append('<h1>Sightgings by Category</h1>');
 		data.families.forEach(function(family, i) {
 			var span = "<span>" + family.name + "</span>";
-			var img = "<img src='" + getMedia(family.imagesrc) + "' alt='" + family.name + "'></img>";
+			var img = "<img class='fadein-50percent' src='" + getMedia(family.imagesrc) + "' alt='" + family.name + "'></img>";
 			var div = "<div class='bird-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + span + img + "</div>";
 			$('.explore-menu').append(div);
 		});
@@ -497,6 +515,10 @@ function clearVideosPage() {
 	$('.videos').removeClass('expanded');
 }
 
+function showAboutPage() {
+	$('.home .featured').addClass('collapsed');
+}
+
 function renderHome() {
 	$('.home .featured').removeClass('hidden');
 	clearExploreMenu();
@@ -509,30 +531,44 @@ function hideRightPane() {
 	}
 }
 
-function toggleRightPane() {
-	if($(".right-pane").html() == '') {
-		$(".right-pane").append("<h1>Index by Location</h1>");
-		Object.keys(data.countries).forEach(function(countryCode) {
+function renderMapPage() {
+	// $('input[data-value=place]').parent().hide();
+	renderBirds(0, DATA_PER_PAGE);
+}
+
+function renderMapMenu() {
+	$('.home .featured').addClass('collapsed');
+	$('.map-menu').show();
+	if($('.map-menu').html() == '') {
+		$('.map-menu').append("<h1>Species Observed by Location</h1>");
+		renderLocationList($('.map-menu'));
+	}
+}
+
+function renderLocationList(container) {
+	container.append("<div class='location-list'></div>")
+	container = container.find('.location-list');
+	Object.keys(data.countries).forEach(function(countryCode) {
 			var country = data.countries[countryCode];
 			var count = data.countries[countryCode].count;
 			if(count > 0) {
-				$(".right-pane").append("<button class='country' onclick='triggerFilter(\"place\", \"" + country.name + "\")'><span>" + country.name + "</span><span class='count'>" + count + "</span></button>");
+				container.append("<button class='country' onclick='triggerFilter(\"place\", \"" + country.name + "\")'><span>" + country.name + "</span><span class='count'>" + count + "</span></button>");
 				Object.keys(country.states).sort((a,b) => compare(country.states[b].count, country.states[a].count)).forEach(function(stateCode) {
 					var state = country.states[stateCode];
 					var count = country.states[stateCode].count;
 					if(count > 0) {
-						$(".right-pane").append("<div><div class='hierarchy l1'></div><button class='state' onclick='triggerFilter(\"place\", \"" + state.name + "\")'><span>" + state.name + "</span><span class='count'>" + count + "</span></button></div>");
+						container.append("<div><div class='hierarchy l1'></div><button class='state' onclick='triggerFilter(\"place\", \"" + state.name + "\")'><span>" + state.name + "</span><span class='count'>" + count + "</span></button></div>");
 						Object.keys(state.cities).sort((a,b) => compare(state.cities[b].count, state.cities[a].count)).forEach(function(cityName) {
 							var city = state.cities[cityName];
 							var count = state.cities[cityName].count;
 							if(count >= MIN_COUNT_FOR_RIGHT_PANE_PLACE_LISTING) {
 								if(!invalidName(cityName)) {
-									$(".right-pane").append("<div><div class='hierarchy l2'></div><button class='city' onclick='triggerFilter(\"place\", \"" + cityName + "\")'><span>" + cityName + "</span><span class='count'>" + count + "</span></button></div>");
+									container.append("<div><div class='hierarchy l2'></div><button class='city' onclick='triggerFilter(\"place\", \"" + cityName + "\")'><span>" + cityName + "</span><span class='count'>" + count + "</span></button></div>");
 								}
 								Object.keys(city.places).sort((a,b) => compare(city.places[b].count, city.places[a].count)).forEach(function(placeName) {
 									var count = city.places[placeName].count;
 									if(count >= MIN_COUNT_FOR_RIGHT_PANE_PLACE_LISTING) {
-										$(".right-pane").append("<div><div class='hierarchy " + (invalidName(cityName) ? 'l2' : 'l3' ) + "'></div><button class='" + (invalidName(cityName) ? 'city' : 'place' ) + "' onclick='triggerFilter(\"place\", \"" + placeName + "\")'><span>" + placeName + "</span><span class='count'>" + count + "</span></button></div>");
+										container.append("<div><div class='hierarchy " + (invalidName(cityName) ? 'l2' : 'l3' ) + "'></div><button class='" + (invalidName(cityName) ? 'city' : 'place' ) + "' onclick='triggerFilter(\"place\", \"" + placeName + "\")'><span>" + placeName + "</span><span class='count'>" + count + "</span></button></div>");
 									}
 								});
 							}
@@ -541,6 +577,12 @@ function toggleRightPane() {
 				});
 			}
 		});
+}
+
+function toggleRightPane() {
+	if($(".right-pane").html() == '') {
+		$(".right-pane").append("<h1>Index by Location</h1>");
+		renderLocationList($(".right-pane"));
 		$(".right-pane").append("<h1>Index by Category</h1>");
 		data.families.forEach(function(family) {
 			var count = getSpeciesCount(data.birds.filter(b => b.species.family == family.name));
@@ -589,27 +631,36 @@ function handleMobileSpecificRendering() {
 }
 
 function renderPageName(currentPage, params) {
+	params = params||{};
 	var delim = "<span class='delim'><</span>";
 	switch(currentPage) {
 	  case EXPLORE_PAGE:
 		var icon = "<img class='icon' src='icons/bino-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + params.family + "</span> " + delim + " <a onclick=\"showPage('explore_menu')\">Explore Birds</a> " + delim + " <a onclick=\"showPage('home')\">Home</a>");
+		$('.page-name').html(icon + "<span class='active'>" + params.family + "</span> " + delim + " <a onclick=\"showPage('explore_menu')\">" + pageNames[EXPLORE_MENU] + "</a> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
 		break;
 	  case EXPLORE_MENU:
 		var icon = "<img class='icon' src='icons/bino-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>Explore Birds</span> " + delim + " <a onclick=\"showPage('home')\">Home</a>");
+		$('.page-name').html(icon + "<span class='active'>" + pageNames[EXPLORE_MENU] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
 		break;
 	  case ABOUT:
 		var icon = "<img class='icon' src='icons/about-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>About</span> " + delim + " <a onclick=\"showPage('home')\">Home</a>");
+		$('.page-name').html(icon + "<span class='active'>" + pageNames[ABOUT] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
 		break;
 	  case ARCHIVE:
 		var icon = "<img class='icon' src='icons/archive-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>Bird Archive</span> " + delim + " <a onclick=\"showPage('home')\">Home</a>");
+		$('.page-name').html(icon + "<span class='active'>" + pageNames[ARCHIVE] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
 		break;
 	  case VIDEOS:
 		var icon = "<img class='icon' src='icons/video-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>Birding Trips</span> " + delim + " <a onclick=\"showPage('home')\">Home</a>");
+		$('.page-name').html(icon + "<span class='active'>" + pageNames[VIDEOS] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		break;
+	  case MAP_MENU:
+		var icon = "<img class='icon' src='icons/map-icon.png'/>";
+		$('.page-name').html(icon + "<span class='active'>" + pageNames[MAP_MENU] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		break;
+	  case MAP:
+		var icon = "<img class='icon' src='icons/map-icon.png'/>";
+		$('.page-name').html(icon + "<span class='active'>" + (params.place||getFilter('place')||'All') + "</span> " + delim + " <a onclick=\"showPage('map_menu')\">" + pageNames[MAP] + "</a> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
 		break;
 	  default:
 		var icon = "<img class='icon' src='icons/home-icon.png'/>";
@@ -619,6 +670,9 @@ function renderPageName(currentPage, params) {
 
 function showPage(page, params, isPopstate) {
 	var filter = getFilters();
+	if(params && params.place) {
+		filter.place = params.place;
+	}
 
 	if(!isPopstate) {
 		var state = {page: page, params: params, filter: filter, sort: sort};
@@ -663,6 +717,22 @@ function showPage(page, params, isPopstate) {
 			setFilters({});
 			renderExploreMenu();
 			break;
+		  case MAP_MENU:
+			$('.filter-panel, .birds-list, .home .menu, .about-page, .videos').hide();
+			$('.home, .home .map-menu').show();
+			$('.home .featured').removeClass('hidden');
+			setFilters({});
+			renderMapMenu();
+			break;
+		  case MAP:
+			$('.home .explore-menu, .home .menu, .about-page, .videos').hide();
+			$('.home, .birds-list, .filter-panel, .filter-panel .filter, .filter-panel .sortby, .filter-panel .stats').show();
+			$('.home .featured').addClass('hidden');
+			birdFamilyFilter = null;
+			filterAndSortData(filter);
+			fillStats();
+			renderMapPage();
+			break;
 		  case VIDEOS:
 			$('.filter-panel, .home .menu, .birds-list, .about-page').hide();
 			$('.videos, .home').show();
@@ -673,9 +743,10 @@ function showPage(page, params, isPopstate) {
 			$('.filter-panel, .birds-list, .home .explore-menu, .home .menu, .videos').hide();
 			$('.home, .about-page').show();
 			setFilters({});
+			showAboutPage();
 			break;
 		  default:
-			$('.filter-panel, .birds-list, .home .explore-menu, .about-page, .videos').hide();
+			$('.filter-panel, .birds-list, .home .explore-menu, .about-page, .videos, .map-menu').hide();
 			$('.home, .home .menu').show();
 			setFilters({});
 			renderHome();
@@ -691,12 +762,12 @@ function getUrlFromState(state) {
 	if(state.page == HOME) return (window.location.origin + window.location.pathname); //blank url
 	var url = "?page=" + encodeURIComponent(state.page);
 	if([EXPLORE_PAGE].includes(state.page) && state.params && state.params.family) url += "&family=" + encodeURIComponent(state.params.family);
-	if([ARCHIVE].includes(state.page) && state.filter && state.filter.bird) url += "&bird=" + encodeURIComponent(state.filter.bird);
-	if([ARCHIVE].includes(state.page) && state.filter && state.filter.place) url += "&place=" + encodeURIComponent(state.filter.place);
-	if([ARCHIVE].includes(state.page) && state.filter && state.filter.date) url += "&date=" + encodeURIComponent(state.filter.date);
+	if([ARCHIVE, MAP].includes(state.page) && state.filter && state.filter.bird) url += "&bird=" + encodeURIComponent(state.filter.bird);
+	if([ARCHIVE, MAP].includes(state.page) && state.filter && state.filter.place) url += "&place=" + encodeURIComponent(state.filter.place);
+	if([ARCHIVE, MAP].includes(state.page) && state.filter && state.filter.date) url += "&date=" + encodeURIComponent(state.filter.date);
 	if(!(state.sort.by == 'date' && state.sort.descending)) {
-		if([EXPLORE_PAGE, ARCHIVE].includes(state.page) && state.sort && state.sort.by) url += "&sort_by=" + encodeURIComponent(state.sort.by);
-		if([EXPLORE_PAGE, ARCHIVE].includes(state.page) && state.sort && state.sort.descending) url += "&sort_descending=" + encodeURIComponent(state.sort.descending);
+		if([EXPLORE_PAGE, ARCHIVE, MAP].includes(state.page) && state.sort && state.sort.by) url += "&sort_by=" + encodeURIComponent(state.sort.by);
+		if([EXPLORE_PAGE, ARCHIVE, MAP].includes(state.page) && state.sort && state.sort.descending) url += "&sort_descending=" + encodeURIComponent(state.sort.descending);
 	}
 	return url;
 }
@@ -705,7 +776,7 @@ function retrieveStateFromUrlParams() {
 	var urlParams = getUrlParams();
 	// var page = window.location.pathname.slice(1);
 	currentPage = urlParams.page ? decodeURIComponent(urlParams.page) : HOME;
-	if([EXPLORE_PAGE, ARCHIVE].includes(urlParams.page) && urlParams.sort_by) {
+	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.sort_by) {
 		sort.by = decodeURIComponent(urlParams.sort_by);
 		sort.descending = !!urlParams.sort_descending;
 		$(".sortby").ready(function() {
@@ -723,7 +794,7 @@ function retrieveStateFromUrlParams() {
 			$(".sortby button[data-value='date'] span.order").addClass('desc').removeClass('asc');
 		});
 	}
-	if([ARCHIVE].includes(urlParams.page)) {
+	if([ARCHIVE, MAP].includes(urlParams.page)) {
 		$(".filter").ready(function() {
 			if(urlParams.bird) $(".filter input[data-value='bird']").addClass("button-active").val(capitalize(decodeURIComponent(urlParams.bird)).trim());
 			if(urlParams.place) $(".filter input[data-value='place']").addClass("button-active").val(capitalize(decodeURIComponent(urlParams.place)).trim());
@@ -755,7 +826,7 @@ $(document).ready(function() {
 	//archive lazy load on scroll
 	$(window).scroll(function() {
 	   if($(window).scrollTop() > $(document).height() - window.innerWidth * 2) {
-		   if([ARCHIVE, EXPLORE_PAGE].includes(currentPage)) {
+		   if([ARCHIVE, EXPLORE_PAGE, MAP].includes(currentPage)) {
 			   renderBirds(currentRenderOffset, DATA_PER_PAGE);
 		   }
 	   }

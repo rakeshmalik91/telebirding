@@ -68,8 +68,8 @@
       ]
     },
     {
-      "key": "asian-paradise-flycatcher-white-male-2",
-      "species": "asian-paradise-flycatcher",
+      "key": "indian-paradise-flycatcher-white-male-2",
+      "species": "indian-paradise-flycatcher",
       "date": "07-05-2022",
       "city": "Sattal",
       "state": "UK",
@@ -78,13 +78,13 @@
       "variation": "White",
       "media": [
         {
-          "src": "images/asian-paradise-flycatcher-white-male-2.jpg"
+          "src": "images/indian-paradise-flycatcher-white-male-2.jpg"
         }
       ]
     },
     {
-      "key": "asian-paradise-flycatcher-rufous-female-2",
-      "species": "asian-paradise-flycatcher",
+      "key": "indian-paradise-flycatcher-rufous-female-2",
+      "species": "indian-paradise-flycatcher",
       "date": "07-05-2022",
       "city": "Sattal",
       "state": "UK",
@@ -93,10 +93,10 @@
       "variation": "Rufous",
       "media": [
         {
-          "src": "images/asian-paradise-flycatcher-rufous-female-2.jpg"
+          "src": "images/indian-paradise-flycatcher-rufous-female-2.jpg"
         },
         {
-          "src": "images/asian-paradise-flycatcher-rufous-female-3.jpg"
+          "src": "images/indian-paradise-flycatcher-rufous-female-3.jpg"
         }
       ]
     },
@@ -5214,8 +5214,8 @@
       ]
     },
     {
-      "key": "asian-paradise-flycatcher-white-male",
-      "species": "asian-paradise-flycatcher",
+      "key": "indian-paradise-flycatcher-white-male",
+      "species": "indian-paradise-flycatcher",
       "gender": "M",
       "variation": "White",
       "date": "19-12-2020",
@@ -5224,7 +5224,7 @@
       "country": "IN",
       "media": [
         {
-          "src": "images/asian-paradise-flycatcher-white-male.jpg"
+          "src": "images/indian-paradise-flycatcher-white-male.jpg"
         }
       ]
     },
@@ -5458,8 +5458,8 @@
       ]
     },
     {
-      "key": "asian-paradise-flycatcher-rufous-male",
-      "species": "asian-paradise-flycatcher",
+      "key": "indian-paradise-flycatcher-rufous-male",
+      "species": "indian-paradise-flycatcher",
       "gender": "M",
       "variation": "Rufous",
       "date": "19-01-2020",
@@ -5468,7 +5468,7 @@
       "country": "IN",
       "media": [
         {
-          "src": "images/asian-paradise-flycatcher-rufous-male.jpg"
+          "src": "images/indian-paradise-flycatcher-rufous-male.jpg"
         }
       ]
     },
@@ -6618,19 +6618,6 @@
       ]
     },
     {
-      "key": "asian-palm-swift",
-      "species": "asian-palm-swift",
-      "date": "07-01-2018",
-      "place": "Guduvancheri",
-      "state": "TN",
-      "country": "IN",
-      "media": [
-        {
-          "src": "images/asian-palm-swift.jpg"
-        }
-      ]
-    },
-    {
       "key": "indian-spot-billed-duck-2",
       "species": "indian-spot-billed-duck",
       "date": "26-12-2017",
@@ -6735,8 +6722,8 @@
       ]
     },
     {
-      "key": "asian-paradise-flycatcher-rufous-female",
-      "species": "asian-paradise-flycatcher",
+      "key": "indian-paradise-flycatcher-rufous-female",
+      "species": "indian-paradise-flycatcher",
       "gender": "F",
       "variation": "Rufous",
       "date": "26-12-2017",
@@ -6745,7 +6732,7 @@
       "country": "IN",
       "media": [
         {
-          "src": "images/asian-paradise-flycatcher-rufous-female.jpg"
+          "src": "images/indian-paradise-flycatcher-rufous-female.jpg"
         }
       ]
     },

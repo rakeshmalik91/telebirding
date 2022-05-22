@@ -1,0 +1,16 @@
+
+.preview-image, .preview-image-desc {
+	z-index: 80;
+}
+.site-logo, .site-logo img {
+	z-index: 71;
+}
+.site-header {
+	z-index: 70;
+}
+.featured {
+	z-index: 60;
+}
+.home {
+	z-index: 50;
+}
