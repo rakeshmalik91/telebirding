@@ -2749,7 +2749,8 @@
         {
           "src": "images/hair-crested-drongo-2.jpg"
         }
-      ]
+      ],
+      "hidden": true
     },
     {
       "key": "long-tailed-shrike-tricolor",
@@ -5283,7 +5284,8 @@
         {
           "src": "images/indian-paradise-flycatcher-white-male.jpg"
         }
-      ]
+      ],
+      "hidden": true
     },
     {
       "key": "common-snipe",

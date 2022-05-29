@@ -326,23 +326,24 @@ function getBirdPhotoTitle(bird, image) {
 	return plumage.length ? plumage.join(" ").trim() : DEFAULT_PLUMAGE;
 }
 
-function renderBirdOtherPhotos(div, bird, exclude) {
+function renderBirdOtherPhotos(div, bird, selected, birdIndex) {
 	div.append('<div class="photos"></div>');
 	var photosDiv = div.find('.photos');
+	bird.species.media = [];
 	data.birds.filter(b => b.species.name.toLowerCase() == bird.species.name.toLowerCase()).forEach(function(b) {
 		b.media.forEach(function(media) {
-			if(!exclude.includes(media.src)) {
-				var mediaDiv;
-				if(media.type == MEDIA_TYPE_VIDEO) {
-					if(!media.thumbnail) {
-						console.log("thumbnail missing for " + media.src);
-					}
-					mediaDiv = "<img class='video-thumbnail' src='" + media.thumbnail + "'></img><img class='play-icon' src='icons/play.png'></img>";
-				} else {
-					mediaDiv = "<img class='image-thumbnail' src='" + media.src + "'/></img>";
+			bird.species.media.push({sightingKey: b.key, media: media});
+			var mediaDiv;
+			if(media.type == MEDIA_TYPE_VIDEO) {
+				if(!media.thumbnail) {
+					console.log("thumbnail missing for " + media.src);
 				}
-				photosDiv.append("<div onclick=\"previewImage('" + media.src + "', '" + b.key + "')\"><span>" + getBirdPhotoTitle(b, media) + "</span>" + mediaDiv + "</div>");
+				mediaDiv = "<img class='video-thumbnail' src='" + media.thumbnail + "'></img><img class='play-icon' src='icons/play.png'></img>";
+			} else {
+				mediaDiv = "<img class='image-thumbnail' src='" + media.src + "'/></img>";
 			}
+			var classes = selected.includes(media.src) ? 'selected' : '';
+			photosDiv.append("<div class='" + classes + "' onclick=\"previewImage('" + media.src + "', '" + b.key + "', " + birdIndex + ")\"><span>" + getBirdPhotoTitle(b, media) + "</span>" + mediaDiv + "</div>");
 		});
 	});
 }
@@ -360,7 +361,7 @@ function renderExtendedBirdDetails(birdLabelDiv, bird) {
 	tagsDiv.append('in <span class="tags" title="Family" onclick="triggerFilter(\'bird\', \'' + bird.species.family + '\')">' + bird.species.family + '</span>');
 }
 
-function previewImage(imageSrc, birdKey) {
+function previewImage(imageSrc, birdKey, index) {
 	if(isDeviceOnLandscapeOrientation()) {
 		var visible = $('.preview-image').is(':visible');
 		if(visible) {
@@ -376,20 +377,25 @@ function previewImage(imageSrc, birdKey) {
 		} else {
 			mediaTag = '<img src="' + imageSrc + '" title="' + bird.species.name + '" alt="' + bird.species.name + '"></img>';
 		}
-		var index = data.filteredBirds.map((b,i) => (b.key == birdKey) ? i : null).filter(k => k != null)[0];
+		if(index == undefined) { 
+			//this check makes sure selecting a media from a different sighting does not move the flow to that sighting 
+			index = data.filteredBirds.map((b,i) => (b.key == birdKey) ? i : null).filter(k => k != null)[0];
+		}
 		$('body').append('<div class="preview-image' + (visible ? '' : ' slide-in') + '" data-index="' + index + '">' + mediaTag + '</div>');
 		$('body').append('<div class="preview-image-desc' + (visible ? '' : ' slide-in') + '"></div>');
 		$('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png"/></button>');
 		$('.preview-image-desc').append('<button class="left-button" onclick="scrollPreviewImageBird(-1)"></button>');
 		$('.preview-image-desc').append('<button class="right-button" onclick="scrollPreviewImageBird(1)"></button>');
 		renderBirdDetails($('.preview-image-desc'), bird, true);
-		renderBirdOtherPhotos($('.preview-image-desc'), bird, [imageSrc]);
+		renderBirdOtherPhotos($('.preview-image-desc'), bird, [imageSrc], index);
 		renderExtendedBirdDetails($('.preview-image-desc'), bird);
 		if(!isTouchDevice()) disableScroll();
 		$('.birds-list video').trigger('pause');
 	}
 }
 
+// called on click of arrow button in preview page
+// scrolls through sightings
 function scrollPreviewImageBird(direction) {
 	if($('.preview-image').is(':visible')) {
 		var index = parseInt($('.preview-image').attr('data-index'));
@@ -397,6 +403,28 @@ function scrollPreviewImageBird(direction) {
 		if(index >= 0 && index < data.filteredBirds.length) {
 			var bird = data.filteredBirds[index];
 			previewImage(bird.media[0].src, bird.key);
+		}
+	}
+}
+
+// called on arrow key press
+// scrolls through images inside sightings, then trough sightings as well
+function scrollPreviewImage(direction) {
+	if($('.preview-image').is(':visible')) {
+		var index = parseInt($('.preview-image').attr('data-index'));
+		var bird = data.filteredBirds[index];
+		var mediaSrc = $('.preview-image').find('img').attr('src');
+		var mediaIndex = data.filteredBirds[index].species.media.map((m,i) => (m.media.src == mediaSrc) ? i : null).filter(k => k != null)[0];
+		mediaIndex += direction;
+		if(mediaIndex >= 0 && mediaIndex < data.filteredBirds[index].species.media.length) {
+			var media = data.filteredBirds[index].species.media[mediaIndex];
+			previewImage(media.media.src, media.sightingKey, index);
+		} else {
+			index += direction;
+			if(index >= 0 && index < data.filteredBirds.length) {
+				var bird = data.filteredBirds[index];
+				previewImage(bird.media[0].src, bird.key);
+			}
 		}
 	}
 }
@@ -601,12 +629,13 @@ function toggleRightPane() {
 		setTimeout(function() {
 			$(".right-pane").hide();
 		}, 250);
-		// $('.overlay').hide();
+		$('.overlay-on-body').addClass('fadeout');
+		setTimeout(function() { $('.overlay-on-body').removeClass('fadeout').hide() }, 250);
 		// document.body.style.overflow = 'visible';
 	} else {
 		$(".right-pane-button").addClass('button-active');
 		$(".right-pane").removeClass("slide-out").show();
-		// $('.overlay').show();
+		$('.overlay-on-body').show();
 		// document.body.style.overflow = 'hidden';
 	}
 }
@@ -824,7 +853,7 @@ function retrieveStateFromUrlParams() {
 
 
 $(document).ready(function() {
-	//archive lazy load on scroll
+	//feed infinite scroll
 	$(window).scroll(function() {
 	   if($(window).scrollTop() > $(document).height() - window.innerWidth * 2) {
 		   if([ARCHIVE, EXPLORE_PAGE, MAP].includes(currentPage)) {
@@ -835,9 +864,6 @@ $(document).ready(function() {
 
 	//autoscroll explore menu
 	autoScroll($('.explore-menu'), 200);
-
-	//autoscroll right pane
-	// autoScroll($(".right-pane"), 800);
 
 	//hide right pane for mobile
 	if(!isDeviceOnLandscapeOrientation()) {
@@ -854,7 +880,7 @@ $(document).ready(function() {
 	//navigate/close preview image
 	$('body').keydown(function(e) {
 		if(['Enter', 'Escape'].includes(e.code)) 		removePreviewImage();
-		if(['ArrowLeft'].includes(e.code)) 				scrollPreviewImageBird(-1);
-		if(['ArrowRight'].includes(e.code)) 			scrollPreviewImageBird(1);
+		if(['ArrowLeft'].includes(e.code)) 				scrollPreviewImage(-1);
+		if(['ArrowRight'].includes(e.code)) 			e.shiftKey ? scrollPreviewImageBird(1) : scrollPreviewImage(1);
 	});
 });

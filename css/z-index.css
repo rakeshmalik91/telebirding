@@ -1,12 +1,22 @@
-
 .preview-image, .preview-image-desc {
+	z-index: 90;
+}
+
+.overlay {
 	z-index: 80;
+}
+.right-pane {
+	z-index: 72;
 }
 .site-logo, .site-logo img {
 	z-index: 71;
 }
 .site-header {
 	z-index: 70;
+}
+
+.overlay-on-body {
+	z-index: 69;
 }
 .featured {
 	z-index: 60;

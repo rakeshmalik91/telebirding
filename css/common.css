@@ -184,3 +184,15 @@ div.four-column {
 	display: inline-block;
 	width: 25%;
 }
+
+
+.overlay, .overlay-on-body {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+  /*backdrop-filter: blur(3px);
+  	-webkit-backdrop-filter: blur(3px);*/
+}
