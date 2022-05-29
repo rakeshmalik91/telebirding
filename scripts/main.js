@@ -12,13 +12,14 @@ var noMoreDataToRender = false;
 var birdFamilyFilter = null;
 
 var HOME = "home";
-var ARCHIVE = "archive";
+var ARCHIVE = "feed";
 var EXPLORE_MENU = "explore_menu";
 var EXPLORE_PAGE = "explore_page";
 var MAP_MENU = "map_menu";
 var MAP = "map";
 var VIDEOS = "videos";
 var ABOUT = "about";
+
 var currentPage = HOME;
 
 var pageNames = {};

@@ -1,6 +1,60 @@
 {
   "birds": [
     {
+      "key": "indian-paradise-flycatcher-white-male-3",
+      "species": "indian-paradise-flycatcher",
+      "date": "28-05-2022",
+      "city": "Dharamshala",
+      "state": "HP",
+      "country": "IN",
+      "variation": "White",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/indian-paradise-flycatcher-white-male-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "hair-crested-drongo-3",
+      "species": "hair-crested-drongo",
+      "date": "28-05-2022",
+      "city": "Dharamshala",
+      "state": "HP",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/hair-crested-drongo-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "scaly-breasted-munia-4",
+      "species": "scaly-breasted-munia",
+      "date": "28-05-2022",
+      "city": "Dharamshala",
+      "state": "HP",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/scaly-breasted-munia-4.jpg"
+        }
+      ]
+    },
+    {
+      "key": "spotted-forktail-2",
+      "species": "spotted-forktail",
+      "date": "24-05-2022",
+      "city": "Mcleodganj",
+      "state": "HP",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/spotted-forktail-2.jpg"
+        }
+      ]
+    },
+    {
       "key": "dark-sided-thrush",
       "species": "dark-sided-thrush",
       "date": "10-05-2022",
@@ -785,6 +839,9 @@
       "state": "UK",
       "country": "IN",
       "media": [
+        {
+          "src": "images/himalayan-prinia-3.jpg"
+        },
         {
           "src": "images/himalayan-prinia-2.jpg"
         }
