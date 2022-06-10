@@ -522,9 +522,11 @@ function renderExploreMenu() {
 	if($('.explore-menu').html() == '') {
 		$('.explore-menu').append('<h1>Sightgings by Category</h1>');
 		data.families.forEach(function(family, i) {
-			var span = "<span>" + family.name + "</span>";
+			var nameSpan = "<span class='name'>" + family.name + "</span>";
+			var count = data.birds.filter(b => !b.hidden && b.species.family == family.name).length;
+			var countSpan = "<span class='count'>" + count + "</span>";
 			var img = "<img class='fadein-50percent' src='" + getMedia(family.imagesrc) + "' alt='" + family.name + "'></img>";
-			var div = "<div class='bird-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + span + img + "</div>";
+			var div = "<div class='bird-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + nameSpan + countSpan + img + "</div>";
 			$('.explore-menu').append(div);
 		});
 	}
@@ -879,8 +881,17 @@ $(document).ready(function() {
 
 	//navigate/close preview image
 	$('body').keydown(function(e) {
-		if(['Enter', 'Escape'].includes(e.code)) 		removePreviewImage();
-		if(['ArrowLeft'].includes(e.code)) 				scrollPreviewImage(-1);
-		if(['ArrowRight'].includes(e.code)) 			e.shiftKey ? scrollPreviewImageBird(1) : scrollPreviewImage(1);
+		if($('.preview-image').is(':visible')) {
+			if(['Enter', 'Escape', 'Space'].includes(e.code)) {
+				e.preventDefault();
+				removePreviewImage();
+			}
+			if(['ArrowLeft'].includes(e.code)) {
+				e.shiftKey ? scrollPreviewImageBird(-1) : scrollPreviewImage(-1);
+			}
+			if(['ArrowRight'].includes(e.code)) {
+				e.shiftKey ? scrollPreviewImageBird( 1) : scrollPreviewImage( 1);
+			}
+		}
 	});
 });

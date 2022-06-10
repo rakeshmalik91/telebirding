@@ -1,5 +1,42 @@
 {
     "species": {
+        "mallard": {
+            "key": "mallard",
+            "name": "Mallard",
+            "tags": [
+                "Duck",
+                "Wader",
+                "Wading Bird"
+            ],
+            "family": "Ducks, Swans & Geese"
+        },
+        "hill-pigeon": {
+            "key": "hill-pigeon",
+            "name": "Hill Pigeon",
+            "tags": [
+                "Pigeon",
+                "Dove"
+            ],
+            "family": "Doves & Pigeons"
+        },
+        "horned-lark": {
+            "key": "horned-lark",
+            "name": "Horned Lark",
+            "tags": [
+                "Lark"
+            ],
+            "family": "Larks"
+        },
+        "tibetan-snowfinch": {
+            "key": "tibetan-snowfinch",
+            "name": "Black-winged Snowfinch",
+            "tags": [
+                "Finch",
+                "Snowfinch",
+                "Tibetan Snowfinch"
+            ],
+            "family": "Finches & Allies"
+        },
         "velvet-fronted-nuthatch": {
             "key": "velvet-fronted-nuthatch",
             "name": "Velvet-fronted Nuthatch",
@@ -2415,6 +2452,7 @@
             "key": "alpine-chough",
             "name": "Alpine Chough",
             "tags": [
+                "Yellow-billed Chough",
                 "Chough",
                 "Crow"
             ],

@@ -1,6 +1,85 @@
 {
   "birds": [
     {
+      "key": "mallard-male",
+      "species": "mallard",
+      "date": "11-06-2022",
+      "place": "Shey Palace Pond",
+      "city": "Leh",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "plumage": "Breeding",
+      "media": [
+        {
+          "src": "images/mallard-male.jpg"
+        },
+        {
+          "src": "images/mallard-male-2.jpg"
+        },
+        {
+          "src": "images/mallard-male-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "mallard-female",
+      "species": "mallard",
+      "date": "11-06-2022",
+      "place": "Shey Palace Pond",
+      "city": "Leh",
+      "state": "LA",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/mallard-female.jpg"
+        }
+      ]
+    },
+    {
+      "key": "horned-lark",
+      "species": "horned-lark",
+      "date": "05-06-2022",
+      "city": "Taglang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/horned-lark.jpg"
+        },
+        {
+          "src": "images/horned-lark-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "tibetan-snowfinch",
+      "species": "tibetan-snowfinch",
+      "date": "05-06-2022",
+      "city": "Lachulung La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/tibetan-snowfinch.jpg"
+        }
+      ]
+    },
+    {
+      "key": "alpine-chough-2",
+      "species": "alpine-chough",
+      "date": "05-06-2022",
+      "city": "Lachulung La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/alpine-chough-2.jpg"
+        }
+      ]
+    },
+    {
       "key": "indian-paradise-flycatcher-white-male-3",
       "species": "indian-paradise-flycatcher",
       "date": "28-05-2022",

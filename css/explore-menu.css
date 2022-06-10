@@ -73,9 +73,17 @@
 		height: 100px;
 		width: 31vw;
 	}*/
-	.explore-menu .bird-family span {
+	.explore-menu .bird-family span.name {
 		padding-left: 20px;
 		font-size: 20px;
+		font-weight: bold;
+	}
+	.explore-menu .bird-family span.count {
+		top: 0;
+		right: 0;
+		padding-top: 10px;
+		padding-right: 10px;
+		font-size: 15px;
 		font-weight: bold;
 	}
 }
