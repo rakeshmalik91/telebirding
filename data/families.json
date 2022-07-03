@@ -49,6 +49,10 @@
       "imagesrc": "images/eurasian-magpie.jpg"
     },
     {
+      "name": "Cranes",
+      "imagesrc": "images/black-necked-crane.jpg"
+    },
+    {
       "name": "Cuckoo-shrikes & Allies",
       "imagesrc": "images/long-tailed-minivet-male.jpg"
     },
@@ -217,6 +221,14 @@
       "imagesrc": "images/oriental-dollarbird.jpg"
     },
     {
+      "name": "Rubythroats",
+      "imagesrc": "images/chinese-rubythroat.jpg"
+    },
+    {
+      "name": "Sandgrouses",
+      "imagesrc": "images/tibetan-sandgrouse.jpg"
+    },
+    {
       "name": "Sandpipers & Allies",
       "imagesrc": "images/eurasian-curlew.jpg"
     },
@@ -253,7 +265,7 @@
       "imagesrc": "images/fire-tailed-sunbird-female.jpg"
     },
     {
-      "name": "Swallows",
+      "name": "Swallows & Martins",
       "imagesrc": "images/barn-swallow-2.jpg"
     },
     {

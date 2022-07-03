@@ -1,6 +1,689 @@
 {
   "birds": [
     {
+      "key": "bluethroat-red-spotted",
+      "species": "bluethroat",
+      "date": "09-07-2022",
+      "place": "Sindhu Ghat",
+      "city": "Leh",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "variation": "Red-spotted",
+      "media": [
+        {
+          "src": "images/bluethroat.jpg"
+        },
+        {
+          "src": "images/bluethroat-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "bluethroat-white-spotted",
+      "species": "bluethroat",
+      "date": "09-07-2022",
+      "place": "Sindhu Ghat",
+      "city": "Leh",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "variation": "White-spotted",
+      "media": [
+        {
+          "src": "images/bluethroat-white-spotted.jpg"
+        }
+      ],
+      "hidden": true
+    },
+    {
+      "key": "chukar-2",
+      "species": "chukar",
+      "date": "02-07-2022",
+      "place": "Taglang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/chukar-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "tibetan-snowcock",
+      "species": "tibetan-snowcock",
+      "date": "02-07-2022",
+      "place": "Taglang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/tibetan-snowcock.jpg"
+        },
+        {
+          "src": "images/tibetan-snowcock-3.jpg"
+        },
+        {
+          "src": "images/tibetan-snowcock-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "upland-buzzard-light",
+      "species": "upland-buzzard",
+      "date": "01-07-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "variation": "Light Morph",
+      "media": [
+        {
+          "src": "images/upland-buzzard.jpg"
+        },
+        {
+          "src": "images/upland-buzzard-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "lesser-sand-plover",
+      "species": "lesser-sand-plover",
+      "date": "01-07-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/lesser-sand-plover.jpg"
+        }
+      ]
+    },
+    {
+      "key": "ruddy-shelduck-3",
+      "species": "ruddy-shelduck",
+      "date": "01-07-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/ruddy-shelduck-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "great-rosefinch",
+      "species": "great-rosefinch",
+      "date": "01-07-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/great-rosefinch.jpg"
+        }
+      ]
+    },
+    {
+      "key": "upland-buzzard-dark",
+      "species": "upland-buzzard",
+      "date": "01-07-2022",
+      "place": "Startsapuk Tso",
+      "state": "LA",
+      "country": "IN",
+      "variation": "Dark Morph",
+      "media": [
+        {
+          "src": "images/upland-buzzard-dark.jpg"
+        },
+        {
+          "src": "images/upland-buzzard-dark-light.jpg",
+          "title": "Dark & Light Morph"
+        }
+      ]
+    },
+    {
+      "key": "tibetan-sandgrouse",
+      "species": "tibetan-sandgrouse",
+      "date": "01-07-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/tibetan-sandgrouse.jpg"
+        },
+        {
+          "src": "images/tibetan-sandgrouse-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "black-necked-crane",
+      "species": "black-necked-crane",
+      "date": "30-06-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/black-necked-crane.jpg"
+        },
+        {
+          "src": "images/black-necked-crane-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "ground-tit",
+      "species": "ground-tit",
+      "date": "30-06-2022",
+      "place": "Tso Kar",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/ground-tit.jpg"
+        }
+      ]
+    },
+    {
+      "key": "great-crested-grebe-breeding",
+      "species": "great-crested-grebe",
+      "date": "30-06-2022",
+      "place": "Tso Moriri",
+      "state": "LA",
+      "country": "IN",
+      "plumage": "Breeding",
+      "media": [
+        {
+          "src": "images/great-crested-grebe-breeding-2.jpg"
+        },
+        {
+          "src": "images/great-crested-grebe-breeding.jpg",
+          "title": "with Chicks"
+        }
+      ]
+    },
+    {
+      "key": "robin-accentor-juvenile",
+      "species": "robin-accentor",
+      "date": "30-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "age": "Juvenile",
+      "media": [
+        {
+          "src": "images/robin-accentor-juvenile.jpg"
+        }
+      ]
+    },
+    {
+      "key": "eurasian-crag-martin",
+      "species": "eurasian-crag-martin",
+      "date": "29-06-2022",
+      "place": "Tso Moriri",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/eurasian-crag-martin.jpg"
+        }
+      ]
+    },
+    {
+      "key": "brown-headed-gull-breeding",
+      "species": "brown-headed-gull",
+      "date": "29-06-2022",
+      "place": "Tso Moriri",
+      "state": "LA",
+      "country": "IN",
+      "plumage": "Breeding",
+      "media": [
+        {
+          "src": "images/brown-headed-gull-breeding.jpg"
+        },
+        {
+          "src": "images/brown-headed-gull-breeding-2.jpg"
+        },
+        {
+          "src": "images/brown-headed-gull-breeding-4.jpg"
+        }
+      ]
+    },
+    {
+      "key": "red-billed-chough",
+      "species": "red-billed-chough",
+      "date": "29-06-2022",
+      "place": "Tso Moriri",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/red-billed-chough-2.jpg"
+        },
+        {
+          "src": "images/red-billed-chough.jpg"
+        }
+      ]
+    },
+    {
+      "key": "twite",
+      "species": "twite",
+      "date": "29-06-2022",
+      "city": "Tsumdo",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/twite.jpg"
+        },
+        {
+          "src": "images/twite-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "great-cormorant-2",
+      "species": "great-cormorant",
+      "date": "29-06-2022",
+      "city": "Tsumdo",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/great-cormorant-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "saker-falcon",
+      "species": "saker-falcon",
+      "date": "28-06-2022",
+      "city": "Hanle",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/saker-falcon.jpg"
+        },
+        {
+          "src": "images/saker-falcon-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "desert-wheatear-female",
+      "species": "desert-wheatear",
+      "date": "28-06-2022",
+      "city": "Hanle",
+      "state": "LA",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/desert-wheatear-female.jpg"
+        }
+      ]
+    },
+    {
+      "key": "desert-wheatear-male",
+      "species": "desert-wheatear",
+      "date": "28-06-2022",
+      "city": "Hanle",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/desert-wheatear.jpg"
+        },
+        {
+          "src": "images/desert-wheatear-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "desert-wheatear-juvenile",
+      "species": "desert-wheatear",
+      "date": "28-06-2022",
+      "city": "Hanle",
+      "state": "LA",
+      "country": "IN",
+      "age": "Juvenile",
+      "media": [
+        {
+          "src": "images/desert-wheatear-juvenile.jpg"
+        }
+      ]
+    },
+    {
+      "key": "tibetan-lark",
+      "species": "tibetan-lark",
+      "date": "28-06-2022",
+      "city": "Hanle",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/tibetan-lark.jpg"
+        }
+      ]
+    },
+    {
+      "key": "bearded-vulture",
+      "species": "bearded-vulture",
+      "date": "27-06-2022",
+      "city": "Chisumle",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/bearded-vulture.jpg"
+        }
+      ]
+    },
+    {
+      "key": "horned-lark-juvenile",
+      "species": "horned-lark",
+      "date": "27-06-2022",
+      "city": "Hanle",
+      "state": "LA",
+      "country": "IN",
+      "age": "Juvenile",
+      "media": [
+        {
+          "src": "images/horned-lark-juvenile-2.jpg"
+        },
+        {
+          "src": "images/horned-lark-juvenile.jpg"
+        }
+      ]
+    },
+    {
+      "key": "tickells-leaf-warbler",
+      "species": "tickells-leaf-warbler",
+      "date": "26-06-2022",
+      "place": "Rezang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/tickells-leaf-warbler.jpg"
+        },
+        {
+          "src": "images/tickells-leaf-warbler-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "chinese-rubythroat",
+      "species": "chinese-rubythroat",
+      "date": "26-06-2022",
+      "place": "Rezang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/chinese-rubythroat.jpg"
+        }
+      ]
+    },
+    {
+      "key": "horned-lark-3",
+      "species": "horned-lark",
+      "date": "26-06-2022",
+      "city": "Pangong Tso",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/horned-lark-3.jpg"
+        },
+        {
+          "src": "images/horned-lark-4.jpg"
+        }
+      ]
+    },
+    {
+      "key": "bar-headed-goose-3",
+      "species": "bar-headed-goose",
+      "date": "26-06-2022",
+      "place": "Pangong Tso",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/bar-headed-goose-3.jpg",
+          "title": "with Chicks"
+        }
+      ]
+    },
+    {
+      "key": "humes-lark",
+      "species": "humes-lark",
+      "date": "26-06-2022",
+      "place": "Pangong Tso",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/humes-lark.jpg"
+        },
+        {
+          "src": "images/humes-lark-2.jpg"
+        },
+        {
+          "src": "images/humes-lark-egg.jpg",
+          "title": "Eggs"
+        }
+      ]
+    },
+    {
+      "key": "common-tern",
+      "species": "common-tern",
+      "date": "25-06-2022",
+      "place": "Pangong Tso",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/common-tern.jpg"
+        },
+        {
+          "src": "images/common-tern-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "black-headed-mountain-finch",
+      "species": "black-headed-mountain-finch",
+      "date": "25-06-2022",
+      "place": "Chang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/black-headed-mountain-finch.jpg"
+        }
+      ]
+    },
+    {
+      "key": "horned-lark-female",
+      "species": "horned-lark",
+      "date": "25-06-2022",
+      "place": "Chang La",
+      "state": "LA",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/horned-lark-female.jpg"
+        }
+      ]
+    },
+    {
+      "key": "common-raven",
+      "species": "common-raven",
+      "date": "25-06-2022",
+      "place": "Chang La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/common-raven.jpg"
+        }
+      ]
+    },
+    {
+      "key": "upland-buzzard-juvenile",
+      "species": "upland-buzzard",
+      "date": "25-06-2022",
+      "place": "Chang La",
+      "state": "LA",
+      "country": "IN",
+      "age": "Juvenile",
+      "media": [
+        {
+          "src": "images/upland-buzzard-juvenile.jpg"
+        }
+      ]
+    },
+    {
+      "key": "mountain-chiffchaff-2",
+      "species": "mountain-chiffchaff",
+      "date": "25-06-2022",
+      "place": "Sindhu Ghat",
+      "city": "Leh",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/mountain-chiffchaff-2.jpg"
+        },
+        {
+          "src": "images/mountain-chiffchaff-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "mountain-chiffchaff",
+      "species": "mountain-chiffchaff",
+      "date": "19-06-2022",
+      "place": "Turtuk",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/mountain-chiffchaff.jpg"
+        }
+      ]
+    },
+    {
+      "key": "robin-accentor",
+      "species": "robin-accentor",
+      "date": "19-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/robin-accentor.jpg"
+        },
+        {
+          "src": "images/robin-accentor-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "citrine-wagtail-2",
+      "species": "citrine-wagtail",
+      "date": "19-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/citrine-wagtail-2.jpg"
+        },
+        {
+          "src": "images/citrine-wagtail-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "hill-pigeon",
+      "species": "hill-pigeon",
+      "date": "19-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/hill-pigeon-2.jpg"
+        },
+        {
+          "src": "images/hill-pigeon-3.jpg"
+        },
+        {
+          "src": "images/hill-pigeon.jpg"
+        }
+      ]
+    },
+    {
+      "key": "black-redstart-female",
+      "species": "black-redstart",
+      "date": "19-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "gender": "F",
+      "variation": "Eastern",
+      "media": [
+        {
+          "src": "images/black-redstart-female.jpg"
+        }
+      ]
+    },
+    {
+      "key": "white-winged-redstart",
+      "species": "white-winged-redstart",
+      "date": "18-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/white-winged-redstart.jpg"
+        }
+      ]
+    },
+    {
+      "key": "black-redstart",
+      "species": "black-redstart",
+      "date": "18-06-2022",
+      "place": "Khardung La",
+      "state": "LA",
+      "country": "IN",
+      "gender": "M",
+      "variation": "Eastern",
+      "media": [
+        {
+          "src": "images/black-redstart.jpg"
+        },
+        {
+          "src": "images/black-redstart-2.jpg"
+        },
+        {
+          "src": "images/black-redstart-3.jpg"
+        }
+      ]
+    },
+    {
       "key": "mallard-male",
       "species": "mallard",
       "date": "11-06-2022",
@@ -38,16 +721,28 @@
       ]
     },
     {
+      "key": "white-wagtail-personata-2",
+      "species": "white-wagtail",
+      "subspecies": "Masked",
+      "date": "11-06-2022",
+      "place": "Stakna Monastery",
+      "state": "LA",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/white-wagtail-personata-2.jpg"
+        }
+      ]
+    },
+    {
       "key": "horned-lark",
       "species": "horned-lark",
       "date": "05-06-2022",
       "city": "Taglang La",
       "state": "LA",
       "country": "IN",
+      "gender": "M",
       "media": [
-        {
-          "src": "images/horned-lark.jpg"
-        },
         {
           "src": "images/horned-lark-2.jpg"
         }
@@ -76,6 +771,36 @@
       "media": [
         {
           "src": "images/alpine-chough-2.jpg"
+        },
+        {
+          "src": "images/alpine-chough-3.jpg"
+        }
+      ]
+    },
+    {
+      "key": "western-yellow-wagtail-immature",
+      "species": "western-yellow-wagtail",
+      "date": "04-06-2022",
+      "city": "Darcha",
+      "state": "HP",
+      "country": "IN",
+      "age": "Immature",
+      "media": [
+        {
+          "src": "images/western-yellow-wagtail-immature.jpg"
+        }
+      ]
+    },
+    {
+      "key": "grey-wagtail-2",
+      "species": "grey-wagtail",
+      "date": "04-06-2022",
+      "city": "Darcha",
+      "state": "HP",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/grey-wagtail-2.jpg"
         }
       ]
     },
@@ -3866,7 +4591,7 @@
       "species": "brown-headed-gull",
       "plumage": "Non-Breeding",
       "date": "20-10-2021",
-      "place": "Pangong Lake",
+      "place": "Pangong Tso",
       "state": "LA",
       "country": "IN",
       "media": [
@@ -4795,7 +5520,7 @@
     {
       "key": "white-wagtail-personata",
       "species": "white-wagtail",
-      "subspecies": "personata",
+      "subspecies": "Masked",
       "date": "15-03-2021",
       "place": "Pong Lake",
       "state": "HP",
@@ -5093,7 +5818,7 @@
     {
       "key": "white-wagtail-leucopis",
       "species": "white-wagtail",
-      "subspecies": "leucopis",
+      "subspecies": "Amur",
       "date": "05-01-2021",
       "city": "Howrah",
       "state": "WB",
