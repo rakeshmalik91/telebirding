@@ -1,6 +1,32 @@
 {
   "birds": [
     {
+      "key": "tricolor-munia",
+      "species": "tricolor-munia",
+      "date": "15-08-2022",
+      "place": "Santragachhi",
+      "state": "WB",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/tricolor-munia.jpg"
+        }
+      ]
+    },
+    {
+      "key": "ashy-woodswallow-2",
+      "species": "ashy-woodswallow",
+      "date": "14-08-2022",
+      "place": "Sutan",
+      "state": "WB",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/ashy-woodswallow-2.jpg"
+        }
+      ]
+    },
+    {
       "key": "bluethroat-red-spotted",
       "species": "bluethroat",
       "date": "09-07-2022",
@@ -18,23 +44,6 @@
           "src": "images/bluethroat-2.jpg"
         }
       ]
-    },
-    {
-      "key": "bluethroat-white-spotted",
-      "species": "bluethroat",
-      "date": "09-07-2022",
-      "place": "Sindhu Ghat",
-      "city": "Leh",
-      "state": "LA",
-      "country": "IN",
-      "gender": "M",
-      "variation": "White-spotted",
-      "media": [
-        {
-          "src": "images/bluethroat-white-spotted.jpg"
-        }
-      ],
-      "hidden": true
     },
     {
       "key": "chukar-2",
@@ -65,6 +74,12 @@
         },
         {
           "src": "images/tibetan-snowcock-2.jpg"
+        },
+        {
+          "src": "videos/tibetan-snowcock.mp4",
+          "thumbnail": "images/tibetan-snowcock.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },
@@ -217,6 +232,12 @@
       "media": [
         {
           "src": "images/robin-accentor-juvenile.jpg"
+        },
+        {
+          "src": "videos/robin-accentor-juvenile.mp4",
+          "thumbnail": "images/robin-accentor-juvenile.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },
@@ -266,6 +287,12 @@
         },
         {
           "src": "images/red-billed-chough.jpg"
+        },
+        {
+          "src": "videos/red-billed-chough.mp4",
+          "thumbnail": "images/red-billed-chough.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },
@@ -307,10 +334,10 @@
       "country": "IN",
       "media": [
         {
-          "src": "images/saker-falcon.jpg"
+          "src": "images/saker-falcon-2.jpg"
         },
         {
-          "src": "images/saker-falcon-2.jpg"
+          "src": "images/saker-falcon.jpg"
         }
       ]
     },
@@ -339,6 +366,12 @@
       "media": [
         {
           "src": "images/desert-wheatear.jpg"
+        },
+        {
+          "src": "videos/desert-wheatear.mp4",
+          "thumbnail": "images/desert-wheatear.jpg",
+          "mute": true,
+          "type": "video"
         },
         {
           "src": "images/desert-wheatear-2.jpg"
@@ -459,6 +492,12 @@
         {
           "src": "images/bar-headed-goose-3.jpg",
           "title": "with Chicks"
+        },
+        {
+          "src": "videos/bar-headed-goose.mp4",
+          "thumbnail": "images/bar-headed-goose-3.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },
@@ -894,6 +933,19 @@
       ]
     },
     {
+      "key": "cinereous-tit-3",
+      "species": "cinereous-tit",
+      "date": "10-05-2022",
+      "city": "Bhimtal",
+      "state": "HP",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/cinereous-tit-3.jpg"
+        }
+      ]
+    },
+    {
       "key": "red-rumped-swallow",
       "species": "red-rumped-swallow",
       "date": "10-05-2022",
@@ -959,6 +1011,20 @@
       ]
     },
     {
+      "key": "long-tailed-minivet-female",
+      "species": "long-tailed-minivet",
+      "date": "07-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/long-tailed-minivet-female.jpg"
+        }
+      ]
+    },
+    {
       "key": "long-tailed-minivet-male-2",
       "species": "long-tailed-minivet",
       "date": "07-05-2022",
@@ -981,7 +1047,13 @@
       "country": "IN",
       "media": [
         {
+          "src": "images/wedge-tailed-green-pigeon-2.jpg"
+        },
+        {
           "src": "images/wedge-tailed-green-pigeon.jpg"
+        },
+        {
+          "src": "images/wedge-tailed-green-pigeon-3.jpg"
         }
       ]
     },
@@ -1101,6 +1173,26 @@
       ]
     },
     {
+      "key": "kalij-pheasant-male-4",
+      "species": "kalij-pheasant",
+      "date": "13-04-2022",
+      "city": "Mcleodganj",
+      "state": "HP",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "images/kalij-pheasant-male-4.jpg"
+        },
+        {
+          "src": "videos/kalij-pheasant.mp4",
+          "thumbnail": "images/kalij-pheasant-male-4.jpg",
+          "mute": true,
+          "type": "video"
+        }
+      ]
+    },
+    {
       "key": "fulvous-breasted-woodpecker-male-2",
       "species": "fulvous-breasted-woodpecker",
       "date": "06-05-2022",
@@ -1139,6 +1231,12 @@
       "media": [
         {
           "src": "images/black-francolin-male-2.jpg"
+        },
+        {
+          "src": "videos/black-francolin-male.mp4",
+          "thumbnail": "images/black-francolin-male.jpg",
+          "mute": true,
+          "type": "video"
         },
         {
           "src": "images/black-francolin-male.jpg"
@@ -1202,7 +1300,34 @@
       ]
     },
     {
-      "key": "ultramarine-flycatcher-2",
+      "key": "grey-headed-canary-flycatcher-2",
+      "species": "grey-headed-canary-flycatcher",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/grey-headed-canary-flycatcher-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "ultramarine-flycatcher-female-2",
+      "species": "ultramarine-flycatcher",
+      "date": "01-05-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "gender": "F",
+      "media": [
+        {
+          "src": "images/ultramarine-flycatcher-female-2.jpg"
+        }
+      ]
+    },
+    {
+      "key": "ultramarine-flycatcher-male-2",
       "species": "ultramarine-flycatcher",
       "date": "01-05-2022",
       "city": "Sattal",
@@ -1384,6 +1509,12 @@
       "media": [
         {
           "src": "images/crested-kingfisher-2.jpg"
+        },
+        {
+          "src": "videos/crested-kingfisher.mp4",
+          "thumbnail": "images/crested-kingfisher-2.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },
@@ -1397,6 +1528,19 @@
       "media": [
         {
           "src": "images/green-sandpiper.jpg"
+        }
+      ]
+    },
+    {
+      "key": "black-lored-tit-3",
+      "species": "black-lored-tit",
+      "date": "30-04-2022",
+      "city": "Sattal",
+      "state": "UK",
+      "country": "IN",
+      "media": [
+        {
+          "src": "images/black-lored-tit-3.jpg"
         }
       ]
     },
@@ -1619,6 +1763,12 @@
         },
         {
           "src": "images/chestnut-bellied-nuthatch-female-3.jpg"
+        },
+        {
+          "src": "videos/chestnut-bellied-nuthatch-female.mp4",
+          "thumbnail": "images/chestnut-bellied-nuthatch-female-2.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },
@@ -2058,6 +2208,39 @@
       ]
     },
     {
+      "key": "cinereous-tit-video",
+      "species": "cinereous-tit",
+      "date": "03-04-2022",
+      "city": "Mcleodganj",
+      "state": "HP",
+      "country": "IN",
+      "media": [
+        {
+          "src": "videos/cinereous-tit.mp4",
+          "thumbnail": "images/cinereous-tit.jpg",
+          "mute": true,
+          "type": "video"
+        }
+      ]
+    },
+    {
+      "key": "russet-sparrow-male-3",
+      "species": "russet-sparrow",
+      "date": "03-04-2022",
+      "city": "Mcleodganj",
+      "state": "HP",
+      "country": "IN",
+      "gender": "M",
+      "media": [
+        {
+          "src": "videos/russet-sparrow-male.mp4",
+          "thumbnail": "images/russet-sparrow-male.jpg",
+          "mute": true,
+          "type": "video"
+        }
+      ]
+    },
+    {
       "key": "alexandrine-parakeet-2",
       "species": "alexandrine-parakeet",
       "date": "03-04-2022",
@@ -2068,6 +2251,12 @@
         {
           "src": "images/alexandrine-parakeet-2.jpg",
           "title": "Male & Female"
+        },
+        {
+          "src": "videos/alexandrine-parakeet.mp4",
+          "thumbnail": "images/alexandrine-parakeet-2.jpg",
+          "mute": true,
+          "type": "video"
         }
       ]
     },

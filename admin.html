@@ -90,6 +90,7 @@
 
 					if(data.birds.map(b => b.key).indexOf(key) >= 0) {
 						$('#key-exists').show();
+						$("#key").prop('disabled', false);
 					} else {
 						$('#key-exists').hide();
 					}

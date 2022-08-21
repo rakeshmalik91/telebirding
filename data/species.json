@@ -1247,6 +1247,16 @@
             ],
             "family": "Bee-eaters"
         },
+        "tricolor-munia": {
+            "key": "tricolor-munia",
+            "name": "Tricolor Munia",
+            "tags": [
+                "Munia",
+                "Finch",
+                "Black-headed Munia"
+            ],
+            "family": "Finches & Allies"
+        },
         "scaly-breasted-munia": {
             "key": "scaly-breasted-munia",
             "name": "Scaly-breasted Munia",
