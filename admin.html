@@ -1,57 +1,27 @@
 <html>
 	<head>
 		<title>Telebirding Admin</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 
 		
 		<link rel="icon" type="image/png" href="icons/favicon-48x48.png">
 		<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
 		<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
 		
-		<style>
-			body {
-				background-color: #111b26;
-			}
-			h1, div {
-				color: white;
-				margin-top: 2px;
-				display: inline-block;
-				margin-right: 50px;
-			}
-			span {
-				display: inline-block;
-				width: 200px;
-			}
-			input {
-				width: 400px;
-			}
-			button {
-				margin-top: 5px;
-			}
-			textarea {
-				margin-top: 10px;
-				width: calc(50% - 10px);
-				height: 200px;
-				background-color: #111b26;
-				color: white;
-			}
-			.error, .warning {
-				display: inline-block;
-				font-size: 12px;
-				padding-left: 20px;
-			}
-			.error {
-				color: red;
-			}
-			.warning {
-				color: yellow;
-			}
-		</style>
+		<link rel="stylesheet" charset="UTF-8" href="css/animations.css">
+		<link rel="stylesheet" charset="UTF-8" href="css/admin.css">
 		
 		<script type="text/javascript" charset="UTF-8" src="scripts/jquery.min.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="scripts/moment.js"></script>
 
+		<script type="text/javascript" charset="UTF-8" src="scripts/util.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="scripts/admin.js"></script>
+
 		<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
 		<script src="/__/firebase/5.0.1/firebase-app.js"></script>
 		<script src="/__/firebase/5.0.1/firebase-storage.js"></script>
+		<script src="/__/firebase/5.0.1/firebase-auth.js"></script>
 		<script>
 		  	var config = {
 				apiKey: "AIzaSyApVjVcNDeMkA-oz-tYa46Lm-Ja7qCCVjQ",
@@ -63,199 +33,83 @@
 				measurementId: "G-MRPL6NX33K"
 			};
 		  	firebase.initializeApp(config);
+
+			function tryLogin() {
+				var password = getCookie("credentials") || prompt("Please enter the password.");
+				firebase.auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
+					$('.data').show();
+					setCookie("credentials", password, 30);
+				}).catch(e => {
+					alert(e.message);
+					tryLogin();
+				});
+			}
+			tryLogin();
 		</script>
 
-		<script type="text/javascript" charset="UTF-8" src="scripts/util.js"></script>
-		<script type="text/javascript">
-			var data = {};
-			var files, key, species;
-			var newBirdJson = {}, newSpeciesJson = {};
-			var isNewSpecies = true;
-			$(document).ready(function() {
-				readJSONFiles([getData("data/birds.json"), getData("data/species.json"), getData("data/families.json")], function(json) {
-					data = json;
-					['date', 'place', 'city', 'state', 'country'].forEach(function(prop) {
-						$("#" + prop).val(data.birds[0][prop]);
-					});
-					$('#species-json').val(JSON.stringify({species:data.species}, null, 2));
-					$('#bird-json').val(JSON.stringify({birds:data.birds}, null, 2));
-				});
-
-				$("#file").change(function() {
-					files = $("#file")[0].files
-					var filename = files[0].name;
-
-					key = filename.split('.')[0];
-					$("#key").val(key);
-
-					if(data.birds.map(b => b.key).indexOf(key) >= 0) {
-						$('#key-exists').show();
-						$("#key").prop('disabled', false);
-					} else {
-						$('#key-exists').hide();
-					}
-					if(data.birds.map(b => b.media.map(m => m.src)).join().indexOf('images/' + filename) >= 0) {
-						$('#image-exists').show();
-					} else {
-						$('#image-exists').hide();
-					}
-
-					var tokens = key.split('-');
-					species = key;
-					for(var i = 0; i < tokens.length; i++) {
-						var search = tokens.slice(0, i+1).join('-');
-						if(Object.keys(data.species).indexOf(search) >= 0) {
-							species = search;
-							break;
-						}
-					}
-					$("#species").val(species);
-					isNewSpecies = !!data.species[species];
-					$("#species").prop('disabled', isNewSpecies);
-
-					$("#gender").val(filename.indexOf('female')>=0 ? 'F' : filename.indexOf('male')>=0 ? 'M' : '');
-					$("#plumage").val(filename.indexOf('non-breeding')>=0 ? 'Non-Breeding' : filename.indexOf('breeding')>=0 ? 'Breeding' : '');
-					$("#age").val(filename.indexOf('juvenile')>=0 ? 'Juvenile' : filename.indexOf('immature')>=0 ? 'Immature' : '');
-
-					if(isNewSpecies) {
-						$('#tags, #family').parent().hide();
-						$('#species-json').hide();
-						$('#species-exists').show();
-					} else {
-						$('#tags, #family').parent().show();
-						$('#species-json').show();
-						$('#species-exists').hide();
-						$("#tags").val(capitalize(species.split("-").slice(-1)[0]));
-						var family = data.families.map(f => f.name).filter(f => f.toLowerCase().indexOf(species.toLowerCase()) >= 0);
-						if(family.length == 0) {
-							family = capitalize(plural(species.split("-").slice(-1)[0]));
-						}
-						$("#family").val(family);
-					}
-
-					$("#gender, #plumage, #age, #variation, #subspecies, #tags, #family, #date, #place, #city, #state, #upload").prop('disabled', false);
-
-					$("#submit").click();
-				});
-
-				$("input").change(function() {
-					if(files == null) return;
-
-					newSpeciesJson = {};
-					newSpeciesJson[species] = {
-						key: species,
-						name: capitalize(species.replace('-', ' ')),
-						tags: $("#tags").val().split(/,[ ]*/),
-						family: $("#family").val()
-					};
-					var speciesJson = {species: {}};
-					speciesJson.species[species] = newSpeciesJson;
-					Object.keys(data.species).forEach(s => speciesJson.species[s]=data.species[s]);
-					$('#species-json').val(JSON.stringify(speciesJson, null, 2));
-
-					newBirdJson = {};
-					['key', 'date', 'place', 'city', 'state', 'country', 'gender', 'variation', 'age', 'plumage', 'subspecies'].forEach(function(prop) {
-						newBirdJson[prop] = $("#" + prop).val() || undefined;
-					});
-					newBirdJson.media = [];
-					Array.from(files).forEach(f => newBirdJson.media.push({src: "images/" + f.name}));
-					$('#bird-json').val(JSON.stringify({birds:[newBirdJson].concat(data.birds)}, null, 2));
-				});
-				$("#upload").click(function() {
-					Array.from($("#file")[0].files).forEach(f => firebase.storage().ref('test/' + f.name).put(f));
-				});
-			});
-		</script>
 	</head>
 	<body>
-		<h1>Admin</h1>
-		<br>
-		<div>
-			<span>Upload Image: </span>
-			<input id="file" type="file" multiple/>
-			<div style="display:none" id="image-exists" class="error">Image Already Exists!!!</div>
+		<div class='data' style='display: none;'>
+			<a href="/">
+				<img class="logo" src="icons/site-logo.png" alt="Telebirding - Rakesh's Bird Catalogue" title="Telebirding - Rakesh's Bird Catalogue" />
+			</a>
+			<h1>Admin</h1>
+
+			<br>
+			<h1>Add Family</h1>
+			<table id="add-family-form">
+				<tr>
+					<th>Name</th>
+					<th>Thumbnail</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
+					<td><select data-field='imagesrc' placeholder="Select thumbnail"  style="width: 300px;"/></td>
+					<td><button class='submit'>Submit</button></td>
+				</tr>
+			</table>
+
+			<br>
+			<h1>Add Species</h1>
+			<table id="add-species-form">
+				<tr>
+					<th>Name</th>
+					<th>Tags</th>
+					<th>Family</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
+					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..."  style="width: 300px;"/></td>
+					<td><select data-field='family' style="width: 300px;"/></td>
+					<td><button class='submit'>Submit</button></td>
+				</tr>
+			</table>
+
+			<br>
+			<h1>Add/Modify Sightings</h1>
+			<div class='nav-top'>
+				<button class='add-sighting' title='Add new sighting'>Add New</button>
+				<button class='first-page' title='First page'><<</button>
+				<button class='previous' title='Previous page'><</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>></button>
+				<button class='last-page' title='Last page'>>></button>
+				<input type="text" name="filter-sighting", placeholder="Filter">
+			</div>
+			<table id="sightings-table"></table>
+			<div class='nav-bottom'>
+				<button class='first-page' title='First page'><<</button>
+				<button class='previous' title='Previous page'><</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>></button>
+				<button class='last-page' title='Last page'>>></button>
+			</div>
+
+			<div class="overlay fadein" style="display:none;">
+				<span>Please wait...</span>
+			</div>
 		</div>
-		<br>
-		<div>
-			<span>Key: </span>
-			<input id="key" type="text" disabled/>
-			<div style="display:none" id="key-exists" class="error">Key Already Exists!!!</div>
-		</div>
-		<br>
-		<br>
-		<div>
-			<span>Species: </span>
-			<input id="species" type="text" disabled>
-			<div style="display:none" id="species-exists" class="warning">Species Already Exists!!!</div>
-		</div>
-		<br>
-		<div>
-			<span>Tags: </span>
-			<input id="tags" type="text" disabled/>
-		</div>
-		<div>
-			<span>Family: </span>
-			<input id="family" type="text" disabled/>
-		</div>
-		<br>
-		<br>
-		<div>
-			<span>Gender: </span>
-			<input id="gender" list="gender-list" type="text" disabled>
-			<datalist id="gender-list">
-				<option value="">
-				<option value="M">
-				<option value="F">
-			</datalist>
-		</div>
-		<div>
-			<span>Variation: </span>
-			<input id="variation" type="text" disabled/>
-		</div>
-		<div>
-			<span>Age: </span>
-			<input id="age" type="text" disabled/>
-		</div>
-		<div>
-			<span>Plumage: </span>
-			<input id="plumage" list="plumage-list" type="text" disabled/>
-			<datalist id="plumage-list">
-				<option value="">
-				<option value="Breeding">
-				<option value="Non-Breeding">
-			</datalist>
-		</div>
-		<div>
-			<span>Subspecies: </span>
-			<input id="subspecies" type="text" disabled/>
-		</div>
-		<br>
-		<br>
-		<div>
-			<span>Date: </span>
-			<input id="date" type="text" disabled/>
-		</div>
-		<div>
-			<span>Place: </span>
-			<input id="place" type="text" disabled/>
-		</div>
-		<div>
-			<span>City: </span>
-			<input id="city" type="text" disabled/>
-		</div>
-		<div>
-			<span>State: </span>
-			<input id="state" type="text" disabled/>
-		</div>
-		<div>
-			<span>Country: </span>
-			<input id="country" type="text" disabled/>
-		</div>
-		<br>
-		<br>
-		<textarea id="species-json"></textarea>
-		<textarea id="bird-json"></textarea>
-		<br>
-		<button id="upload" disabled>Upload</button>
 	</body>
 </html>

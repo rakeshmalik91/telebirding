@@ -26,6 +26,10 @@ firebase serve --only hosting
 firebase deploy
 ```
 
+### Fire Storage Url
+
+https://console.firebase.google.com/u/0/project/telebirding-49623/storage/telebirding-49623.appspot.com/files/~2F
+
 ### File structure in Fire Storage
 - data
     - birds.json

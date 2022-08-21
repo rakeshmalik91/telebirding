@@ -1,0 +1,157 @@
+@font-face {
+	font-family: 'Calibri';
+	src: url('../fonts/Calibri.ttf') format('truetype');
+}
+
+body {
+	background-color: #111b26;
+	color: white;
+	font-family: 'Calibri';
+}
+
+.logo {
+	height: 50px;
+}
+
+h1 {
+	color: #a0d5e1;
+	font-size: 24px;
+	display: inline-block;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+span {
+	display: inline-block;
+}
+input[type=text], input[type=date], select {
+	width: 200px;
+	display: block;
+	color-scheme: dark;
+	text-align: left;
+	justify-content: left;
+	border: none;
+}
+input[type=text] {
+	padding-left: 3px;
+}
+input[type=checkbox] {
+	display: block;
+}
+input, select {
+	background-color: #00000000;
+	color: white;
+}
+select option {
+	color: black;
+}
+button {
+	vertical-align: top;
+	cursor: pointer;
+}
+button.upload-button, .thumbnail {
+	height: 140px;
+}
+button {
+	margin-right: 10px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	color-scheme: dark;
+}
+
+.nav-top {
+	display: inline-block;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+.nav-bottom {
+	margin-top: 10px;
+}
+.nav-top span {
+	transform: translate(-5px, 0px);
+}
+.nav-bottom span {
+	transform: translate(-5px, 3px);
+}
+.nav-top input {
+	border: 1px solid grey;
+	display: inline-block;
+	margin-top: 5px;
+}
+
+span.disabled {
+	color: grey;
+	text-align: left;
+}
+
+table {
+	width: auto;
+	padding-right: 20px;
+}
+th, tr, td  {
+	border: 1px solid #ffffff44;
+}
+th {
+	color: #a0d5e1;
+	font-size: 20px;
+}
+td {
+	padding-left: 10px;
+}
+
+.thumbnail {
+	display: inline-block;
+	padding-right: 10px;
+	border:  none;
+	width: 80px;
+}
+.thumbnail img {
+	width: 80px;
+	height: 80px;
+}
+.thumbnail input[type=text]  {
+	width: 80px;
+	height: 30px;
+	display: inline-block;
+}
+.thumbnail button.delete-media {
+	width: 20px;
+	height: 20px;
+	transform: translate(60px, -30px);
+    display: block;
+    position: absolute;
+}
+.thumbnail span {
+	width: 50px;
+	height: 20px;
+	display: inline-block;
+	color: grey;
+	margin-bottom: 2px;
+	margin-bottom: 10px;
+}
+
+.overlay {
+	position: fixed;
+	display: none;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+}
+.overlay span {
+	display: inline-block;
+	position: fixed;
+	top: calc(100vh / 2);
+	font-size: 24px;
+}
+
+span.label {
+	color: #996666;
+	font-size: 14px;
+}
+
+select[data-field=species] {
+	color: #a0d5e1;
+}
