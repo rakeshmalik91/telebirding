@@ -13,12 +13,15 @@ body {
 	height: 50px;
 }
 
-h1 {
+h1, h2 {
 	color: #a0d5e1;
 	font-size: 24px;
 	display: inline-block;
-	margin-left: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
+}
+h2 {
+	text-decoration: underline;
+	margin-left: 20px;
 }
 
 span {
@@ -34,9 +37,6 @@ input[type=text], input[type=date], select {
 }
 input[type=text] {
 	padding-left: 3px;
-}
-input[type=checkbox] {
-	display: block;
 }
 input, select {
 	background-color: #00000000;
@@ -56,16 +56,26 @@ button {
 	margin-right: 10px;
 	margin-top: 3px;
 	margin-bottom: 3px;
-	color-scheme: dark;
+	background-color: #424149;
+	color: white;
+}
+button:hover {
+	background-color: #888792;
+}
+button:disabled {
+	background-color: #27272b;
+	border-color: #4d5459;
+	color: #4d5459;
 }
 
 .nav-top {
-	display: inline-block;
 	margin-bottom: 5px;
-	margin-left: 10px;
 }
 .nav-bottom {
 	margin-top: 10px;
+}
+.nav-top, .nav-bottom {
+	margin-left: 30px;
 }
 .nav-top span {
 	transform: translate(-5px, 0px);
@@ -74,9 +84,29 @@ button {
 	transform: translate(-5px, 3px);
 }
 .nav-top input {
-	border: 1px solid grey;
 	display: inline-block;
 	margin-top: 5px;
+}
+.nav-top input, .nav-top button, .nav-bottom button {
+	height: 20px;
+}
+
+.delete-sighting, .hide-checkbox, .move-up, .move-down {
+	display: block;
+	padding: 0;
+	margin: 0;
+	margin-top: 5px;
+	height: 20px;
+	width: 20px;
+}
+.delete-sighting, .hide-checkbox {
+	margin-right: 5px;
+}
+.move-up, .move-down {
+	margin-left: 5px;
+}
+.submit {
+	margin-left: 10px;
 }
 
 span.disabled {
@@ -86,14 +116,16 @@ span.disabled {
 
 table {
 	width: auto;
-	padding-right: 20px;
 }
-th, tr, td  {
-	border: 1px solid #ffffff44;
+th, tr, td, button, input[type-checkbox], .nav-top input  {
+	border: 1px solid #79848d;
+	border-radius: 2px;
 }
 th {
 	color: #a0d5e1;
 	font-size: 20px;
+	padding-top: 3px;
+	padding-bottom: 5px;
 }
 td {
 	padding-left: 10px;
@@ -114,12 +146,17 @@ td {
 	height: 30px;
 	display: inline-block;
 }
-.thumbnail button.delete-media {
+.thumbnail button {
 	width: 20px;
 	height: 20px;
-	transform: translate(60px, -30px);
     display: block;
     position: absolute;
+}
+.thumbnail button.delete-media {
+	transform: translate(60px, -30px);
+}
+.thumbnail button.move-media-left {
+	transform: translate(38px, -30px);
 }
 .thumbnail span {
 	width: 50px;
@@ -154,4 +191,14 @@ span.label {
 
 select[data-field=species] {
 	color: #a0d5e1;
+}
+
+.noborder {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#add-family-form, #add-species-form, #update-species-form {
+	margin-left: 28px;
 }

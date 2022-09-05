@@ -56,37 +56,39 @@
 			<h1>Admin</h1>
 
 			<br>
-			<h1>Add Family</h1>
+			<h2>Add Family</h2>
 			<table id="add-family-form">
 				<tr>
 					<th>Name</th>
-					<th></th>
+					<th class='noborder'></th>
 				</tr>
 				<tr>
 					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
-					<td><button class='submit'>Submit</button></td>
+					<td class='noborder'><button class='submit'>Add</button></td>
 				</tr>
 			</table>
 
 			<br>
-			<h1>Add Species</h1>
-			<table id="add-species-form">
+			<h2>Add/Modify Species</h2>
+			<table id="update-species-form">
 				<tr>
+					<th>ID</th>
 					<th>Name</th>
 					<th>Tags</th>
 					<th>Family</th>
-					<th></th>
+					<th class='noborder'></th>
 				</tr>
 				<tr>
+					<td><select data-field='key' style="width: 200px;"/></td>
 					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
 					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..."  style="width: 300px;"/></td>
-					<td><select data-field='family' style="width: 300px;"/></td>
-					<td><button class='submit'>Submit</button></td>
+					<td><select data-field='family' style="width: 200px;"/></td>
+					<td class='noborder'><button class='submit'>Add</button></td>
 				</tr>
 			</table>
 
 			<br>
-			<h1>Add/Modify Sightings</h1>
+			<h2>Add/Modify Sightings</h2>
 			<div class='nav-top'>
 				<button class='add-sighting' title='Add new sighting'>Add New</button>
 				<button class='first-page' title='First page'><<</button>

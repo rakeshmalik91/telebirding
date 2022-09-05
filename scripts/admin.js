@@ -1,7 +1,7 @@
 var data = {};
 
 var OFFSET = 0;
-var ROWS = 25;
+var ROWS = 10;
 
 var IMAGE_SIZE = 1000;
 
@@ -82,6 +82,10 @@ function uploadMedia(birdKey, files) {
 }
 
 function deleteMedia(birdKey, mediaSrc) {
+	if(!mediaSrc.toLowerCase().endsWith(".jpg")) {
+		alert("Only deletion of image media is allowed!!!");
+		return;
+	}
 	if(confirm("You are about to delete this media.")) {
 		data.birds.forEach(function(bird) {
 			if(bird.key != birdKey) return;
@@ -91,6 +95,18 @@ function deleteMedia(birdKey, mediaSrc) {
 			syncSightingsData(0);
 		})
 	}
+}
+
+function moveMediaLeft(birdKey, mediaSrc) {
+	data.birds.forEach(function(bird) {
+		if(bird.key != birdKey) return;
+		var index = bird.media.map(m => m.src).indexOf(mediaSrc);
+		if(index > 0) {
+			bird.media = [bird.media.slice(0, index-1), [bird.media[index]], [bird.media[index-1]], bird.media.slice(index+1)].flat();
+			syncSightingsData(0);
+			return;
+		}
+	});
 }
 
 function updateField(birdKey, field, value) {
@@ -122,7 +138,7 @@ function updateMediaProperty(birdKey, mediaSrc, property, value) {
 function addSighting() {
 	OFFSET = 0;
 	data.birds.unshift({
-		"key": ("s-" + Math.floor(Date.now() / 1000)),
+		"key": ("s" + Math.floor(Date.now() / 1000)),
 		"species": "rock-pigeon",
 		"date": data.birds[0].date,
 		"place": data.birds[0].place,
@@ -145,32 +161,32 @@ function deleteSighting(birdKey) {
 	}
 }
 
-function addSpecies(name, tags, family) {
+function saveSpecies(key, name, tags, family) {
 	if(!name || !tags || !family) {
 		alert("All fields are mandatory");
-		return;
+	} else {
+		var key = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
+		data.species[key] = {
+			key: key,
+			name: name,
+			tags: tags.split(/\s*,\s*/ig),
+			family: family
+		};
+		data.species = Object.fromEntries(Object.entries(data.species).sort());
+		uploadJSONData("species");
 	}
-	var key = name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
-	data.species[key] = {
-		key: key,
-		name: name,
-		tags: tags.split(/\s*,\s*/ig),
-		family: family
-	};
-	data.species = Object.fromEntries(Object.entries(data.species).sort());
-	uploadJSONData("species");
 }
 
 function addFamily(name) {
 	if(!name) {
 		alert("Name is mandatory");
-		return;
+	} else {
+		data.families = data.families.filter(f => f.name != name);
+		data.families.push({
+			name: name
+		});
+		uploadJSONData("families");
 	}
-	data.families = data.families.filter(f => f.name != name);
-	data.families.push({
-		name: name
-	});
-	uploadJSONData("families");
 }
 
 function birdMatches(bird, searchKey) {
@@ -191,6 +207,37 @@ function birdMatches(bird, searchKey) {
 		|| (bird.age && bird.age.toLowerCase().indexOf(searchKey) >= 0);
 }
 
+function moveSighting(birdKey, direction) {
+	var sighting = data.birds.filter(b => b.key == birdKey)[0];
+	var index = data.birds.map(b => b.key).indexOf(birdKey);
+	if(direction > 0 && index < data.birds.length-1) {
+		data.birds = [data.birds.slice(0, index), data.birds.slice(index+1, index+2), [sighting], data.birds.slice(index+2)].flat();
+		syncSightingsData(0);
+	} else if(direction < 0 && index > 0) {
+		data.birds = [data.birds.slice(0, index-1), [sighting], data.birds.slice(index-1, index), data.birds.slice(index+1)].flat();
+		syncSightingsData(0);
+	}
+}
+
+function fillUpdateSpeciesForm() {
+	var updateSpeciesForm = $("#update-species-form");
+	var key = updateSpeciesForm.find("select[data-field=key]").val();
+	updateSpeciesForm.find("select[data-field=family] option").removeAttr("selected");
+	if(key) {
+		var species = data.species[key];
+		updateSpeciesForm.find("input[data-field=name]").val(species.name);
+		updateSpeciesForm.find("input[data-field=tags]").val(species.tags.join(", "));
+		updateSpeciesForm.find("select[data-field=family]").val(species.family);
+		updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected");
+		updateSpeciesForm.find("button.submit").html("Update");
+	} else {
+		updateSpeciesForm.find("input[data-field=name]").val('');
+		updateSpeciesForm.find("input[data-field=tags]").val('');
+		updateSpeciesForm.find("select[data-field=family]").val('');
+		updateSpeciesForm.find("button.submit").html("Add");
+	}
+}
+
 function render() {
 	data.species = Object.fromEntries(Object.entries(data.species).sort());
 
@@ -200,38 +247,45 @@ function render() {
 		addFamily(addFamilyForm.find("input[data-field=name]").val());
 	});
 
-	// add species form
-	var addSpeciesForm = $("#add-species-form");
+	// add/update species form
+	var updateSpeciesForm = $("#update-species-form");
+	updateSpeciesForm.find("select[data-field=family]").append("<option value=''>-</option>");
 	data.families.forEach(function(family) {
-		addSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
+		updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
 	});
-	addSpeciesForm.find("button.submit").click(function() {
-		addSpecies(addSpeciesForm.find("input[data-field=name]").val(), addSpeciesForm.find("input[data-field=tags]").val(), addSpeciesForm.find("select[data-field=family]").val());
+	updateSpeciesForm.find("select[data-field=key]").append("<option value=''>New (auto-generated)</option>");
+	Object.values(data.species).forEach(function(species, i) {
+		updateSpeciesForm.find("select[data-field=key]").append("<option value='" + species.key + "'>" + species.key + "</option>");
+	});
+	fillUpdateSpeciesForm();
+	updateSpeciesForm.find("select[data-field=key]").change(fillUpdateSpeciesForm);
+	updateSpeciesForm.find("button.submit").click(function() {
+		saveSpecies(updateSpeciesForm.find("select[data-field=key]").val(), updateSpeciesForm.find("input[data-field=name]").val(), updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val());
 	});
 
 	// sightings table
 	var table = $("#sightings-table");
 	table.html("");
 	table.append("<tr>" +
-			"<th></th>" +
-			"<th>Sighting ID</th>" +
+			"<th class='noborder'></th>" +
+			"<th>ID</th>" +
 			"<th>Species</th>" +
 			"<th>Media</th>" +
 			"<th>Date & Place</th>" +
 			"<th>Properties</th>" +
+			"<th class='noborder'></th>" +
 		"</tr>");
 	var searchKey = $("input[name=filter-sighting]").val();
 	var filteredSightings = data.birds.filter(b => birdMatches(b, searchKey));
-	$('.page-number').html(OFFSET + " - " + Math.min(OFFSET+ROWS, filteredSightings.length));
 	filteredSightings.slice(OFFSET, OFFSET+ROWS).forEach(function(bird, i) {
 		var row = "<tr id='" + bird.key + "'>";
 
-		row += "<td>"
+		row += "<td class='noborder'>"
 		row += "<button class='delete-sighting' title='Delete sighting'>-</button>";
-		row += "<input type='checkbox' data-field='hidden' " + (bird.hidden ? "" : "checked") + "/>";
+		row += "<input class='hide-checkbox' type='checkbox' data-field='hidden' " + (bird.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
 		row += "</td>";
 
-		row += "<td><span style='width: 60px;' class='label'>" + bird.key + "</span></td>";
+		row += "<td><span style='width: 100px;' class='label'>" + bird.key + "</span></td>";
 
 		row += "<td>"
 		row += getSelectDOM("species", data.species, getValue(bird, 'species'), "200px");
@@ -241,11 +295,14 @@ function render() {
 		row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
 		row += "</td>";
 
-		row += "<td><div style='width: calc(100vw - 800px); max-width: 700px;'>";
-		bird.media.forEach(function(media) {
+		row += "<td><div style='width: calc(100vw - 820px);'>";
+		bird.media.forEach(function(media, i) {
 			row += "<div class='thumbnail'>";
 			row += "<span>." + (media.type == "video" ? "mp4" : "jpg") + "</span>";
 			row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>-</button>";
+			if(i > 0) {
+				row += "<button class='move-media-left' data-mediasrc='" + media.src + "' title='Move Left'><</button>";
+			}
 			if(media.type == 'video') {
 				row += "<img src='" + getMedia(media.thumbnail) + "' title='" + media.src + "'/>";
 			} else {
@@ -276,6 +333,11 @@ function render() {
 		row += "<input type='text' data-field='subspecies' value='" + getValue(bird, 'subspecies') + "' style='width:160px' placeholder='Add subspecies'></input>";
 		row += "</td>";
 
+		row += "<td class='noborder'>"
+		row += "<button class='move-up' title='Move Up' " + (OFFSET+i==0?"disabled":"") + ">▲</button>";
+		row += "<button class='move-down' title='Move down' " + (OFFSET+i==filteredSightings.length-1?"disabled":"") + ">▼</button>";
+		row += "</td>";
+
 		row += "</tr>";
 
 		table.append(row);
@@ -292,13 +354,32 @@ function render() {
 			updateField(bird.key, $(this).attr("data-field"), value);
 		});
 		birdRow.find("button.delete-media").click(function() {
-			deleteMedia(bird.key, $(this).attr("data-mediasrc"))
+			deleteMedia(bird.key, $(this).attr("data-mediasrc"));
+		});
+		birdRow.find("button.move-media-left").click(function() {
+			moveMediaLeft(bird.key, $(this).attr("data-mediasrc"));
 		});
 		birdRow.find(".thumbnail .title-textbox").change(function() {
 			updateMediaProperty(bird.key, $(this).attr("data-mediasrc"), "title", $(this).val());
 		});
 		birdRow.find(".delete-sighting").click(() => deleteSighting(bird.key));
+		birdRow.find(".move-up").click(() => moveSighting(bird.key, -1));
+		birdRow.find(".move-down").click(() => moveSighting(bird.key, 1));
 	});
+
+	$('.page-number').html(OFFSET + " - " + Math.min(OFFSET+ROWS, filteredSightings.length) + " of " + filteredSightings.length);
+	
+	if(OFFSET == 0) {
+		$('button.first-page, button.previous').attr("disabled", "disabled");
+	} else {
+		$('button.first-page, button.previous').removeAttr("disabled");
+	}
+	
+	if(OFFSET+ROWS >= filteredSightings.length) {
+		$('button.last-page, button.next').attr("disabled", "disabled");
+	} else {
+		$('button.last-page, button.next').removeAttr("disabled");
+	}
 }
 
 function refresh() {

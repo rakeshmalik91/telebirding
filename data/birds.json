@@ -1,22 +1,7 @@
 {
 	"birds": [
 		{
-			"key": "s-1662295415",
-			"species": "house-swift",
-			"date": "04-09-2022",
-			"place": "",
-			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/house-swift-1662295510.jpg"
-				}
-			]
-		},
-		{
-			"key": "s-1662269632",
+			"key": "s1662269632",
 			"species": "red-vented-bulbul",
 			"date": "04-09-2022",
 			"place": "",
@@ -32,7 +17,22 @@
 			"age": "Juvenile"
 		},
 		{
-			"key": "s-1662180789",
+			"key": "s1662295415",
+			"species": "house-swift",
+			"date": "04-09-2022",
+			"place": "",
+			"city": "Howrah",
+			"state": "WB",
+			"country": "IN",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/house-swift-1662295949.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1662180789",
 			"species": "black-rumped-flameback",
 			"date": "03-09-2022",
 			"place": "",
@@ -43,12 +43,15 @@
 			"media": [
 				{
 					"src": "images/black-rumped-flameback-1662279861.jpg"
+				},
+				{
+					"src": "images/black-rumped-flameback-1662297074.jpg"
 				}
 			],
 			"gender": "F"
 		},
 		{
-			"key": "s-1662187723",
+			"key": "s1662187723",
 			"species": "common-tailorbird",
 			"date": "03-09-2022",
 			"place": "",
@@ -839,7 +842,7 @@
 		{
 			"key": "white-wagtail-personata-2",
 			"species": "white-wagtail",
-			"subspecies": "Masked",
+			"subspecies": "m. a. personata",
 			"date": "11-06-2022",
 			"place": "Stakna Monastery",
 			"state": "LA",
@@ -5789,7 +5792,7 @@
 		{
 			"key": "white-wagtail-personata",
 			"species": "white-wagtail",
-			"subspecies": "Masked",
+			"subspecies": "m. a. personata",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
 			"state": "HP",
@@ -6087,7 +6090,7 @@
 		{
 			"key": "white-wagtail-leucopis",
 			"species": "white-wagtail",
-			"subspecies": "Amur",
+			"subspecies": "m. a. leucopsis",
 			"date": "05-01-2021",
 			"city": "Howrah",
 			"state": "WB",
