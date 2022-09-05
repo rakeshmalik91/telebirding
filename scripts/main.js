@@ -57,9 +57,7 @@ function computeInternalDataFields() {
 	data.families.concat(data.birds.filter(b => !familyNames.includes(b.species.family)).map(function(b) { return {name: b.family}; }));
 	//fix missing family images or paths
 	data.families.forEach(function(family) {
-		if(!family.imagesrc) {
-			family.imagesrc = data.birds.filter(b => b.species.family == family).slice(-1)[0].images[0].src;
-		}
+		family.imagesrc = ((((data.birds.filter(b => b.species.family == family.name)||[])[0]||{}).media||[])[0]||{}).src;
 		family.count = data.birds.filter(b => b.species.family == family).length;
 	})
 	//sort families
@@ -757,7 +755,7 @@ function showPage(page, params, isPopstate) {
 			renderMapMenu();
 			break;
 		  case MAP:
-			$('.home .explore-menu, .home .menu, .about-page, .videos').hide();
+			$('.home .explore-menu, .home .menu, .about-page, .videos, .map-menu').hide();
 			$('.home, .birds-list, .filter-panel, .filter-panel .filter, .filter-panel .sortby, .filter-panel .stats').show();
 			$('.home .featured').addClass('hidden');
 			birdFamilyFilter = null;

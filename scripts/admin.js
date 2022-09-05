@@ -161,15 +161,14 @@ function addSpecies(name, tags, family) {
 	uploadJSONData("species");
 }
 
-function addFamily(name, imagesrc) {
-	if(!name || !imagesrc) {
-		alert("All fields are mandatory");
+function addFamily(name) {
+	if(!name) {
+		alert("Name is mandatory");
 		return;
 	}
 	data.families = data.families.filter(f => f.name != name);
 	data.families.push({
-		name: name,
-		imagesrc: imagesrc
+		name: name
 	});
 	uploadJSONData("families");
 }
@@ -197,11 +196,8 @@ function render() {
 
 	// add family form
 	var addFamilyForm = $("#add-family-form");
-	data.birds.map(b => b.media).flat().filter(m => m.type != 'video').map(m => m.src).sort().forEach(function(src) {
-		addFamilyForm.find("select[data-field=imagesrc]").append("<option value='" + src + "'>" + src + "</option>");
-	});
 	addFamilyForm.find("button.submit").click(function() {
-		addFamily(addFamilyForm.find("input[data-field=name]").val(), addFamilyForm.find("select[data-field=imagesrc]").val());
+		addFamily(addFamilyForm.find("input[data-field=name]").val());
 	});
 
 	// add species form

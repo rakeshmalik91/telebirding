@@ -159,7 +159,9 @@ function getMedia(path) {
 }
 
 function getData(path) {
-		if(FIREBASE_ENABLED && !path.startsWith("data:")) {
+		if(path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) {
+			return path
+		} else if(FIREBASE_ENABLED) {
 			return "https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/" + path.replaceAll("/", "%2F") + "?alt=media";
 		} else {
 			return path;

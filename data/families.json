@@ -1,336 +1,253 @@
 {
   "families": [
     {
-      "name": "Accentors",
-      "imagesrc": "images/rufous-breasted-accentor-2.jpg"
+      "name": "Accentors"
     },
     {
-      "name": "Alcippe Fulvettas",
-      "imagesrc": "images/nepal-fulvetta.jpg"
+      "name": "Alcippe Fulvettas"
     },
     {
-      "name": "Babblers",
-      "imagesrc": "images/black-chinned-babbler.jpg"
+      "name": "Babblers"
     },
     {
-      "name": "Barbets",
-      "imagesrc": "images/blue-throated-barbet.jpg"
+      "name": "Barbets"
     },
     {
-      "name": "Bee-eaters",
-      "imagesrc": "images/blue-tailed-bee-eater-2.jpg"
+      "name": "Bee-eaters"
     },
     {
-      "name": "Birds of Prey",
-      "imagesrc": "images/rufous-bellied-eagle.jpg"
+      "name": "Birds of Prey"
     },
     {
-      "name": "Broadbills",
-      "imagesrc": "images/long-tailed-broadbill.jpg"
+      "name": "Broadbills"
     },
     {
-      "name": "Bulbuls",
-      "imagesrc": "images/mountain-bulbul.jpg"
+      "name": "Bulbuls"
     },
     {
-      "name": "Buntings",
-      "imagesrc": "images/rock-bunting.jpg"
+      "name": "Buntings"
     },
     {
-      "name": "Chats",
-      "imagesrc": "images/pied-bushchat-male.jpg"
+      "name": "Chats"
     },
     {
-      "name": "Cormorants & Darters",
-      "imagesrc": "images/great-cormorant.jpg"
+      "name": "Cormorants & Darters"
     },
     {
-      "name": "Crows, Treepies, Magpies & Choughs",
-      "imagesrc": "images/eurasian-magpie.jpg"
+      "name": "Crows, Treepies, Magpies & Choughs"
     },
     {
-      "name": "Cranes",
-      "imagesrc": "images/black-necked-crane.jpg"
+      "name": "Cranes"
     },
     {
-      "name": "Cuckoo-shrikes & Allies",
-      "imagesrc": "images/long-tailed-minivet-male.jpg"
+      "name": "Cuckoo-shrikes & Allies"
     },
     {
-      "name": "Cuckoos",
-      "imagesrc": "images/asian-koel-female-2.jpg"
+      "name": "Cuckoos"
     },
     {
-      "name": "Dippers",
-      "imagesrc": "images/brown-dipper.jpg"
+      "name": "Dippers"
     },
     {
-      "name": "Doves & Pigeons",
-      "imagesrc": "images/spotted-dove.jpg"
+      "name": "Doves & Pigeons"
     },
     {
-      "name": "Drongos",
-      "imagesrc": "images/bronzed-drongo.jpg"
+      "name": "Drongos"
     },
     {
-      "name": "Ducks, Swans & Geese",
-      "imagesrc": "images/falcated-duck-male.jpg"
+      "name": "Ducks, Swans & Geese"
     },
     {
-      "name": "Fantails",
-      "imagesrc": "images/spot-breasted-fantail.jpg"
+      "name": "Fantails"
     },
     {
-      "name": "Finches & Allies",
-      "imagesrc": "images/common-rosefinch-male.jpg"
+      "name": "Finches & Allies"
     },
     {
-      "name": "Flamingos",
-      "imagesrc": "images/greater-flamingo.jpg"
+      "name": "Flamingos"
     },
     {
-      "name": "Flycatcher-shrikes",
-      "imagesrc": "images/bar-winged-flycatcher-shrike.jpg"
+      "name": "Flycatcher-shrikes"
     },
     {
-      "name": "Forktails",
-      "imagesrc": "images/spotted-forktail.jpg"
+      "name": "Forktails"
     },
     {
-      "name": "Frogmouths",
-      "imagesrc": "images/ceylon-frogmouth-male.jpg"
+      "name": "Frogmouths"
     },
     {
-      "name": "Grebes",
-      "imagesrc": "images/great-crested-grebe.jpg"
+      "name": "Grebes"
     },
     {
-      "name": "Gulls & Terns",
-      "imagesrc": "images/whiskered-tern-non-breeding-2.jpg"
+      "name": "Gulls & Terns"
     },
     {
-      "name": "Herons & Egrets",
-      "imagesrc": "images/striated-heron.jpg"
+      "name": "Herons & Egrets"
     },
     {
-      "name": "Hoopoes",
-      "imagesrc": "images/common-hoopoe-2.jpg"
+      "name": "Hoopoes"
     },
     {
-      "name": "Hornbills",
-      "imagesrc": "images/oriental-pied-hornbill.jpg"
+      "name": "Hornbills"
     },
     {
-      "name": "Ibises",
-      "imagesrc": "images/black-headed-ibis-2.jpg"
+      "name": "Ibises"
     },
     {
-      "name": "Jacanas",
-      "imagesrc": "images/bronze-winged-jacana-male-2.jpg"
+      "name": "Jacanas"
     },
     {
-      "name": "Kingfishers",
-      "imagesrc": "images/collared-kingfisher.jpg"
+      "name": "Kingfishers"
     },
     {
-      "name": "Lapwings",
-      "imagesrc": "images/northern-lapwing.jpg"
+      "name": "Lapwings"
     },
     {
-      "name": "Larks",
-      "imagesrc": "images/oriental-skylark.jpg"
+      "name": "Larks"
     },
     {
-      "name": "Laughingthrushes",
-      "imagesrc": "images/streaked-laughingthrush-2.jpg"
+      "name": "Laughingthrushes"
     },
     {
-      "name": "Leafbirds",
-      "imagesrc": "images/golden-fronted-leafbird-male.jpg"
+      "name": "Leafbirds"
     },
     {
-      "name": "Minlas",
-      "imagesrc": "images/blue-winged-minla.jpg"
+      "name": "Minlas"
     },
     {
-      "name": "Monarch Flycatchers",
-      "imagesrc": "images/indian-paradise-flycatcher-white-male-2.jpg"
+      "name": "Monarch Flycatchers"
     },
     {
-      "name": "Nightjars",
-      "imagesrc": "images/grey-nightjar.jpg"
+      "name": "Nightjars"
     },
     {
-      "name": "Old World Flycatchers",
-      "imagesrc": "images/grey-headed-canary-flycatcher.jpg"
+      "name": "Old World Flycatchers"
     },
     {
-      "name": "Orioles",
-      "imagesrc": "images/black-hooded-oriole.jpg"
+      "name": "Orioles"
     },
     {
-      "name": "Owls",
-      "imagesrc": "images/spotted-owlet-2.jpg"
+      "name": "Owls"
     },
     {
-      "name": "Parakeets & Parrots",
-      "imagesrc": "images/alexandrine-parakeet.jpg"
+      "name": "Parakeets & Parrots"
     },
     {
-      "name": "Pelicans",
-      "imagesrc": "images/spot-billed-pelican.jpg"
+      "name": "Pelicans"
     },
     {
-      "name": "Pheasants, Partridges & Fowls",
-      "imagesrc": "images/chukar.jpg"
+      "name": "Pheasants, Partridges & Fowls"
     },
     {
-      "name": "Pipits",
-      "imagesrc": "images/paddyfield-pipit-2.jpg"
+      "name": "Pipits"
     },
     {
-      "name": "Plovers",
-      "imagesrc": "images/little-ringed-plover-breeding.jpg"
+      "name": "Plovers"
     },
     {
-      "name": "Pratincoles",
-      "imagesrc": "images/small-pratincole.jpg"
+      "name": "Pratincoles"
     },
     {
-      "name": "Prinias",
-      "imagesrc": "images/ashy-prinia.jpg"
+      "name": "Prinias"
     },
     {
-      "name": "Rails & Crakes",
-      "imagesrc": "images/ruddy-breasted-crake.jpg"
+      "name": "Rails & Crakes"
     },
     {
-      "name": "Redstarts",
-      "imagesrc": "images/plumbeous-water-redstart-female-2.jpg"
+      "name": "Redstarts"
     },
     {
-      "name": "Robins",
-      "imagesrc": "images/rufous-bellied-niltava.jpg"
+      "name": "Robins"
     },
     {
-      "name": "Rock-Thrushes",
-      "imagesrc": "images/blue-rock-thrush-male.jpg"
+      "name": "Rock-Thrushes"
     },
     {
-      "name": "Rollers & Dollarbirds",
-      "imagesrc": "images/oriental-dollarbird.jpg"
+      "name": "Rollers & Dollarbirds"
     },
     {
-      "name": "Rubythroats",
-      "imagesrc": "images/chinese-rubythroat.jpg"
+      "name": "Rubythroats"
     },
     {
-      "name": "Sandgrouses",
-      "imagesrc": "images/tibetan-sandgrouse.jpg"
+      "name": "Sandgrouses"
     },
     {
-      "name": "Sandpipers & Allies",
-      "imagesrc": "images/eurasian-curlew.jpg"
+      "name": "Sandpipers & Allies"
     },
     {
-      "name": "Scimitar Babblers",
-      "imagesrc": "images/white-browed-scimitar-babbler.jpg"
+      "name": "Scimitar Babblers"
     },
     {
-      "name": "Shrikes",
-      "imagesrc": "images/long-tailed-shrike-tricolor.jpg"
+      "name": "Shrikes"
     },
     {
-      "name": "Sparrows",
-      "imagesrc": "images/russet-sparrow-male.jpg"
+      "name": "Sparrows"
     },
     {
-      "name": "Spoonbills",
-      "imagesrc": "images/spoonbill.jpg"
+      "name": "Spoonbills"
     },
     {
-      "name": "Starlings",
-      "imagesrc": "images/chestnut-tailed-starling-2.jpg"
+      "name": "Starlings"
     },
     {
-      "name": "Stilts & Avocets",
-      "imagesrc": "images/pied-avocet.jpg"
+      "name": "Stilts & Avocets"
     },
     {
-      "name": "Storks",
-      "imagesrc": "images/painted-stork.jpg"
+      "name": "Storks"
     },
     {
-      "name": "Sunbirds & Spiderhunters",
-      "imagesrc": "images/fire-tailed-sunbird-female.jpg"
+      "name": "Sunbirds & Spiderhunters"
     },
     {
-      "name": "Swallows & Martins",
-      "imagesrc": "images/barn-swallow-2.jpg"
+      "name": "Swallows & Martins"
     },
     {
-      "name": "Swifts",
-      "imagesrc": "images/house-swift-1662295949.jpg.jpg"
+      "name": "Swifts"
     },
     {
-      "name": "Tailorbirds",
-      "imagesrc": "images/common-tailorbird.jpg"
+      "name": "Tailorbirds"
     },
     {
-      "name": "Thick-knees",
-      "imagesrc": "images/stone-plover.jpg"
+      "name": "Thick-knees"
     },
     {
-      "name": "Thrushes",
-      "imagesrc": "images/orange-headed-thrush.jpg"
+      "name": "Thrushes"
     },
     {
-      "name": "Tits",
-      "imagesrc": "images/green-backed-tit.jpg"
+      "name": "Tits"
     },
     {
-      "name": "Treecreepers, Wallcreepers & Nuthatches",
-      "imagesrc": "images/chestnut-bellied-nuthatch-male.jpg"
+      "name": "Treecreepers, Wallcreepers & Nuthatches"
     },
     {
-      "name": "Trogons",
-      "imagesrc": "images/red-headed-trogon-female.jpg"
+      "name": "Trogons"
     },
     {
-      "name": "Vultures",
-      "imagesrc": "images/egyptian-vulture.jpg"
+      "name": "Vultures"
     },
     {
-      "name": "Wagtails",
-      "imagesrc": "images/eastern-yellow-wagtail.jpg"
+      "name": "Wagtails"
     },
     {
-      "name": "Warblers",
-      "imagesrc": "images/grey-hooded-warbler.jpg"
+      "name": "Warblers"
     },
     {
-      "name": "Weavers",
-      "imagesrc": "images/streaked-weaver-female.jpg"
+      "name": "Weavers"
     },
     {
-      "name": "Whistling-Thrushes",
-      "imagesrc": "images/blue-whistling-thrush.jpg"
+      "name": "Whistling-Thrushes"
     },
     {
-      "name": "Woodpeckers",
-      "imagesrc": "images/grey-capped-pygmy-woodpecker-female.jpg"
+      "name": "Woodpeckers"
     },
     {
-      "name": "Woodshrikes",
-      "imagesrc": "images/malabar-woodshrike.jpg"
+      "name": "Woodshrikes"
     },
     {
-      "name": "Woodswallows",
-      "imagesrc": "images/ashy-woodswallow.jpg"
+      "name": "Woodswallows"
     },
     {
-      "name": "Yuhinas & White-eyes",
-      "imagesrc": "images/rufous-vented-yuhina.jpg"
+      "name": "Yuhinas & White-eyes"
     }
   ]
 }
