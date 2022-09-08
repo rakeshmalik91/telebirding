@@ -34,26 +34,71 @@
 			};
 		  	firebase.initializeApp(config);
 
-			function tryLogin() {
-				var password = getCookie("credentials") || prompt("Please enter the password.");
+			function tryLogin(password) {
+				showOverlay("Logging in");
 				firebase.auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
 					$('.data').show();
-					setCookie("credentials", password, 30);
+					$("#login-page").hide();
+					if($("#login-page input[name=rememberme]").is(":checked")) {
+						setCookie("credentials", password, 7);
+					}
+					$(".overlay").hide();
 				}).catch(e => {
 					alert(e.message);
-					tryLogin();
 				});
 			}
-			tryLogin();
+
+			$(document).ready(function() {
+				if(getCookie("credentials")) {
+					setTimeout(() => { tryLogin(getCookie("credentials")); }, 1000);
+				}
+				$("#login-page button").click(function() {
+					tryLogin($("#login-page input[type=password]").val());
+				});
+				$("#login-page input").keypress(function(e) {
+					if(e.code == 'Enter') {
+						tryLogin($("#login-page input[type=password]").val());
+					}
+				});
+				$("button.logout").click(function() {
+					eraseCookie("credentials");
+					location.reload();
+				});
+			});
 		</script>
 
 	</head>
 	<body>
+		<div id="login-page">
+			<a href="/">
+				<img class="logo" src="icons/site-logo.png" alt="Telebirding - Rakesh's Bird Catalogue" title="Telebirding - Rakesh's Bird Catalogue" />
+			</a>
+			<h1>Admin</h1>
+			<table>
+				<tr>
+					<td><span>Email:</span></td>
+					<td><input type="text" name="email" value="rakeshmalik91@gmail.com" disabled/></td>
+				</tr>
+				<tr>
+					<td><span>Password:</span></td>
+					<td><input type="password" name="password"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="rememberme"/>Remember me</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button>Log in</button></td>
+				</tr>
+			</table>
+		</div>
 		<div class='data' style='display: none;'>
 			<a href="/">
 				<img class="logo" src="icons/site-logo.png" alt="Telebirding - Rakesh's Bird Catalogue" title="Telebirding - Rakesh's Bird Catalogue" />
 			</a>
 			<h1>Admin</h1>
+			<button class="logout">Log Out</button>
 
 			<br>
 			<h2>Add Family</h2>
@@ -90,6 +135,7 @@
 			<br>
 			<h2>Add/Modify Sightings</h2>
 			<div class='nav-top'>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save Now</button>
 				<button class='add-sighting' title='Add new sighting'>Add New</button>
 				<button class='first-page' title='First page'><<</button>
 				<button class='previous' title='Previous page'><</button>
@@ -106,10 +152,10 @@
 				<button class='next' title='Next page'>></button>
 				<button class='last-page' title='Last page'>>></button>
 			</div>
+		</div>
 
-			<div class="overlay fadein" style="display:none;">
-				<span>Please wait...</span>
-			</div>
+		<div class="overlay fadein" style="display:none;">
+			<span>Please wait...</span>
 		</div>
 	</body>
 </html>

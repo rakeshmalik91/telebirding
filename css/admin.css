@@ -27,13 +27,14 @@ h2 {
 span {
 	display: inline-block;
 }
-input[type=text], input[type=date], select {
+input[type=text], input[type=date], input[type=password], select {
 	width: 200px;
 	display: block;
 	color-scheme: dark;
 	text-align: left;
 	justify-content: left;
 	border: none;
+	text-overflow: ellipsis;
 }
 input[type=text] {
 	padding-left: 3px;
@@ -156,7 +157,7 @@ td {
 	transform: translate(60px, -30px);
 }
 .thumbnail button.move-media-left {
-	transform: translate(38px, -30px);
+	transform: translate(35px, -30px);
 }
 .thumbnail span {
 	width: 50px;
@@ -178,6 +179,7 @@ td {
 	text-align: center;
 }
 .overlay span {
+	text-align: center;
 	display: inline-block;
 	position: fixed;
 	top: calc(100vh / 2);
@@ -201,4 +203,32 @@ select[data-field=species] {
 
 #add-family-form, #add-species-form, #update-species-form {
 	margin-left: 28px;
+}
+
+
+
+#login-page {
+	margin-top: 100px;
+	margin-left: 100px;
+}
+#login-page table {
+	margin-top: 20px;
+}
+#login-page table tr {
+	height: 50px;
+}
+#login-page tr, #login-page td, #login-page table {
+	border: none;
+}
+#login-page input[type=text], #login-page input[type=password] {
+	width: 400px;
+	padding: 7px 10px;
+	border: 1px solid #79848d;
+	border-radius: 2px;
+}
+#login-page button {
+	padding: 7px 10px;
+}
+.logout {
+	float: right;
 }

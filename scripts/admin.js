@@ -5,11 +5,16 @@ var ROWS = 10;
 
 var IMAGE_SIZE = 1000;
 
-var SYNC_SCHEDULE_TIME = 5000;
+var SYNC_SCHEDULE_TIME = 60000;
 
 var OPT_GENDER = {'': '-', 'M': "Male", 'F': 'Female'};
 var OPT_AGE = {'': 'Adult', 'Juvenile': "Juvenile", 'Immature': 'Immature'};
 var OPT_PLUMAGE = {'': 'Basic', 'Non-Breeding': "Non-Breeding", 'Breeding': 'Breeding', 'Winter': 'Winter', 'Eclipse': 'Eclipse', "Molting": "Molting"};
+
+function showOverlay(text) {
+	$(".overlay span").html((text || "Please Wait") + "...");
+	$(".overlay").show();
+}
 
 function getValue(bird, prop) {
 	return bird[prop] ? bird[prop] : '';
@@ -26,7 +31,7 @@ function getSelectDOM(field, options, value, width) {
 }
 
 function uploadJSONData(type) {
-	$(".overlay").show();
+	showOverlay("Saving");
 	var fileData = {};
 	fileData[type] = data[type];
 	fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
@@ -46,15 +51,17 @@ function uploadJSONData(type) {
 
 var syncRef;
 function syncSightingsData(scheduleAfter) {
+	$('.save').removeAttr("disabled");
 	clearTimeout(syncRef);
 	syncRef = setTimeout(function() {
 		uploadJSONData('birds');
 		syncRef = undefined;
+		$('.save').attr("disabled", "disabled");
 	}, scheduleAfter);
 }
 
 function uploadMedia(birdKey, files) {
-	$(".overlay").show();
+	showOverlay("Uploading Media");
 	Array.from(files).forEach(function(file) {
 		var mediaSrc;
 		if(file.type.match(/image.*/)) {
@@ -73,7 +80,7 @@ function uploadMedia(birdKey, files) {
 					});
 					syncSightingsData(0);
 				}).catch(e => {
-					alert(e.message);
+					alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
 					$(".overlay").hide();
 				});
 			});
@@ -83,10 +90,11 @@ function uploadMedia(birdKey, files) {
 
 function deleteMedia(birdKey, mediaSrc) {
 	if(!mediaSrc.toLowerCase().endsWith(".jpg")) {
-		alert("Only deletion of image media is allowed!!!");
+		alert("Unsupported!!!");
 		return;
 	}
 	if(confirm("You are about to delete this media.")) {
+		showOverlay("Deleting Media");
 		data.birds.forEach(function(bird) {
 			if(bird.key != birdKey) return;
 			bird.media = bird.media.filter(m => m.src != mediaSrc);
@@ -137,6 +145,7 @@ function updateMediaProperty(birdKey, mediaSrc, property, value) {
 
 function addSighting() {
 	OFFSET = 0;
+	$("input[name=filter-sighting]").val('');
 	data.birds.unshift({
 		"key": ("s" + Math.floor(Date.now() / 1000)),
 		"species": "rock-pigeon",
@@ -239,7 +248,7 @@ function fillUpdateSpeciesForm() {
 }
 
 function render() {
-	data.species = Object.fromEntries(Object.entries(data.species).sort());
+	data.species = Object.fromEntries(Object.entries(data.species).sort((a,b) => compare(a[1].name, b[1].name)));
 
 	// add family form
 	var addFamilyForm = $("#add-family-form");
@@ -299,10 +308,8 @@ function render() {
 		bird.media.forEach(function(media, i) {
 			row += "<div class='thumbnail'>";
 			row += "<span>." + (media.type == "video" ? "mp4" : "jpg") + "</span>";
-			row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>-</button>";
-			if(i > 0) {
-				row += "<button class='move-media-left' data-mediasrc='" + media.src + "' title='Move Left'><</button>";
-			}
+			row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media' " + (media.type == "video" ? "disabled" : "") + ">-</button>";
+			row += "<button class='move-media-left' data-mediasrc='" + media.src + "' title='Move Left' " + (i <= 0 ? "disabled" : "") + "><</button>";
 			if(media.type == 'video') {
 				row += "<img src='" + getMedia(media.thumbnail) + "' title='" + media.src + "'/>";
 			} else {
@@ -395,19 +402,24 @@ function refresh() {
 $(document).ready(function() {
 	refresh();
 
+	$('.save').click(function() {
+		if(syncRef) {
+			syncSightingsData(0);
+		}
+	});
 	$('.add-sighting').click(addSighting);
 	$('button.first-page').click(function() {
 		if(OFFSET > 0) {
-			OFFSET = 0
+			OFFSET = 0;
 			refresh();
-		$(".overlay").show();
+			showOverlay();
 		}
 	});
 	$('button.previous').click(function() {
 		if(OFFSET > 0) {
 			OFFSET -= ROWS;
 			refresh();
-			$(".overlay").show();
+			showOverlay();
 		}
 	});
 	$('button.next').click(function() {
@@ -416,7 +428,7 @@ $(document).ready(function() {
 		if(OFFSET + ROWS < length) {
 			OFFSET += ROWS;
 			refresh();
-			$(".overlay").show();
+			showOverlay();
 		}
 	});
 	$('button.last-page').click(function() {
@@ -425,14 +437,14 @@ $(document).ready(function() {
 		if(OFFSET + ROWS < length) {
 			OFFSET = Math.floor(length / ROWS) * ROWS;
 			refresh();
-			$(".overlay").show();
+			showOverlay();
 		}
 	});
 	$("input[name=filter-sighting]").change(function() {
 		OFFSET = 0;
 		refresh();
 		$(this).blur();
-		$(".overlay").show();
+		showOverlay();
 	});
 	$("input[name=filter-sighting]").focus(function() {
 		$(this).select();

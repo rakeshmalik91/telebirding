@@ -1,6 +1,30 @@
 {
 	"birds": [
 		{
+			"key": "s1662518262",
+			"species": "house-swift",
+			"date": "07-09-2022",
+			"place": "",
+			"city": "Howrah",
+			"state": "WB",
+			"country": "IN",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/house-swift-1662522451.jpg"
+				},
+				{
+					"src": "images/house-swift-1662522502.jpg"
+				},
+				{
+					"src": "images/house-swift-1662653622.jpg"
+				},
+				{
+					"src": "images/house-swift-1662608318.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1662269632",
 			"species": "red-vented-bulbul",
 			"date": "04-09-2022",
@@ -15,21 +39,6 @@
 				}
 			],
 			"age": "Juvenile"
-		},
-		{
-			"key": "s1662295415",
-			"species": "house-swift",
-			"date": "04-09-2022",
-			"place": "",
-			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/house-swift-1662295949.jpg"
-				}
-			]
 		},
 		{
 			"key": "s1662180789",
@@ -94,6 +103,36 @@
 			"city": "Bankura"
 		},
 		{
+			"key": "s1662690044",
+			"species": "lesser-sand-plover",
+			"date": "26-06-2022",
+			"place": "Pangong Tso",
+			"city": "Merak",
+			"state": "LA",
+			"country": "IN",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rock-pigeon-1662690050.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1662688043",
+			"species": "black-winged-stilt",
+			"date": "25-06-2022",
+			"place": "Pangong Tso",
+			"city": "Merak",
+			"state": "LA",
+			"country": "IN",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-winged-stilt-1662688212.jpg"
+				}
+			]
+		},
+		{
 			"key": "bluethroat-red-spotted",
 			"species": "bluethroat",
 			"date": "09-07-2022",
@@ -137,16 +176,16 @@
 					"src": "images/tibetan-snowcock.jpg"
 				},
 				{
-					"src": "images/tibetan-snowcock-3.jpg"
-				},
-				{
-					"src": "images/tibetan-snowcock-2.jpg"
-				},
-				{
 					"src": "videos/tibetan-snowcock.mp4",
 					"thumbnail": "images/tibetan-snowcock.jpg",
 					"mute": true,
 					"type": "video"
+				},
+				{
+					"src": "images/tibetan-snowcock-3.jpg"
+				},
+				{
+					"src": "images/tibetan-snowcock-2.jpg"
 				}
 			]
 		},
@@ -331,13 +370,13 @@
 			"plumage": "Breeding",
 			"media": [
 				{
+					"src": "images/brown-headed-gull-breeding-4.jpg"
+				},
+				{
 					"src": "images/brown-headed-gull-breeding.jpg"
 				},
 				{
 					"src": "images/brown-headed-gull-breeding-2.jpg"
-				},
-				{
-					"src": "images/brown-headed-gull-breeding-4.jpg"
 				}
 			]
 		},
@@ -535,7 +574,7 @@
 			"key": "horned-lark-3",
 			"species": "horned-lark",
 			"date": "26-06-2022",
-			"city": "Pangong Tso",
+			"city": "Merak",
 			"state": "LA",
 			"country": "IN",
 			"gender": "M",
@@ -546,7 +585,8 @@
 				{
 					"src": "images/horned-lark-4.jpg"
 				}
-			]
+			],
+			"place": "Pangong Tso"
 		},
 		{
 			"key": "bar-headed-goose-3",
@@ -566,7 +606,8 @@
 					"mute": true,
 					"type": "video"
 				}
-			]
+			],
+			"city": "Merak"
 		},
 		{
 			"key": "humes-lark",
@@ -586,7 +627,8 @@
 					"src": "images/humes-lark-egg.jpg",
 					"title": "Eggs"
 				}
-			]
+			],
+			"city": "Merak"
 		},
 		{
 			"key": "common-tern",
@@ -614,6 +656,9 @@
 			"media": [
 				{
 					"src": "images/black-headed-mountain-finch.jpg"
+				},
+				{
+					"src": "images/black-headed-mountain-finch-1662687278.jpg"
 				}
 			]
 		},
@@ -628,6 +673,9 @@
 			"media": [
 				{
 					"src": "images/horned-lark-female.jpg"
+				},
+				{
+					"src": "images/horned-lark-1662687515.jpg"
 				}
 			]
 		},
@@ -8012,6 +8060,9 @@
 			"media": [
 				{
 					"src": "images/black-crowned-night-heron.jpg"
+				},
+				{
+					"src": "images/black-crowned-night-heron-1662606589.jpg"
 				}
 			],
 			"city": "Chennai"
@@ -8040,6 +8091,12 @@
 			"media": [
 				{
 					"src": "images/spot-billed-pelican.jpg"
+				},
+				{
+					"src": "images/spot-billed-pelican-1662606294.jpg"
+				},
+				{
+					"src": "images/spot-billed-pelican-1662606411.jpg"
 				}
 			],
 			"city": "Chennai"
