@@ -6,8 +6,8 @@
 			"date": "07-09-2022",
 			"place": "",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"hidden": false,
 			"media": [
 				{
@@ -30,8 +30,8 @@
 			"date": "04-09-2022",
 			"place": "",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"hidden": false,
 			"media": [
 				{
@@ -46,8 +46,8 @@
 			"date": "03-09-2022",
 			"place": "",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"hidden": false,
 			"media": [
 				{
@@ -65,8 +65,8 @@
 			"date": "03-09-2022",
 			"place": "",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"hidden": false,
 			"media": [
 				{
@@ -79,8 +79,8 @@
 			"species": "tricolor-munia",
 			"date": "15-08-2022",
 			"place": "Santragachhi",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tricolor-munia.jpg"
@@ -93,8 +93,8 @@
 			"species": "ashy-woodswallow",
 			"date": "14-08-2022",
 			"place": "Sutan",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-woodswallow-2.jpg"
@@ -103,43 +103,13 @@
 			"city": "Bankura"
 		},
 		{
-			"key": "s1662690044",
-			"species": "lesser-sand-plover",
-			"date": "26-06-2022",
-			"place": "Pangong Tso",
-			"city": "Merak",
-			"state": "LA",
-			"country": "IN",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/rock-pigeon-1662690050.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1662688043",
-			"species": "black-winged-stilt",
-			"date": "25-06-2022",
-			"place": "Pangong Tso",
-			"city": "Merak",
-			"state": "LA",
-			"country": "IN",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/black-winged-stilt-1662688212.jpg"
-				}
-			]
-		},
-		{
 			"key": "bluethroat-red-spotted",
 			"species": "bluethroat",
 			"date": "09-07-2022",
 			"place": "Sindhu Ghat",
 			"city": "Leh",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"variation": "Red-spotted",
 			"media": [
@@ -156,8 +126,8 @@
 			"species": "chukar",
 			"date": "02-07-2022",
 			"place": "Taglang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chukar-2.jpg"
@@ -169,8 +139,8 @@
 			"species": "tibetan-snowcock",
 			"date": "02-07-2022",
 			"place": "Taglang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tibetan-snowcock.jpg"
@@ -194,8 +164,8 @@
 			"species": "upland-buzzard",
 			"date": "01-07-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"variation": "Light Morph",
 			"media": [
 				{
@@ -211,8 +181,8 @@
 			"species": "lesser-sand-plover",
 			"date": "01-07-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lesser-sand-plover.jpg"
@@ -224,8 +194,8 @@
 			"species": "ruddy-shelduck",
 			"date": "01-07-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ruddy-shelduck-3.jpg"
@@ -237,8 +207,8 @@
 			"species": "great-rosefinch",
 			"date": "01-07-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -251,8 +221,8 @@
 			"species": "upland-buzzard",
 			"date": "01-07-2022",
 			"place": "Startsapuk Tso",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"variation": "Dark Morph",
 			"media": [
 				{
@@ -269,8 +239,8 @@
 			"species": "tibetan-sandgrouse",
 			"date": "01-07-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tibetan-sandgrouse.jpg"
@@ -285,8 +255,8 @@
 			"species": "black-necked-crane",
 			"date": "30-06-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-necked-crane.jpg"
@@ -301,8 +271,8 @@
 			"species": "ground-tit",
 			"date": "30-06-2022",
 			"place": "Tso Kar",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ground-tit.jpg"
@@ -314,8 +284,8 @@
 			"species": "great-crested-grebe",
 			"date": "30-06-2022",
 			"place": "Tso Moriri",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"plumage": "Breeding",
 			"media": [
 				{
@@ -332,8 +302,8 @@
 			"species": "robin-accentor",
 			"date": "30-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"age": "Juvenile",
 			"media": [
 				{
@@ -352,8 +322,8 @@
 			"species": "eurasian-crag-martin",
 			"date": "29-06-2022",
 			"place": "Tso Moriri",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-crag-martin.jpg"
@@ -365,8 +335,8 @@
 			"species": "brown-headed-gull",
 			"date": "29-06-2022",
 			"place": "Tso Moriri",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"plumage": "Breeding",
 			"media": [
 				{
@@ -385,8 +355,8 @@
 			"species": "red-billed-chough",
 			"date": "29-06-2022",
 			"place": "Tso Moriri",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-billed-chough-2.jpg"
@@ -407,8 +377,8 @@
 			"species": "twite",
 			"date": "29-06-2022",
 			"city": "Tsumdo",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/twite.jpg"
@@ -423,8 +393,8 @@
 			"species": "great-cormorant",
 			"date": "29-06-2022",
 			"city": "Tsumdo",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/great-cormorant-2.jpg"
@@ -436,8 +406,8 @@
 			"species": "saker-falcon",
 			"date": "28-06-2022",
 			"city": "Hanle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/saker-falcon-2.jpg"
@@ -452,8 +422,8 @@
 			"species": "desert-wheatear",
 			"date": "28-06-2022",
 			"city": "Hanle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -466,8 +436,8 @@
 			"species": "desert-wheatear",
 			"date": "28-06-2022",
 			"city": "Hanle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -489,8 +459,8 @@
 			"species": "desert-wheatear",
 			"date": "28-06-2022",
 			"city": "Hanle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"age": "Juvenile",
 			"media": [
 				{
@@ -503,8 +473,8 @@
 			"species": "tibetan-lark",
 			"date": "28-06-2022",
 			"city": "Hanle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tibetan-lark.jpg"
@@ -516,8 +486,8 @@
 			"species": "bearded-vulture",
 			"date": "27-06-2022",
 			"city": "Chisumle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bearded-vulture.jpg"
@@ -529,8 +499,8 @@
 			"species": "horned-lark",
 			"date": "27-06-2022",
 			"city": "Hanle",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"age": "Juvenile",
 			"media": [
 				{
@@ -542,12 +512,27 @@
 			]
 		},
 		{
+			"key": "s1662690044",
+			"species": "lesser-sand-plover",
+			"date": "26-06-2022",
+			"place": "Pangong Tso",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rock-pigeon-1662690050.jpg"
+				}
+			]
+		},
+		{
 			"key": "tickells-leaf-warbler",
 			"species": "tickells-leaf-warbler",
 			"date": "26-06-2022",
 			"place": "Rezang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tickells-leaf-warbler.jpg"
@@ -562,8 +547,8 @@
 			"species": "chinese-rubythroat",
 			"date": "26-06-2022",
 			"place": "Rezang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chinese-rubythroat.jpg"
@@ -575,8 +560,8 @@
 			"species": "horned-lark",
 			"date": "26-06-2022",
 			"city": "Merak",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -593,8 +578,8 @@
 			"species": "bar-headed-goose",
 			"date": "26-06-2022",
 			"place": "Pangong Tso",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bar-headed-goose-3.jpg",
@@ -614,8 +599,8 @@
 			"species": "humes-lark",
 			"date": "26-06-2022",
 			"place": "Pangong Tso",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/humes-lark.jpg"
@@ -631,12 +616,27 @@
 			"city": "Merak"
 		},
 		{
+			"key": "s1662688043",
+			"species": "black-winged-stilt",
+			"date": "25-06-2022",
+			"place": "Pangong Tso",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-winged-stilt-1662688212.jpg"
+				}
+			]
+		},
+		{
 			"key": "common-tern",
 			"species": "common-tern",
 			"date": "25-06-2022",
 			"place": "Pangong Tso",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-tern.jpg"
@@ -651,8 +651,8 @@
 			"species": "black-headed-mountain-finch",
 			"date": "25-06-2022",
 			"place": "Chang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-mountain-finch.jpg"
@@ -667,8 +667,8 @@
 			"species": "horned-lark",
 			"date": "25-06-2022",
 			"place": "Chang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -684,8 +684,8 @@
 			"species": "common-raven",
 			"date": "25-06-2022",
 			"place": "Chang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-raven.jpg"
@@ -697,8 +697,8 @@
 			"species": "upland-buzzard",
 			"date": "25-06-2022",
 			"place": "Chang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"age": "Juvenile",
 			"media": [
 				{
@@ -712,8 +712,8 @@
 			"date": "25-06-2022",
 			"place": "Sindhu Ghat",
 			"city": "Leh",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/mountain-chiffchaff-2.jpg"
@@ -728,8 +728,8 @@
 			"species": "mountain-chiffchaff",
 			"date": "19-06-2022",
 			"place": "Turtuk",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/mountain-chiffchaff.jpg"
@@ -741,8 +741,8 @@
 			"species": "robin-accentor",
 			"date": "19-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/robin-accentor.jpg"
@@ -757,8 +757,8 @@
 			"species": "citrine-wagtail",
 			"date": "19-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/citrine-wagtail-2.jpg"
@@ -773,8 +773,8 @@
 			"species": "hill-pigeon",
 			"date": "19-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/hill-pigeon-2.jpg"
@@ -792,8 +792,8 @@
 			"species": "black-redstart",
 			"date": "19-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "F",
 			"variation": "Eastern",
 			"media": [
@@ -807,8 +807,8 @@
 			"species": "white-winged-redstart",
 			"date": "18-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -821,8 +821,8 @@
 			"species": "black-redstart",
 			"date": "18-06-2022",
 			"place": "Khardung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"variation": "Eastern",
 			"media": [
@@ -843,8 +843,8 @@
 			"date": "11-06-2022",
 			"place": "Shey Palace Pond",
 			"city": "Leh",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"plumage": "Breeding",
 			"media": [
@@ -859,8 +859,8 @@
 			"date": "11-06-2022",
 			"place": "Shey Palace Pond",
 			"city": "Leh",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"plumage": "Molting",
 			"media": [
@@ -878,8 +878,8 @@
 			"date": "11-06-2022",
 			"place": "Shey Palace Pond",
 			"city": "Leh",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -893,8 +893,8 @@
 			"subspecies": "m. a. personata",
 			"date": "11-06-2022",
 			"place": "Stakna Monastery",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-wagtail-personata-2.jpg"
@@ -906,8 +906,8 @@
 			"species": "horned-lark",
 			"date": "05-06-2022",
 			"city": "Taglang La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -920,8 +920,8 @@
 			"species": "tibetan-snowfinch",
 			"date": "05-06-2022",
 			"city": "Lachulung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tibetan-snowfinch.jpg"
@@ -933,8 +933,8 @@
 			"species": "alpine-chough",
 			"date": "05-06-2022",
 			"city": "Lachulung La",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/alpine-chough-2.jpg"
@@ -949,8 +949,8 @@
 			"species": "western-yellow-wagtail",
 			"date": "04-06-2022",
 			"city": "Darcha",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"age": "Immature",
 			"media": [
 				{
@@ -963,8 +963,8 @@
 			"species": "grey-wagtail",
 			"date": "04-06-2022",
 			"city": "Darcha",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-wagtail-2.jpg"
@@ -976,8 +976,8 @@
 			"species": "indian-paradise-flycatcher",
 			"date": "28-05-2022",
 			"city": "Dharamshala",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"variation": "White",
 			"gender": "M",
 			"media": [
@@ -994,8 +994,8 @@
 			"species": "hair-crested-drongo",
 			"date": "28-05-2022",
 			"city": "Dharamshala",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/hair-crested-drongo-3.jpg"
@@ -1007,8 +1007,8 @@
 			"species": "scaly-breasted-munia",
 			"date": "28-05-2022",
 			"city": "Dharamshala",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/scaly-breasted-munia-4.jpg"
@@ -1020,8 +1020,8 @@
 			"species": "spotted-forktail",
 			"date": "24-05-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spotted-forktail-2.jpg"
@@ -1033,8 +1033,8 @@
 			"species": "dark-sided-thrush",
 			"date": "10-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/dark-sided-thrush.jpg"
@@ -1049,8 +1049,8 @@
 			"species": "bar-tailed-treecreeper",
 			"date": "10-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bar-tailed-treecreeper-3.jpg"
@@ -1068,8 +1068,8 @@
 			"species": "cinereous-tit",
 			"date": "10-05-2022",
 			"city": "Bhimtal",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cinereous-tit-3.jpg"
@@ -1081,8 +1081,8 @@
 			"species": "red-rumped-swallow",
 			"date": "10-05-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-rumped-swallow-2.jpg"
@@ -1097,8 +1097,8 @@
 			"species": "brown-wood-owl",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-wood-owl.jpg"
@@ -1113,8 +1113,8 @@
 			"species": "indian-paradise-flycatcher",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"variation": "White",
 			"media": [
@@ -1128,8 +1128,8 @@
 			"species": "indian-paradise-flycatcher",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"variation": "Rufous",
 			"media": [
@@ -1146,8 +1146,8 @@
 			"species": "long-tailed-minivet",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1160,8 +1160,8 @@
 			"species": "long-tailed-minivet",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1174,8 +1174,8 @@
 			"species": "wedge-tailed-green-pigeon",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/wedge-tailed-green-pigeon-2.jpg"
@@ -1193,8 +1193,8 @@
 			"species": "velvet-fronted-nuthatch",
 			"date": "07-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/velvet-fronted-nuthatch.jpg"
@@ -1206,8 +1206,8 @@
 			"species": "white-crested-laughingthrush",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-crested-laughingthrush-3.jpg"
@@ -1219,8 +1219,8 @@
 			"species": "brown-fronted-woodpecker",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1233,8 +1233,8 @@
 			"species": "brown-fronted-woodpecker",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1247,8 +1247,8 @@
 			"species": "lesser-yellownape",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lesser-yellownape-2.jpg"
@@ -1263,8 +1263,8 @@
 			"species": "red-junglefowl",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1277,8 +1277,8 @@
 			"species": "red-junglefowl",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"age": "Juvenile",
 			"media": [
 				{
@@ -1291,8 +1291,8 @@
 			"species": "orange-headed-thrush",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"variation": "Orange-headed",
 			"media": [
 				{
@@ -1308,8 +1308,8 @@
 			"species": "kalij-pheasant",
 			"date": "13-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1328,8 +1328,8 @@
 			"species": "fulvous-breasted-woodpecker",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1342,8 +1342,8 @@
 			"species": "plum-headed-parakeet",
 			"date": "06-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1356,8 +1356,8 @@
 			"species": "black-francolin",
 			"date": "05-05-2022",
 			"city": "Chafi",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1379,8 +1379,8 @@
 			"species": "rufous-bellied-woodpecker",
 			"date": "03-05-2022",
 			"city": "Pangot",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1393,8 +1393,8 @@
 			"species": "white-browed-scimitar-babbler",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-browed-scimitar-babbler-2.jpg"
@@ -1406,8 +1406,8 @@
 			"species": "striated-laughingthrush",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/striated-laughingthrush.jpg"
@@ -1422,8 +1422,8 @@
 			"species": "mountain-bulbul",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/mountain-bulbul.jpg"
@@ -1435,8 +1435,8 @@
 			"species": "grey-headed-canary-flycatcher",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-headed-canary-flycatcher-2.jpg"
@@ -1448,8 +1448,8 @@
 			"species": "ultramarine-flycatcher",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1462,8 +1462,8 @@
 			"species": "ultramarine-flycatcher",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1476,8 +1476,8 @@
 			"species": "blue-throated-blue-flycatcher",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1490,8 +1490,8 @@
 			"species": "red-billed-leiothrix",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-billed-leiothrix.jpg"
@@ -1506,8 +1506,8 @@
 			"species": "greater-yellownape",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-yellownape-2.jpg"
@@ -1519,8 +1519,8 @@
 			"species": "blue-winged-minla",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-winged-minla-3.jpg"
@@ -1532,8 +1532,8 @@
 			"species": "rufous-chinned-laughingthrush",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-chinned-laughingthrush-2.jpg"
@@ -1548,8 +1548,8 @@
 			"species": "white-throated-laughingthrush",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-throated-laughingthrush.jpg"
@@ -1564,8 +1564,8 @@
 			"species": "rufous-throated-partridge",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-throated-partridge-2.jpg"
@@ -1580,8 +1580,8 @@
 			"species": "red-junglefowl",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1594,8 +1594,8 @@
 			"species": "grey-winged-blackbird",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1608,8 +1608,8 @@
 			"species": "tickells-thrush",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1622,8 +1622,8 @@
 			"species": "emerald-dove",
 			"date": "01-05-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/emerald-dove.jpg"
@@ -1635,8 +1635,8 @@
 			"species": "crested-kingfisher",
 			"date": "30-04-2022",
 			"city": "Chafi",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/crested-kingfisher-2.jpg"
@@ -1654,8 +1654,8 @@
 			"species": "green-sandpiper",
 			"date": "30-04-2022",
 			"city": "Chafi",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-sandpiper.jpg"
@@ -1667,8 +1667,8 @@
 			"species": "black-lored-tit",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-lored-tit-3.jpg"
@@ -1680,8 +1680,8 @@
 			"species": "orange-bellied-leafbird",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1697,8 +1697,8 @@
 			"species": "orange-bellied-leafbird",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1711,8 +1711,8 @@
 			"species": "tickells-thrush",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1728,8 +1728,8 @@
 			"species": "blue-robin",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-robin-2.jpg"
@@ -1741,8 +1741,8 @@
 			"species": "bar-winged-flycatcher-shrike",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bar-winged-flycatcher-shrike.jpg"
@@ -1754,8 +1754,8 @@
 			"species": "black-throated-sunbird",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1768,8 +1768,8 @@
 			"species": "ashy-bulbul",
 			"date": "30-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-bulbul.jpg"
@@ -1781,8 +1781,8 @@
 			"species": "purple-sunbird",
 			"date": "29-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1795,8 +1795,8 @@
 			"species": "barn-swallow",
 			"date": "29-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/barn-swallow-3.jpg"
@@ -1808,8 +1808,8 @@
 			"species": "rusty-cheeked-scimitar-babbler",
 			"date": "28-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rusty-cheeked-scimitar-babbler.jpg"
@@ -1821,8 +1821,8 @@
 			"species": "purple-sunbird",
 			"date": "28-04-2022",
 			"city": "Sattal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1838,8 +1838,8 @@
 			"species": "black-francolin",
 			"date": "28-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1852,8 +1852,8 @@
 			"species": "blyths-reed-warbler",
 			"date": "28-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blyths-reed-warbler-2.jpg"
@@ -1868,8 +1868,8 @@
 			"species": "chestnut-bellied-nuthatch",
 			"date": "27-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -1885,8 +1885,8 @@
 			"species": "chestnut-bellied-nuthatch",
 			"date": "27-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1908,8 +1908,8 @@
 			"species": "black-chinned-babbler",
 			"date": "26-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-chinned-babbler.jpg"
@@ -1921,8 +1921,8 @@
 			"species": "himalayan-prinia",
 			"date": "26-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-prinia-3.jpg"
@@ -1937,8 +1937,8 @@
 			"species": "plum-headed-parakeet",
 			"date": "26-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1951,8 +1951,8 @@
 			"species": "grey-breasted-prinia",
 			"date": "25-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-breasted-prinia.jpg"
@@ -1964,8 +1964,8 @@
 			"species": "common-rosefinch",
 			"date": "25-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -1981,8 +1981,8 @@
 			"species": "jungle-myna",
 			"date": "25-04-2022",
 			"city": "Bhimtal",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/jungle-myna-2.jpg"
@@ -1994,8 +1994,8 @@
 			"species": "asian-barred-owlet",
 			"date": "20-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/asian-barred-owlet.jpg"
@@ -2007,8 +2007,8 @@
 			"species": "ashy-drongo",
 			"date": "17-04-2022",
 			"city": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-drongo.jpg"
@@ -2020,8 +2020,8 @@
 			"species": "eurasian-sparrowhawk",
 			"date": "17-04-2022",
 			"city": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-sparrowhawk.jpg"
@@ -2033,8 +2033,8 @@
 			"species": "himalayan-griffon",
 			"date": "17-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-griffon.jpg"
@@ -2046,8 +2046,8 @@
 			"species": "mountain-hawk-eagle",
 			"date": "17-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/mountain-hawk-eagle.jpg"
@@ -2059,8 +2059,8 @@
 			"species": "fire-fronted-serin",
 			"date": "17-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fire-fronted-serin.jpg"
@@ -2078,8 +2078,8 @@
 			"species": "himalayan-bulbul",
 			"date": "17-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-bulbul-3.jpg"
@@ -2091,8 +2091,8 @@
 			"species": "whiskered-yuhina",
 			"date": "16-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/whiskered-yuhina.jpg"
@@ -2104,8 +2104,8 @@
 			"species": "brownish-flanked-bush-warbler",
 			"date": "16-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brownish-flanked-bush-warbler.jpg"
@@ -2117,8 +2117,8 @@
 			"species": "mrs-goulds-sunbird",
 			"date": "16-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -2131,8 +2131,8 @@
 			"species": "chestnut-tailed-minla",
 			"date": "15-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-tailed-minla.jpg"
@@ -2150,8 +2150,8 @@
 			"species": "red-headed-bullfinch",
 			"date": "15-04-2022",
 			"city": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -2167,8 +2167,8 @@
 			"species": "yellow-breasted-greenfinch",
 			"date": "15-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -2181,8 +2181,8 @@
 			"species": "yellow-breasted-greenfinch",
 			"date": "15-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -2195,8 +2195,8 @@
 			"species": "common-hoopoe",
 			"date": "15-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-hoopoe-3.jpg"
@@ -2208,8 +2208,8 @@
 			"species": "crested-kingfisher",
 			"date": "15-04-2022",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/crested-kingfisher.jpg"
@@ -2221,8 +2221,8 @@
 			"species": "western-crowned-warbler",
 			"date": "13-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/western-crowned-warbler-2.jpg"
@@ -2237,8 +2237,8 @@
 			"species": "kalij-pheasant",
 			"date": "13-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -2254,8 +2254,8 @@
 			"species": "tree-pipit",
 			"date": "13-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tree-pipit.jpg"
@@ -2267,8 +2267,8 @@
 			"species": "red-billed-blue-magpie",
 			"date": "08-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-billed-blue-magpie-3.jpg"
@@ -2292,8 +2292,8 @@
 			"species": "yellow-billed-blue-magpie",
 			"date": "08-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-billed-blue-magpie-3.jpg"
@@ -2314,8 +2314,8 @@
 			"species": "indian-grey-hornbill",
 			"date": "06-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-grey-hornbill-2.jpg"
@@ -2327,8 +2327,8 @@
 			"species": "black-headed-jay",
 			"date": "05-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-jay-4.jpg"
@@ -2343,8 +2343,8 @@
 			"species": "cinereous-tit",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "videos/cinereous-tit.mp4",
@@ -2359,8 +2359,8 @@
 			"species": "russet-sparrow",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -2376,8 +2376,8 @@
 			"species": "alexandrine-parakeet",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/alexandrine-parakeet-2.jpg",
@@ -2396,8 +2396,8 @@
 			"species": "green-backed-tit",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-backed-tit-2.jpg"
@@ -2409,8 +2409,8 @@
 			"species": "dark-sided-flycatcher",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/dark-sided-flycatcher.jpg"
@@ -2422,8 +2422,8 @@
 			"species": "rufous-bellied-niltava",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -2436,8 +2436,8 @@
 			"species": "rufous-bellied-niltava",
 			"date": "03-04-2022",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "F",
 			"media": [
 				{
@@ -2450,8 +2450,8 @@
 			"species": "coppersmith-barbet",
 			"date": "31-03-2022",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/coppersmith-barbet-2.jpg"
@@ -2469,8 +2469,8 @@
 			"species": "black-hooded-oriole",
 			"date": "31-03-2022",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-hooded-oriole-2.jpg"
@@ -2486,8 +2486,8 @@
 			"date": "20-03-2022",
 			"place": "Bengal Safari",
 			"city": "Siliguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-necklaced-laughingthrush-2.jpg"
@@ -2508,8 +2508,8 @@
 			"species": "grey-treepie",
 			"date": "20-03-2022",
 			"place": "Gaddigaon",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-treepie-2.jpg"
@@ -2521,8 +2521,8 @@
 			"species": "white-crested-laughingthrush",
 			"date": "20-03-2022",
 			"place": "Gaddigaon",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-crested-laughingthrush.jpg"
@@ -2544,8 +2544,8 @@
 			"gender": "F",
 			"date": "19-03-2022",
 			"place": "Que Khola Falls",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plumbeous-water-redstart-female-3.jpg"
@@ -2557,8 +2557,8 @@
 			"species": "alpine-accentor",
 			"date": "19-03-2022",
 			"place": "Zuluk",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/alpine-accentor.jpg"
@@ -2574,8 +2574,8 @@
 			"gender": "F",
 			"date": "19-03-2022",
 			"place": "Zuluk",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-monal-female.jpg"
@@ -2591,8 +2591,8 @@
 			"gender": "F",
 			"date": "19-03-2022",
 			"place": "Gaddigaon",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-winged-blackbird-female-2.jpg"
@@ -2605,8 +2605,8 @@
 			"gender": "F",
 			"date": "19-03-2022",
 			"place": "Gaddigaon",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-collared-blackbird-female.jpg"
@@ -2619,8 +2619,8 @@
 			"gender": "M",
 			"date": "18-03-2022",
 			"place": "Rongli",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-tree-sparrow-male-2.jpg"
@@ -2633,8 +2633,8 @@
 			"gender": "M",
 			"date": "18-03-2022",
 			"place": "Agamlok",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-capped-rock-thrush-male.jpg"
@@ -2646,8 +2646,8 @@
 			"species": "olive-backed-pipit",
 			"date": "18-03-2022",
 			"place": "Agamlok",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/olive-backed-pipit.jpg"
@@ -2659,8 +2659,8 @@
 			"species": "little-bunting",
 			"date": "18-03-2022",
 			"place": "Agamlok",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-bunting.jpg"
@@ -2673,8 +2673,8 @@
 			"date": "17-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-tailed-minla.jpg"
@@ -2686,8 +2686,8 @@
 			"species": "blue-whistling-thrush",
 			"date": "17-03-2022",
 			"place": "Agamlok",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-whistling-thrush-2.jpg"
@@ -2705,8 +2705,8 @@
 			"species": "rufous-breasted-accentor",
 			"date": "17-03-2022",
 			"place": "Agamlok",
-			"state": "SK",
-			"country": "IN",
+			"state": "Sikkim",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-breasted-accentor-2.jpg"
@@ -2719,8 +2719,8 @@
 			"date": "16-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/verditer-flycatcher-4.jpg"
@@ -2733,8 +2733,8 @@
 			"date": "16-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/humes-leaf-warbler-3.jpg"
@@ -2750,8 +2750,8 @@
 			"date": "16-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-throated-barbet-2.jpg"
@@ -2765,8 +2765,8 @@
 			"date": "16-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-magpie-robin-male-3.jpg"
@@ -2779,8 +2779,8 @@
 			"gender": "M",
 			"date": "05-03-2022",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/house-sparrow-male-2.jpg"
@@ -2793,8 +2793,8 @@
 			"date": "26-01-2022",
 			"place": "Rabindra Sarobar",
 			"city": "Kolkata",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/great-cormorant.jpg"
@@ -2807,8 +2807,8 @@
 			"date": "26-01-2022",
 			"place": "Rabindra Sarobar",
 			"city": "Kolkata",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/stork-billed-kingfisher-2.jpg"
@@ -2828,8 +2828,8 @@
 			"date": "26-01-2022",
 			"place": "Rabindra Sarobar",
 			"city": "Kolkata",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/asian-koel-male.jpg"
@@ -2842,8 +2842,8 @@
 			"date": "26-01-2022",
 			"place": "Rabindra Sarobar",
 			"city": "Kolkata",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-treepie-2.jpg"
@@ -2857,8 +2857,8 @@
 			"date": "23-01-2022",
 			"place": "Santragachhi Jheel",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cattle-egret-non-breeding.jpg"
@@ -2871,8 +2871,8 @@
 			"date": "23-01-2022",
 			"place": "Santragachhi Jheel",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-shrike-3.jpg"
@@ -2885,8 +2885,8 @@
 			"date": "23-01-2022",
 			"place": "Santragachhi Jheel",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lesser-whistling-duck.jpg"
@@ -2898,8 +2898,8 @@
 			"species": "grey-heron",
 			"date": "18-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-heron-3.jpg"
@@ -2914,8 +2914,8 @@
 			"species": "streak-throated-swallow",
 			"date": "18-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/streak-throated-swallow.jpg"
@@ -2933,8 +2933,8 @@
 			"species": "bank-swallow",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bank-swallow-2.jpg"
@@ -2947,8 +2947,8 @@
 			"age": "Immature",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/barn-swallow-immature.jpg"
@@ -2966,8 +2966,8 @@
 			"species": "barn-swallow",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/barn-swallow-2.jpg"
@@ -2980,8 +2980,8 @@
 			"plumage": "Non-Breeding",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-headed-gull-non-breeding-2.jpg"
@@ -2994,8 +2994,8 @@
 			"gender": "F",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-painted-snipe-female.jpg"
@@ -3007,8 +3007,8 @@
 			"species": "eastern-yellow-wagtail",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eastern-yellow-wagtail.jpg"
@@ -3020,8 +3020,8 @@
 			"species": "pheasant-tailed-jacana",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pheasant-tailed-jacana.jpg"
@@ -3033,8 +3033,8 @@
 			"species": "slaty-breasted-rail",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/slaty-breasted-rail.jpg"
@@ -3046,8 +3046,8 @@
 			"species": "ruddy-breasted-crake",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ruddy-breasted-crake.jpg"
@@ -3060,8 +3060,8 @@
 			"plumage": "Non-Breeding",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ruff-non-breeding.jpg"
@@ -3074,8 +3074,8 @@
 			"plumage": "Breeding",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-ringed-plover-breeding.jpg"
@@ -3088,8 +3088,8 @@
 			"gender": "F",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/asian-koel-female-2.jpg"
@@ -3102,8 +3102,8 @@
 			"variation": "Caniceps",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/long-tailed-shrike-2.jpg"
@@ -3116,8 +3116,8 @@
 			"gender": "M",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/gadwall-male.jpg"
@@ -3130,8 +3130,8 @@
 			"gender": "F",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/gadwall-female.jpg"
@@ -3144,8 +3144,8 @@
 			"plumage": "Non-Breeding",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/whiskered-tern-non-breeding-2.jpg"
@@ -3157,8 +3157,8 @@
 			"species": "chestnut-tailed-starling",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-tailed-starling-2.jpg"
@@ -3170,8 +3170,8 @@
 			"species": "blyths-warbler",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blyths-warbler.jpg"
@@ -3183,8 +3183,8 @@
 			"species": "brown-headed-barbet",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-headed-barbet.jpg"
@@ -3196,8 +3196,8 @@
 			"species": "spotted-owlet",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spotted-owlet-3.jpg"
@@ -3209,8 +3209,8 @@
 			"species": "eurasian-marsh-harrier",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-marsh-harrier.jpg"
@@ -3223,8 +3223,8 @@
 			"age": "Immature",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-moorhen-immature.jpg"
@@ -3236,8 +3236,8 @@
 			"species": "yellow-bittern",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-bittern.jpg"
@@ -3249,8 +3249,8 @@
 			"species": "knob-billed-duck",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/knob-billed-duck.jpg"
@@ -3262,8 +3262,8 @@
 			"species": "oriental-skylark",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-skylark.jpg"
@@ -3276,8 +3276,8 @@
 			"gender": "F",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/northern-shoveler-female.jpg"
@@ -3289,8 +3289,8 @@
 			"species": "common-kingfisher",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-kingfisher-2.jpg"
@@ -3302,8 +3302,8 @@
 			"species": "blue-tailed-bee-eater",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-tailed-bee-eater-2.jpg"
@@ -3315,8 +3315,8 @@
 			"species": "white-browed-bulbul",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-browed-bulbul.jpg"
@@ -3328,8 +3328,8 @@
 			"species": "booted-warbler",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/booted-warbler.jpg"
@@ -3341,8 +3341,8 @@
 			"species": "wood-sandpiper",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/wood-sandpiper.jpg"
@@ -3354,8 +3354,8 @@
 			"species": "asian-openbill",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/open-billed-stork-2.jpg"
@@ -3369,8 +3369,8 @@
 			"plumage": "Breeding",
 			"date": "14-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/northern-shoveler-breeding-male.jpg"
@@ -3382,8 +3382,8 @@
 			"species": "indian-spot-billed-duck",
 			"date": "14-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-spot-billed-duck-3.jpg"
@@ -3396,8 +3396,8 @@
 			"gender": "M",
 			"date": "14-01-2022",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bronze-winged-jacana-male-2.jpg"
@@ -3411,8 +3411,8 @@
 			"date": "25-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-capped-pygmy-woodpecker-male.jpg"
@@ -3426,8 +3426,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-fronted-leafbird-male.jpg"
@@ -3440,8 +3440,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-headed-canary-flycatcher.jpg"
@@ -3455,8 +3455,8 @@
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/maroon-oriole-male.jpg"
@@ -3470,8 +3470,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fire-tailed-sunbird-female.jpg"
@@ -3485,8 +3485,8 @@
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-tailed-sunbird-male.jpg"
@@ -3503,8 +3503,8 @@
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-tailed-sunbird-female.jpg"
@@ -3518,8 +3518,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/orange-bellied-leafbird-female.jpg"
@@ -3532,8 +3532,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/slaty-backed-forktail-2.jpg"
@@ -3546,8 +3546,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/streaked-spiderhunter.jpg"
@@ -3563,8 +3563,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-backed-shrike.jpg"
@@ -3577,8 +3577,8 @@
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/sultan-tit.jpg"
@@ -3591,8 +3591,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-lored-tit.jpg"
@@ -3609,8 +3609,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-shrike-2.jpg"
@@ -3623,8 +3623,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-bulbul-2.jpg"
@@ -3644,8 +3644,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-bellied-nuthatch-male.jpg"
@@ -3659,8 +3659,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-headed-bee-eater-2.jpg"
@@ -3673,8 +3673,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/long-tailed-broadbill.jpg"
@@ -3688,8 +3688,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-necked-hornbill-female.jpg"
@@ -3712,8 +3712,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-necked-hornbill-male.jpg"
@@ -3730,8 +3730,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-pied-hornbill.jpg"
@@ -3747,8 +3747,8 @@
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-throated-barbet.jpg"
@@ -3761,8 +3761,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-gorgeted-flycatcher.jpg"
@@ -3779,8 +3779,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-rock-thrush-male.jpg"
@@ -3794,8 +3794,8 @@
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-rock-thrush-female.jpg"
@@ -3809,8 +3809,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-capped-pygmy-woodpecker-female.jpg"
@@ -3824,8 +3824,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/scarlet-minivet-male.jpg"
@@ -3839,8 +3839,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/scarlet-minivet-female.jpg"
@@ -3853,8 +3853,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bronzed-drongo.jpg"
@@ -3867,8 +3867,8 @@
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/hair-crested-drongo-2.jpg"
@@ -3882,8 +3882,8 @@
 			"variation": "Tricolor",
 			"date": "24-12-2021",
 			"place": "Sittong",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/long-tailed-shrike-tricolor.jpg"
@@ -3896,8 +3896,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-headed-lapwing.jpg"
@@ -3910,8 +3910,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-cormorant-2.jpg"
@@ -3925,8 +3925,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pacific-golden-plover-non-breeding-2.jpg"
@@ -3945,8 +3945,8 @@
 			"date": "23-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-green-magpie.jpg"
@@ -3960,8 +3960,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-crested-pochard-male.jpg"
@@ -3981,8 +3981,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-crested-pochard-female.jpg"
@@ -3996,8 +3996,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-winged-teal-female.jpg"
@@ -4011,8 +4011,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-winged-teal-male.jpg"
@@ -4026,8 +4026,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/falcated-duck-male.jpg"
@@ -4041,8 +4041,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/great-crested-grebe.jpg"
@@ -4064,8 +4064,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bank-swallow.jpg"
@@ -4078,8 +4078,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/river-lapwing.jpg"
@@ -4095,8 +4095,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ruddy-shelduck-2.jpg"
@@ -4109,8 +4109,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/northern-lapwing.jpg"
@@ -4130,8 +4130,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-wigeon-male.jpg"
@@ -4145,8 +4145,8 @@
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tufted-duck-male.jpg"
@@ -4159,8 +4159,8 @@
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-yellownape.jpg"
@@ -4173,8 +4173,8 @@
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blyths-shrike-babbler.jpg"
@@ -4187,8 +4187,8 @@
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/nepal-fulvetta.jpg"
@@ -4201,8 +4201,8 @@
 			"date": "22-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-winged-minla.jpg"
@@ -4219,8 +4219,8 @@
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-headed-trogon-female.jpg"
@@ -4233,8 +4233,8 @@
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-browed-scimitar-babbler.jpg"
@@ -4247,8 +4247,8 @@
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-forktail.jpg"
@@ -4262,8 +4262,8 @@
 			"date": "22-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/maroon-oriole-female.jpg"
@@ -4277,8 +4277,8 @@
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-tree-sparrow-male.jpg"
@@ -4292,8 +4292,8 @@
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-bellied-nuthatch-female.jpg"
@@ -4306,8 +4306,8 @@
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-pied-flycatcher.jpg"
@@ -4321,8 +4321,8 @@
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/orange-bellied-leafbird-male.jpg"
@@ -4336,8 +4336,8 @@
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/long-tailed-minivet-male.jpg"
@@ -4350,8 +4350,8 @@
 			"date": "20-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-chinned-yuhina.jpg"
@@ -4364,8 +4364,8 @@
 			"date": "20-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-bellied-eagle.jpg"
@@ -4378,8 +4378,8 @@
 			"date": "19-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/collared-falconet.jpg"
@@ -4392,8 +4392,8 @@
 			"date": "19-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/mountain-imperial-pigeon.jpg"
@@ -4406,8 +4406,8 @@
 			"date": "19-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-crested-bulbul.jpg"
@@ -4419,8 +4419,8 @@
 			"species": "white-throated-fantail",
 			"date": "09-12-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-throated-fantail-2.jpg"
@@ -4436,8 +4436,8 @@
 			"date": "20-11-2021",
 			"place": "Chintamani Kar Bird Sanctuary",
 			"city": "Kolkata",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lineated-barbet.jpg"
@@ -4449,8 +4449,8 @@
 			"species": "spotted-dove",
 			"date": "12-11-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spotted-dove.jpg"
@@ -4462,8 +4462,8 @@
 			"species": "brown-winged-kingfisher",
 			"date": "06-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-winged-kingfisher.jpg"
@@ -4487,8 +4487,8 @@
 			"species": "black-capped-kingfisher",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-capped-kingfisher.jpg"
@@ -4504,8 +4504,8 @@
 			"gender": "F",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fulvous-breasted-woodpecker-female.jpg"
@@ -4518,8 +4518,8 @@
 			"gender": "M",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fulvous-breasted-woodpecker-male.jpg"
@@ -4531,8 +4531,8 @@
 			"species": "collared-kingfisher",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/collared-kingfisher.jpg"
@@ -4553,8 +4553,8 @@
 			"species": "paddyfield-pipit",
 			"date": "05-11-2021",
 			"place": "Pentha Beach",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/paddyfield-pipit-2.jpg"
@@ -4566,8 +4566,8 @@
 			"species": "white-bellied-sea-eagle",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-bellied-sea-eagle.jpg"
@@ -4585,8 +4585,8 @@
 			"species": "spotted-owlet",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spotted-owlet-2.jpg"
@@ -4598,8 +4598,8 @@
 			"species": "common-greenshank",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-greenshank.jpg"
@@ -4611,8 +4611,8 @@
 			"species": "common-sandpiper",
 			"date": "04-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-sandpiper.jpg"
@@ -4624,8 +4624,8 @@
 			"species": "painted-stork",
 			"date": "04-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/painted-stork-2.jpg"
@@ -4640,8 +4640,8 @@
 			"species": "kentish-plover",
 			"date": "04-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/kentish-plover.jpg"
@@ -4654,8 +4654,8 @@
 			"gender": "M",
 			"date": "04-11-2021",
 			"place": "Pentha Beach",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-crowned-sparrow-lark-male.jpg"
@@ -4668,8 +4668,8 @@
 			"gender": "F",
 			"date": "04-11-2021",
 			"place": "Pentha Beach",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-crowned-sparrow-lark-female.jpg"
@@ -4681,8 +4681,8 @@
 			"species": "eurasian-curlew",
 			"date": "04-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-curlew-2.jpg"
@@ -4697,8 +4697,8 @@
 			"species": "barn-owl",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/barn-owl.jpg"
@@ -4717,8 +4717,8 @@
 			"age": "Juvenile",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-crowned-night-heron-juvenile.jpg"
@@ -4730,8 +4730,8 @@
 			"species": "striated-heron",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/striated-heron.jpg"
@@ -4743,8 +4743,8 @@
 			"species": "pied-avocet",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pied-avocet.jpg"
@@ -4760,8 +4760,8 @@
 			"plumage": "Non-Breeding",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pacific-golden-plover-non-breeding.jpg"
@@ -4774,8 +4774,8 @@
 			"gender": "F",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cotton-pygmy-goose-female.jpg"
@@ -4788,8 +4788,8 @@
 			"plumage": "Non-Breeding",
 			"date": "03-11-2021",
 			"place": "Pentha Beach",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pallas-gull-non-breeding.jpg"
@@ -4801,8 +4801,8 @@
 			"species": "green-billed-malkoha",
 			"date": "02-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-billed-malkoha.jpg"
@@ -4815,8 +4815,8 @@
 			"gender": "F",
 			"date": "02-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/taiga-flycatcher-female.jpg"
@@ -4828,8 +4828,8 @@
 			"species": "eurasian-whimbrel",
 			"date": "01-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-whimbrel.jpg"
@@ -4842,8 +4842,8 @@
 			"gender": "F",
 			"date": "01-11-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-naped-monarch-female.jpg"
@@ -4855,8 +4855,8 @@
 			"species": "black-drongo",
 			"date": "31-10-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-drongo-2.jpg"
@@ -4869,8 +4869,8 @@
 			"gender": "F",
 			"date": "31-10-2021",
 			"place": "Bhitarkanika National Park",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-cuckoo-shrike-female.jpg"
@@ -4882,8 +4882,8 @@
 			"species": "eurasian-magpie",
 			"date": "20-10-2021",
 			"place": "Leh",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-magpie.jpg"
@@ -4898,8 +4898,8 @@
 			"species": "chukar",
 			"date": "20-10-2021",
 			"place": "Nubra Valley",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chukar.jpg"
@@ -4912,8 +4912,8 @@
 			"plumage": "Non-Breeding",
 			"date": "20-10-2021",
 			"place": "Pangong Tso",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-headed-gull-non-breeding.jpg"
@@ -4925,8 +4925,8 @@
 			"species": "alpine-chough",
 			"date": "20-10-2021",
 			"place": "Nubra Valley",
-			"state": "LA",
-			"country": "IN",
+			"state": "Ladakh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/alpine-chough.jpg"
@@ -4938,8 +4938,8 @@
 			"species": "streaked-laughingthrush",
 			"date": "19-10-2021",
 			"place": "Pahelgam",
-			"state": "JK",
-			"country": "IN",
+			"state": "Jammu & Kashmir",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/streaked-laughingthrush-2.jpg"
@@ -4952,8 +4952,8 @@
 			"age": "Juvenile",
 			"date": "19-10-2021",
 			"place": "Dal Lake",
-			"state": "JK",
-			"country": "IN",
+			"state": "Jammu & Kashmir",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-moorhen-juvenile.jpg"
@@ -4966,8 +4966,8 @@
 			"gender": "F",
 			"date": "24-07-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/purple-sunbird-female.jpg"
@@ -4979,8 +4979,8 @@
 			"species": "scaly-breasted-munia",
 			"date": "10-07-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/scaly-breasted-munia-3.jpg"
@@ -4995,8 +4995,8 @@
 			"species": "red-vented-bulbul",
 			"date": "10-07-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"variation": "Black-cheeked",
 			"media": [
 				{
@@ -5009,8 +5009,8 @@
 			"species": "red-vented-bulbul",
 			"date": "10-07-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"variation": "Brown-cheeked",
 			"media": [
 				{
@@ -5023,8 +5023,8 @@
 			"species": "house-crow",
 			"date": "10-07-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/house-crow-2.jpg"
@@ -5036,8 +5036,8 @@
 			"species": "brown-shrike",
 			"date": "28-04-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-shrike.jpg"
@@ -5049,8 +5049,8 @@
 			"species": "black-kite",
 			"date": "28-04-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-kite-3.jpg"
@@ -5063,8 +5063,8 @@
 			"gender": "F",
 			"date": "16-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-winged-blackbird-female.jpg"
@@ -5077,8 +5077,8 @@
 			"gender": "F",
 			"date": "15-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-fronted-woodpecker-female.jpg"
@@ -5091,8 +5091,8 @@
 			"gender": "F",
 			"date": "15-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-throated-thrush-female.jpg"
@@ -5104,8 +5104,8 @@
 			"species": "great-barbet",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/great-barbet.jpg"
@@ -5123,8 +5123,8 @@
 			"species": "bar-tailed-treecreeper",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bar-tailed-treecreeper.jpg"
@@ -5136,8 +5136,8 @@
 			"species": "black-throated-bushtit",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-throated-bushtit.jpg"
@@ -5149,8 +5149,8 @@
 			"species": "grey-wagtail",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-wagtail.jpg"
@@ -5163,8 +5163,8 @@
 			"gender": "M",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-fronted-woodpecker-male.jpg"
@@ -5176,8 +5176,8 @@
 			"species": "eurasian-jay",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-jay.jpg"
@@ -5189,8 +5189,8 @@
 			"species": "black-headed-jay",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-jay-2.jpg"
@@ -5205,8 +5205,8 @@
 			"species": "chestnut-eared-bunting",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-eared-bunting.jpg"
@@ -5218,8 +5218,8 @@
 			"species": "jungle-babbler",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/jungle-babbler-2.jpg"
@@ -5232,8 +5232,8 @@
 			"gender": "M",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-winged-blackbird-male.jpg"
@@ -5248,8 +5248,8 @@
 			"species": "oriental-turtle-dove",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-turtle-dove.jpg"
@@ -5261,8 +5261,8 @@
 			"species": "common-hoopoe",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-hoopoe-2.jpg"
@@ -5275,8 +5275,8 @@
 			"gender": "F",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/siberian-stonechat-female.jpg"
@@ -5289,8 +5289,8 @@
 			"gender": "M",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/siberian-stonechat-male.jpg"
@@ -5302,8 +5302,8 @@
 			"species": "rufous-bellied-niltava",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"gender": "M",
 			"media": [
 				{
@@ -5316,8 +5316,8 @@
 			"species": "indian-grey-hornbill",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-grey-hornbill.jpg"
@@ -5329,8 +5329,8 @@
 			"species": "collared-owlet",
 			"date": "11-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/collared-owlet.jpg"
@@ -5343,8 +5343,8 @@
 			"gender": "F",
 			"date": "10-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/house-sparrow-female-2.jpg"
@@ -5357,8 +5357,8 @@
 			"gender": "F",
 			"date": "08-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/kalij-pheasant-female.jpg"
@@ -5370,8 +5370,8 @@
 			"species": "humes-leaf-warbler",
 			"date": "07-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/humes-leaf-warbler-2.jpg"
@@ -5387,8 +5387,8 @@
 			"gender": "M",
 			"date": "07-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/kalij-pheasant-male.jpg"
@@ -5400,8 +5400,8 @@
 			"species": "lemon-rumped-warbler",
 			"date": "07-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lemon-rumped-warbler.jpg"
@@ -5413,8 +5413,8 @@
 			"species": "rock-bunting",
 			"date": "05-04-2021",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rock-bunting.jpg"
@@ -5426,8 +5426,8 @@
 			"species": "fire-capped-tit",
 			"date": "05-04-2021",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fire-capped-tit.jpg"
@@ -5439,8 +5439,8 @@
 			"species": "indian-white-eye",
 			"date": "05-04-2021",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-white-eye-2.jpg"
@@ -5453,8 +5453,8 @@
 			"gender": "F",
 			"date": "04-04-2021",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-bushchat-female.jpg"
@@ -5469,8 +5469,8 @@
 			"species": "grey-treepie",
 			"date": "04-04-2021",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-treepie.jpg"
@@ -5482,8 +5482,8 @@
 			"species": "spotted-forktail",
 			"date": "04-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spotted-forktail.jpg"
@@ -5495,8 +5495,8 @@
 			"species": "himalayan-prinia",
 			"date": "03-04-2021",
 			"place": "Tirthan Valley",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-prinia.jpg"
@@ -5509,8 +5509,8 @@
 			"gender": "F",
 			"date": "03-04-2021",
 			"place": "Kareri",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-throated-blue-flycatcher-female.jpg"
@@ -5523,8 +5523,8 @@
 			"gender": "F",
 			"date": "01-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pink-browed-rosefinch-female.jpg"
@@ -5540,8 +5540,8 @@
 			"gender": "M",
 			"date": "01-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-rosefinch-male.jpg"
@@ -5557,8 +5557,8 @@
 			"gender": "F",
 			"date": "01-04-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-rosefinch-female.jpg"
@@ -5571,8 +5571,8 @@
 			"gender": "M",
 			"date": "31-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-rosefinch-male-2.jpg"
@@ -5584,8 +5584,8 @@
 			"species": "scaly-bellied-woodpecker",
 			"date": "29-03-2021",
 			"city": "Manali",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/scaly-bellied-woodpecker.jpg"
@@ -5597,8 +5597,8 @@
 			"species": "brown-dipper",
 			"date": "28-03-2021",
 			"city": "Manali",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-dipper.jpg"
@@ -5611,8 +5611,8 @@
 			"gender": "F",
 			"date": "28-03-2021",
 			"city": "Manali",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ultramarine-flycatcher-female.jpg"
@@ -5625,8 +5625,8 @@
 			"gender": "M",
 			"date": "28-03-2021",
 			"city": "Manali",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ultramarine-flycatcher-male.jpg"
@@ -5638,8 +5638,8 @@
 			"species": "variegated-laughingthrush",
 			"date": "27-03-2021",
 			"city": "Manali",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/variegated-laughingthrush.jpg"
@@ -5651,8 +5651,8 @@
 			"species": "coal-tit",
 			"date": "26-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/coal-tit-2.jpg"
@@ -5667,8 +5667,8 @@
 			"species": "large-billed-crow",
 			"date": "26-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/large-billed-crow.jpg"
@@ -5680,8 +5680,8 @@
 			"species": "egyptian-vulture",
 			"date": "22-03-2021",
 			"place": "Dharamshala",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/egyptian-vulture-4.jpg"
@@ -5697,8 +5697,8 @@
 			"gender": "M",
 			"date": "22-03-2021",
 			"place": "Dharamshala",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plumbeous-water-redstart-male.jpg"
@@ -5711,8 +5711,8 @@
 			"gender": "M",
 			"date": "22-03-2021",
 			"place": "Dalhousie",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pied-bushchat-male.jpg"
@@ -5725,8 +5725,8 @@
 			"gender": "M",
 			"date": "22-03-2021",
 			"place": "Dalhousie",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-bushchat-male-3.jpg"
@@ -5745,8 +5745,8 @@
 			"gender": "F",
 			"date": "22-03-2021",
 			"place": "Dalhousie",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-bellied-rock-thrush-female.jpg"
@@ -5759,8 +5759,8 @@
 			"gender": "M",
 			"date": "22-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-bellied-rock-thrush-male.jpg"
@@ -5772,8 +5772,8 @@
 			"species": "black-bulbul",
 			"date": "17-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-bulbul.jpg"
@@ -5786,8 +5786,8 @@
 			"gender": "F",
 			"date": "16-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-chinned-minivet-female.jpg"
@@ -5799,8 +5799,8 @@
 			"species": "bar-headed-goose",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bar-headed-goose.jpg"
@@ -5815,8 +5815,8 @@
 			"species": "kentish-plover",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/kentish-plover-2.jpg"
@@ -5829,8 +5829,8 @@
 			"gender": "M",
 			"date": "15-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/alexandrine-parakeet.jpg"
@@ -5843,8 +5843,8 @@
 			"subspecies": "m. a. personata",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-wagtail-personata.jpg"
@@ -5856,8 +5856,8 @@
 			"species": "greylag-goose",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greylag-goose-2.jpg"
@@ -5869,8 +5869,8 @@
 			"species": "verditer-flycatcher",
 			"date": "15-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/verditer-flycatcher-2.jpg"
@@ -5885,8 +5885,8 @@
 			"species": "green-backed-tit",
 			"date": "14-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-backed-tit.jpg"
@@ -5898,8 +5898,8 @@
 			"species": "small-pratincole",
 			"date": "13-03-2021",
 			"place": "Pong Lake",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/small-pratincole.jpg"
@@ -5912,8 +5912,8 @@
 			"gender": "F",
 			"date": "09-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/russet-sparrow-female.jpg"
@@ -5925,8 +5925,8 @@
 			"species": "slaty-headed-parakeet",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/slaty-headed-parakeet.jpg"
@@ -5939,8 +5939,8 @@
 			"gender": "M",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/russet-sparrow-male.jpg"
@@ -5953,8 +5953,8 @@
 			"gender": "F",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-fronted-redstart-female.jpg"
@@ -5966,8 +5966,8 @@
 			"species": "blue-whistling-thrush",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-whistling-thrush.jpg"
@@ -5979,8 +5979,8 @@
 			"species": "grey-hooded-warbler",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-hooded-warbler.jpg"
@@ -5992,8 +5992,8 @@
 			"species": "white-capped-redstart",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-capped-redstart.jpg"
@@ -6005,8 +6005,8 @@
 			"species": "black-kite",
 			"date": "03-03-2021",
 			"place": "Naddi",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-kite-2.jpg"
@@ -6018,8 +6018,8 @@
 			"species": "himalayan-bulbul",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-bulbul-2.jpg"
@@ -6035,8 +6035,8 @@
 			"gender": "M",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-headed-woodpecker-male.jpg"
@@ -6048,8 +6048,8 @@
 			"species": "streaked-laughingthrush",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/streaked-laughingthrush.jpg"
@@ -6061,8 +6061,8 @@
 			"species": "cinereous-tit",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cinereous-tit-2.jpg"
@@ -6078,8 +6078,8 @@
 			"gender": "M",
 			"date": "01-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-bluetail-male.jpg"
@@ -6091,8 +6091,8 @@
 			"species": "yellow-billed-blue-magpie",
 			"date": "01-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-billed-blue-magpie.jpg"
@@ -6107,8 +6107,8 @@
 			"species": "chestnut-crowned-laughingthrush",
 			"date": "01-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-crowned-laughingthrush.jpg"
@@ -6127,8 +6127,8 @@
 			"gender": "F",
 			"date": "01-03-2021",
 			"city": "Mcleodganj",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-bluetail-female.jpg"
@@ -6141,8 +6141,8 @@
 			"subspecies": "m. a. leucopsis",
 			"date": "05-01-2021",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-wagtail-leucopis.jpg"
@@ -6154,8 +6154,8 @@
 			"species": "hair-crested-drongo",
 			"date": "02-01-2021",
 			"place": "Buxa",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/hair-crested-drongo.jpg"
@@ -6168,8 +6168,8 @@
 			"date": "31-12-2020",
 			"place": "Lava",
 			"city": "Kalimpong",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/slaty-backed-forktail.jpg"
@@ -6182,8 +6182,8 @@
 			"date": "30-12-2020",
 			"place": "Lava",
 			"city": "Kalimpong",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-vented-yuhina.jpg"
@@ -6200,8 +6200,8 @@
 			"date": "30-12-2020",
 			"place": "Lava",
 			"city": "Kalimpong",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plumbeous-water-redstart-female.jpg"
@@ -6214,8 +6214,8 @@
 			"date": "30-12-2020",
 			"place": "Lava",
 			"city": "Kalimpong",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-sibia.jpg"
@@ -6227,8 +6227,8 @@
 			"species": "crested-serpent-eagle",
 			"date": "30-12-2020",
 			"place": "Chapramari National Park",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/crested-serpent-eagle.jpg"
@@ -6240,8 +6240,8 @@
 			"species": "green-imperial-pigeon",
 			"date": "30-12-2020",
 			"place": "Chapramari National Park",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-imperial-pigeon-2.jpg"
@@ -6255,8 +6255,8 @@
 			"date": "30-12-2020",
 			"place": "Lava",
 			"city": "Kalimpong",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plumbeous-water-redstart-female-2.jpg"
@@ -6268,8 +6268,8 @@
 			"species": "blue-throated-barbet",
 			"date": "20-12-2020",
 			"place": "Chapramari National Park",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-throated-barbet.jpg"
@@ -6281,8 +6281,8 @@
 			"species": "marsh-sandpiper",
 			"date": "20-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/marsh-sandpiper.jpg"
@@ -6294,8 +6294,8 @@
 			"species": "great-egret",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/great-egret.jpg"
@@ -6307,8 +6307,8 @@
 			"species": "glossy-ibis",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/glossy-ibis.jpg"
@@ -6320,8 +6320,8 @@
 			"species": "citrine-wagtail",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/citrine-wagtail.jpg"
@@ -6333,8 +6333,8 @@
 			"species": "pied-kingfisher",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pied-kingfisher.jpg"
@@ -6347,8 +6347,8 @@
 			"plumage": "Non-Breeding",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/whiskered-tern-non-breeding.jpg"
@@ -6361,8 +6361,8 @@
 			"gender": "M",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/northern-pintail-male.jpg"
@@ -6374,8 +6374,8 @@
 			"species": "black-winged-stilt",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-winged-stilt-2.jpg"
@@ -6387,8 +6387,8 @@
 			"species": "cinnamon-bittern",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cinnamon-bittern.jpg"
@@ -6402,8 +6402,8 @@
 			"variation": "White",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-paradise-flycatcher-white-male.jpg"
@@ -6416,8 +6416,8 @@
 			"species": "common-snipe",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-snipe.jpg"
@@ -6429,8 +6429,8 @@
 			"species": "ruddy-shelduck",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ruddy-shelduck.jpg"
@@ -6442,8 +6442,8 @@
 			"species": "black-tailed-godwit",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-tailed-godwit.jpg"
@@ -6456,8 +6456,8 @@
 			"gender": "F",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/northern-pintail-female.jpg"
@@ -6469,8 +6469,8 @@
 			"species": "black-headed-ibis",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-ibis-2.jpg"
@@ -6483,8 +6483,8 @@
 			"gender": "F",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/besra-female-2.jpg"
@@ -6498,8 +6498,8 @@
 			"plumage": "Non-Breeding",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/northern-shoveler-non-breeding-male.jpg"
@@ -6511,8 +6511,8 @@
 			"species": "clamorous-reed-warbler",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/clamorous-reed-warbler.jpg"
@@ -6524,8 +6524,8 @@
 			"species": "greylag-goose",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greylag-goose.jpg"
@@ -6537,8 +6537,8 @@
 			"species": "common-redshank",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-redshank.jpg"
@@ -6551,8 +6551,8 @@
 			"gender": "F",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/garganey-female.jpg"
@@ -6566,8 +6566,8 @@
 			"date": "20-11-2020",
 			"place": "Santragachhi Jheel",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-magpie-robin-male-4.jpg"
@@ -6579,8 +6579,8 @@
 			"species": "barn-swallow",
 			"date": "19-10-2020",
 			"place": "Mangalajodi Wetlands",
-			"state": "OR",
-			"country": "IN",
+			"state": "Odisha",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/barn-swallow.jpg"
@@ -6592,8 +6592,8 @@
 			"species": "black-rumped-flameback",
 			"date": "16-08-2020",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-rumped-flameback.jpg"
@@ -6606,8 +6606,8 @@
 			"species": "black-winged-kite",
 			"date": "14-02-2020",
 			"city": "Kavaratti",
-			"state": "LD",
-			"country": "IN",
+			"state": "Lakshadweep Islands",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-winged-kite-2.jpg"
@@ -6619,8 +6619,8 @@
 			"species": "lesser-crested-tern",
 			"date": "14-02-2020",
 			"place": "Kochi",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lesser-crested-tern.jpg"
@@ -6633,8 +6633,8 @@
 			"gender": "M",
 			"date": "19-01-2020",
 			"place": "Kumarakom",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cotton-pygmy-goose-male.jpg"
@@ -6648,8 +6648,8 @@
 			"variation": "Rufous",
 			"date": "19-01-2020",
 			"place": "Kumarakom",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-paradise-flycatcher-rufous-male.jpg"
@@ -6661,8 +6661,8 @@
 			"species": "yellow-throated-sparrow",
 			"date": "19-12-2019",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-throated-sparrow.jpg"
@@ -6674,8 +6674,8 @@
 			"species": "chestnut-tailed-starling",
 			"date": "30-11-2019",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-tailed-starling.jpg"
@@ -6691,8 +6691,8 @@
 			"date": "19-10-2019",
 			"place": "Gingee Fort",
 			"city": "Chengalpattu",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-winged-kite.jpg"
@@ -6705,8 +6705,8 @@
 			"gender": "M",
 			"date": "17-08-2019",
 			"place": "Ghangaria",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pink-browed-rosefinch-male.jpg"
@@ -6718,8 +6718,8 @@
 			"species": "stripe-throated-yuhina",
 			"date": "17-08-2019",
 			"place": "Ghangaria",
-			"state": "UK",
-			"country": "IN",
+			"state": "Uttarakhand",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/stripe-throated-yuhina.jpg"
@@ -6731,8 +6731,8 @@
 			"species": "paddyfield-pipit",
 			"date": "04-07-2019",
 			"place": "Mahabalipuram",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/paddyfield-pipit.jpg"
@@ -6745,8 +6745,8 @@
 			"gender": "M",
 			"date": "28-02-2019",
 			"city": "Manali",
-			"state": "HP",
-			"country": "IN",
+			"state": "Himachal Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/russet-sparrow-male-2.jpg"
@@ -6758,8 +6758,8 @@
 			"species": "yellow-browed-bulbul",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-browed-bulbul-2.jpg"
@@ -6772,8 +6772,8 @@
 			"gender": "F",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-oriole-female.jpg"
@@ -6785,8 +6785,8 @@
 			"species": "oriental-bay-owl",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-bay-owl.jpg"
@@ -6798,8 +6798,8 @@
 			"species": "dark-fronted-babbler",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/dark-fronted-babbler.jpg"
@@ -6812,8 +6812,8 @@
 			"gender": "M",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-throated-blue-flycatcher-male.jpg"
@@ -6826,8 +6826,8 @@
 			"gender": "M",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tickells-blue-flycatcher-3.jpg"
@@ -6842,8 +6842,8 @@
 			"species": "puff-throated-babbler",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/puff-throated-babbler.jpg"
@@ -6855,8 +6855,8 @@
 			"species": "great-eared-nightjar",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/great-eared-nightjar.jpg"
@@ -6868,8 +6868,8 @@
 			"species": "white-bellied-woodpecker",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-bellied-woodpecker.jpg"
@@ -6881,8 +6881,8 @@
 			"species": "heart-spotted-woodpecker",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/heart-spotted-woodpecker.jpg"
@@ -6897,8 +6897,8 @@
 			"species": "blue-tailed-bee-eater",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-tailed-bee-eater.jpg"
@@ -6911,8 +6911,8 @@
 			"gender": "M",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/orange-minivet-male.jpg"
@@ -6924,8 +6924,8 @@
 			"species": "orange-headed-thrush",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"variation": "White-throated",
 			"media": [
 				{
@@ -6945,8 +6945,8 @@
 			"gender": "M",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-grey-hornbill-male.jpg"
@@ -6958,8 +6958,8 @@
 			"species": "jungle-owlet",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/jungle-owlet.jpg"
@@ -6971,8 +6971,8 @@
 			"species": "malabar-woodshrike",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-woodshrike.jpg"
@@ -6987,8 +6987,8 @@
 			"species": "green-imperial-pigeon",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-imperial-pigeon.jpg"
@@ -7001,8 +7001,8 @@
 			"gender": "F",
 			"date": "22-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plum-headed-parakeet-female.jpg"
@@ -7014,8 +7014,8 @@
 			"species": "stork-billed-kingfisher",
 			"date": "21-02-2019",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/stork-billed-kingfisher.jpg"
@@ -7027,8 +7027,8 @@
 			"species": "red-whiskered-bulbul",
 			"date": "20-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-whiskered-bulbul-2.jpg"
@@ -7040,8 +7040,8 @@
 			"species": "golden-fronted-leafbird",
 			"date": "20-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-fronted-leafbird-male-2.jpg"
@@ -7053,8 +7053,8 @@
 			"species": "ashy-woodswallow",
 			"date": "20-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-woodswallow.jpg"
@@ -7066,8 +7066,8 @@
 			"species": "river-tern",
 			"date": "20-02-2019",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/river-tern.jpg"
@@ -7081,8 +7081,8 @@
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bronze-winged-jacana-male.jpg"
@@ -7096,8 +7096,8 @@
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bronze-winged-jacana-female.jpg"
@@ -7110,8 +7110,8 @@
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-moorhen.jpg"
@@ -7124,8 +7124,8 @@
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spotted-owlet.jpg"
@@ -7137,8 +7137,8 @@
 			"species": "green-bee-eater",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-bee-eater-2.jpg"
@@ -7150,8 +7150,8 @@
 			"species": "common-kingfisher",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-kingfisher-3.jpg"
@@ -7163,8 +7163,8 @@
 			"species": "hoary-throated-barwing",
 			"date": "24-12-2018",
 			"place": "Lamaydhura",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/hoary-throated-barwing.jpg"
@@ -7176,8 +7176,8 @@
 			"species": "blue-robin",
 			"date": "24-12-2018",
 			"place": "Lamaydhura",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-robin.jpg"
@@ -7189,8 +7189,8 @@
 			"species": "rufous-vented-tit",
 			"date": "24-12-2018",
 			"place": "Bikhaybhanjyang",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-vented-tit.jpg"
@@ -7202,8 +7202,8 @@
 			"species": "black-faced-laughingthrush",
 			"date": "24-12-2018",
 			"place": "Sandakphu",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-faced-laughingthrush.jpg"
@@ -7216,8 +7216,8 @@
 			"gender": "M",
 			"date": "24-12-2018",
 			"place": "Molley",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-fronted-redstart-male.jpg"
@@ -7229,8 +7229,8 @@
 			"species": "white-throated-redstart",
 			"date": "24-12-2018",
 			"place": "Molley",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-throated-redstart.jpg"
@@ -7242,8 +7242,8 @@
 			"species": "rufous-breasted-accentor",
 			"date": "24-12-2018",
 			"place": "Molley",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-breasted-accentor.jpg"
@@ -7255,8 +7255,8 @@
 			"species": "black-stork",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-stork.jpg"
@@ -7268,8 +7268,8 @@
 			"species": "wooly-necked-stork",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/wooly-necked-stork-2.jpg"
@@ -7281,8 +7281,8 @@
 			"species": "black-rumped-flameback",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-rumped-flameback-2.jpg"
@@ -7295,8 +7295,8 @@
 			"species": "brown-fish-owl",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-fish-owl.jpg"
@@ -7308,8 +7308,8 @@
 			"species": "collared-scops-owl",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/collared-scops-owl.jpg"
@@ -7321,8 +7321,8 @@
 			"species": "verditer-flycatcher",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/verditer-flycatcher.jpg"
@@ -7334,8 +7334,8 @@
 			"species": "white-bellied-drongo",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-bellied-drongo.jpg"
@@ -7347,8 +7347,8 @@
 			"species": "common-hill-myna",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-hill-myna.jpg"
@@ -7360,8 +7360,8 @@
 			"species": "oriental-darter",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-darter-2.jpg"
@@ -7376,8 +7376,8 @@
 			"species": "malabar-starling",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-starling-2.jpg"
@@ -7392,8 +7392,8 @@
 			"species": "oriental-dollarbird",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-dollarbird-2.jpg"
@@ -7408,8 +7408,8 @@
 			"species": "greater-racket-tailed-drongo",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-racket-tailed-drongo-2.jpg"
@@ -7422,8 +7422,8 @@
 			"gender": "F",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-parakeet-female.jpg"
@@ -7435,8 +7435,8 @@
 			"species": "flame-throated-bulbul",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/flame-throated-bulbul.jpg"
@@ -7448,8 +7448,8 @@
 			"species": "crimson-backed-sunbird",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/crimson-backed-sunbird.jpg"
@@ -7462,8 +7462,8 @@
 			"gender": "M",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-naped-oriole-male.jpg"
@@ -7475,8 +7475,8 @@
 			"species": "white-bellied-treepie",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-bellied-treepie-2.jpg"
@@ -7492,8 +7492,8 @@
 			"gender": "F",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-grey-hornbill-female.jpg"
@@ -7506,8 +7506,8 @@
 			"gender": "F",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ceylon-frogmouth-female-2.jpg"
@@ -7525,8 +7525,8 @@
 			"species": "greater-flameback",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-flameback-2.jpg"
@@ -7538,8 +7538,8 @@
 			"species": "asian-brown-flycatcher",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/asian-brown-flycatcher.jpg"
@@ -7551,8 +7551,8 @@
 			"species": "vernal-hanging-parrot",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/vernal-hanging-parrot.jpg"
@@ -7565,8 +7565,8 @@
 			"gender": "M",
 			"date": "19-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ceylon-frogmouth-male.jpg"
@@ -7578,8 +7578,8 @@
 			"species": "fork-tailed-drongo-cuckoo",
 			"date": "11-11-2018",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fork-tailed-drongo-cuckoo.jpg"
@@ -7591,8 +7591,8 @@
 			"species": "white-cheeked-barbet",
 			"date": "08-05-2018",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-cheeked-barbet.jpg"
@@ -7604,8 +7604,8 @@
 			"species": "plain-prinia",
 			"date": "08-05-2018",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plain-prinia-2.jpg"
@@ -7617,8 +7617,8 @@
 			"species": "malabar-whistling-thrush",
 			"date": "07-05-2018",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-whistling-thrush.jpg"
@@ -7631,8 +7631,8 @@
 			"gender": "F",
 			"date": "07-05-2018",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/orange-minivet-female.jpg"
@@ -7644,8 +7644,8 @@
 			"species": "yellow-browed-bulbul",
 			"date": "07-05-2018",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-browed-bulbul.jpg"
@@ -7658,8 +7658,8 @@
 			"age": "Juvenile",
 			"date": "29-04-2018",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brahminy-kite-juvenile.jpg"
@@ -7671,8 +7671,8 @@
 			"species": "indian-white-eye",
 			"date": "16-04-2018",
 			"place": "Kodachadri",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-white-eye.jpg"
@@ -7684,8 +7684,8 @@
 			"species": "black-eagle",
 			"date": "16-04-2018",
 			"place": "Kodachadri",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-eagle.jpg"
@@ -7698,8 +7698,8 @@
 			"gender": "F",
 			"date": "08-04-2018",
 			"place": "Kancheepuram",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rose-ringed-parakeet-female.jpg"
@@ -7711,8 +7711,8 @@
 			"species": "eurasian-collared-dove",
 			"date": "15-03-2018",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/eurasian-collared-dove.jpg"
@@ -7724,8 +7724,8 @@
 			"species": "yellow-footed-green-pigeon",
 			"date": "15-03-2018",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-footed-green-pigeon.jpg"
@@ -7737,8 +7737,8 @@
 			"species": "pied-myna",
 			"date": "14-03-2018",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pied-myna.jpg"
@@ -7751,8 +7751,8 @@
 			"gender": "M",
 			"date": "14-03-2018",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/purple-sunbird-male.jpg"
@@ -7766,8 +7766,8 @@
 			"date": "04-03-2018",
 			"city": "Chennai",
 			"place": "Kasimedu Fishing Harbour",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-gull-non-breeding.jpg"
@@ -7780,8 +7780,8 @@
 			"date": "28-01-2018",
 			"place": "Pallikaranai Marsh",
 			"city": "Chennai",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-winged-stilt.jpg"
@@ -7796,8 +7796,8 @@
 			"date": "16-01-2018",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/shikra-juvenile-female.jpg"
@@ -7809,8 +7809,8 @@
 			"species": "indian-spot-billed-duck",
 			"date": "26-12-2017",
 			"place": "Bandipur National Park",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-spot-billed-duck-2.jpg"
@@ -7822,8 +7822,8 @@
 			"species": "wooly-necked-stork",
 			"date": "26-12-2017",
 			"place": "Bandipur National Park",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/wooly-necked-stork.jpg"
@@ -7835,8 +7835,8 @@
 			"species": "white-browed-wagtail",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-browed-wagtail.jpg"
@@ -7848,8 +7848,8 @@
 			"species": "large-billed-crow",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/large-billed-crow-2.jpg"
@@ -7861,8 +7861,8 @@
 			"species": "spot-breasted-fantail",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spot-breasted-fantail.jpg"
@@ -7874,8 +7874,8 @@
 			"species": "indian-cormorant",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-cormorant.jpg"
@@ -7887,8 +7887,8 @@
 			"species": "spoonbill",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spoonbill.jpg"
@@ -7900,8 +7900,8 @@
 			"species": "great-thick-knee",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/stone-plover.jpg"
@@ -7915,8 +7915,8 @@
 			"variation": "Rufous",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-paradise-flycatcher-rufous-female.jpg"
@@ -7928,8 +7928,8 @@
 			"species": "egyptian-vulture",
 			"date": "26-12-2017",
 			"place": "Mysore",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/egyptian-vulture.jpg"
@@ -7944,8 +7944,8 @@
 			"species": "black-kite",
 			"date": "26-12-2017",
 			"place": "Mysore",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-kite.jpg"
@@ -7957,8 +7957,8 @@
 			"species": "brahminy-kite",
 			"date": "26-12-2017",
 			"place": "Mysore",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/brahminy-kite.jpg"
@@ -7971,8 +7971,8 @@
 			"gender": "M",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/tickells-blue-flycatcher-2.jpg"
@@ -7987,8 +7987,8 @@
 			"species": "green-bee-eater",
 			"date": "11-12-2017",
 			"place": "Hampi",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/green-bee-eater.jpg"
@@ -8000,8 +8000,8 @@
 			"species": "scaly-breasted-munia",
 			"date": "11-12-2017",
 			"place": "Hampi",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/scaly-breasted-munia.jpg"
@@ -8013,8 +8013,8 @@
 			"species": "coppersmith-barbet",
 			"date": "11-12-2017",
 			"place": "Hampi",
-			"state": "KA",
-			"country": "IN",
+			"state": "Karnataka",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/coppersmith-barbet.jpg"
@@ -8027,8 +8027,8 @@
 			"gender": "M",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-oriole-male.jpg"
@@ -8041,8 +8041,8 @@
 			"species": "grey-heron",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-heron.jpg"
@@ -8055,8 +8055,8 @@
 			"species": "black-crowned-night-heron",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-crowned-night-heron.jpg"
@@ -8072,8 +8072,8 @@
 			"species": "oriental-darter",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-darter.jpg"
@@ -8086,8 +8086,8 @@
 			"species": "spot-billed-pelican",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/spot-billed-pelican.jpg"
@@ -8106,8 +8106,8 @@
 			"species": "intermediate-egret",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/intermediate-egret.jpg"
@@ -8121,8 +8121,8 @@
 			"date": "19-11-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-breasted-waterhen.jpg"
@@ -8134,8 +8134,8 @@
 			"species": "little-cormorant",
 			"date": "09-10-2017",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-cormorant.jpg"
@@ -8147,8 +8147,8 @@
 			"species": "common-kingfisher",
 			"date": "09-10-2017",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-kingfisher.jpg"
@@ -8161,8 +8161,8 @@
 			"gender": "F",
 			"date": "09-10-2017",
 			"place": "Thattekad Bird Sanctuary",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-peafowl-female.jpg"
@@ -8175,8 +8175,8 @@
 			"gender": "M",
 			"date": "01-10-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-magpie-robin-male-2.jpg"
@@ -8189,8 +8189,8 @@
 			"gender": "F",
 			"date": "01-10-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-magpie-robin-female-2.jpg"
@@ -8205,8 +8205,8 @@
 			"species": "jungle-babbler",
 			"date": "23-09-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/jungle-babbler.jpg"
@@ -8219,8 +8219,8 @@
 			"gender": "F",
 			"date": "28-08-2017",
 			"place": "Arignar Anna Zoological Park",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/shikra-female.jpg"
@@ -8234,8 +8234,8 @@
 			"date": "20-07-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/purple-rumped-sunbird-male.jpg"
@@ -8255,8 +8255,8 @@
 			"date": "17-06-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/asian-koel-female.jpg"
@@ -8269,8 +8269,8 @@
 			"date": "17-06-2017",
 			"city": "Chennai",
 			"place": "Kattankulathur",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-egret.jpg"
@@ -8284,8 +8284,8 @@
 			"date": "14-06-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/purple-rumped-sunbird-female.jpg"
@@ -8298,8 +8298,8 @@
 			"date": "11-06-2017",
 			"place": "Pallikaranai Marsh",
 			"city": "Chennai",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-flamingo.jpg"
@@ -8318,8 +8318,8 @@
 			"date": "11-06-2017",
 			"place": "Pallikaranai Marsh",
 			"city": "Chennai",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-headed-swamphen.jpg"
@@ -8332,8 +8332,8 @@
 			"date": "11-06-2017",
 			"place": "Pallikaranai Marsh",
 			"city": "Chennai",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-spot-billed-duck.jpg"
@@ -8346,8 +8346,8 @@
 			"date": "11-06-2017",
 			"place": "Pallikaranai Marsh",
 			"city": "Chennai",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/fulvous-whistling-duck.jpg"
@@ -8360,8 +8360,8 @@
 			"date": "11-06-2017",
 			"place": "Pallikaranai Marsh",
 			"city": "Chennai",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/purple-heron.jpg"
@@ -8374,8 +8374,8 @@
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-drongo.jpg"
@@ -8389,8 +8389,8 @@
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lotens-sunbird-female.jpg"
@@ -8403,8 +8403,8 @@
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-prinia.jpg"
@@ -8418,8 +8418,8 @@
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/streaked-weaver-female.jpg"
@@ -8436,8 +8436,8 @@
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plain-prinia.jpg"
@@ -8449,8 +8449,8 @@
 			"species": "red-whiskered-bulbul",
 			"date": "21-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-whiskered-bulbul.jpg"
@@ -8462,8 +8462,8 @@
 			"species": "indian-scimitar-babbler",
 			"date": "21-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-scimitar-babbler.jpg"
@@ -8476,8 +8476,8 @@
 			"variation": "Caniceps",
 			"date": "21-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/long-tailed-shrike.jpg"
@@ -8489,8 +8489,8 @@
 			"species": "red-spurfowl",
 			"date": "21-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-spurfowl.jpg"
@@ -8502,8 +8502,8 @@
 			"species": "chestnut-headed-bee-eater",
 			"date": "20-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/chestnut-headed-bee-eater.jpg"
@@ -8515,8 +8515,8 @@
 			"species": "greater-flameback",
 			"date": "20-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-flameback.jpg"
@@ -8528,8 +8528,8 @@
 			"species": "red-vented-bulbul",
 			"date": "20-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"variation": "Black-cheeked",
 			"media": [
 				{
@@ -8542,8 +8542,8 @@
 			"species": "jungle-myna",
 			"date": "20-05-2017",
 			"city": "Munnar",
-			"state": "KL",
-			"country": "IN",
+			"state": "Kerala",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/jungle-myna.jpg"
@@ -8556,8 +8556,8 @@
 			"date": "17-05-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-myna-2.jpg"
@@ -8570,8 +8570,8 @@
 			"gender": "F",
 			"date": "05-05-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/house-sparrow-female.jpg"
@@ -8584,8 +8584,8 @@
 			"gender": "M",
 			"date": "05-05-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/house-sparrow-male.jpg"
@@ -8597,8 +8597,8 @@
 			"species": "rufous-treepie",
 			"date": "04-05-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rufous-treepie.jpg"
@@ -8610,8 +8610,8 @@
 			"species": "red-vented-bulbul",
 			"date": "04-05-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"variation": "Brown-cheeked",
 			"media": [
 				{
@@ -8624,8 +8624,8 @@
 			"species": "common-tailorbird",
 			"date": "04-05-2017",
 			"city": "Howrah",
-			"state": "WB",
-			"country": "IN",
+			"state": "West Bengal",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-tailorbird.jpg"
@@ -8638,8 +8638,8 @@
 			"gender": "M",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-peafowl-male-2.jpg"
@@ -8658,8 +8658,8 @@
 			"species": "greater-racket-tailed-drongo",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-racket-tailed-drongo.jpg"
@@ -8671,8 +8671,8 @@
 			"species": "white-breasted-kingfisher",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-breasted-kingfisher-2.jpg"
@@ -8684,8 +8684,8 @@
 			"species": "lesser-adjutant",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/lesser-adjutant-stork.jpg"
@@ -8697,8 +8697,8 @@
 			"species": "grey-nightjar",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-nightjar.jpg"
@@ -8711,8 +8711,8 @@
 			"gender": "F",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/besra-female.jpg"
@@ -8725,8 +8725,8 @@
 			"plumage": "Breeding",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pond-heron-breeding.jpg"
@@ -8738,8 +8738,8 @@
 			"species": "white-rumped-vulture",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-rumped-vulture.jpg"
@@ -8751,8 +8751,8 @@
 			"species": "indian-roller",
 			"date": "02-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-roller.jpg"
@@ -8764,8 +8764,8 @@
 			"species": "red-naped-ibis",
 			"date": "02-05-2017",
 			"place": "Amarkantak",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-naped-ibis.jpg"
@@ -8777,8 +8777,8 @@
 			"species": "wire-tailed-swallow",
 			"date": "02-05-2017",
 			"place": "Amarkantak",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/wire-tailed-swallow.jpg"
@@ -8790,8 +8790,8 @@
 			"species": "little-grebe",
 			"date": "02-05-2017",
 			"place": "Amarkantak",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/little-grebe.jpg"
@@ -8804,8 +8804,8 @@
 			"gender": "M",
 			"date": "01-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/plum-headed-parakeet-male.jpg"
@@ -8817,8 +8817,8 @@
 			"species": "common-hoopoe",
 			"date": "01-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-hoopoe.jpg"
@@ -8830,8 +8830,8 @@
 			"species": "red-wattled-lapwing",
 			"date": "01-05-2017",
 			"place": "Bandhavgarh National Park",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/red-wattled-lapwing.jpg"
@@ -8843,8 +8843,8 @@
 			"species": "bank-myna",
 			"date": "30-04-2017",
 			"place": "Khanna Banjari",
-			"state": "MP",
-			"country": "IN",
+			"state": "Madhya Pradesh",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/bank-myna.jpg"
@@ -8857,8 +8857,8 @@
 			"date": "19-04-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/house-crow.jpg"
@@ -8871,8 +8871,8 @@
 			"date": "12-04-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-coucal.jpg"
@@ -8886,8 +8886,8 @@
 			"date": "09-04-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/cattle-egret-breeding.jpg"
@@ -8900,8 +8900,8 @@
 			"date": "02-04-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/white-breasted-kingfisher.jpg"
@@ -8913,8 +8913,8 @@
 			"species": "orange-headed-thrush",
 			"date": "27-03-2017",
 			"place": "Yercaud",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"variation": "White-throated",
 			"media": [
 				{
@@ -8928,8 +8928,8 @@
 			"date": "11-03-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/rock-pigeon.jpg"
@@ -8941,8 +8941,8 @@
 			"species": "common-myna",
 			"date": "24-02-2017",
 			"place": "Kaziranga National Park",
-			"state": "AS",
-			"country": "IN",
+			"state": "Assam",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-myna.jpg"
@@ -8955,8 +8955,8 @@
 			"species": "black-headed-ibis",
 			"date": "12-11-2016",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/black-headed-ibis.jpg"
@@ -8970,8 +8970,8 @@
 			"plumage": "Non-Breeding",
 			"date": "12-11-2016",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/pond-heron-non-breeding.jpg"
@@ -8984,8 +8984,8 @@
 			"species": "common-coot",
 			"date": "12-11-2016",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/common-coot.jpg"
@@ -8998,8 +8998,8 @@
 			"species": "asian-openbill",
 			"date": "12-11-2016",
 			"place": "Vedanthangal Bird Sanctuary",
-			"state": "TN",
-			"country": "IN",
+			"state": "Tamil Nadu",
+			"country": "India",
 			"media": [
 				{
 					"src": "images/open-billed-stork.jpg"

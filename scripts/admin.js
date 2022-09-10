@@ -326,7 +326,7 @@ function render() {
 		row += "<input type='date' data-field='date' value='" + moment(bird.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:180px'></input>";
 		row += "<br>";
 		row += getSelectDOM("country", data.countries, getValue(bird, 'country'), "180px");
-		row += getSelectDOM("state", data.countries.IN.states, getValue(bird, 'state'), "180px");
+		row += getSelectDOM("state", data.countries[bird.country].states, getValue(bird, 'state'), "180px");
 		row += "<input type='text' data-field='city' value='" + getValue(bird, 'city') + "' style='width:180px' placeholder='Add city'></input>";
 		row += "<input type='text' data-field='place' value='" + getValue(bird, 'place') + "' style='width:180px' placeholder='Add place'></input>";
 		row += "</td>";
@@ -372,6 +372,9 @@ function render() {
 		birdRow.find(".delete-sighting").click(() => deleteSighting(bird.key));
 		birdRow.find(".move-up").click(() => moveSighting(bird.key, -1));
 		birdRow.find(".move-down").click(() => moveSighting(bird.key, 1));
+		birdRow.find("select[data-field=country]").change(function() {
+			birdRow.find("select[data-field=state]").prop('outerHTML', getSelectDOM("state", data.countries[bird.country].states, getValue(bird, 'state'), "180px"));
+		});
 	});
 
 	$('.page-number').html(OFFSET + " - " + Math.min(OFFSET+ROWS, filteredSightings.length) + " of " + filteredSightings.length);

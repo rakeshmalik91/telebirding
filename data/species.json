@@ -169,6 +169,17 @@
 			],
 			"family": "Swallows & Martins"
 		},
+		"baya-weaver": {
+			"key": "baya-weaver",
+			"name": "Baya Weaver",
+			"tags": [
+				"Weaver",
+				"Baya",
+				"Common Baya",
+				"Indian Weaver"
+			],
+			"family": "Weavers"
+		},
 		"bearded-vulture": {
 			"key": "bearded-vulture",
 			"name": "Bearded Vulture",
@@ -1835,7 +1846,8 @@
 			"key": "indian-grey-hornbill",
 			"name": "Indian Grey Hornbill",
 			"tags": [
-				"Hornbill"
+				"Hornbill",
+				"Grey Hornbill"
 			],
 			"family": "Hornbills"
 		},
@@ -2099,6 +2111,15 @@
 				"Ringed Plover"
 			],
 			"family": "Plovers"
+		},
+		"little-swift": {
+			"key": "little-swift",
+			"name": "Little Swift",
+			"tags": [
+				"Swift",
+				"Indian House Swift"
+			],
+			"family": "Swifts"
 		},
 		"long-tailed-broadbill": {
 			"key": "long-tailed-broadbill",

@@ -67,7 +67,7 @@ function computeInternalDataFields() {
 	data.birds = data.birds.filter(b => !b.hidden);
 
 	//places
-	if(!data.countries.IN.count) {
+	if(!Object.entries(data.countries)[0][1].count) {
 		countries={}
 		Object.keys(data.countries).sort().forEach(function(countryCode) {
 			countries[countryCode] = {
