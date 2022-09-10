@@ -1,6 +1,30 @@
 {
 	"birds": [
 		{
+			"key": "s1662806081",
+			"species": "asian-palm-swift",
+			"date": "10-09-2022",
+			"place": "",
+			"city": "Howrah",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/asian-palm-swift-1662806548.jpg"
+				},
+				{
+					"src": "images/asian-palm-swift-1662806179.jpg"
+				},
+				{
+					"src": "images/asian-palm-swift-1662806830.jpg"
+				},
+				{
+					"src": "images/asian-palm-swift-1662808129.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1662518262",
 			"species": "house-swift",
 			"date": "07-09-2022",
@@ -25,22 +49,6 @@
 			]
 		},
 		{
-			"key": "s1662269632",
-			"species": "red-vented-bulbul",
-			"date": "04-09-2022",
-			"place": "",
-			"city": "Howrah",
-			"state": "West Bengal",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/red-vented-bulbul-1662269667.jpg"
-				}
-			],
-			"age": "Juvenile"
-		},
-		{
 			"key": "s1662180789",
 			"species": "black-rumped-flameback",
 			"date": "03-09-2022",
@@ -58,6 +66,38 @@
 				}
 			],
 			"gender": "F"
+		},
+		{
+			"key": "s1662806022",
+			"species": "black-rumped-flameback",
+			"date": "03-09-2022",
+			"place": "",
+			"city": "Howrah",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-rumped-flameback-1662806329.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1662269632",
+			"species": "red-vented-bulbul",
+			"date": "03-09-2022",
+			"place": "",
+			"city": "Howrah",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-vented-bulbul-1662269667.jpg"
+				}
+			],
+			"age": "Juvenile"
 		},
 		{
 			"key": "s1662187723",
@@ -101,6 +141,22 @@
 				}
 			],
 			"city": "Bankura"
+		},
+		{
+			"key": "s1662782745",
+			"species": "common-rosefinch",
+			"date": "09-07-2022",
+			"place": "Sindhu Ghat",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-rosefinch-1662782776.jpg"
+				}
+			],
+			"gender": "M"
 		},
 		{
 			"key": "bluethroat-red-spotted",
@@ -174,7 +230,8 @@
 				{
 					"src": "images/upland-buzzard-2.jpg"
 				}
-			]
+			],
+			"city": "Thukje"
 		},
 		{
 			"key": "lesser-sand-plover",
@@ -214,7 +271,8 @@
 				{
 					"src": "images/great-rosefinch.jpg"
 				}
-			]
+			],
+			"city": "Thukje"
 		},
 		{
 			"key": "upland-buzzard-dark",
@@ -264,7 +322,8 @@
 				{
 					"src": "images/black-necked-crane-2.jpg"
 				}
-			]
+			],
+			"city": "Thukje"
 		},
 		{
 			"key": "ground-tit",
@@ -277,7 +336,8 @@
 				{
 					"src": "images/ground-tit.jpg"
 				}
-			]
+			],
+			"city": "Thukje"
 		},
 		{
 			"key": "great-crested-grebe-breeding",
@@ -295,7 +355,8 @@
 					"src": "images/great-crested-grebe-breeding.jpg",
 					"title": "with Chicks"
 				}
-			]
+			],
+			"city": "Karzok"
 		},
 		{
 			"key": "robin-accentor-juvenile",
@@ -328,7 +389,8 @@
 				{
 					"src": "images/eurasian-crag-martin.jpg"
 				}
-			]
+			],
+			"city": "Karzok"
 		},
 		{
 			"key": "brown-headed-gull-breeding",
@@ -348,7 +410,8 @@
 				{
 					"src": "images/brown-headed-gull-breeding-2.jpg"
 				}
-			]
+			],
+			"city": "Karzok"
 		},
 		{
 			"key": "red-billed-chough",
@@ -376,7 +439,7 @@
 			"key": "twite",
 			"species": "twite",
 			"date": "29-06-2022",
-			"city": "Tsumdo",
+			"city": "Loma",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -386,20 +449,22 @@
 				{
 					"src": "images/twite-2.jpg"
 				}
-			]
+			],
+			"place": ""
 		},
 		{
 			"key": "great-cormorant-2",
 			"species": "great-cormorant",
 			"date": "29-06-2022",
-			"city": "Tsumdo",
+			"city": "Loma",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/great-cormorant-2.jpg"
 				}
-			]
+			],
+			"place": ""
 		},
 		{
 			"key": "saker-falcon",
@@ -2921,6 +2986,10 @@
 					"src": "images/streak-throated-swallow.jpg"
 				},
 				{
+					"src": "images/streak-throated-swallow-1662776798.jpg",
+					"title": "and Bank Swallow"
+				},
+				{
 					"src": "videos/streak-throated-swallow.mp4",
 					"thumbnail": "images/streak-throated-swallow.jpg",
 					"mute": true,
@@ -3199,6 +3268,9 @@
 			"state": "Odisha",
 			"country": "India",
 			"media": [
+				{
+					"src": "images/spotted-owlet-1662776679.jpg"
+				},
 				{
 					"src": "images/spotted-owlet-3.jpg"
 				}
@@ -4881,7 +4953,7 @@
 			"key": "eurasian-magpie",
 			"species": "eurasian-magpie",
 			"date": "20-10-2021",
-			"place": "Leh",
+			"place": "",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -4891,7 +4963,8 @@
 				{
 					"src": "images/eurasian-magpie-2.jpg"
 				}
-			]
+			],
+			"city": "Leh"
 		},
 		{
 			"key": "chukar",

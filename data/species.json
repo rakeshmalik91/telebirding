@@ -107,6 +107,15 @@
 			],
 			"family": "Storks"
 		},
+		"asian-palm-swift": {
+			"key": "asian-palm-swift",
+			"name": "Asian Palm-Swift",
+			"tags": [
+				"Swift",
+				"Palm-Swift"
+			],
+			"family": "Swifts"
+		},
 		"bank-myna": {
 			"key": "bank-myna",
 			"name": "Bank Myna",
