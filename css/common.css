@@ -65,33 +65,18 @@ button, input {
   vertical-align: baseline;
   width: auto;
   opacity: 0.4;
+	font-size: 16px;
+	padding: 3px 10px;
 }
 
-@media screen and (orientation:landscape) and (min-width:1199px) { 
+@media screen and (min-aspect-ratio: 13/9) and (min-width:1199px) { 
 	input { 
-		width: 350px;
-	}
-	button, input {
-		font-size: 16px;
-		padding: 3px 10px;
+		width: 300px;
 	}
 }
-@media screen and (orientation:landscape) and (max-width:1200px) { 
+@media screen and (min-aspect-ratio: 13/9) and (max-width:1200px) { 
 	input { 
 		width: 200px;
-	}
-	button, input {
-		font-size: 16px;
-		padding: 3px 10px;
-	}
-}
-@media screen and (orientation:portrait) { 
-	input { 
-		width: 80px;
-	} 
-	button, input {
-		font-size: 10px;
-		padding: 3px;
 	}
 }
 

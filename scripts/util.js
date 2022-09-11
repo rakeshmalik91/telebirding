@@ -1,4 +1,5 @@
 var FILE_CACHE = {};
+var FIREBASE_ENABLED = true;
 
 function readTextFile(file, callback) {
 	if(FILE_CACHE[file]) {
@@ -151,8 +152,6 @@ function invalidName(place) {
 
 
 
-
-var FIREBASE_ENABLED = true;
 
 function getMedia(path) {
 		return getData(path);

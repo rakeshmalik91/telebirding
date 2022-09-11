@@ -114,11 +114,6 @@ span.tags {
 	right: 0%;
 	padding-right: 10px;
 }
-@media screen and (orientation:portrait) {
-	.filter-panel {
-		/*top: 135px;*/
-	}
-}
 .filter, .sortby {
 	float: right;
 	height: 32px;
@@ -151,6 +146,11 @@ span.tags {
 }
 .sortby div.component button.button-active span.order.desc:after {
 	content: '↓';
+}
+.filter .component button.date-filter:after {
+	padding-left: 10px;
+	content: "✕";
+	color: #bc7e7e;
 }
 
 .stats {
@@ -245,4 +245,156 @@ span.tags {
 .bird-tags span.tags:hover {
 	border: 1px solid white;
 	color: white;
+}
+
+
+
+/* ------------------- preview image ------------------ */
+
+:root {
+  --preview-image-margin: 60px;
+  --preview-image-padding: 15px;
+}
+.preview-image, .preview-image-desc {
+	background-color: #1e2e40;
+	position: fixed;
+	margin: var(--preview-image-margin);
+	padding: var(--preview-image-padding);
+	top: 0;
+	display: block;
+	height: calc(100% - var(--preview-image-margin) * 2);
+}
+.preview-image {
+	width: calc(100vh - var(--preview-image-margin) * 2);
+	left: 0;
+	border-radius: 0.5rem 0 0 0.5rem;
+}
+.preview-image-desc {
+	left: calc(100vh - var(--preview-image-margin) * 2 + var(--preview-image-padding) * 2);
+	width: calc(100vw - 100vh + var(--preview-image-margin) - var(--preview-image-padding) * 4);
+}
+.preview-image img, .preview-image video {
+	background-color: #1e2e40;
+	width: 100%;
+	height: 100%;
+	border-radius: 0.5rem;
+  background-image: url('../icons/loading.gif');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.preview-image-desc .photos {
+	padding-top: 50px;
+	padding-right: 30px;
+}
+.preview-image-desc .photos div {
+	position: relative;
+	width: 12vh;
+	height: 12vh;
+	display: inline-block;
+	margin: 2px;
+	cursor: pointer;
+	opacity: 0.8;
+  border-radius: 0.5rem; 
+  overflow: hidden;
+	border: 2px solid transparent;
+}
+.preview-image-desc .photos div:not(.selected):hover {
+	opacity: 1;
+}
+.preview-image-desc .photos div.selected {
+	border: 2px solid white;
+}
+.preview-image-desc .photos span {
+	position: absolute;
+	bottom: 7px;
+	left: 7px;
+	color: #cccccc;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 6px;
+}
+.preview-image-desc .photos div img.image-thumbnail, .preview-image-desc .photos div img.video-thumbnail {
+	width: 100%;
+	height: 100%;
+	background-color: #3b4d61;
+  background-image: url('../icons/loading.gif');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+/*.preview-image-desc .photos div img.video-thumbnail {
+  filter: blur(2px);
+  	-webkit-filter: blur(2px);
+}*/
+.preview-image-desc .photos div img.play-icon {
+	width: 50%;
+	height: 50%;
+	background-color: transparent;
+  background-image: none;
+	transform: translate(50%, -150%);
+	opacity: 0.7;
+}
+/*.preview-image-desc .photos div:hover img {
+	opacity: 1;
+	filter: blur(0);
+  	-webkit-filter: blur(0);
+}*/
+
+
+.preview-image-desc button, .preview-image-desc button:focus {
+	display: block;
+	position: absolute;
+	color: #616c79;
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	font-size: 30px;
+	padding-right: 40px;
+	border-radius: 0.5rem;
+	background-color: #1e2e40;
+	border: none;
+	box-shadow: none;
+}
+.preview-image-desc button:active, .preview-image-desc button:hover {
+	color: white;
+}
+.preview-image-desc button, .preview-image-desc button:focus, .preview-image-desc button:active, .preview-image-desc button:hover {
+	transform: translate(0, -25px);
+}
+.preview-image-desc button img {
+	height: 30px;
+	width: 30px;
+	opacity: 0.5;
+}
+.preview-image-desc button:active img, .preview-image-desc button:hover img {
+	opacity: 1;
+}
+
+.preview-image-desc button.close-button {
+	top: 50px;
+	right: 0;
+}
+
+.preview-image-desc button.right-button {
+	top: 50%;
+	right: 0;
+}
+.preview-image-desc button.right-button:before {
+	content: "❯";
+}
+
+.preview-image-desc button.left-button {
+	position: fixed;
+	top: 50%;
+	left: 28px;
+	padding-left: 10px;
+	padding-right: 20px;
+}
+.preview-image-desc button.left-button:before {
+	content: "❮";
 }

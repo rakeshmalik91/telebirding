@@ -5,6 +5,13 @@ var MEDIA_TYPE_VIDEO = 'video';
 var MIN_COUNT_FOR_RIGHT_PANE_PLACE_LISTING = 5;
 var DEFAULT_PLUMAGE = ""; //"Basic/Adult";
 
+var IS_MOBILE = !isDeviceOnLandscapeOrientation();
+
+var DATA_DATE_FORMAT = "DD-MM-yyyy";
+var DISPLAY_DATE_FORMAT = 'D MMM, YYYY';
+var FILTER_MONTH_FORMAT = 'MMM, YYYY';
+var FILTER_YEAR_FORMAT = 'YYYY';
+
 var data = { "birds": [] };
 var sort = { by: undefined, descending: undefined };
 var currentRenderOffset = 0;
@@ -32,7 +39,6 @@ pageNames[MAP] = "Bird Map";
 pageNames[VIDEOS] = "Videos";
 pageNames[ABOUT] = "About";
 
-
 function getSpeciesCount(birds) {
 	return [...new Set(birds.map(b => b.species.name))].length;
 }
@@ -41,8 +47,8 @@ function computeInternalDataFields() {
 	$.each(data.birds, function(index, bird) {
 		bird.index = index;
 		//moment
-		bird.date = moment(bird.date, "DD-MM-yyyy");
-		bird.dateString = bird.date.format("D MMMM, YYYY");
+		bird.date = moment(bird.date, DATA_DATE_FORMAT);
+		bird.dateString = bird.date.format(DISPLAY_DATE_FORMAT);
 		//tags
 		bird.species = data.species[bird.species];
 		bird.species.tags = (bird.species.tags || []).sort((a,b) => compare(b.length, a.length));
@@ -142,9 +148,9 @@ function filterAndSortData(filter, params) {
 		);
 	}
 	
-	//place filter
+	//date filter
 	if(filter.date) {
-		data.filteredBirds = data.filteredBirds.filter(b => b.dateString.endsWith(filter.date));
+		data.filteredBirds = data.filteredBirds.filter(b => b.dateString.match('.*\\b' + filter.date));
 	}
 	
 	//sort
@@ -266,9 +272,9 @@ function renderBirdDetails(birdLabelDiv, bird, inPreviewPage) {
 	birdLabelDiv.append('<div class="bird-desc">' + aPlace + aCity + aState + aCountry + '</div>');
 
 	var dateSplit = bird.dateString.split(/, | /);
-	var aDay = '<a onclick="triggerFilter(\'date\', \'' + bird.date.format('D MMMM, YYYY') + '\')">' + dateSplit[0] + '</a> ';
-	var aMonth = '<a onclick="triggerFilter(\'date\', \'' + bird.date.format('MMMM, YYYY') + '\')">' + dateSplit[1] + '</a>, ';
-	var aYear = '<a onclick="triggerFilter(\'date\', \'' + bird.date.format('YYYY') + '\')">' + dateSplit[2] + '</a>';
+	var aDay = '<a onclick="triggerFilter(\'date\', \'' + bird.date.format(DISPLAY_DATE_FORMAT) + '\')">' + dateSplit[0] + '</a> ';
+	var aMonth = '<a onclick="triggerFilter(\'date\', \'' + bird.date.format(FILTER_MONTH_FORMAT) + '\')">' + dateSplit[1] + '</a>, ';
+	var aYear = '<a onclick="triggerFilter(\'date\', \'' + bird.date.format(FILTER_YEAR_FORMAT) + '\')">' + dateSplit[2] + '</a>';
 	birdLabelDiv.append('<div class="bird-desc">' + aDay + aMonth + aYear + '</div>');
 }
 
@@ -290,6 +296,9 @@ function renderBird(birdDiv, bird) {
 	var birdLabelDiv = birdDiv.find(".bird-label");
 
 	renderBirdDetails(birdLabelDiv, bird);
+	if(IS_MOBILE) {
+		renderBirdTags(birdLabelDiv, bird);
+	}
 }
 
 function renderBirds(offset, pageSize) {
@@ -324,7 +333,7 @@ function getBirdPhotoTitle(bird, image) {
 	return plumage.length ? plumage.join(" ").trim() : DEFAULT_PLUMAGE;
 }
 
-function renderBirdOtherPhotos(div, bird, selected, birdIndex) {
+function renderBirdThumbnails(div, bird, selected, birdIndex) {
 	div.append('<div class="photos"></div>');
 	var photosDiv = div.find('.photos');
 	bird.species.media = [];
@@ -346,7 +355,7 @@ function renderBirdOtherPhotos(div, bird, selected, birdIndex) {
 	});
 }
 
-function renderExtendedBirdDetails(birdLabelDiv, bird) {
+function renderBirdTags(birdLabelDiv, bird) {
 	birdLabelDiv.append("<div class='bird-tags'></div>");
 	var tagsDiv = birdLabelDiv.find(".bird-tags");
 	if(bird.species.tags && bird.species.tags.length) {
@@ -360,7 +369,7 @@ function renderExtendedBirdDetails(birdLabelDiv, bird) {
 }
 
 function previewImage(imageSrc, birdKey, index) {
-	if(isDeviceOnLandscapeOrientation()) {
+	if(!IS_MOBILE) {
 		var visible = $('.preview-image').is(':visible');
 		if(visible) {
 			$('.preview-image').remove();
@@ -385,8 +394,8 @@ function previewImage(imageSrc, birdKey, index) {
 		$('.preview-image-desc').append('<button class="left-button" onclick="scrollPreviewImageBird(-1)"></button>');
 		$('.preview-image-desc').append('<button class="right-button" onclick="scrollPreviewImageBird(1)"></button>');
 		renderBirdDetails($('.preview-image-desc'), bird, true);
-		renderBirdOtherPhotos($('.preview-image-desc'), bird, [imageSrc], index);
-		renderExtendedBirdDetails($('.preview-image-desc'), bird);
+		renderBirdThumbnails($('.preview-image-desc'), bird, [imageSrc], index);
+		renderBirdTags($('.preview-image-desc'), bird);
 		if(!isTouchDevice()) disableScroll();
 		$('.birds-list video').trigger('pause');
 	}
@@ -640,26 +649,6 @@ function toggleRightPane() {
 	}
 }
 
-function handleMobileSpecificRendering() {
-	if(!isDeviceOnLandscapeOrientation()) {
-		if(currentPage == ARCHIVE) {
-			$('.site-header .site-logo').hide();
-			$('.site-header .page-name').css('transform', 'translateY(-50px)');
-			$('.site-header .filter-panel').css('transform', 'translateY(-40px)');
-		} else if(currentPage == EXPLORE_PAGE) {
-			$('.site-header .site-logo').hide();
-			$('.site-header .page-name').css('transform', 'translateY(-50px)');
-			$('.site-header .filter-panel').css('transform', 'translateY(-20px)');
-		} else {
-			$('.site-header .site-logo').show();
-			$('.site-header .page-name').css('transform', 'translateY(10px)');
-		}
-	} else {
-		$('.site-header .site-logo').show();
-		$('.site-header .page-name, .site-header .filter-panel').css('transform', 'translateY(0)');
-	}
-}
-
 function renderPageName(currentPage, params) {
 	params = params||{};
 	var delim = "<span class='delim'><</span>";
@@ -699,6 +688,8 @@ function renderPageName(currentPage, params) {
 }
 
 function showPage(page, params, isPopstate) {
+	window.scrollTo(0, 0);
+
 	var filter = getFilters();
 	if(params && params.place) {
 		filter.place = params.place;
@@ -720,7 +711,6 @@ function showPage(page, params, isPopstate) {
 		computeInternalDataFields();
 		initAutocomplete();
 		renderPageName(page, params);
-		handleMobileSpecificRendering();
 		switch(currentPage) {
 		  case ARCHIVE:
 			$('.home .explore-menu, .home .menu, .about-page, .videos').hide();
@@ -847,8 +837,6 @@ function retrieveStateFromUrlParams() {
 			showPage(state.state.page, state.state.params, true);
 		}
 	};
-
-	window.addEventListener('resize', handleMobileSpecificRendering);
 })(jQuery);
 
 
@@ -864,11 +852,6 @@ $(document).ready(function() {
 
 	//autoscroll explore menu
 	autoScroll($('.explore-menu'), 200);
-
-	//hide right pane for mobile
-	if(!isDeviceOnLandscapeOrientation()) {
-		$(".component:has(.right-pane-button)").hide();
-	}
 
 	//close right preview pane on clicking outside
 	$('html').click(function(e) {

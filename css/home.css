@@ -83,11 +83,6 @@
 .home .featured.hidden .carousal-buttons, .home .featured.hidden .image span.title {
 	display: none;
 }
-@media screen and (orientation:portrait) {
-	.home .featured {
-		display: none;
-	}
-}
 
 .home .menu {
 	display: inline-block;
@@ -133,33 +128,25 @@
 
 
 
-@media screen and (orientation:landscape) {
-	:root {
-		--header-height: 95px;
-		--header-padding: 25px;
-	}
-}
-@media screen and (orientation:portrait) {
-	:root {
-		--header-height: 95px;
-		--header-padding: 25px;
-	}
+:root {
+	--header-height: 95px;
+	--header-padding: 25px;
 }
 
-@media screen and (orientation:landscape) {
-	.home .menu, .home .menu button {
-		width: 40vw;
-	}
-	.home .menu button {
-		padding-left: 50px;
-		font-weight: bold;
-		font-size: 35px;
-		margin-bottom: 20px;
-	}
-	.home .menu button .icon {
-		height: 35px;
-		width: 35px;
-	}
+.home .menu, .home .menu button {
+	width: 40vw;
+}
+.home .menu button {
+	padding-left: 50px;
+	font-weight: bold;
+	font-size: 35px;
+	margin-bottom: 20px;
+}
+.home .menu button .icon {
+	height: 35px;
+	width: 35px;
+}
+@media screen and (min-aspect-ratio: 13/9) {
 	.home .menu button:nth-child(2) {
 		font-size: 30px;
 		margin-bottom: 18px;
@@ -192,54 +179,21 @@
 		height: 19px;
 		width: 19px;
 	}
-	.site-logo, .site-logo img { 
-		max-height: 70px;
-		max-width: 40vw; 
-	} 
-	.site-header {
-		height: var(--header-height);
-	}
-	.birds-list, .home, .videos, .map-menu {
-		margin-top: calc(var(--header-height) + var(--header-padding));
-	}
 }
-@media screen and (orientation:portrait) {
-	.home .menu, .home .menu button {
-		width: 100vw;
-	}
-	.home .menu button {
-		font-size: 20px;
-		font-weight: bold;
-		padding-left: 20px;
-	}
-	.filter-panel {
-		position:absolute;
-		top: 95px;
-	}
-	.site-logo, .site-logo img {
-		max-height: 40px;
-	}
-	.site-header {
-		min-height: var(--header-height);
-	}
-	.birds-list, .home, .videos {
-		margin-top: calc(var(--header-height) + var(--header-padding));
-	}
+.site-logo, .site-logo img { 
+	max-height: 70px;
+	max-width: 40vw; 
+} 
+.site-header {
+	height: var(--header-height);
+}
+.birds-list, .home, .videos, .map-menu {
+	margin-top: calc(var(--header-height) + var(--header-padding));
 }
 
 /* workaround for unequal margin on birds list */
 .birds-list .bird-panel {
 	transform: translateX(5px);
-}
-@media (orientation:portrait) { /* mobile */
-	.birds-list .bird-panel {
-		transform: translateX(2px);
-	}
-}
-@media (pointer:coarse) and (orientation:landscape) {  /* ipad */
-	.birds-list .bird-panel {
-		transform: translateX(10px);
-	}
 }
 
 
@@ -292,20 +246,304 @@
   transform: translateY(3px);
   padding-right: 12px;
 }
-@media screen and (orientation:landscape) {
-	.page-name {
-		font-size: 24px;
-		margin-bottom: 6px;
-		max-width: 60vw;
-	}
+.page-name {
+	font-size: 24px;
+	margin-bottom: 6px;
+	max-width: 60vw;
 }
-@media screen and (orientation:portrait) {
-	.page-name {
-		font-size: 20px;
-		padding-top: 50px;
-		margin-bottom: 10px;
-		height: 30px;
-		/*overflow: hidden;*/
+
+.about-page {
+	position: relative;
+	float: left;
+    overflow-x: clip;
+    overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	width: 30vw;
+	height: 100%;
+}
+.about-page::-webkit-scrollbar {
+	display: none;
+}
+.about-page span {
+	color: white;
+}
+.about-page a {
+	color: #bfcbff;
+}
+.about-page {
+	padding-top: 50px;
+	padding-left: 50px;
+	text-align: justify;
+}
+.about-page .social-icon img {
+	padding-top: 20px;
+}
+
+.social-icon img {
+	width: 24px;
+	height: 24px;
+	padding: 5px;
+}
+
+.videos {
+	position: relative;
+	float: left;
+	left: 60vw;
+	padding-top: 20px;
+	padding-left: 50px;
+	opacity: 0;
+}
+
+.videos.expanded {
+	opacity: 1;
+}
+@media screen and (orientation:landscape) {
+	.videos.expanded {
+		left: 10vw;
 	}
 }
 
+.videos .video {
+	margin-bottom: 50px;
+}
+
+.videos .video iframe {
+	width: 800px;
+	height: 450px;
+}
+
+.map-menu {
+  overflow-x: clip;
+  overflow-y: scroll;
+	padding-top: 20px;
+	margin-left: 230px;
+		-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.map-menu .location-list {
+  overflow-x: clip;
+  overflow-y: scroll;
+		-ms-overflow-style: none;
+	scrollbar-width: none;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+.map-menu::-webkit-scrollbar, .map-menu .location-list::-webkit-scrollbar {
+	display: none;
+}
+.map-menu .location-list button {
+	z-index: 1;
+}
+.map-menu .location-list button {
+	border-radius: 0 !important;
+	font-size: 16px !important;
+}
+
+
+button.right-pane-button:before {
+	content: "☰";
+	min-width: 14px;
+}
+button.right-pane-button.button-active:before {
+	content: "✕";
+}
+
+.right-pane {
+	display: block;
+	position: fixed;
+	top: calc(var(--header-height) + var(--header-padding) - 5px);
+	right: 0;
+	width: 35%;
+	height: calc(100% - var(--header-height) - var(--header-padding) + 5px);
+	background-color: #1a2735;
+	padding-left: 40px;
+	padding-right: 20px;
+	overflow-y: scroll;
+}
+
+.right-pane button,
+.location-list button {
+	display: block;
+	width: fit-content;
+	margin-bottom: 2px;
+	background-color: #2f4054;
+	color: white;
+	opacity: 1;
+	font-size: 14px;
+	font-weight: normal;
+	border-radius: 0.5rem;
+	padding-left: 10px;
+	padding-right: 10px;
+	z-index: 1;
+}
+
+.right-pane button span,
+.location-list button span {
+	display: inline-block;
+ }
+.right-pane button span.count, .right-pane h1 span.count,
+.location-list button span.count, .location-list h1 span.count {
+	margin-left: 10px;
+	color: #aaaaaa;
+	font-weight: normal;
+}
+.right-pane button span.count:before, .right-pane h1 span.count:before,
+.location-list button span.count:before, .location-list h1 span.count:before {
+	content: "(";
+}
+.right-pane button span.count:after, .right-pane h1 span.count:after,
+.location-list button span.count:after, .location-list h1 span.count:after {
+	content: ")";
+}
+
+.location-list button.country {
+	margin-left: 0px;
+	background-color: #233345;
+}
+.location-list button.state {
+	margin-left: 50px;
+	background-color: #324253;
+}
+.location-list button.city {
+	margin-left: 100px;
+	background-color: #405163;
+}
+.location-list button.place {
+	margin-left: 150px;
+	background-color: #536375;
+}
+
+
+.location-list button:hover,
+.right-pane button:hover {
+	background-color: white;
+	color: black;
+}
+
+.right-pane div.families {
+	display: inline-block;
+	width: 300px;
+}
+.right-pane div.species {
+	display: inline-block;
+	width: 230px;
+}
+
+
+.explore-menu {
+	position: relative;
+	float: left;
+  overflow-x: clip;
+  overflow-y: scroll;
+/*	-ms-overflow-style: none;
+	scrollbar-width: none;*/
+}
+.explore-menu h1 {
+	padding-left: 30px;
+	padding-bottom: 10px;
+}
+/*.explore-menu::-webkit-scrollbar {
+	display: none;
+}*/
+.explore-menu .bird-family {
+	float: left;
+	position: relative;
+	height: 100%;
+	margin-top: 5px;
+	cursor: pointer;
+}
+.explore-menu .bird-family span {
+	position: absolute;
+	bottom: 5px;
+	color: white;
+	opacity: 1;
+}
+.explore-menu .bird-family, .explore-menu .bird-family img {
+	overflow: hidden;
+	background-color: black;
+}
+.explore-menu .bird-family img {
+	position: relative;
+	object-fit: cover;
+	opacity: 0.5;
+}
+.explore-menu .bird-family, .explore-menu .bird-family img, .explore-menu .bird-family span {
+    -webkit-transition: all 0.3s ease; 
+    -moz-transition: all 0.3s ease; 
+    -ms-transition: all 0.3s ease; 
+    -o-transition: all 0.3s ease; 
+}
+.explore-menu .bird-family:hover, .explore-menu .bird-family:hover img {
+	opacity: 1;
+}
+
+@media screen and (orientation:landscape) {
+	.explore-menu {
+		width: 40vw;
+		height: calc(100% - var(--header-height) - 25px);
+	}
+	.explore-menu.expanded {
+		width: 90vw;
+	}
+	.explore-menu .bird-family {
+		margin-right: 5px;
+	}
+	.explore-menu .bird-family, .explore-menu .bird-family img {
+		height: 80px;
+		width: 400px;
+	}
+	.explore-menu .bird-family:hover img {
+		height: 200px;
+		position: absolute;
+		transform: translateY(-60px)/* translateX(-1vw)*/;
+	}
+	.explore-menu .bird-family:hover {
+		overflow: visible;
+		z-index: 1;
+	}
+}
+
+.explore-menu .bird-family span.name {
+	padding-left: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.explore-menu .bird-family span.count {
+	top: 0;
+	right: 0;
+	padding-top: 10px;
+	padding-right: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+/* ------------------- z-index ------------------ */
+
+.preview-image, .preview-image-desc {
+	z-index: 90;
+}
+
+.overlay {
+	z-index: 80;
+}
+.right-pane {
+	z-index: 72;
+}
+.site-logo, .site-logo img {
+	z-index: 71;
+}
+.site-header {
+	z-index: 70;
+}
+
+.overlay-on-body {
+	z-index: 69;
+}
+.featured {
+	z-index: 60;
+}
+.home {
+	z-index: 50;
+}
