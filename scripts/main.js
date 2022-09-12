@@ -90,7 +90,7 @@ function computeInternalDataFields() {
 				if(countries[countryCode].states[stateCode].count > 0) {
 					[...new Set(data.birds.filter(b => b.country == countryCode && b.state == stateCode).map(b => b.city))].forEach(function(city) {
 						countries[countryCode].states[stateCode].cities[city] = {
-							count: getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && b.city == city)),
+							count: getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && (b.city == city || !b.city && b.place == city))),
 							places: {}
 						};
 						[...new Set(data.birds.filter(b => b.place && b.country == countryCode && b.state == stateCode && b.city == city).map(b => b.place))].forEach(function(place) {
@@ -333,26 +333,44 @@ function getBirdPhotoTitle(bird, image) {
 	return plumage.length ? plumage.join(" ").trim() : DEFAULT_PLUMAGE;
 }
 
-function renderBirdThumbnails(div, bird, selected, birdIndex) {
-	div.append('<div class="photos"></div>');
-	var photosDiv = div.find('.photos');
-	bird.species.media = [];
-	data.birds.filter(b => b.species.name.toLowerCase() == bird.species.name.toLowerCase()).forEach(function(b) {
-		b.media.forEach(function(media) {
-			bird.species.media.push({sightingKey: b.key, media: media});
-			var mediaDiv;
-			if(media.type == MEDIA_TYPE_VIDEO) {
-				if(!media.thumbnail) {
-					console.log("thumbnail missing for " + media.src);
-				}
-				mediaDiv = "<img class='video-thumbnail' src='" + media.thumbnail + "'></img><img class='play-icon' src='icons/play.png'></img>";
-			} else {
-				mediaDiv = "<img class='image-thumbnail' src='" + media.src + "'/></img>";
-			}
-			var classes = selected.includes(media.src) ? 'selected' : '';
-			photosDiv.append("<div class='" + classes + "' onclick=\"previewImage('" + media.src + "', '" + b.key + "', " + birdIndex + ")\"><span>" + getBirdPhotoTitle(b, media) + "</span>" + mediaDiv + "</div>");
-		});
+function renderBirdThumbnail(photosDiv, birdToRender, mediaToRender, selectedMedia, baseBirdIndex) {
+	var mediaDiv;
+	if(mediaToRender.type == MEDIA_TYPE_VIDEO) {
+		if(!mediaToRender.thumbnail) {
+			console.log("thumbnail missing for " + mediaToRender.src);
+		}
+		mediaDiv = "<img class='video-thumbnail' src='" + mediaToRender.thumbnail + "'></img><img class='play-icon' src='icons/play.png'></img>";
+	} else {
+		mediaDiv = "<img class='image-thumbnail' src='" + mediaToRender.src + "'/></img>";
+	}
+	var classes = selectedMedia.includes(mediaToRender.src) ? 'selected' : '';
+	photosDiv.append("<div class='" + classes + "' onclick=\"previewImage('" + mediaToRender.src + "', '" + birdToRender.key + "', " + baseBirdIndex + ")\"><span>" + getBirdPhotoTitle(birdToRender, mediaToRender) + "</span>" + mediaDiv + "</div>");
+}
+
+function renderBirdThumbnailsAndDescription(div, selectedBird, selectedMedia, baseBirdIndex) {
+	div.append('<div class="bird-desc description"><span>' + (selectedBird.description || '') + '</span></div>');
+
+	selectedBird.species.media = [];
+	div.append('<div class="photos section-1"></div>');
+	var photosDiv = div.find('.photos.section-1');
+	var baseBird = data.filteredBirds[baseBirdIndex];
+	baseBird.media.forEach(function(media) {
+		selectedBird.species.media.push({sightingKey: baseBird.key, media: media});
+		renderBirdThumbnail(photosDiv, baseBird, media, selectedMedia, baseBirdIndex);
 	});
+
+	var otherSightings = data.birds.filter(b => b.species.name.toLowerCase() == selectedBird.species.name.toLowerCase() && b.key != baseBird.key);
+	if(otherSightings.length > 0) {
+		div.append('<span class="bird-desc">Other sightings:</span>');
+		div.append('<div class="photos section-2"></div>');
+		photosDiv = div.find('.photos.section-2');
+		otherSightings.forEach(function(b) {
+			b.media.forEach(function(media) {
+				selectedBird.species.media.push({sightingKey: b.key, media: media});
+				renderBirdThumbnail(photosDiv, b, media, selectedMedia, baseBirdIndex);
+			});
+		});
+	}
 }
 
 function renderBirdTags(birdLabelDiv, bird) {
@@ -394,7 +412,7 @@ function previewImage(imageSrc, birdKey, index) {
 		$('.preview-image-desc').append('<button class="left-button" onclick="scrollPreviewImageBird(-1)"></button>');
 		$('.preview-image-desc').append('<button class="right-button" onclick="scrollPreviewImageBird(1)"></button>');
 		renderBirdDetails($('.preview-image-desc'), bird, true);
-		renderBirdThumbnails($('.preview-image-desc'), bird, [imageSrc], index);
+		renderBirdThumbnailsAndDescription($('.preview-image-desc'), bird, [imageSrc], index);
 		renderBirdTags($('.preview-image-desc'), bird);
 		if(!isTouchDevice()) disableScroll();
 		$('.birds-list video').trigger('pause');

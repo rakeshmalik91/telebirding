@@ -286,13 +286,26 @@ span.tags {
 }
 
 .preview-image-desc .photos {
-	padding-top: 50px;
 	padding-right: 30px;
+	padding-left: 10px;
+}
+.preview-image-desc .photos.section-1 {
+	padding-top: 30px;
+	padding-bottom: 15px;
+}
+.preview-image-desc div.description {
+	padding-top: 15px;
+	padding-right: 30px;
+	text-align: justify;
+	max-width: 600px;
+}
+.preview-image-desc .photos.section-2 {
+	padding-top: 5px;
 }
 .preview-image-desc .photos div {
 	position: relative;
-	width: 12vh;
-	height: 12vh;
+	width: 14vh;
+	height: 14vh;
 	display: inline-block;
 	margin: 2px;
 	cursor: pointer;
@@ -300,6 +313,10 @@ span.tags {
   border-radius: 0.5rem; 
   overflow: hidden;
 	border: 2px solid transparent;
+}
+.preview-image-desc .photos.section-2 div {
+	width: 10vh;
+	height: 10vh;
 }
 .preview-image-desc .photos div:not(.selected):hover {
 	opacity: 1;
@@ -309,14 +326,14 @@ span.tags {
 }
 .preview-image-desc .photos span {
 	position: absolute;
-	bottom: 7px;
-	left: 7px;
+	bottom: 0;
+	left: 0;
 	color: #cccccc;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 2px;
+	padding-right: 2px;
 	font-size: 10px;
 	background-color: rgba(0, 0, 0, 0.7);
-	border-radius: 6px;
+	border-radius: 0.5px;
 }
 .preview-image-desc .photos div img.image-thumbnail, .preview-image-desc .photos div img.video-thumbnail {
 	width: 100%;
@@ -354,7 +371,7 @@ span.tags {
 	margin: 0;
 	opacity: 1;
 	font-size: 30px;
-	padding-right: 40px;
+	padding-right: 25px;
 	border-radius: 0.5rem;
 	background-color: #1e2e40;
 	border: none;
@@ -391,7 +408,7 @@ span.tags {
 .preview-image-desc button.left-button {
 	position: fixed;
 	top: 50%;
-	left: 28px;
+	left: 23px;
 	padding-left: 10px;
 	padding-right: 20px;
 }

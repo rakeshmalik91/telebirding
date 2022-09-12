@@ -1,6 +1,72 @@
 {
 	"birds": [
 		{
+			"key": "s1663126564",
+			"species": "grey-headed-woodpecker",
+			"date": "27-04-2022",
+			"place": "",
+			"city": "Bhimtal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-headed-woodpecker-1663127193.jpg"
+				}
+			],
+			"gender": "F",
+			"variation": "Black-naped"
+		},
+		{
+			"key": "s1663119285",
+			"species": "great-rosefinch",
+			"date": "28-06-2022",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-rosefinch-1663119556.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1663041375",
+			"species": "brown-dipper",
+			"date": "25-05-2022",
+			"place": "",
+			"city": "Mukteshwar",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-dipper-1663041469.jpg"
+				},
+				{
+					"src": "images/brown-dipper-1663041478.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1663039652",
+			"species": "fire-fronted-serin",
+			"date": "30-06-2022",
+			"place": "",
+			"city": "Sumdo",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/fire-fronted-serin-1663039678.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1662860671",
 			"species": "common-hill-myna",
 			"date": "11-09-2022",
@@ -16,7 +82,8 @@
 				{
 					"src": "images/common-hill-myna-1662863676.jpg"
 				}
-			]
+			],
+			"description": ""
 		},
 		{
 			"key": "s1662806081",
@@ -40,7 +107,8 @@
 				{
 					"src": "images/asian-palm-swift-1662806830.jpg"
 				}
-			]
+			],
+			"description": ""
 		},
 		{
 			"key": "s1662518262",
@@ -64,7 +132,8 @@
 				{
 					"src": "images/house-swift-1662608318.jpg"
 				}
-			]
+			],
+			"description": "They can be seen flying in a large flock almost every morning and evening around Nabanna. And they make their nest in the small holes under the structures of Vidyasagar Setu."
 		},
 		{
 			"key": "s1662806022",
@@ -324,7 +393,8 @@
 				{
 					"src": "images/tibetan-sandgrouse-2.jpg"
 				}
-			]
+			],
+			"description": "Pretty hard to spot on the sands near Tso Kar. Can only be found in the early morning."
 		},
 		{
 			"key": "black-necked-crane",
@@ -358,6 +428,41 @@
 			"city": "Thukje"
 		},
 		{
+			"key": "robin-accentor-juvenile",
+			"species": "robin-accentor",
+			"date": "30-06-2022",
+			"place": "Sumdo",
+			"state": "Ladakh",
+			"country": "India",
+			"age": "Juvenile",
+			"media": [
+				{
+					"src": "images/robin-accentor-juvenile.jpg"
+				},
+				{
+					"src": "videos/robin-accentor-juvenile.mp4",
+					"thumbnail": "images/robin-accentor-juvenile.jpg",
+					"mute": true,
+					"type": "video"
+				}
+			]
+		},
+		{
+			"key": "s1663038211",
+			"species": "white-throated-dipper",
+			"date": "30-06-2022",
+			"place": "",
+			"city": "Sumdo",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-throated-dipper-1663038308.jpg"
+				}
+			]
+		},
+		{
 			"key": "great-crested-grebe-breeding",
 			"species": "great-crested-grebe",
 			"date": "30-06-2022",
@@ -375,26 +480,6 @@
 				}
 			],
 			"city": "Karzok"
-		},
-		{
-			"key": "robin-accentor-juvenile",
-			"species": "robin-accentor",
-			"date": "30-06-2022",
-			"place": "Khardung La",
-			"state": "Ladakh",
-			"country": "India",
-			"age": "Juvenile",
-			"media": [
-				{
-					"src": "images/robin-accentor-juvenile.jpg"
-				},
-				{
-					"src": "videos/robin-accentor-juvenile.mp4",
-					"thumbnail": "images/robin-accentor-juvenile.jpg",
-					"mute": true,
-					"type": "video"
-				}
-			]
 		},
 		{
 			"key": "eurasian-crag-martin",
@@ -457,7 +542,7 @@
 			"key": "twite",
 			"species": "twite",
 			"date": "29-06-2022",
-			"city": "Loma",
+			"city": "Sumdo",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -474,7 +559,7 @@
 			"key": "great-cormorant-2",
 			"species": "great-cormorant",
 			"date": "29-06-2022",
-			"city": "Loma",
+			"city": "Sumdo",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -511,6 +596,21 @@
 			"media": [
 				{
 					"src": "images/desert-wheatear-female.jpg"
+				}
+			]
+		},
+		{
+			"key": "black-redstart-3",
+			"species": "black-redstart",
+			"date": "28-06-2022",
+			"place": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"gender": "M",
+			"variation": "Eastern",
+			"media": [
+				{
+					"src": "images/black-redstart-3.jpg"
 				}
 			]
 		},
@@ -639,6 +739,21 @@
 			]
 		},
 		{
+			"key": "black-redstart-2",
+			"species": "black-redstart",
+			"date": "26-06-2022",
+			"place": "Rezang La",
+			"state": "Ladakh",
+			"country": "India",
+			"gender": "M",
+			"variation": "Eastern",
+			"media": [
+				{
+					"src": "images/black-redstart-1663037819.jpg"
+				}
+			]
+		},
+		{
 			"key": "horned-lark-3",
 			"species": "horned-lark",
 			"date": "26-06-2022",
@@ -696,7 +811,8 @@
 					"title": "Eggs"
 				}
 			],
-			"city": "Merak"
+			"city": "Merak",
+			"description": "Found one of this in the early morning in Merak near shores of Pangong Tso. Was guarding its eggs. They hide and camouflage pretty well in the hole even in small grasses."
 		},
 		{
 			"key": "s1662688043",
@@ -914,9 +1030,6 @@
 				},
 				{
 					"src": "images/black-redstart-2.jpg"
-				},
-				{
-					"src": "images/black-redstart-3.jpg"
 				}
 			]
 		},
@@ -1082,6 +1195,9 @@
 			"media": [
 				{
 					"src": "images/hair-crested-drongo-3.jpg"
+				},
+				{
+					"src": "images/hair-crested-drongo-1663123558.jpg"
 				}
 			]
 		},
@@ -1222,7 +1338,8 @@
 				{
 					"src": "images/indian-paradise-flycatcher-rufous-female-3.jpg"
 				}
-			]
+			],
+			"description": "Found a whole bunch of them in the trail near Sattal studio."
 		},
 		{
 			"key": "long-tailed-minivet-female",
@@ -1722,6 +1839,9 @@
 			"country": "India",
 			"media": [
 				{
+					"src": "images/crested-kingfisher-1663044478.jpg"
+				},
+				{
 					"src": "images/crested-kingfisher-2.jpg"
 				},
 				{
@@ -2037,6 +2157,9 @@
 			"state": "Uttarakhand",
 			"country": "India",
 			"media": [
+				{
+					"src": "images/grey-breasted-prinia-1663125394.jpg"
+				},
 				{
 					"src": "images/grey-breasted-prinia.jpg"
 				}
@@ -2380,6 +2503,9 @@
 			"media": [
 				{
 					"src": "images/yellow-billed-blue-magpie-3.jpg"
+				},
+				{
+					"src": "images/yellow-billed-blue-magpie-1663123108.jpg"
 				},
 				{
 					"src": "images/yellow-billed-blue-magpie-4.jpg"
@@ -6132,7 +6258,8 @@
 				{
 					"src": "images/grey-headed-woodpecker-male.jpg"
 				}
-			]
+			],
+			"variation": "Black-naped"
 		},
 		{
 			"key": "streaked-laughingthrush",

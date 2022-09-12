@@ -1,5 +1,5 @@
 var FILE_CACHE = {};
-var FIREBASE_ENABLED = true;
+var FIREBASE_ENABLED = (window.location.origin.indexOf('localhost') >= 0) ? false : true;
 
 function readTextFile(file, callback) {
 	if(FILE_CACHE[file]) {
@@ -232,6 +232,9 @@ function resizeImage(file, size) {
     var resize = function () {
         var width = image.width;
         var height = image.height;
+        if(width <= size && height <= size && height == width) {
+        	return dataURItoBlob(image.src);
+        }
         canvas.width = size;
         canvas.height = size;
         if(width >= height) {

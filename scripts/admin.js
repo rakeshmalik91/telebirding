@@ -299,9 +299,10 @@ function render() {
 		row += "<td>"
 		row += getSelectDOM("species", data.species, getValue(bird, 'species'), "200px");
 		row += "<br>";
-		row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].family + "</span>";
-		row += "<br>";
-		row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
+		// row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].family + "</span>";
+		// row += "<br>";
+		// row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
+		row += "<textarea data-field='description' style='width:190px;height:80px' placeholder='Enter Description'>" + getValue(bird, 'description') + "</textarea>";
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";
@@ -356,7 +357,7 @@ function render() {
 		birdRow.find(".upload").change(function() {
 			uploadMedia(bird.key, this.files)
 		});
-		birdRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select").not(".thumbnail *").change(function() {
+		birdRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
 			var value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
 			updateField(bird.key, $(this).attr("data-field"), value);
 		});
@@ -393,6 +394,7 @@ function render() {
 }
 
 function refresh() {
+	FIREBASE_ENABLED = true
 	clearFileCache();
 	data = {};
 	readJSONFiles([getData("data/birds.json"), getData("data/species.json"), getData("data/families.json"), getData("data/places.json")], function(json) {

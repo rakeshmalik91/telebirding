@@ -3466,6 +3466,14 @@
 			],
 			"family": "Vultures"
 		},
+		"white-throated-dipper": {
+			"key": "white-throated-dipper",
+			"name": "White-throated Dipper",
+			"tags": [
+				"Dipper"
+			],
+			"family": "Dippers"
+		},
 		"white-throated-fantail": {
 			"key": "white-throated-fantail",
 			"name": "White-throated Fantail",

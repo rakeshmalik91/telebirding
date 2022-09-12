@@ -68,6 +68,11 @@ button:disabled {
 	border-color: #4d5459;
 	color: #4d5459;
 }
+textarea {
+	resize: none;
+	background-color: transparent;
+	color: white;
+}
 
 .nav-top {
 	margin-bottom: 5px;
@@ -118,7 +123,7 @@ span.disabled {
 table {
 	width: auto;
 }
-th, tr, td, button, input[type-checkbox], .nav-top input  {
+th, tr, td, button, input[type-checkbox], .nav-top input, textarea {
 	border: 1px solid #79848d;
 	border-radius: 2px;
 }
