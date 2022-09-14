@@ -414,6 +414,64 @@ button.right-pane-button.button-active:before {
 	background-color: #536375;
 }
 
+.location-list button.expand {
+	position: absolute;
+	display: inline-block;
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	background-color: transparent;
+	background-image: url('../icons/close.png');
+	width: 20px;
+  height: 20px;
+  background-size: cover;
+	transform: translate(-40px, 4px) rotate(45deg);
+	filter: brightness(0.9);
+}
+.right-pane .location-list button.expand {
+	filter: brightness(0.6);
+}
+.location-list button.expand.expanded {
+	transform: translate(-40px, 4px) rotate(90deg);
+}
+.location-list button.expand:hover {
+	background-color: transparent;
+	filter: brightness(1.0);
+}
+
+.location-list .hor-line {
+	border-top: 1px solid white;
+	display: inline-block;
+	width: 50px;
+	position: absolute;
+}
+.location-list .hor-line.l2 {
+	transform: translate(20px, 14px);
+}
+.location-list .hor-line.l3 {
+	transform: translate(70px, 14px);
+}
+.location-list .hor-line.l4 {
+	transform: translate(120px, 14px);
+}
+.location-list .ver-line {
+	border-left: 1px solid white;
+	display: inline-block;
+	position: absolute;
+	height: 30px;
+}
+.location-list .ver-line.l2 {
+	transform: translate(20px, -15px);
+}
+.location-list .ver-line.l3 {
+	transform: translate(70px, -15px);
+}
+.location-list .ver-line.l4 {
+	transform: translate(120px, -15px);
+}
+.right-pane .location-list .hor-line, .right-pane .location-list .ver-line {
+	border-color: grey;
+}
 
 .location-list button:hover,
 .right-pane button:hover {
@@ -423,11 +481,18 @@ button.right-pane-button.button-active:before {
 
 .right-pane div.families {
 	display: inline-block;
-	width: 300px;
+	width: 235px;
+	padding-right: 10px;
+}
+.right-pane div.families span:not(.count) {
+	max-width: 180px;
 }
 .right-pane div.species {
 	display: inline-block;
 	width: 230px;
+}
+.right-pane div.species span, .right-pane div.families span {
+	text-align: left;
 }
 
 

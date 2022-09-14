@@ -1588,7 +1588,7 @@
 		},
 		"grey-chinned-minivet": {
 			"key": "grey-chinned-minivet",
-			"name": "Grey Chinned Minivet",
+			"name": "Grey-chinned Minivet",
 			"tags": [
 				"Minivet",
 				"Cuckoo-shrike"
@@ -1614,7 +1614,7 @@
 		},
 		"grey-headed-lapwing": {
 			"key": "grey-headed-lapwing",
-			"name": "Grey Headed Lapwing",
+			"name": "Grey-headed Lapwing",
 			"tags": [
 				"Lapwing"
 			],
@@ -1633,7 +1633,7 @@
 		},
 		"grey-headed-woodpecker": {
 			"key": "grey-headed-woodpecker",
-			"name": "Grey Headed Woodpecker",
+			"name": "Grey-headed Woodpecker",
 			"tags": [
 				"Woodpecker"
 			],
@@ -3451,7 +3451,7 @@
 		},
 		"white-crested-laughingthrush": {
 			"key": "white-crested-laughingthrush",
-			"name": "White Crested Laughingthrush",
+			"name": "White-crested Laughingthrush",
 			"tags": [
 				"Laughingthrush"
 			],
@@ -3563,7 +3563,7 @@
 		},
 		"yellow-breasted-greenfinch": {
 			"key": "yellow-breasted-greenfinch",
-			"name": "Yellow Breasted Greenfinch",
+			"name": "Yellow-breasted Greenfinch",
 			"tags": [
 				"Greenfinch",
 				"Green Finch",
@@ -3573,7 +3573,7 @@
 		},
 		"yellow-browed-bulbul": {
 			"key": "yellow-browed-bulbul",
-			"name": "Yellow Browed Bulbul",
+			"name": "Yellow-browed Bulbul",
 			"tags": [
 				"Bulbul"
 			],

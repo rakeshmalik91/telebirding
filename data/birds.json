@@ -1,6 +1,24 @@
 {
 	"birds": [
 		{
+			"key": "s1663299622",
+			"species": "black-bulbul",
+			"date": "15-04-2022",
+			"place": "Tindar",
+			"city": "Tirthan Valley",
+			"state": "Himachal Pradesh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-bulbul-1663300845.jpg"
+				},
+				{
+					"src": "images/black-bulbul-1663299638.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1663126564",
 			"species": "grey-headed-woodpecker",
 			"date": "27-04-2022",
@@ -286,6 +304,9 @@
 			"country": "India",
 			"media": [
 				{
+					"src": "images/tibetan-snowcock-1663173788.jpg"
+				},
+				{
 					"src": "images/tibetan-snowcock.jpg"
 				},
 				{
@@ -293,9 +314,6 @@
 					"thumbnail": "images/tibetan-snowcock.jpg",
 					"mute": true,
 					"type": "video"
-				},
-				{
-					"src": "images/tibetan-snowcock-3.jpg"
 				},
 				{
 					"src": "images/tibetan-snowcock-2.jpg"
@@ -306,7 +324,7 @@
 			"key": "upland-buzzard-light",
 			"species": "upland-buzzard",
 			"date": "01-07-2022",
-			"place": "Tso Kar",
+			"place": "Thukje",
 			"state": "Ladakh",
 			"country": "India",
 			"variation": "Light Morph",
@@ -316,41 +334,46 @@
 				},
 				{
 					"src": "images/upland-buzzard-2.jpg"
+				},
+				{
+					"src": "images/upland-buzzard-1663201458.jpg"
 				}
 			],
-			"city": "Thukje"
+			"city": "Tso Kar"
 		},
 		{
 			"key": "lesser-sand-plover",
 			"species": "lesser-sand-plover",
 			"date": "01-07-2022",
-			"place": "Tso Kar",
+			"place": "",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/lesser-sand-plover.jpg"
 				}
-			]
+			],
+			"city": "Tso Kar"
 		},
 		{
 			"key": "ruddy-shelduck-3",
 			"species": "ruddy-shelduck",
 			"date": "01-07-2022",
-			"place": "Tso Kar",
+			"place": "",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/ruddy-shelduck-3.jpg"
 				}
-			]
+			],
+			"city": "Tso Kar"
 		},
 		{
 			"key": "great-rosefinch",
 			"species": "great-rosefinch",
 			"date": "01-07-2022",
-			"place": "Tso Kar",
+			"place": "Thukje",
 			"state": "Ladakh",
 			"country": "India",
 			"gender": "M",
@@ -359,7 +382,7 @@
 					"src": "images/great-rosefinch.jpg"
 				}
 			],
-			"city": "Thukje"
+			"city": "Tso Kar"
 		},
 		{
 			"key": "upland-buzzard-dark",
@@ -383,7 +406,7 @@
 			"key": "tibetan-sandgrouse",
 			"species": "tibetan-sandgrouse",
 			"date": "01-07-2022",
-			"place": "Tso Kar",
+			"place": "",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -394,13 +417,14 @@
 					"src": "images/tibetan-sandgrouse-2.jpg"
 				}
 			],
-			"description": "Pretty hard to spot on the sands near Tso Kar. Can only be found in the early morning."
+			"description": "Pretty hard to spot on the sands near Tso Kar. Can only be found in the early morning.",
+			"city": "Tso Kar"
 		},
 		{
 			"key": "black-necked-crane",
 			"species": "black-necked-crane",
 			"date": "30-06-2022",
-			"place": "Tso Kar",
+			"place": "Thukje",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -411,13 +435,13 @@
 					"src": "images/black-necked-crane-2.jpg"
 				}
 			],
-			"city": "Thukje"
+			"city": "Tso Kar"
 		},
 		{
 			"key": "ground-tit",
 			"species": "ground-tit",
 			"date": "30-06-2022",
-			"place": "Tso Kar",
+			"place": "Thukje",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -425,7 +449,7 @@
 					"src": "images/ground-tit.jpg"
 				}
 			],
-			"city": "Thukje"
+			"city": "Tso Kar"
 		},
 		{
 			"key": "robin-accentor-juvenile",
@@ -512,6 +536,9 @@
 				},
 				{
 					"src": "images/brown-headed-gull-breeding-2.jpg"
+				},
+				{
+					"src": "images/brown-headed-gull-1663172353.jpg"
 				}
 			],
 			"city": "Karzok"
@@ -698,8 +725,8 @@
 			"key": "s1662690044",
 			"species": "lesser-sand-plover",
 			"date": "26-06-2022",
-			"place": "Pangong Tso",
-			"city": "Merak",
+			"place": "Merak",
+			"city": "Pangong Tso",
 			"state": "Ladakh",
 			"country": "India",
 			"hidden": false,
@@ -757,7 +784,7 @@
 			"key": "horned-lark-3",
 			"species": "horned-lark",
 			"date": "26-06-2022",
-			"city": "Merak",
+			"city": "Pangong Tso",
 			"state": "Ladakh",
 			"country": "India",
 			"gender": "M",
@@ -769,13 +796,13 @@
 					"src": "images/horned-lark-4.jpg"
 				}
 			],
-			"place": "Pangong Tso"
+			"place": "Merak"
 		},
 		{
 			"key": "bar-headed-goose-3",
 			"species": "bar-headed-goose",
 			"date": "26-06-2022",
-			"place": "Pangong Tso",
+			"place": "Merak",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -790,13 +817,13 @@
 					"type": "video"
 				}
 			],
-			"city": "Merak"
+			"city": "Pangong Tso"
 		},
 		{
 			"key": "humes-lark",
 			"species": "humes-lark",
 			"date": "26-06-2022",
-			"place": "Pangong Tso",
+			"place": "Merak",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -811,15 +838,15 @@
 					"title": "Eggs"
 				}
 			],
-			"city": "Merak",
-			"description": "Found one of this in the early morning in Merak near shores of Pangong Tso. Was guarding its eggs. They hide and camouflage pretty well in the hole even in small grasses."
+			"city": "Pangong Tso",
+			"description": ""
 		},
 		{
 			"key": "s1662688043",
 			"species": "black-winged-stilt",
 			"date": "25-06-2022",
-			"place": "Pangong Tso",
-			"city": "Merak",
+			"place": "Merak",
+			"city": "Pangong Tso",
 			"state": "Ladakh",
 			"country": "India",
 			"hidden": false,
@@ -833,7 +860,7 @@
 			"key": "common-tern",
 			"species": "common-tern",
 			"date": "25-06-2022",
-			"place": "Pangong Tso",
+			"place": "Spangmik",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
@@ -843,7 +870,8 @@
 				{
 					"src": "images/common-tern-2.jpg"
 				}
-			]
+			],
+			"city": "Pangong Tso"
 		},
 		{
 			"key": "black-headed-mountain-finch",
@@ -1566,7 +1594,7 @@
 				{
 					"src": "videos/black-francolin-male.mp4",
 					"thumbnail": "images/black-francolin-male.jpg",
-					"mute": true,
+					"mute": false,
 					"type": "video"
 				},
 				{
@@ -2219,7 +2247,8 @@
 				{
 					"src": "images/ashy-drongo.jpg"
 				}
-			]
+			],
+			"place": "Tindar"
 		},
 		{
 			"key": "eurasian-sparrowhawk",
@@ -2232,39 +2261,42 @@
 				{
 					"src": "images/eurasian-sparrowhawk.jpg"
 				}
-			]
+			],
+			"place": "Tindar"
 		},
 		{
 			"key": "himalayan-griffon",
 			"species": "himalayan-griffon",
 			"date": "17-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-griffon.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "mountain-hawk-eagle",
 			"species": "mountain-hawk-eagle",
 			"date": "17-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/mountain-hawk-eagle.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "fire-fronted-serin",
 			"species": "fire-fronted-serin",
 			"date": "17-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
@@ -2277,52 +2309,56 @@
 				{
 					"src": "images/fire-fronted-serin-3.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "himalayan-bulbul-2",
 			"species": "himalayan-bulbul",
 			"date": "17-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-bulbul-3.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "whiskered-yuhina",
 			"species": "whiskered-yuhina",
 			"date": "16-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/whiskered-yuhina.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "brownish-flanked-bush-warbler",
 			"species": "brownish-flanked-bush-warbler",
 			"date": "16-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/brownish-flanked-bush-warbler.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "mrs-goulds-sunbird-male",
 			"species": "mrs-goulds-sunbird",
 			"date": "16-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"gender": "M",
@@ -2330,13 +2366,14 @@
 				{
 					"src": "images/mrs-goulds-sunbird-male.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "chestnut-tailed-minla",
 			"species": "chestnut-tailed-minla",
 			"date": "15-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
@@ -2349,7 +2386,8 @@
 				{
 					"src": "images/chestnut-tailed-minla-3.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "red-headed-bullfinch",
@@ -2366,13 +2404,14 @@
 				{
 					"src": "images/red-headed-bullfinch-2.jpg"
 				}
-			]
+			],
+			"place": "Tindar"
 		},
 		{
 			"key": "yellow-breasted-greenfinch-male",
 			"species": "yellow-breasted-greenfinch",
 			"date": "15-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"gender": "M",
@@ -2380,13 +2419,14 @@
 				{
 					"src": "images/yellow-breasted-greenfinch-male.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "yellow-breasted-greenfinch-female",
 			"species": "yellow-breasted-greenfinch",
 			"date": "15-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"gender": "F",
@@ -2394,33 +2434,36 @@
 				{
 					"src": "images/yellow-breasted-greenfinch-female.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "common-hoopoe-3",
 			"species": "common-hoopoe",
 			"date": "15-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/common-hoopoe-3.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "crested-kingfisher",
 			"species": "crested-kingfisher",
 			"date": "15-04-2022",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/crested-kingfisher.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "western-crowned-warbler",
@@ -5128,14 +5171,15 @@
 			"species": "brown-headed-gull",
 			"plumage": "Non-Breeding",
 			"date": "20-10-2021",
-			"place": "Pangong Tso",
+			"place": "Spangmik",
 			"state": "Ladakh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/brown-headed-gull-non-breeding.jpg"
 				}
-			]
+			],
+			"city": "Pangong Tso"
 		},
 		{
 			"key": "alpine-chough",
@@ -5629,47 +5673,50 @@
 			"key": "rock-bunting",
 			"species": "rock-bunting",
 			"date": "05-04-2021",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/rock-bunting.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "fire-capped-tit",
 			"species": "fire-capped-tit",
 			"date": "05-04-2021",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/fire-capped-tit.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "indian-white-eye-2",
 			"species": "indian-white-eye",
 			"date": "05-04-2021",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-white-eye-2.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "grey-bushchat-female",
 			"species": "grey-bushchat",
 			"gender": "F",
 			"date": "04-04-2021",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
@@ -5679,20 +5726,22 @@
 				{
 					"src": "images/grey-bushchat-female-2.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "grey-treepie",
 			"species": "grey-treepie",
 			"date": "04-04-2021",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/grey-treepie.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "spotted-forktail",
@@ -5711,14 +5760,15 @@
 			"key": "himalayan-prinia",
 			"species": "himalayan-prinia",
 			"date": "03-04-2021",
-			"place": "Tirthan Valley",
+			"place": "Banjar",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/himalayan-prinia.jpg"
 				}
-			]
+			],
+			"city": "Tirthan Valley"
 		},
 		{
 			"key": "blue-throated-blue-flycatcher-female",

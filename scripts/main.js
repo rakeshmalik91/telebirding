@@ -2,7 +2,7 @@ var DATA_PER_PAGE = 12;
 var TAG_TYPES = ["subspecies", "variation", "plumage", "age"];
 var FILES = [getData("data/birds.json"), getData("data/species.json"), getData("data/families.json"), getData("data/places.json")];
 var MEDIA_TYPE_VIDEO = 'video';
-var MIN_COUNT_FOR_RIGHT_PANE_PLACE_LISTING = 5;
+var MIN_COUNT_FOR_LOCATION_LISTING = 5;
 var DEFAULT_PLUMAGE = ""; //"Basic/Adult";
 
 var IS_MOBILE = !isDeviceOnLandscapeOrientation();
@@ -89,15 +89,22 @@ function computeInternalDataFields() {
 				};
 				if(countries[countryCode].states[stateCode].count > 0) {
 					[...new Set(data.birds.filter(b => b.country == countryCode && b.state == stateCode).map(b => b.city))].forEach(function(city) {
-						countries[countryCode].states[stateCode].cities[city] = {
-							count: getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && (b.city == city || !b.city && b.place == city))),
-							places: {}
-						};
-						[...new Set(data.birds.filter(b => b.place && b.country == countryCode && b.state == stateCode && b.city == city).map(b => b.place))].forEach(function(place) {
-							countries[countryCode].states[stateCode].cities[city].places[place] = {
-								count: getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && b.city == city && b.place == place))
-							}
-						});
+						if(!city) {
+							[...new Set(data.birds.filter(b => b.place && b.country == countryCode && b.state == stateCode && !b.city).map(b => b.place))].forEach(function(place) {
+								countries[countryCode].states[stateCode].cities[place] ||= {places:{}};
+								countries[countryCode].states[stateCode].cities[place].count = getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && (b.city == place || b.place == place)));
+							});
+						} else {
+							countries[countryCode].states[stateCode].cities[city] = {
+								count: getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && (b.city == city || !b.city && b.place == city))),
+								places: {}
+							};
+							[...new Set(data.birds.filter(b => b.place && b.country == countryCode && b.state == stateCode && b.city == city).map(b => b.place))].forEach(function(place) {
+								countries[countryCode].states[stateCode].cities[city].places[place] = {
+									count: getSpeciesCount(data.birds.filter(b => b.country == countryCode && b.state == stateCode && b.city == city && b.place == place))
+								}
+							});
+						}
 					});
 				}
 			});
@@ -398,7 +405,7 @@ function previewImage(imageSrc, birdKey, index) {
 		var media = bird.media.filter(m => m.src == imageSrc)[0];
 		var mediaTag = '';
 		if(media.type == MEDIA_TYPE_VIDEO) {
-			mediaTag = '<video controls loop autoplay ' + (media.mute ? ' mute' : '') + '><source src="' + imageSrc + '" type="video/mp4"></video>';
+			mediaTag = '<video controls loop autoplay ' + (media.mute ? ' muted' : '') + '><source src="' + imageSrc + '" type="video/mp4"></video>';
 		} else {
 			mediaTag = '<img src="' + imageSrc + '" title="' + bird.species.name + '" alt="' + bird.species.name + '"></img>';
 		}
@@ -438,7 +445,7 @@ function scrollPreviewImage(direction) {
 	if($('.preview-image').is(':visible')) {
 		var index = parseInt($('.preview-image').attr('data-index'));
 		var bird = data.filteredBirds[index];
-		var mediaSrc = $('.preview-image').find('img').attr('src');
+		var mediaSrc = $('.preview-image').find('img, video source').attr('src');
 		var mediaIndex = data.filteredBirds[index].species.media.map((m,i) => (m.media.src == mediaSrc) ? i : null).filter(k => k != null)[0];
 		mediaIndex += direction;
 		if(mediaIndex >= 0 && mediaIndex < data.filteredBirds[index].species.media.length) {
@@ -604,35 +611,70 @@ function renderMapMenu() {
 function renderLocationList(container) {
 	container.append("<div class='location-list'></div>")
 	container = container.find('.location-list');
-	Object.keys(data.countries).forEach(function(countryCode) {
-			var country = data.countries[countryCode];
-			var count = data.countries[countryCode].count;
-			if(count > 0) {
-				container.append("<button class='country' onclick='triggerFilter(\"place\", \"" + country.name + "\")'><span>" + country.name + "</span><span class='count'>" + count + "</span></button>");
-				Object.keys(country.states).sort((a,b) => compare(country.states[b].count, country.states[a].count)).forEach(function(stateCode) {
-					var state = country.states[stateCode];
-					var count = country.states[stateCode].count;
-					if(count > 0) {
-						container.append("<div><div class='hierarchy l1'></div><button class='state' onclick='triggerFilter(\"place\", \"" + state.name + "\")'><span>" + state.name + "</span><span class='count'>" + count + "</span></button></div>");
-						Object.keys(state.cities).sort((a,b) => compare(state.cities[b].count, state.cities[a].count)).forEach(function(cityName) {
-							var city = state.cities[cityName];
-							var count = state.cities[cityName].count;
-							if(count >= MIN_COUNT_FOR_RIGHT_PANE_PLACE_LISTING) {
-								if(!invalidName(cityName)) {
-									container.append("<div><div class='hierarchy l2'></div><button class='city' onclick='triggerFilter(\"place\", \"" + cityName + "\")'><span>" + cityName + "</span><span class='count'>" + count + "</span></button></div>");
-								}
-								Object.keys(city.places).sort((a,b) => compare(city.places[b].count, city.places[a].count)).forEach(function(placeName) {
-									var count = city.places[placeName].count;
-									if(count >= MIN_COUNT_FOR_RIGHT_PANE_PLACE_LISTING) {
-										container.append("<div><div class='hierarchy " + (invalidName(cityName) ? 'l2' : 'l3' ) + "'></div><button class='" + (invalidName(cityName) ? 'city' : 'place' ) + "' onclick='triggerFilter(\"place\", \"" + placeName + "\")'><span>" + placeName + "</span><span class='count'>" + count + "</span></button></div>");
-									}
-								});
-							}
-						});
-					}
+	var html = "";
+	Object.keys(data.countries).forEach(function(countryCode, l1Index) {
+		var country = data.countries[countryCode];
+		var count = data.countries[countryCode].count;
+		if(count > 0) {
+			html += "<div class='location-item country'>";
+			html += "<button class='country' onclick='triggerFilter(\"place\", \"" + country.name + "\")'><span>" + country.name + "</span><span class='count'>" + count + "</span></button>";
+			var l2Children = Object.keys(country.states).filter(s => country.states[s].count > 0).sort((a,b) => compare(country.states[b].count, country.states[a].count));
+			l2Children.forEach(function(stateCode, l2Index) {
+				var state = country.states[stateCode];
+				var count = country.states[stateCode].count;
+				var l3Children = Object.keys(state.cities).filter(c => state.cities[c].count >= MIN_COUNT_FOR_LOCATION_LISTING).sort((a,b) => compare(state.cities[b].count, state.cities[a].count));
+				html += "<div class='location-item'>";
+				html += "<div class='ver-line l2'></div>";
+				html += "<div class='hor-line l2'></div>";
+				if(l3Children.length > 0) html += "<button class='expand state'/>";
+				html += "<button class='state' onclick='triggerFilter(\"place\", \"" + state.name + "\")'><span>" + state.name + "</span><span class='count'>" + count + "</span></button>";
+				l3Children.forEach(function(cityName, l3Index) {
+					var city = state.cities[cityName];
+					var count = state.cities[cityName].count;
+					var l4Children = Object.keys(city.places).filter(p => city.places[p].count >= MIN_COUNT_FOR_LOCATION_LISTING).sort((a,b) => compare(city.places[b].count, city.places[a].count));
+					html += "<div class='location-item' style='display: none;'>";
+					if(l2Index < l2Children.length - 1) html += "<div class='ver-line l2'></div>";
+					html += "<div class='ver-line l3'></div>";
+					html += "<div class='hor-line l3'></div>";
+					if(l4Children.length > 0) html += "<button class='expand city'/>";
+					html += "<button class='city' onclick='triggerFilter(\"place\", \"" + cityName + "\")'><span>" + cityName + "</span><span class='count'>" + count + "</span></button>";
+					l4Children.forEach(function(placeName, l4Index) {
+						var count = city.places[placeName].count;
+						html += "<div class='location-item' style='display: none;'>";
+						if(l2Index < l2Children.length - 1) html += "<div class='ver-line l2'></div>";
+						if(l3Index < l3Children.length - 1) html += "<div class='ver-line l3'></div>";
+						html += "<div class='ver-line l4'></div>";
+						html += "<div class='hor-line l4'></div>";
+						html += "<button class='place' onclick='triggerFilter(\"place\", \"" + placeName + "\")'><span>" + placeName + "</span><span class='count'>" + count + "</span></button>";
+						html += "</div>";
+					});
+					html += "</div>";
 				});
-			}
-		});
+				html += "</div>";
+			});
+			html += "</div>";
+		}
+	});
+	container.append(html); 
+	container.find(".location-item button.expand").click(function() {
+		var clickedButton = $(this);
+		var children = clickedButton.parent().find("> .location-item");
+		if(children.is(":visible")) {
+			children.find(".location-item").hide();
+			children.find("button.expand").removeClass("expanded");
+			setTimeout(function() {
+				children.hide();
+				clickedButton.removeClass("expanded");
+			}, 100);
+		} else {
+			children.show();
+			clickedButton.addClass("expanded");
+			setTimeout(function() {
+				children.find(".location-item").show();
+				children.find("button.expand").addClass("expanded");
+			}, 100);
+		}
+	});
 }
 
 function toggleRightPane() {

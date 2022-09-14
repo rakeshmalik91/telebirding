@@ -78,15 +78,28 @@ function plural(word) {
 	return word.match(/[scz](h|)$/g) ? (word + "es") : (word + "s");
 }
 
+var TAG_NORMALIZE_REPLACE_MAPPING = {
+	"-": " ",
+	"'": "",
+	"+": " ",
+	"gray": "grey" 
+};
+
+function normalizeForTagMatch(tag) {
+	tag = tag.toLowerCase();
+	Object.keys(TAG_NORMALIZE_REPLACE_MAPPING).forEach((s) => { tag = tag.replaceAll(s, TAG_NORMALIZE_REPLACE_MAPPING[s]); });
+	return tag;
+}
+
 function tagMatches(tag, search) {
-	tag = tag.toLowerCase().replaceAll("-", " ").replaceAll("'", "");
-	search = search.toLowerCase().replaceAll("-", " ").replaceAll("'", "").replaceAll("+", " ");
+	tag = normalizeForTagMatch(tag);
+	search = normalizeForTagMatch(search);
 	return tag == search || plural(tag) == search;
 }
 
 function tagMatchesSubstring(tag, search) {
-	tag = tag.toLowerCase().replaceAll("-", " ").replaceAll("'", "");
-	search = search.toLowerCase().replaceAll("-", " ").replaceAll("'", "").replaceAll("+", " ");
+	tag = normalizeForTagMatch(tag);
+	search = normalizeForTagMatch(search);
 	return tag.match("\\b" + search + "\\b");
 }
 
@@ -144,10 +157,6 @@ function autoScroll(container, amount) {
 			container.attr('data-scroll', null);
 		});
 	}
-}
-
-function invalidName(place) {
-	return !place || place == 'undefined' || place == 'null';
 }
 
 
