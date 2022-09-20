@@ -1,88 +1,87 @@
 {
 	"birds": [
 		{
-			"key": "s1663299622",
-			"species": "black-bulbul",
-			"date": "15-04-2022",
-			"place": "Tindar",
-			"city": "Tirthan Valley",
-			"state": "Himachal Pradesh",
+			"key": "s1664166493",
+			"species": "little-cormorant",
+			"date": "25-09-2022",
+			"place": "Rongo",
+			"city": "Kalimpong",
+			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/black-bulbul-1663300845.jpg"
+					"src": "images/little-cormorant-1664166995.jpg"
 				},
 				{
-					"src": "images/black-bulbul-1663299638.jpg"
+					"src": "images/little-cormorant-1664166506.jpg"
 				}
 			]
 		},
 		{
-			"key": "s1663126564",
-			"species": "grey-headed-woodpecker",
-			"date": "27-04-2022",
-			"place": "",
-			"city": "Bhimtal",
-			"state": "Uttarakhand",
+			"key": "s1664166368",
+			"species": "slaty-backed-forktail",
+			"date": "25-09-2022",
+			"place": "Rongo",
+			"city": "Kalimpong",
+			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/grey-headed-woodpecker-1663127193.jpg"
+					"src": "images/slaty-backed-forktail-1664166684.jpg"
+				},
+				{
+					"src": "images/slaty-backed-forktail-1664172916.jpg"
 				}
-			],
-			"gender": "F",
-			"variation": "Black-naped"
+			]
 		},
 		{
-			"key": "s1663119285",
-			"species": "great-rosefinch",
-			"date": "28-06-2022",
-			"place": "",
-			"city": "Hanle",
-			"state": "Ladakh",
+			"key": "s1664173793",
+			"species": "plumbeous-water-redstart",
+			"date": "25-09-2022",
+			"place": "Rongo",
+			"city": "Kalimpong",
+			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/great-rosefinch-1663119556.jpg"
+					"src": "images/plumbeous-water-redstart-1664173808.jpg"
 				}
 			],
 			"gender": "M"
 		},
 		{
-			"key": "s1663041375",
-			"species": "brown-dipper",
-			"date": "25-05-2022",
-			"place": "",
-			"city": "Mukteshwar",
-			"state": "Uttarakhand",
+			"key": "s1664166247",
+			"species": "common-hawk-cuckoo",
+			"date": "25-09-2022",
+			"place": "Rongo",
+			"city": "Kalimpong",
+			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/brown-dipper-1663041469.jpg"
-				},
-				{
-					"src": "images/brown-dipper-1663041478.jpg"
+					"src": "images/common-hawk-cuckoo-1664204216.jpg"
 				}
 			]
 		},
 		{
-			"key": "s1663039652",
-			"species": "fire-fronted-serin",
-			"date": "30-06-2022",
-			"place": "",
-			"city": "Sumdo",
-			"state": "Ladakh",
+			"key": "s1664377396",
+			"species": "taiga-flycatcher",
+			"date": "25-09-2022",
+			"place": "Rongo",
+			"city": "Kalimpong",
+			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/fire-fronted-serin-1663039678.jpg"
+					"src": "images/taiga-flycatcher-1664377414.jpg"
 				}
-			]
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1662860671",
@@ -421,6 +420,21 @@
 			"city": "Tso Kar"
 		},
 		{
+			"key": "s1663039652",
+			"species": "fire-fronted-serin",
+			"date": "30-06-2022",
+			"place": "",
+			"city": "Sumdo",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/fire-fronted-serin-1663039678.jpg"
+				}
+			]
+		},
+		{
 			"key": "black-necked-crane",
 			"species": "black-necked-crane",
 			"date": "30-06-2022",
@@ -595,6 +609,22 @@
 				}
 			],
 			"place": ""
+		},
+		{
+			"key": "s1663119285",
+			"species": "great-rosefinch",
+			"date": "28-06-2022",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-rosefinch-1663119556.jpg"
+				}
+			],
+			"gender": "M"
 		},
 		{
 			"key": "saker-falcon",
@@ -1055,9 +1085,6 @@
 			"media": [
 				{
 					"src": "images/black-redstart.jpg"
-				},
-				{
-					"src": "images/black-redstart-2.jpg"
 				}
 			]
 		},
@@ -1239,6 +1266,24 @@
 			"media": [
 				{
 					"src": "images/scaly-breasted-munia-4.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1663041375",
+			"species": "brown-dipper",
+			"date": "25-05-2022",
+			"place": "",
+			"city": "Mukteshwar",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-dipper-1663041469.jpg"
+				},
+				{
+					"src": "images/brown-dipper-1663041478.jpg"
 				}
 			]
 		},
@@ -1532,26 +1577,6 @@
 			]
 		},
 		{
-			"key": "kalij-pheasant-male-4",
-			"species": "kalij-pheasant",
-			"date": "13-04-2022",
-			"city": "Mcleodganj",
-			"state": "Himachal Pradesh",
-			"country": "India",
-			"gender": "M",
-			"media": [
-				{
-					"src": "images/kalij-pheasant-male-4.jpg"
-				},
-				{
-					"src": "videos/kalij-pheasant.mp4",
-					"thumbnail": "images/kalij-pheasant-male-4.jpg",
-					"mute": true,
-					"type": "video"
-				}
-			]
-		},
-		{
 			"key": "fulvous-breasted-woodpecker-male-2",
 			"species": "fulvous-breasted-woodpecker",
 			"date": "06-05-2022",
@@ -1613,6 +1638,36 @@
 			"media": [
 				{
 					"src": "images/rufous-bellied-woodpecker-female.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1664413239",
+			"species": "white-throated-fantail",
+			"date": "01-05-2022",
+			"place": "",
+			"city": "Sattal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-throated-fantail-1664413316.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1664412925",
+			"species": "rufous-sibia",
+			"date": "01-05-2022",
+			"place": "",
+			"city": "Sattal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-sibia-1664413022.jpg"
 				}
 			]
 		},
@@ -1784,6 +1839,9 @@
 				},
 				{
 					"src": "images/white-throated-laughingthrush-2.jpg"
+				},
+				{
+					"src": "images/white-throated-laughingthrush-1664413167.jpg"
 				}
 			]
 		},
@@ -1855,6 +1913,52 @@
 			"media": [
 				{
 					"src": "images/emerald-dove.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1664414892",
+			"species": "spot-winged-starling",
+			"date": "30-04-2022",
+			"place": "",
+			"city": "Sattal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spot-winged-starling-1664414998.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1664414011",
+			"species": "grey-headed-canary-flycatcher",
+			"date": "30-04-2022",
+			"place": "",
+			"city": "Sattal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-headed-canary-flycatcher-1664414245.jpg"
+				}
+			],
+			"age": "Juvenile"
+		},
+		{
+			"key": "s1664413795",
+			"species": "indian-white-eye",
+			"date": "30-04-2022",
+			"place": "",
+			"city": "Sattal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-white-eye-1664413834.jpg"
 				}
 			]
 		},
@@ -1977,6 +2081,9 @@
 			"media": [
 				{
 					"src": "images/bar-winged-flycatcher-shrike.jpg"
+				},
+				{
+					"src": "images/bar-winged-flycatcher-shrike-1664413504.jpg"
 				}
 			]
 		},
@@ -2044,6 +2151,9 @@
 			"media": [
 				{
 					"src": "images/rusty-cheeked-scimitar-babbler.jpg"
+				},
+				{
+					"src": "images/rusty-cheeked-scimitar-babbler-1664380020.jpg"
 				}
 			]
 		},
@@ -2135,6 +2245,23 @@
 			]
 		},
 		{
+			"key": "s1663126564",
+			"species": "grey-headed-woodpecker",
+			"date": "27-04-2022",
+			"place": "",
+			"city": "Bhimtal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-headed-woodpecker-1663127193.jpg"
+				}
+			],
+			"gender": "F",
+			"variation": "Black-naped"
+		},
+		{
 			"key": "black-chinned-babbler",
 			"species": "black-chinned-babbler",
 			"date": "26-04-2022",
@@ -2144,6 +2271,9 @@
 			"media": [
 				{
 					"src": "images/black-chinned-babbler.jpg"
+				},
+				{
+					"src": "images/black-chinned-babbler-1664380298.jpg"
 				}
 			]
 		},
@@ -2222,6 +2352,76 @@
 					"src": "images/jungle-myna-2.jpg"
 				}
 			]
+		},
+		{
+			"key": "s1664379712",
+			"species": "scarlet-minivet",
+			"date": "24-04-2022",
+			"place": "",
+			"city": "Bhimtal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/scarlet-minivet-1664379729.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1664378962",
+			"species": "siberian-stonechat",
+			"date": "24-04-2022",
+			"place": "",
+			"city": "Bhimtal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/siberian-stonechat-1664378979.jpg"
+				},
+				{
+					"src": "images/siberian-stonechat-1664379203.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1664378100",
+			"species": "pied-bushchat",
+			"date": "24-04-2022",
+			"place": "",
+			"city": "Bhimtal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-bushchat-1664378580.jpg"
+				},
+				{
+					"src": "images/pied-bushchat-1664378311.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1664378037",
+			"species": "pied-bushchat",
+			"date": "24-04-2022",
+			"place": "",
+			"city": "Bhimtal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-bushchat-1664378228.jpg"
+				}
+			],
+			"gender": "M"
 		},
 		{
 			"key": "asian-barred-owlet",
@@ -2370,6 +2570,24 @@
 			"city": "Tirthan Valley"
 		},
 		{
+			"key": "s1663299622",
+			"species": "black-bulbul",
+			"date": "15-04-2022",
+			"place": "Tindar",
+			"city": "Tirthan Valley",
+			"state": "Himachal Pradesh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-bulbul-1663300845.jpg"
+				},
+				{
+					"src": "images/black-bulbul-1663299638.jpg"
+				}
+			]
+		},
+		{
 			"key": "chestnut-tailed-minla",
 			"species": "chestnut-tailed-minla",
 			"date": "15-04-2022",
@@ -2464,6 +2682,26 @@
 				}
 			],
 			"city": "Tirthan Valley"
+		},
+		{
+			"key": "kalij-pheasant-male-4",
+			"species": "kalij-pheasant",
+			"date": "13-04-2022",
+			"city": "Mcleodganj",
+			"state": "Himachal Pradesh",
+			"country": "India",
+			"gender": "M",
+			"media": [
+				{
+					"src": "images/kalij-pheasant-male-4.jpg"
+				},
+				{
+					"src": "videos/kalij-pheasant.mp4",
+					"thumbnail": "images/kalij-pheasant-male-4.jpg",
+					"mute": true,
+					"type": "video"
+				}
+			]
 		},
 		{
 			"key": "western-crowned-warbler",
@@ -3718,7 +3956,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/maroon-oriole-male.jpg"
+					"src": "images/maroon-oriole-1663681567.jpg"
 				}
 			]
 		},
@@ -3748,7 +3986,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/green-tailed-sunbird-male.jpg"
+					"src": "images/green-tailed-sunbird-1664290385.jpg"
 				},
 				{
 					"src": "images/green-tailed-sunbird-male-2.jpg"
@@ -3766,7 +4004,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/green-tailed-sunbird-female.jpg"
+					"src": "images/green-tailed-sunbird-1664290444.jpg"
 				}
 			]
 		},
@@ -3795,7 +4033,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/slaty-backed-forktail-2.jpg"
+					"src": "images/slaty-backed-forktail-1663684386.jpg"
 				}
 			]
 		},
@@ -3936,7 +4174,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/long-tailed-broadbill.jpg"
+					"src": "images/long-tailed-broadbill-1663682312.jpg"
 				}
 			]
 		},
@@ -4010,7 +4248,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/golden-throated-barbet.jpg"
+					"src": "images/golden-throated-barbet-1663681251.jpg"
 				}
 			]
 		},
@@ -4028,6 +4266,9 @@
 				},
 				{
 					"src": "images/rufous-gorgeted-flycatcher-2.jpg"
+				},
+				{
+					"src": "images/rufous-gorgeted-flycatcher-1663683010.jpg"
 				}
 			]
 		},
@@ -4510,7 +4751,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/little-forktail.jpg"
+					"src": "images/little-forktail-1663682900.jpg"
 				}
 			]
 		},
@@ -4540,7 +4781,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/eurasian-tree-sparrow-male.jpg"
+					"src": "images/eurasian-tree-sparrow-1663683385.jpg"
 				}
 			]
 		},
@@ -4586,7 +4827,8 @@
 				{
 					"src": "images/orange-bellied-leafbird-male.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "long-tailed-minivet-male",
@@ -4613,7 +4855,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/black-chinned-yuhina.jpg"
+					"src": "images/black-chinned-yuhina-1663683064.jpg"
 				}
 			]
 		},
@@ -4627,7 +4869,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/rufous-bellied-eagle.jpg"
+					"src": "images/rufous-bellied-eagle-1663681790.jpg"
 				}
 			]
 		},
@@ -4663,13 +4905,16 @@
 			"key": "black-crested-bulbul",
 			"species": "black-crested-bulbul",
 			"date": "19-12-2021",
-			"place": "Latpanchar",
+			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
 				{
-					"src": "images/black-crested-bulbul.jpg"
+					"src": "images/black-crested-bulbul-1663685074.jpg"
+				},
+				{
+					"src": "images/black-crested-bulbul-1663684831.jpg"
 				}
 			]
 		},
@@ -5071,7 +5316,7 @@
 		{
 			"key": "taiga-flycatcher-female",
 			"species": "taiga-flycatcher",
-			"gender": "F",
+			"gender": "M",
 			"date": "02-11-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -5080,7 +5325,8 @@
 				{
 					"src": "images/taiga-flycatcher-female.jpg"
 				}
-			]
+			],
+			"plumage": "Non-Breeding"
 		},
 		{
 			"key": "eurasian-whimbrel",
@@ -6442,7 +6688,8 @@
 				{
 					"src": "images/slaty-backed-forktail.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "rufous-vented-yuhina",

@@ -11,6 +11,8 @@ var OPT_GENDER = {'': '-', 'M': "Male", 'F': 'Female'};
 var OPT_AGE = {'': 'Adult', 'Juvenile': "Juvenile", 'Immature': 'Immature'};
 var OPT_PLUMAGE = {'': 'Basic', 'Non-Breeding': "Non-Breeding", 'Breeding': 'Breeding', 'Winter': 'Winter', 'Eclipse': 'Eclipse', "Molting": "Molting"};
 
+var DATA_DATE_FORMAT = "DD-MM-yyyy";
+
 function showOverlay(text) {
 	$(".overlay span").html((text || "Please Wait") + "...");
 	$(".overlay").show();
@@ -247,6 +249,11 @@ function fillUpdateSpeciesForm() {
 	}
 }
 
+function sortByDate() {
+	data.birds.sort((a,b) => compare(moment(b.date, DATA_DATE_FORMAT), moment(a.date, DATA_DATE_FORMAT)));
+	syncSightingsData(0);
+}
+
 function render() {
 	data.species = Object.fromEntries(Object.entries(data.species).sort((a,b) => compare(a[1].name, b[1].name)));
 
@@ -412,6 +419,7 @@ $(document).ready(function() {
 			syncSightingsData(0);
 		}
 	});
+	$('.sort-by-date').click(sortByDate);
 	$('.add-sighting').click(addSighting);
 	$('button.first-page').click(function() {
 		if(OFFSET > 0) {

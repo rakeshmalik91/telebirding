@@ -206,7 +206,7 @@
 				"Raptor",
 				"Hawk"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"black-bulbul": {
 			"key": "black-bulbul",
@@ -272,7 +272,7 @@
 				"Eagle",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"black-faced-laughingthrush": {
 			"key": "black-faced-laughingthrush",
@@ -280,7 +280,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"black-francolin": {
 			"key": "black-francolin",
@@ -349,7 +349,7 @@
 				"Kite",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"black-lored-tit": {
 			"key": "black-lored-tit",
@@ -455,7 +455,7 @@
 				"Kite",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"black-winged-stilt": {
 			"key": "black-winged-stilt",
@@ -596,7 +596,7 @@
 				"Kite",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"bronze-winged-jacana": {
 			"key": "bronze-winged-jacana",
@@ -744,7 +744,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"chestnut-eared-bunting": {
 			"key": "chestnut-eared-bunting",
@@ -845,7 +845,7 @@
 				"Falconet",
 				"Falcon"
 			],
-			"family": "Birds of Prey"
+			"family": "Falcons & Caracaras"
 		},
 		"collared-kingfisher": {
 			"key": "collared-kingfisher",
@@ -910,6 +910,15 @@
 				"Shank"
 			],
 			"family": "Sandpipers & Allies"
+		},
+		"common-hawk-cuckoo": {
+			"key": "common-hawk-cuckoo",
+			"name": "Common Hawk-Cuckoo",
+			"tags": [
+				"Cuckoo",
+				"Hawk-Cuckoo"
+			],
+			"family": "Cuckoos"
 		},
 		"common-hill-myna": {
 			"key": "common-hill-myna",
@@ -1046,7 +1055,7 @@
 				"Raptor",
 				"Serpent Eagle"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"crimson-backed-sunbird": {
 			"key": "crimson-backed-sunbird",
@@ -1167,7 +1176,7 @@
 				"Marsh-Harrier",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"eurasian-moorhen": {
 			"key": "eurasian-moorhen",
@@ -1188,7 +1197,7 @@
 				"Hawk",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"eurasian-tree-sparrow": {
 			"key": "eurasian-tree-sparrow",
@@ -1323,7 +1332,7 @@
 				"Eagle",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"golden-fronted-leafbird": {
 			"key": "golden-fronted-leafbird",
@@ -1456,7 +1465,7 @@
 				"Necklaced Laughingthrush",
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"greater-painted-snipe": {
 			"key": "greater-painted-snipe",
@@ -1610,7 +1619,7 @@
 				"Flycatcher",
 				"Canary Flycatcher"
 			],
-			"family": "Old World Flycatchers"
+			"family": "Fairy Flycatchers"
 		},
 		"grey-headed-lapwing": {
 			"key": "grey-headed-lapwing",
@@ -1788,7 +1797,7 @@
 			"tags": [
 				"Barwing"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"horned-lark": {
 			"key": "horned-lark",
@@ -1989,6 +1998,15 @@
 				"Crow"
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
+		},
+		"large-hawk-cuckoo": {
+			"key": "large-hawk-cuckoo",
+			"name": "Large Hawk-Cuckoo",
+			"tags": [
+				"Cuckoo",
+				"Hawk-Cuckoo"
+			],
+			"family": "Cuckoos"
 		},
 		"lemon-rumped-warbler": {
 			"key": "lemon-rumped-warbler",
@@ -2261,7 +2279,7 @@
 				"Eagle",
 				"Hawk"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"mountain-imperial-pigeon": {
 			"key": "mountain-imperial-pigeon",
@@ -2284,9 +2302,10 @@
 			"key": "nepal-fulvetta",
 			"name": "Nepal Fulvetta",
 			"tags": [
-				"Fulvetta"
+				"Fulvetta",
+				"Alcippe Fulvetta"
 			],
-			"family": "Alcippe Fulvettas"
+			"family": "Laughingthrushes & Allies"
 		},
 		"nicobar-pigeon": {
 			"key": "nicobar-pigeon",
@@ -2619,7 +2638,7 @@
 				"Leiothrix",
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"red-crested-pochard": {
 			"key": "red-crested-pochard",
@@ -2808,7 +2827,7 @@
 				"Eagle",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"rufous-bellied-niltava": {
 			"key": "rufous-bellied-niltava",
@@ -2842,7 +2861,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"rufous-gorgeted-flycatcher": {
 			"key": "rufous-gorgeted-flycatcher",
@@ -2866,7 +2885,7 @@
 			"tags": [
 				"Sibia"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"rufous-throated-partridge": {
 			"key": "rufous-throated-partridge",
@@ -2925,7 +2944,7 @@
 				"Falcon",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Falcons & Caracaras"
 		},
 		"scaly-bellied-woodpecker": {
 			"key": "scaly-bellied-woodpecker",
@@ -2962,7 +2981,7 @@
 				"Raptor",
 				"Hawk"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"siberian-stonechat": {
 			"key": "siberian-stonechat",
@@ -3038,6 +3057,14 @@
 			],
 			"family": "Fantails"
 		},
+		"spot-winged-starling": {
+			"key": "spot-winged-starling",
+			"name": "Spot-winged Starling",
+			"tags": [
+				"Starling"
+			],
+			"family": "Starlings"
+		},
 		"spotted-dove": {
 			"key": "spotted-dove",
 			"name": "Spotted Dove",
@@ -3086,7 +3113,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"streaked-rosefinch": {
 			"key": "streaked-rosefinch",
@@ -3129,7 +3156,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"stripe-throated-yuhina": {
 			"key": "stripe-throated-yuhina",
@@ -3267,7 +3294,7 @@
 				"Buzzard",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"variegated-laughingthrush": {
 			"key": "variegated-laughingthrush",
@@ -3275,7 +3302,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"velvet-fronted-nuthatch": {
 			"key": "velvet-fronted-nuthatch",
@@ -3362,7 +3389,7 @@
 				"Eagle",
 				"Raptor"
 			],
-			"family": "Birds of Prey"
+			"family": "Eagles, Hawks & Allies"
 		},
 		"white-bellied-treepie": {
 			"key": "white-bellied-treepie",
@@ -3455,7 +3482,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"white-rumped-vulture": {
 			"key": "white-rumped-vulture",
@@ -3488,7 +3515,7 @@
 			"tags": [
 				"Laughingthrush"
 			],
-			"family": "Laughingthrushes"
+			"family": "Laughingthrushes & Allies"
 		},
 		"white-throated-redstart": {
 			"key": "white-throated-redstart",
