@@ -1,6 +1,115 @@
 {
 	"birds": [
 		{
+			"key": "s1665898867",
+			"species": "indian-silverbill",
+			"date": "16-10-2022",
+			"place": "Rajarhat",
+			"city": "Kolkata",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-silverbill-1665898963.jpg"
+				},
+				{
+					"src": "images/indian-silverbill-1665898972.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1665897515",
+			"species": "baya-weaver",
+			"date": "16-10-2022",
+			"place": "Rajarhat",
+			"city": "Kolkata",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/baya-weaver-1665898520.jpg"
+				},
+				{
+					"src": "videos/baya-weaver.mp4",
+					"thumbnail": "images/baya-weaver-1665898520.jpg",
+					"mute": true,
+					"type": "video"
+				},
+				{
+					"src": "images/baya-weaver-1665897583.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1665898824",
+			"species": "baya-weaver",
+			"date": "16-10-2022",
+			"place": "Rajarhat",
+			"city": "Kolkata",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/baya-weaver-1665898847.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1665716269",
+			"species": "asian-koel",
+			"date": "02-10-2022",
+			"place": "Dashghara",
+			"city": "Hooghly",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/asian-koel-1665716344.jpg"
+				}
+			],
+			"age": "Immature"
+		},
+		{
+			"key": "s1664716028",
+			"species": "bronzed-drongo",
+			"date": "02-10-2022",
+			"place": "Dashghara",
+			"city": "Hooghly",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bronzed-drongo-1664716488.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1664377396",
+			"species": "taiga-flycatcher",
+			"date": "30-09-2022",
+			"place": "",
+			"city": "Howrah",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/taiga-flycatcher-1664514502.jpg"
+				},
+				{
+					"src": "images/taiga-flycatcher-1664514522.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
 			"key": "s1664166493",
 			"species": "little-cormorant",
 			"date": "25-09-2022",
@@ -68,22 +177,6 @@
 			]
 		},
 		{
-			"key": "s1664377396",
-			"species": "taiga-flycatcher",
-			"date": "25-09-2022",
-			"place": "Rongo",
-			"city": "Kalimpong",
-			"state": "West Bengal",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/taiga-flycatcher-1664377414.jpg"
-				}
-			],
-			"gender": "F"
-		},
-		{
 			"key": "s1662860671",
 			"species": "common-hill-myna",
 			"date": "11-09-2022",
@@ -131,7 +224,7 @@
 			"key": "s1662518262",
 			"species": "house-swift",
 			"date": "07-09-2022",
-			"place": "",
+			"place": "Nabanna",
 			"city": "Howrah",
 			"state": "West Bengal",
 			"country": "India",
@@ -332,10 +425,10 @@
 					"src": "images/upland-buzzard.jpg"
 				},
 				{
-					"src": "images/upland-buzzard-2.jpg"
+					"src": "images/upland-buzzard-1663201458.jpg"
 				},
 				{
-					"src": "images/upland-buzzard-1663201458.jpg"
+					"src": "images/upland-buzzard-2.jpg"
 				}
 			],
 			"city": "Tso Kar"
@@ -4679,7 +4772,8 @@
 				{
 					"src": "images/blyths-shrike-babbler.jpg"
 				}
-			]
+			],
+			"gender": "M"
 		},
 		{
 			"key": "nepal-fulvetta",
@@ -9166,7 +9260,7 @@
 					"src": "images/indian-peafowl-male.jpg"
 				}
 			],
-			"city": "Bandhavgarh"
+			"city": ""
 		},
 		{
 			"key": "greater-racket-tailed-drongo",

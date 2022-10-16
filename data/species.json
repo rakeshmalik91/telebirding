@@ -1906,6 +1906,15 @@
 			],
 			"family": "Scimitar Babblers"
 		},
+		"indian-silverbill": {
+			"key": "indian-silverbill",
+			"name": "Indian Silverbill",
+			"tags": [
+				"Silberbill",
+				"Finch"
+			],
+			"family": "Finches & Allies"
+		},
 		"indian-spot-billed-duck": {
 			"key": "indian-spot-billed-duck",
 			"name": "Indian Spot-billed Duck",
