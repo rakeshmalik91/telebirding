@@ -27,6 +27,139 @@
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
 		},
+		"amur-stonechat": {
+			"key": "amur-stonechat",
+			"name": "Amur Stonechat",
+			"tags": [
+				"Stonechat"
+			],
+			"family": "Chats"
+		},
+		"andaman-boobook": {
+			"key": "andaman-boobook",
+			"name": "Andaman Boobook",
+			"tags": [
+				"Andaman Hawk-owl",
+				"Owl",
+				"Hawk-owl",
+				"Boobook"
+			],
+			"family": "Owls"
+		},
+		"andaman-bulbul": {
+			"key": "andaman-bulbul",
+			"name": "Andaman Bulbul",
+			"tags": [
+				"Bulbul"
+			],
+			"family": "Bulbuls"
+		},
+		"andaman-coucal": {
+			"key": "andaman-coucal",
+			"name": "Andaman Coucal",
+			"tags": [
+				"Coucal",
+				"Cuckoo"
+			],
+			"family": "Cuckoos"
+		},
+		"andaman-cuckoo-shrike": {
+			"key": "andaman-cuckoo-shrike",
+			"name": "Andaman Cuckoo-shrike",
+			"tags": [
+				"Cuckoo-shrike"
+			],
+			"family": "Cuckoo-shrikes & Allies"
+		},
+		"andaman-drongo": {
+			"key": "andaman-drongo",
+			"name": "Andaman Drongo",
+			"tags": [
+				"Drongo"
+			],
+			"family": "Drongos"
+		},
+		"andaman-flowerpecker": {
+			"key": "andaman-flowerpecker",
+			"name": "Andaman Flowerpecker",
+			"tags": [
+				"Flowerpecker"
+			],
+			"family": "Flowerpeckers"
+		},
+		"andaman-green-pigeon": {
+			"key": "andaman-green-pigeon",
+			"name": "Andaman Green Pigeon",
+			"tags": [
+				"Green Pigeon",
+				"Pigeon",
+				"Dove"
+			],
+			"family": "Doves & Pigeons"
+		},
+		"andaman-masked-owl": {
+			"key": "andaman-masked-owl",
+			"name": "Andaman Masked Owl",
+			"tags": [
+				"Masked Owl",
+				"Andaman Barn Owl",
+				"Barn Owl",
+				"Owl"
+			],
+			"family": "Owls"
+		},
+		"andaman-nightjar": {
+			"key": "andaman-nightjar",
+			"name": "Andaman Nightjar",
+			"tags": [
+				"Nightjar"
+			],
+			"family": "Nightjars"
+		},
+		"andaman-scops-owl": {
+			"key": "andaman-scops-owl",
+			"name": "Andaman Scops Owl",
+			"tags": [
+				"Scops Owl",
+				"Owl"
+			],
+			"family": "Owls"
+		},
+		"andaman-serpent-eagle": {
+			"key": "andaman-serpent-eagle",
+			"name": "Andaman Serpent Eagle",
+			"tags": [
+				"Eagle",
+				"Crested Serpent Eagle",
+				"Serpent Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
+		"andaman-shama": {
+			"key": "andaman-shama",
+			"name": "Andaman Shama",
+			"tags": [
+				"Shama",
+				"Robin"
+			],
+			"family": "Robins"
+		},
+		"andaman-treepie": {
+			"key": "andaman-treepie",
+			"name": "Andaman Treepie",
+			"tags": [
+				"Treepie"
+			],
+			"family": "Crows, Treepies, Magpies & Choughs"
+		},
+		"andaman-woodpecker": {
+			"key": "andaman-woodpecker",
+			"name": "Andaman Woodpecker",
+			"tags": [
+				"Woodpecker"
+			],
+			"family": "Woodpeckers"
+		},
 		"ashy-bulbul": {
 			"key": "ashy-bulbul",
 			"name": "Ashy Bulbul",
@@ -85,6 +218,15 @@
 				"Flycatcher"
 			],
 			"family": "Old World Flycatchers"
+		},
+		"asian-fairy-bluebird": {
+			"key": "asian-fairy-bluebird",
+			"name": "Asian Fairy-bluebird",
+			"tags": [
+				"Bluebird",
+				"Fairy-bluebird"
+			],
+			"family": "Fairy-bluebirds"
 		},
 		"asian-koel": {
 			"key": "asian-koel",
@@ -205,6 +347,15 @@
 				"Besra",
 				"Raptor",
 				"Hawk"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
+		"black-baza": {
+			"key": "black-baza",
+			"name": "Black Baza",
+			"tags": [
+				"Hawk",
+				"Baza"
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
@@ -475,6 +626,14 @@
 			],
 			"family": "Rock-Thrushes"
 		},
+		"blue-eared-kingfisher": {
+			"key": "blue-eared-kingfisher",
+			"name": "Blue-eared Kingfisher",
+			"tags": [
+				"Kingfisher"
+			],
+			"family": "Kingfishers"
+		},
 		"blue-fronted-redstart": {
 			"key": "blue-fronted-redstart",
 			"name": "Blue-fronted Redstart",
@@ -598,6 +757,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"broad-billed-sandpiper": {
+			"key": "broad-billed-sandpiper",
+			"name": "Broad-billed Sandpiper",
+			"tags": [
+				"Sandpiper"
+			],
+			"family": "Sandpipers & Allies"
+		},
 		"bronze-winged-jacana": {
 			"key": "bronze-winged-jacana",
 			"name": "Bronze-winged Jacana",
@@ -615,6 +782,15 @@
 				"Drongo"
 			],
 			"family": "Drongos"
+		},
+		"brown-backed-needletail": {
+			"key": "brown-backed-needletail",
+			"name": "Brown-backed Needletail",
+			"tags": [
+				"Needletail",
+				"Swift"
+			],
+			"family": "Swifts"
 		},
 		"brown-dipper": {
 			"key": "brown-dipper",
@@ -1065,6 +1241,14 @@
 			],
 			"family": "Sunbirds & Spiderhunters"
 		},
+		"curlew-sandpiper": {
+			"key": "curlew-sandpiper",
+			"name": "Curlew Sandpiper",
+			"tags": [
+				"Sandpiper"
+			],
+			"family": "Sandpipers & Allies"
+		},
 		"dark-fronted-babbler": {
 			"key": "dark-fronted-babbler",
 			"name": "Dark-fronted Babbler",
@@ -1096,6 +1280,14 @@
 				"Wheatear"
 			],
 			"family": "Thrushes"
+		},
+		"dusky-warbler": {
+			"key": "dusky-warbler",
+			"name": "Dusky Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
 		},
 		"eastern-yellow-wagtail": {
 			"key": "eastern-yellow-wagtail",
@@ -1277,6 +1469,14 @@
 				"Cuckoo"
 			],
 			"family": "Cuckoos"
+		},
+		"freckle-breasted-woodpecker": {
+			"key": "freckle-breasted-woodpecker",
+			"name": "Freckle-breasted Woodpecker",
+			"tags": [
+				"Woodpecker"
+			],
+			"family": "Woodpeckers"
 		},
 		"fulvous-breasted-woodpecker": {
 			"key": "fulvous-breasted-woodpecker",
@@ -1832,6 +2032,17 @@
 			],
 			"family": "Swifts"
 		},
+		"humes-boobook": {
+			"key": "humes-boobook",
+			"name": "Hume's Boobook",
+			"tags": [
+				"Boobook",
+				"Hawk-owl",
+				"Owl",
+				"Hume's Hawk-owl"
+			],
+			"family": "Owls"
+		},
 		"humes-lark": {
 			"key": "humes-lark",
 			"name": "Hume's Lark",
@@ -2008,6 +2219,14 @@
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
 		},
+		"large-cuckoo-shrike": {
+			"key": "large-cuckoo-shrike",
+			"name": "Large Cuckoo-shrike",
+			"tags": [
+				"Cuckoo-shrike"
+			],
+			"family": "Cuckoo-shrikes & Allies"
+		},
 		"large-hawk-cuckoo": {
 			"key": "large-hawk-cuckoo",
 			"name": "Large Hawk-Cuckoo",
@@ -2174,6 +2393,15 @@
 			],
 			"family": "Cuckoo-shrikes & Allies"
 		},
+		"long-tailed-parakeet": {
+			"key": "long-tailed-parakeet",
+			"name": "Long-tailed Parakeet",
+			"tags": [
+				"Parakeet",
+				"Parrot"
+			],
+			"family": "Parakeets & Parrots"
+		},
 		"long-tailed-shrike": {
 			"key": "long-tailed-shrike",
 			"name": "Long-tailed Shrike",
@@ -2181,6 +2409,14 @@
 				"Shrike"
 			],
 			"family": "Shrikes"
+		},
+		"long-toed-stint": {
+			"key": "long-toed-stint",
+			"name": "Long-toed Stint",
+			"tags": [
+				"Stint"
+			],
+			"family": "Sandpipers & Allies"
 		},
 		"lotens-sunbird": {
 			"key": "lotens-sunbird",
@@ -2363,6 +2599,14 @@
 			],
 			"family": "Pipits"
 		},
+		"olive-backed-sunbird": {
+			"key": "olive-backed-sunbird",
+			"name": "Olive-backed Sunbird",
+			"tags": [
+				"Sunbird"
+			],
+			"family": "Sunbirds & Spiderhunters"
+		},
 		"orange-bellied-leafbird": {
 			"key": "orange-bellied-leafbird",
 			"name": "Orange-bellied Leafbird",
@@ -2436,6 +2680,23 @@
 			],
 			"family": "Hornbills"
 		},
+		"oriental-reed-warbler": {
+			"key": "oriental-reed-warbler",
+			"name": "Oriental Reed Warbler",
+			"tags": [
+				"Reed Warbler"
+			],
+			"family": "Warblers"
+		},
+		"oriental-scops-owl": {
+			"key": "oriental-scops-owl",
+			"name": "Oriental Scops Owl",
+			"tags": [
+				"Owl",
+				"Scops Owl"
+			],
+			"family": "Owls"
+		},
 		"oriental-skylark": {
 			"key": "oriental-skylark",
 			"name": "Oriental Skylark",
@@ -2464,6 +2725,23 @@
 				"Wading Bird"
 			],
 			"family": "Plovers"
+		},
+		"pacific-reef-heron": {
+			"key": "pacific-reef-heron",
+			"name": "Pacific Reef Heron",
+			"tags": [
+				"Heron",
+				"Reef Heron"
+			],
+			"family": "Herons & Egrets"
+		},
+		"pacific-swallow": {
+			"key": "pacific-swallow",
+			"name": "Pacific Swallow",
+			"tags": [
+				"Swallow"
+			],
+			"family": "Swallows & Martins"
 		},
 		"paddyfield-pipit": {
 			"key": "paddyfield-pipit",
@@ -2540,6 +2818,14 @@
 			],
 			"family": "Starlings"
 		},
+		"pin-tailed-snipe": {
+			"key": "pin-tailed-snipe",
+			"name": "Pin-tailed Snipe",
+			"tags": [
+				"Snipe"
+			],
+			"family": "Sandpipers & Allies"
+		},
 		"pink-browed-rosefinch": {
 			"key": "pink-browed-rosefinch",
 			"name": "Pink-browed Rosefinch",
@@ -2581,6 +2867,15 @@
 				"Redstart"
 			],
 			"family": "Redstarts"
+		},
+		"plume-toed-swiftlet": {
+			"key": "plume-toed-swiftlet",
+			"name": "Plume-toed Swiftlet",
+			"tags": [
+				"Swift",
+				"Swiftlet"
+			],
+			"family": "Swifts"
 		},
 		"pond-heron": {
 			"key": "pond-heron",
@@ -2648,6 +2943,25 @@
 				"Laughingthrush"
 			],
 			"family": "Laughingthrushes & Allies"
+		},
+		"red-breasted-parakeet": {
+			"key": "red-breasted-parakeet",
+			"name": "Red-breasted Parakeet",
+			"tags": [
+				"Parakeet",
+				"Parrot"
+			],
+			"family": "Parakeets & Parrots"
+		},
+		"red-collared-dove": {
+			"key": "red-collared-dove",
+			"name": "Red Collared Dove",
+			"tags": [
+				"Dove",
+				"Collared Dove",
+				"Red Turtle Dove"
+			],
+			"family": "Doves & Pigeons"
 		},
 		"red-crested-pochard": {
 			"key": "red-crested-pochard",
@@ -2807,6 +3121,14 @@
 				"Wading Bird"
 			],
 			"family": "Rails & Crakes"
+		},
+		"ruddy-kingfisher": {
+			"key": "ruddy-kingfisher",
+			"name": "Ruddy Kingfisher",
+			"tags": [
+				"Kingfisher"
+			],
+			"family": "Kingfishers"
 		},
 		"ruddy-shelduck": {
 			"key": "ruddy-shelduck",
@@ -3028,6 +3350,14 @@
 				"Parrot"
 			],
 			"family": "Parakeets & Parrots"
+		},
+		"small-minivet": {
+			"key": "small-minivet",
+			"name": "Small Minivet",
+			"tags": [
+				"Minivet"
+			],
+			"family": "Cuckoo-shrikes & Allies"
 		},
 		"small-pratincole": {
 			"key": "small-pratincole",
@@ -3333,9 +3663,19 @@
 			"key": "vernal-hanging-parrot",
 			"name": "Vernal Hanging Parrot",
 			"tags": [
-				"Parrot"
+				"Parrot",
+				"Indian Lorikeet",
+				"Hanging Parrot"
 			],
 			"family": "Parakeets & Parrots"
+		},
+		"violet-cuckoo": {
+			"key": "violet-cuckoo",
+			"name": "Violet Cuckoo",
+			"tags": [
+				"Cuckoo"
+			],
+			"family": "Cuckoos"
 		},
 		"wedge-tailed-green-pigeon": {
 			"key": "wedge-tailed-green-pigeon",
@@ -3435,6 +3775,14 @@
 			],
 			"family": "Rails & Crakes"
 		},
+		"white-breasted-woodswallow": {
+			"key": "white-breasted-woodswallow",
+			"name": "White-breasted Woodswallow",
+			"tags": [
+				"Woodswallow"
+			],
+			"family": "Woodswallows"
+		},
 		"white-browed-bulbul": {
 			"key": "white-browed-bulbul",
 			"name": "White-Browed Bulbul",
@@ -3492,6 +3840,33 @@
 				"Laughingthrush"
 			],
 			"family": "Laughingthrushes & Allies"
+		},
+		"white-headed-starling": {
+			"key": "white-headed-starling",
+			"name": "White-headed Starling",
+			"tags": [
+				"Starling"
+			],
+			"family": "Starlings"
+		},
+		"white-nest-swiftlet": {
+			"key": "white-nest-swiftlet",
+			"name": "White Nest Swiftlet",
+			"tags": [
+				"Swiftlet",
+				"Edible Nest Swiftlet",
+				"Swift"
+			],
+			"family": "Swifts"
+		},
+		"white-rumped-munia": {
+			"key": "white-rumped-munia",
+			"name": "White-rumped Munia",
+			"tags": [
+				"Munia",
+				"Finch"
+			],
+			"family": "Finches & Allies"
 		},
 		"white-rumped-vulture": {
 			"key": "white-rumped-vulture",

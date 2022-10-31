@@ -1,5 +1,5 @@
 var FILE_CACHE = {};
-var FIREBASE_ENABLED = (window.location.origin.indexOf('localhost') >= 0) ? false : true;
+var FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
 
 function readTextFile(file, callback) {
 	if(FILE_CACHE[file]) {
@@ -103,22 +103,35 @@ function tagMatchesSubstring(tag, search) {
 	return tag.match("\\b" + search + "\\b");
 }
 
-var PLACE_NAME_SIZE_THRESHOLD = 25;
+var SHORTEN_LIST = [
+	[/\bNational\s+Park\b/gi, "NP"],
+	[/\bBiological\s+Park\b/gi, "BP"],
+	[/\bZoological\s+Park\b/gi, "Zoo"],
+	[/\bBotanical\s+Garden\b/gi, "BG"],
+	[/\bWildlife\s+Sanctuary\b/gi, "WS"],
+	[/\bBird\s+Sanctuary\b/gi, "BS"],
+	[/\bTiger\s+Reserve\b/gi, "TR"],
+	[/\bNorth\b/gi, "N"],
+	[/\bSouth\b/gi, "S"],
+	[/\bEast\b/gi, "E"],
+	[/\bWest\b/gi, "W"],
+	[/\bIslands\b/gi, "Isl"],
+	[/\band\b/gi, "&"]
+];
 
-function trimPlaceName(name) {
-	if(name.length <= PLACE_NAME_SIZE_THRESHOLD) {
+function trimPlaceName(name, threshold) {
+	if(name.length <= threshold) {
 		return name;
 	} else {
-		name = name .replaceAll(/National\s+Park/gi, "NP")
-								.replaceAll(/Wildlife\s+Sanctuary/gi, "WS")
-								.replaceAll(/Bird\s+Sanctuary/gi, "BS");
-		if(name.length <= PLACE_NAME_SIZE_THRESHOLD) {
+		SHORTEN_LIST.forEach((s) => name = name.replaceAll(s[0], s[1]));
+		if(name.length <= threshold) {
 			return name;
 		} else {
 			var tokens = name.split(' ');
-			var trimmed = tokens[0].length > PLACE_NAME_SIZE_THRESHOLD ? (tokens.splice(0, PLACE_NAME_SIZE_THRESHOLD-3) + "...") : tokens[0];
+			var trimmed = tokens[0].length > threshold ? (tokens.splice(0, threshold-3) + "...") : '';
 			if(tokens.length > 1) {
-				tokens.splice(1).forEach(t => trimmed += ' ' + t[0].toUpperCase() + '.');
+				//tokens.splice(1).forEach(t => trimmed += ' ' + t[0].toUpperCase() + (t.length>1?'.':''));
+				tokens.forEach(t => trimmed += t[0].toUpperCase());
 			}
 			return trimmed;
 		}

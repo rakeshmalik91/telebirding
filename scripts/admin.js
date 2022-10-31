@@ -13,6 +13,8 @@ var OPT_PLUMAGE = {'': 'Basic', 'Non-Breeding': "Non-Breeding", 'Breeding': 'Bre
 
 var DATA_DATE_FORMAT = "DD-MM-yyyy";
 
+var lastUpdatedSpecies = 'rock-pigeon';
+
 function showOverlay(text) {
 	$(".overlay span").html((text || "Please Wait") + "...");
 	$(".overlay").show();
@@ -150,7 +152,7 @@ function addSighting() {
 	$("input[name=filter-sighting]").val('');
 	data.birds.unshift({
 		"key": ("s" + Math.floor(Date.now() / 1000)),
-		"species": "rock-pigeon",
+		"species": lastUpdatedSpecies,
 		"date": data.birds[0].date,
 		"place": data.birds[0].place,
 		"city": data.birds[0].city,
@@ -176,7 +178,9 @@ function saveSpecies(key, name, tags, family) {
 	if(!name || !tags || !family) {
 		alert("All fields are mandatory");
 	} else {
+		name = name.replaceAll("’", "'");
 		var key = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
+		tags = tags.replaceAll("’", "'");
 		data.species[key] = {
 			key: key,
 			name: name,
@@ -185,6 +189,7 @@ function saveSpecies(key, name, tags, family) {
 		};
 		data.species = Object.fromEntries(Object.entries(data.species).sort());
 		uploadJSONData("species");
+		lastUpdatedSpecies = key;
 	}
 }
 
@@ -265,6 +270,7 @@ function render() {
 
 	// add/update species form
 	var updateSpeciesForm = $("#update-species-form");
+	updateSpeciesForm.find("select[data-field=family], select[data-field=key]").html('');
 	updateSpeciesForm.find("select[data-field=family]").append("<option value=''>-</option>");
 	data.families.forEach(function(family) {
 		updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");

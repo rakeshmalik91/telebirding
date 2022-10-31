@@ -219,10 +219,12 @@ function fillStats() {
 
 	var filters = getFilters();
 	if(filters.date || filters.place) {
-		var oldestDate = data.filteredBirds[0].date;
-		data.filteredBirds.forEach(function(b) {
-			if(b.date<oldestDate) oldestDate = b.date;
-		});
+		if(data.filteredBirds.length > 0) {
+			var oldestDate = data.filteredBirds[0].date;
+			data.filteredBirds.forEach(function(b) {
+				if(b.date<oldestDate) oldestDate = b.date;
+			});
+		}
 		var oldSpecies = [...new Set(data.birds.filter(b => b.date<oldestDate).map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))]
 		var newSpecies = selectedSpecies.filter(s => oldSpecies.indexOf(s)<0);
 		$(".new-species-count").parent().show();
@@ -270,10 +272,10 @@ function renderBirdDetails(birdLabelDiv, bird, inPreviewPage) {
 		}
 	});
 	
-	var aPlace = (bird.place ? ('<a class="place" onclick="triggerFilter(\'place\', \'' + bird.place + '\')">' + (inPreviewPage ? bird.place : trimPlaceName(bird.place)) + '</a>, ') : '');
-	var aCity = (bird.city ? ('<a class="city" onclick="triggerFilter(\'place\', \'' + bird.city + '\')">' + bird.city + '</a>, ') : '');
+	var aPlace = (bird.place ? ('<a class="place" onclick="triggerFilter(\'place\', \'' + bird.place + '\')">' + (inPreviewPage ? bird.place : trimPlaceName(bird.place, 25)) + '</a>, ') : '');
+	var aCity = (bird.city ? ('<a class="city" onclick="triggerFilter(\'place\', \'' + bird.city + '\')">' + (inPreviewPage ? bird.city : trimPlaceName(bird.city, 15)) + '</a>, ') : '');
 	var stateFullName = getStateFullName(bird.country, bird.state);
-	var aState = '<a class="state" onclick="triggerFilter(\'place\', \'' + stateFullName + '\')">' + stateFullName + '</a>, ';
+	var aState = '<a class="state" onclick="triggerFilter(\'place\', \'' + stateFullName + '\')">' + (inPreviewPage ? stateFullName : trimPlaceName(stateFullName, 15)) + '</a>, ';
 	var countryFullName = getCountryFullName(bird.country);
 	var aCountry = '<a class="country" onclick="triggerFilter(\'place\', \'' + countryFullName + '\')">' + countryFullName + '</a>';
 	birdLabelDiv.append('<div class="bird-desc">' + aPlace + aCity + aState + aCountry + '</div>');
