@@ -36,7 +36,7 @@ pageNames[EXPLORE_MENU] = "Explore Birds";
 pageNames[EXPLORE_PAGE] = "Explore Birds";
 pageNames[MAP_MENU] = "Bird Map";
 pageNames[MAP] = "Bird Map";
-pageNames[VIDEOS] = "Videos";
+pageNames[VIDEOS] = "Birding Trips";
 pageNames[ABOUT] = "About";
 
 function getSpeciesCount(birds) {
