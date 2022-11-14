@@ -616,6 +616,15 @@
 			],
 			"family": "Stilts & Avocets"
 		},
+		"blanfords-snowfinch": {
+			"key": "blanfords-snowfinch",
+			"name": "Blanford's Snowfinch",
+			"tags": [
+				"Finch",
+				"Snowfinch"
+			],
+			"family": "Finches & Allies"
+		},
 		"blue-capped-rock-thrush": {
 			"key": "blue-capped-rock-thrush",
 			"name": "Blue-Capped Rock-Thrush",
@@ -916,7 +925,7 @@
 		},
 		"chestnut-crowned-laughingthrush": {
 			"key": "chestnut-crowned-laughingthrush",
-			"name": "Chestnut Crowned Laughingthrush",
+			"name": "Chestnut-crowned Laughingthrush",
 			"tags": [
 				"Laughingthrush"
 			],
@@ -1351,6 +1360,15 @@
 				"Jay"
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
+		},
+		"eurasian-kestrel": {
+			"key": "eurasian-kestrel",
+			"name": "Eurasian Kestrel",
+			"tags": [
+				"Kestrel",
+				"Hawk"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"eurasian-magpie": {
 			"key": "eurasian-magpie",
@@ -1969,7 +1987,9 @@
 			"tags": [
 				"Griffon",
 				"Vulture",
-				"Scavanger"
+				"Scavanger",
+				"Himalayan Griffon Vulture",
+				"Griffon Vulture"
 			],
 			"family": "Vultures"
 		},
@@ -1998,6 +2018,14 @@
 				"Barwing"
 			],
 			"family": "Laughingthrushes & Allies"
+		},
+		"hodgsons-treecreeper": {
+			"key": "hodgsons-treecreeper",
+			"name": "Hodgson's Treecreeper",
+			"tags": [
+				"Treecreeper"
+			],
+			"family": "Treecreepers, Wallcreepers & Nuthatches"
 		},
 		"horned-lark": {
 			"key": "horned-lark",
@@ -2235,6 +2263,16 @@
 				"Hawk-Cuckoo"
 			],
 			"family": "Cuckoos"
+		},
+		"large-niltava": {
+			"key": "large-niltava",
+			"name": "Large Niltava",
+			"tags": [
+				"Niltava",
+				"Robin",
+				"Flycatcher "
+			],
+			"family": "Old World Flycatchers"
 		},
 		"lemon-rumped-warbler": {
 			"key": "lemon-rumped-warbler",
@@ -3267,6 +3305,14 @@
 				"Babbler"
 			],
 			"family": "Scimitar Babblers"
+		},
+		"rusty-fronted-barwing": {
+			"key": "rusty-fronted-barwing",
+			"name": "Rusty-fronted Barwing",
+			"tags": [
+				"Barwing"
+			],
+			"family": "Laughingthrushes & Allies"
 		},
 		"saker-falcon": {
 			"key": "saker-falcon",

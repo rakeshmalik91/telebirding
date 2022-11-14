@@ -1,6 +1,402 @@
 {
 	"birds": [
 		{
+			"key": "s1668332282",
+			"species": "chestnut-crowned-laughingthrush",
+			"date": "12-11-2022",
+			"place": "",
+			"city": "Gangtok",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-crowned-laughingthrush-1668652432.jpg"
+				},
+				{
+					"src": "images/chestnut-crowned-laughingthrush-1668401789.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668331487",
+			"species": "large-niltava",
+			"date": "12-11-2022",
+			"place": "",
+			"city": "Gangtok",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/large-niltava-1668331529.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1668298676",
+			"species": "little-forktail",
+			"date": "12-11-2022",
+			"place": "",
+			"city": "Singhik",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-forktail-1668298736.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668298644",
+			"species": "red-billed-chough",
+			"date": "12-11-2022",
+			"place": "Zero Point",
+			"city": "Lachung",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-billed-chough-1668299898.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668298059",
+			"species": "black-faced-laughingthrush",
+			"date": "12-11-2022",
+			"place": "Yumthang",
+			"city": "Lachung",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-faced-laughingthrush-1668298452.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668300461",
+			"species": "hodgsons-treecreeper",
+			"date": "12-11-2022",
+			"place": "Yumthang",
+			"city": "Lachung",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hodgsons-treecreeper-1668393338.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668298659",
+			"species": "white-collared-blackbird",
+			"date": "12-11-2022",
+			"place": "Yumthang",
+			"city": "Lachung",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-collared-blackbird-1668304250.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1668270736",
+			"species": "blanfords-snowfinch",
+			"date": "11-11-2022",
+			"place": "Gurudongmar Lake",
+			"city": "Lachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blanfords-snowfinch-1668270826.jpg"
+				},
+				{
+					"src": "images/blanfords-snowfinch-1668270951.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668270845",
+			"species": "horned-lark",
+			"date": "11-11-2022",
+			"place": "Gurudongmar Lake",
+			"city": "Lachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/horned-lark-1668270926.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1668397302",
+			"species": "himalayan-griffon",
+			"date": "11-11-2022",
+			"place": "Gurudongmar Lake",
+			"city": "Lachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-griffon-1668397703.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668271511",
+			"species": "eurasian-kestrel",
+			"date": "11-11-2022",
+			"place": "Gurudongmar Lake",
+			"city": "Lachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-kestrel-1668271630.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668269908",
+			"species": "eurasian-tree-sparrow",
+			"date": "10-11-2022",
+			"place": "",
+			"city": "Singhik",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-tree-sparrow-1668270331.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668270294",
+			"species": "little-bunting",
+			"date": "10-11-2022",
+			"place": "",
+			"city": "Singhik",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-bunting-1668270366.jpg"
+				},
+				{
+					"src": "images/little-bunting-1668270383.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668270510",
+			"species": "rusty-fronted-barwing",
+			"date": "10-11-2022",
+			"place": "",
+			"city": "Singhik",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rusty-fronted-barwing-1668270562.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668302382",
+			"species": "red-vented-bulbul",
+			"date": "09-11-2022",
+			"place": "",
+			"city": "Lingthem",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-vented-bulbul-1668302460.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668301200",
+			"species": "green-backed-tit",
+			"date": "09-11-2022",
+			"place": "",
+			"city": "Lingthem",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-backed-tit-1668301305.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668269637",
+			"species": "grey-backed-shrike",
+			"date": "09-11-2022",
+			"place": "",
+			"city": "Lingthem",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-backed-shrike-1668564400.jpg"
+				},
+				{
+					"src": "images/grey-backed-shrike-1668269674.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668481706",
+			"species": "grey-treepie",
+			"date": "08-11-2022",
+			"place": "",
+			"city": "Tingvong",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-treepie-1668481730.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668303515",
+			"species": "white-wagtail",
+			"date": "08-11-2022",
+			"place": "",
+			"city": "Tingvong",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-wagtail-1668303571.jpg"
+				}
+			],
+			"subspecies": "Indian Pied"
+		},
+		{
+			"key": "s1668572489",
+			"species": "himalayan-bulbul",
+			"date": "07-11-2022",
+			"place": "",
+			"city": "Mangan",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-bulbul-1668572527.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668269022",
+			"species": "black-throated-sunbird",
+			"date": "07-11-2022",
+			"place": "",
+			"city": "Mangan",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-throated-sunbird-1668269238.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1668268790",
+			"species": "black-throated-sunbird",
+			"date": "07-11-2022",
+			"place": "",
+			"city": "Mangan",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-throated-sunbird-1668572828.jpg"
+				},
+				{
+					"src": "images/black-throated-sunbird-1668269014.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1668268696",
+			"species": "white-rumped-munia",
+			"date": "07-11-2022",
+			"place": "",
+			"city": "Mangan",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-rumped-munia-1668268718.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668268358",
+			"species": "olive-backed-pipit",
+			"date": "07-11-2022",
+			"place": "",
+			"city": "Mangan",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/olive-backed-pipit-1668268414.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1668268055",
+			"species": "spotted-forktail",
+			"date": "07-11-2022",
+			"place": "",
+			"city": "Mangan",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spotted-forktail-1668268315.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1666790856",
 			"species": "andaman-scops-owl",
 			"date": "26-10-2022",
@@ -150,7 +546,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/broad-billed-sandpiper-1667134288.jpg"
+					"src": "images/broad-billed-sandpiper-1667580154.jpg"
 				}
 			],
 			"plumage": "Non-Breeding"
@@ -856,7 +1252,8 @@
 					"src": "images/long-tailed-parakeet-1667265471.jpg"
 				},
 				{
-					"src": "images/long-tailed-parakeet-1667265479.jpg"
+					"src": "images/long-tailed-parakeet-1667265479.jpg",
+					"title": "Male & Female"
 				}
 			],
 			"gender": "M"
@@ -2447,7 +2844,7 @@
 		{
 			"key": "white-wagtail-personata-2",
 			"species": "white-wagtail",
-			"subspecies": "m. a. personata",
+			"subspecies": "Masked",
 			"date": "11-06-2022",
 			"place": "Stakna Monastery",
 			"state": "Ladakh",
@@ -4286,16 +4683,16 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/greater-necklaced-laughingthrush-2.jpg"
-				},
-				{
-					"src": "images/greater-necklaced-laughingthrush.jpg"
-				},
-				{
 					"src": "videos/greater-necklaced-laughingthrush.mp4",
 					"thumbnail": "images/greater-necklaced-laughingthrush.jpg",
 					"mute": true,
 					"type": "video"
+				},
+				{
+					"src": "images/greater-necklaced-laughingthrush-2.jpg"
+				},
+				{
+					"src": "images/greater-necklaced-laughingthrush.jpg"
 				}
 			]
 		},
@@ -4412,7 +4809,7 @@
 		{
 			"key": "eurasian-tree-sparrow-male-2",
 			"species": "eurasian-tree-sparrow",
-			"gender": "M",
+			"gender": "",
 			"date": "18-03-2022",
 			"place": "Rongli",
 			"state": "Sikkim",
@@ -5365,13 +5762,13 @@
 			"key": "grey-backed-shrike",
 			"species": "grey-backed-shrike",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
+			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
 				{
-					"src": "images/grey-backed-shrike.jpg"
+					"src": "images/grey-backed-shrike-1668568678.jpg"
 				}
 			]
 		},
@@ -5384,6 +5781,9 @@
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
+				{
+					"src": "images/sultan-tit-1667998699.jpg"
+				},
 				{
 					"src": "images/sultan-tit.jpg"
 				}
@@ -5853,16 +6253,16 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/great-crested-grebe.jpg"
-				},
-				{
-					"src": "images/great-crested-grebe-2.jpg"
-				},
-				{
 					"thumbnail": "images/great-crested-grebe.jpg",
 					"src": "videos/great-crested-grebe.mp4",
 					"mute": true,
 					"type": "video"
+				},
+				{
+					"src": "images/great-crested-grebe.jpg"
+				},
+				{
+					"src": "images/great-crested-grebe-2.jpg"
 				}
 			]
 		},
@@ -6082,7 +6482,7 @@
 		{
 			"key": "eurasian-tree-sparrow-male",
 			"species": "eurasian-tree-sparrow",
-			"gender": "M",
+			"gender": "",
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -7663,7 +8063,7 @@
 		{
 			"key": "white-wagtail-personata",
 			"species": "white-wagtail",
-			"subspecies": "m. a. personata",
+			"subspecies": "Masked",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
 			"state": "Himachal Pradesh",
@@ -7962,7 +8362,7 @@
 		{
 			"key": "white-wagtail-leucopis",
 			"species": "white-wagtail",
-			"subspecies": "m. a. leucopsis",
+			"subspecies": "Amur",
 			"date": "05-01-2021",
 			"city": "Howrah",
 			"state": "West Bengal",
