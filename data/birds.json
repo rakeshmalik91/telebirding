@@ -1,6 +1,265 @@
 {
 	"birds": [
 		{
+			"key": "s1669598505",
+			"species": "osprey",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/osprey-1669598827.jpg"
+				},
+				{
+					"src": "images/osprey-1669598660.jpg"
+				},
+				{
+					"src": "images/osprey-1669598835.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669603074",
+			"species": "purple-heron",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-heron-1669603089.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669602277",
+			"species": "pied-myna",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-myna-1669602290.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669602381",
+			"species": "lesser-whistling-duck",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-whistling-duck-1669602561.jpg"
+				},
+				{
+					"src": "images/lesser-whistling-duck-1669603941.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669604719",
+			"species": "little-grebe",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-grebe-1669604801.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669604715",
+			"species": "black-headed-ibis",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-headed-ibis-1669604757.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669603643",
+			"species": "common-snipe",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-snipe-1669603679.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669603167",
+			"species": "glossy-ibis",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/glossy-ibis-1669603179.jpg"
+				},
+				{
+					"src": "images/glossy-ibis-1669603635.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669603645",
+			"species": "grey-headed-lapwing",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-headed-lapwing-1669603688.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669737595",
+			"species": "common-redshank",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-redshank-1669737615.jpg"
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1669602522",
+			"species": "pied-kingfisher",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-kingfisher-1669602535.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669602863",
+			"species": "pheasant-tailed-jacana",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pheasant-tailed-jacana-1669602885.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669604721",
+			"species": "asian-openbill",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/asian-openbill-1669604865.jpg"
+				},
+				{
+					"src": "images/asian-openbill-1669605067.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669602186",
+			"species": "citrine-wagtail",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/citrine-wagtail-1669731700.jpg"
+				}
+			],
+			"age": "Immature"
+		},
+		{
+			"key": "s1669602681",
+			"species": "pond-heron",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pond-heron-1669602714.jpg"
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1669738109",
+			"species": "long-tailed-shrike",
+			"date": "27-11-2022",
+			"place": "Purbasthali",
+			"city": "Burdwan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/long-tailed-shrike-1669738135.jpg"
+				}
+			],
+			"variation": "Tricolor"
+		},
+		{
 			"key": "s1668332282",
 			"species": "chestnut-crowned-laughingthrush",
 			"date": "12-11-2022",
@@ -512,9 +771,6 @@
 			"media": [
 				{
 					"src": "images/common-snipe-1666794569.jpg"
-				},
-				{
-					"src": "images/common-snipe-1666797112.jpg"
 				}
 			],
 			"description": ""
@@ -8768,7 +9024,8 @@
 				{
 					"src": "images/common-redshank.jpg"
 				}
-			]
+			],
+			"plumage": "Non-Breeding"
 		},
 		{
 			"key": "garganey-female",

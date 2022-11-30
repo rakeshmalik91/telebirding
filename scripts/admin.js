@@ -7,9 +7,27 @@ var IMAGE_SIZE = 1000;
 
 var SYNC_SCHEDULE_TIME = 60000;
 
-var OPT_GENDER = {'': '-', 'M': "Male", 'F': 'Female'};
-var OPT_AGE = {'': 'Adult', 'Juvenile': "Juvenile", 'Immature': 'Immature'};
-var OPT_PLUMAGE = {'': 'Basic', 'Non-Breeding': "Non-Breeding", 'Breeding': 'Breeding', 'Winter': 'Winter', 'Eclipse': 'Eclipse', "Molting": "Molting"};
+var OPT_GENDER = {
+	'': '-', 
+	'M': "Male", 
+	'F': 'Female'
+};
+var OPT_AGE = {
+	'': 'Adult', 
+	'Juvenile': 'Juvenile', 
+	'Immature': 'Immature',
+	'Juvenile/Immature': 'Juvenile/Immature'
+};
+var OPT_PLUMAGE = {
+	'': 'Basic', 
+	'Non-Breeding': 'Non-Breeding', 
+	'Breeding': 'Breeding', 
+	'Winter': 'Winter', 
+	'Eclipse': 'Eclipse', 
+	'Molting': 'Molting', 
+	'Immature/Non-Breeding': 'Immature/Non-Breeding', 
+	'Female/Non-Breeding-Male': 'Female/Non-Breeding'
+};
 
 var DATA_DATE_FORMAT = "DD-MM-yyyy";
 

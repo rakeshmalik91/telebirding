@@ -2753,6 +2753,15 @@
 			],
 			"family": "Doves & Pigeons"
 		},
+		"osprey": {
+			"key": "osprey",
+			"name": "Osprey",
+			"tags": [
+				"Hawk",
+				"River Hawk"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"pacific-golden-plover": {
 			"key": "pacific-golden-plover",
 			"name": "Pacific Golden Plover",
