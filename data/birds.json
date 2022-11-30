@@ -191,7 +191,8 @@
 				{
 					"src": "images/pheasant-tailed-jacana-1669602885.jpg"
 				}
-			]
+			],
+			"plumage": "Female/Non-Breeding-Male"
 		},
 		{
 			"key": "s1669604721",
@@ -5480,7 +5481,8 @@
 				{
 					"src": "images/pheasant-tailed-jacana.jpg"
 				}
-			]
+			],
+			"plumage": "Female/Non-Breeding-Male"
 		},
 		{
 			"key": "slaty-breasted-rail",
@@ -7402,6 +7404,21 @@
 			"media": [
 				{
 					"src": "images/alpine-chough.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1669776826",
+			"species": "eurasian-moorhen",
+			"date": "19-10-2021",
+			"place": "",
+			"city": "Dal Lake",
+			"state": "Jammu & Kashmir",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-moorhen-1669776854.jpg"
 				}
 			]
 		},
@@ -10138,7 +10155,7 @@
 			"key": "brahminy-kite-juvenile",
 			"species": "brahminy-kite",
 			"age": "Juvenile",
-			"date": "29-04-2018",
+			"date": "29-04-2017",
 			"place": "Ranganathittu Bird Sanctuary",
 			"state": "Karnataka",
 			"country": "India",

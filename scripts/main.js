@@ -749,12 +749,23 @@ function renderPageName(currentPage, params) {
 	}
 }
 
+function stopYoutubeVideos() {
+	$('.youtube').each(function(){
+	  if(this.contentWindow) {
+	  	this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+	  }
+	});
+}
+
 function showPage(page, params, isPopstate) {
-	window.scrollTo(0, 0);
+	// window.scrollTo(0, 0);
+	stopYoutubeVideos();
 
 	var filter = getFilters();
-	if(params && params.place) {
-		filter.place = params.place;
+	if(params) {
+		filter.place = params.place || filter.place || '';
+		filter.date = params.date || filter.date || '';
+		filter.bird = params.bird || filter.bird || '';
 	}
 
 	if(!isPopstate) {
@@ -773,9 +784,12 @@ function showPage(page, params, isPopstate) {
 		computeInternalDataFields();
 		initAutocomplete();
 		renderPageName(page, params);
+		if(params) {
+			setFilters(filter);
+		}
 		switch(currentPage) {
 		  case ARCHIVE:
-			$('.home .explore-menu, .home .menu, .about-page, .videos').hide();
+			$('.home .explore-menu, .home .menu, .about-page, .videos, .home-page').hide();
 			$('.home, .birds-list, .filter-panel, .filter-panel .filter, .filter-panel .sortby, .filter-panel .stats').show();
 			$('.home .featured').addClass('hidden');
 			birdFamilyFilter = null;
@@ -784,7 +798,7 @@ function showPage(page, params, isPopstate) {
 			renderBirds(0, DATA_PER_PAGE);
 			break;
 		  case EXPLORE_PAGE:
-			$('.home .explore-menu, .home .menu, .about-page, .filter-panel .filter, .filter-panel .sortby, .videos').hide();
+			$('.home .explore-menu, .home .menu, .about-page, .filter-panel .filter, .filter-panel .sortby, .videos, .home-page').hide();
 			$('.home, .birds-list, .filter-panel, .filter-panel .stats').show();
 			$('.home .featured').addClass('hidden');
 			setFilters({});
@@ -793,21 +807,21 @@ function showPage(page, params, isPopstate) {
 			renderBirds(0, DATA_PER_PAGE, params);
 			break;
 		  case EXPLORE_MENU:
-			$('.filter-panel, .birds-list, .home .menu, .about-page, .videos').hide();
+			$('.filter-panel, .birds-list, .home .menu, .about-page, .videos, .home-page').hide();
 			$('.home, .home .explore-menu').show();
 			$('.home .featured').removeClass('hidden');
 			setFilters({});
 			renderExploreMenu();
 			break;
 		  case MAP_MENU:
-			$('.filter-panel, .birds-list, .home .menu, .about-page, .videos').hide();
+			$('.filter-panel, .birds-list, .home .menu, .about-page, .videos, .home-page').hide();
 			$('.home, .home .map-menu').show();
 			$('.home .featured').removeClass('hidden');
 			setFilters({});
 			renderMapMenu();
 			break;
 		  case MAP:
-			$('.home .explore-menu, .home .menu, .about-page, .videos, .map-menu').hide();
+			$('.home .explore-menu, .home .menu, .about-page, .videos, .map-menu, .home-page').hide();
 			$('.home, .birds-list, .filter-panel, .filter-panel .filter, .filter-panel .sortby, .filter-panel .stats').show();
 			$('.home .featured').addClass('hidden');
 			birdFamilyFilter = null;
@@ -816,20 +830,20 @@ function showPage(page, params, isPopstate) {
 			renderMapPage();
 			break;
 		  case VIDEOS:
-			$('.filter-panel, .home .menu, .birds-list, .about-page').hide();
+			$('.filter-panel, .home .menu, .birds-list, .about-page, .home-page').hide();
 			$('.videos, .home').show();
 			setFilters({});
 			showVideosPage();
 			break;
 		  case ABOUT:
-			$('.filter-panel, .birds-list, .home .explore-menu, .home .menu, .videos').hide();
+			$('.filter-panel, .birds-list, .home .explore-menu, .home .menu, .videos, .home-page').hide();
 			$('.home, .about-page').show();
 			setFilters({});
 			showAboutPage();
 			break;
 		  default:
 			$('.filter-panel, .birds-list, .home .explore-menu, .about-page, .videos, .map-menu').hide();
-			$('.home, .home .menu').show();
+			$('.home, .home .menu, .home-page').show();
 			setFilters({});
 			renderHome();
 		}

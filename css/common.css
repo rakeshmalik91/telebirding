@@ -181,3 +181,19 @@ div.four-column {
   /*backdrop-filter: blur(3px);
   	-webkit-backdrop-filter: blur(3px);*/
 }
+
+.floatleft {
+	float: left;
+}
+.floatright {
+	float: right;
+}
+
+.centeralign {
+	text-align: center;
+	justify-content: center;
+}
+
+.padleft20 {
+	padding-left: 20px;
+}

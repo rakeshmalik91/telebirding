@@ -16,8 +16,91 @@
 	padding: 0;
 	margin: 0;
 	height: 100%;
-	z-index: 1;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scrollbar-width: none;
 }
+.home::-webkit-scrollbar {
+	display: none;
+}
+
+
+
+
+
+.home-page {
+	padding-bottom: 200px;
+	padding-left: 70px;
+	padding-top: 70px;
+	padding-right: 100px;
+	float: left;
+	width: 90vw;
+	color: white;
+	background-color: #1f2c3a;
+}
+.home-page h1 {
+	margin-top: 30px;
+	float: left;
+	width: 100%;
+}
+.home-page div.text {
+	text-align: justify;
+	font-size: 18px;
+	font-weight: normal;
+}
+.home-page div.text * {
+	width: 100%;
+}
+.home-page .one-column {
+	width: 95%;
+}
+.home-page .two-column {
+	width: 48%;
+}
+.home-page .three-column {
+	width: 32%;
+}
+.home-page .four-column {
+	width: 24%;
+}
+.home-page div.date {
+	width: 100%;
+	margin-bottom: 20px;
+	font-size: 16px;
+	color: #95a0ae;
+	transform: translateY(-15px);
+}
+.home-page p {
+	text-indent: 50px;
+}
+.home-page a {
+	color: #6484e0;
+	text-decoration: underline;
+}
+.home-page a:hover {
+	cursor: pointer;
+	color: #868e9c;
+}
+.home-page iframe {
+	height: 400px;
+	background-color: black;
+}
+.home-page img {
+	border: 1px solid white;
+	padding: 5px;
+	margin: 5px;
+	width: calc(100% - 20px);
+}
+.home-page hr {
+	width: 70%;
+	margin-bottom: 80px;
+	transform: translateY(60px);
+	border-color: #868e9c;
+}
+
+
+
+
 
 .home .featured {
 	display: inline-block;
@@ -88,7 +171,7 @@
 	display: inline-block;
 	float: left;
 	margin-top: 50px;
-	height: 400px;
+	/*height: 400px;*/
 }
 .home .menu button {
 	display: inline-block; 
@@ -260,7 +343,7 @@
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	width: 30vw;
-	height: 100%;
+	height: calc(100% - 200px);
 }
 .about-page::-webkit-scrollbar {
 	display: none;
