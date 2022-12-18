@@ -6,7 +6,7 @@
 		--header-padding: 25px;
 	}
 
-	.home .featured, .home-page {
+	.home .featured, .home-page, .home-page > * {
 		display: none;
 	}
 
