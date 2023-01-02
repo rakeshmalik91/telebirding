@@ -843,7 +843,10 @@ function showPage(page, params, isPopstate) {
 			break;
 		  default:
 			$('.filter-panel, .birds-list, .home .explore-menu, .about-page, .videos, .map-menu').hide();
-			$('.home, .home .menu, .home-page').show();
+			$('.home, .home .menu').show();
+			if(!IS_MOBILE) {
+				$('.home-page').show();
+			}
 			setFilters({});
 			renderHome();
 		}

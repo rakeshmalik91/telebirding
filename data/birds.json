@@ -1,50 +1,6 @@
 {
 	"birds": [
 		{
-			"key": "s1672013876",
-			"species": "malabar-trogon",
-			"date": "28-12-2022",
-			"place": "",
-			"city": "Thattekad Bird Sanctuary",
-			"state": "Kerala",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/malabar-trogon-1672013899.jpg"
-				},
-				{
-					"src": "images/malabar-trogon-1672013909.jpg"
-				},
-				{
-					"src": "images/malabar-trogon-1672123218.jpg"
-				}
-			],
-			"gender": "M"
-		},
-		{
-			"key": "s1672013634",
-			"species": "malabar-trogon",
-			"date": "28-12-2022",
-			"place": "",
-			"city": "Thattekad Bird Sanctuary",
-			"state": "Kerala",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/malabar-trogon-1672013649.jpg"
-				},
-				{
-					"src": "images/malabar-trogon-1672040145.jpg"
-				},
-				{
-					"src": "images/malabar-trogon-1672123671.jpg"
-				}
-			],
-			"gender": "F"
-		},
-		{
 			"key": "s1672288878",
 			"species": "golden-fronted-leafbird",
 			"date": "28-12-2022",
@@ -243,9 +199,6 @@
 				},
 				{
 					"src": "images/blue-throated-blue-flycatcher-1672151405.jpg"
-				},
-				{
-					"src": "images/blue-throated-blue-flycatcher-1672151417.jpg"
 				}
 			],
 			"gender": "M"
@@ -264,6 +217,50 @@
 					"src": "images/indian-swiftlet-1672306663.jpg"
 				}
 			]
+		},
+		{
+			"key": "s1672013876",
+			"species": "malabar-trogon",
+			"date": "26-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-trogon-1672013899.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672013909.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672123218.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672013634",
+			"species": "malabar-trogon",
+			"date": "26-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-trogon-1672013649.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672040145.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672123671.jpg"
+				}
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1672124426",
@@ -712,6 +709,21 @@
 				}
 			],
 			"gender": "F"
+		},
+		{
+			"key": "s1672710644",
+			"species": "black-throated-munia",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-throated-munia-1672710683.jpg"
+				}
+			]
 		},
 		{
 			"key": "s1672288221",

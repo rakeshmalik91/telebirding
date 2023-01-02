@@ -52,7 +52,7 @@ function isTouchDevice() {
 }
 
 function isDeviceOnLandscapeOrientation() {
-	return window.innerHeight < window.innerWidth;
+	return (window.innerHeight / window.innerWidth) < (13 / 9);
 }
 
 function compare(a, b) {

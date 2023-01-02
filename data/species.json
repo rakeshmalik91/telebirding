@@ -592,6 +592,15 @@
 			],
 			"family": "Tits"
 		},
+		"black-throated-munia": {
+			"key": "black-throated-munia",
+			"name": "Black-throated Munia",
+			"tags": [
+				"Munia",
+				"Finch"
+			],
+			"family": "Finches & Allies"
+		},
 		"black-throated-sunbird": {
 			"key": "black-throated-sunbird",
 			"name": "Black-throated Sunbird",
