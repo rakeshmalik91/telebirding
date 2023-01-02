@@ -258,6 +258,15 @@
 			],
 			"family": "Swifts"
 		},
+		"banded-bay-cuckoo": {
+			"key": "banded-bay-cuckoo",
+			"name": "Banded Bay Cuckoo",
+			"tags": [
+				"Bay Cuckoo",
+				"Cuckoo"
+			],
+			"family": "Cuckoos"
+		},
 		"bank-myna": {
 			"key": "bank-myna",
 			"name": "Bank Myna",
@@ -800,6 +809,41 @@
 				"Swift"
 			],
 			"family": "Swifts"
+		},
+		"brown-boobook": {
+			"key": "brown-boobook",
+			"name": "Brown Boobook",
+			"tags": [
+				"Boobook",
+				"Hawk-Owl",
+				"Brown Hawk-Owl"
+			],
+			"family": "Owls"
+		},
+		"brown-breasted-flycatcher": {
+			"key": "brown-breasted-flycatcher",
+			"name": "Brown-breasted Flycatcher",
+			"tags": [
+				"Flycatcher"
+			],
+			"family": "Old World Flycatchers"
+		},
+		"brown-capped-pygmy-woodpecker": {
+			"key": "brown-capped-pygmy-woodpecker",
+			"name": "Brown-capped Pygmy Woodpecker",
+			"tags": [
+				"Woodpecker",
+				"Pygmy Woodpecker"
+			],
+			"family": "Woodpeckers"
+		},
+		"brown-cheeked-fulvetta": {
+			"key": "brown-cheeked-fulvetta",
+			"name": "Brown-cheeked Fulvetta",
+			"tags": [
+				"Fulvetta"
+			],
+			"family": "Laughingthrushes & Allies"
 		},
 		"brown-dipper": {
 			"key": "brown-dipper",
@@ -1830,6 +1874,14 @@
 			],
 			"family": "Prinias"
 		},
+		"grey-headed-bulbul": {
+			"key": "grey-headed-bulbul",
+			"name": "Grey-headed Bulbul",
+			"tags": [
+				"Bulbul"
+			],
+			"family": "Bulbuls"
+		},
 		"grey-headed-canary-flycatcher": {
 			"key": "grey-headed-canary-flycatcher",
 			"name": "Grey-headed Canary Flycatcher",
@@ -2128,6 +2180,14 @@
 			],
 			"family": "Pheasants, Partridges & Fowls"
 		},
+		"indian-pitta": {
+			"key": "indian-pitta",
+			"name": "Indian Pitta",
+			"tags": [
+				"Pitta"
+			],
+			"family": "Old World Pittas"
+		},
 		"indian-roller": {
 			"key": "indian-roller",
 			"name": "Indian Roller",
@@ -2165,6 +2225,15 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"indian-swiftlet": {
+			"key": "indian-swiftlet",
+			"name": "Indian Swiftlet",
+			"tags": [
+				"Swift",
+				"Swiftlet"
+			],
+			"family": "Swifts"
+		},
 		"indian-white-eye": {
 			"key": "indian-white-eye",
 			"name": "Indian White-eye",
@@ -2188,7 +2257,7 @@
 			"tags": [
 				"Babbler"
 			],
-			"family": "Babblers"
+			"family": "Laughingthrushes & Allies"
 		},
 		"jungle-myna": {
 			"key": "jungle-myna",
@@ -2304,6 +2373,15 @@
 				"Wading Bird"
 			],
 			"family": "Gulls & Terns"
+		},
+		"lesser-fish-eagle": {
+			"key": "lesser-fish-eagle",
+			"name": "Lesser Fish-Eagle",
+			"tags": [
+				"Eagle",
+				"Fish-Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"lesser-sand-plover": {
 			"key": "lesser-sand-plover",
@@ -2464,6 +2542,14 @@
 			],
 			"family": "Sunbirds & Spiderhunters"
 		},
+		"malabar-barbet": {
+			"key": "malabar-barbet",
+			"name": "Malabar Barbet",
+			"tags": [
+				"Barbet"
+			],
+			"family": "Barbets"
+		},
 		"malabar-grey-hornbill": {
 			"key": "malabar-grey-hornbill",
 			"name": "Malabar Grey Hornbill",
@@ -2488,6 +2574,14 @@
 				"Starling"
 			],
 			"family": "Starlings"
+		},
+		"malabar-trogon": {
+			"key": "malabar-trogon",
+			"name": "Malabar Trogon",
+			"tags": [
+				"Trogon"
+			],
+			"family": "Trogons"
 		},
 		"malabar-whistling-thrush": {
 			"key": "malabar-whistling-thrush",
@@ -2599,6 +2693,14 @@
 			],
 			"family": "Doves & Pigeons"
 		},
+		"nilgiri-flowerpecker": {
+			"key": "nilgiri-flowerpecker",
+			"name": "Nilgiri Flowerpecker",
+			"tags": [
+				"Flowerpecker"
+			],
+			"family": "Flowerpeckers"
+		},
 		"northern-lapwing": {
 			"key": "northern-lapwing",
 			"name": "Northern Lapwing",
@@ -2672,10 +2774,11 @@
 		},
 		"oriental-bay-owl": {
 			"key": "oriental-bay-owl",
-			"name": "Oriental Bay Owl",
+			"name": "Sri-Lankan Bay Owl",
 			"tags": [
 				"Bay Owl",
-				"Owl"
+				"Owl",
+				"Ceylon Bay Owl"
 			],
 			"family": "Owls"
 		},
@@ -3323,6 +3426,14 @@
 			],
 			"family": "Laughingthrushes & Allies"
 		},
+		"rusty-tailed-flycatcher": {
+			"key": "rusty-tailed-flycatcher",
+			"name": "Rusty-tailed Flycatcher",
+			"tags": [
+				"Flycatcher"
+			],
+			"family": "Old World Flycatchers"
+		},
 		"saker-falcon": {
 			"key": "saker-falcon",
 			"name": "Saker Falcon",
@@ -3423,6 +3534,16 @@
 				"Wading Bird"
 			],
 			"family": "Pratincoles"
+		},
+		"southern-hill-myna": {
+			"key": "southern-hill-myna",
+			"name": "Southern Hill Myna",
+			"tags": [
+				"Myna",
+				"Hill Myna",
+				"Starling"
+			],
+			"family": "Starlings"
 		},
 		"spoonbill": {
 			"key": "spoonbill",
@@ -3575,6 +3696,14 @@
 				"Flycatcher"
 			],
 			"family": "Old World Flycatchers"
+		},
+		"thick-billed-flowerpecker": {
+			"key": "thick-billed-flowerpecker",
+			"name": "Thick-billed Flowerpecker",
+			"tags": [
+				"Flowerpecker"
+			],
+			"family": "Flowerpeckers"
 		},
 		"tibetan-lark": {
 			"key": "tibetan-lark",
@@ -3776,6 +3905,15 @@
 				"Yuhina"
 			],
 			"family": "Yuhinas & White-eyes"
+		},
+		"white-bellied-blue-flycatcher": {
+			"key": "white-bellied-blue-flycatcher",
+			"name": "White-bellied Blue Flycatcher",
+			"tags": [
+				"Flycatcher",
+				"Blue Flycatcher"
+			],
+			"family": "Old World Flycatchers"
 		},
 		"white-bellied-drongo": {
 			"key": "white-bellied-drongo",

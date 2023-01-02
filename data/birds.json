@@ -1,6 +1,891 @@
 {
 	"birds": [
 		{
+			"key": "s1672013876",
+			"species": "malabar-trogon",
+			"date": "28-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-trogon-1672013899.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672013909.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672123218.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672013634",
+			"species": "malabar-trogon",
+			"date": "28-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-trogon-1672013649.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672040145.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672123671.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672288878",
+			"species": "golden-fronted-leafbird",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/golden-fronted-leafbird-1672288900.jpg"
+				},
+				{
+					"src": "images/golden-fronted-leafbird-1672307098.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672213107",
+			"species": "white-cheeked-barbet",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-cheeked-barbet-1672213125.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672212840",
+			"species": "lotens-sunbird",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lotens-sunbird-1672212859.jpg"
+				},
+				{
+					"src": "images/lotens-sunbird-1672212929.jpg"
+				},
+				{
+					"src": "images/lotens-sunbird-1672212944.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672212816",
+			"species": "lotens-sunbird",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lotens-sunbird-1672212833.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672212784",
+			"species": "purple-rumped-sunbird",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-rumped-sunbird-1672212806.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672040581",
+			"species": "southern-hill-myna",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/southern-hill-myna-1672212591.jpg"
+				},
+				{
+					"src": "images/southern-hill-myna-1672040623.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672041182",
+			"species": "malabar-starling",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-starling-1672213004.jpg"
+				},
+				{
+					"src": "images/malabar-starling-1672041199.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672213325",
+			"species": "vernal-hanging-parrot",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/vernal-hanging-parrot-1672213344.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672288765",
+			"species": "thick-billed-flowerpecker",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/thick-billed-flowerpecker-1672497027.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672150213",
+			"species": "indian-pitta",
+			"date": "27-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-pitta-1672150235.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672150042",
+			"species": "jungle-owlet",
+			"date": "27-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jungle-owlet-1672150071.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672151370",
+			"species": "blue-throated-blue-flycatcher",
+			"date": "27-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blue-throated-blue-flycatcher-1672562832.jpg"
+				},
+				{
+					"src": "images/blue-throated-blue-flycatcher-1672151405.jpg"
+				},
+				{
+					"src": "images/blue-throated-blue-flycatcher-1672151417.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672306645",
+			"species": "indian-swiftlet",
+			"date": "27-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-swiftlet-1672306663.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672124426",
+			"species": "fork-tailed-drongo-cuckoo",
+			"date": "26-12-2022",
+			"place": "Salim Ali Bird Trail",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/fork-tailed-drongo-cuckoo-1672124450.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672046570",
+			"species": "indian-roller",
+			"date": "26-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-roller-1672046590.jpg"
+				},
+				{
+					"src": "images/indian-roller-1672124413.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672041027",
+			"species": "brown-capped-pygmy-woodpecker",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-capped-pygmy-woodpecker-1672041056.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672041239",
+			"species": "bar-winged-flycatcher-shrike",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bar-winged-flycatcher-shrike-1672041275.jpg"
+				},
+				{
+					"src": "images/bar-winged-flycatcher-shrike-1672290051.jpg"
+				},
+				{
+					"src": "images/bar-winged-flycatcher-shrike-1672290101.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672045171",
+			"species": "banded-bay-cuckoo",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/banded-bay-cuckoo-1672497159.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672044471",
+			"species": "greater-racket-tailed-drongo",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-racket-tailed-drongo-1672044499.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672042666",
+			"species": "asian-brown-flycatcher",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/asian-brown-flycatcher-1672042699.jpg"
+				},
+				{
+					"src": "images/asian-brown-flycatcher-1672044174.jpg"
+				},
+				{
+					"src": "images/asian-brown-flycatcher-1672042688.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672044061",
+			"species": "rusty-tailed-flycatcher",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rusty-tailed-flycatcher-1672044074.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672044109",
+			"species": "velvet-fronted-nuthatch",
+			"date": "26-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/velvet-fronted-nuthatch-1672123277.jpg"
+				},
+				{
+					"src": "images/velvet-fronted-nuthatch-1672123257.jpg"
+				},
+				{
+					"src": "images/velvet-fronted-nuthatch-1672044280.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672043581",
+			"species": "ceylon-frogmouth",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ceylon-frogmouth-1672043604.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672041584",
+			"species": "grey-headed-bulbul",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-headed-bulbul-1672041606.jpg"
+				},
+				{
+					"src": "images/grey-headed-bulbul-1672041697.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672042748",
+			"species": "orange-headed-thrush",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/orange-headed-thrush-1672042767.jpg"
+				}
+			],
+			"variation": "White-throated"
+		},
+		{
+			"key": "s1672013420",
+			"species": "malabar-woodshrike",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-woodshrike-1672013494.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672014051",
+			"species": "black-baza",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-baza-1672014080.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672042360",
+			"species": "lesser-fish-eagle",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-fish-eagle-1672042413.jpg"
+				},
+				{
+					"src": "images/lesser-fish-eagle-1672042421.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672042063",
+			"species": "heart-spotted-woodpecker",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/heart-spotted-woodpecker-1672043665.jpg"
+				},
+				{
+					"src": "images/heart-spotted-woodpecker-1672042098.jpg"
+				},
+				{
+					"src": "images/heart-spotted-woodpecker-1672042178.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672497679",
+			"species": "white-bellied-blue-flycatcher",
+			"date": "24-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-bellied-blue-flycatcher-1672497715.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672308815",
+			"species": "black-rumped-flameback",
+			"date": "24-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-rumped-flameback-1672308845.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672308613",
+			"species": "black-rumped-flameback",
+			"date": "24-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-rumped-flameback-1672308661.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672307003",
+			"species": "golden-fronted-leafbird",
+			"date": "24-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/golden-fronted-leafbird-1672307028.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672306832",
+			"species": "malabar-barbet",
+			"date": "24-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-barbet-1672306958.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672287693",
+			"species": "malabar-grey-hornbill",
+			"date": "24-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-grey-hornbill-1672287718.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672046350",
+			"species": "brown-cheeked-fulvetta",
+			"date": "24-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-cheeked-fulvetta-1672046435.jpg"
+				},
+				{
+					"src": "images/brown-cheeked-fulvetta-1672046446.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672045679",
+			"species": "oriental-bay-owl",
+			"date": "24-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/oriental-bay-owl-1672045818.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672043946",
+			"species": "brown-breasted-flycatcher",
+			"date": "24-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-breasted-flycatcher-1672043966.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672040858",
+			"species": "white-bellied-woodpecker",
+			"date": "24-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-bellied-woodpecker-1672040892.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672045971",
+			"species": "crimson-backed-sunbird",
+			"date": "24-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/crimson-backed-sunbird-1672045996.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672288221",
+			"species": "nilgiri-flowerpecker",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/nilgiri-flowerpecker-1672288238.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672046818",
+			"species": "asian-fairy-bluebird",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/asian-fairy-bluebird-1672046842.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1672046697",
+			"species": "purple-rumped-sunbird",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-rumped-sunbird-1672046723.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672043374",
+			"species": "ceylon-frogmouth",
+			"date": "23-12-2022",
+			"place": "Urulathanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ceylon-frogmouth-1672043454.jpg"
+				},
+				{
+					"src": "images/ceylon-frogmouth-1672043419.jpg"
+				},
+				{
+					"src": "images/ceylon-frogmouth-1672123160.jpg",
+					"title": "Male & Female"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672043097",
+			"species": "brown-boobook",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-boobook-1672043201.jpg"
+				},
+				{
+					"src": "images/brown-boobook-1672043241.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672043000",
+			"species": "white-bellied-treepie",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-bellied-treepie-1672043021.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672041941",
+			"species": "lesser-yellownape",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-yellownape-1672041977.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672040477",
+			"species": "flame-throated-bulbul",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/flame-throated-bulbul-1672040682.jpg"
+				},
+				{
+					"src": "images/flame-throated-bulbul-1672123195.jpg"
+				},
+				{
+					"src": "images/flame-throated-bulbul-1672040502.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672040307",
+			"species": "yellow-browed-bulbul",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-browed-bulbul-1672040334.jpg"
+				},
+				{
+					"src": "images/yellow-browed-bulbul-1672043528.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1672040744",
+			"species": "malabar-parakeet",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-parakeet-1672040764.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1669598505",
 			"species": "osprey",
 			"date": "27-11-2022",
@@ -4940,16 +5825,16 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "videos/greater-necklaced-laughingthrush.mp4",
-					"thumbnail": "images/greater-necklaced-laughingthrush.jpg",
-					"mute": true,
-					"type": "video"
-				},
-				{
 					"src": "images/greater-necklaced-laughingthrush-2.jpg"
 				},
 				{
 					"src": "images/greater-necklaced-laughingthrush.jpg"
+				},
+				{
+					"src": "videos/greater-necklaced-laughingthrush.mp4",
+					"thumbnail": "images/greater-necklaced-laughingthrush.jpg",
+					"mute": true,
+					"type": "video"
 				}
 			]
 		},
@@ -8011,7 +8896,8 @@
 				{
 					"src": "images/blue-throated-blue-flycatcher-female.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "pink-browed-rosefinch-female",
@@ -9098,7 +9984,8 @@
 					"src": "images/black-rumped-flameback.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "F",
+			"hidden": true
 		},
 		{
 			"key": "black-winged-kite-2",
@@ -9256,75 +10143,80 @@
 			"key": "yellow-browed-bulbul-2",
 			"species": "yellow-browed-bulbul",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/yellow-browed-bulbul-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "golden-oriole-female",
 			"species": "golden-oriole",
 			"gender": "F",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-oriole-female.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "oriental-bay-owl",
 			"species": "oriental-bay-owl",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/oriental-bay-owl.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "dark-fronted-babbler",
 			"species": "dark-fronted-babbler",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/dark-fronted-babbler.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "blue-throated-blue-flycatcher-male",
 			"species": "blue-throated-blue-flycatcher",
 			"gender": "M",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-throated-blue-flycatcher-male.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "tickells-blue-flycatcher-3",
 			"species": "tickells-blue-flycatcher",
 			"gender": "M",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9334,52 +10226,56 @@
 				{
 					"src": "images/tickells-blue-flycatcher-4.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "puff-throated-babbler",
 			"species": "puff-throated-babbler",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/puff-throated-babbler.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "great-eared-nightjar",
 			"species": "great-eared-nightjar",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/great-eared-nightjar.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "white-bellied-woodpecker",
 			"species": "white-bellied-woodpecker",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "Urulanthanni",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/white-bellied-woodpecker.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "heart-spotted-woodpecker",
 			"species": "heart-spotted-woodpecker",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "Urulanthanni",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9389,40 +10285,43 @@
 				{
 					"src": "images/heart-spotted-woodpecker-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "blue-tailed-bee-eater",
 			"species": "blue-tailed-bee-eater",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/blue-tailed-bee-eater.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "orange-minivet-male",
 			"species": "orange-minivet",
 			"gender": "M",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/orange-minivet-male.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "orange-headed-thrush-2",
 			"species": "orange-headed-thrush",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"variation": "White-throated",
@@ -9436,40 +10335,43 @@
 				{
 					"src": "images/orange-headed-thrush-3.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "malabar-grey-hornbill-male",
 			"species": "malabar-grey-hornbill",
 			"gender": "M",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-grey-hornbill-male.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "jungle-owlet",
 			"species": "jungle-owlet",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/jungle-owlet.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "malabar-woodshrike",
 			"species": "malabar-woodshrike",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9479,34 +10381,59 @@
 				{
 					"src": "images/malabar-woodshrike-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "green-imperial-pigeon",
 			"species": "green-imperial-pigeon",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/green-imperial-pigeon.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "plum-headed-parakeet-female",
 			"species": "plum-headed-parakeet",
 			"gender": "F",
 			"date": "22-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/plum-headed-parakeet-female.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
+		},
+		{
+			"key": "ceylon-frogmouth-female",
+			"species": "ceylon-frogmouth",
+			"gender": "F",
+			"date": "22-02-2019",
+			"place": "Urulanthanni",
+			"state": "Kerala",
+			"country": "India",
+			"media": [
+				{
+					"src": "images/ceylon-frogmouth-female-2.jpg"
+				},
+				{
+					"src": "images/ceylon-frogmouth-female-3.jpg",
+					"title": "Male & Juvenile"
+				},
+				{
+					"src": "images/ceylon-frogmouth-female.jpg"
+				}
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "stork-billed-kingfisher",
@@ -9525,53 +10452,57 @@
 			"key": "red-whiskered-bulbul-2",
 			"species": "red-whiskered-bulbul",
 			"date": "20-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/red-whiskered-bulbul-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "golden-fronted-leafbird-male-2",
 			"species": "golden-fronted-leafbird",
 			"date": "20-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/golden-fronted-leafbird-male-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "ashy-woodswallow",
 			"species": "ashy-woodswallow",
 			"date": "20-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/ashy-woodswallow.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "river-tern",
 			"species": "river-tern",
 			"date": "20-02-2019",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/river-tern.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "bronze-winged-jacana-male",
@@ -9843,22 +10774,23 @@
 		},
 		{
 			"key": "common-hill-myna",
-			"species": "common-hill-myna",
+			"species": "southern-hill-myna",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/common-hill-myna.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "oriental-darter-2",
 			"species": "oriental-darter",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9868,13 +10800,14 @@
 				{
 					"src": "images/oriental-darter-3.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "malabar-starling",
 			"species": "malabar-starling",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9884,13 +10817,14 @@
 				{
 					"src": "images/malabar-starling.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "oriental-dollarbird",
 			"species": "oriental-dollarbird",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9900,80 +10834,87 @@
 				{
 					"src": "images/oriental-dollarbird.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "greater-racket-tailed-drongo-2",
 			"species": "greater-racket-tailed-drongo",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-racket-tailed-drongo-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "malabar-parakeet",
 			"species": "malabar-parakeet",
 			"gender": "F",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-parakeet-female.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "flame-throated-bulbul",
 			"species": "flame-throated-bulbul",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/flame-throated-bulbul.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "crimson-backed-sunbird",
 			"species": "crimson-backed-sunbird",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/crimson-backed-sunbird.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary",
+			"gender": "M"
 		},
 		{
 			"key": "black-naped-oriole-male",
 			"species": "black-naped-oriole",
 			"gender": "M",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/black-naped-oriole-male.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "white-bellied-treepie",
 			"species": "white-bellied-treepie",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
@@ -9983,107 +10924,95 @@
 				{
 					"src": "images/white-bellied-treepie.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "malabar-grey-hornbill-female",
 			"species": "malabar-grey-hornbill",
 			"gender": "F",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/malabar-grey-hornbill-female.jpg"
 				}
-			]
-		},
-		{
-			"key": "ceylon-frogmouth-female",
-			"species": "ceylon-frogmouth",
-			"gender": "F",
-			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
-			"state": "Kerala",
-			"country": "India",
-			"media": [
-				{
-					"src": "images/ceylon-frogmouth-female-2.jpg"
-				},
-				{
-					"src": "images/ceylon-frogmouth-female-3.jpg"
-				},
-				{
-					"src": "images/ceylon-frogmouth-female.jpg"
-				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "greater-flameback-2",
 			"species": "greater-flameback",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/greater-flameback-2.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary",
+			"gender": "M"
 		},
 		{
 			"key": "asian-brown-flycatcher",
 			"species": "asian-brown-flycatcher",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/asian-brown-flycatcher.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "vernal-hanging-parrot",
 			"species": "vernal-hanging-parrot",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "Urulanthanni",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/vernal-hanging-parrot.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "ceylon-frogmouth-male",
 			"species": "ceylon-frogmouth",
 			"gender": "M",
 			"date": "19-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/ceylon-frogmouth-male.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "fork-tailed-drongo-cuckoo",
 			"species": "fork-tailed-drongo-cuckoo",
 			"date": "11-11-2018",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "Salim Ali Bird Trail",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/fork-tailed-drongo-cuckoo.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "white-cheeked-barbet",
@@ -10148,20 +11077,6 @@
 			"media": [
 				{
 					"src": "images/yellow-browed-bulbul.jpg"
-				}
-			]
-		},
-		{
-			"key": "brahminy-kite-juvenile",
-			"species": "brahminy-kite",
-			"age": "Juvenile",
-			"date": "29-04-2017",
-			"place": "Ranganathittu Bird Sanctuary",
-			"state": "Karnataka",
-			"country": "India",
-			"media": [
-				{
-					"src": "images/brahminy-kite-juvenile.jpg"
 				}
 			]
 		},
@@ -10632,41 +11547,44 @@
 			"key": "little-cormorant",
 			"species": "little-cormorant",
 			"date": "09-10-2017",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/little-cormorant.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "common-kingfisher",
 			"species": "common-kingfisher",
 			"date": "09-10-2017",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/common-kingfisher.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "indian-peafowl-female",
 			"species": "indian-peafowl",
 			"gender": "F",
 			"date": "09-10-2017",
-			"place": "Thattekad Bird Sanctuary",
+			"place": "",
 			"state": "Kerala",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/indian-peafowl-female.jpg"
 				}
-			]
+			],
+			"city": "Thattekad Bird Sanctuary"
 		},
 		{
 			"key": "oriental-magpie-robin-male",
@@ -11020,7 +11938,8 @@
 				{
 					"src": "images/greater-flameback.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "red-vented-bulbul-2",
@@ -11347,6 +12266,20 @@
 			"media": [
 				{
 					"src": "images/bank-myna.jpg"
+				}
+			]
+		},
+		{
+			"key": "brahminy-kite-juvenile",
+			"species": "brahminy-kite",
+			"age": "Juvenile",
+			"date": "29-04-2017",
+			"place": "Ranganathittu Bird Sanctuary",
+			"state": "Karnataka",
+			"country": "India",
+			"media": [
+				{
+					"src": "images/brahminy-kite-juvenile.jpg"
 				}
 			]
 		},
