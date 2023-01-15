@@ -1943,6 +1943,15 @@
 			],
 			"family": "Warblers"
 		},
+		"grey-junglefowl": {
+			"key": "grey-junglefowl",
+			"name": "Grey Junglefowl",
+			"tags": [
+				"Junglefowl",
+				"Fowl"
+			],
+			"family": "Pheasants, Partridges & Fowls"
+		},
 		"grey-nightjar": {
 			"key": "grey-nightjar",
 			"name": "Grey Nightjar",

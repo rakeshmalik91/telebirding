@@ -71,6 +71,30 @@ function uploadJSONData(type) {
 	});
 }
 
+function backup() {
+	showOverlay("Backing up...");
+	console.log("Backing up...");
+	var backedUp = 0;
+	firebase.storage() .ref("backup/data/species.json") .put(new File(JSON.stringify({ birds: data.birds}, null, '\t').split('\n').map(l => l + '\n'), "species.json")).then(() => {
+		if(++backedUp == 3) {
+			refresh();
+			console.log("Backup completed");
+		}
+	});
+	firebase.storage() .ref("backup/data/families.json") .put(new File(JSON.stringify({ birds: data.birds}, null, '\t').split('\n').map(l => l + '\n'), "families.json")).then(() => {
+		if(++backedUp == 3) {
+			refresh();
+			console.log("Backup completed");
+		}
+	});
+	firebase.storage() .ref("backup/data/birds.json") .put(new File(JSON.stringify({ birds: data.birds}, null, '\t').split('\n').map(l => l + '\n'), "birds.json")).then(() => {
+		if(++backedUp == 3) {
+			refresh();
+			console.log("Backup completed");
+		}
+	});
+}
+
 var syncRef;
 function syncSightingsData(scheduleAfter) {
 	$('.save').removeAttr("disabled");
@@ -445,6 +469,7 @@ $(document).ready(function() {
 	});
 	$('.sort-by-date').click(sortByDate);
 	$('.add-sighting').click(addSighting);
+	$('.backup').click(backup);
 	$('button.first-page').click(function() {
 		if(OFFSET > 0) {
 			OFFSET = 0;

@@ -219,28 +219,6 @@
 			]
 		},
 		{
-			"key": "s1672013876",
-			"species": "malabar-trogon",
-			"date": "26-12-2022",
-			"place": "",
-			"city": "Thattekad Bird Sanctuary",
-			"state": "Kerala",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/malabar-trogon-1672013899.jpg"
-				},
-				{
-					"src": "images/malabar-trogon-1672013909.jpg"
-				},
-				{
-					"src": "images/malabar-trogon-1672123218.jpg"
-				}
-			],
-			"gender": "M"
-		},
-		{
 			"key": "s1672013634",
 			"species": "malabar-trogon",
 			"date": "26-12-2022",
@@ -419,6 +397,44 @@
 			]
 		},
 		{
+			"key": "s1673179271",
+			"species": "black-naped-oriole",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-naped-oriole-1673179309.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672013876",
+			"species": "malabar-trogon",
+			"date": "25-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-trogon-1672013899.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672013909.jpg"
+				},
+				{
+					"src": "images/malabar-trogon-1672123218.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
 			"key": "s1672043581",
 			"species": "ceylon-frogmouth",
 			"date": "25-12-2022",
@@ -509,10 +525,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/lesser-fish-eagle-1672042413.jpg"
+					"src": "images/lesser-fish-eagle-1672042421.jpg"
 				},
 				{
-					"src": "images/lesser-fish-eagle-1672042421.jpg"
+					"src": "images/lesser-fish-eagle-1672042413.jpg"
 				}
 			]
 		},
@@ -709,6 +725,22 @@
 				}
 			],
 			"gender": "F"
+		},
+		{
+			"key": "s1673076169",
+			"species": "grey-junglefowl",
+			"date": "23-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-junglefowl-1673076186.jpg"
+				}
+			],
+			"gender": "M"
 		},
 		{
 			"key": "s1672710644",
@@ -1202,7 +1234,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/little-forktail-1668298736.jpg"
+					"src": "images/little-forktail-1673078307.jpg"
 				}
 			]
 		},
@@ -10920,7 +10952,8 @@
 					"src": "images/black-naped-oriole-male.jpg"
 				}
 			],
-			"city": "Thattekad Bird Sanctuary"
+			"city": "Thattekad Bird Sanctuary",
+			"hidden": true
 		},
 		{
 			"key": "white-bellied-treepie",
