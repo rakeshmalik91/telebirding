@@ -784,6 +784,16 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"brahminy-starling": {
+			"key": "brahminy-starling",
+			"name": "Brahminy Starling",
+			"tags": [
+				"Starling",
+				"Myna",
+				"Brahminy Myna"
+			],
+			"family": "Starlings"
+		},
 		"broad-billed-sandpiper": {
 			"key": "broad-billed-sandpiper",
 			"name": "Broad-billed Sandpiper",
@@ -1343,6 +1353,15 @@
 			],
 			"family": "Thrushes"
 		},
+		"dusky-eagle-owl": {
+			"key": "dusky-eagle-owl",
+			"name": "Dusky Eagle-Owl",
+			"tags": [
+				"Eagle-Owl",
+				"Owl"
+			],
+			"family": "Owls"
+		},
 		"dusky-warbler": {
 			"key": "dusky-warbler",
 			"name": "Dusky Warbler",
@@ -1758,6 +1777,15 @@
 			],
 			"family": "Drongos"
 		},
+		"greater-spotted-eagle": {
+			"key": "greater-spotted-eagle",
+			"name": "Greater Spotted Eagle",
+			"tags": [
+				"Eagle",
+				"Spotted Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"greater-yellownape": {
 			"key": "greater-yellownape",
 			"name": "Greater Yellownape",
@@ -2159,6 +2187,14 @@
 			],
 			"family": "Warblers"
 		},
+		"imperial-eagle": {
+			"key": "imperial-eagle",
+			"name": "Imperial Eagle",
+			"tags": [
+				"Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"indian-cormorant": {
 			"key": "indian-cormorant",
 			"name": "Indian Cormorant",
@@ -2206,6 +2242,15 @@
 			],
 			"family": "Old World Pittas"
 		},
+		"indian-robin": {
+			"key": "indian-robin",
+			"name": "Indian Robin",
+			"tags": [
+				"Robin",
+				"Flycatcher"
+			],
+			"family": "Old World Flycatchers"
+		},
 		"indian-roller": {
 			"key": "indian-roller",
 			"name": "Indian Roller",
@@ -2251,6 +2296,14 @@
 				"Swiftlet"
 			],
 			"family": "Swifts"
+		},
+		"indian-thick-knee": {
+			"key": "indian-thick-knee",
+			"name": "Indian Thick-knee",
+			"tags": [
+				"Thick-knee"
+			],
+			"family": "Thick-knees"
 		},
 		"indian-white-eye": {
 			"key": "indian-white-eye",
@@ -2361,6 +2414,14 @@
 			],
 			"family": "Old World Flycatchers"
 		},
+		"laughing-dove": {
+			"key": "laughing-dove",
+			"name": "Laughing Dove",
+			"tags": [
+				"Dove"
+			],
+			"family": "Doves & Pigeons"
+		},
 		"lemon-rumped-warbler": {
 			"key": "lemon-rumped-warbler",
 			"name": "Lemon Rumped Warbler",
@@ -2419,6 +2480,15 @@
 				"Wading Bird"
 			],
 			"family": "Ducks, Swans & Geese"
+		},
+		"lesser-whitethroat": {
+			"key": "lesser-whitethroat",
+			"name": "Lesser Whitethroat",
+			"tags": [
+				"Warbler",
+				"Whitethroat"
+			],
+			"family": "Sylviid Warblers"
 		},
 		"lesser-yellownape": {
 			"key": "lesser-yellownape",
@@ -3112,6 +3182,14 @@
 			],
 			"family": "Laughingthrushes & Allies"
 		},
+		"red-breasted-flycatcher": {
+			"key": "red-breasted-flycatcher",
+			"name": "Red-breasted Flycatcher",
+			"tags": [
+				"Flycatcher"
+			],
+			"family": "Old World Flycatchers"
+		},
 		"red-breasted-parakeet": {
 			"key": "red-breasted-parakeet",
 			"name": "Red-breasted Parakeet",
@@ -3461,6 +3539,15 @@
 			],
 			"family": "Falcons & Caracaras"
 		},
+		"sarus-crane": {
+			"key": "sarus-crane",
+			"name": "Sarus Crane",
+			"tags": [
+				"Crane",
+				"Sarus"
+			],
+			"family": "Cranes"
+		},
 		"scaly-bellied-woodpecker": {
 			"key": "scaly-bellied-woodpecker",
 			"name": "Scaly Bellied Woodpecker",
@@ -3565,7 +3652,7 @@
 		},
 		"spoonbill": {
 			"key": "spoonbill",
-			"name": "Spoonbill",
+			"name": "Eurasian Spoonbill",
 			"tags": [
 				"Spoonbill"
 			],
@@ -3714,6 +3801,14 @@
 				"Flycatcher"
 			],
 			"family": "Old World Flycatchers"
+		},
+		"tawny-eagle": {
+			"key": "tawny-eagle",
+			"name": "Tawny Eagle",
+			"tags": [
+				"Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"thick-billed-flowerpecker": {
 			"key": "thick-billed-flowerpecker",
@@ -4051,6 +4146,14 @@
 				"Laughingthrush"
 			],
 			"family": "Laughingthrushes & Allies"
+		},
+		"white-eared-bulbul": {
+			"key": "white-eared-bulbul",
+			"name": "White-eared Bulbul",
+			"tags": [
+				"Bulbul"
+			],
+			"family": "Bulbuls"
 		},
 		"white-headed-starling": {
 			"key": "white-headed-starling",

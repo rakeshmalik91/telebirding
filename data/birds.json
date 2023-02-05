@@ -1,23 +1,655 @@
 {
 	"birds": [
 		{
-			"key": "s1672288878",
-			"species": "golden-fronted-leafbird",
-			"date": "28-12-2022",
-			"place": "Urulanthanni",
-			"city": "Thattekad Bird Sanctuary",
-			"state": "Kerala",
+			"key": "s1675082814",
+			"species": "brahminy-starling",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/golden-fronted-leafbird-1672288900.jpg"
+					"src": "images/brahminy-starling-1675082850.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675082550",
+			"species": "sarus-crane",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sarus-crane-1675082644.jpg",
+					"title": "Male"
 				},
 				{
-					"src": "images/golden-fronted-leafbird-1672307098.jpg"
+					"src": "images/sarus-crane-1675082651.jpg",
+					"title": "Male & Female"
+				},
+				{
+					"src": "images/sarus-crane-1675082668.jpg",
+					"title": "Male"
+				}
+			]
+		},
+		{
+			"key": "s1675062549",
+			"species": "grey-nightjar",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-nightjar-1675062570.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675084645",
+			"species": "tawny-eagle",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tawny-eagle-1675084658.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675062632",
+			"species": "eurasian-marsh-harrier",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-marsh-harrier-1675062824.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675495708",
+			"species": "imperial-eagle",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/imperial-eagle-1675495716.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675083806",
+			"species": "dusky-eagle-owl",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/dusky-eagle-owl-1675494637.jpg"
+				},
+				{
+					"src": "images/dusky-eagle-owl-1675494645.jpg"
 				}
 			],
 			"gender": "M"
+		},
+		{
+			"key": "s1675063821",
+			"species": "clamorous-reed-warbler",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/clamorous-reed-warbler-1675063836.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675063643",
+			"species": "spoonbill",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spoonbill-1675063702.jpg"
+				},
+				{
+					"src": "images/spoonbill-1675092015.jpg"
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1675091661",
+			"species": "ashy-prinia",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ashy-prinia-1675091678.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675082105",
+			"species": "indian-roller",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-roller-1675082123.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675103788",
+			"species": "indian-robin",
+			"date": "29-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-robin-1675487681.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1675129187",
+			"species": "paddyfield-pipit",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/paddyfield-pipit-1675129209.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675089824",
+			"species": "bar-headed-goose",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bar-headed-goose-1675089848.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675063234",
+			"species": "great-cormorant",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-cormorant-1675063266.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675092200",
+			"species": "plain-prinia",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/plain-prinia-1675092216.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675091786",
+			"species": "lesser-whitethroat",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-whitethroat-1675091863.jpg"
+				},
+				{
+					"src": "images/lesser-whitethroat-1675091794.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675089920",
+			"species": "greater-spotted-eagle",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-spotted-eagle-1675496788.jpg"
+				},
+				{
+					"src": "images/greater-spotted-eagle-1675089926.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675090204",
+			"species": "little-grebe",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-grebe-1675090226.jpg",
+					"title": ""
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1675082983",
+			"species": "yellow-footed-green-pigeon",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-footed-green-pigeon-1675083005.jpg"
+				},
+				{
+					"src": "images/yellow-footed-green-pigeon-1675084375.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675082383",
+			"species": "white-eared-bulbul",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-eared-bulbul-1675082474.jpg"
+				},
+				{
+					"src": "images/white-eared-bulbul-1675082479.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675082323",
+			"species": "pied-bushchat",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-bushchat-1675082342.jpg"
+				}
+			],
+			"age": "Juvenile"
+		},
+		{
+			"key": "s1675082069",
+			"species": "bronze-winged-jacana",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bronze-winged-jacana-1675082100.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1675082175",
+			"species": "painted-stork",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/painted-stork-1675082228.jpg"
+				}
+			],
+			"age": "Immature"
+		},
+		{
+			"key": "s1675092019",
+			"species": "northern-pintail",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/northern-pintail-1675103281.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1675083529",
+			"species": "indian-spot-billed-duck",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-spot-billed-duck-1675083704.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675062389",
+			"species": "northern-shoveler",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/northern-shoveler-1675062469.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1675083173",
+			"species": "falcated-duck",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/falcated-duck-1675089816.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1675083122",
+			"species": "eurasian-wigeon",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-wigeon-1675083140.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1675083580",
+			"species": "indian-thick-knee",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-thick-knee-1675083593.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675086209",
+			"species": "green-sandpiper",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-sandpiper-1675086235.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675082196",
+			"species": "painted-stork",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/painted-stork-1675082234.jpg"
+				}
+			],
+			"gender": ""
+		},
+		{
+			"key": "s1675063327",
+			"species": "red-wattled-lapwing",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-wattled-lapwing-1675063342.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675063526",
+			"species": "bluethroat",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bluethroat-1675063559.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1675063399",
+			"species": "bluethroat",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bluethroat-1675063421.jpg"
+				},
+				{
+					"src": "images/bluethroat-1675497218.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1675086353",
+			"species": "common-coot",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-coot-1675086372.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675084109",
+			"species": "laughing-dove",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/laughing-dove-1675084125.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1675091592",
+			"species": "red-breasted-flycatcher",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-breasted-flycatcher-1675091606.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1674207969",
+			"species": "purple-sunbird",
+			"date": "20-01-2023",
+			"place": "",
+			"city": "Howrah",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-sunbird-1674207996.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1673765103",
+			"species": "shikra",
+			"date": "15-01-2023",
+			"place": "",
+			"city": "Howrah",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/shikra-1673765156.jpg"
+				}
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1672213107",
@@ -57,22 +689,6 @@
 			"gender": "M"
 		},
 		{
-			"key": "s1672212816",
-			"species": "lotens-sunbird",
-			"date": "28-12-2022",
-			"place": "Urulanthanni",
-			"city": "Thattekad Bird Sanctuary",
-			"state": "Kerala",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/lotens-sunbird-1672212833.jpg"
-				}
-			],
-			"gender": "F"
-		},
-		{
 			"key": "s1672212784",
 			"species": "purple-rumped-sunbird",
 			"date": "28-12-2022",
@@ -84,6 +700,22 @@
 			"media": [
 				{
 					"src": "images/purple-rumped-sunbird-1672212806.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1672212816",
+			"species": "lotens-sunbird",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lotens-sunbird-1672212833.jpg"
 				}
 			],
 			"gender": "F"
@@ -123,6 +755,25 @@
 					"src": "images/malabar-starling-1672041199.jpg"
 				}
 			]
+		},
+		{
+			"key": "s1672288878",
+			"species": "golden-fronted-leafbird",
+			"date": "28-12-2022",
+			"place": "Urulanthanni",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/golden-fronted-leafbird-1672288900.jpg"
+				},
+				{
+					"src": "images/golden-fronted-leafbird-1672307098.jpg"
+				}
+			],
+			"gender": "M"
 		},
 		{
 			"key": "s1672213325",
@@ -1011,7 +1662,9 @@
 				{
 					"src": "images/little-grebe-1669604801.jpg"
 				}
-			]
+			],
+			"gender": "",
+			"plumage": "Breeding"
 		},
 		{
 			"key": "s1669604715",
@@ -7427,7 +8080,8 @@
 				{
 					"src": "images/falcated-duck-male.jpg"
 				}
-			]
+			],
+			"plumage": "Breeding"
 		},
 		{
 			"key": "great-crested-grebe",
@@ -11074,7 +11728,7 @@
 		},
 		{
 			"key": "plain-prinia-2",
-			"species": "plain-prinia",
+			"species": "grey-breasted-prinia",
 			"date": "08-05-2018",
 			"city": "Munnar",
 			"state": "Kerala",
@@ -11352,7 +12006,8 @@
 				{
 					"src": "images/spoonbill.jpg"
 				}
-			]
+			],
+			"plumage": "Breeding"
 		},
 		{
 			"key": "stone-plover",
@@ -12259,7 +12914,9 @@
 				{
 					"src": "images/little-grebe.jpg"
 				}
-			]
+			],
+			"gender": "",
+			"plumage": "Breeding"
 		},
 		{
 			"key": "plum-headed-parakeet-male",
