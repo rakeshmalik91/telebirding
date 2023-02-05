@@ -12,6 +12,9 @@
 			"media": [
 				{
 					"src": "images/brahminy-starling-1675082850.jpg"
+				},
+				{
+					"src": "images/brahminy-starling-1675562578.jpg"
 				}
 			]
 		},
@@ -199,6 +202,24 @@
 			"gender": "F"
 		},
 		{
+			"key": "s1675562873",
+			"species": "indian-silverbill",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-silverbill-1675562901.jpg"
+				},
+				{
+					"src": "images/indian-silverbill-1675562949.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1675129187",
 			"species": "paddyfield-pipit",
 			"date": "28-01-2023",
@@ -305,6 +326,9 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/little-grebe-1675563127.jpg"
+				},
+				{
 					"src": "images/little-grebe-1675090226.jpg",
 					"title": ""
 				}
@@ -361,7 +385,8 @@
 					"src": "images/pied-bushchat-1675082342.jpg"
 				}
 			],
-			"age": "Juvenile"
+			"age": "Juvenile",
+			"gender": "M"
 		},
 		{
 			"key": "s1675082069",
@@ -424,6 +449,9 @@
 			"media": [
 				{
 					"src": "images/indian-spot-billed-duck-1675083704.jpg"
+				},
+				{
+					"src": "images/indian-spot-billed-duck-1675564486.jpg"
 				}
 			]
 		},
@@ -548,6 +576,9 @@
 			"country": "India",
 			"hidden": false,
 			"media": [
+				{
+					"src": "images/bluethroat-1675563340.jpg"
+				},
 				{
 					"src": "images/bluethroat-1675063559.jpg"
 				}
@@ -831,7 +862,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/jungle-owlet-1672150071.jpg"
+					"src": "images/jungle-owlet-1675826407.jpg"
 				}
 			]
 		},
@@ -865,7 +896,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/indian-swiftlet-1672306663.jpg"
+					"src": "images/indian-swiftlet-1675826081.jpg"
 				}
 			]
 		},
@@ -972,6 +1003,9 @@
 			"media": [
 				{
 					"src": "images/banded-bay-cuckoo-1672497159.jpg"
+				},
+				{
+					"src": "images/banded-bay-cuckoo-1675583786.jpg"
 				}
 			]
 		},
@@ -1205,6 +1239,21 @@
 			]
 		},
 		{
+			"key": "s1675827085",
+			"species": "puff-throated-babbler",
+			"date": "24-12-2022",
+			"place": "",
+			"city": "Thattekad Bird Sanctuary",
+			"state": "Kerala",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/puff-throated-babbler-1675827123.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1672497679",
 			"species": "white-bellied-blue-flycatcher",
 			"date": "24-12-2022",
@@ -1296,7 +1345,8 @@
 				{
 					"src": "images/malabar-grey-hornbill-1672287718.jpg"
 				}
-			]
+			],
+			"gender": "M"
 		},
 		{
 			"key": "s1672046350",
@@ -1493,6 +1543,9 @@
 				},
 				{
 					"src": "images/brown-boobook-1672043241.jpg"
+				},
+				{
+					"src": "images/brown-boobook-1675583123.jpg"
 				}
 			]
 		},
@@ -3003,10 +3056,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/black-baza-1666799754.jpg"
+					"src": "images/black-baza-1666768635.jpg"
 				},
 				{
-					"src": "images/black-baza-1666768635.jpg"
+					"src": "images/black-baza-1666799754.jpg"
 				}
 			]
 		},

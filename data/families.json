@@ -55,6 +55,9 @@
 			"name": "Eagles, Hawks & Allies"
 		},
 		{
+			"name": "Fairy-bluebirds"
+		},
+		{
 			"name": "Fairy Flycatchers"
 		},
 		{
@@ -68,6 +71,9 @@
 		},
 		{
 			"name": "Flamingos"
+		},
+		{
+			"name": "Flowerpeckers"
 		},
 		{
 			"name": "Flycatcher-shrikes"
@@ -125,6 +131,9 @@
 		},
 		{
 			"name": "Old World Flycatchers"
+		},
+		{
+			"name": "Old World Pittas"
 		},
 		{
 			"name": "Orioles"
@@ -208,6 +217,9 @@
 			"name": "Swifts"
 		},
 		{
+			"name": "Sylviid Warblers"
+		},
+		{
 			"name": "Tailorbirds"
 		},
 		{
@@ -251,18 +263,6 @@
 		},
 		{
 			"name": "Yuhinas & White-eyes"
-		},
-		{
-			"name": "Fairy-bluebirds"
-		},
-		{
-			"name": "Flowerpeckers"
-		},
-		{
-			"name": "Old World Pittas"
-		},
-		{
-			"name": "Sylviid Warblers"
 		}
 	]
 }

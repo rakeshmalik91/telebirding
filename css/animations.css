@@ -77,10 +77,10 @@
     -webkit-animation-name: carousal-animation;
     -moz-animation-name: carousal-animation;
     -ms-animation-name: carousal-animation;
-  animation-duration: 15s;
-    -webkit-animation-duration: 15s;
-    -moz-animation-duration: 15s;
-    -ms-animation-duration: 15s;
+  animation-duration: 30s;
+    -webkit-animation-duration: 30s;
+    -moz-animation-duration: 30s;
+    -ms-animation-duration: 30s;
 }
 @-webkit-keyframes carousal-animation {
   0% 	{opacity: 0;}

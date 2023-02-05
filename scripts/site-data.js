@@ -34,14 +34,15 @@ $(document).ready(function() {
 	readJSONFile(getData('data/site-data.json'), function(json) {
 		renderHomePageCarousal(json.featured);
 
-		carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
+		carousalVisibleIndex = -1;
+		//carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
 		$('.home .featured .image').hide();
 
 		playCarousal();
 
 		setInterval(function () {
 			playCarousal();
-		}, 15000);
+		}, 30000);
 
 		renderTrips(json.trips);
 	});
