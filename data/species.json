@@ -398,7 +398,7 @@
 			"tags": [
 				"Babbler"
 			],
-			"family": "Babblers"
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"black-chinned-yuhina": {
 			"key": "black-chinned-yuhina",
@@ -737,7 +737,8 @@
 			"tags": [
 				"Minla",
 				"Siva",
-				"Blue-winged Siva"
+				"Blue-winged Siva",
+				"Laughingthrush"
 			],
 			"family": "Minlas"
 		},
@@ -763,9 +764,10 @@
 			"key": "blyths-shrike-babbler",
 			"name": "Blyth's Shrike-Babbler",
 			"tags": [
-				"Babbler"
+				"Babbler",
+				"Shrike-babbler"
 			],
-			"family": "Babblers"
+			"family": "Shrike-babblers & Erpornis"
 		},
 		"blyths-warbler": {
 			"key": "blyths-warbler",
@@ -1006,6 +1008,14 @@
 			],
 			"family": "Laughingthrushes & Allies"
 		},
+		"chestnut-crowned-warbler": {
+			"key": "chestnut-crowned-warbler",
+			"name": "Chestnut-crowned Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
 		"chestnut-eared-bunting": {
 			"key": "chestnut-eared-bunting",
 			"name": "Chestnut-eared Bunting",
@@ -1026,7 +1036,11 @@
 			"key": "chestnut-tailed-minla",
 			"name": "Chestnut-tailed Minla",
 			"tags": [
-				"Minla"
+				"Minla",
+				"Siva",
+				"Bar-throated Siva",
+				"Laughingthrush",
+				"Babbler"
 			],
 			"family": "Minlas"
 		},
@@ -1341,7 +1355,7 @@
 			"tags": [
 				"Babbler"
 			],
-			"family": "Babblers"
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"dark-sided-flycatcher": {
 			"key": "dark-sided-flycatcher",
@@ -2199,11 +2213,11 @@
 		},
 		"humes-leaf-warbler": {
 			"key": "humes-leaf-warbler",
-			"name": "Hume's Leaf Warbler",
+			"name": "Hume's Warbler",
 			"tags": [
 				"Warbler",
 				"Leaf Warbler",
-				"Hume's Warbler"
+				"Hume's Leaf Warbler"
 			],
 			"family": "Warblers"
 		},
@@ -2287,7 +2301,7 @@
 				"Scimitar Babbler",
 				"Babbler"
 			],
-			"family": "Scimitar Babblers"
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"indian-silverbill": {
 			"key": "indian-silverbill",
@@ -2448,7 +2462,8 @@
 			"key": "lemon-rumped-warbler",
 			"name": "Lemon Rumped Warbler",
 			"tags": [
-				"Warbler"
+				"Warbler",
+				"Leaf Warbler"
 			],
 			"family": "Warblers"
 		},
@@ -3156,7 +3171,7 @@
 			"tags": [
 				"Babbler"
 			],
-			"family": "Babblers"
+			"family": "Ground Babblers and Allies"
 		},
 		"purple-heron": {
 			"key": "purple-heron",
@@ -3305,7 +3320,8 @@
 			"key": "red-tailed-minla",
 			"name": "Red-tailed Minla",
 			"tags": [
-				"Minla"
+				"Minla",
+				"Laughingthrush"
 			],
 			"family": "Minlas"
 		},
@@ -3523,6 +3539,15 @@
 			],
 			"family": "Yuhinas & White-eyes"
 		},
+		"rufous-winged-fulvetta": {
+			"key": "rufous-winged-fulvetta",
+			"name": "Rufous-winged Fulvetta",
+			"tags": [
+				"Fulvetta",
+				"Babbler"
+			],
+			"family": "Ground Babblers and Allies"
+		},
 		"russet-sparrow": {
 			"key": "russet-sparrow",
 			"name": "Russet Sparrow",
@@ -3539,7 +3564,7 @@
 				"Scimitar Babbler",
 				"Babbler"
 			],
-			"family": "Scimitar Babblers"
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"rusty-fronted-barwing": {
 			"key": "rusty-fronted-barwing",
@@ -4132,7 +4157,7 @@
 				"Scimitar Babbler",
 				"Babbler"
 			],
-			"family": "Scimitar Babblers"
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"white-browed-wagtail": {
 			"key": "white-browed-wagtail",
@@ -4218,6 +4243,14 @@
 				"Scavanger"
 			],
 			"family": "Vultures"
+		},
+		"white-tailed-nuthatch": {
+			"key": "white-tailed-nuthatch",
+			"name": "White-tailed Nuthatch",
+			"tags": [
+				"Nuthatch"
+			],
+			"family": "Treecreepers, Wallcreepers & Nuthatches"
 		},
 		"white-throated-dipper": {
 			"key": "white-throated-dipper",

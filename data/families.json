@@ -4,9 +4,6 @@
 			"name": "Accentors"
 		},
 		{
-			"name": "Babblers"
-		},
-		{
 			"name": "Barbets"
 		},
 		{
@@ -86,6 +83,9 @@
 		},
 		{
 			"name": "Grebes"
+		},
+		{
+			"name": "Ground Babblers and Allies"
 		},
 		{
 			"name": "Gulls & Terns"
@@ -187,10 +187,10 @@
 			"name": "Sandpipers & Allies"
 		},
 		{
-			"name": "Scimitar Babblers"
+			"name": "Shrikes"
 		},
 		{
-			"name": "Shrikes"
+			"name": "Shrike-babblers & Erpornis"
 		},
 		{
 			"name": "Sparrows"
@@ -230,6 +230,9 @@
 		},
 		{
 			"name": "Tits"
+		},
+		{
+			"name": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		{
 			"name": "Treecreepers, Wallcreepers & Nuthatches"
