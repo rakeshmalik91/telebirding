@@ -147,6 +147,12 @@ function deleteMedia(birdKey, mediaSrc) {
 		});
 		firebase.storage().ref(mediaSrc).delete().then(() => {
 			syncSightingsData(0);
+		}, (error) => {
+			if(error.code === 'storage/object-not-found') {
+				syncSightingsData(0);
+			} else {
+				alert(error.message);
+			}
 		})
 	}
 }
