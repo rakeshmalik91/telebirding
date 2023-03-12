@@ -320,6 +320,86 @@
 			"gender": "F"
 		},
 		{
+			"key": "s1678677431",
+			"species": "common-kingfisher",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-kingfisher-1678677445.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1678677306",
+			"species": "black-headed-ibis",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-headed-ibis-1678677331.jpg"
+				},
+				{
+					"src": "images/black-headed-ibis-1678677335.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1678676664",
+			"species": "oriental-magpie-robin",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/oriental-magpie-robin-1678676734.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1678676394",
+			"species": "great-crested-grebe",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-crested-grebe-1678676477.jpg"
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1678676239",
+			"species": "grey-heron",
+			"date": "28-01-2023",
+			"place": "Keoladeo National Park",
+			"city": "Bharatpur",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-heron-1678676279.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1677323529",
 			"species": "oriental-darter",
 			"date": "28-01-2023",
@@ -563,7 +643,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/painted-stork-1675082228.jpg"
+					"src": "images/painted-stork-1678676053.jpg"
+				},
+				{
+					"src": "images/painted-stork-1678676931.jpg"
 				}
 			],
 			"age": "Immature"
@@ -695,6 +778,9 @@
 			"media": [
 				{
 					"src": "images/painted-stork-1675082234.jpg"
+				},
+				{
+					"src": "images/painted-stork-1678677113.jpg"
 				}
 			],
 			"gender": ""
@@ -779,6 +865,9 @@
 			"media": [
 				{
 					"src": "images/laughing-dove-1675084125.jpg"
+				},
+				{
+					"src": "images/laughing-dove-1678677705.jpg"
 				}
 			]
 		},

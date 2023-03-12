@@ -236,10 +236,11 @@ function dataURLToBlob(dataURL) {
     return new Blob([uInt8Array], {type: contentType});
 }
 
-function resizeImage(file, size) {
+function resizeImage(file, size, watermark) {
     var reader = new FileReader();
     var image = new Image();
     var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
     var dataURItoBlob = function (dataURI) {
         var bytes = dataURI.split(',')[0].indexOf('base64') >= 0 ?
             atob(dataURI.split(',')[1]) :
@@ -254,16 +255,21 @@ function resizeImage(file, size) {
     var resize = function () {
         var width = image.width;
         var height = image.height;
-        if(width <= size && height <= size && height == width) {
+        if(width <= size && height <= size && height == width && !watermark) {
         	return dataURItoBlob(image.src);
         }
         canvas.width = size;
         canvas.height = size;
         if(width >= height) {
-        	canvas.getContext('2d').drawImage(image, (width-height)/2, 0, height, height, 0, 0, size, size);
+        	ctx.drawImage(image, (width-height)/2, 0, height, height, 0, 0, size, size);
         } else {
-        	canvas.getContext('2d').drawImage(image, 0, (height-width)/2, width, width, 0, 0, size, size);
+        	ctx.drawImage(image, 0, (height-width)/2, width, width, 0, 0, size, size);
         }
+        if(watermark) {
+	        ctx.font = '20px Calibri';
+	        ctx.fillStyle = watermark.color;
+	        ctx.fillText(watermark.text, size * 0.75, size * 0.95);
+	    }
         var dataUrl = canvas.toDataURL('image/jpeg');
         return dataURItoBlob(dataUrl);
     };

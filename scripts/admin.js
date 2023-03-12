@@ -108,13 +108,20 @@ function syncSightingsData(scheduleAfter) {
 
 function uploadMedia(birdKey, files) {
 	showOverlay("Uploading Media");
+	var watermark = null;
+	if($('input[name=watermark-on]').is(":checked")) {
+		watermark = {
+			text: $('input[name=watermark]').val(),
+			color: $('input[name=watermark-color]').val() + "33"
+		};
+	}
 	Array.from(files).forEach(function(file) {
 		var mediaSrc;
 		if(file.type.match(/image.*/)) {
 			var speciesKey = data.species[data.birds.filter(b => b.key == birdKey)[0].species].key;
 			mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
 			console.log("uploading image " + file.name + " for " + birdKey + " as " + mediaSrc);
-			resizeImage(file, IMAGE_SIZE).then((resizedImage) => {
+			resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
 				firebase.storage().ref(mediaSrc).put(resizedImage).then(() => {
 					console.log("uploaded image " + mediaSrc);
 					data.birds.forEach(function(bird) {

@@ -135,16 +135,23 @@
 			<br>
 			<h2>Add/Modify Sightings</h2>
 			<div class='nav-top'>
+				<span>Watermark: </span>
+				<input type="checkbox" name="watermark-on" checked>
+				<input type="text" name="watermark" value="© Rakesh Malik">
+				<input type="color" name="watermark-color" value="#ffffff">
+				<br>
+				<br>
 				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save Now</button>
 				<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
 				<button class='backup' title='Backup Data'>Backup Data</button>
 				<button class='add-sighting' title='Add new sighting'>Add New</button>
+				<br>
 				<button class='first-page' title='First page'><<</button>
 				<button class='previous' title='Previous page'><</button>
 				<span class='page-number'></span>
 				<button class='next' title='Next page'>></button>
 				<button class='last-page' title='Last page'>>></button>
-				<input type="text" name="filter-sighting", placeholder="Filter">
+				<input type="text" name="filter-sighting" placeholder="Filter">
 			</div>
 			<table id="sightings-table"></table>
 			<div class='nav-bottom'>
