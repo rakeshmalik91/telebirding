@@ -34,8 +34,8 @@ $(document).ready(function() {
 	readJSONFile(getData('data/site-data.json'), function(json) {
 		renderHomePageCarousal(json.featured);
 
-		carousalVisibleIndex = -1;
-		//carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
+		// carousalVisibleIndex = -1;
+		carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
 		$('.home .featured .image').hide();
 
 		playCarousal();
