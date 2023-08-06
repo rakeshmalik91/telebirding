@@ -25,6 +25,9 @@
         "Gujarat": {
           "name": "Gujarat"
         },
+        "Haryana": {
+          "name": "Haryana"
+        },
         "Himachal Pradesh": {
           "name": "Himachal Pradesh"
         },
@@ -55,11 +58,23 @@
         "Meghalaya": {
           "name": "Meghalaya"
         },
+        "Mizoram": {
+          "name": "Mizoram"
+        },
+        "Manipur": {
+          "name": "Manipur"
+        },
+        "Nagaland": {
+          "name": "Nagaland"
+        },
         "Odisha": {
           "name": "Odisha"
         },
         "Pondicherry": {
           "name": "Pondicherry"
+        },
+        "Punjab": {
+          "name": "Punjab"
         },
         "Rajasthan": {
           "name": "Rajasthan"
@@ -69,6 +84,12 @@
         },
         "Tamil Nadu": {
           "name": "Tamil Nadu"
+        },
+        "Telengana": {
+          "name": "Telengana"
+        },
+        "Tripura": {
+          "name": "Tripura"
         },
         "Uttarakhand": {
           "name": "Uttarakhand"

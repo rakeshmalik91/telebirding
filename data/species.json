@@ -919,6 +919,15 @@
 			],
 			"family": "Gulls & Terns"
 		},
+		"brown-rock-chat": {
+			"key": "brown-rock-chat",
+			"name": "Brown Rock-Chat",
+			"tags": [
+				"Rock-Chat",
+				"Chat"
+			],
+			"family": "Chats"
+		},
 		"brown-shrike": {
 			"key": "brown-shrike",
 			"name": "Brown Shrike",
@@ -1837,9 +1846,10 @@
 		},
 		"green-bee-eater": {
 			"key": "green-bee-eater",
-			"name": "Green Bee-eater",
+			"name": "Asian Green Bee-eater",
 			"tags": [
-				"Bee-eater"
+				"Bee-eater",
+				"Green Bee-eater"
 			],
 			"family": "Bee-eaters"
 		},
@@ -1890,6 +1900,15 @@
 				"Eurasian Green-winged Teal"
 			],
 			"family": "Ducks, Swans & Geese"
+		},
+		"greenish-warbler": {
+			"key": "greenish-warbler",
+			"name": "Greenish Warbler",
+			"tags": [
+				"Warbler",
+				"Leaf Warbler"
+			],
+			"family": "Warblers"
 		},
 		"grey-backed-shrike": {
 			"key": "grey-backed-shrike",
