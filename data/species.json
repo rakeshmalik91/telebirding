@@ -336,6 +336,14 @@
 			],
 			"family": "Swallows & Martins"
 		},
+		"bay-backed-shrike": {
+			"key": "bay-backed-shrike",
+			"name": "Bay-backed Shrike",
+			"tags": [
+				"Shrike"
+			],
+			"family": "Shrikes"
+		},
 		"baya-weaver": {
 			"key": "baya-weaver",
 			"name": "Baya Weaver",
@@ -424,6 +432,15 @@
 				"Night Heron"
 			],
 			"family": "Herons & Egrets"
+		},
+		"black-crowned-sparrow-lark": {
+			"key": "black-crowned-sparrow-lark",
+			"name": "Black Crowned Sparrow Lark",
+			"tags": [
+				"Sparrow-Lark",
+				"Lark"
+			],
+			"family": "Larks"
 		},
 		"black-drongo": {
 			"key": "black-drongo",
@@ -776,6 +793,14 @@
 				"Warbler"
 			],
 			"family": "Warblers"
+		},
+		"booted-eagle": {
+			"key": "booted-eagle",
+			"name": "Booted Eagle",
+			"tags": [
+				"Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"booted-warbler": {
 			"key": "booted-warbler",
@@ -1157,6 +1182,14 @@
 			],
 			"family": "Owls"
 		},
+		"common-babbler": {
+			"key": "common-babbler",
+			"name": "Common Babbler",
+			"tags": [
+				"Babbler"
+			],
+			"family": "Ground Babblers and Allies"
+		},
 		"common-chiffchaff": {
 			"key": "common-chiffchaff",
 			"name": "Common Chiffchaff",
@@ -1244,8 +1277,10 @@
 			"key": "common-raven",
 			"name": "Common Raven",
 			"tags": [
+				"Raven",
 				"Western Raven",
-				"Northern Raven"
+				"Northern Raven",
+				"Punjab Raven"
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
 		},
@@ -1305,6 +1340,14 @@
 			],
 			"family": "Gulls & Terns"
 		},
+		"common-woodshrike": {
+			"key": "common-woodshrike",
+			"name": "Common Woodshrike",
+			"tags": [
+				"Woodshrike"
+			],
+			"family": "Woodshrikes"
+		},
 		"coppersmith-barbet": {
 			"key": "coppersmith-barbet",
 			"name": "Coppersmith Barbet",
@@ -1331,6 +1374,14 @@
 				"Kingfisher"
 			],
 			"family": "Kingfishers"
+		},
+		"crested-lark": {
+			"key": "crested-lark",
+			"name": "Crested Lark",
+			"tags": [
+				"Lark"
+			],
+			"family": "Larks"
 		},
 		"crested-serpent-eagle": {
 			"key": "crested-serpent-eagle",
@@ -1736,6 +1787,14 @@
 			],
 			"family": "Herons & Egrets"
 		},
+		"great-grey-shrike": {
+			"key": "great-grey-shrike",
+			"name": "Great Grey Shrike",
+			"tags": [
+				"Shrike"
+			],
+			"family": "Shrikes"
+		},
 		"great-rosefinch": {
 			"key": "great-rosefinch",
 			"name": "Great Rosefinch",
@@ -1961,6 +2020,16 @@
 				"Prinia"
 			],
 			"family": "Prinias"
+		},
+		"grey-francolin": {
+			"key": "grey-francolin",
+			"name": "Grey Francolin",
+			"tags": [
+				"Francolin",
+				"Partridge",
+				"Fowl"
+			],
+			"family": "Pheasants, Partridges & Fowls"
 		},
 		"grey-headed-bulbul": {
 			"key": "grey-headed-bulbul",
@@ -2249,6 +2318,15 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"indian-bush-lark": {
+			"key": "indian-bush-lark",
+			"name": "Indian Bush-Lark",
+			"tags": [
+				"Lark",
+				"Bush-Lark"
+			],
+			"family": "Larks"
+		},
 		"indian-cormorant": {
 			"key": "indian-cormorant",
 			"name": "Indian Cormorant",
@@ -2342,6 +2420,15 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"indian-spotted-creeper": {
+			"key": "indian-spotted-creeper",
+			"name": "Indian Spotted Creeper",
+			"tags": [
+				"Creeper",
+				"Tree-creeper"
+			],
+			"family": "Treecreepers, Wallcreepers & Nuthatches"
+		},
 		"indian-swiftlet": {
 			"key": "indian-swiftlet",
 			"name": "Indian Swiftlet",
@@ -2434,6 +2521,15 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"laggar-falcon": {
+			"key": "laggar-falcon",
+			"name": "Laggar Falcon",
+			"tags": [
+				"Falcon",
+				"Raptor"
+			],
+			"family": "Falcons & Caracaras"
+		},
 		"large-billed-crow": {
 			"key": "large-billed-crow",
 			"name": "Large-billed Crow",
@@ -2449,6 +2545,14 @@
 				"Cuckoo-shrike"
 			],
 			"family": "Cuckoo-shrikes & Allies"
+		},
+		"large-grey-babbler": {
+			"key": "large-grey-babbler",
+			"name": "Large Grey Babbler",
+			"tags": [
+				"Babbler"
+			],
+			"family": "Ground Babblers and Allies"
 		},
 		"large-hawk-cuckoo": {
 			"key": "large-hawk-cuckoo",
@@ -3502,6 +3606,14 @@
 			],
 			"family": "Laughingthrushes & Allies"
 		},
+		"rufous-fronted-prinia": {
+			"key": "rufous-fronted-prinia",
+			"name": "Rufous-fronted Prinia",
+			"tags": [
+				"Prinia"
+			],
+			"family": "Prinias"
+		},
 		"rufous-gorgeted-flycatcher": {
 			"key": "rufous-gorgeted-flycatcher",
 			"name": "Rufous-gorgeted Flycatcher",
@@ -4004,6 +4116,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"variable-wheatear": {
+			"key": "variable-wheatear",
+			"name": "Variable Wheatear",
+			"tags": [
+				"Wheatear"
+			],
+			"family": "Thrushes"
+		},
 		"variegated-laughingthrush": {
 			"key": "variegated-laughingthrush",
 			"name": "Variegated Laughingthrush",
@@ -4226,6 +4346,15 @@
 				"Bulbul"
 			],
 			"family": "Bulbuls"
+		},
+		"white-eyed-buzzard": {
+			"key": "white-eyed-buzzard",
+			"name": "White-eyed Buzzard",
+			"tags": [
+				"Buzzard",
+				"Raptor"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"white-headed-starling": {
 			"key": "white-headed-starling",

@@ -1,6 +1,524 @@
 {
 	"birds": [
 		{
+			"key": "s1692598059",
+			"species": "common-babbler",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-babbler-1693454249.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692598659",
+			"species": "rufous-fronted-prinia",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-fronted-prinia-1692598676.jpg"
+				},
+				{
+					"src": "images/rufous-fronted-prinia-1692598684.jpg"
+				},
+				{
+					"src": "images/rufous-fronted-prinia-1692670921.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597983",
+			"species": "variable-wheatear",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/variable-wheatear-1693454217.jpg"
+				},
+				{
+					"src": "images/variable-wheatear-1692670723.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597282",
+			"species": "crested-lark",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/crested-lark-1692597305.jpg"
+				},
+				{
+					"src": "images/crested-lark-1692613779.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597480",
+			"species": "black-crowned-sparrow-lark",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-crowned-sparrow-lark-1693454282.jpg"
+				},
+				{
+					"src": "images/black-crowned-sparrow-lark-1692597506.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1692597513",
+			"species": "black-crowned-sparrow-lark",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-crowned-sparrow-lark-1692597525.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1692597428",
+			"species": "ashy-crowned-sparrow-lark",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ashy-crowned-sparrow-lark-1692597923.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1692599517",
+			"species": "indian-bush-lark",
+			"date": "20-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-bush-lark-1693454328.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692671505",
+			"species": "laggar-falcon",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/laggar-falcon-1692671526.jpg"
+				}
+			],
+			"age": "Juvenile/Immature"
+		},
+		{
+			"key": "s1692669135",
+			"species": "common-raven",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-raven-1692669171.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692599923",
+			"species": "red-naped-ibis",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-naped-ibis-1692599936.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597603",
+			"species": "laggar-falcon",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/laggar-falcon-1692597650.jpg"
+				},
+				{
+					"src": "images/laggar-falcon-1692597664.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597742",
+			"species": "white-eyed-buzzard",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-eyed-buzzard-1692597754.jpg"
+				},
+				{
+					"src": "images/white-eyed-buzzard-1692599879.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597759",
+			"species": "white-eyed-buzzard",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-eyed-buzzard-1692597772.jpg"
+				},
+				{
+					"src": "images/white-eyed-buzzard-1692599848.jpg"
+				}
+			],
+			"age": "Juvenile/Immature"
+		},
+		{
+			"key": "s1692598220",
+			"species": "indian-spotted-creeper",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-spotted-creeper-1692598235.jpg"
+				},
+				{
+					"src": "images/indian-spotted-creeper-1692598242.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597345",
+			"species": "grey-francolin",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-francolin-1692597369.jpg"
+				},
+				{
+					"src": "images/grey-francolin-1692599597.jpg"
+				},
+				{
+					"src": "images/grey-francolin-1692671892.jpg"
+				}
+			],
+			"gender": ""
+		},
+		{
+			"key": "s1692598157",
+			"species": "large-grey-babbler",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/large-grey-babbler-1692598312.jpg"
+				},
+				{
+					"src": "images/large-grey-babbler-1692671371.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692598424",
+			"species": "common-woodshrike",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-woodshrike-1692598434.jpg"
+				}
+			],
+			"age": "Immature"
+		},
+		{
+			"key": "s1692598392",
+			"species": "common-woodshrike",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-woodshrike-1692598417.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692671180",
+			"species": "green-bee-eater",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-bee-eater-1692671225.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692597172",
+			"species": "great-grey-shrike",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-grey-shrike-1692597182.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692595332",
+			"species": "bay-backed-shrike",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bay-backed-shrike-1692595370.jpg"
+				},
+				{
+					"src": "images/bay-backed-shrike-1692595393.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692613701",
+			"species": "booted-eagle",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/booted-eagle-1692613712.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692670608",
+			"species": "laughing-dove",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/laughing-dove-1692670621.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1692671667",
+			"species": "bank-myna",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bank-myna-1692671682.jpg"
+				}
+			],
+			"age": "Juvenile/Immature"
+		},
+		{
+			"key": "s1692671998",
+			"species": "brown-rock-chat",
+			"date": "19-08-2023",
+			"place": "",
+			"city": "Tal Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-rock-chat-1692672011.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1691929489",
+			"species": "indian-robin",
+			"date": "13-08-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-robin-1691929777.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1691929926",
+			"species": "indian-robin",
+			"date": "13-08-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-robin-1691929943.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1691930021",
+			"species": "common-tailorbird",
+			"date": "13-08-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-tailorbird-1691930045.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1691206874",
+			"species": "green-bee-eater",
+			"date": "13-08-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-bee-eater-1691929727.jpg"
+				},
+				{
+					"src": "images/green-bee-eater-1691207199.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1691939996",
+			"species": "baya-weaver",
+			"date": "13-08-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/baya-weaver-1691940591.jpg",
+					"title": "Nests"
+				}
+			]
+		},
+		{
 			"key": "s1691209415",
 			"species": "brown-rock-chat",
 			"date": "05-08-2023",
@@ -11,37 +529,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/brown-rock-chat-1691209486.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1691206874",
-			"species": "green-bee-eater",
-			"date": "05-08-2023",
-			"place": "",
-			"city": "Sohna",
-			"state": "Haryana",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/green-bee-eater-1691207199.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1684669825",
-			"species": "greenish-warbler",
-			"date": "01-05-2022",
-			"place": "",
-			"city": "Sattal",
-			"state": "Uttarakhand",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/greenish-warbler-1684669899.jpg"
+					"src": "images/brown-rock-chat-1692070819.jpg"
 				}
 			]
 		},
@@ -356,7 +844,7 @@
 			"city": "Bharatpur",
 			"state": "Rajasthan",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/indian-robin-1675487681.jpg"
@@ -5519,6 +6007,21 @@
 			]
 		},
 		{
+			"key": "s1684669825",
+			"species": "greenish-warbler",
+			"date": "01-05-2022",
+			"place": "",
+			"city": "Sattal",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greenish-warbler-1684669899.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1677860392",
 			"species": "black-bulbul",
 			"date": "01-05-2022",
@@ -7662,7 +8165,8 @@
 				{
 					"src": "images/oriental-skylark.jpg"
 				}
-			]
+			],
+			"hidden": false
 		},
 		{
 			"key": "northern-shoveler-female",
@@ -12009,7 +12513,8 @@
 					"src": "images/asian-brown-flycatcher.jpg"
 				}
 			],
-			"city": "Thattekad Bird Sanctuary"
+			"city": "Thattekad Bird Sanctuary",
+			"hidden": true
 		},
 		{
 			"key": "vernal-hanging-parrot",
