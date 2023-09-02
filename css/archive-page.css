@@ -64,6 +64,14 @@
 	line-height: 1.6;
 }
 
+span.new-species {
+	margin-left: 10px;
+	color: #45ff64;
+}
+span.new-species::before {
+	content: "•";
+}
+
 span.male {
 	margin-left: 10px;
 	color: #9999ff;

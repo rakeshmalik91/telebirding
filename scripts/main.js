@@ -229,6 +229,10 @@ function fillStats() {
 		var newSpecies = selectedSpecies.filter(s => oldSpecies.indexOf(s)<0);
 		$(".new-species-count").parent().show();
 		$(".new-species-count").html(newSpecies.length);
+
+		data.filteredBirds
+			.filter(b => newSpecies.indexOf(b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")) >= 0)
+			.forEach(b => b.newSpecies = true);
 	} else {
 		$(".new-species-count").parent().hide();
 	}
@@ -255,6 +259,7 @@ function renderBirdDetails(birdLabelDiv, bird, inPreviewPage) {
 	var nameSplit = bird.species.name.split(' ');
 	var nameFirst = nameSplit.reverse().splice(1).reverse().join(' ');
 	var nameLast = nameSplit.splice(-1);
+
 	birdLabelDiv.append('<div class="bird-name"><a>' + nameFirst + '</a> <a>' + nameLast + '</a></div>');
 	birdLabelDiv.find('a:first-child').click(function() { triggerFilter('bird', bird.species.name); })
 	birdLabelDiv.find('a:last-child').click(function() { triggerFilter('bird', nameLast); })
@@ -264,6 +269,10 @@ function renderBirdDetails(birdLabelDiv, bird, inPreviewPage) {
 		birdNameDiv.append('<span class="male" title="Male"/>');
 	} else if((bird.gender||"").toUpperCase().startsWith("F")) {
 		birdNameDiv.append('<span class="female" title="Female"/>');
+	}
+
+	if(bird.newSpecies && !inPreviewPage) {
+		birdNameDiv.append('<span class="new-species" title="New Species"/>');
 	}
 	
 	$(TAG_TYPES).each(function(i, tagType) {
