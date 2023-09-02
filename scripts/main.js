@@ -914,6 +914,11 @@ function retrieveStateFromUrlParams() {
 	}
 }
 
+function showMore() {
+	jQuery('.home-page .hidden-story').show();
+	jQuery('.home-page .show-more').hide();
+}
+
 (function($) {
 	retrieveStateFromUrlParams();
 	showPage(currentPage, { family: decodeURIComponent(getUrlParams().family) }, false);

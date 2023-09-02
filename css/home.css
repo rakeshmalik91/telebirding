@@ -84,6 +84,9 @@
 .home-page iframe {
 	height: 400px;
 	background-color: black;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 5px;
 }
 .home-page img {
 	border: 1px solid white;
@@ -96,6 +99,14 @@
 	margin-bottom: 80px;
 	transform: translateY(60px);
 	border-color: #868e9c;
+}
+
+.home-page .show-more {
+	width: 100%;
+	margin-top: 20px;
+	cursor: pointer;
+	font-size: 20px;
+	margin-left: 45%;
 }
 
 
