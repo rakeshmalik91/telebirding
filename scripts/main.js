@@ -162,10 +162,13 @@ function filterAndSortData(filter, params) {
 	
 	//sort
 	switch(sort.by) {
-		case 'name': 	
+		case 'name':
 			data.filteredBirds.sort((a,b) => (sort.descending ? -1 : 1) * compare(a.species.name, b.species.name, compare(a.key, b.key)));
 			break;
-		default: 	
+		case 'shuffle':
+			data.filteredBirds = shuffle(data.filteredBirds);
+			break;
+		default:
 			data.filteredBirds.sort((a,b) => (sort.descending ? -1 : 1) * compare(a[sort.by], b[sort.by], compare(b.index, a.index)));				
 			break;
 	}

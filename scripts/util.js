@@ -43,6 +43,16 @@ function readJSONFiles(files, callback) {
 	});
 }
 
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+  while (currentIndex > 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
 function capitalize(string) {
 	return string.split(" ").map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ");
 }
