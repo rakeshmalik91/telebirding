@@ -678,6 +678,15 @@
 			],
 			"family": "Rock-Thrushes"
 		},
+		"blue-cheeked-bee-eater": {
+			"key": "blue-cheeked-bee-eater",
+			"name": "Blue-cheeked Bee-eater",
+			"tags": [
+				"Beeeater",
+				"Bee-eater"
+			],
+			"family": "Bee-eaters"
+		},
 		"blue-eared-kingfisher": {
 			"key": "blue-eared-kingfisher",
 			"name": "Blue-eared Kingfisher",
@@ -1015,6 +1024,14 @@
 				"Nocturnal"
 			],
 			"family": "Frogmouths"
+		},
+		"chestnnut-bellied-sandgrouse": {
+			"key": "chestnnut-bellied-sandgrouse",
+			"name": "Chestnnut-bellied Sandgrouse",
+			"tags": [
+				"Sandgrouse"
+			],
+			"family": "Sandgrouses"
 		},
 		"chestnut-bellied-nuthatch": {
 			"key": "chestnut-bellied-nuthatch",
@@ -1433,6 +1450,14 @@
 			],
 			"family": "Thrushes"
 		},
+		"demoiselle-crane": {
+			"key": "demoiselle-crane",
+			"name": "Demoiselle Crane",
+			"tags": [
+				"Crane"
+			],
+			"family": "Cranes"
+		},
 		"desert-wheatear": {
 			"key": "desert-wheatear",
 			"name": "Desert Wheatear",
@@ -1513,6 +1538,14 @@
 				"Wading Bird"
 			],
 			"family": "Sandpipers & Allies"
+		},
+		"eurasian-hobby": {
+			"key": "eurasian-hobby",
+			"name": "Eurasian Hobby",
+			"tags": [
+				"Hobby"
+			],
+			"family": "Falcons & Caracaras"
 		},
 		"eurasian-jay": {
 			"key": "eurasian-jay",
@@ -2109,6 +2142,14 @@
 			],
 			"family": "Nightjars"
 		},
+		"grey-throated-martin": {
+			"key": "grey-throated-martin",
+			"name": "Grey-throated Martin",
+			"tags": [
+				"Martin"
+			],
+			"family": "Swallows & Martins"
+		},
 		"grey-treepie": {
 			"key": "grey-treepie",
 			"name": "Grey Treepie",
@@ -2463,6 +2504,14 @@
 			],
 			"family": "Herons & Egrets"
 		},
+		"isabelline-wheatear": {
+			"key": "isabelline-wheatear",
+			"name": "Isabelline Wheatear",
+			"tags": [
+				"Wheatear"
+			],
+			"family": "Thrushes"
+		},
 		"jungle-babbler": {
 			"key": "jungle-babbler",
 			"name": "Jungle Babbler",
@@ -2740,6 +2789,15 @@
 				"Indian House Swift"
 			],
 			"family": "Swifts"
+		},
+		"long-legged-buzzard": {
+			"key": "long-legged-buzzard",
+			"name": "Long-Legged Buzzard",
+			"tags": [
+				"Buzzard",
+				"Raptor"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"long-tailed-broadbill": {
 			"key": "long-tailed-broadbill",
@@ -3524,6 +3582,15 @@
 			],
 			"family": "Parakeets & Parrots"
 		},
+		"rosy-starling": {
+			"key": "rosy-starling",
+			"name": "Rosy Starling",
+			"tags": [
+				"Starling",
+				"Myna"
+			],
+			"family": "Starlings"
+		},
 		"ruddy-breasted-crake": {
 			"key": "ruddy-breasted-crake",
 			"name": "Ruddy-breasted Crake",
@@ -3637,6 +3704,14 @@
 				"Sibia"
 			],
 			"family": "Laughingthrushes & Allies"
+		},
+		"rufous-tailed-lark": {
+			"key": "rufous-tailed-lark",
+			"name": "Rufous-tailed Lark",
+			"tags": [
+				"Lark"
+			],
+			"family": "Larks"
 		},
 		"rufous-throated-partridge": {
 			"key": "rufous-throated-partridge",
@@ -4288,6 +4363,14 @@
 				"Bulbul"
 			],
 			"family": "Bulbuls"
+		},
+		"white-browed-fantail": {
+			"key": "white-browed-fantail",
+			"name": "White-browed Fantail",
+			"tags": [
+				"Fantail"
+			],
+			"family": "Fantails"
 		},
 		"white-browed-scimitar-babbler": {
 			"key": "white-browed-scimitar-babbler",
