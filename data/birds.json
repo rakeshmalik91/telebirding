@@ -1,6 +1,332 @@
 {
 	"birds": [
 		{
+			"key": "s1697354551",
+			"species": "purple-heron",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-heron-1697354645.jpg"
+				}
+			],
+			"age": "Juvenile/Immature"
+		},
+		{
+			"key": "s1697354142",
+			"species": "common-hawk-cuckoo",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-hawk-cuckoo-1697375476.jpg"
+				},
+				{
+					"src": "images/common-hawk-cuckoo-1697375372.jpg"
+				},
+				{
+					"src": "images/common-hawk-cuckoo-1697354270.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697377053",
+			"species": "knob-billed-duck",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/knob-billed-duck-1697377087.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697355521",
+			"species": "knob-billed-duck",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/knob-billed-duck-1697377171.jpg"
+				}
+			],
+			"age": "Juvenile"
+		},
+		{
+			"key": "s1697355070",
+			"species": "european-roller",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/european-roller-1697355085.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697356268",
+			"species": "black-necked-stork",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-necked-stork-1697356416.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697356011",
+			"species": "common-chiffchaff",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-chiffchaff-1697356034.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697356143",
+			"species": "sirkeer-malkoha",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sirkeer-malkoha-1697356150.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697355341",
+			"species": "jacobin-cuckoo",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jacobin-cuckoo-1697355352.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697354301",
+			"species": "coppersmith-barbet",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/coppersmith-barbet-1697354325.jpg"
+				},
+				{
+					"src": "videos/coppersmith-barbet.mp4",
+					"thumbnail": "images/coppersmith-barbet-1697354325.jpg",
+					"mute": true,
+					"type": "video"
+				}
+			]
+		},
+		{
+			"key": "s1697354365",
+			"species": "painted-stork",
+			"date": "15-10-2023",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/painted-stork-1697354379.jpg",
+					"title": "Juveniles & Adults"
+				}
+			],
+			"age": "Juvenile"
+		},
+		{
+			"key": "s1697261555",
+			"species": "indian-peafowl",
+			"date": "14-10-2023",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-peafowl-1697261570.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1697172312",
+			"species": "purple-sunbird",
+			"date": "14-10-2023",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-sunbird-1697261411.jpg"
+				}
+			],
+			"plumage": "Non-Breeding",
+			"gender": "M"
+		},
+		{
+			"key": "s1697261785",
+			"species": "plain-prinia",
+			"date": "14-10-2023",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/plain-prinia-1697261799.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697261907",
+			"species": "lesser-whitethroat",
+			"date": "14-10-2023",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-whitethroat-1697261961.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1697261424",
+			"species": "indian-peafowl",
+			"date": "14-10-2023",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-peafowl-1697261444.jpg"
+				}
+			],
+			"age": "Juvenile"
+		},
+		{
+			"key": "s1696229461",
+			"species": "white-eyed-buzzard",
+			"date": "02-10-2023",
+			"place": "Blackbuck Sanctuary",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-eyed-buzzard-1696229685.jpg"
+				},
+				{
+					"src": "images/white-eyed-buzzard-1696229663.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1696230477",
+			"species": "laggar-falcon",
+			"date": "02-10-2023",
+			"place": "Blackbuck Sanctuary",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/laggar-falcon-1696230551.jpg"
+				}
+			],
+			"age": "Juvenile/Immature"
+		},
+		{
+			"key": "s1696229237",
+			"species": "siberian-stonechat",
+			"date": "02-10-2023",
+			"place": "Blackbuck Sanctuary",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/siberian-stonechat-1696229276.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1696229286",
+			"species": "siberian-stonechat",
+			"date": "02-10-2023",
+			"place": "Blackbuck Sanctuary",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/siberian-stonechat-1696229320.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
 			"key": "s1696253051",
 			"species": "demoiselle-crane",
 			"date": "02-10-2023",
@@ -12,6 +338,12 @@
 			"media": [
 				{
 					"src": "images/demoiselle-crane-1696253079.jpg"
+				},
+				{
+					"src": "videos/demoiselle-crane.mp4",
+					"thumbnail": "images/demoiselle-crane-1696253079.jpg",
+					"mute": true,
+					"type": "video"
 				},
 				{
 					"src": "images/demoiselle-crane-1696253579.jpg"
@@ -74,87 +406,6 @@
 			]
 		},
 		{
-			"key": "s1696174734",
-			"species": "isabelline-wheatear",
-			"date": "02-10-2023",
-			"place": "",
-			"city": "Chhapar",
-			"state": "Rajasthan",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/isabelline-wheatear-1696229426.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1696229461",
-			"species": "white-eyed-buzzard",
-			"date": "02-10-2023",
-			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
-			"state": "Rajasthan",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/white-eyed-buzzard-1696229685.jpg"
-				},
-				{
-					"src": "images/white-eyed-buzzard-1696229663.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1696230477",
-			"species": "laggar-falcon",
-			"date": "02-10-2023",
-			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
-			"state": "Rajasthan",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/laggar-falcon-1696230551.jpg"
-				}
-			],
-			"age": "Juvenile/Immature"
-		},
-		{
-			"key": "s1696229286",
-			"species": "siberian-stonechat",
-			"date": "02-10-2023",
-			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
-			"state": "Rajasthan",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/siberian-stonechat-1696229320.jpg"
-				}
-			],
-			"gender": "M"
-		},
-		{
-			"key": "s1696229237",
-			"species": "siberian-stonechat",
-			"date": "02-10-2023",
-			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
-			"state": "Rajasthan",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/siberian-stonechat-1696229276.jpg"
-				}
-			],
-			"gender": "F"
-		},
-		{
 			"key": "s1696306033",
 			"species": "eurasian-kestrel",
 			"date": "02-10-2023",
@@ -185,6 +436,21 @@
 			]
 		},
 		{
+			"key": "s1696174734",
+			"species": "isabelline-wheatear",
+			"date": "02-10-2023",
+			"place": "",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/isabelline-wheatear-1696229426.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1696255571",
 			"species": "river-tern",
 			"date": "01-10-2023",
@@ -200,27 +466,6 @@
 			]
 		},
 		{
-			"key": "s1696149107",
-			"species": "chestnnut-bellied-sandgrouse",
-			"date": "01-10-2023",
-			"place": "",
-			"city": "Chhapar",
-			"state": "Rajasthan",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/chestnnut-bellied-sandgrouse-1696149157.jpg"
-				},
-				{
-					"src": "images/chestnnut-bellied-sandgrouse-1696175597.jpg"
-				}
-			],
-			"gender": "M",
-			"variation": "",
-			"subspecies": "Asian"
-		},
-		{
 			"key": "s1696148987",
 			"species": "chestnnut-bellied-sandgrouse",
 			"date": "01-10-2023",
@@ -231,10 +476,34 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/chestnnut-bellied-sandgrouse-1697369234.jpg"
+				},
+				{
 					"src": "images/chestnnut-bellied-sandgrouse-1696149082.jpg"
 				}
 			],
 			"gender": "F",
+			"subspecies": "Asian"
+		},
+		{
+			"key": "s1696149107",
+			"species": "chestnnut-bellied-sandgrouse",
+			"date": "01-10-2023",
+			"place": "",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnnut-bellied-sandgrouse-1696175597.jpg"
+				},
+				{
+					"src": "images/chestnnut-bellied-sandgrouse-1696149157.jpg"
+				}
+			],
+			"gender": "M",
+			"variation": "",
 			"subspecies": "Asian"
 		},
 		{
@@ -358,6 +627,66 @@
 			],
 			"variation": "Opistholeuca Form",
 			"gender": "F"
+		},
+		{
+			"key": "s1696569861",
+			"species": "crested-lark",
+			"date": "01-10-2023",
+			"place": "",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/crested-lark-1696569873.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1696569751",
+			"species": "black-winged-stilt",
+			"date": "01-10-2023",
+			"place": "",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-winged-stilt-1696569768.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1696569723",
+			"species": "marsh-sandpiper",
+			"date": "01-10-2023",
+			"place": "",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/marsh-sandpiper-1696569746.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1696647059",
+			"species": "red-rumped-swallow",
+			"date": "01-10-2023",
+			"place": "",
+			"city": "Chhapar",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-rumped-swallow-1696647084.jpg"
+				}
+			]
 		},
 		{
 			"key": "s1696176467",
@@ -2016,7 +2345,8 @@
 					"src": "images/purple-sunbird-1674207996.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "M",
+			"plumage": "Breeding"
 		},
 		{
 			"key": "s1673765103",
@@ -6144,7 +6474,7 @@
 		},
 		{
 			"key": "western-yellow-wagtail-immature",
-			"species": "western-yellow-wagtail",
+			"species": "citrine-wagtail",
 			"date": "04-06-2022",
 			"city": "Darcha",
 			"state": "Himachal Pradesh",
@@ -7152,7 +7482,8 @@
 				{
 					"src": "images/purple-sunbird-male-3.jpg"
 				}
-			]
+			],
+			"plumage": "Breeding"
 		},
 		{
 			"key": "black-francolin-female",
@@ -12943,7 +13274,8 @@
 					"src": "images/malabar-starling.jpg"
 				}
 			],
-			"city": "Thattekad Bird Sanctuary"
+			"city": "Thattekad Bird Sanctuary",
+			"hidden": false
 		},
 		{
 			"key": "oriental-dollarbird",
@@ -13298,7 +13630,9 @@
 				{
 					"src": "images/purple-sunbird-male.jpg"
 				}
-			]
+			],
+			"hidden": false,
+			"plumage": "Breeding"
 		},
 		{
 			"key": "black-headed-gull-non-breeding",

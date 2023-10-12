@@ -570,6 +570,14 @@
 			],
 			"family": "Cranes"
 		},
+		"black-necked-stork": {
+			"key": "black-necked-stork",
+			"name": "Black-necked Stork",
+			"tags": [
+				"Stork"
+			],
+			"family": "Storks"
+		},
 		"black-redstart": {
 			"key": "black-redstart",
 			"name": "Black Redstart",
@@ -1634,6 +1642,14 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"european-roller": {
+			"key": "european-roller",
+			"name": "European Roller",
+			"tags": [
+				"Roller"
+			],
+			"family": "Rollers & Dollarbirds"
+		},
 		"falcated-duck": {
 			"key": "falcated-duck",
 			"name": "Falcated Duck",
@@ -2445,7 +2461,7 @@
 			"key": "indian-silverbill",
 			"name": "Indian Silverbill",
 			"tags": [
-				"Silberbill",
+				"Silverbill",
 				"Finch"
 			],
 			"family": "Finches & Allies"
@@ -2511,6 +2527,15 @@
 				"Wheatear"
 			],
 			"family": "Thrushes"
+		},
+		"jacobin-cuckoo": {
+			"key": "jacobin-cuckoo",
+			"name": "Jacobin Cuckoo",
+			"tags": [
+				"Pied Cuckoo",
+				"Cuckoo"
+			],
+			"family": "Cuckoos"
 		},
 		"jungle-babbler": {
 			"key": "jungle-babbler",
@@ -3852,6 +3877,14 @@
 				"Flycatcher"
 			],
 			"family": "Chats"
+		},
+		"sirkeer-malkoha": {
+			"key": "sirkeer-malkoha",
+			"name": "Sirkeer Malkoha",
+			"tags": [
+				"Malkoha"
+			],
+			"family": "Cuckoos"
 		},
 		"slaty-backed-forktail": {
 			"key": "slaty-backed-forktail",
