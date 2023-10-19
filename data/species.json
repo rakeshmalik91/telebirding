@@ -1690,6 +1690,14 @@
 			],
 			"family": "Bulbuls"
 		},
+		"forest-wagtail": {
+			"key": "forest-wagtail",
+			"name": "Forest Wagtail",
+			"tags": [
+				"Wagtail"
+			],
+			"family": "Wagtails"
+		},
 		"fork-tailed-drongo-cuckoo": {
 			"key": "fork-tailed-drongo-cuckoo",
 			"name": "Fork-tailed Drongo Cuckoo",

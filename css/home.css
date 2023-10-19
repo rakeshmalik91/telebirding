@@ -415,7 +415,7 @@
 		-ms-overflow-style: none;
 	scrollbar-width: none;
 }
-.map-menu .location-list {
+.map-menu .location-list, .map-menu .year-list {
   overflow-x: clip;
   overflow-y: scroll;
 		-ms-overflow-style: none;
@@ -423,13 +423,13 @@
 	padding-top: 20px;
 	padding-bottom: 50px;
 }
-.map-menu::-webkit-scrollbar, .map-menu .location-list::-webkit-scrollbar {
+.map-menu::-webkit-scrollbar, .map-menu .location-list::-webkit-scrollbar, .map-menu .year-list::-webkit-scrollbar {
 	display: none;
 }
-.map-menu .location-list button {
+.map-menu .location-list button, .map-menu .year-list button {
 	z-index: 1;
 }
-.map-menu .location-list button {
+.map-menu .location-list button, .map-menu .year-list button {
 	border-radius: 0 !important;
 	font-size: 16px !important;
 }
