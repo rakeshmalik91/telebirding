@@ -198,6 +198,23 @@
 			],
 			"family": "Prinias"
 		},
+		"ashy-throated-warbler": {
+			"key": "ashy-throated-warbler",
+			"name": "Ashy-throated Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
+		"ashy-wood-pigeon": {
+			"key": "ashy-wood-pigeon",
+			"name": "Ashy Wood-Pigeon",
+			"tags": [
+				"Wood-Pigeon",
+				"Pigeon"
+			],
+			"family": "Doves & Pigeons"
+		},
 		"ashy-woodswallow": {
 			"key": "ashy-woodswallow",
 			"name": "Ashy Woodswallow",
@@ -467,6 +484,14 @@
 			],
 			"family": "Laughingthrushes & Allies"
 		},
+		"black-faced-warbler": {
+			"key": "black-faced-warbler",
+			"name": "Black-faced Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
 		"black-francolin": {
 			"key": "black-francolin",
 			"name": "Black Francolin",
@@ -618,7 +643,7 @@
 		},
 		"black-throated-bushtit": {
 			"key": "black-throated-bushtit",
-			"name": "Black Throated Bushtit",
+			"name": "Black-throated Bushtit",
 			"tags": [
 				"Bushtit",
 				"Tit"
@@ -675,6 +700,14 @@
 				"Snowfinch"
 			],
 			"family": "Finches & Allies"
+		},
+		"blood-pheasant": {
+			"key": "blood-pheasant",
+			"name": "Blood Pheasant",
+			"tags": [
+				"Pheasant"
+			],
+			"family": "Pheasants, Partridges & Fowls"
 		},
 		"blue-capped-rock-thrush": {
 			"key": "blue-capped-rock-thrush",
@@ -796,10 +829,11 @@
 		},
 		"blyths-shrike-babbler": {
 			"key": "blyths-shrike-babbler",
-			"name": "Blyth's Shrike-Babbler",
+			"name": "White-browed Shrike-babbler",
 			"tags": [
 				"Babbler",
-				"Shrike-babbler"
+				"Shrike-babbler",
+				"Blyth's Shrike-Babbler"
 			],
 			"family": "Shrike-babblers & Erpornis"
 		},
@@ -1434,6 +1468,15 @@
 			],
 			"family": "Sandpipers & Allies"
 		},
+		"dark-breasted-rosefinch": {
+			"key": "dark-breasted-rosefinch",
+			"name": "Dark-breasted Rosefinch",
+			"tags": [
+				"Rosefinch",
+				"Finch"
+			],
+			"family": "Finches & Allies"
+		},
 		"dark-fronted-babbler": {
 			"key": "dark-fronted-babbler",
 			"name": "Dark-fronted Babbler",
@@ -1658,6 +1701,14 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"fire-breasted-flowerpecker": {
+			"key": "fire-breasted-flowerpecker",
+			"name": "Fire-breasted Flowerpecker",
+			"tags": [
+				"Flowerpecker"
+			],
+			"family": "Flowerpeckers"
+		},
 		"fire-capped-tit": {
 			"key": "fire-capped-tit",
 			"name": "Fire-capped Tit",
@@ -1761,6 +1812,14 @@
 				"Ibis"
 			],
 			"family": "Ibises"
+		},
+		"goldcrest": {
+			"key": "goldcrest",
+			"name": "Goldcrest",
+			"tags": [
+				"Goldcrest"
+			],
+			"family": "Kinglets"
 		},
 		"golden-eagle": {
 			"key": "golden-eagle",
@@ -2061,6 +2120,14 @@
 			],
 			"family": "Woodpeckers"
 		},
+		"grey-cheeked-warbler": {
+			"key": "grey-cheeked-warbler",
+			"name": "Grey-cheeked Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
 		"grey-chinned-minivet": {
 			"key": "grey-chinned-minivet",
 			"name": "Grey-chinned Minivet",
@@ -2165,6 +2232,15 @@
 				"Nocturnal"
 			],
 			"family": "Nightjars"
+		},
+		"grey-sided-bush-warbler": {
+			"key": "grey-sided-bush-warbler",
+			"name": "Grey-sided Bush Warbler",
+			"tags": [
+				"Bush Warbler",
+				"Warbler"
+			],
+			"family": "Bush-Warblers and Allies"
 		},
 		"grey-throated-martin": {
 			"key": "grey-throated-martin",
@@ -2458,9 +2534,9 @@
 		},
 		"indian-scimitar-babbler": {
 			"key": "indian-scimitar-babbler",
-			"name": "Indian Scimitar Babbler",
+			"name": "Indian Scimitar-babbler",
 			"tags": [
-				"Scimitar Babbler",
+				"Scimitar-babbler",
 				"Babbler"
 			],
 			"family": "Tree-babblers, Scimitar-babblers & Allies"
@@ -2822,6 +2898,14 @@
 				"Indian House Swift"
 			],
 			"family": "Swifts"
+		},
+		"long-billed-thrush": {
+			"key": "long-billed-thrush",
+			"name": "Long-billed Thrush",
+			"tags": [
+				"Thrush"
+			],
+			"family": "Thrushes"
 		},
 		"long-legged-buzzard": {
 			"key": "long-legged-buzzard",
@@ -3698,6 +3782,14 @@
 			],
 			"family": "Accentors"
 		},
+		"rufous-capped-babbler": {
+			"key": "rufous-capped-babbler",
+			"name": "Rufous-capped Babbler",
+			"tags": [
+				"Babbler"
+			],
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
+		},
 		"rufous-chinned-laughingthrush": {
 			"key": "rufous-chinned-laughingthrush",
 			"name": "Rufous-chinned Laughingthrush",
@@ -3798,9 +3890,9 @@
 		},
 		"rusty-cheeked-scimitar-babbler": {
 			"key": "rusty-cheeked-scimitar-babbler",
-			"name": "Rusty-cheeked Scimitar Babbler",
+			"name": "Rusty-cheeked Scimitar-babbler",
 			"tags": [
-				"Scimitar Babbler",
+				"Scimitar-babbler",
 				"Babbler"
 			],
 			"family": "Tree-babblers, Scimitar-babblers & Allies"
@@ -3886,6 +3978,23 @@
 			],
 			"family": "Chats"
 		},
+		"sikkim-treecreeper": {
+			"key": "sikkim-treecreeper",
+			"name": "Sikkim Treecreeper",
+			"tags": [
+				"Treecreeper"
+			],
+			"family": "Treecreepers, Wallcreepers & Nuthatches"
+		},
+		"silver-eared-mesia": {
+			"key": "silver-eared-mesia",
+			"name": "Silver-eared Mesia",
+			"tags": [
+				"Mesia",
+				"Leiothrix"
+			],
+			"family": "Laughingthrushes & Allies"
+		},
 		"sirkeer-malkoha": {
 			"key": "sirkeer-malkoha",
 			"name": "Sirkeer Malkoha",
@@ -3920,6 +4029,14 @@
 				"Parrot"
 			],
 			"family": "Parakeets & Parrots"
+		},
+		"slender-billed-scimitar-babbler": {
+			"key": "slender-billed-scimitar-babbler",
+			"name": "Slender-billed Scimitar-babbler",
+			"tags": [
+				"Scimitar-babbler"
+			],
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"small-minivet": {
 			"key": "small-minivet",
@@ -4017,6 +4134,15 @@
 				"Kingfisher"
 			],
 			"family": "Kingfishers"
+		},
+		"streak-breasted-scimital-babbler": {
+			"key": "streak-breasted-scimital-babbler",
+			"name": "Streak-breasted Scimital-babbler",
+			"tags": [
+				"Scimitar-babbler",
+				"Babbler"
+			],
+			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"streak-throated-swallow": {
 			"key": "streak-throated-swallow",
@@ -4327,6 +4453,14 @@
 			],
 			"family": "Yuhinas & White-eyes"
 		},
+		"whistlers-warbler": {
+			"key": "whistlers-warbler",
+			"name": "Whistler's Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
 		"white-bellied-blue-flycatcher": {
 			"key": "white-bellied-blue-flycatcher",
 			"name": "White-bellied Blue Flycatcher",
@@ -4412,6 +4546,14 @@
 				"Fantail"
 			],
 			"family": "Fantails"
+		},
+		"white-browed-fulvetta": {
+			"key": "white-browed-fulvetta",
+			"name": "White-browed Fulvetta",
+			"tags": [
+				"Fulvetta"
+			],
+			"family": "Parrotbills, Wrentit and Allies"
 		},
 		"white-browed-scimitar-babbler": {
 			"key": "white-browed-scimitar-babbler",
