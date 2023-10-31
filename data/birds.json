@@ -1,6 +1,21 @@
 {
 	"birds": [
 		{
+			"key": "s1699277667",
+			"species": "yellow-bellied-prinia",
+			"date": "29-10-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": true,
+			"media": [
+				{
+					"src": "images/yellow-bellied-prinia-1699277698.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1698713533",
 			"species": "long-billed-thrush",
 			"date": "29-10-2023",
@@ -12,36 +27,6 @@
 			"media": [
 				{
 					"src": "images/long-billed-thrush-1698713544.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1698713972",
-			"species": "streak-breasted-scimital-babbler",
-			"date": "29-10-2023",
-			"place": "",
-			"city": "Aritar",
-			"state": "Sikkim",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/streak-breasted-scimital-babbler-1698714073.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1698713832",
-			"species": "rufous-winged-fulvetta",
-			"date": "29-10-2023",
-			"place": "",
-			"city": "Aritar",
-			"state": "Sikkim",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/rufous-winged-fulvetta-1698714192.jpg"
 				}
 			]
 		},
@@ -64,6 +49,36 @@
 			]
 		},
 		{
+			"key": "s1698713972",
+			"species": "streak-breasted-scimital-babbler",
+			"date": "29-10-2023",
+			"place": "",
+			"city": "Aritar",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/streak-breasted-scimital-babbler-1699167965.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698713832",
+			"species": "rufous-winged-fulvetta",
+			"date": "29-10-2023",
+			"place": "",
+			"city": "Aritar",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-winged-fulvetta-1699168612.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1698713239",
 			"species": "ashy-wood-pigeon",
 			"date": "28-10-2023",
@@ -75,6 +90,9 @@
 			"media": [
 				{
 					"src": "images/ashy-wood-pigeon-1698713263.jpg"
+				},
+				{
+					"src": "images/ashy-wood-pigeon-1698719575.jpg"
 				}
 			]
 		},
@@ -112,6 +130,40 @@
 			]
 		},
 		{
+			"key": "s1698841253",
+			"species": "blue-fronted-redstart",
+			"date": "26-10-2023",
+			"place": "",
+			"city": "Lungthung",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blue-fronted-redstart-1698841273.jpg"
+				},
+				{
+					"src": "images/blue-fronted-redstart-1698841283.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1698720101",
+			"species": "hen-harrier",
+			"date": "26-10-2023",
+			"place": "Thambi View Point",
+			"city": "Zuluk",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hen-harrier-1698841690.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1698712398",
 			"species": "grey-sided-bush-warbler",
 			"date": "26-10-2023",
@@ -137,7 +189,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/goldcrest-1698712219.jpg"
+					"src": "images/goldcrest-1699845653.jpg"
 				}
 			]
 		},
@@ -187,6 +239,12 @@
 			"media": [
 				{
 					"src": "images/rufous-vented-tit-1698711717.jpg"
+				},
+				{
+					"src": "images/rufous-vented-tit-1698841242.jpg"
+				},
+				{
+					"src": "images/rufous-vented-tit-1698841752.jpg"
 				}
 			]
 		},
@@ -205,6 +263,42 @@
 				}
 			],
 			"gender": "F"
+		},
+		{
+			"key": "s1698841501",
+			"species": "himalayan-buzzard",
+			"date": "26-10-2023",
+			"place": "",
+			"city": "Lungthung",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-buzzard-1698841523.jpg"
+				},
+				{
+					"src": "images/himalayan-buzzard-1698842141.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1699845148",
+			"species": "eurasian-kestrel",
+			"date": "25-10-2023",
+			"place": "Eurasian Kestrel",
+			"city": "",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-kestrel-1699845188.jpg"
+				},
+				{
+					"src": "images/eurasian-kestrel-1699845306.jpg"
+				}
+			]
 		},
 		{
 			"key": "s1698711511",
@@ -230,13 +324,16 @@
 			"species": "rufous-capped-babbler",
 			"date": "24-10-2023",
 			"place": "",
-			"city": "Padamchen",
+			"city": "Nimachen",
 			"state": "Sikkim",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/rufous-capped-babbler-1698711418.jpg"
+					"src": "images/rufous-capped-babbler-1698840601.jpg"
+				},
+				{
+					"src": "images/rufous-capped-babbler-1698840399.jpg"
 				}
 			]
 		},
@@ -245,7 +342,7 @@
 			"species": "green-tailed-sunbird",
 			"date": "24-10-2023",
 			"place": "",
-			"city": "Padamchen",
+			"city": "Nimachen",
 			"state": "Sikkim",
 			"country": "India",
 			"hidden": false,
@@ -261,7 +358,7 @@
 			"species": "common-green-magpie",
 			"date": "24-10-2023",
 			"place": "",
-			"city": "Padamchen",
+			"city": "Nimachen",
 			"state": "Sikkim",
 			"country": "India",
 			"hidden": false,
@@ -273,6 +370,52 @@
 					"src": "images/common-green-magpie-1698711128.jpg"
 				}
 			]
+		},
+		{
+			"key": "s1698725471",
+			"species": "blyths-leaf-warbler",
+			"date": "23-10-2023",
+			"place": "Que Khola Falls",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blyths-leaf-warbler-1698725530.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698724380",
+			"species": "yellow-bellied-fairy-fantail",
+			"date": "23-10-2023",
+			"place": "Que Khola Falls",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-bellied-fairy-fantail-1698724460.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698721283",
+			"species": "long-tailed-minivet",
+			"date": "23-10-2023",
+			"place": "",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/long-tailed-minivet-1698721298.jpg"
+				}
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1698710918",
@@ -289,6 +432,9 @@
 				},
 				{
 					"src": "images/white-browed-fulvetta-1698710949.jpg"
+				},
+				{
+					"src": "images/white-browed-fulvetta-1698764199.jpg"
 				}
 			]
 		},
@@ -364,7 +510,7 @@
 			"species": "maroon-oriole",
 			"date": "23-10-2023",
 			"place": "",
-			"city": "Padamchen",
+			"city": "Lingtam",
 			"state": "Sikkim",
 			"country": "India",
 			"hidden": false,
@@ -376,11 +522,26 @@
 			"gender": "M"
 		},
 		{
+			"key": "s1698764161",
+			"species": "great-barbet",
+			"date": "23-10-2023",
+			"place": "",
+			"city": "Lingtam",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-barbet-1698764187.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1698688977",
 			"species": "black-throated-sunbird",
 			"date": "23-10-2023",
 			"place": "",
-			"city": "Padamchen",
+			"city": "Lingtam",
 			"state": "Sikkim",
 			"country": "India",
 			"hidden": false,
@@ -396,13 +557,91 @@
 			"species": "silver-eared-mesia",
 			"date": "23-10-2023",
 			"place": "",
-			"city": "Padamchen",
+			"city": "Lingtam",
 			"state": "Sikkim",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
 					"src": "images/silver-eared-mesia-1698689123.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698688738",
+			"species": "sikkim-treecreeper",
+			"date": "23-10-2023",
+			"place": "Que Khola Falls",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sikkim-treecreeper-1698688777.jpg"
+				},
+				{
+					"src": "images/sikkim-treecreeper-1698760179.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698764729",
+			"species": "lemon-rumped-warbler",
+			"date": "22-10-2023",
+			"place": "",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lemon-rumped-warbler-1698764755.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698762600",
+			"species": "verditer-flycatcher",
+			"date": "22-10-2023",
+			"place": "",
+			"city": "Padamchen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/verditer-flycatcher-1698762616.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698723755",
+			"species": "little-forktail",
+			"date": "22-10-2023",
+			"place": "",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-forktail-1698723766.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1698723721",
+			"species": "wedge-tailed-green-pigeon",
+			"date": "22-10-2023",
+			"place": "",
+			"city": "Nimachen",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/wedge-tailed-green-pigeon-1698723749.jpg"
 				}
 			]
 		},
@@ -421,21 +660,6 @@
 				},
 				{
 					"src": "images/ashy-throated-warbler-1698688652.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1698688738",
-			"species": "sikkim-treecreeper",
-			"date": "23-10-2023",
-			"place": "Que Khola Falls",
-			"city": "Nimachen",
-			"state": "Sikkim",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/sikkim-treecreeper-1698688777.jpg"
 				}
 			]
 		},
@@ -481,6 +705,9 @@
 			"media": [
 				{
 					"src": "images/crested-serpent-eagle-1698688342.jpg"
+				},
+				{
+					"src": "images/crested-serpent-eagle-1698719689.jpg"
 				}
 			]
 		},
@@ -488,7 +715,7 @@
 			"key": "s1698688186",
 			"species": "himalayan-monal",
 			"date": "22-10-2023",
-			"place": "",
+			"place": "Thambi View Point",
 			"city": "Zuluk",
 			"state": "Sikkim",
 			"country": "India",
@@ -504,7 +731,7 @@
 			"key": "s1698687754",
 			"species": "tickells-leaf-warbler",
 			"date": "22-10-2023",
-			"place": "",
+			"place": "Thambi View Point",
 			"city": "Zuluk",
 			"state": "Sikkim",
 			"country": "India",
@@ -512,6 +739,27 @@
 			"media": [
 				{
 					"src": "images/tickells-leaf-warbler-1698687766.jpg"
+				},
+				{
+					"src": "images/tickells-leaf-warbler-1698724626.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1699170200",
+			"species": "buff-barred-warbler",
+			"date": "22-10-2023",
+			"place": "",
+			"city": "Zuluk",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/buff-barred-warbler-1699170227.jpg"
+				},
+				{
+					"src": "images/buff-barred-warbler-1699170381.jpg"
 				}
 			]
 		},
@@ -557,10 +805,13 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/green-tailed-sunbird-1698686939.jpg"
+				},
+				{
 					"src": "images/green-tailed-sunbird-1698687072.jpg"
 				},
 				{
-					"src": "images/green-tailed-sunbird-1698686939.jpg"
+					"src": "images/green-tailed-sunbird-1698840227.jpg"
 				}
 			],
 			"gender": "M"
@@ -590,6 +841,9 @@
 			"country": "India",
 			"hidden": false,
 			"media": [
+				{
+					"src": "images/blyths-shrike-babbler-1698762049.jpg"
+				},
 				{
 					"src": "images/blyths-shrike-babbler-1698687490.jpg"
 				},
@@ -644,7 +898,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/whistlers-warbler-1698686368.jpg"
+					"src": "images/whistlers-warbler-1699453818.jpg"
+				},
+				{
+					"src": "images/whistlers-warbler-1698761557.jpg"
 				}
 			]
 		},
@@ -659,7 +916,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/grey-cheeked-warbler-1698686335.jpg"
+					"src": "images/grey-cheeked-warbler-1699453839.jpg"
 				}
 			]
 		},
@@ -675,6 +932,9 @@
 			"media": [
 				{
 					"src": "images/black-throated-bushtit-1698686684.jpg"
+				},
+				{
+					"src": "images/black-throated-bushtit-1699168361.jpg"
 				}
 			]
 		},
@@ -2021,6 +2281,22 @@
 			]
 		},
 		{
+			"key": "s1699850953",
+			"species": "rose-ringed-parakeet",
+			"date": "13-08-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rose-ringed-parakeet-1699850971.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
 			"key": "s1691929489",
 			"species": "indian-robin",
 			"date": "13-08-2023",
@@ -2119,6 +2395,21 @@
 			"media": [
 				{
 					"src": "images/brown-rock-chat-1692070819.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1699790513",
+			"species": "oriental-turtle-dove",
+			"date": "08-03-2023",
+			"place": "Sonada",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/oriental-turtle-dove-1699790527.jpg"
 				}
 			]
 		},
@@ -2397,7 +2688,7 @@
 		},
 		{
 			"key": "s1675091661",
-			"species": "ashy-prinia",
+			"species": "yellow-bellied-prinia",
 			"date": "29-01-2023",
 			"place": "Keoladeo National Park",
 			"city": "Bharatpur",
@@ -4422,7 +4713,7 @@
 			"city": "Lachen",
 			"state": "Sikkim",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/eurasian-kestrel-1668271630.jpg"
@@ -9036,7 +9327,7 @@
 			"key": "alpine-accentor",
 			"species": "alpine-accentor",
 			"date": "19-03-2022",
-			"place": "Zuluk",
+			"place": "Thambi View Point",
 			"state": "Sikkim",
 			"country": "India",
 			"media": [
@@ -9046,14 +9337,15 @@
 				{
 					"src": "images/alpine-accentor-2.jpg"
 				}
-			]
+			],
+			"city": "Zuluk"
 		},
 		{
 			"key": "himalayan-monal-female",
 			"species": "himalayan-monal",
 			"gender": "F",
 			"date": "19-03-2022",
-			"place": "Zuluk",
+			"place": "Thambi View Point",
 			"state": "Sikkim",
 			"country": "India",
 			"media": [
@@ -9063,7 +9355,8 @@
 				{
 					"src": "images/himalayan-monal-female-2.jpg"
 				}
-			]
+			],
+			"city": "Zuluk"
 		},
 		{
 			"key": "grey-winged-blackbird-female-2",
@@ -9653,7 +9946,7 @@
 		},
 		{
 			"key": "blyths-warbler",
-			"species": "blyths-warbler",
+			"species": "blyths-reed-warbler",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",

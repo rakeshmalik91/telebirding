@@ -322,7 +322,8 @@
 			"key": "bar-tailed-treecreeper",
 			"name": "Bar-tailed Treecreeper",
 			"tags": [
-				"Treecreeper"
+				"Treecreeper",
+				"Creeper"
 			],
 			"family": "Treecreepers, Wallcreepers & Nuthatches"
 		},
@@ -818,6 +819,15 @@
 			],
 			"family": "Old World Flycatchers"
 		},
+		"blyths-leaf-warbler": {
+			"key": "blyths-leaf-warbler",
+			"name": "Blyth's Leaf Warbler",
+			"tags": [
+				"Leaf Warbler",
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
 		"blyths-reed-warbler": {
 			"key": "blyths-reed-warbler",
 			"name": "Blyth's Reed Warbler",
@@ -836,14 +846,6 @@
 				"Blyth's Shrike-Babbler"
 			],
 			"family": "Shrike-babblers & Erpornis"
-		},
-		"blyths-warbler": {
-			"key": "blyths-warbler",
-			"name": "Blyth's Warbler",
-			"tags": [
-				"Warbler"
-			],
-			"family": "Warblers"
 		},
 		"booted-eagle": {
 			"key": "booted-eagle",
@@ -1037,7 +1039,7 @@
 				"Warbler",
 				"Bush-Warbler"
 			],
-			"family": "Warblers"
+			"family": "Bush-Warblers and Allies"
 		},
 		"buff-barred-warbler": {
 			"key": "buff-barred-warbler",
@@ -1612,7 +1614,8 @@
 			"tags": [
 				"Kestrel",
 				"Hawk",
-				"Raptor"
+				"Raptor",
+				"Common Kestrel"
 			],
 			"family": "Falcons & Caracaras"
 		},
@@ -2315,6 +2318,14 @@
 			],
 			"family": "Woodpeckers"
 		},
+		"hen-harrier": {
+			"key": "hen-harrier",
+			"name": "Hen Harrier",
+			"tags": [
+				"Harrier`"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"hill-pigeon": {
 			"key": "hill-pigeon",
 			"name": "Hill Pigeon",
@@ -2340,6 +2351,14 @@
 				"Bulbul"
 			],
 			"family": "Bulbuls"
+		},
+		"himalayan-buzzard": {
+			"key": "himalayan-buzzard",
+			"name": "Himalayan Buzzard",
+			"tags": [
+				"Buzzard"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"himalayan-griffon": {
 			"key": "himalayan-griffon",
@@ -2383,7 +2402,8 @@
 			"key": "hodgsons-treecreeper",
 			"name": "Hodgson's Treecreeper",
 			"tags": [
-				"Treecreeper"
+				"Treecreeper",
+				"Creeper"
 			],
 			"family": "Treecreepers, Wallcreepers & Nuthatches"
 		},
@@ -2566,7 +2586,7 @@
 			"name": "Indian Spotted Creeper",
 			"tags": [
 				"Creeper",
-				"Tree-creeper"
+				"Treecreeper"
 			],
 			"family": "Treecreepers, Wallcreepers & Nuthatches"
 		},
@@ -3982,7 +4002,8 @@
 			"key": "sikkim-treecreeper",
 			"name": "Sikkim Treecreeper",
 			"tags": [
-				"Treecreeper"
+				"Treecreeper",
+				"Creeper"
 			],
 			"family": "Treecreepers, Wallcreepers & Nuthatches"
 		},
@@ -4137,7 +4158,7 @@
 		},
 		"streak-breasted-scimital-babbler": {
 			"key": "streak-breasted-scimital-babbler",
-			"name": "Streak-breasted Scimital-babbler",
+			"name": "Streak-breasted Scimitar-babbler",
 			"tags": [
 				"Scimitar-babbler",
 				"Babbler"
@@ -4557,9 +4578,9 @@
 		},
 		"white-browed-scimitar-babbler": {
 			"key": "white-browed-scimitar-babbler",
-			"name": "White-browed Scimitar Babbler",
+			"name": "White-browed Scimitar-babbler",
 			"tags": [
-				"Scimitar Babbler",
+				"Scimitar-babbler",
 				"Babbler"
 			],
 			"family": "Tree-babblers, Scimitar-babblers & Allies"
@@ -4741,6 +4762,25 @@
 				"Wading Bird"
 			],
 			"family": "Storks"
+		},
+		"yellow-bellied-fairy-fantail": {
+			"key": "yellow-bellied-fairy-fantail",
+			"name": "Yellow-bellied Fairy-Fantail",
+			"tags": [
+				"Fairy-Fantail",
+				"Fantail",
+				"Fairy-Flycatcher",
+				"Flycatcher"
+			],
+			"family": "Fairy Flycatchers"
+		},
+		"yellow-bellied-prinia": {
+			"key": "yellow-bellied-prinia",
+			"name": "Yellow-bellied Prinia",
+			"tags": [
+				"Prinia"
+			],
+			"family": "Prinias"
 		},
 		"yellow-billed-blue-magpie": {
 			"key": "yellow-billed-blue-magpie",

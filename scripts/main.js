@@ -161,11 +161,13 @@ function filterAndSortData(filter, params) {
 	
 	//place filter
 	if(filter.place) {
+		var placesRegex =  '\\b(' + filter.place.toLowerCase().replaceAll(',\s*', '|') + ')\\b';
+		var places = filter.place.toLowerCase().split(/,\s*/);
 		data.filteredBirds = data.filteredBirds.filter(b => 
-				b.place && b.place.toLowerCase().match('\\b' + filter.place.toLowerCase() + '\\b')
-			||	b.city && b.city.toLowerCase() == filter.place.toLowerCase()
-			||	b.state && (b.state.toLowerCase() == filter.place.toLowerCase() || getStateFullName(b.country, b.state).toLowerCase() == filter.place.toLowerCase())
-			||	b.country && (b.country.toLowerCase() == filter.place.toLowerCase() || getCountryFullName(b.country).toLowerCase() == filter.place.toLowerCase())
+				b.place && b.place.toLowerCase().match(placesRegex)
+			||	b.city && places.indexOf(b.city.toLowerCase())>=0
+			||	b.state && (places.indexOf(b.state.toLowerCase())>=0 || places.indexOf(getStateFullName(b.country, b.state).toLowerCase())>=0)
+			||	b.country && (places.indexOf(b.country.toLowerCase())>=0 || places.indexOf(getCountryFullName(b.country).toLowerCase())>=0)
 		);
 	}
 	
@@ -713,7 +715,7 @@ function renderYearList(container) {
 		var sighting_count = data.years[year].sighting_count;
 		var new_species_count = data.years[year].new_species_count;
 		html += "<div class='date-item country'>";
-		html += "<button class='country' onclick='triggerFilter(\"date\", \"" + year + "\")'><span>" + year + "</span><span class='count'>New: " + new_species_count + " / Total: " + sighting_count + "</span></button>";
+		html += "<button class='country' onclick='triggerFilter(\"date\", \"" + year + "\")'><span>" + year + "</span><span class='count'>New species: " + new_species_count + " / Total sightings: " + sighting_count + "</span></button>";
 		html += "</div>";
 	});
 	container.append(html); 
@@ -721,19 +723,26 @@ function renderYearList(container) {
 
 function toggleRightPane() {
 	if($(".right-pane").html() == '') {
+
 		$(".right-pane").append("<h1>Index by Location</h1>");
 		renderLocationList($(".right-pane"));
+
 		$(".right-pane").append("<h1>Index by Year</h1>");
 		renderYearList($(".right-pane"));
-		$(".right-pane").append("<h1>Index by Category</h1>");
+
+		var filteredSpecies = [...new Set(data.filteredBirds.map(b => b.species.key))];
+		$(".right-pane").append("<h1>Species List<span class='count'>" + filteredSpecies.length + "<span></h1>");
+		filteredSpecies.sort().forEach(function(species) {
+			$(".right-pane").append("<div class='species'><button class='family' onclick='triggerFilter(\"bird\", \"" + data.species[species].name + "\")'><span>" + data.species[species].name + "</span></button></div>");
+		});
+
+		/*$(".right-pane").append("<h1>Index by Category</h1>");
 		data.families.forEach(function(family) {
 			var count = getSpeciesCount(data.birds.filter(b => b.species.family == family.name));
 			$(".right-pane").append("<div class='families'><button class='family' onclick='triggerFilter(\"bird\", \"" + family.name + "\")'><span>" + family.name + "</span><span class='count'>" + count + "</span></button></div>");
-		});
-		$(".right-pane").append("<h1>All Species<span class='count'>" + getSpeciesCount(data.birds) + "<span></h1>");
-		Object.keys(data.species).sort().forEach(function(species) {
-			$(".right-pane").append("<div class='species'><button class='family' onclick='triggerFilter(\"bird\", \"" + data.species[species].name + "\")'><span>" + data.species[species].name + "</span></button></div>");
-		});
+		});*/
+
+		$(".right-pane").append("<h1></h1>");
 	}
 
 	if($(".right-pane").is(":visible")) {
@@ -969,7 +978,7 @@ function showMore() {
 $(document).ready(function() {
 	//feed infinite scroll
 	$(window).scroll(function() {
-	   if($(window).scrollTop() > $(document).height() - window.innerWidth * 2) {
+	   if($(window).scrollTop() > $(document).height() - window.innerHeight * 2) {
 		   if([ARCHIVE, EXPLORE_PAGE, MAP].includes(currentPage)) {
 			   renderBirds(currentRenderOffset, DATA_PER_PAGE);
 		   }

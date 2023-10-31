@@ -183,7 +183,7 @@ span.tags {
 	color: #999999;
 }
 .stats div.label.count {
-	min-width: 30px;
+	min-width: 40px;
 	color: #ff8181;
 	text-align: right;
 }

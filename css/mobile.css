@@ -118,7 +118,7 @@
 	.filter input, .filter button {
 		margin-bottom: 5px;
 	}
-	.component:has(.right-pane-button) {
+	.right-pane-button-container {
 		display: none;
 	}
 

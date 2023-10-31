@@ -121,6 +121,7 @@ var SHORTEN_LIST = [
 	[/\bWildlife\s+Sanctuary\b/gi, "WS"],
 	[/\bBird\s+Sanctuary\b/gi, "BS"],
 	[/\bTiger\s+Reserve\b/gi, "TR"],
+	[/\bConservation\s+Reserve\b/gi, "CR"],
 	[/\bNorth\b/gi, "N"],
 	[/\bSouth\b/gi, "S"],
 	[/\bEast\b/gi, "E"],

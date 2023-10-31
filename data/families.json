@@ -55,9 +55,6 @@
 			"name": "Fairy-bluebirds"
 		},
 		{
-			"name": "Fairy Flycatchers"
-		},
-		{
 			"name": "Falcons & Caracaras"
 		},
 		{
@@ -275,6 +272,9 @@
 		},
 		{
 			"name": "Bush-Warblers and Allies"
+		},
+		{
+			"name": "Fairy Flycatchers"
 		}
 	]
 }
