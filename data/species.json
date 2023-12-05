@@ -1173,6 +1173,15 @@
 			],
 			"family": "Tits"
 		},
+		"cinereous-vulture": {
+			"key": "cinereous-vulture",
+			"name": "Cinereous Vulture",
+			"tags": [
+				"Vulture",
+				"Scavenger"
+			],
+			"family": "Vultures"
+		},
 		"cinnamon-bittern": {
 			"key": "cinnamon-bittern",
 			"name": "Cinnamon Bittern",
@@ -1333,6 +1342,17 @@
 				"Starling"
 			],
 			"family": "Starlings"
+		},
+		"common-pochard": {
+			"key": "common-pochard",
+			"name": "Common Pochard",
+			"tags": [
+				"Pochard",
+				"Duck",
+				"Wader",
+				"Wading Bird"
+			],
+			"family": "Ducks, Swans & Geese"
 		},
 		"common-raven": {
 			"key": "common-raven",
@@ -1592,6 +1612,15 @@
 			],
 			"family": "Sandpipers & Allies"
 		},
+		"eurasian-griffon": {
+			"key": "eurasian-griffon",
+			"name": "Eurasian Griffon",
+			"tags": [
+				"Griffon",
+				"Vulture"
+			],
+			"family": "Vultures"
+		},
 		"eurasian-hobby": {
 			"key": "eurasian-hobby",
 			"name": "Eurasian Hobby",
@@ -1695,6 +1724,15 @@
 				"Roller"
 			],
 			"family": "Rollers & Dollarbirds"
+		},
+		"european-starling": {
+			"key": "european-starling",
+			"name": "European Starling",
+			"tags": [
+				"Starling",
+				"Common Starling"
+			],
+			"family": "Starlings"
 		},
 		"falcated-duck": {
 			"key": "falcated-duck",
@@ -4148,6 +4186,15 @@
 			],
 			"family": "Owls"
 		},
+		"steppe-eagle": {
+			"key": "steppe-eagle",
+			"name": "Steppe Eagle",
+			"tags": [
+				"Eagle",
+				"Raptor"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"stork-billed-kingfisher": {
 			"key": "stork-billed-kingfisher",
 			"name": "Stork-billed Kingfisher",
@@ -4818,6 +4865,15 @@
 				"Bulbul"
 			],
 			"family": "Bulbuls"
+		},
+		"yellow-eyed-pigeon": {
+			"key": "yellow-eyed-pigeon",
+			"name": "Yellow-eyed Pigeon",
+			"tags": [
+				"Pigeon",
+				"Dove"
+			],
+			"family": "Doves & Pigeons"
 		},
 		"yellow-footed-green-pigeon": {
 			"key": "yellow-footed-green-pigeon",

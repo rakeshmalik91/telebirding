@@ -1,17 +1,413 @@
 {
 	"birds": [
 		{
-			"key": "s1699277667",
-			"species": "yellow-bellied-prinia",
-			"date": "29-10-2023",
+			"key": "s1701692808",
+			"species": "common-pochard",
+			"date": "03-12-2023",
 			"place": "",
-			"city": "Sohna",
-			"state": "Haryana",
+			"city": "Khichan",
+			"state": "Rajasthan",
 			"country": "India",
-			"hidden": true,
+			"hidden": false,
 			"media": [
 				{
-					"src": "images/yellow-bellied-prinia-1699277698.jpg"
+					"src": "images/common-pochard-1701694215.jpg"
+				},
+				{
+					"src": "images/common-pochard-1701692832.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701693081",
+			"species": "demoiselle-crane",
+			"date": "03-12-2023",
+			"place": "",
+			"city": "Khichan",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/demoiselle-crane-1701693093.jpg"
+				},
+				{
+					"src": "images/demoiselle-crane-1701693374.jpg"
+				},
+				{
+					"src": "images/demoiselle-crane-1701693397.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701745275",
+			"species": "ruff",
+			"date": "03-12-2023",
+			"place": "",
+			"city": "Khichan",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ruff-1701745283.jpg"
+				},
+				{
+					"src": "images/ruff-1701745463.jpg"
+				}
+			],
+			"gender": "",
+			"plumage": "Female/Non-Breeding-Male"
+		},
+		{
+			"key": "s1701744547",
+			"species": "grey-throated-martin",
+			"date": "03-12-2023",
+			"place": "",
+			"city": "Khichan",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-throated-martin-1701744663.jpg"
+				},
+				{
+					"src": "images/grey-throated-martin-1701787942.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701744222",
+			"species": "green-winged-teal",
+			"date": "03-12-2023",
+			"place": "",
+			"city": "Khichan",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-winged-teal-1701744256.jpg"
+				}
+			],
+			"age": "Immature",
+			"gender": "M"
+		},
+		{
+			"key": "s1701880057",
+			"species": "green-sandpiper",
+			"date": "03-12-2023",
+			"place": "",
+			"city": "Khichan",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-sandpiper-1701880069.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701694505",
+			"species": "cinereous-vulture",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/cinereous-vulture-1701694560.jpg"
+				},
+				{
+					"src": "images/cinereous-vulture-1701788847.jpg"
+				},
+				{
+					"src": "images/cinereous-vulture-1701789482.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701694587",
+			"species": "himalayan-griffon",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-griffon-1701694613.jpg"
+				},
+				{
+					"src": "images/himalayan-griffon-1701696046.jpg"
+				}
+			],
+			"age": "Immature"
+		},
+		{
+			"key": "s1701694376",
+			"species": "eurasian-griffon",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-griffon-1701918971.jpg"
+				},
+				{
+					"src": "images/eurasian-griffon-1701694491.jpg"
+				},
+				{
+					"src": "images/eurasian-griffon-1701694750.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701693759",
+			"species": "european-starling",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/european-starling-1701693841.jpg"
+				},
+				{
+					"src": "images/european-starling-1701694343.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701695289",
+			"species": "yellow-eyed-pigeon",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-eyed-pigeon-1701886087.jpg"
+				},
+				{
+					"src": "images/yellow-eyed-pigeon-1701695317.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701695601",
+			"species": "imperial-eagle",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/imperial-eagle-1701745877.jpg"
+				},
+				{
+					"src": "images/imperial-eagle-1701695696.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701745953",
+			"species": "black-kite",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-kite-1701745989.jpg"
+				}
+			],
+			"variation": "",
+			"subspecies": "Black-eared"
+		},
+		{
+			"key": "s1701877576",
+			"species": "common-babbler",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-babbler-1701927667.jpg"
+				},
+				{
+					"src": "images/common-babbler-1701883069.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701881745",
+			"species": "red-vented-bulbul",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-vented-bulbul-1701881765.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701886117",
+			"species": "chestnnut-bellied-sandgrouse",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnnut-bellied-sandgrouse-1701886137.jpg"
+				}
+			],
+			"gender": "M",
+			"variation": "",
+			"subspecies": "Asian"
+		},
+		{
+			"key": "s1701919484",
+			"species": "variable-wheatear",
+			"date": "02-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/variable-wheatear-1701919593.jpg"
+				}
+			],
+			"subspecies": "",
+			"variation": "Picata Form",
+			"gender": "M"
+		},
+		{
+			"key": "s1701696792",
+			"species": "desert-wheatear",
+			"date": "01-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/desert-wheatear-1701696823.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1701696655",
+			"species": "common-woodshrike",
+			"date": "01-12-2023",
+			"place": "",
+			"city": "Khichan",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-woodshrike-1701696676.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701695456",
+			"species": "steppe-eagle",
+			"date": "01-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/steppe-eagle-1701696505.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701695362",
+			"species": "isabelline-wheatear",
+			"date": "01-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/isabelline-wheatear-1701695396.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1701694989",
+			"species": "egyptian-vulture",
+			"date": "01-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/egyptian-vulture-1701695027.jpg"
+				},
+				{
+					"src": "images/egyptian-vulture-1701695070.jpg"
+				},
+				{
+					"src": "images/egyptian-vulture-1701697668.jpg"
+				}
+			],
+			"age": "Immature"
+		},
+		{
+			"key": "s1701694831",
+			"species": "egyptian-vulture",
+			"date": "01-12-2023",
+			"place": "Jorbeer Conservation Reserve",
+			"city": "Bikaner",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/egyptian-vulture-1701694961.jpg"
+				},
+				{
+					"src": "images/egyptian-vulture-1701694977.jpg"
 				}
 			]
 		},
@@ -126,6 +522,9 @@
 			"media": [
 				{
 					"src": "images/collared-owlet-1698712531.jpg"
+				},
+				{
+					"src": "images/collared-owlet-1701324020.jpg"
 				}
 			]
 		},
@@ -547,7 +946,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/black-throated-sunbird-1698689006.jpg"
+					"src": "images/black-throated-sunbird-1700457133.jpg"
 				}
 			],
 			"gender": "M"
@@ -563,7 +962,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/silver-eared-mesia-1698689123.jpg"
+					"src": "images/silver-eared-mesia-1700357288.jpg"
+				},
+				{
+					"src": "images/silver-eared-mesia-1700528764.jpg"
 				}
 			]
 		},
@@ -1199,6 +1601,21 @@
 			"age": "Juvenile"
 		},
 		{
+			"key": "s1699277667",
+			"species": "yellow-bellied-prinia",
+			"date": "06-10-2023",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-bellied-prinia-1699277698.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1696253051",
 			"species": "demoiselle-crane",
 			"date": "02-10-2023",
@@ -1248,7 +1665,7 @@
 			"species": "white-eyed-buzzard",
 			"date": "02-10-2023",
 			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1266,7 +1683,7 @@
 			"species": "laggar-falcon",
 			"date": "02-10-2023",
 			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1282,7 +1699,7 @@
 			"species": "siberian-stonechat",
 			"date": "02-10-2023",
 			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1298,7 +1715,7 @@
 			"species": "siberian-stonechat",
 			"date": "02-10-2023",
 			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1314,7 +1731,7 @@
 			"species": "small-minivet",
 			"date": "02-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1333,7 +1750,7 @@
 			"species": "rufous-fronted-prinia",
 			"date": "02-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1348,7 +1765,7 @@
 			"species": "eurasian-kestrel",
 			"date": "02-10-2023",
 			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1363,7 +1780,7 @@
 			"species": "eurasian-marsh-harrier",
 			"date": "02-10-2023",
 			"place": "Blackbuck Sanctuary",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1378,7 +1795,7 @@
 			"species": "isabelline-wheatear",
 			"date": "02-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1393,7 +1810,7 @@
 			"species": "river-tern",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1408,7 +1825,7 @@
 			"species": "chestnnut-bellied-sandgrouse",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1428,7 +1845,7 @@
 			"species": "chestnnut-bellied-sandgrouse",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1449,7 +1866,7 @@
 			"species": "eurasian-hobby",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1464,7 +1881,7 @@
 			"species": "pied-avocet",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1485,7 +1902,7 @@
 			"species": "grey-francolin",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1500,7 +1917,7 @@
 			"species": "little-ringed-plover",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1516,7 +1933,7 @@
 			"species": "blue-cheeked-bee-eater",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1534,7 +1951,7 @@
 			"species": "variable-wheatear",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1554,7 +1971,7 @@
 			"species": "variable-wheatear",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1571,7 +1988,7 @@
 			"species": "crested-lark",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1586,7 +2003,7 @@
 			"species": "black-winged-stilt",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1601,7 +2018,7 @@
 			"species": "marsh-sandpiper",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1616,7 +2033,7 @@
 			"species": "red-rumped-swallow",
 			"date": "01-10-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1631,7 +2048,7 @@
 			"species": "lesser-whitethroat",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1646,7 +2063,7 @@
 			"species": "booted-eagle",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1665,7 +2082,7 @@
 			"species": "booted-eagle",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1684,7 +2101,7 @@
 			"species": "rosy-starling",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1699,7 +2116,7 @@
 			"species": "long-legged-buzzard",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1714,7 +2131,7 @@
 			"species": "egyptian-vulture",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1732,7 +2149,7 @@
 			"species": "great-grey-shrike",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1750,7 +2167,7 @@
 			"species": "tawny-eagle",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1765,7 +2182,7 @@
 			"species": "red-naped-ibis",
 			"date": "30-09-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1816,7 +2233,7 @@
 			"city": "Khichan",
 			"state": "Rajasthan",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/demoiselle-crane-1696048003.jpg"
@@ -1843,7 +2260,7 @@
 			"species": "common-babbler",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1861,7 +2278,7 @@
 			"species": "rufous-fronted-prinia",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1882,7 +2299,7 @@
 			"species": "variable-wheatear",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1902,7 +2319,7 @@
 			"species": "crested-lark",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1920,7 +2337,7 @@
 			"species": "black-crowned-sparrow-lark",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1939,7 +2356,7 @@
 			"species": "black-crowned-sparrow-lark",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1955,7 +2372,7 @@
 			"species": "ashy-crowned-sparrow-lark",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1971,7 +2388,7 @@
 			"species": "indian-bush-lark",
 			"date": "20-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -1986,7 +2403,7 @@
 			"species": "laggar-falcon",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2004,7 +2421,7 @@
 			"species": "laggar-falcon",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2020,7 +2437,7 @@
 			"species": "white-eyed-buzzard",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2038,7 +2455,7 @@
 			"species": "white-eyed-buzzard",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2057,7 +2474,7 @@
 			"species": "common-raven",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2072,7 +2489,7 @@
 			"species": "red-naped-ibis",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2087,7 +2504,7 @@
 			"species": "indian-spotted-creeper",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2105,7 +2522,7 @@
 			"species": "grey-francolin",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2127,7 +2544,7 @@
 			"species": "large-grey-babbler",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2145,7 +2562,7 @@
 			"species": "common-woodshrike",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2161,7 +2578,7 @@
 			"species": "common-woodshrike",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2176,7 +2593,7 @@
 			"species": "green-bee-eater",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2191,7 +2608,7 @@
 			"species": "great-grey-shrike",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2206,7 +2623,7 @@
 			"species": "bay-backed-shrike",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2224,7 +2641,7 @@
 			"species": "booted-eagle",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2239,7 +2656,7 @@
 			"species": "laughing-dove",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2254,7 +2671,7 @@
 			"species": "bank-myna",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -2270,7 +2687,7 @@
 			"species": "brown-rock-chat",
 			"date": "19-08-2023",
 			"place": "",
-			"city": "Chhapar",
+			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
 			"hidden": false,
@@ -5937,10 +6354,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/white-headed-starling-1666798978.jpg"
+					"src": "images/white-headed-starling-1700668586.jpg"
 				},
 				{
-					"src": "images/white-headed-starling-1666769770.jpg"
+					"src": "images/white-headed-starling-1666798978.jpg"
 				}
 			]
 		},
@@ -9836,7 +10253,7 @@
 		{
 			"key": "ruff-non-breeding",
 			"species": "ruff",
-			"plumage": "Non-Breeding",
+			"plumage": "Female/Non-Breeding-Male",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
