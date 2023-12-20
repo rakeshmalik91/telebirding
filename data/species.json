@@ -175,7 +175,7 @@
 		},
 		"ashy-crowned-sparrow-lark": {
 			"key": "ashy-crowned-sparrow-lark",
-			"name": "Ashy Crowned Sparrow Lark",
+			"name": "Ashy-crowned Sparrow Lark",
 			"tags": [
 				"Sparrow Lark",
 				"Lark"
@@ -241,6 +241,14 @@
 				"Flycatcher"
 			],
 			"family": "Old World Flycatchers"
+		},
+		"asian-desert-warbler": {
+			"key": "asian-desert-warbler",
+			"name": "Asian Desert Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
 		},
 		"asian-fairy-bluebird": {
 			"key": "asian-fairy-bluebird",
@@ -392,6 +400,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"bimaculated-lark": {
+			"key": "bimaculated-lark",
+			"name": "Bimaculated Lark",
+			"tags": [
+				"Lark"
+			],
+			"family": "Larks"
+		},
 		"black-baza": {
 			"key": "black-baza",
 			"name": "Black Baza",
@@ -453,7 +469,7 @@
 		},
 		"black-crowned-sparrow-lark": {
 			"key": "black-crowned-sparrow-lark",
-			"name": "Black Crowned Sparrow Lark",
+			"name": "Black-crowned Sparrow Lark",
 			"tags": [
 				"Sparrow-Lark",
 				"Lark"
@@ -1448,6 +1464,14 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"cream-colored-courser": {
+			"key": "cream-colored-courser",
+			"name": "Cream-colored Courser",
+			"tags": [
+				"Courser"
+			],
+			"family": "Coursers"
+		},
 		"crested-kingfisher": {
 			"key": "crested-kingfisher",
 			"name": "Crested Kingfisher",
@@ -1531,13 +1555,21 @@
 			],
 			"family": "Cranes"
 		},
+		"desert-lark": {
+			"key": "desert-lark",
+			"name": "Desert Lark",
+			"tags": [
+				"Lark"
+			],
+			"family": "Larks"
+		},
 		"desert-wheatear": {
 			"key": "desert-wheatear",
 			"name": "Desert Wheatear",
 			"tags": [
 				"Wheatear"
 			],
-			"family": "Thrushes"
+			"family": "Wheatears"
 		},
 		"dusky-eagle-owl": {
 			"key": "dusky-eagle-owl",
@@ -1625,7 +1657,10 @@
 			"key": "eurasian-hobby",
 			"name": "Eurasian Hobby",
 			"tags": [
-				"Hobby"
+				"Hobby",
+				"Raptor",
+				"Falcon",
+				"Hawk"
 			],
 			"family": "Falcons & Caracaras"
 		},
@@ -1644,7 +1679,8 @@
 				"Kestrel",
 				"Hawk",
 				"Raptor",
-				"Common Kestrel"
+				"Common Kestrel",
+				"Falcon"
 			],
 			"family": "Falcons & Caracaras"
 		},
@@ -1952,6 +1988,14 @@
 			],
 			"family": "Shrikes"
 		},
+		"great-indian-bustard": {
+			"key": "great-indian-bustard",
+			"name": "Great Indian Bustard",
+			"tags": [
+				"Bustard"
+			],
+			"family": "Bustards"
+		},
 		"great-rosefinch": {
 			"key": "great-rosefinch",
 			"name": "Great Rosefinch",
@@ -2004,6 +2048,15 @@
 			],
 			"family": "Flamingos"
 		},
+		"greater-hoopoe-lark": {
+			"key": "greater-hoopoe-lark",
+			"name": "Greater Hoopoe-Lark",
+			"tags": [
+				"Lark",
+				"Hoopoe-Lark"
+			],
+			"family": "Larks"
+		},
 		"greater-necklaced-laughingthrush": {
 			"key": "greater-necklaced-laughingthrush",
 			"name": "Greater Necklaced Laughingthrush",
@@ -2032,6 +2085,15 @@
 				"Racket-tailed Drongo"
 			],
 			"family": "Drongos"
+		},
+		"greater-short-toed-lark": {
+			"key": "greater-short-toed-lark",
+			"name": "Greater Short-toed Lark",
+			"tags": [
+				"Lark",
+				"Short-toed Lark"
+			],
+			"family": "Larks"
 		},
 		"greater-spotted-eagle": {
 			"key": "greater-spotted-eagle",
@@ -2658,7 +2720,8 @@
 			"key": "intermediate-egret",
 			"name": "Intermediate Egret",
 			"tags": [
-				"Egret"
+				"Egret",
+				"Medium Egret"
 			],
 			"family": "Herons & Egrets"
 		},
@@ -3406,6 +3469,14 @@
 				"Wading Bird"
 			],
 			"family": "Gulls & Terns"
+		},
+		"persian-wheatear": {
+			"key": "persian-wheatear",
+			"name": "Persian Wheatear",
+			"tags": [
+				"Wheatear"
+			],
+			"family": "Wheatears"
 		},
 		"pheasant-tailed-jacana": {
 			"key": "pheasant-tailed-jacana",
@@ -4304,6 +4375,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"tawny-pipit": {
+			"key": "tawny-pipit",
+			"name": "Tawny Pipit",
+			"tags": [
+				"Pipit"
+			],
+			"family": "Pipits"
+		},
 		"thick-billed-flowerpecker": {
 			"key": "thick-billed-flowerpecker",
 			"name": "Thick-billed Flowerpecker",
@@ -4391,6 +4470,14 @@
 			],
 			"family": "Finches & Allies"
 		},
+		"trumpeter-finch": {
+			"key": "trumpeter-finch",
+			"name": "Trumpeter Finch",
+			"tags": [
+				"Finch"
+			],
+			"family": "Finches & Allies"
+		},
 		"tufted-duck": {
 			"key": "tufted-duck",
 			"name": "Tufted Duck",
@@ -4432,7 +4519,7 @@
 			"tags": [
 				"Wheatear"
 			],
-			"family": "Thrushes"
+			"family": "Wheatears"
 		},
 		"variegated-laughingthrush": {
 			"key": "variegated-laughingthrush",
