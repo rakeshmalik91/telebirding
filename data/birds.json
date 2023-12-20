@@ -365,7 +365,7 @@
 					"src": "images/desert-wheatear-1702823722.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1702822425",
@@ -381,7 +381,7 @@
 					"src": "images/black-crowned-sparrow-lark-1702822685.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1703037883",
@@ -446,7 +446,7 @@
 				}
 			],
 			"subspecies": "Capistrata Form",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1702822736",
@@ -462,7 +462,7 @@
 					"src": "images/black-crowned-sparrow-lark-1702822793.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1701692808",
@@ -556,7 +556,7 @@
 				}
 			],
 			"age": "Immature",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1701880057",
@@ -755,7 +755,7 @@
 					"src": "images/chestnnut-bellied-sandgrouse-1701886137.jpg"
 				}
 			],
-			"gender": "M",
+			"gender": "Male",
 			"variation": "",
 			"subspecies": "Asian"
 		},
@@ -775,7 +775,7 @@
 			],
 			"subspecies": "",
 			"variation": "Picata Form",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1702185872",
@@ -806,7 +806,7 @@
 					"src": "images/desert-wheatear-1701696823.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1701696655",
@@ -1027,7 +1027,7 @@
 					"src": "images/blue-fronted-redstart-1698841283.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698720101",
@@ -1091,7 +1091,7 @@
 					"src": "images/dark-breasted-rosefinch-1698711933.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698711800",
@@ -1143,7 +1143,7 @@
 					"src": "images/himalayan-monal-1698711636.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1698841501",
@@ -1198,7 +1198,7 @@
 					"src": "images/blood-pheasant-1698711537.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698711406",
@@ -1232,7 +1232,7 @@
 					"src": "images/green-tailed-sunbird-1698711316.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1698711091",
@@ -1296,7 +1296,7 @@
 					"src": "images/long-tailed-minivet-1698721298.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1698710918",
@@ -1384,7 +1384,7 @@
 					"src": "images/long-tailed-minivet-1698710517.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698689346",
@@ -1400,7 +1400,7 @@
 					"src": "images/maroon-oriole-1698689383.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698764161",
@@ -1431,7 +1431,7 @@
 					"src": "images/black-throated-sunbird-1700457133.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698689113",
@@ -1609,7 +1609,7 @@
 					"src": "images/himalayan-monal-1698688204.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698687754",
@@ -1676,7 +1676,7 @@
 					"src": "images/rufous-bellied-niltava-1698687306.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698686907",
@@ -1698,7 +1698,7 @@
 					"src": "images/green-tailed-sunbird-1698840227.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698687165",
@@ -1735,7 +1735,7 @@
 					"src": "images/blyths-shrike-babbler-1698687467.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1698687523",
@@ -1751,7 +1751,7 @@
 					"src": "images/blyths-shrike-babbler-1698687568.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1698686586",
@@ -2017,7 +2017,7 @@
 					"src": "images/indian-peafowl-1697261570.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1697172312",
@@ -2034,7 +2034,7 @@
 				}
 			],
 			"plumage": "Non-Breeding",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1697261785",
@@ -2190,7 +2190,7 @@
 					"src": "images/siberian-stonechat-1696229276.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1696229286",
@@ -2206,7 +2206,7 @@
 					"src": "images/siberian-stonechat-1696229320.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1696229857",
@@ -2225,7 +2225,7 @@
 					"src": "images/small-minivet-1696230366.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1696229959",
@@ -2319,7 +2319,7 @@
 					"src": "images/chestnnut-bellied-sandgrouse-1696149082.jpg"
 				}
 			],
-			"gender": "F",
+			"gender": "Female",
 			"subspecies": "Asian"
 		},
 		{
@@ -2339,7 +2339,7 @@
 					"src": "images/chestnnut-bellied-sandgrouse-1696149157.jpg"
 				}
 			],
-			"gender": "M",
+			"gender": "Male",
 			"variation": "",
 			"subspecies": "Asian"
 		},
@@ -2446,7 +2446,7 @@
 				}
 			],
 			"variation": "Opistholeuca Form",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1696335055",
@@ -2463,7 +2463,7 @@
 				}
 			],
 			"variation": "Opistholeuca Form",
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1696569861",
@@ -2794,7 +2794,7 @@
 				}
 			],
 			"variation": "Picata Form",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1692597282",
@@ -2831,7 +2831,7 @@
 					"src": "images/black-crowned-sparrow-lark-1692597506.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1692597513",
@@ -2847,7 +2847,7 @@
 					"src": "images/black-crowned-sparrow-lark-1692597525.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1692597428",
@@ -2869,7 +2869,7 @@
 					"src": "images/ashy-crowned-sparrow-lark-1692597923.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1692599517",
@@ -3199,7 +3199,7 @@
 					"src": "images/rose-ringed-parakeet-1699850971.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1691929489",
@@ -3221,7 +3221,7 @@
 					"src": "images/indian-robin-1695357424.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1691929926",
@@ -3237,7 +3237,7 @@
 					"src": "images/indian-robin-1691929943.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1691930021",
@@ -3353,7 +3353,7 @@
 					"src": "images/green-tailed-sunbird-1679144527.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1678282841",
@@ -3555,7 +3555,7 @@
 					"src": "images/dusky-eagle-owl-1676091841.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1675063821",
@@ -3635,7 +3635,7 @@
 					"src": "images/indian-robin-1675487681.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1678677431",
@@ -3684,7 +3684,7 @@
 					"src": "images/oriental-magpie-robin-1678676734.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1678676394",
@@ -3932,7 +3932,7 @@
 				}
 			],
 			"age": "Juvenile",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1675082069",
@@ -3948,7 +3948,7 @@
 					"src": "images/bronze-winged-jacana-1675082100.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1675082175",
@@ -3983,7 +3983,7 @@
 					"src": "images/northern-pintail-1675103281.jpg"
 				}
 			],
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Breeding"
 		},
 		{
@@ -4018,7 +4018,7 @@
 					"src": "images/northern-shoveler-1675062469.jpg"
 				}
 			],
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Breeding"
 		},
 		{
@@ -4035,7 +4035,7 @@
 					"src": "images/falcated-duck-1675089816.jpg"
 				}
 			],
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Breeding"
 		},
 		{
@@ -4052,7 +4052,7 @@
 					"src": "images/eurasian-wigeon-1675083140.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1675083580",
@@ -4135,7 +4135,7 @@
 					"src": "images/bluethroat-1675063559.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1675063399",
@@ -4154,7 +4154,7 @@
 					"src": "images/bluethroat-1675497218.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1675086353",
@@ -4203,7 +4203,7 @@
 					"src": "images/red-breasted-flycatcher-1675091606.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1674207969",
@@ -4219,7 +4219,7 @@
 					"src": "images/purple-sunbird-1674207996.jpg"
 				}
 			],
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Breeding"
 		},
 		{
@@ -4236,7 +4236,7 @@
 					"src": "images/shikra-1673765156.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672213107",
@@ -4273,7 +4273,7 @@
 					"src": "images/lotens-sunbird-1672212944.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672212784",
@@ -4289,7 +4289,7 @@
 					"src": "images/purple-rumped-sunbird-1672212806.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672212816",
@@ -4305,7 +4305,7 @@
 					"src": "images/lotens-sunbird-1672212833.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672040581",
@@ -4360,7 +4360,7 @@
 					"src": "images/golden-fronted-leafbird-1672307098.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672213325",
@@ -4439,7 +4439,7 @@
 					"src": "images/blue-throated-blue-flycatcher-1672151405.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672306645",
@@ -4476,7 +4476,7 @@
 					"src": "images/malabar-trogon-1672123671.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672124426",
@@ -4651,7 +4651,7 @@
 					"src": "images/black-naped-oriole-1673179309.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672013876",
@@ -4673,7 +4673,7 @@
 					"src": "images/malabar-trogon-1672123218.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672043581",
@@ -4689,7 +4689,7 @@
 					"src": "images/ceylon-frogmouth-1672043604.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672041584",
@@ -4823,7 +4823,7 @@
 					"src": "images/white-bellied-blue-flycatcher-1672497715.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672308815",
@@ -4839,7 +4839,7 @@
 					"src": "images/black-rumped-flameback-1672308845.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672308613",
@@ -4855,7 +4855,7 @@
 					"src": "images/black-rumped-flameback-1672308661.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672307003",
@@ -4871,7 +4871,7 @@
 					"src": "images/golden-fronted-leafbird-1672307028.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672306832",
@@ -4902,7 +4902,7 @@
 					"src": "images/malabar-grey-hornbill-1672287718.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672046350",
@@ -4981,7 +4981,7 @@
 					"src": "images/crimson-backed-sunbird-1672045996.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1673076169",
@@ -4997,7 +4997,7 @@
 					"src": "images/grey-junglefowl-1673076186.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672710644",
@@ -5043,7 +5043,7 @@
 					"src": "images/asian-fairy-bluebird-1672046842.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1672046697",
@@ -5059,7 +5059,7 @@
 					"src": "images/purple-rumped-sunbird-1672046723.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672043374",
@@ -5082,7 +5082,7 @@
 					"title": "Male & Female"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1672043097",
@@ -5483,7 +5483,7 @@
 					"src": "images/large-niltava-1668331529.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1668298676",
@@ -5559,7 +5559,7 @@
 					"src": "images/white-collared-blackbird-1668304250.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1668270736",
@@ -5593,7 +5593,7 @@
 					"src": "images/horned-lark-1668270926.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1668397302",
@@ -5781,7 +5781,7 @@
 					"src": "images/black-throated-sunbird-1668269238.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1668268790",
@@ -5800,7 +5800,7 @@
 					"src": "images/black-throated-sunbird-1668269014.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1668268696",
@@ -5918,7 +5918,7 @@
 					"src": "images/freckle-breasted-woodpecker-1667134564.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666792000",
@@ -6052,7 +6052,7 @@
 					"src": "images/violet-cuckoo-1667272564.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666767180",
@@ -6068,7 +6068,7 @@
 					"src": "images/violet-cuckoo-1667272785.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666765831",
@@ -6169,7 +6169,7 @@
 					"src": "images/small-minivet-1666768369.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666768265",
@@ -6185,7 +6185,7 @@
 					"src": "images/small-minivet-1666768296.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666711590",
@@ -6240,7 +6240,7 @@
 					"src": "images/asian-fairy-bluebird-1667359460.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666740815",
@@ -6453,7 +6453,7 @@
 					"src": "images/asian-fairy-bluebird-1667356156.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666767343",
@@ -6472,7 +6472,7 @@
 					"src": "images/black-naped-oriole-1666767375.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666768750",
@@ -6488,7 +6488,7 @@
 					"src": "images/black-naped-monarch-1666768800.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666768161",
@@ -6668,7 +6668,7 @@
 					"src": "images/olive-backed-sunbird-1667141365.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1667140921",
@@ -6684,7 +6684,7 @@
 					"src": "images/freckle-breasted-woodpecker-1667140973.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666799172",
@@ -6704,7 +6704,7 @@
 					"title": "Male & Female"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1667139697",
@@ -6723,7 +6723,7 @@
 					"src": "images/long-tailed-parakeet-1667139727.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666769309",
@@ -6829,7 +6829,7 @@
 					"src": "images/amur-stonechat-1667264417.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666769747",
@@ -6863,7 +6863,7 @@
 					"src": "images/black-naped-oriole-1666769646.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666769592",
@@ -6987,7 +6987,7 @@
 					"src": "images/scarlet-minivet-1666770912.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1666770831",
@@ -7003,7 +7003,7 @@
 					"src": "images/scarlet-minivet-1666770868.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1666772476",
@@ -7087,7 +7087,7 @@
 					"src": "images/baya-weaver-1665898847.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1665897515",
@@ -7115,7 +7115,7 @@
 					"title": "Male & Female"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1665716269",
@@ -7165,7 +7165,7 @@
 					"src": "images/taiga-flycatcher-1664514522.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1664166493",
@@ -7217,7 +7217,7 @@
 					"src": "images/plumbeous-water-redstart-1664173808.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1664166247",
@@ -7317,7 +7317,7 @@
 					"src": "images/black-rumped-flameback-1662806329.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1662180789",
@@ -7336,7 +7336,7 @@
 					"src": "images/black-rumped-flameback-1662297074.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1662269632",
@@ -7411,7 +7411,7 @@
 					"src": "images/common-rosefinch-1662782776.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "bluethroat-red-spotted",
@@ -7421,7 +7421,7 @@
 			"city": "Leh",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "Red-spotted",
 			"media": [
 				{
@@ -7526,7 +7526,7 @@
 			"place": "Thukje",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/great-rosefinch.jpg"
@@ -7775,7 +7775,7 @@
 					"src": "images/great-rosefinch-1663119556.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "saker-falcon",
@@ -7800,7 +7800,7 @@
 			"city": "Hanle",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/desert-wheatear-female.jpg"
@@ -7814,7 +7814,7 @@
 			"place": "Hanle",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "Eastern",
 			"media": [
 				{
@@ -7829,7 +7829,7 @@
 			"city": "Hanle",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/desert-wheatear.jpg"
@@ -7953,7 +7953,7 @@
 			"place": "Rezang La",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "Eastern",
 			"media": [
 				{
@@ -7968,7 +7968,7 @@
 			"city": "Pangong Tso",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/horned-lark-3.jpg"
@@ -8077,7 +8077,7 @@
 			"place": "Chang La",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/horned-lark-female.jpg"
@@ -8202,7 +8202,7 @@
 			"place": "Khardung La",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"variation": "Eastern",
 			"media": [
 				{
@@ -8217,7 +8217,7 @@
 			"place": "Khardung La",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/white-winged-redstart.jpg"
@@ -8231,7 +8231,7 @@
 			"place": "Khardung La",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "Eastern",
 			"media": [
 				{
@@ -8247,7 +8247,7 @@
 			"city": "Leh",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Breeding",
 			"media": [
 				{
@@ -8263,7 +8263,7 @@
 			"city": "Leh",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Molting",
 			"media": [
 				{
@@ -8282,7 +8282,7 @@
 			"city": "Leh",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/mallard-female.jpg"
@@ -8310,7 +8310,7 @@
 			"city": "Taglang La",
 			"state": "Ladakh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/horned-lark-2.jpg"
@@ -8381,7 +8381,7 @@
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"variation": "White",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/indian-paradise-flycatcher-white-male-3.jpg"
@@ -8538,7 +8538,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "White",
 			"media": [
 				{
@@ -8553,7 +8553,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"variation": "Rufous",
 			"media": [
 				{
@@ -8572,7 +8572,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/long-tailed-minivet-female.jpg"
@@ -8586,7 +8586,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/long-tailed-minivet-male-3.jpg"
@@ -8645,7 +8645,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/brown-fronted-woodpecker-female-2.jpg"
@@ -8659,7 +8659,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/brown-fronted-woodpecker-male-2.jpg"
@@ -8689,7 +8689,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/red-junglefowl-female.jpg"
@@ -8734,7 +8734,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/fulvous-breasted-woodpecker-male-2.jpg"
@@ -8748,7 +8748,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/plum-headed-parakeet-male-2.jpg"
@@ -8762,7 +8762,7 @@
 			"city": "Chafi",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/black-francolin-male-2.jpg"
@@ -8785,7 +8785,7 @@
 			"city": "Pangot",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/rufous-bellied-woodpecker-female.jpg"
@@ -8914,7 +8914,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/ultramarine-flycatcher-female-2.jpg"
@@ -8928,7 +8928,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/ultramarine-flycatcher-male-2.jpg"
@@ -8942,7 +8942,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/blue-throated-blue-flycatcher-male-2.jpg"
@@ -9049,7 +9049,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/red-junglefowl-male.jpg"
@@ -9063,7 +9063,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/grey-winged-blackbird-female-3.jpg"
@@ -9077,7 +9077,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/tickells-thrush-female.jpg"
@@ -9198,7 +9198,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/orange-bellied-leafbird-male-2.jpg"
@@ -9215,7 +9215,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/orange-bellied-leafbird-female-2.jpg"
@@ -9229,7 +9229,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/tickells-thrush-male-2.jpg"
@@ -9275,7 +9275,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/black-throated-sunbird-male.jpg"
@@ -9302,7 +9302,7 @@
 			"city": "Bhimtal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/purple-sunbird-female-2.jpg"
@@ -9348,7 +9348,7 @@
 			"city": "Sattal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/purple-sunbird-male-2.jpg"
@@ -9366,7 +9366,7 @@
 			"city": "Bhimtal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/black-francolin-female.jpg"
@@ -9396,7 +9396,7 @@
 			"city": "Bhimtal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/chestnut-bellied-nuthatch-male-2.jpg"
@@ -9413,7 +9413,7 @@
 			"city": "Bhimtal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/chestnut-bellied-nuthatch-female-2.jpg"
@@ -9443,7 +9443,7 @@
 					"src": "images/grey-headed-woodpecker-1663127193.jpg"
 				}
 			],
-			"gender": "F",
+			"gender": "Female",
 			"variation": "Black-naped"
 		},
 		{
@@ -9485,7 +9485,7 @@
 			"city": "Bhimtal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/plum-headed-parakeet-female-2.jpg"
@@ -9515,7 +9515,7 @@
 			"city": "Bhimtal",
 			"state": "Uttarakhand",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/common-rosefinch-female-3.jpg"
@@ -9552,7 +9552,7 @@
 					"src": "images/scarlet-minivet-1664379729.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1664378962",
@@ -9571,7 +9571,7 @@
 					"src": "images/siberian-stonechat-1664379203.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "s1664378100",
@@ -9590,7 +9590,7 @@
 					"src": "images/pied-bushchat-1664378311.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "s1664378037",
@@ -9606,7 +9606,7 @@
 					"src": "images/pied-bushchat-1664378228.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "asian-barred-owlet",
@@ -9746,7 +9746,7 @@
 			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/mrs-goulds-sunbird-male.jpg"
@@ -9799,7 +9799,7 @@
 			"city": "Tirthan Valley",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/red-headed-bullfinch.jpg"
@@ -9817,7 +9817,7 @@
 			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/yellow-breasted-greenfinch-male.jpg"
@@ -9832,7 +9832,7 @@
 			"place": "Tindar",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/yellow-breasted-greenfinch-female.jpg"
@@ -9875,7 +9875,7 @@
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/kalij-pheasant-male-4.jpg"
@@ -9911,7 +9911,7 @@
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/kalij-pheasant-male-2.jpg"
@@ -10036,7 +10036,7 @@
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "videos/russet-sparrow-male.mp4",
@@ -10099,7 +10099,7 @@
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/rufous-bellied-niltava-male-2.jpg"
@@ -10113,7 +10113,7 @@
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "F",
+			"gender": "Female",
 			"media": [
 				{
 					"src": "images/rufous-bellied-niltava-female.jpg"
@@ -10216,7 +10216,7 @@
 		{
 			"key": "plumbeous-water-redstart-female-3",
 			"species": "plumbeous-water-redstart",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-03-2022",
 			"place": "Que Khola Falls",
 			"state": "Sikkim",
@@ -10248,7 +10248,7 @@
 		{
 			"key": "himalayan-monal-female",
 			"species": "himalayan-monal",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-03-2022",
 			"place": "Thambi View Point",
 			"state": "Sikkim",
@@ -10266,7 +10266,7 @@
 		{
 			"key": "grey-winged-blackbird-female-2",
 			"species": "grey-winged-blackbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-03-2022",
 			"place": "Gaddigaon",
 			"state": "Sikkim",
@@ -10280,7 +10280,7 @@
 		{
 			"key": "white-collared-blackbird-female",
 			"species": "white-collared-blackbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-03-2022",
 			"place": "Gaddigaon",
 			"state": "Sikkim",
@@ -10308,7 +10308,7 @@
 		{
 			"key": "blue-capped-rock-thrush-male",
 			"species": "blue-capped-rock-thrush",
-			"gender": "M",
+			"gender": "Male",
 			"date": "18-03-2022",
 			"place": "Agamlok",
 			"state": "Sikkim",
@@ -10439,7 +10439,7 @@
 		{
 			"key": "oriental-magpie-robin-male-3",
 			"species": "oriental-magpie-robin",
-			"gender": "M",
+			"gender": "Male",
 			"date": "16-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
@@ -10454,7 +10454,7 @@
 		{
 			"key": "house-sparrow-male-2",
 			"species": "house-sparrow",
-			"gender": "M",
+			"gender": "Male",
 			"date": "05-03-2022",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -10502,7 +10502,7 @@
 		{
 			"key": "asian-koel-male",
 			"species": "asian-koel",
-			"gender": "M",
+			"gender": "Male",
 			"date": "26-01-2022",
 			"place": "Rabindra Sarobar",
 			"city": "Kolkata",
@@ -10674,7 +10674,7 @@
 		{
 			"key": "greater-painted-snipe-female",
 			"species": "greater-painted-snipe",
-			"gender": "F",
+			"gender": "Female",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -10769,7 +10769,7 @@
 		{
 			"key": "asian-koel-female-2",
 			"species": "asian-koel",
-			"gender": "F",
+			"gender": "Female",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -10797,7 +10797,7 @@
 		{
 			"key": "gadwall-male",
 			"species": "gadwall",
-			"gender": "M",
+			"gender": "Male",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -10811,7 +10811,7 @@
 		{
 			"key": "gadwall-female",
 			"species": "gadwall",
-			"gender": "F",
+			"gender": "Female",
 			"date": "16-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -10961,7 +10961,7 @@
 		{
 			"key": "northern-shoveler-female",
 			"species": "northern-shoveler",
-			"gender": "F",
+			"gender": "Female",
 			"date": "15-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -11053,7 +11053,7 @@
 		{
 			"key": "northern-shoveler-breeding-male",
 			"species": "northern-shoveler",
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Breeding",
 			"date": "14-01-2022",
 			"place": "Mangalajodi Wetlands",
@@ -11081,7 +11081,7 @@
 		{
 			"key": "bronze-winged-jacana-male-2",
 			"species": "bronze-winged-jacana",
-			"gender": "M",
+			"gender": "Male",
 			"date": "14-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -11095,7 +11095,7 @@
 		{
 			"key": "grey-capped-pygmy-woodpecker-male",
 			"species": "grey-capped-pygmy-woodpecker",
-			"gender": "M",
+			"gender": "Male",
 			"date": "25-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
@@ -11110,7 +11110,7 @@
 		{
 			"key": "golden-fronted-leafbird-male",
 			"species": "golden-fronted-leafbird",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11139,7 +11139,7 @@
 		{
 			"key": "maroon-oriole-male",
 			"species": "maroon-oriole",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
@@ -11154,7 +11154,7 @@
 		{
 			"key": "fire-tailed-sunbird-female",
 			"species": "fire-tailed-sunbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11169,7 +11169,7 @@
 		{
 			"key": "green-tailed-sunbird-male",
 			"species": "green-tailed-sunbird",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
@@ -11187,7 +11187,7 @@
 		{
 			"key": "green-tailed-sunbird-female",
 			"species": "green-tailed-sunbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
@@ -11202,7 +11202,7 @@
 		{
 			"key": "orange-bellied-leafbird-female",
 			"species": "orange-bellied-leafbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11332,7 +11332,7 @@
 		{
 			"key": "chestnut-bellied-nuthatch-male",
 			"species": "chestnut-bellied-nuthatch",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
@@ -11347,7 +11347,7 @@
 		{
 			"key": "chestnut-headed-bee-eater-2",
 			"species": "chestnut-headed-bee-eater",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
@@ -11376,7 +11376,7 @@
 		{
 			"key": "rufous-necked-hornbill-female",
 			"species": "rufous-necked-hornbill",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11400,7 +11400,7 @@
 		{
 			"key": "rufous-necked-hornbill-male",
 			"species": "rufous-necked-hornbill",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11418,7 +11418,7 @@
 		{
 			"key": "oriental-pied-hornbill",
 			"species": "oriental-pied-hornbill",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
@@ -11470,7 +11470,7 @@
 		{
 			"key": "blue-rock-thrush-male",
 			"species": "blue-rock-thrush",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
@@ -11485,7 +11485,7 @@
 		{
 			"key": "blue-rock-thrush-female",
 			"species": "blue-rock-thrush",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Shibkhola Forest",
 			"city": "Darjeeling",
@@ -11500,7 +11500,7 @@
 		{
 			"key": "grey-capped-pygmy-woodpecker-female",
 			"species": "grey-capped-pygmy-woodpecker",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11515,7 +11515,7 @@
 		{
 			"key": "scarlet-minivet-male",
 			"species": "scarlet-minivet",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11530,7 +11530,7 @@
 		{
 			"key": "scarlet-minivet-female",
 			"species": "scarlet-minivet",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11652,7 +11652,7 @@
 		{
 			"key": "red-crested-pochard-male",
 			"species": "red-crested-pochard",
-			"gender": "M",
+			"gender": "Male",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11673,7 +11673,7 @@
 		{
 			"key": "red-crested-pochard-female",
 			"species": "red-crested-pochard",
-			"gender": "F",
+			"gender": "Female",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11688,7 +11688,7 @@
 		{
 			"key": "green-winged-teal-female",
 			"species": "green-winged-teal",
-			"gender": "F",
+			"gender": "Female",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11703,7 +11703,7 @@
 		{
 			"key": "green-winged-teal-male",
 			"species": "green-winged-teal",
-			"gender": "M",
+			"gender": "Male",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11718,7 +11718,7 @@
 		{
 			"key": "falcated-duck-male",
 			"species": "falcated-duck",
-			"gender": "M",
+			"gender": "Male",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11823,7 +11823,7 @@
 		{
 			"key": "eurasian-wigeon-male",
 			"species": "eurasian-wigeon",
-			"gender": "M",
+			"gender": "Male",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11838,7 +11838,7 @@
 		{
 			"key": "tufted-duck-male",
 			"species": "tufted-duck",
-			"gender": "M",
+			"gender": "Male",
 			"date": "23-12-2021",
 			"place": "Gajoldoba",
 			"city": "Jalpaiguri",
@@ -11877,7 +11877,7 @@
 					"src": "images/blyths-shrike-babbler.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "nepal-fulvetta",
@@ -11913,7 +11913,7 @@
 		{
 			"key": "red-headed-trogon-female",
 			"species": "red-headed-trogon",
-			"gender": "F",
+			"gender": "Female",
 			"date": "22-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -11956,7 +11956,7 @@
 		{
 			"key": "maroon-oriole-female",
 			"species": "maroon-oriole",
-			"gender": "F",
+			"gender": "Female",
 			"date": "22-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
 			"city": "Darjeeling",
@@ -11986,7 +11986,7 @@
 		{
 			"key": "chestnut-bellied-nuthatch-female",
 			"species": "chestnut-bellied-nuthatch",
-			"gender": "F",
+			"gender": "Female",
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -12015,7 +12015,7 @@
 		{
 			"key": "orange-bellied-leafbird-male",
 			"species": "orange-bellied-leafbird",
-			"gender": "M",
+			"gender": "Male",
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -12031,7 +12031,7 @@
 		{
 			"key": "long-tailed-minivet-male",
 			"species": "long-tailed-minivet",
-			"gender": "M",
+			"gender": "Male",
 			"date": "21-12-2021",
 			"place": "Latpanchar",
 			"city": "Darjeeling",
@@ -12203,7 +12203,7 @@
 		{
 			"key": "fulvous-breasted-woodpecker-female",
 			"species": "fulvous-breasted-woodpecker",
-			"gender": "F",
+			"gender": "Female",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -12217,7 +12217,7 @@
 		{
 			"key": "fulvous-breasted-woodpecker-male",
 			"species": "fulvous-breasted-woodpecker",
-			"gender": "M",
+			"gender": "Male",
 			"date": "05-11-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -12353,7 +12353,7 @@
 		{
 			"key": "ashy-crowned-sparrow-lark-male",
 			"species": "ashy-crowned-sparrow-lark",
-			"gender": "M",
+			"gender": "Male",
 			"date": "04-11-2021",
 			"place": "Pentha Beach",
 			"state": "Odisha",
@@ -12367,7 +12367,7 @@
 		{
 			"key": "ashy-crowned-sparrow-lark-female",
 			"species": "ashy-crowned-sparrow-lark",
-			"gender": "F",
+			"gender": "Female",
 			"date": "04-11-2021",
 			"place": "Pentha Beach",
 			"state": "Odisha",
@@ -12473,7 +12473,7 @@
 		{
 			"key": "cotton-pygmy-goose-female",
 			"species": "cotton-pygmy-goose",
-			"gender": "F",
+			"gender": "Female",
 			"date": "03-11-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -12514,7 +12514,7 @@
 		{
 			"key": "taiga-flycatcher-female",
 			"species": "taiga-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"date": "02-11-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -12542,7 +12542,7 @@
 		{
 			"key": "black-naped-monarch-female",
 			"species": "black-naped-monarch",
-			"gender": "F",
+			"gender": "Female",
 			"date": "01-11-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -12569,7 +12569,7 @@
 		{
 			"key": "black-headed-cuckoo-shrike-female",
 			"species": "black-headed-cuckoo-shrike",
-			"gender": "F",
+			"gender": "Female",
 			"date": "31-10-2021",
 			"place": "Bhitarkanika National Park",
 			"state": "Odisha",
@@ -12683,7 +12683,7 @@
 		{
 			"key": "purple-sunbird-female",
 			"species": "purple-sunbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-07-2021",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -12781,7 +12781,7 @@
 		{
 			"key": "grey-winged-blackbird-female",
 			"species": "grey-winged-blackbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "16-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -12795,7 +12795,7 @@
 		{
 			"key": "brown-fronted-woodpecker-female",
 			"species": "brown-fronted-woodpecker",
-			"gender": "F",
+			"gender": "Female",
 			"date": "15-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -12809,7 +12809,7 @@
 		{
 			"key": "black-throated-thrush-female",
 			"species": "black-throated-thrush",
-			"gender": "F",
+			"gender": "Female",
 			"date": "15-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -12881,7 +12881,7 @@
 		{
 			"key": "brown-fronted-woodpecker-male",
 			"species": "brown-fronted-woodpecker",
-			"gender": "M",
+			"gender": "Male",
 			"date": "13-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -12950,7 +12950,7 @@
 		{
 			"key": "grey-winged-blackbird-male",
 			"species": "grey-winged-blackbird",
-			"gender": "M",
+			"gender": "Male",
 			"date": "11-04-2021",
 			"place": "Kareri",
 			"state": "Himachal Pradesh",
@@ -12993,7 +12993,7 @@
 		{
 			"key": "siberian-stonechat-female",
 			"species": "siberian-stonechat",
-			"gender": "F",
+			"gender": "Female",
 			"date": "11-04-2021",
 			"place": "Kareri",
 			"state": "Himachal Pradesh",
@@ -13007,7 +13007,7 @@
 		{
 			"key": "siberian-stonechat-male",
 			"species": "siberian-stonechat",
-			"gender": "M",
+			"gender": "Male",
 			"date": "11-04-2021",
 			"place": "Kareri",
 			"state": "Himachal Pradesh",
@@ -13025,7 +13025,7 @@
 			"place": "Kareri",
 			"state": "Himachal Pradesh",
 			"country": "India",
-			"gender": "M",
+			"gender": "Male",
 			"media": [
 				{
 					"src": "images/rufous-bellied-niltava.jpg"
@@ -13061,7 +13061,7 @@
 		{
 			"key": "house-sparrow-female-2",
 			"species": "house-sparrow",
-			"gender": "F",
+			"gender": "Female",
 			"date": "10-04-2021",
 			"place": "Kareri",
 			"state": "Himachal Pradesh",
@@ -13075,7 +13075,7 @@
 		{
 			"key": "kalij-pheasant-female",
 			"species": "kalij-pheasant",
-			"gender": "F",
+			"gender": "Female",
 			"date": "08-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13105,7 +13105,7 @@
 		{
 			"key": "kalij-pheasant-male",
 			"species": "kalij-pheasant",
-			"gender": "M",
+			"gender": "Male",
 			"date": "07-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13174,7 +13174,7 @@
 		{
 			"key": "grey-bushchat-female",
 			"species": "grey-bushchat",
-			"gender": "F",
+			"gender": "Female",
 			"date": "04-04-2021",
 			"place": "Banjar",
 			"state": "Himachal Pradesh",
@@ -13233,7 +13233,7 @@
 		{
 			"key": "blue-throated-blue-flycatcher-female",
 			"species": "blue-throated-blue-flycatcher",
-			"gender": "F",
+			"gender": "Female",
 			"date": "03-04-2021",
 			"place": "Kareri",
 			"state": "Himachal Pradesh",
@@ -13248,7 +13248,7 @@
 		{
 			"key": "pink-browed-rosefinch-female",
 			"species": "pink-browed-rosefinch",
-			"gender": "F",
+			"gender": "Female",
 			"date": "01-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13265,7 +13265,7 @@
 		{
 			"key": "common-rosefinch-male",
 			"species": "common-rosefinch",
-			"gender": "M",
+			"gender": "Male",
 			"date": "01-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13282,7 +13282,7 @@
 		{
 			"key": "common-rosefinch-female",
 			"species": "common-rosefinch",
-			"gender": "F",
+			"gender": "Female",
 			"date": "01-04-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13296,7 +13296,7 @@
 		{
 			"key": "common-rosefinch-male-2",
 			"species": "common-rosefinch",
-			"gender": "M",
+			"gender": "Male",
 			"date": "31-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13336,7 +13336,7 @@
 		{
 			"key": "ultramarine-flycatcher-female",
 			"species": "ultramarine-flycatcher",
-			"gender": "F",
+			"gender": "Female",
 			"date": "28-03-2021",
 			"city": "Manali",
 			"state": "Himachal Pradesh",
@@ -13350,7 +13350,7 @@
 		{
 			"key": "ultramarine-flycatcher-male",
 			"species": "ultramarine-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"date": "28-03-2021",
 			"city": "Manali",
 			"state": "Himachal Pradesh",
@@ -13422,7 +13422,7 @@
 		{
 			"key": "plumbeous-water-redstart-male",
 			"species": "plumbeous-water-redstart",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-03-2021",
 			"place": "Dharamshala",
 			"state": "Himachal Pradesh",
@@ -13436,7 +13436,7 @@
 		{
 			"key": "pied-bushchat",
 			"species": "pied-bushchat",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-03-2021",
 			"place": "Dalhousie",
 			"state": "Himachal Pradesh",
@@ -13450,7 +13450,7 @@
 		{
 			"key": "grey-bushchat-male",
 			"species": "grey-bushchat",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-03-2021",
 			"place": "Dalhousie",
 			"state": "Himachal Pradesh",
@@ -13470,7 +13470,7 @@
 		{
 			"key": "chestnut-bellied-rock-thrush-female",
 			"species": "chestnut-bellied-rock-thrush",
-			"gender": "F",
+			"gender": "Female",
 			"date": "22-03-2021",
 			"place": "Dalhousie",
 			"state": "Himachal Pradesh",
@@ -13484,7 +13484,7 @@
 		{
 			"key": "chestnut-bellied-rock-thrush-male",
 			"species": "chestnut-bellied-rock-thrush",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13511,7 +13511,7 @@
 		{
 			"key": "grey-chinned-minivet-female",
 			"species": "grey-chinned-minivet",
-			"gender": "F",
+			"gender": "Female",
 			"date": "16-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13554,7 +13554,7 @@
 		{
 			"key": "alexandrine-parakeet",
 			"species": "alexandrine-parakeet",
-			"gender": "M",
+			"gender": "Male",
 			"date": "15-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13637,7 +13637,7 @@
 		{
 			"key": "russet-sparrow-female",
 			"species": "russet-sparrow",
-			"gender": "F",
+			"gender": "Female",
 			"date": "09-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13664,7 +13664,7 @@
 		{
 			"key": "russet-sparrow-male",
 			"species": "russet-sparrow",
-			"gender": "M",
+			"gender": "Male",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13678,7 +13678,7 @@
 		{
 			"key": "blue-fronted-redstart-female",
 			"species": "blue-fronted-redstart",
-			"gender": "F",
+			"gender": "Female",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13760,7 +13760,7 @@
 		{
 			"key": "grey-headed-woodpecker-male",
 			"species": "grey-headed-woodpecker",
-			"gender": "M",
+			"gender": "Male",
 			"date": "03-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13804,7 +13804,7 @@
 		{
 			"key": "himalayan-bluetail-male",
 			"species": "himalayan-bluetail",
-			"gender": "M",
+			"gender": "Male",
 			"date": "01-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13853,7 +13853,7 @@
 		{
 			"key": "himalayan-bluetail-female",
 			"species": "himalayan-bluetail",
-			"gender": "F",
+			"gender": "Female",
 			"date": "01-03-2021",
 			"city": "Mcleodganj",
 			"state": "Himachal Pradesh",
@@ -13966,7 +13966,7 @@
 		{
 			"key": "plumbeous-water-redstart-female-2",
 			"species": "plumbeous-water-redstart",
-			"gender": "F",
+			"gender": "Female",
 			"date": "30-12-2020",
 			"place": "Lava",
 			"city": "Kalimpong",
@@ -14076,7 +14076,7 @@
 		{
 			"key": "northern-pintail-male",
 			"species": "northern-pintail",
-			"gender": "M",
+			"gender": "Male",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -14116,7 +14116,7 @@
 		{
 			"key": "indian-paradise-flycatcher-white-male",
 			"species": "indian-paradise-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "White",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
@@ -14171,7 +14171,7 @@
 		{
 			"key": "northern-pintail-female",
 			"species": "northern-pintail",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -14198,7 +14198,7 @@
 		{
 			"key": "besra-female-2",
 			"species": "besra",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -14212,7 +14212,7 @@
 		{
 			"key": "northern-shoveler-non-breeding-male",
 			"species": "northern-shoveler",
-			"gender": "M",
+			"gender": "Male",
 			"plumage": "Non-Breeding",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
@@ -14267,7 +14267,7 @@
 		{
 			"key": "garganey-female",
 			"species": "garganey",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -14281,7 +14281,7 @@
 		{
 			"key": "oriental-magpie-robin-male-4",
 			"species": "oriental-magpie-robin",
-			"gender": "M",
+			"gender": "Male",
 			"date": "20-11-2020",
 			"place": "Santragachhi Jheel",
 			"city": "Howrah",
@@ -14318,7 +14318,7 @@
 					"src": "images/black-rumped-flameback.jpg"
 				}
 			],
-			"gender": "F",
+			"gender": "Female",
 			"hidden": true
 		},
 		{
@@ -14350,7 +14350,7 @@
 		{
 			"key": "cotton-pygmy-goose-male",
 			"species": "cotton-pygmy-goose",
-			"gender": "M",
+			"gender": "Male",
 			"date": "19-01-2020",
 			"place": "Kumarakom",
 			"state": "Kerala",
@@ -14364,7 +14364,7 @@
 		{
 			"key": "indian-paradise-flycatcher-rufous-male",
 			"species": "indian-paradise-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"variation": "Rufous",
 			"date": "19-01-2020",
 			"place": "Kumarakom",
@@ -14422,7 +14422,7 @@
 		{
 			"key": "pink-browed-rosefinch-male",
 			"species": "pink-browed-rosefinch",
-			"gender": "M",
+			"gender": "Male",
 			"date": "17-08-2019",
 			"place": "Ghangaria",
 			"state": "Uttarakhand",
@@ -14462,7 +14462,7 @@
 		{
 			"key": "russet-sparrow-male-2",
 			"species": "russet-sparrow",
-			"gender": "M",
+			"gender": "Male",
 			"date": "28-02-2019",
 			"city": "Manali",
 			"state": "Himachal Pradesh",
@@ -14490,7 +14490,7 @@
 		{
 			"key": "golden-oriole-female",
 			"species": "golden-oriole",
-			"gender": "F",
+			"gender": "Female",
 			"date": "22-02-2019",
 			"place": "",
 			"state": "Kerala",
@@ -14533,7 +14533,7 @@
 		{
 			"key": "blue-throated-blue-flycatcher-male",
 			"species": "blue-throated-blue-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-02-2019",
 			"place": "",
 			"state": "Kerala",
@@ -14548,7 +14548,7 @@
 		{
 			"key": "tickells-blue-flycatcher-3",
 			"species": "tickells-blue-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-02-2019",
 			"place": "",
 			"state": "Kerala",
@@ -14639,7 +14639,7 @@
 		{
 			"key": "orange-minivet-male",
 			"species": "orange-minivet",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-02-2019",
 			"place": "",
 			"state": "Kerala",
@@ -14675,7 +14675,7 @@
 		{
 			"key": "malabar-grey-hornbill-male",
 			"species": "malabar-grey-hornbill",
-			"gender": "M",
+			"gender": "Male",
 			"date": "22-02-2019",
 			"place": "",
 			"state": "Kerala",
@@ -14735,7 +14735,7 @@
 		{
 			"key": "plum-headed-parakeet-female",
 			"species": "plum-headed-parakeet",
-			"gender": "F",
+			"gender": "Female",
 			"date": "22-02-2019",
 			"place": "",
 			"state": "Kerala",
@@ -14750,7 +14750,7 @@
 		{
 			"key": "ceylon-frogmouth-female",
 			"species": "ceylon-frogmouth",
-			"gender": "F",
+			"gender": "Female",
 			"date": "22-02-2019",
 			"place": "Urulanthanni",
 			"state": "Kerala",
@@ -14841,7 +14841,7 @@
 		{
 			"key": "bronze-winged-jacana-male",
 			"species": "bronze-winged-jacana",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
@@ -14856,7 +14856,7 @@
 		{
 			"key": "bronze-winged-jacana-female",
 			"species": "bronze-winged-jacana",
-			"gender": "F",
+			"gender": "Female",
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
@@ -14977,7 +14977,7 @@
 		{
 			"key": "blue-fronted-redstart-male",
 			"species": "blue-fronted-redstart",
-			"gender": "M",
+			"gender": "Male",
 			"date": "24-12-2018",
 			"place": "Molley",
 			"state": "West Bengal",
@@ -15052,7 +15052,7 @@
 					"src": "images/black-rumped-flameback-2.jpg"
 				}
 			],
-			"gender": "F"
+			"gender": "Female"
 		},
 		{
 			"key": "brown-fish-owl",
@@ -15189,7 +15189,7 @@
 		{
 			"key": "malabar-parakeet",
 			"species": "malabar-parakeet",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-11-2018",
 			"place": "",
 			"state": "Kerala",
@@ -15228,12 +15228,12 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "black-naped-oriole-male",
 			"species": "black-naped-oriole",
-			"gender": "M",
+			"gender": "Male",
 			"date": "19-11-2018",
 			"place": "",
 			"state": "Kerala",
@@ -15266,7 +15266,7 @@
 		{
 			"key": "malabar-grey-hornbill-female",
 			"species": "malabar-grey-hornbill",
-			"gender": "F",
+			"gender": "Female",
 			"date": "19-11-2018",
 			"place": "",
 			"state": "Kerala",
@@ -15291,7 +15291,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"gender": "M"
+			"gender": "Male"
 		},
 		{
 			"key": "asian-brown-flycatcher",
@@ -15325,7 +15325,7 @@
 		{
 			"key": "ceylon-frogmouth-male",
 			"species": "ceylon-frogmouth",
-			"gender": "M",
+			"gender": "Male",
 			"date": "19-11-2018",
 			"place": "",
 			"state": "Kerala",
@@ -15393,7 +15393,7 @@
 		{
 			"key": "orange-minivet-female",
 			"species": "orange-minivet",
-			"gender": "F",
+			"gender": "Female",
 			"date": "07-05-2018",
 			"city": "Munnar",
 			"state": "Kerala",
@@ -15446,7 +15446,7 @@
 		{
 			"key": "rose-ringed-parakeet-female",
 			"species": "rose-ringed-parakeet",
-			"gender": "F",
+			"gender": "Female",
 			"date": "08-04-2018",
 			"place": "Kancheepuram",
 			"state": "Tamil Nadu",
@@ -15499,7 +15499,7 @@
 		{
 			"key": "purple-sunbird-male",
 			"species": "purple-sunbird",
-			"gender": "M",
+			"gender": "Male",
 			"date": "14-03-2018",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -15544,7 +15544,7 @@
 		{
 			"key": "shikra-juvenile-female",
 			"species": "shikra",
-			"gender": "F",
+			"gender": "Female",
 			"age": "Juvenile",
 			"date": "16-01-2018",
 			"city": "Chennai",
@@ -15665,7 +15665,7 @@
 		{
 			"key": "indian-paradise-flycatcher-rufous-female",
 			"species": "indian-paradise-flycatcher",
-			"gender": "F",
+			"gender": "Female",
 			"variation": "Rufous",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
@@ -15722,7 +15722,7 @@
 		{
 			"key": "tickells-blue-flycatcher",
 			"species": "tickells-blue-flycatcher",
-			"gender": "M",
+			"gender": "Male",
 			"date": "26-12-2017",
 			"place": "Ranganathittu Bird Sanctuary",
 			"state": "Karnataka",
@@ -15778,7 +15778,7 @@
 		{
 			"key": "golden-oriole-male",
 			"species": "golden-oriole",
-			"gender": "M",
+			"gender": "Male",
 			"date": "19-11-2017",
 			"place": "Vedanthangal Bird Sanctuary",
 			"state": "Tamil Nadu",
@@ -15914,7 +15914,7 @@
 		{
 			"key": "indian-peafowl-female",
 			"species": "indian-peafowl",
-			"gender": "F",
+			"gender": "Female",
 			"date": "09-10-2017",
 			"place": "",
 			"state": "Kerala",
@@ -15929,7 +15929,7 @@
 		{
 			"key": "oriental-magpie-robin-male",
 			"species": "oriental-magpie-robin",
-			"gender": "M",
+			"gender": "Male",
 			"date": "01-10-2017",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -15943,7 +15943,7 @@
 		{
 			"key": "oriental-magpie-robin-female",
 			"species": "oriental-magpie-robin",
-			"gender": "F",
+			"gender": "Female",
 			"date": "01-10-2017",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -15973,7 +15973,7 @@
 		{
 			"key": "shikra-female",
 			"species": "shikra",
-			"gender": "F",
+			"gender": "Female",
 			"date": "28-08-2017",
 			"place": "Arignar Anna Zoological Park",
 			"state": "Tamil Nadu",
@@ -15987,7 +15987,7 @@
 		{
 			"key": "purple-rumped-sunbird-male",
 			"species": "purple-rumped-sunbird",
-			"gender": "M",
+			"gender": "Male",
 			"date": "20-07-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
@@ -16008,7 +16008,7 @@
 		{
 			"key": "asian-koel-female",
 			"species": "asian-koel",
-			"gender": "F",
+			"gender": "Female",
 			"date": "17-06-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
@@ -16037,7 +16037,7 @@
 		{
 			"key": "purple-rumped-sunbird-female",
 			"species": "purple-rumped-sunbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "14-06-2017",
 			"city": "Chennai",
 			"place": "Guduvancheri",
@@ -16142,7 +16142,7 @@
 		{
 			"key": "lotens-sunbird-female",
 			"species": "lotens-sunbird",
-			"gender": "F",
+			"gender": "Female",
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
@@ -16171,7 +16171,7 @@
 		{
 			"key": "streaked-weaver-female",
 			"species": "streaked-weaver",
-			"gender": "F",
+			"gender": "Female",
 			"date": "04-06-2017",
 			"place": "Kolavai Lake",
 			"city": "Chengalpattu",
@@ -16325,7 +16325,7 @@
 		{
 			"key": "house-sparrow-female",
 			"species": "house-sparrow",
-			"gender": "F",
+			"gender": "Female",
 			"date": "05-05-2017",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -16339,7 +16339,7 @@
 		{
 			"key": "house-sparrow-male",
 			"species": "house-sparrow",
-			"gender": "M",
+			"gender": "Male",
 			"date": "05-05-2017",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -16393,7 +16393,7 @@
 		{
 			"key": "indian-peafowl-male",
 			"species": "indian-peafowl",
-			"gender": "M",
+			"gender": "Male",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
 			"state": "Madhya Pradesh",
@@ -16466,7 +16466,7 @@
 		{
 			"key": "besra-female",
 			"species": "besra",
-			"gender": "F",
+			"gender": "Female",
 			"date": "03-05-2017",
 			"place": "Bandhavgarh National Park",
 			"state": "Madhya Pradesh",
@@ -16561,7 +16561,7 @@
 		{
 			"key": "plum-headed-parakeet-male",
 			"species": "plum-headed-parakeet",
-			"gender": "M",
+			"gender": "Male",
 			"date": "01-05-2017",
 			"place": "Bandhavgarh National Park",
 			"state": "Madhya Pradesh",

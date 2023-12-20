@@ -23,6 +23,9 @@ h2 {
 	text-decoration: underline;
 	margin-left: 20px;
 }
+td {
+	overflow: hidden;
+}
 
 input[type=checkbox] {
 	transform: translateY(4px);
@@ -31,14 +34,24 @@ input[type=checkbox] {
 span {
 	display: inline-block;
 }
-input[type=text], input[type=date], input[type=password], select {
+input[type=text], input[type=date], input[type=password], input[type=select] {
 	width: 200px;
 	display: block;
 	color-scheme: dark;
 	text-align: left;
 	justify-content: left;
-	border: none;
+	border: 1px solid grey;
+	margin-right: 5px;
 	text-overflow: ellipsis;
+}
+input[type=select][data-field=species] {
+	width: 200px;
+}
+input[type=select][data-field=country], input[type=select][data-field=state] {
+	width: 180px;
+}
+input[type=select][data-field=gender], input[type=select][data-field=age], input[type=select][data-field=plumage] {
+	width: 160px;
 }
 input[type=text] {
 	padding-left: 3px;

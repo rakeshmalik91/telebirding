@@ -124,10 +124,20 @@
 					<th class='noborder'></th>
 				</tr>
 				<tr>
-					<td><select data-field='key' style="width: 200px;"/></td>
+					<td>
+						<div>
+						    <datalist data-field='key' id="species-form-select-key"></datalist>
+						    <input type='select' data-field='key' autoComplete="on" list="species-form-select-key" placeholder="New (auto-generate key)" /> 
+						</div>
+					</td>
 					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
 					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..."  style="width: 300px;"/></td>
-					<td><select data-field='family' style="width: 200px;"/></td>
+					<td>
+						<div>
+						    <datalist data-field='family' id="species-form-select-family"></datalist>
+						    <input type='select' data-field='family' autoComplete="on" list="species-form-select-family" placeholder="Select Family" /> 
+						</div>
+					</td>
 					<td class='noborder'><button class='submit'>Add</button></td>
 				</tr>
 			</table>

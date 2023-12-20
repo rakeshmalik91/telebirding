@@ -9,11 +9,12 @@ var SYNC_SCHEDULE_TIME = 60000;
 
 var OPT_GENDER = {
 	'': '-', 
-	'M': "Male", 
-	'F': 'Female'
+	'Male': "Male", 
+	'Female': 'Female'
 };
 var OPT_AGE = {
-	'': 'Adult', 
+	'': '-', 
+	'Adult': 'Adult',
 	'Juvenile': 'Juvenile', 
 	'Immature': 'Immature',
 	'Juvenile/Immature': 'Juvenile/Immature'
@@ -25,8 +26,9 @@ var OPT_PLUMAGE = {
 	'Winter': 'Winter', 
 	'Eclipse': 'Eclipse', 
 	'Molting': 'Molting', 
+	'First-Winter': 'First-Winter', 
 	'Immature/Non-Breeding': 'Immature/Non-Breeding', 
-	'Female/Non-Breeding-Male': 'Female/Non-Breeding'
+	'Female/Non-Breeding-Male': 'Female/Non-Breeding-Male'
 };
 
 var DATA_DATE_FORMAT = "DD-MM-yyyy";
@@ -42,13 +44,20 @@ function getValue(bird, prop) {
 	return bird[prop] ? bird[prop] : '';
 }
 
-function getSelectDOM(field, options, value, width) {
-	var dom = "<select data-field='" + field + "' style='width:" + width + "'>";
+function setValue(bird, prop, value) {
+	bird[prop] = value;
+}
+
+function getSelectDOM(key, field, options, value) {
+	var dom = "<div data-field='" + field + "'>";
+	dom += "<datalist data-field='" + field + "' id='select-" + field + "-" + key + "'>";
 	for (const [k, v] of Object.entries(options)) {
 		var name = v instanceof Object ? v.name : v;
 		dom += "<option value='" + k + "' " + (k == value ? 'selected' : '') + ">" + name + "</option>";
 	}
-	dom += "</select>";
+	dom += "</datalist>";
+	dom += "<input type='select' data-field='" + field + "' autoComplete='on' list='select-" + field + "-" + key + "' value='" + value + "' placeholder='Select " + field + "'/>";
+	dom += "</div>"
 	return dom;
 }
 
@@ -292,19 +301,19 @@ function moveSighting(birdKey, direction) {
 
 function fillUpdateSpeciesForm() {
 	var updateSpeciesForm = $("#update-species-form");
-	var key = updateSpeciesForm.find("select[data-field=key]").val();
-	updateSpeciesForm.find("select[data-field=family] option").removeAttr("selected");
+	var key = updateSpeciesForm.find("input[data-field=key]").val();
+	updateSpeciesForm.find("datalist[data-field=family] option").removeAttr("selected");
 	if(key) {
 		var species = data.species[key];
 		updateSpeciesForm.find("input[data-field=name]").val(species.name);
 		updateSpeciesForm.find("input[data-field=tags]").val(species.tags.join(", "));
-		updateSpeciesForm.find("select[data-field=family]").val(species.family);
-		updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected");
+		updateSpeciesForm.find("input[data-field=family]").val(species.family);
+		updateSpeciesForm.find("datalist[data-field=family] option[value='" + species.family + "']").attr("selected", "selected");
 		updateSpeciesForm.find("button.submit").html("Update");
 	} else {
 		updateSpeciesForm.find("input[data-field=name]").val('');
 		updateSpeciesForm.find("input[data-field=tags]").val('');
-		updateSpeciesForm.find("select[data-field=family]").val('');
+		updateSpeciesForm.find("input[data-field=family]").val('');
 		updateSpeciesForm.find("button.submit").html("Add");
 	}
 }
@@ -325,20 +334,23 @@ function render() {
 
 	// add/update species form
 	var updateSpeciesForm = $("#update-species-form");
-	updateSpeciesForm.find("select[data-field=family], select[data-field=key]").html('');
-	updateSpeciesForm.find("select[data-field=family]").append("<option value=''>-</option>");
-	data.families.forEach(function(family) {
-		updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
+	updateSpeciesForm.find("datalist[data-field=family], datalist[data-field=key]").html('');
+	updateSpeciesForm.find("datalist[data-field=family]").append("<option value=''>-</option>");
+	data.families.sort((a,b) => compare(a.name, b.name)).forEach(function(family) {
+		updateSpeciesForm.find("datalist[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
 	});
-	updateSpeciesForm.find("select[data-field=key]").append("<option value=''>New (auto-generated)</option>");
+	updateSpeciesForm.find("datalist[data-field=key]").append("<option value=''>New (auto-generated)</option>");
 	Object.values(data.species).forEach(function(species, i) {
-		updateSpeciesForm.find("select[data-field=key]").append("<option value='" + species.key + "'>" + species.key + "</option>");
+		updateSpeciesForm.find("datalist[data-field=key]").append("<option value='" + species.key + "'>" + species.name + "</option>");
 	});
 	fillUpdateSpeciesForm();
-	updateSpeciesForm.find("select[data-field=key]").change(fillUpdateSpeciesForm);
+	updateSpeciesForm.find("input[data-field=key]").change(fillUpdateSpeciesForm);
 	updateSpeciesForm.find("button.submit").click(function() {
-		saveSpecies(updateSpeciesForm.find("select[data-field=key]").val(), updateSpeciesForm.find("input[data-field=name]").val(), updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val());
+		saveSpecies(updateSpeciesForm.find("input[data-field=key]").val(), updateSpeciesForm.find("input[data-field=name]").val(), updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("input[data-field=family]").val());
 	});
+	updateSpeciesForm.find("input[type=select]").dblclick(function() {
+		$(this).val('');
+	})
 
 	// sightings table
 	var table = $("#sightings-table");
@@ -362,10 +374,10 @@ function render() {
 		row += "<input class='hide-checkbox' type='checkbox' data-field='hidden' " + (bird.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
 		row += "</td>";
 
-		row += "<td><span style='width: 100px;' class='label'>" + bird.key + "</span></td>";
+		row += "<td><span style='width: 80px;' class='label'>" + bird.key + "</span></td>";
 
 		row += "<td>"
-		row += getSelectDOM("species", data.species, getValue(bird, 'species'), "200px");
+		row += getSelectDOM(bird.key, "species", data.species, getValue(bird, 'species'));
 		row += "<br>";
 		// row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].family + "</span>";
 		// row += "<br>";
@@ -394,16 +406,16 @@ function render() {
 		row += "<td class='place-fields'>";
 		row += "<input type='date' data-field='date' value='" + moment(bird.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:180px'></input>";
 		row += "<br>";
-		row += getSelectDOM("country", data.countries, getValue(bird, 'country'), "180px");
-		row += getSelectDOM("state", data.countries[bird.country].states, getValue(bird, 'state'), "180px");
+		row += getSelectDOM(bird.key, "country", data.countries, getValue(bird, 'country'));
+		row += getSelectDOM(bird.key, "state", data.countries[bird.country].states, getValue(bird, 'state'));
 		row += "<input type='text' data-field='city' value='" + getValue(bird, 'city') + "' style='width:180px' placeholder='Add city'></input>";
 		row += "<input type='text' data-field='place' value='" + getValue(bird, 'place') + "' style='width:180px' placeholder='Add place'></input>";
 		row += "</td>";
 
 		row += "<td>";
-		row += getSelectDOM("gender", OPT_GENDER, getValue(bird, 'gender'), "160px");
-		row += getSelectDOM("age", OPT_AGE, getValue(bird, 'age'), "160px");
-		row += getSelectDOM("plumage", OPT_PLUMAGE, getValue(bird, 'plumage'), "160px");
+		row += getSelectDOM(bird.key, "gender", OPT_GENDER, getValue(bird, 'gender'));
+		row += getSelectDOM(bird.key, "age", OPT_AGE, getValue(bird, 'age'));
+		row += getSelectDOM(bird.key, "plumage", OPT_PLUMAGE, getValue(bird, 'plumage'));
 		row += "<br>";
 		row += "<input type='text' data-field='variation' value='" + getValue(bird, 'variation') + "' style='width:160px' placeholder='Add variation'></input>";
 		row += "<input type='text' data-field='subspecies' value='" + getValue(bird, 'subspecies') + "' style='width:160px' placeholder='Add subspecies'></input>";
@@ -425,7 +437,7 @@ function render() {
 		birdRow.find(".upload").change(function() {
 			uploadMedia(bird.key, this.files)
 		});
-		birdRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
+		birdRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], input[type=select], textarea").not(".thumbnail *").change(function() {
 			var value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
 			updateField(bird.key, $(this).attr("data-field"), value);
 		});
@@ -441,10 +453,15 @@ function render() {
 		birdRow.find(".delete-sighting").click(() => deleteSighting(bird.key));
 		birdRow.find(".move-up").click(() => moveSighting(bird.key, -1));
 		birdRow.find(".move-down").click(() => moveSighting(bird.key, 1));
-		birdRow.find("select[data-field=country]").change(function() {
-			birdRow.find("select[data-field=state]").prop('outerHTML', getSelectDOM("state", data.countries[bird.country].states, getValue(bird, 'state'), "180px"));
+		birdRow.find("input[data-field=country]").change(function() {
+			setValue(bird, 'state', '');
+			birdRow.find("div[data-field=state]").prop('outerHTML', getSelectDOM(bird.key, "state", data.countries[bird.country].states, getValue(bird, 'state'), "180px"));
 		});
 	});
+
+	table.find("input[type=select]").dblclick(function() {
+		$(this).val('');
+	})
 
 	$('.page-number').html(OFFSET + " - " + Math.min(OFFSET+ROWS, filteredSightings.length) + " of " + filteredSightings.length);
 	
