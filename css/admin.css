@@ -39,6 +39,8 @@ input[type=text], input[type=date], input[type=password], select {
 	justify-content: left;
 	border: none;
 	text-overflow: ellipsis;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 input[type=text] {
 	padding-left: 3px;
@@ -254,5 +256,10 @@ select[data-field=species] {
     color: white !important;
 }
 .select2-selection {
-    border: 1px solid grey !important;
+    border: 0px solid grey !important;
+}
+.select2-selection__rendered {
+	padding-left: 3px !important;
+	padding-right: 100px !important;
+	font-size: 14px !important;
 }
