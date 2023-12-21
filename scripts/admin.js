@@ -42,12 +42,18 @@ function getValue(bird, prop) {
 	return bird[prop] ? bird[prop] : '';
 }
 
-function getSelectDOM(field, options, value, width) {
-	var dom = "<select data-field='" + field + "' style='width:" + width + "'>";
+function getSelectOptionsDOM(field, options, value) {
+	var dom = "";
 	for (const [k, v] of Object.entries(options)) {
 		var name = v instanceof Object ? v.name : v;
 		dom += "<option value='" + k + "' " + (k == value ? 'selected' : '') + ">" + name + "</option>";
 	}
+	return dom;
+}
+
+function getSelectDOM(field, options, value, width) {
+	var dom = "<select data-field='" + field + "' style='width:" + width + "'>";
+	dom += getSelectOptionsDOM(field, options, value);
 	dom += "</select>";
 	return dom;
 }
@@ -298,13 +304,13 @@ function fillUpdateSpeciesForm() {
 		var species = data.species[key];
 		updateSpeciesForm.find("input[data-field=name]").val(species.name);
 		updateSpeciesForm.find("input[data-field=tags]").val(species.tags.join(", "));
-		updateSpeciesForm.find("select[data-field=family]").val(species.family);
-		updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected");
+		updateSpeciesForm.find("select[data-field=family]").val(species.family).trigger("change");
+		updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected").trigger("change");
 		updateSpeciesForm.find("button.submit").html("Update");
 	} else {
 		updateSpeciesForm.find("input[data-field=name]").val('');
 		updateSpeciesForm.find("input[data-field=tags]").val('');
-		updateSpeciesForm.find("select[data-field=family]").val('');
+		updateSpeciesForm.find("select[data-field=family]").val('').trigger("change");
 		updateSpeciesForm.find("button.submit").html("Add");
 	}
 }
@@ -339,6 +345,8 @@ function render() {
 	updateSpeciesForm.find("button.submit").click(function() {
 		saveSpecies(updateSpeciesForm.find("select[data-field=key]").val(), updateSpeciesForm.find("input[data-field=name]").val(), updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val());
 	});
+	updateSpeciesForm.find("select[data-field=key]").select2();
+	updateSpeciesForm.find("select[data-field=family]").select2();
 
 	// sightings table
 	var table = $("#sightings-table");
@@ -417,6 +425,7 @@ function render() {
 		row += "</tr>";
 
 		table.append(row);
+		table.find("select").select2();
 
 		var birdRow = $("#" + bird.key);
 		birdRow.find(".upload-button").click(function() {
@@ -442,7 +451,8 @@ function render() {
 		birdRow.find(".move-up").click(() => moveSighting(bird.key, -1));
 		birdRow.find(".move-down").click(() => moveSighting(bird.key, 1));
 		birdRow.find("select[data-field=country]").change(function() {
-			birdRow.find("select[data-field=state]").prop('outerHTML', getSelectDOM("state", data.countries[bird.country].states, getValue(bird, 'state'), "180px"));
+			birdRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[bird.country].states, getValue(bird, 'state')));
+			birdRow.find("select[data-field=state]").select2();
 		});
 	});
 
