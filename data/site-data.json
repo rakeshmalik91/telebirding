@@ -1,58 +1,10 @@
 {
     "featured": [
         {
-            "src": "featured-images/14.jpg",
-            "titleLine1": "Painted Storks, Bharatpur",
-            "titleLine2": "© Rakesh Malik, 2023",
-            "alt": "Painted Storks"
-        },
-        {
-            "src": "featured-images/12.jpg",
-            "titleLine1": "Upland Buzzard, Tso Kar",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Upland Buzzard"
-        },
-        {
-            "src": "featured-images/11.jpg",
-            "titleLine1": "Robin Accentor, Khardung La",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Robin Accentor"
-        },
-        {
-            "src": "featured-images/10.jpg",
-            "titleLine1": "Barn Owl, Bhitarkanika National Park",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Barn Owl"
-        },
-        {
-            "src": "featured-images/3.jpg",
-            "titleLine1": "Grey Heron, Mangalajodi Wetlands",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Grey Heron"
-        },
-        {
-            "src": "featured-images/8.jpg",
-            "titleLine1": "Collared Kingfisher, Bhitarkanika National Park",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Collared Kingfisher"
-        },
-        {
             "src": "featured-images/1.jpg",
             "titleLine1": "Blue Rock Thrush, Shivkhola Forest",
             "titleLine2": "© Rakesh Malik, 2021",
             "alt": "Blue Rock Thrush"
-        },
-        {
-            "src": "featured-images/7.jpg",
-            "titleLine1": "Oriental Pied Hornbill, Shivkhola Forest",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Oriental Pied Hornbill"
-        },
-        {
-            "src": "featured-images/9.jpg",
-            "titleLine1": "Purple Sunbird, Bhimtal",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Purple Sunbird"
         },
         {
             "src": "featured-images/2.jpg",
@@ -61,10 +13,70 @@
             "alt": "Rufous-necked Hornbill"
         },
         {
+            "src": "featured-images/3.jpg",
+            "titleLine1": "Grey Heron, Mangalajodi Wetlands",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Grey Heron"
+        },
+        {
+            "src": "featured-images/4.jpg",
+            "titleLine1": "Himalayan Rubythroat, Kathgodam",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Himalayan Rubythroat"
+        },
+        {
             "src": "featured-images/6.jpg",
             "titleLine1": "Black-winged Stilts, Pangong Tso",
             "titleLine2": "© Rakesh Malik, 2022",
             "alt": "Black-winged Stilt"
+        },
+        {
+            "src": "featured-images/7.jpg",
+            "titleLine1": "Oriental Pied Hornbill, Shivkhola Forest",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Oriental Pied Hornbill"
+        },
+        {
+            "src": "featured-images/8.jpg",
+            "titleLine1": "Collared Kingfisher, Bhitarkanika National Park",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Collared Kingfisher"
+        },
+        {
+            "src": "featured-images/9.jpg",
+            "titleLine1": "Common Green Magpie, Kathgodam",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Common Green Magpie"
+        },
+        {
+            "src": "featured-images/10.jpg",
+            "titleLine1": "Barn Owl, Bhitarkanika National Park",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Barn Owl"
+        },
+        {
+            "src": "featured-images/11.jpg",
+            "titleLine1": "Robin Accentor, Khardung La",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Robin Accentor"
+        },
+        {
+            "src": "featured-images/12.jpg",
+            "titleLine1": "Upland Buzzard, Tso Kar",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Upland Buzzard"
+        },
+        {
+            "src": "featured-images/13.jpg",
+            "titleLine1": "Osprey, Purbasthali",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Osprey"
+        },
+        {
+            "src": "featured-images/14.jpg",
+            "titleLine1": "Painted Storks, Bharatpur",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Painted Storks"
         }
     ],
     "trips": [

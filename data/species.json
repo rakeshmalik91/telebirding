@@ -27,6 +27,14 @@
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
 		},
+		"alpine-thrush": {
+			"key": "alpine-thrush",
+			"name": "Alpine Thrush",
+			"tags": [
+				"Thrush"
+			],
+			"family": "Thrushes"
+		},
 		"amur-stonechat": {
 			"key": "amur-stonechat",
 			"name": "Amur Stonechat",
@@ -658,6 +666,14 @@
 			],
 			"family": "Sandpipers & Allies"
 		},
+		"black-throated-accentor": {
+			"key": "black-throated-accentor",
+			"name": "Black-throated Accentor",
+			"tags": [
+				"Accentor"
+			],
+			"family": "Accentors"
+		},
 		"black-throated-bushtit": {
 			"key": "black-throated-bushtit",
 			"name": "Black-throated Bushtit",
@@ -725,6 +741,14 @@
 				"Pheasant"
 			],
 			"family": "Pheasants, Partridges & Fowls"
+		},
+		"blue-capped-redstart": {
+			"key": "blue-capped-redstart",
+			"name": "Blue-capped Redstart",
+			"tags": [
+				"Redstart"
+			],
+			"family": "Redstarts"
 		},
 		"blue-capped-rock-thrush": {
 			"key": "blue-capped-rock-thrush",
@@ -1085,6 +1109,16 @@
 			],
 			"family": "Frogmouths"
 		},
+		"cheer-pheasant": {
+			"key": "cheer-pheasant",
+			"name": "Cheer Pheasant",
+			"tags": [
+				"Cheer",
+				"Pheasant",
+				"Fowl"
+			],
+			"family": "Pheasants, Partridges & Fowls"
+		},
 		"chestnnut-bellied-sandgrouse": {
 			"key": "chestnnut-bellied-sandgrouse",
 			"name": "Chestnnut-bellied Sandgrouse",
@@ -1142,6 +1176,14 @@
 				"Bee-eater"
 			],
 			"family": "Bee-eaters"
+		},
+		"chestnut-headed-tesia": {
+			"key": "chestnut-headed-tesia",
+			"name": "Chestnut-headed Tesia",
+			"tags": [
+				"Tesia"
+			],
+			"family": "Bush-Warblers and Allies"
 		},
 		"chestnut-tailed-minla": {
 			"key": "chestnut-tailed-minla",
@@ -1506,6 +1548,14 @@
 			],
 			"family": "Sunbirds & Spiderhunters"
 		},
+		"crimson-sunbird": {
+			"key": "crimson-sunbird",
+			"name": "Crimson Sunbird",
+			"tags": [
+				"Sunbird"
+			],
+			"family": "Sunbirds & Spiderhunters"
+		},
 		"curlew-sandpiper": {
 			"key": "curlew-sandpiper",
 			"name": "Curlew Sandpiper",
@@ -1753,6 +1803,23 @@
 			],
 			"family": "Ducks, Swans & Geese"
 		},
+		"eurasian-wren": {
+			"key": "eurasian-wren",
+			"name": "Eurasian Wren",
+			"tags": [
+				"Wren"
+			],
+			"family": "Wrens"
+		},
+		"european-goldfinch": {
+			"key": "european-goldfinch",
+			"name": "European Goldfinch",
+			"tags": [
+				"Goldfinch",
+				"Finch"
+			],
+			"family": "Finches & Allies"
+		},
 		"european-roller": {
 			"key": "european-roller",
 			"name": "European Roller",
@@ -1897,6 +1964,16 @@
 				"Goldcrest"
 			],
 			"family": "Kinglets"
+		},
+		"golden-bush-robin": {
+			"key": "golden-bush-robin",
+			"name": "Golden Bush-Robin",
+			"tags": [
+				"Robin",
+				"Bush-Robin",
+				"Flycatcher"
+			],
+			"family": "Robins"
 		},
 		"golden-eagle": {
 			"key": "golden-eagle",
@@ -2426,6 +2503,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"hill-partridge": {
+			"key": "hill-partridge",
+			"name": "Hill Partridge",
+			"tags": [
+				"Partridge"
+			],
+			"family": "Pheasants, Partridges & Fowls"
+		},
 		"hill-pigeon": {
 			"key": "hill-pigeon",
 			"name": "Hill Pigeon",
@@ -2489,6 +2574,22 @@
 				"Prinia"
 			],
 			"family": "Prinias"
+		},
+		"himalayan-rubythroat": {
+			"key": "himalayan-rubythroat",
+			"name": "Himalayan Rubythroat",
+			"tags": [
+				"Rubythroat"
+			],
+			"family": "Rubythroats"
+		},
+		"himalayan-woodpecker": {
+			"key": "himalayan-woodpecker",
+			"name": "Himalayan Woodpecker",
+			"tags": [
+				"Woodpecker"
+			],
+			"family": "Woodpeckers"
 		},
 		"hoary-throated-barwing": {
 			"key": "hoary-throated-barwing",
@@ -2799,6 +2900,16 @@
 				"Wading Bird"
 			],
 			"family": "Ducks, Swans & Geese"
+		},
+		"koklass-pheasant": {
+			"key": "koklass-pheasant",
+			"name": "Koklass Pheasant",
+			"tags": [
+				"Pheasant",
+				"Koklass",
+				"Fowl"
+			],
+			"family": "Pheasants, Partridges & Fowls"
 		},
 		"laggar-falcon": {
 			"key": "laggar-falcon",
@@ -3174,6 +3285,14 @@
 				"Wading Bird"
 			],
 			"family": "Sandpipers & Allies"
+		},
+		"mistle-thrush": {
+			"key": "mistle-thrush",
+			"name": "Mistle Thrush",
+			"tags": [
+				"Thrush"
+			],
+			"family": "Thrushes"
 		},
 		"mountain-bulbul": {
 			"key": "mountain-bulbul",
@@ -4068,6 +4187,14 @@
 			],
 			"family": "Woodpeckers"
 		},
+		"scaly-breasted-cupwing": {
+			"key": "scaly-breasted-cupwing",
+			"name": "Scaly-breasted Cupwing",
+			"tags": [
+				"Cupwing"
+			],
+			"family": "Cupwings"
+		},
 		"scaly-breasted-munia": {
 			"key": "scaly-breasted-munia",
 			"name": "Scaly-breasted Munia",
@@ -4075,6 +4202,14 @@
 				"Munia",
 				"Finch",
 				"Spotted Munia"
+			],
+			"family": "Finches & Allies"
+		},
+		"scarlet-finch": {
+			"key": "scarlet-finch",
+			"name": "Scarlet Finch",
+			"tags": [
+				"Finch"
 			],
 			"family": "Finches & Allies"
 		},
@@ -4141,6 +4276,14 @@
 			],
 			"family": "Forktails"
 		},
+		"slaty-blue-flycatcher": {
+			"key": "slaty-blue-flycatcher",
+			"name": "Slaty-blue Flycatcher",
+			"tags": [
+				"Flycatcher"
+			],
+			"family": "Old World Flycatchers"
+		},
 		"slaty-breasted-rail": {
 			"key": "slaty-breasted-rail",
 			"name": "Slaty-breasted Rail",
@@ -4176,6 +4319,16 @@
 			],
 			"family": "Cuckoo-shrikes & Allies"
 		},
+		"small-niltava": {
+			"key": "small-niltava",
+			"name": "Small Niltava",
+			"tags": [
+				"Niltava",
+				"Robin",
+				"Flycatcher"
+			],
+			"family": "Robins"
+		},
 		"small-pratincole": {
 			"key": "small-pratincole",
 			"name": "Small Pratincole",
@@ -4186,6 +4339,14 @@
 			],
 			"family": "Pratincoles"
 		},
+		"snow-partridge": {
+			"key": "snow-partridge",
+			"name": "Snow Partridge",
+			"tags": [
+				"Partridge"
+			],
+			"family": "Pheasants, Partridges & Fowls"
+		},
 		"southern-hill-myna": {
 			"key": "southern-hill-myna",
 			"name": "Southern Hill Myna",
@@ -4195,6 +4356,24 @@
 				"Starling"
 			],
 			"family": "Starlings"
+		},
+		"speckled-piculet": {
+			"key": "speckled-piculet",
+			"name": "Speckled Piculet",
+			"tags": [
+				"Piculet",
+				"Woodpecker"
+			],
+			"family": "Woodpeckers"
+		},
+		"speckled-wood-pigeon": {
+			"key": "speckled-wood-pigeon",
+			"name": "Speckled Wood-Pigeon",
+			"tags": [
+				"Pigeon",
+				"Wood-Pigeon"
+			],
+			"family": "Doves & Pigeons"
 		},
 		"spoonbill": {
 			"key": "spoonbill",
@@ -4374,6 +4553,15 @@
 				"Raptor"
 			],
 			"family": "Eagles, Hawks & Allies"
+		},
+		"tawny-fish-owl": {
+			"key": "tawny-fish-owl",
+			"name": "Tawny Fish-Owl",
+			"tags": [
+				"Owl",
+				"Fosh-Owl"
+			],
+			"family": "Owls"
 		},
 		"tawny-pipit": {
 			"key": "tawny-pipit",
@@ -4563,6 +4751,15 @@
 			],
 			"family": "Cuckoos"
 		},
+		"wallcreeper": {
+			"key": "wallcreeper",
+			"name": "Wallcreeper",
+			"tags": [
+				"Wallcreeper",
+				"Creeper"
+			],
+			"family": "Treecreepers, Wallcreepers & Nuthatches"
+		},
 		"wedge-tailed-green-pigeon": {
 			"key": "wedge-tailed-green-pigeon",
 			"name": "Wedge-tailed Green Pigeon",
@@ -4726,6 +4923,14 @@
 				"Wagtail"
 			],
 			"family": "Wagtails"
+		},
+		"white-capped-bunting": {
+			"key": "white-capped-bunting",
+			"name": "White-capped Bunting",
+			"tags": [
+				"Bunting"
+			],
+			"family": "Buntings"
 		},
 		"white-capped-redstart": {
 			"key": "white-capped-redstart",
