@@ -2237,7 +2237,7 @@
 			"city": "Lungthung",
 			"state": "Sikkim",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/blue-fronted-redstart-1698841273.jpg"
@@ -6670,6 +6670,21 @@
 				}
 			],
 			"variation": "Tricolor"
+		},
+		{
+			"key": "s1704857137",
+			"species": "blue-fronted-redstart",
+			"date": "12-11-2022",
+			"place": "Lachung",
+			"city": "Yumthang",
+			"state": "Sikkim",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blue-fronted-redstart-1704857240.jpg"
+				}
+			]
 		},
 		{
 			"key": "s1668332282",
@@ -14909,7 +14924,8 @@
 				{
 					"src": "images/blue-fronted-redstart-female.jpg"
 				}
-			]
+			],
+			"hidden": false
 		},
 		{
 			"key": "blue-whistling-thrush",
