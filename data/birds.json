@@ -1,6 +1,338 @@
 {
 	"birds": [
 		{
+			"key": "s1705193756",
+			"species": "siberian-stonechat",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/siberian-stonechat-1705193769.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1705194275",
+			"species": "isabelline-shrike",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/isabelline-shrike-1705194375.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705193784",
+			"species": "little-ringed-plover",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-ringed-plover-1705195645.jpg"
+				},
+				{
+					"src": "images/little-ringed-plover-1705193812.jpg"
+				}
+			],
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1705193686",
+			"species": "western-yellow-wagtail",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eastern-yellow-wagtail-1705193732.jpg"
+				}
+			],
+			"plumage": "Breeding",
+			"subspecies": "Flava"
+		},
+		{
+			"key": "s1705195830",
+			"species": "white-wagtail",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-wagtail-1705195867.jpg"
+				}
+			],
+			"subspecies": "ssp. dukhunensis / ssp. alba / White-Faced"
+		},
+		{
+			"key": "s1705193893",
+			"species": "greater-flamingo",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-flamingo-1705193913.jpg"
+				},
+				{
+					"src": "images/greater-flamingo-1705193919.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705193874",
+			"species": "sarus-crane",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sarus-crane-1705193887.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1705195027",
+			"species": "bar-headed-goose",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bar-headed-goose-1705195047.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705198421",
+			"species": "pied-avocet",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-avocet-1705198437.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705291816",
+			"species": "temmicks-stint",
+			"date": "13-01-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/temmicks-stint-1705291870.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705194050",
+			"species": "pied-kingfisher",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pied-kingfisher-1705194062.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705194175",
+			"species": "little-grebe",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-grebe-1705194192.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705194019",
+			"species": "spoonbill",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spoonbill-1705194037.jpg"
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1705193834",
+			"species": "sirkeer-malkoha",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sirkeer-malkoha-1705193865.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705194350",
+			"species": "white-tailed-lapwing",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-tailed-lapwing-1705194364.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705193597",
+			"species": "little-egret",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-egret-1705193666.jpg"
+				}
+			],
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1705197880",
+			"species": "red-breasted-flycatcher",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-breasted-flycatcher-1705197890.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1705197531",
+			"species": "indian-scops-owl",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-scops-owl-1705197605.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705227207",
+			"species": "ashy-prinia",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ashy-prinia-1705227235.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705227187",
+			"species": "ashy-crowned-sparrow-lark",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ashy-crowned-sparrow-lark-1705227202.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1705227151",
+			"species": "ashy-crowned-sparrow-lark",
+			"date": "13-01-2024",
+			"place": "Sultanpur National Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ashy-crowned-sparrow-lark-1705227182.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
 			"key": "s1703939299",
 			"species": "mountain-bulbul",
 			"date": "31-12-2023",
@@ -3304,13 +3636,13 @@
 		},
 		{
 			"key": "s1699277667",
-			"species": "yellow-bellied-prinia",
+			"species": "ashy-prinia",
 			"date": "06-10-2023",
 			"place": "",
 			"city": "Sohna",
 			"state": "Haryana",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/yellow-bellied-prinia-1699277698.jpg"
@@ -4083,9 +4415,6 @@
 					"src": "images/ashy-crowned-sparrow-lark-1702539183.jpg"
 				},
 				{
-					"src": "images/ashy-crowned-sparrow-lark-1702539208.jpg"
-				},
-				{
 					"src": "images/ashy-crowned-sparrow-lark-1692597923.jpg"
 				}
 			],
@@ -4813,7 +5142,7 @@
 		},
 		{
 			"key": "s1675091661",
-			"species": "yellow-bellied-prinia",
+			"species": "ashy-prinia",
 			"date": "29-01-2023",
 			"place": "Keoladeo National Park",
 			"city": "Bharatpur",
@@ -4904,7 +5233,7 @@
 					"src": "images/oriental-magpie-robin-1678676734.jpg"
 				}
 			],
-			"gender": "Male"
+			"gender": "M"
 		},
 		{
 			"key": "s1678676394",
@@ -6985,7 +7314,8 @@
 					"src": "images/white-wagtail-1668303571.jpg"
 				}
 			],
-			"subspecies": "Indian Pied"
+			"subspecies": "ssp. ocularis",
+			"variation": ""
 		},
 		{
 			"key": "s1668572489",
@@ -8255,7 +8585,8 @@
 				}
 			],
 			"age": "Immature",
-			"variation": ""
+			"variation": "",
+			"subspecies": "Brown"
 		},
 		{
 			"key": "s1666767646",
@@ -9527,7 +9858,7 @@
 		{
 			"key": "white-wagtail-personata-2",
 			"species": "white-wagtail",
-			"subspecies": "Masked",
+			"subspecies": "ssp. personata / Masked",
 			"date": "11-06-2022",
 			"place": "Stakna Monastery",
 			"state": "Ladakh",
@@ -9536,7 +9867,8 @@
 				{
 					"src": "images/white-wagtail-personata-2.jpg"
 				}
-			]
+			],
+			"variation": ""
 		},
 		{
 			"key": "horned-lark",
@@ -11369,9 +11701,6 @@
 				},
 				{
 					"src": "images/coppersmith-barbet-3.jpg"
-				},
-				{
-					"src": "images/coppersmith-barbet-4.jpg"
 				}
 			]
 		},
@@ -11673,7 +12002,7 @@
 		{
 			"key": "oriental-magpie-robin-male-3",
 			"species": "oriental-magpie-robin",
-			"gender": "Male",
+			"gender": "M",
 			"date": "16-03-2022",
 			"place": "Munsong",
 			"city": "Darjeeling",
@@ -11790,7 +12119,9 @@
 					"src": "images/brown-shrike-3.jpg"
 				}
 			],
-			"variation": ""
+			"variation": "",
+			"age": "Immature",
+			"subspecies": "Brown"
 		},
 		{
 			"key": "lesser-whistling-duck",
@@ -11921,7 +12252,7 @@
 		},
 		{
 			"key": "eastern-yellow-wagtail",
-			"species": "eastern-yellow-wagtail",
+			"species": "western-yellow-wagtail",
 			"date": "17-01-2022",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -11929,6 +12260,23 @@
 			"media": [
 				{
 					"src": "images/eastern-yellow-wagtail.jpg"
+				}
+			],
+			"plumage": "Breeding",
+			"subspecies": "Thunbergi"
+		},
+		{
+			"key": "s1705320708",
+			"species": "grey-headed-swamphen",
+			"date": "16-01-2022",
+			"place": "Mangalajodi Wetlands",
+			"city": "",
+			"state": "Odisha",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-headed-swamphen-1705320750.jpg"
 				}
 			]
 		},
@@ -12542,7 +12890,8 @@
 					"src": "images/brown-shrike-2.jpg"
 				}
 			],
-			"variation": ""
+			"variation": "",
+			"subspecies": "Brown"
 		},
 		{
 			"key": "black-bulbul-2",
@@ -12811,14 +13160,15 @@
 			"species": "long-tailed-shrike",
 			"variation": "Tricolor",
 			"date": "24-12-2021",
-			"place": "Sittong",
+			"place": "Sittong III",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/long-tailed-shrike-tricolor.jpg"
 				}
-			]
+			],
+			"city": "Sittong"
 		},
 		{
 			"key": "grey-headed-lapwing",
@@ -13599,7 +13949,8 @@
 				{
 					"src": "images/ashy-crowned-sparrow-lark-male.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "ashy-crowned-sparrow-lark-female",
@@ -13613,7 +13964,8 @@
 				{
 					"src": "images/ashy-crowned-sparrow-lark-female.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "eurasian-curlew",
@@ -13913,7 +14265,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/eurasian-moorhen-juvenile.jpg"
+					"src": "images/eurasian-moorhen-1705321366.jpg"
 				}
 			]
 		},
@@ -14000,7 +14352,9 @@
 					"src": "images/brown-shrike.jpg"
 				}
 			],
-			"variation": ""
+			"variation": "",
+			"age": "Immature",
+			"subspecies": "Brown"
 		},
 		{
 			"key": "black-kite-3",
@@ -14805,7 +15159,7 @@
 		{
 			"key": "white-wagtail-personata",
 			"species": "white-wagtail",
-			"subspecies": "Masked",
+			"subspecies": "ssp. personata / Masked",
 			"date": "15-03-2021",
 			"place": "Pong Lake",
 			"state": "Himachal Pradesh",
@@ -14814,7 +15168,8 @@
 				{
 					"src": "images/white-wagtail-personata.jpg"
 				}
-			]
+			],
+			"variation": ""
 		},
 		{
 			"key": "greylag-goose-2",
@@ -15105,7 +15460,7 @@
 		{
 			"key": "white-wagtail-leucopis",
 			"species": "white-wagtail",
-			"subspecies": "Amur",
+			"subspecies": "ssp. leucopsis / Chinese",
 			"date": "05-01-2021",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -15114,7 +15469,8 @@
 				{
 					"src": "images/white-wagtail-leucopis.jpg"
 				}
-			]
+			],
+			"variation": ""
 		},
 		{
 			"key": "hair-crested-drongo",
@@ -15519,7 +15875,7 @@
 		{
 			"key": "oriental-magpie-robin-male-4",
 			"species": "oriental-magpie-robin",
-			"gender": "Male",
+			"gender": "M",
 			"date": "20-11-2020",
 			"place": "Santragachhi Jheel",
 			"city": "Howrah",
@@ -16079,7 +16435,7 @@
 		{
 			"key": "bronze-winged-jacana-male",
 			"species": "bronze-winged-jacana",
-			"gender": "Male",
+			"gender": "",
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
@@ -16094,7 +16450,7 @@
 		{
 			"key": "bronze-winged-jacana-female",
 			"species": "bronze-winged-jacana",
-			"gender": "Female",
+			"gender": "",
 			"date": "24-12-2018",
 			"place": "AJC Bose Botanical Garden",
 			"city": "Howrah",
@@ -16104,7 +16460,8 @@
 				{
 					"src": "images/bronze-winged-jacana-female.jpg"
 				}
-			]
+			],
+			"age": "Immature"
 		},
 		{
 			"key": "eurasian-moorhen",
@@ -16116,7 +16473,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/eurasian-moorhen.jpg"
+					"src": "images/eurasian-moorhen-1705321232.jpg"
 				}
 			]
 		},
@@ -16197,7 +16554,8 @@
 				{
 					"src": "images/rufous-vented-tit.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "black-faced-laughingthrush",
@@ -16677,7 +17035,10 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/black-eagle.jpg"
+					"src": "images/black-eagle-1705321064.jpg"
+				},
+				{
+					"src": "images/black-eagle-1705321071.jpg"
 				}
 			]
 		},
@@ -16763,7 +17124,8 @@
 				{
 					"src": "images/black-headed-gull-non-breeding.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "black-winged-stilt",
@@ -17023,7 +17385,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/golden-oriole-male.jpg"
+					"src": "images/golden-oriole-1705321802.jpg"
 				}
 			],
 			"city": "Chennai"
@@ -17165,23 +17527,9 @@
 			"city": "Thattekad Bird Sanctuary"
 		},
 		{
-			"key": "oriental-magpie-robin-male",
-			"species": "oriental-magpie-robin",
-			"gender": "Male",
-			"date": "01-10-2017",
-			"city": "Howrah",
-			"state": "West Bengal",
-			"country": "India",
-			"media": [
-				{
-					"src": "images/oriental-magpie-robin-male-2.jpg"
-				}
-			]
-		},
-		{
 			"key": "oriental-magpie-robin-female",
 			"species": "oriental-magpie-robin",
-			"gender": "Female",
+			"gender": "F",
 			"date": "01-10-2017",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -17206,7 +17554,8 @@
 				{
 					"src": "images/jungle-babbler.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "shikra-female",
@@ -17256,7 +17605,8 @@
 				{
 					"src": "images/asian-koel-female.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "little-egret",
@@ -17270,7 +17620,8 @@
 				{
 					"src": "images/little-egret.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "purple-rumped-sunbird-female",
@@ -17297,13 +17648,13 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/greater-flamingo.jpg"
+					"src": "images/greater-flamingo-1705320148.jpg"
 				},
 				{
-					"src": "images/greater-flamingo-2.jpg"
+					"src": "images/greater-flamingo-1705320199.jpg"
 				},
 				{
-					"src": "images/greater-flamingo-3.jpg"
+					"src": "images/greater-flamingo-1705320214.jpg"
 				}
 			]
 		},
@@ -17319,7 +17670,8 @@
 				{
 					"src": "images/grey-headed-swamphen.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "indian-spot-billed-duck",
@@ -17373,7 +17725,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/black-drongo.jpg"
+					"src": "images/black-drongo-1705320432.jpg"
 				}
 			]
 		},
@@ -17390,7 +17742,8 @@
 				{
 					"src": "images/lotens-sunbird-female.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "ashy-prinia",
@@ -17402,7 +17755,7 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/ashy-prinia.jpg"
+					"src": "images/ashy-prinia-1705320354.jpg"
 				}
 			]
 		},
@@ -17626,7 +17979,8 @@
 				{
 					"src": "images/common-tailorbird.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "indian-peafowl-male",
