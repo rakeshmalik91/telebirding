@@ -2088,6 +2088,14 @@
 			],
 			"family": "Finches & Allies"
 		},
+		"great-slaty-woodpecker": {
+			"key": "great-slaty-woodpecker",
+			"name": "Great Slaty Woodpecker",
+			"tags": [
+				"Woodpecker"
+			],
+			"family": "Woodpeckers"
+		},
 		"great-thick-knee": {
 			"key": "great-thick-knee",
 			"name": "Great Thick-knee",
@@ -2678,6 +2686,24 @@
 				"Hume's Leaf Warbler"
 			],
 			"family": "Warblers"
+		},
+		"ibisbill": {
+			"key": "ibisbill",
+			"name": "Ibisbill",
+			"tags": [
+				"Ibisbill",
+				"Wader",
+				"Wading Bird"
+			],
+			"family": "Ibisbills"
+		},
+		"immaculate-cupwing": {
+			"key": "immaculate-cupwing",
+			"name": "Immaculate Cupwing",
+			"tags": [
+				"Cupwing"
+			],
+			"family": "Cupwings"
 		},
 		"imperial-eagle": {
 			"key": "imperial-eagle",
@@ -3360,6 +3386,15 @@
 			],
 			"family": "Doves & Pigeons"
 		},
+		"mountain-scops-owl": {
+			"key": "mountain-scops-owl",
+			"name": "Mountain Scops Owl",
+			"tags": [
+				"Scops Owl",
+				"Owl"
+			],
+			"family": "Owls"
+		},
 		"mrs-goulds-sunbird": {
 			"key": "mrs-goulds-sunbird",
 			"name": "Mrs. Gould's Sunbird",
@@ -3854,6 +3889,14 @@
 				"Trogon"
 			],
 			"family": "Trogons"
+		},
+		"red-headed-vulture": {
+			"key": "red-headed-vulture",
+			"name": "Red-headed Vulture",
+			"tags": [
+				"Vulture"
+			],
+			"family": "Vultures"
 		},
 		"red-junglefowl": {
 			"key": "red-junglefowl",
@@ -4748,6 +4791,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"upland-pipit": {
+			"key": "upland-pipit",
+			"name": "Upland Pipit",
+			"tags": [
+				"Pipit"
+			],
+			"family": "Pipits"
+		},
 		"variable-wheatear": {
 			"key": "variable-wheatear",
 			"name": "Variable Wheatear",
@@ -4790,6 +4841,15 @@
 				"Hanging Parrot"
 			],
 			"family": "Parakeets & Parrots"
+		},
+		"vinaceous-rosefinch": {
+			"key": "vinaceous-rosefinch",
+			"name": "Vinaceous Rosefinch",
+			"tags": [
+				"Rosefinch",
+				"Finch"
+			],
+			"family": "Finches & Allies"
 		},
 		"violet-cuckoo": {
 			"key": "violet-cuckoo",
