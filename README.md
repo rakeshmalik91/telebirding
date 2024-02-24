@@ -10,6 +10,7 @@ A bird watching blog by Rakesh Malik.
 
 ### Local Setup on Firebase
 ```
+npm install firebase
 firebase init
 
 gsutil init

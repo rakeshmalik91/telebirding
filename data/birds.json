@@ -1,6 +1,23 @@
 {
 	"birds": [
 		{
+			"key": "s1709302787",
+			"species": "western-yellow-wagtail",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/western-yellow-wagtail-1709302807.jpg"
+				}
+			],
+			"age": "",
+			"plumage": "Immature/Non-Breeding"
+		},
+		{
 			"key": "s1708763194",
 			"species": "zitting-cisticola",
 			"date": "24-02-2024",
@@ -14,7 +31,7 @@
 					"src": "images/zitting-cisticola-1708763208.jpg"
 				},
 				{
-					"src": "images/zitting-cisticola-1708763523.jpg"
+					"src": "images/zitting-cisticola-1708780425.jpg"
 				}
 			]
 		},
@@ -33,6 +50,21 @@
 				},
 				{
 					"src": "images/plain-prinia-1708766819.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1709302488",
+			"species": "common-greenshank",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-greenshank-1709302504.jpg"
 				}
 			]
 		},
@@ -65,13 +97,26 @@
 					"src": "images/river-tern-1708766615.jpg"
 				},
 				{
-					"src": "images/river-tern-1708776624.jpg"
-				},
-				{
 					"src": "images/river-tern-1708766621.jpg"
 				}
 			],
-			"plumage": ""
+			"plumage": "Immature/Non-Breeding"
+		},
+		{
+			"key": "s1708882033",
+			"species": "river-tern",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/river-tern-1708882081.jpg"
+				}
+			],
+			"plumage": "Breeding"
 		},
 		{
 			"key": "s1708764224",
@@ -85,6 +130,24 @@
 			"media": [
 				{
 					"src": "images/white-tailed-lapwing-1708764656.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1705291816",
+			"species": "temmicks-stint",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/temmicks-stint-1709301839.jpg"
+				},
+				{
+					"src": "images/temmicks-stint-1705291870.jpg"
 				}
 			]
 		},
@@ -1035,6 +1098,9 @@
 			"media": [
 				{
 					"src": "images/eastern-yellow-wagtail-1705193732.jpg"
+				},
+				{
+					"src": "images/western-yellow-wagtail-1709302819.jpg"
 				}
 			],
 			"plumage": "Breeding",
@@ -1117,21 +1183,6 @@
 			"media": [
 				{
 					"src": "images/pied-avocet-1705198437.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1705291816",
-			"species": "temmicks-stint",
-			"date": "13-01-2024",
-			"place": "Chandu-Budhera Canal Area",
-			"city": "Gurugram",
-			"state": "Haryana",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/temmicks-stint-1705291870.jpg"
 				}
 			]
 		},
@@ -4860,7 +4911,7 @@
 					"src": "images/river-tern-1696255618.jpg"
 				}
 			],
-			"plumage": ""
+			"plumage": "Immature/Non-Breeding"
 		},
 		{
 			"key": "s1696148987",
@@ -10566,10 +10617,10 @@
 			"country": "India",
 			"media": [
 				{
-					"src": "images/common-tern.jpg"
+					"src": "images/common-tern-2.jpg"
 				},
 				{
-					"src": "images/common-tern-2.jpg"
+					"src": "images/common-tern.jpg"
 				}
 			],
 			"city": "Pangong Tso"
@@ -17280,7 +17331,9 @@
 					"src": "images/river-tern.jpg"
 				}
 			],
-			"city": "Thattekad Bird Sanctuary"
+			"city": "Thattekad Bird Sanctuary",
+			"hidden": true,
+			"plumage": "Immature/Non-Breeding"
 		},
 		{
 			"key": "bronze-winged-jacana-male",

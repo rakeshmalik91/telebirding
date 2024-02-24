@@ -44,6 +44,9 @@ function getSpeciesCount(birds) {
 }
 
 function computeInternalDataFields() {
+	//remove hidden
+	data.birds = data.birds.filter(b => !b.hidden);
+
 	$.each(data.birds, function(index, bird) {
 		bird.index = index;
 		//moment
@@ -57,8 +60,10 @@ function computeInternalDataFields() {
 			m.src = getMedia(m.src);
 			if(m.thumbnail) m.thumbnail = getMedia(m.thumbnail);
 		});
+		//new species flag
+		bird.newSpecies = (data.birds.slice(index + 1).map(b => b.species).indexOf(bird.species.key) < 0);
 	});
-	//add families not in data
+	//add missing families
 	var familyNames = data.families.map(f => f.name);
 	data.families.concat(data.birds.filter(b => !familyNames.includes(b.species.family)).map(function(b) { return {name: b.family}; }));
 	//fix missing family images or paths
@@ -68,9 +73,6 @@ function computeInternalDataFields() {
 	})
 	//sort families
 	data.families.sort((a, b) => compare(a.name, b.name));
-
-	//remove hidden
-	data.birds = data.birds.filter(b => !b.hidden);
 
 	//places
 	if(!Object.entries(data.countries)[0][1].count) {
@@ -224,7 +226,7 @@ function initAutocomplete() {
 			placeAutocomplete.push(capitalize(bird.city.trim()));
 		}
 	});
-	birdAutocomplete = [...new Set(birdAutocomplete)].sort();
+	birdAutocomplete = [...new Set(birdAutocomplete.map(b => capitalize(b.replaceAll('-', ' '))))].sort();
 	placeAutocomplete = [...new Set(placeAutocomplete)].sort();
 	autocomplete($(".filter input[data-value='bird']")[0], birdAutocomplete);
 	autocomplete($(".filter input[data-value='place']")[0], placeAutocomplete);
@@ -238,20 +240,8 @@ function fillStats() {
 
 	var filters = getFilters();
 	if(filters.date || filters.place) {
-		if(data.filteredBirds.length > 0) {
-			var oldestDate = data.filteredBirds[0].date;
-			data.filteredBirds.forEach(function(b) {
-				if(b.date<oldestDate) oldestDate = b.date;
-			});
-		}
-		var oldSpecies = [...new Set(data.birds.filter(b => b.date<oldestDate).map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))]
-		var newSpecies = selectedSpecies.filter(s => oldSpecies.indexOf(s)<0);
 		$(".new-species-count").parent().show();
-		$(".new-species-count").html(newSpecies.length);
-
-		data.filteredBirds
-			.filter(b => newSpecies.indexOf(b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")) >= 0)
-			.forEach(b => b.newSpecies = true);
+		$(".new-species-count").html(data.filteredBirds.filter(b => b.newSpecies).length);
 	} else {
 		$(".new-species-count").parent().hide();
 	}
@@ -279,7 +269,7 @@ function renderBirdDetails(birdLabelDiv, bird, inPreviewPage) {
 	var nameFirst = nameSplit.reverse().splice(1).reverse().join(' ');
 	var nameLast = nameSplit.splice(-1);
 
-	birdLabelDiv.append('<div class="bird-name"><a>' + nameFirst + '</a> <a>' + nameLast + '</a></div>');
+	birdLabelDiv.append('<div class="bird-name"><a>' + nameFirst + '</a> <a>' + nameLast + '</a></div> ');
 	birdLabelDiv.find('a:first-child').click(function() { triggerFilter('bird', bird.species.name); })
 	birdLabelDiv.find('a:last-child').click(function() { triggerFilter('bird', nameLast); })
 	var birdNameDiv = birdLabelDiv.find(".bird-name");
