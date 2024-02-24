@@ -1602,6 +1602,16 @@
 			],
 			"family": "Thrushes"
 		},
+		"delicate-prinia": {
+			"key": "delicate-prinia",
+			"name": "Delicate Prinia",
+			"tags": [
+				"Prinia",
+				"Indian Graceful Prinia",
+				"Graceful Prinia"
+			],
+			"family": "Prinias"
+		},
 		"demoiselle-crane": {
 			"key": "demoiselle-crane",
 			"name": "Demoiselle Crane",
@@ -5301,6 +5311,14 @@
 				"Passerine"
 			],
 			"family": "Sparrows"
+		},
+		"zitting-cisticola": {
+			"key": "zitting-cisticola",
+			"name": "Zitting Cisticola",
+			"tags": [
+				"Cisticola"
+			],
+			"family": "Cisticolas"
 		}
 	}
 }

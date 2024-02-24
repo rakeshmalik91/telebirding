@@ -1,6 +1,148 @@
 {
 	"birds": [
 		{
+			"key": "s1708763194",
+			"species": "zitting-cisticola",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/zitting-cisticola-1708763208.jpg"
+				},
+				{
+					"src": "images/zitting-cisticola-1708763523.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1708763078",
+			"species": "plain-prinia",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/plain-prinia-1708766850.jpg"
+				},
+				{
+					"src": "images/plain-prinia-1708766819.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1708763339",
+			"species": "paddyfield-pipit",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/paddyfield-pipit-1708763362.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1708766602",
+			"species": "river-tern",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/river-tern-1708766615.jpg"
+				},
+				{
+					"src": "images/river-tern-1708776624.jpg"
+				},
+				{
+					"src": "images/river-tern-1708766621.jpg"
+				}
+			],
+			"plumage": ""
+		},
+		{
+			"key": "s1708764224",
+			"species": "white-tailed-lapwing",
+			"date": "24-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-tailed-lapwing-1708764656.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1708256923",
+			"species": "delicate-prinia",
+			"date": "18-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/delicate-prinia-1708256964.jpg"
+				},
+				{
+					"src": "images/delicate-prinia-1708398114.jpg"
+				},
+				{
+					"src": "images/delicate-prinia-1708765154.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1708256898",
+			"species": "indian-silverbill",
+			"date": "18-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-silverbill-1708256909.jpg"
+				},
+				{
+					"src": "images/indian-silverbill-1708762539.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1708256818",
+			"species": "red-naped-ibis",
+			"date": "18-02-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-naped-ibis-1708256877.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1706588985",
 			"species": "blue-throated-barbet",
 			"date": "28-01-2024",
@@ -32,10 +174,10 @@
 					"src": "images/upland-pipit-1706364919.jpg"
 				},
 				{
-					"src": "images/upland-pipit-1706364928.jpg"
+					"src": "images/upland-pipit-1706588427.jpg"
 				},
 				{
-					"src": "images/upland-pipit-1706588427.jpg"
+					"src": "images/upland-pipit-1706364928.jpg"
 				}
 			]
 		},
@@ -68,6 +210,52 @@
 					"src": "images/great-barbet-1706364829.jpg"
 				}
 			]
+		},
+		{
+			"key": "s1706364748",
+			"species": "red-breasted-parakeet",
+			"date": "27-01-2024",
+			"place": "",
+			"city": "Manila",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-breasted-parakeet-1706364759.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1706403884",
+			"species": "streaked-laughingthrush",
+			"date": "27-01-2024",
+			"place": "",
+			"city": "Manila",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/streaked-laughingthrush-1706492906.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1706365131",
+			"species": "chestnut-bellied-rock-thrush",
+			"date": "27-01-2024",
+			"place": "",
+			"city": "Manila",
+			"state": "Uttarakhand",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-bellied-rock-thrush-1706365155.jpg"
+				}
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1706588116",
@@ -117,52 +305,6 @@
 				}
 			],
 			"gender": "M"
-		},
-		{
-			"key": "s1706365131",
-			"species": "chestnut-bellied-rock-thrush",
-			"date": "27-01-2024",
-			"place": "",
-			"city": "Manila",
-			"state": "Uttarakhand",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/chestnut-bellied-rock-thrush-1706365155.jpg"
-				}
-			],
-			"gender": "F"
-		},
-		{
-			"key": "s1706364748",
-			"species": "red-breasted-parakeet",
-			"date": "27-01-2024",
-			"place": "",
-			"city": "Manila",
-			"state": "Uttarakhand",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/red-breasted-parakeet-1706364759.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1706403884",
-			"species": "streaked-laughingthrush",
-			"date": "27-01-2024",
-			"place": "",
-			"city": "Manila",
-			"state": "Uttarakhand",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/streaked-laughingthrush-1706492906.jpg"
-				}
-			]
 		},
 		{
 			"key": "s1706287059",
@@ -1129,7 +1271,8 @@
 				{
 					"src": "images/ashy-prinia-1705227235.jpg"
 				}
-			]
+			],
+			"plumage": "Non-Breeding"
 		},
 		{
 			"key": "s1705227187",
@@ -2781,6 +2924,21 @@
 				}
 			],
 			"gender": "M"
+		},
+		{
+			"key": "s1708169804",
+			"species": "rock-pigeon",
+			"date": "14-12-2023",
+			"place": "Desert National Park",
+			"city": "",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rock-pigeon-1708169843.jpg"
+				}
+			]
 		},
 		{
 			"key": "s1703037883",
@@ -4495,7 +4653,8 @@
 				{
 					"src": "images/yellow-bellied-prinia-1699277698.jpg"
 				}
-			]
+			],
+			"plumage": "Non-Breeding"
 		},
 		{
 			"key": "s1696253051",
@@ -4700,7 +4859,8 @@
 				{
 					"src": "images/river-tern-1696255618.jpg"
 				}
-			]
+			],
+			"plumage": ""
 		},
 		{
 			"key": "s1696148987",
@@ -5967,7 +6127,8 @@
 				{
 					"src": "images/ashy-prinia-1675091678.jpg"
 				}
-			]
+			],
+			"plumage": "Non-Breeding"
 		},
 		{
 			"key": "s1675082105",
@@ -18430,7 +18591,8 @@
 				{
 					"src": "images/ashy-prinia-1705320354.jpg"
 				}
-			]
+			],
+			"plumage": "Breeding"
 		},
 		{
 			"key": "streaked-weaver-female",
