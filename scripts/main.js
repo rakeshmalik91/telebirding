@@ -17,6 +17,7 @@ var sort = { by: undefined, descending: undefined };
 var currentRenderOffset = 0;
 var noMoreDataToRender = false;
 var birdFamilyFilter = null;
+var newSpeciesFilter = false;
 
 var HOME = "home";
 var ARCHIVE = "feed";
@@ -145,6 +146,11 @@ function filterAndSortData(filter, params) {
 	data.sort = JSON.parse(JSON.stringify(sort));
 	
 	data.filteredBirds = data.birds;
+
+	//filter only new species
+	if(newSpeciesFilter) {
+		data.filteredBirds = data.filteredBirds.filter(b => b.newSpecies);
+	} 
 	
 	//family filter
 	if(birdFamilyFilter) {
@@ -520,6 +526,7 @@ function getFilters() {
 		bird: getFilter('bird') || '',
 		place: getFilter('place') || '',
 		date: getFilter('date') || '',
+		newspecies: newSpeciesFilter
 	};
 }
 
@@ -565,6 +572,11 @@ function triggerFilter(type, value) {
 		}
 		hideRightPane();
 	}
+}
+
+function toggleNewSpeciesFilter() {
+	newSpeciesFilter = !newSpeciesFilter;
+	refresh();
 }
 
 function renderExploreMenu() {
@@ -807,6 +819,7 @@ function showPage(page, params, isPopstate) {
 		filter.place = params.place || filter.place || '';
 		filter.date = params.date || filter.date || '';
 		filter.bird = params.bird || filter.bird || '';
+		filter.newspecies = params.newspecies;
 	}
 
 	if(!isPopstate) {
@@ -909,6 +922,7 @@ function getUrlFromState(state) {
 		if([EXPLORE_PAGE, ARCHIVE, MAP].includes(state.page) && state.sort && state.sort.by) url += "&sort_by=" + encodeURIComponent(state.sort.by);
 		if([EXPLORE_PAGE, ARCHIVE, MAP].includes(state.page) && state.sort && state.sort.descending) url += "&sort_descending=" + encodeURIComponent(state.sort.descending);
 	}
+	if(newSpeciesFilter) url += "&newspecies=true";
 	return url;
 }
 
@@ -919,6 +933,7 @@ function retrieveStateFromUrlParams() {
 	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.sort_by) {
 		sort.by = decodeURIComponent(urlParams.sort_by);
 		sort.descending = !!urlParams.sort_descending;
+		newSpeciesFilter = urlParams.newspecies;
 		$(".sortby").ready(function() {
 			$(".sortby button").removeClass("button-active");
 			$(".sortby button[data-value='" + decodeURIComponent(urlParams.sort_by) + "']").addClass("button-active");
@@ -953,7 +968,7 @@ function showMore() {
 
 (function($) {
 	retrieveStateFromUrlParams();
-	showPage(currentPage, { family: decodeURIComponent(getUrlParams().family) }, false);
+	showPage(currentPage, { family: decodeURIComponent(getUrlParams().family), newspecies: decodeURIComponent(getUrlParams().newspecies) }, false);
 
 	window.onpopstate = function(state) {
 		if(state.state) {

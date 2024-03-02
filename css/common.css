@@ -199,3 +199,7 @@ div.four-column {
 .padleft20 {
 	padding-left: 20px;
 }
+
+.cursorpointer {
+	cursor: pointer;
+}
