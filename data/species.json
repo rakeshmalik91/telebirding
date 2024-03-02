@@ -1759,11 +1759,12 @@
 		},
 		"eurasian-marsh-harrier": {
 			"key": "eurasian-marsh-harrier",
-			"name": "Eurasian Marsh-Harrier",
+			"name": "Western Marsh-Harrier",
 			"tags": [
 				"Harrier",
 				"Marsh-Harrier",
-				"Raptor"
+				"Raptor",
+				"Eurasian Marsh-Harrier"
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
@@ -2524,7 +2525,7 @@
 			"key": "hen-harrier",
 			"name": "Hen Harrier",
 			"tags": [
-				"Harrier`"
+				"Harrier"
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
