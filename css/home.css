@@ -67,14 +67,17 @@
 	width: 100%;
 	margin-bottom: 20px;
 	font-size: 16px;
-	color: #95a0ae;
+	color: #95aea0;
 	transform: translateY(-15px);
 }
 .home-page p {
 	text-indent: 50px;
 }
+.home-page p span.highlight {
+	color: #bdd82f;
+}
 .home-page a {
-	color: #6484e0;
+	color: #84e064;
 	text-decoration: underline;
 }
 .home-page a:hover {
@@ -198,7 +201,7 @@
 	opacity: 1;
 }
 .home .menu button:enabled:hover {
-	color: #ffffff;
+	color: #b2ffa7;
 	padding: 30px;
 	padding-left: 50px;
 }
@@ -601,6 +604,10 @@ button.right-pane-button.button-active:before {
 .explore-menu h1 {
 	padding-left: 30px;
 	padding-bottom: 10px;
+}
+.explore-menu p {
+	color: #aaaaaa;
+	padding-left: 30px;
 }
 /*.explore-menu::-webkit-scrollbar {
 	display: none;

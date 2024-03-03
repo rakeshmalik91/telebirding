@@ -720,9 +720,12 @@
 		},
 		"black-winged-stilt": {
 			"key": "black-winged-stilt",
-			"name": "Black Winged Stilt",
+			"name": "Black-winged Stilt",
 			"tags": [
-				"Stilt"
+				"Stilt",
+				"Wader",
+				"Water Bird",
+				"Wading Bird"
 			],
 			"family": "Stilts & Avocets"
 		},
@@ -929,7 +932,10 @@
 			"key": "broad-billed-sandpiper",
 			"name": "Broad-billed Sandpiper",
 			"tags": [
-				"Sandpiper"
+				"Sandpiper",
+				"Wader",
+				"Water Bird",
+				"Wading Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -1357,6 +1363,7 @@
 				"Greenshank",
 				"Wader",
 				"Wading Bird",
+				"Water Bird",
 				"Shank"
 			],
 			"family": "Sandpipers & Allies"
@@ -1434,7 +1441,8 @@
 				"Redshank",
 				"Shank",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -1453,7 +1461,8 @@
 			"tags": [
 				"Sandpiper",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -1564,7 +1573,10 @@
 			"key": "curlew-sandpiper",
 			"name": "Curlew Sandpiper",
 			"tags": [
-				"Sandpiper"
+				"Sandpiper",
+				"Water Bird",
+				"Wader",
+				"Wading Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -1705,7 +1717,8 @@
 			"tags": [
 				"Curlew",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -1805,7 +1818,8 @@
 			"tags": [
 				"Whimbrel",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -2175,7 +2189,8 @@
 				"Snipe",
 				"Painted Snipe",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -2255,7 +2270,10 @@
 			"key": "green-sandpiper",
 			"name": "Green Sandpiper",
 			"tags": [
-				"Sandpiper"
+				"Sandpiper",
+				"Water Bird",
+				"Wading Bird",
+				"Wader"
 			],
 			"family": "Sandpipers"
 		},
@@ -3251,7 +3269,10 @@
 			"key": "long-toed-stint",
 			"name": "Long-toed Stint",
 			"tags": [
-				"Stint"
+				"Stint",
+				"Water Bird",
+				"Wading Bird",
+				"Wader"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -3347,7 +3368,8 @@
 			"tags": [
 				"Sandpiper",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -3686,7 +3708,10 @@
 			"key": "pied-avocet",
 			"name": "Pied Avocet",
 			"tags": [
-				"Avocet"
+				"Avocet",
+				"Wader",
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Stilts & Avocets"
 		},
@@ -3723,7 +3748,10 @@
 			"key": "pin-tailed-snipe",
 			"name": "Pin-tailed Snipe",
 			"tags": [
-				"Snipe"
+				"Snipe",
+				"Water Bird",
+				"Wading Bird",
+				"Wader"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -4017,6 +4045,7 @@
 			"key": "rock-pigeon",
 			"name": "Rock Pigeon",
 			"tags": [
+				"Blue Rock Pigeon",
 				"Pigeon",
 				"Dove",
 				"Feral Pigeon",
@@ -4078,7 +4107,8 @@
 			"name": "Ruff",
 			"tags": [
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -4669,7 +4699,9 @@
 			"name": "Temmick's Stint",
 			"tags": [
 				"Stint",
-				"Sandpiper"
+				"Water Bird",
+				"Wader",
+				"Wading Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -5219,7 +5251,8 @@
 			"tags": [
 				"Sandpiper",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
 		},
@@ -5229,7 +5262,8 @@
 			"tags": [
 				"Stork",
 				"Wader",
-				"Wading Bird"
+				"Wading Bird",
+				"Water Bird"
 			],
 			"family": "Storks"
 		},
@@ -5312,7 +5346,9 @@
 			"name": "Yellow-throated Sparrow",
 			"tags": [
 				"Sparrow",
-				"Passerine"
+				"Passerine",
+				"Chestnut-shouldered Petronia",
+				"Petronia"
 			],
 			"family": "Sparrows"
 		},

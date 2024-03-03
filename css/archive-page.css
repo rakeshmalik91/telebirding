@@ -423,3 +423,7 @@ span.tags {
 .preview-image-desc button.left-button:before {
 	content: "❮";
 }
+
+.newspeciesfilter.active {
+	background-color: white;
+}

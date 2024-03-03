@@ -4,7 +4,7 @@ body {
 	background-color: #64768a;
   overflow-x: hidden;
   width: 100vw;
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/featured-images%2Fbackground.jpg?alt=media);
+  background-image: url('../icons/background.jpg');
 }
 
 h1 {

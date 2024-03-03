@@ -1,6 +1,119 @@
 {
 	"birds": [
 		{
+			"key": "s1710079089",
+			"species": "green-sandpiper",
+			"date": "10-03-2024",
+			"place": "Soor Sarovar Bird Sanctuary",
+			"city": "Agra",
+			"state": "Uttar Pradesh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-sandpiper-1710298793.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1710078197",
+			"species": "black-winged-stilt",
+			"date": "10-03-2024",
+			"place": "Soor Sarovar Bird Sanctuary",
+			"city": "Agra",
+			"state": "Uttar Pradesh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-winged-stilt-1710124006.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1710078520",
+			"species": "indian-peafowl",
+			"date": "10-03-2024",
+			"place": "Soor Sarovar Bird Sanctuary",
+			"city": "Agra",
+			"state": "Uttar Pradesh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-peafowl-1710298686.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1709451170",
+			"species": "common-woodshrike",
+			"date": "03-03-2024",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-woodshrike-1709451200.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1709451206",
+			"species": "purple-sunbird",
+			"date": "03-03-2024",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-sunbird-1709451221.jpg"
+				},
+				{
+					"src": "images/purple-sunbird-1709451248.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1709562828",
+			"species": "indian-robin",
+			"date": "03-03-2024",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-robin-1709562856.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1709451114",
+			"species": "large-grey-babbler",
+			"date": "03-03-2024",
+			"place": "Bhondsi Nature Park",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/large-grey-babbler-1709451163.jpg"
+				}
+			],
+			"gender": ""
+		},
+		{
 			"key": "s1709302787",
 			"species": "western-yellow-wagtail",
 			"date": "24-02-2024",
@@ -94,7 +207,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/eurasian-marsh-harrier-1709390081.jpg"
+					"src": "images/eurasian-marsh-harrier-1709391549.jpg"
 				}
 			],
 			"gender": "M"
@@ -803,7 +916,7 @@
 			"city": "Ramnagar",
 			"state": "Uttarakhand",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/indian-peafowl-1706577774.jpg"
@@ -5115,7 +5228,7 @@
 			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/black-winged-stilt-1696569768.jpg"
@@ -5803,12 +5916,6 @@
 			"media": [
 				{
 					"src": "images/indian-robin-1691929777.jpg"
-				},
-				{
-					"src": "images/indian-robin-1694755572.jpg"
-				},
-				{
-					"src": "images/indian-robin-1695357424.jpg"
 				}
 			],
 			"gender": "M"

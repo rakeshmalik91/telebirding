@@ -148,6 +148,10 @@ function filterAndSortData(filter, params) {
 	data.filteredBirds = data.birds;
 
 	//filter only new species
+	if(!filter.date && !filter.place) {
+		newSpeciesFilter = false;
+		setNewSpeciesFilterState();
+	}
 	if(newSpeciesFilter) {
 		data.filteredBirds = data.filteredBirds.filter(b => b.newSpecies);
 	} 
@@ -574,8 +578,17 @@ function triggerFilter(type, value) {
 	}
 }
 
+function setNewSpeciesFilterState() {
+	if(newSpeciesFilter) {
+		$('.newspeciesfilter').addClass('active');
+	} else {
+		$('.newspeciesfilter').removeClass('active');
+	}
+}
+
 function toggleNewSpeciesFilter() {
 	newSpeciesFilter = !newSpeciesFilter;
+	setNewSpeciesFilterState();
 	refresh();
 }
 
@@ -583,15 +596,14 @@ function renderExploreMenu() {
 	$('.featured').addClass('collapsed');
 	$('.explore-menu').addClass('expanded');
 
-	if($('.explore-menu').html() == '') {
-		$('.explore-menu').append('<h1>Sightgings by Category</h1>');
+	if($('.explore-menu .list').html() == '') {
 		data.families.forEach(function(family, i) {
 			var nameSpan = "<span class='name'>" + family.name + "</span>";
 			var count = data.birds.filter(b => !b.hidden && b.species.family == family.name).length;
 			var countSpan = "<span class='count'>" + count + "</span>";
 			var img = "<img class='fadein-50percent' src='" + getMedia(family.imagesrc) + "' alt='" + family.name + "'></img>";
 			var div = "<div class='bird-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + nameSpan + countSpan + img + "</div>";
-			$('.explore-menu').append(div);
+			$('.explore-menu .list').append(div);
 		});
 	}
 }
@@ -933,7 +945,6 @@ function retrieveStateFromUrlParams() {
 	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.sort_by) {
 		sort.by = decodeURIComponent(urlParams.sort_by);
 		sort.descending = !!urlParams.sort_descending;
-		newSpeciesFilter = urlParams.newspecies;
 		$(".sortby").ready(function() {
 			$(".sortby button").removeClass("button-active");
 			$(".sortby button[data-value='" + decodeURIComponent(urlParams.sort_by) + "']").addClass("button-active");
@@ -948,6 +959,10 @@ function retrieveStateFromUrlParams() {
 		$(".sortby").ready(function() {
 			$(".sortby button[data-value='date'] span.order").addClass('desc').removeClass('asc');
 		});
+	}
+	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.newspecies) {
+		newSpeciesFilter = urlParams.newspecies;
+		$('.newspeciesfilter').ready(setNewSpeciesFilterState);
 	}
 	if([ARCHIVE, MAP].includes(urlParams.page)) {
 		$(".filter").ready(function() {
