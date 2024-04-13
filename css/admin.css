@@ -243,6 +243,9 @@ select[data-field=species] {
 .logout {
 	float: right;
 }
+.mode {
+	float: right;
+}
 
 
 

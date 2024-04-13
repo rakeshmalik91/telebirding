@@ -217,8 +217,16 @@
   padding-right: 10px;
 }
 
+.home .menu button.highlight {
+	font-size: 30px;
+	margin-top: 25px;
+}
+.home .menu button.highlight .icon {
+	height: 30px;
+	width: 30px;
+}
+
 #admin-button {
-	margin-top: 20px;
 	color: #d28a8a;
 }
 
@@ -267,14 +275,6 @@
 	.home .menu button:nth-child(4) .icon {
 		height: 22px;
 		width: 22px;
-	}
-	.home .menu button:nth-child(5) {
-		font-size: 19px;
-		margin-bottom: 9px;
-	}
-	.home .menu button:nth-child(5) .icon {
-		height: 19px;
-		width: 19px;
 	}
 }
 .site-logo, .site-logo img { 

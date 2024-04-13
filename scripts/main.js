@@ -1,16 +1,8 @@
 var DATA_PER_PAGE = 12;
 var TAG_TYPES = ["subspecies", "variation", "plumage", "age"];
-var FILES = [getData("data/sightings.json"), getData("data/species.json"), getData("data/families.json"), getData("data/places.json")];
 var MEDIA_TYPE_VIDEO = 'video';
 var MIN_COUNT_FOR_LOCATION_LISTING = 5;
 var DEFAULT_PLUMAGE = ""; //"Basic/Adult";
-
-var IS_MOBILE = !isDeviceOnLandscapeOrientation();
-
-var DATA_DATE_FORMAT = "DD-MM-yyyy";
-var DISPLAY_DATE_FORMAT = 'D MMM, YYYY';
-var FILTER_MONTH_FORMAT = 'MMM, YYYY';
-var FILTER_YEAR_FORMAT = 'YYYY';
 
 var data = { "sightings": [] };
 var sort = { by: undefined, descending: undefined };
@@ -19,26 +11,10 @@ var noMoreDataToRender = false;
 var sightingFamilyFilter = null;
 var newSpeciesFilter = false;
 
-var HOME = "home";
-var ARCHIVE = "feed";
-var EXPLORE_MENU = "explore_menu";
-var EXPLORE_PAGE = "explore_page";
-var MAP_MENU = "map_menu";
-var MAP = "map";
-var VIDEOS = "videos";
-var ABOUT = "about";
-
 var currentPage = HOME;
+var currentMode = MODE_BIRD;
 
-var pageNames = {};
-pageNames[HOME] = "Home";
-pageNames[ARCHIVE] = "Feed";
-pageNames[EXPLORE_MENU] = "Explore Birds";
-pageNames[EXPLORE_PAGE] = "Explore Birds";
-pageNames[MAP_MENU] = "Bird Map";
-pageNames[MAP] = "Bird Map";
-pageNames[VIDEOS] = "Birding Trips";
-pageNames[ABOUT] = "About";
+var IS_MOBILE = !isDeviceOnLandscapeOrientation();
 
 function getSpeciesCount(sightings) {
 	return [...new Set(sightings.map(b => b.species.name))].length;
@@ -782,31 +758,31 @@ function renderPageName(currentPage, params) {
 	switch(currentPage) {
 	  case EXPLORE_PAGE:
 		var icon = "<img class='icon' src='icons/bino-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + params.family + "</span> " + delim + " <a onclick=\"showPage('explore_menu')\">" + pageNames[EXPLORE_MENU] + "</a> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + params.family + "</span> " + delim + " <a onclick=\"showPage('explore_menu')\">" + PAGE[EXPLORE_MENU].name + "</a> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  case EXPLORE_MENU:
 		var icon = "<img class='icon' src='icons/bino-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + pageNames[EXPLORE_MENU] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + PAGE[EXPLORE_MENU].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  case ABOUT:
 		var icon = "<img class='icon' src='icons/about-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + pageNames[ABOUT] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + PAGE[ABOUT].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  case ARCHIVE:
 		var icon = "<img class='icon' src='icons/archive-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + pageNames[ARCHIVE] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + PAGE[ARCHIVE].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  case VIDEOS:
 		var icon = "<img class='icon' src='icons/video-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + pageNames[VIDEOS] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + PAGE[VIDEOS].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  case MAP_MENU:
 		var icon = "<img class='icon' src='icons/map-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + pageNames[MAP_MENU] + "</span> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + PAGE[MAP_MENU].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  case MAP:
 		var icon = "<img class='icon' src='icons/map-icon.png'/>";
-		$('.page-name').html(icon + "<span class='active'>" + (params.place||getFilter('place')||'All') + "</span> " + delim + " <a onclick=\"showPage('map_menu')\">" + pageNames[MAP] + "</a> " + delim + " <a onclick=\"showPage('home')\">" + pageNames[HOME] + "</a>");
+		$('.page-name').html(icon + "<span class='active'>" + (params.place||getFilter('place')||'All') + "</span> " + delim + " <a onclick=\"showPage('map_menu')\">" + PAGE[MAP].name + "</a> " + delim + " <a onclick=\"showPage('home')\">" + PAGE[HOME].name + "</a>");
 		break;
 	  default:
 		var icon = "<img class='icon' src='icons/home-icon.png'/>";
@@ -845,7 +821,8 @@ function showPage(page, params, isPopstate) {
 	}
 
 	currentPage = page;
-	readJSONFiles(FILES, function(json) {
+	var files = [getData("data/" + currentMode + "-sightings.json"), getData("data/" + currentMode + "-species.json"), getData("data/" + currentMode + "-families.json"), getData("data/places.json")];
+	readJSONFiles(files, function(json) {
 		data = json;
 		computeInternalDataFields();
 		initAutocomplete();
@@ -916,6 +893,8 @@ function showPage(page, params, isPopstate) {
 			setFilters({});
 			renderHome();
 		}
+
+		setSiteLogo();
 	});
 }
 
@@ -926,6 +905,9 @@ function refresh() {
 function getUrlFromState(state) {
 	if(state.page == HOME) return (window.location.origin + window.location.pathname); //blank url
 	var url = "?page=" + encodeURIComponent(state.page);
+	if(currentMode != MODE_BIRD) {
+		url += "&mode=" + currentMode;
+	}
 	if([EXPLORE_PAGE].includes(state.page) && state.params && state.params.family) url += "&family=" + encodeURIComponent(state.params.family);
 	if([ARCHIVE, MAP].includes(state.page) && state.filter && state.filter.sighting) url += "&sighting=" + encodeURIComponent(state.filter.sighting);
 	if([ARCHIVE, MAP].includes(state.page) && state.filter && state.filter.place) url += "&place=" + encodeURIComponent(state.filter.place);
@@ -942,6 +924,7 @@ function retrieveStateFromUrlParams() {
 	var urlParams = getUrlParams();
 	// var page = window.location.pathname.slice(1);
 	currentPage = urlParams.page ? decodeURIComponent(urlParams.page) : HOME;
+	currentMode = urlParams.mode ? decodeURIComponent(urlParams.mode) : MODE_BIRD;
 	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.sort_by) {
 		sort.by = decodeURIComponent(urlParams.sort_by);
 		sort.descending = !!urlParams.sort_descending;
@@ -979,6 +962,19 @@ function retrieveStateFromUrlParams() {
 function showMore() {
 	jQuery('.home-page .hidden-story').show();
 	jQuery('.home-page .show-more').hide();
+}
+
+function setMode(mode) {
+	currentMode = mode;
+}
+function setSiteLogo() {
+	jQuery('.site-logo a').hide();
+	// jQuery('.site-logo a.' + mode).show();
+	if(currentMode == MODE_INSECT && currentPage == ARCHIVE) {
+		jQuery('.site-logo a.insect').show();
+	} else {
+		jQuery('.site-logo a.bird').show();
+	}
 }
 
 (function($) {

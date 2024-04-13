@@ -203,3 +203,7 @@ div.four-column {
 .cursorpointer {
 	cursor: pointer;
 }
+
+.hide {
+	display: none;
+}

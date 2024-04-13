@@ -1,0 +1,133 @@
+{
+	"species": {
+		"chestnut-tiger-butterfly": {
+			"key": "chestnut-tiger-butterfly",
+			"name": "Chestnut Tiger Butterfly",
+			"tags": [
+				"Butterfly"
+			],
+			"family": "Butterfly"
+		},
+		"chinese-peacock-butt-": {
+			"key": "chinese-peacock-butt-",
+			"name": "Chinese Peacock Butterfly",
+			"tags": [
+				"Butterfly "
+			],
+			"family": "Butterfly"
+		},
+		"clouded-yellow-butterfly-": {
+			"key": "clouded-yellow-butterfly-",
+			"name": "Clouded Yellow Butterfly",
+			"tags": [
+				"Butterfly "
+			],
+			"family": "Butterfly"
+		},
+		"common-green-bottle-fly": {
+			"key": "common-green-bottle-fly",
+			"name": "Common Green Bottle Fly",
+			"tags": [
+				"Fly"
+			],
+			"family": "Blowfly"
+		},
+		"golden-silk-orb-weaver": {
+			"key": "golden-silk-orb-weaver",
+			"name": "Golden Orb-Weaver",
+			"tags": [
+				"Orb-Weaver",
+				"Spider",
+				"Golden Silk",
+				"Orb-Weaver"
+			],
+			"family": "Spider"
+		},
+		"hairy-maggot-blowfly": {
+			"key": "hairy-maggot-blowfly",
+			"name": "Hairy Maggot Blowfly",
+			"tags": [
+				"Fly",
+				"Blowfly"
+			],
+			"family": "Blowfly"
+		},
+		"himalayan-orange-oakleaf-butterfly-": {
+			"key": "himalayan-orange-oakleaf-butterfly-",
+			"name": "Himalayan Orange Oakleaf Butterfly",
+			"tags": [
+				"Butterfly "
+			],
+			"family": "Butterfly"
+		},
+		"himalayan-punchinello-butterfly": {
+			"key": "himalayan-punchinello-butterfly",
+			"name": "Himalayan Punchinello Butterfly",
+			"tags": [
+				"Butterfly"
+			],
+			"family": "Butterfly"
+		},
+		"housefly": {
+			"key": "housefly",
+			"name": "Housefly",
+			"tags": [
+				"Fly",
+				"Housefly"
+			],
+			"family": "Housefly"
+		},
+		"kaempfer-cicada": {
+			"key": "kaempfer-cicada",
+			"name": "Kaempfer Cicada",
+			"tags": [
+				"Cicada"
+			],
+			"family": "Cicada"
+		},
+		"lesser-housefly": {
+			"key": "lesser-housefly",
+			"name": "Lesser Housefly",
+			"tags": [
+				"Housefly",
+				"Fly"
+			],
+			"family": "Housefly"
+		},
+		"malay-cruiser-butterfly-": {
+			"key": "malay-cruiser-butterfly-",
+			"name": "Malay Cruiser Butterfly",
+			"tags": [
+				"Butterfly "
+			],
+			"family": "Butterfly"
+		},
+		"paris-peacock-butterfly": {
+			"key": "paris-peacock-butterfly",
+			"name": "Paris Peacock Butterfly",
+			"tags": [
+				"Butterfly "
+			],
+			"family": "Butterfly"
+		},
+		"stag-beetle": {
+			"key": "stag-beetle",
+			"name": "Stag Beetle",
+			"tags": [
+				"Beetle",
+				"Stag Beetle"
+			],
+			"family": "Beetle"
+		},
+		"vanessa-indica-butterfly-": {
+			"key": "vanessa-indica-butterfly-",
+			"name": "Indian Red Admiral Butterfly",
+			"tags": [
+				"Butterfly",
+				"Vanessa Butterfly",
+				"Vanessa Indica"
+			],
+			"family": "Butterfly"
+		}
+	}
+}

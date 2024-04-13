@@ -1,0 +1,22 @@
+{
+	"families": [
+		{
+			"name": "Housefly"
+		},
+		{
+			"name": "Blowfly"
+		},
+		{
+			"name": "Beetle"
+		},
+		{
+			"name": "Cicada"
+		},
+		{
+			"name": "Butterfly"
+		},
+		{
+			"name": "Spider"
+		}
+	]
+}

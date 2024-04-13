@@ -17,6 +17,7 @@
 		<link rel="stylesheet" charset="UTF-8" href="css/select2.min.css">
 		<script type="text/javascript" charset="UTF-8" src="scripts/select2.min.js"></script>
 
+		<script type="text/javascript" charset="UTF-8" src="scripts/constants.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="scripts/util.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="scripts/admin.js"></script>
 
@@ -66,15 +67,20 @@
 					eraseCookie("credentials");
 					location.reload();
 				});
+
+				$('.site-logo').html('<img class="logo" src="' + MODE[currentMode].logo + '" alt="' + MODE[currentMode].title + '" title="' + MODE[currentMode].title + '" />');
+
+				$("button.mode").html("Mode: " + currentMode.toUpperCase());
+				$("button.mode").click(function() {
+					switchMode();
+				});
 			});
 		</script>
 
 	</head>
 	<body>
 		<div id="login-page">
-			<a href="/">
-				<img class="logo" src="icons/site-logo.png" alt="Telebirding - Rakesh's Bird Catalogue" title="Telebirding - Rakesh's Bird Catalogue" />
-			</a>
+			<a href="/" class='site-logo'></a>
 			<h1>Admin</h1>
 			<table>
 				<tr>
@@ -96,11 +102,10 @@
 			</table>
 		</div>
 		<div class='data' style='display: none;'>
-			<a href="/">
-				<img class="logo" src="icons/site-logo.png" alt="Telebirding - Rakesh's Bird Catalogue" title="Telebirding - Rakesh's Bird Catalogue" />
-			</a>
+			<a href="/" class='site-logo'></a>
 			<h1>Admin</h1>
 			<button class="logout">Log Out</button>
+			<button class="mode" title='Change Mode'>Switch Mode</button>
 
 			<br>
 			<h2>Add Family</h2>

@@ -31,7 +31,19 @@ var OPT_PLUMAGE = {
 
 var DATA_DATE_FORMAT = "DD-MM-yyyy";
 
-var lastUpdatedSpecies = 'rock-pigeon';
+var MODE_BIRD = "bird";
+var MODE_INSECT = "insect";
+var currentMode = getUrlParams().mode || MODE_BIRD;
+
+var lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "housefly" : 'rock-pigeon';
+
+function switchMode() {
+	if(currentMode == MODE_BIRD) {
+		window.location.href = window.location.origin + "/admin?mode=" + MODE_INSECT;
+	} else {
+		window.location.href = window.location.origin + "/admin?mode=" + MODE_BIRD;
+	}
+}
 
 function showOverlay(text) {
 	$(".overlay span").html((text || "Please Wait") + "...");
@@ -63,13 +75,13 @@ function uploadJSONData(type) {
 	var fileData = {};
 	fileData[type] = data[type];
 	fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
-	if(fileData.length < 50) {
-		alert("Error uploading...");
-		return;
-	}
+	// if(fileData.length < 50) {
+	// 	alert("Error uploading...");
+	// 	return;
+	// }
 	var file = new File(fileData, type + ".json");
-	firebase.storage().ref("data/" + type + ".json").put(file).then(() => {
-		console.log("uploaded data/" + type + ".json");
+	firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
+		console.log("uploaded data/" + currentMode + "-" + type + ".json");
 		refresh();
 	}).catch(e => {
 		alert(e.message);
@@ -81,19 +93,19 @@ function backup() {
 	showOverlay("Backing up...");
 	console.log("Backing up...");
 	var backedUp = 0;
-	firebase.storage() .ref("backup/data/species.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), "species.json")).then(() => {
+	firebase.storage() .ref("backup/data/" + currentMode + "-species.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-species.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
 		}
 	});
-	firebase.storage() .ref("backup/data/families.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), "families.json")).then(() => {
+	firebase.storage() .ref("backup/data/" + currentMode + "-families.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-families.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
 		}
 	});
-	firebase.storage() .ref("backup/data/sightings.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), "sightings.json")).then(() => {
+	firebase.storage() .ref("backup/data/" + currentMode + "-sightings.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-sightings.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
@@ -214,11 +226,11 @@ function addSighting() {
 	data.sightings.unshift({
 		"key": ("s" + Math.floor(Date.now() / 1000)),
 		"species": lastUpdatedSpecies,
-		"date": data.sightings[0].date,
-		"place": data.sightings[0].place,
-		"city": data.sightings[0].city,
-		"state": data.sightings[0].state,
-		"country": data.sightings[0].country,
+		"date": (data.sightings[0] || {}).date || moment(Date.now()).format(DATA_DATE_FORMAT),
+		"place": (data.sightings[0] || {}).place,
+		"city": (data.sightings[0] || {}).city || "Howrah",
+		"state": (data.sightings[0] || {}).state || "West Bengal",
+		"country": (data.sightings[0] || {}).country || "India",
 		"hidden": true,
 		"media": []
 	});
@@ -475,7 +487,7 @@ function refresh() {
 	FIREBASE_ENABLED = true
 	clearFileCache();
 	data = {};
-	readJSONFiles([getData("data/sightings.json"), getData("data/species.json"), getData("data/families.json"), getData("data/places.json")], function(json) {
+	readJSONFiles([getData("data/" + currentMode + "-sightings.json"), getData("data/" + currentMode + "-species.json"), getData("data/" + currentMode + "-families.json"), getData("data/places.json")], function(json) {
 		data = json;
 		render();
 		$(".overlay").hide();
