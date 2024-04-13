@@ -1837,7 +1837,8 @@
 			"key": "eurasian-wren",
 			"name": "Eurasian Wren",
 			"tags": [
-				"Wren"
+				"Wren",
+				"Winter Wren"
 			],
 			"family": "Wrens"
 		},
@@ -2730,7 +2731,10 @@
 			"key": "immaculate-cupwing",
 			"name": "Immaculate Cupwing",
 			"tags": [
-				"Cupwing"
+				"Wren",
+				"Cupwing",
+				"Wren-Babbler",
+				"Nepal Wren-Babbler"
 			],
 			"family": "Cupwings"
 		},
@@ -4311,7 +4315,10 @@
 			"key": "scaly-breasted-cupwing",
 			"name": "Scaly-breasted Cupwing",
 			"tags": [
-				"Cupwing"
+				"Wren",
+				"Cupwing",
+				"Scaly-breasted Wren-Babbler",
+				"Wren-Babbler"
 			],
 			"family": "Cupwings"
 		},
