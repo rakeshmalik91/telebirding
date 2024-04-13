@@ -38,8 +38,8 @@ function showOverlay(text) {
 	$(".overlay").show();
 }
 
-function getValue(bird, prop) {
-	return bird[prop] ? bird[prop] : '';
+function getValue(sighting, prop) {
+	return sighting[prop] ? sighting[prop] : '';
 }
 
 function getSelectOptionsDOM(field, options, value) {
@@ -81,19 +81,19 @@ function backup() {
 	showOverlay("Backing up...");
 	console.log("Backing up...");
 	var backedUp = 0;
-	firebase.storage() .ref("backup/data/species.json") .put(new File(JSON.stringify({ birds: data.birds}, null, '\t').split('\n').map(l => l + '\n'), "species.json")).then(() => {
+	firebase.storage() .ref("backup/data/species.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), "species.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
 		}
 	});
-	firebase.storage() .ref("backup/data/families.json") .put(new File(JSON.stringify({ birds: data.birds}, null, '\t').split('\n').map(l => l + '\n'), "families.json")).then(() => {
+	firebase.storage() .ref("backup/data/families.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), "families.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
 		}
 	});
-	firebase.storage() .ref("backup/data/birds.json") .put(new File(JSON.stringify({ birds: data.birds}, null, '\t').split('\n').map(l => l + '\n'), "birds.json")).then(() => {
+	firebase.storage() .ref("backup/data/sightings.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), "sightings.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
@@ -106,13 +106,13 @@ function syncSightingsData(scheduleAfter) {
 	$('.save').removeAttr("disabled");
 	clearTimeout(syncRef);
 	syncRef = setTimeout(function() {
-		uploadJSONData('birds');
+		uploadJSONData('sightings');
 		syncRef = undefined;
 		$('.save').attr("disabled", "disabled");
 	}, scheduleAfter);
 }
 
-function uploadMedia(birdKey, files) {
+function uploadMedia(sightingKey, files) {
 	showOverlay("Uploading Media");
 	var watermark = null;
 	if($('input[name=watermark-on]').is(":checked")) {
@@ -124,15 +124,15 @@ function uploadMedia(birdKey, files) {
 	Array.from(files).forEach(function(file) {
 		var mediaSrc;
 		if(file.type.match(/image.*/)) {
-			var speciesKey = data.species[data.birds.filter(b => b.key == birdKey)[0].species].key;
+			var speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
 			mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
-			console.log("uploading image " + file.name + " for " + birdKey + " as " + mediaSrc);
+			console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
 			resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
 				firebase.storage().ref(mediaSrc).put(resizedImage).then(() => {
 					console.log("uploaded image " + mediaSrc);
-					data.birds.forEach(function(bird) {
-						if(bird.key == birdKey) {
-							bird.media.push({
+					data.sightings.forEach(function(sighting) {
+						if(sighting.key == sightingKey) {
+							sighting.media.push({
 								src: mediaSrc
 							});
 						}
@@ -147,16 +147,16 @@ function uploadMedia(birdKey, files) {
 	});
 }
 
-function deleteMedia(birdKey, mediaSrc) {
+function deleteMedia(sightingKey, mediaSrc) {
 	if(!mediaSrc.toLowerCase().endsWith(".jpg")) {
 		alert("Unsupported!!!");
 		return;
 	}
 	if(confirm("You are about to delete this media.")) {
 		showOverlay("Deleting Media");
-		data.birds.forEach(function(bird) {
-			if(bird.key != birdKey) return;
-			bird.media = bird.media.filter(m => m.src != mediaSrc);
+		data.sightings.forEach(function(sighting) {
+			if(sighting.key != sightingKey) return;
+			sighting.media = sighting.media.filter(m => m.src != mediaSrc);
 		});
 		firebase.storage().ref(mediaSrc).delete().then(() => {
 			syncSightingsData(0);
@@ -170,36 +170,36 @@ function deleteMedia(birdKey, mediaSrc) {
 	}
 }
 
-function moveMediaLeft(birdKey, mediaSrc) {
-	data.birds.forEach(function(bird) {
-		if(bird.key != birdKey) return;
-		var index = bird.media.map(m => m.src).indexOf(mediaSrc);
+function moveMediaLeft(sightingKey, mediaSrc) {
+	data.sightings.forEach(function(sighting) {
+		if(sighting.key != sightingKey) return;
+		var index = sighting.media.map(m => m.src).indexOf(mediaSrc);
 		if(index > 0) {
-			bird.media = [bird.media.slice(0, index-1), [bird.media[index]], [bird.media[index-1]], bird.media.slice(index+1)].flat();
+			sighting.media = [sighting.media.slice(0, index-1), [sighting.media[index]], [sighting.media[index-1]], sighting.media.slice(index+1)].flat();
 			syncSightingsData(0);
 			return;
 		}
 	});
 }
 
-function updateField(birdKey, field, value) {
-	data.birds.forEach(function(bird) {
-		if(bird.key != birdKey) return;
+function updateField(sightingKey, field, value) {
+	data.sightings.forEach(function(sighting) {
+		if(sighting.key != sightingKey) return;
 		if(field == 'date') {
-			bird[field] = moment(value, 'yyyy-mm-DD').format('DD-mm-yyyy');
+			sighting[field] = moment(value, 'yyyy-mm-DD').format('DD-mm-yyyy');
 		} else if(field == 'hidden') {
-			bird[field] = !value;
+			sighting[field] = !value;
 		} else {
-			bird[field] = value;
+			sighting[field] = value;
 		}
 	});
 	syncSightingsData(SYNC_SCHEDULE_TIME);
 }
 
-function updateMediaProperty(birdKey, mediaSrc, property, value) {
-	data.birds.forEach(function(bird) {
-		if(bird.key != birdKey) return;
-		bird.media.forEach(media => {
+function updateMediaProperty(sightingKey, mediaSrc, property, value) {
+	data.sightings.forEach(function(sighting) {
+		if(sighting.key != sightingKey) return;
+		sighting.media.forEach(media => {
 			if(media.src == mediaSrc) {
 				media[property] = value;
 			}
@@ -211,26 +211,26 @@ function updateMediaProperty(birdKey, mediaSrc, property, value) {
 function addSighting() {
 	OFFSET = 0;
 	$("input[name=filter-sighting]").val('');
-	data.birds.unshift({
+	data.sightings.unshift({
 		"key": ("s" + Math.floor(Date.now() / 1000)),
 		"species": lastUpdatedSpecies,
-		"date": data.birds[0].date,
-		"place": data.birds[0].place,
-		"city": data.birds[0].city,
-		"state": data.birds[0].state,
-		"country": data.birds[0].country,
+		"date": data.sightings[0].date,
+		"place": data.sightings[0].place,
+		"city": data.sightings[0].city,
+		"state": data.sightings[0].state,
+		"country": data.sightings[0].country,
 		"hidden": true,
 		"media": []
 	});
 	syncSightingsData(0);
 }
 
-function deleteSighting(birdKey) {
+function deleteSighting(sightingKey) {
 	if(confirm("You are about to delete this sighting.")) {
-		data.birds.filter(b => b.key == birdKey)[0].media.forEach(function(media) {
-			deleteMedia(birdKey, media.src);
+		data.sightings.filter(b => b.key == sightingKey)[0].media.forEach(function(media) {
+			deleteMedia(sightingKey, media.src);
 		});
-		data.birds = data.birds.filter(b => b.key != birdKey);
+		data.sightings = data.sightings.filter(b => b.key != sightingKey);
 		syncSightingsData(0);
 	}
 }
@@ -266,32 +266,32 @@ function addFamily(name) {
 	}
 }
 
-function birdMatches(bird, searchKey) {
+function sightingMatches(sighting, searchKey) {
 	searchKey = searchKey.toLowerCase().trim();
 	if(searchKey == "hidden") {
-		return bird.hidden;
+		return sighting.hidden;
 	}
-	return bird.key.indexOf(searchKey) >= 0
-		|| data.species[bird.species].name.toLowerCase().indexOf(searchKey) >= 0
-		|| data.species[bird.species].tags.map(t => t.toLowerCase().indexOf(searchKey) >= 0).reduce((a,b) => a || b)
-		|| (bird.place && bird.place.toLowerCase().indexOf(searchKey) >= 0)
-		|| (bird.city && bird.city.toLowerCase().indexOf(searchKey) >= 0)
-		|| bird.state.toLowerCase().indexOf(searchKey) >= 0
-		|| bird.country.toLowerCase().indexOf(searchKey) >= 0
-		|| (bird.variation && bird.variation.toLowerCase().indexOf(searchKey) >= 0)
-		|| (bird.subspecies && bird.subspecies.toLowerCase().indexOf(searchKey) >= 0)
-		|| (bird.plumage && bird.plumage.toLowerCase().indexOf(searchKey) >= 0)
-		|| (bird.age && bird.age.toLowerCase().indexOf(searchKey) >= 0);
+	return sighting.key.indexOf(searchKey) >= 0
+		|| data.species[sighting.species].name.toLowerCase().indexOf(searchKey) >= 0
+		|| data.species[sighting.species].tags.map(t => t.toLowerCase().indexOf(searchKey) >= 0).reduce((a,b) => a || b)
+		|| (sighting.place && sighting.place.toLowerCase().indexOf(searchKey) >= 0)
+		|| (sighting.city && sighting.city.toLowerCase().indexOf(searchKey) >= 0)
+		|| sighting.state.toLowerCase().indexOf(searchKey) >= 0
+		|| sighting.country.toLowerCase().indexOf(searchKey) >= 0
+		|| (sighting.variation && sighting.variation.toLowerCase().indexOf(searchKey) >= 0)
+		|| (sighting.subspecies && sighting.subspecies.toLowerCase().indexOf(searchKey) >= 0)
+		|| (sighting.plumage && sighting.plumage.toLowerCase().indexOf(searchKey) >= 0)
+		|| (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0);
 }
 
-function moveSighting(birdKey, direction) {
-	var sighting = data.birds.filter(b => b.key == birdKey)[0];
-	var index = data.birds.map(b => b.key).indexOf(birdKey);
-	if(direction > 0 && index < data.birds.length-1) {
-		data.birds = [data.birds.slice(0, index), data.birds.slice(index+1, index+2), [sighting], data.birds.slice(index+2)].flat();
+function moveSighting(sightingKey, direction) {
+	var sighting = data.sightings.filter(b => b.key == sightingKey)[0];
+	var index = data.sightings.map(b => b.key).indexOf(sightingKey);
+	if(direction > 0 && index < data.sightings.length-1) {
+		data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index+1, index+2), [sighting], data.sightings.slice(index+2)].flat();
 		syncSightingsData(0);
 	} else if(direction < 0 && index > 0) {
-		data.birds = [data.birds.slice(0, index-1), [sighting], data.birds.slice(index-1, index), data.birds.slice(index+1)].flat();
+		data.sightings = [data.sightings.slice(0, index-1), [sighting], data.sightings.slice(index-1, index), data.sightings.slice(index+1)].flat();
 		syncSightingsData(0);
 	}
 }
@@ -316,7 +316,7 @@ function fillUpdateSpeciesForm() {
 }
 
 function sortByDate() {
-	data.birds.sort((a,b) => compare(moment(b.date, DATA_DATE_FORMAT), moment(a.date, DATA_DATE_FORMAT)));
+	data.sightings.sort((a,b) => compare(moment(b.date, DATA_DATE_FORMAT), moment(a.date, DATA_DATE_FORMAT)));
 	syncSightingsData(0);
 }
 
@@ -361,28 +361,28 @@ function render() {
 			"<th class='noborder'></th>" +
 		"</tr>");
 	var searchKey = $("input[name=filter-sighting]").val();
-	var filteredSightings = data.birds.filter(b => birdMatches(b, searchKey));
-	filteredSightings.slice(OFFSET, OFFSET+ROWS).forEach(function(bird, i) {
-		var row = "<tr id='" + bird.key + "'>";
+	var filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
+	filteredSightings.slice(OFFSET, OFFSET+ROWS).forEach(function(sighting, i) {
+		var row = "<tr id='" + sighting.key + "'>";
 
 		row += "<td class='noborder'>"
 		row += "<button class='delete-sighting' title='Delete sighting'>-</button>";
-		row += "<input class='hide-checkbox' type='checkbox' data-field='hidden' " + (bird.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
+		row += "<input class='hide-checkbox' type='checkbox' data-field='hidden' " + (sighting.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
 		row += "</td>";
 
-		row += "<td><span style='width: 100px;' class='label'>" + bird.key + "</span></td>";
+		row += "<td><span style='width: 100px;' class='label'>" + sighting.key + "</span></td>";
 
 		row += "<td>"
-		row += getSelectDOM("species", data.species, getValue(bird, 'species'), "200px");
+		row += getSelectDOM("species", data.species, getValue(sighting, 'species'), "200px");
 		row += "<br>";
-		// row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].family + "</span>";
+		// row += "<span style='width: 200px;' class='label'>" + data.species[sighting.species].family + "</span>";
 		// row += "<br>";
-		// row += "<span style='width: 200px;' class='label'>" + data.species[bird.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
-		row += "<textarea data-field='description' style='width:190px;height:80px' placeholder='Enter Description'>" + getValue(bird, 'description') + "</textarea>";
+		// row += "<span style='width: 200px;' class='label'>" + data.species[sighting.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
+		row += "<textarea data-field='description' style='width:190px;height:80px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";
-		bird.media.forEach(function(media, i) {
+		sighting.media.forEach(function(media, i) {
 			row += "<div class='thumbnail'>";
 			row += "<span>." + (media.type == "video" ? "mp4" : "jpg") + "</span>";
 			row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media' " + (media.type == "video" ? "disabled" : "") + ">-</button>";
@@ -400,21 +400,21 @@ function render() {
 		row += "</div></td>";
 
 		row += "<td class='place-fields'>";
-		row += "<input type='date' data-field='date' value='" + moment(bird.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:180px'></input>";
+		row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:180px'></input>";
 		row += "<br>";
-		row += getSelectDOM("country", data.countries, getValue(bird, 'country'), "180px");
-		row += getSelectDOM("state", data.countries[bird.country].states, getValue(bird, 'state'), "180px");
-		row += "<input type='text' data-field='city' value='" + getValue(bird, 'city') + "' style='width:180px' placeholder='Add city'></input>";
-		row += "<input type='text' data-field='place' value='" + getValue(bird, 'place') + "' style='width:180px' placeholder='Add place'></input>";
+		row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "180px");
+		row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "180px");
+		row += "<input type='text' data-field='city' value='" + getValue(sighting, 'city') + "' style='width:180px' placeholder='Add city'></input>";
+		row += "<input type='text' data-field='place' value='" + getValue(sighting, 'place') + "' style='width:180px' placeholder='Add place'></input>";
 		row += "</td>";
 
 		row += "<td>";
-		row += getSelectDOM("gender", OPT_GENDER, getValue(bird, 'gender'), "160px");
-		row += getSelectDOM("age", OPT_AGE, getValue(bird, 'age'), "160px");
-		row += getSelectDOM("plumage", OPT_PLUMAGE, getValue(bird, 'plumage'), "160px");
+		row += getSelectDOM("gender", OPT_GENDER, getValue(sighting, 'gender'), "160px");
+		row += getSelectDOM("age", OPT_AGE, getValue(sighting, 'age'), "160px");
+		row += getSelectDOM("plumage", OPT_PLUMAGE, getValue(sighting, 'plumage'), "160px");
 		row += "<br>";
-		row += "<input type='text' data-field='variation' value='" + getValue(bird, 'variation') + "' style='width:160px' placeholder='Add variation'></input>";
-		row += "<input type='text' data-field='subspecies' value='" + getValue(bird, 'subspecies') + "' style='width:160px' placeholder='Add subspecies'></input>";
+		row += "<input type='text' data-field='variation' value='" + getValue(sighting, 'variation') + "' style='width:160px' placeholder='Add variation'></input>";
+		row += "<input type='text' data-field='subspecies' value='" + getValue(sighting, 'subspecies') + "' style='width:160px' placeholder='Add subspecies'></input>";
 		row += "</td>";
 
 		row += "<td class='noborder'>"
@@ -427,32 +427,32 @@ function render() {
 		table.append(row);
 		table.find("select").select2();
 
-		var birdRow = $("#" + bird.key);
-		birdRow.find(".upload-button").click(function() {
-			birdRow.find(".upload").click();
+		var sightingRow = $("#" + sighting.key);
+		sightingRow.find(".upload-button").click(function() {
+			sightingRow.find(".upload").click();
 		});
-		birdRow.find(".upload").change(function() {
-			uploadMedia(bird.key, this.files)
+		sightingRow.find(".upload").change(function() {
+			uploadMedia(sighting.key, this.files)
 		});
-		birdRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
+		sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
 			var value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
-			updateField(bird.key, $(this).attr("data-field"), value);
+			updateField(sighting.key, $(this).attr("data-field"), value);
 		});
-		birdRow.find("button.delete-media").click(function() {
-			deleteMedia(bird.key, $(this).attr("data-mediasrc"));
+		sightingRow.find("button.delete-media").click(function() {
+			deleteMedia(sighting.key, $(this).attr("data-mediasrc"));
 		});
-		birdRow.find("button.move-media-left").click(function() {
-			moveMediaLeft(bird.key, $(this).attr("data-mediasrc"));
+		sightingRow.find("button.move-media-left").click(function() {
+			moveMediaLeft(sighting.key, $(this).attr("data-mediasrc"));
 		});
-		birdRow.find(".thumbnail .title-textbox").change(function() {
-			updateMediaProperty(bird.key, $(this).attr("data-mediasrc"), "title", $(this).val());
+		sightingRow.find(".thumbnail .title-textbox").change(function() {
+			updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
 		});
-		birdRow.find(".delete-sighting").click(() => deleteSighting(bird.key));
-		birdRow.find(".move-up").click(() => moveSighting(bird.key, -1));
-		birdRow.find(".move-down").click(() => moveSighting(bird.key, 1));
-		birdRow.find("select[data-field=country]").change(function() {
-			birdRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[bird.country].states, getValue(bird, 'state')));
-			birdRow.find("select[data-field=state]").select2();
+		sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
+		sightingRow.find(".move-up").click(() => moveSighting(sighting.key, -1));
+		sightingRow.find(".move-down").click(() => moveSighting(sighting.key, 1));
+		sightingRow.find("select[data-field=country]").change(function() {
+			sightingRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state')));
+			sightingRow.find("select[data-field=state]").select2();
 		});
 	});
 
@@ -475,7 +475,7 @@ function refresh() {
 	FIREBASE_ENABLED = true
 	clearFileCache();
 	data = {};
-	readJSONFiles([getData("data/birds.json"), getData("data/species.json"), getData("data/families.json"), getData("data/places.json")], function(json) {
+	readJSONFiles([getData("data/sightings.json"), getData("data/species.json"), getData("data/families.json"), getData("data/places.json")], function(json) {
 		data = json;
 		render();
 		$(".overlay").hide();
@@ -509,7 +509,7 @@ $(document).ready(function() {
 	});
 	$('button.next').click(function() {
 		var searchKey = $("input[name=filter-sighting]").val();
-		var length = data.birds.filter(b => birdMatches(b, searchKey)).length;
+		var length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
 		if(OFFSET + ROWS < length) {
 			OFFSET += ROWS;
 			refresh();
@@ -518,7 +518,7 @@ $(document).ready(function() {
 	});
 	$('button.last-page').click(function() {
 		var searchKey = $("input[name=filter-sighting]").val();
-		var length = data.birds.filter(b => birdMatches(b, searchKey)).length;
+		var length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
 		if(OFFSET + ROWS < length) {
 			OFFSET = Math.floor(length / ROWS) * ROWS;
 			refresh();

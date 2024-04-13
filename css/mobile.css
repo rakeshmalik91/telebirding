@@ -40,19 +40,19 @@
 	.videos {
 		margin-top: 0;
 	}
-	.birds-list {
+	.sightings-list {
 		margin-top: 110px;
 	}
 	.home, {
 		margin-top: calc(var(--header-height) + var(--header-padding));
 	}
-	.birds-list .bird-panel {
+	.sightings-list .sighting-panel {
 		transform: translateX(2px);
 	}
-	.bird-label {
+	.sighting-label {
 		min-height: 170px;
 	}
-	.bird-panel .bird-tags {
+	.sighting-panel .sighting-tags {
 		padding-right: 15px;
 	}
 
@@ -89,16 +89,16 @@
 		width: 100vw;
 		height: calc(100% - var(--header-height) - 25px);
 	}
-	.explore-menu .bird-family, .explore-menu .bird-family img {
+	.explore-menu .sighting-family, .explore-menu .sighting-family img {
 		height: 60px;
 		width: 100vw;
 	}
-	.explore-menu .bird-family span {
+	.explore-menu .sighting-family span {
 		padding-left: 10px;
 		font-size: 24px;
 		font-weight: normal;
 	}
-	.explore-menu .bird-family span.count {
+	.explore-menu .sighting-family span.count {
 		right: 30;
 	}
 
@@ -133,7 +133,7 @@
 /* ----------------- ipad ------------------- */
 
 @media (pointer:coarse) and (min-aspect-ratio: 13/9) {
-	.birds-list .bird-panel {
+	.sightings-list .sighting-panel {
 		transform: translateX(10px);
 	}
 }

@@ -284,12 +284,12 @@
 .site-header {
 	height: var(--header-height);
 }
-.birds-list, .home, .videos, .map-menu {
+.sightings-list, .home, .videos, .map-menu {
 	margin-top: calc(var(--header-height) + var(--header-padding));
 }
 
 /* workaround for unequal margin on birds list */
-.birds-list .bird-panel {
+.sightings-list .sighting-panel {
 	transform: translateX(5px);
 }
 
@@ -612,35 +612,35 @@ button.right-pane-button.button-active:before {
 /*.explore-menu::-webkit-scrollbar {
 	display: none;
 }*/
-.explore-menu .bird-family {
+.explore-menu .sighting-family {
 	float: left;
 	position: relative;
 	height: 100%;
 	margin-top: 5px;
 	cursor: pointer;
 }
-.explore-menu .bird-family span {
+.explore-menu .sighting-family span {
 	position: absolute;
 	bottom: 5px;
 	color: white;
 	opacity: 1;
 }
-.explore-menu .bird-family, .explore-menu .bird-family img {
+.explore-menu .sighting-family, .explore-menu .sighting-family img {
 	overflow: hidden;
 	background-color: black;
 }
-.explore-menu .bird-family img {
+.explore-menu .sighting-family img {
 	position: relative;
 	object-fit: cover;
 	opacity: 0.5;
 }
-.explore-menu .bird-family, .explore-menu .bird-family img, .explore-menu .bird-family span {
+.explore-menu .sighting-family, .explore-menu .sighting-family img, .explore-menu .sighting-family span {
     -webkit-transition: all 0.3s ease; 
     -moz-transition: all 0.3s ease; 
     -ms-transition: all 0.3s ease; 
     -o-transition: all 0.3s ease; 
 }
-.explore-menu .bird-family:hover, .explore-menu .bird-family:hover img {
+.explore-menu .sighting-family:hover, .explore-menu .sighting-family:hover img {
 	opacity: 1;
 }
 
@@ -652,30 +652,30 @@ button.right-pane-button.button-active:before {
 	.explore-menu.expanded {
 		width: 90vw;
 	}
-	.explore-menu .bird-family {
+	.explore-menu .sighting-family {
 		margin-right: 5px;
 	}
-	.explore-menu .bird-family, .explore-menu .bird-family img {
+	.explore-menu .sighting-family, .explore-menu .sighting-family img {
 		height: 80px;
 		width: 400px;
 	}
-	.explore-menu .bird-family:hover img {
+	.explore-menu .sighting-family:hover img {
 		height: 200px;
 		position: absolute;
 		transform: translateY(-60px)/* translateX(-1vw)*/;
 	}
-	.explore-menu .bird-family:hover {
+	.explore-menu .sighting-family:hover {
 		overflow: visible;
 		z-index: 1;
 	}
 }
 
-.explore-menu .bird-family span.name {
+.explore-menu .sighting-family span.name {
 	padding-left: 20px;
 	font-size: 20px;
 	font-weight: bold;
 }
-.explore-menu .bird-family span.count {
+.explore-menu .sighting-family span.count {
 	top: 0;
 	right: 0;
 	padding-top: 10px;
