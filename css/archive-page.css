@@ -424,6 +424,12 @@ span.tags {
 	content: "❮";
 }
 
+.preview-image-desc button.slideshow-button {
+	top: 50px;
+	right: 60px;
+	padding-right: 5px;
+}
+
 .newspeciesfilter.active {
 	background-color: white;
 }

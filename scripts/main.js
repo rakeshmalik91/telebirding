@@ -255,6 +255,9 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var nameFirst = nameSplit.reverse().splice(1).reverse().join(' ');
 	var nameLast = nameSplit.splice(-1);
 
+	if(inPreviewPage) {
+		sightingLabelDiv.append('<div class="vgap30px"></div> ');
+	}
 	sightingLabelDiv.append('<div class="sighting-name"><a>' + nameFirst + '</a> <a>' + nameLast + '</a></div> ');
 	sightingLabelDiv.find('a:first-child').click(function() { triggerFilter('sighting', sighting.species.name); })
 	sightingLabelDiv.find('a:last-child').click(function() { triggerFilter('sighting', nameLast); })
@@ -421,7 +424,8 @@ function previewImage(imageSrc, sightingKey, index) {
 		}
 		$('body').append('<div class="preview-image' + (visible ? '' : ' slide-in') + '" data-index="' + index + '">' + mediaTag + '</div>');
 		$('body').append('<div class="preview-image-desc' + (visible ? '' : ' slide-in') + '"></div>');
-		$('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png"/></button>');
+		$('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png" title="Close"/></button>');
+		$('.preview-image-desc').append('<button class="slideshow-button" onclick="toggleSlideshow()"><img src="icons/' + (isSlideshowPlaying() ? "pause" : "play") + '.png" title="Slideshow"/></button>');
 		$('.preview-image-desc').append('<button class="left-button" onclick="scrollPreviewImageSighting(-1)"></button>');
 		$('.preview-image-desc').append('<button class="right-button" onclick="scrollPreviewImageSighting(1)"></button>');
 		renderSightingDetails($('.preview-image-desc'), sighting, true);
@@ -430,6 +434,25 @@ function previewImage(imageSrc, sightingKey, index) {
 		if(!isTouchDevice()) disableScroll();
 		$('.sightings-list video').trigger('pause');
 	}
+}
+
+var slideshowIntervalId = null;
+function isSlideshowPlaying() {
+	return slideshowIntervalId != null;
+}
+function startSlideshow() {
+	slideshowIntervalId = setInterval(function() { scrollPreviewImage(1, true); }, 3000);
+	$('button.slideshow-button img').attr("src", "icons/pause.png");
+}
+function stopSlideshow() {
+	if(isSlideshowPlaying()) {
+		clearInterval(slideshowIntervalId);
+	}
+	slideshowIntervalId = null;
+	$('button.slideshow-button img').attr("src", "icons/play.png");
+}
+function toggleSlideshow() {
+	isSlideshowPlaying() ? stopSlideshow() : startSlideshow();
 }
 
 // called on click of arrow button in preview page
@@ -447,7 +470,7 @@ function scrollPreviewImageSighting(direction) {
 
 // called on arrow key press
 // scrolls through images inside sightings, then trough sightings as well
-function scrollPreviewImage(direction) {
+function scrollPreviewImage(direction, wrap) {
 	if($('.preview-image').is(':visible')) {
 		var index = parseInt($('.preview-image').attr('data-index'));
 		var sighting = data.filteredSightings[index];
@@ -458,7 +481,11 @@ function scrollPreviewImage(direction) {
 			var media = data.filteredSightings[index].species.media[mediaIndex];
 			previewImage(media.media.src, media.sightingKey, index);
 		} else {
-			index += direction;
+			if(wrap) {
+				index = (index + 1 + data.filteredSightings.length) % data.filteredSightings.length;
+			} else {
+				index += direction;
+			}
 			if(index >= 0 && index < data.filteredSightings.length) {
 				var sighting = data.filteredSightings[index];
 				previewImage(sighting.media[0].src, sighting.key);
@@ -468,6 +495,7 @@ function scrollPreviewImage(direction) {
 }
 
 function removePreviewImage() {
+	stopSlideshow();
 	$('.preview-image, .preview-image-desc').addClass('slide-out');
 	$('.overlay').addClass('fadeout');
 	setTimeout(function() {

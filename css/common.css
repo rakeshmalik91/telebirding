@@ -207,3 +207,7 @@ div.four-column {
 .hide {
 	display: none;
 }
+
+.vgap30px {
+	height: 30px;
+}
