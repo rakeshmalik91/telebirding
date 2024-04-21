@@ -1,22 +1,25 @@
 {
 	"sightings": [
 		{
-			"key": "s1713016604",
-			"species": "common-green-bottle-fly",
-			"date": "06-04-2024",
+			"key": "s1713700308",
+			"species": "yellow-bush-dart",
+			"date": "21-04-2024",
 			"city": "Howrah",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/common-green-bottle-fly-1713016800.jpg"
+					"src": "images/yellow-bush-dart-1713701786.jpg"
+				},
+				{
+					"src": "images/yellow-bush-dart-1713701791.jpg"
 				}
 			]
 		},
 		{
 			"key": "s1712992955",
-			"species": "housefly",
+			"species": "common-housefly",
 			"date": "06-04-2024",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -32,8 +35,8 @@
 			]
 		},
 		{
-			"key": "s1713016979",
-			"species": "hairy-maggot-blowfly",
+			"key": "s1713016604",
+			"species": "common-green-bottle-fly",
 			"date": "31-03-2024",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -41,7 +44,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/hairy-maggot-blowfly-1713017033.jpg"
+					"src": "images/common-green-bottle-fly-1713016800.jpg"
+				},
+				{
+					"src": "images/common-green-bottle-fly-1713701779.jpg"
 				}
 			]
 		},
@@ -75,7 +81,7 @@
 		},
 		{
 			"key": "s1713064129",
-			"species": "vanessa-indica-butterfly-",
+			"species": "indian-red-admiral-butterfly",
 			"date": "28-10-2023",
 			"city": "Mulkharka",
 			"state": "Sikkim",
@@ -89,7 +95,7 @@
 		},
 		{
 			"key": "s1713063629",
-			"species": "clouded-yellow-butterfly-",
+			"species": "clouded-yellow-butterfly",
 			"date": "28-10-2023",
 			"city": "Mulkharka",
 			"state": "Sikkim",
@@ -159,7 +165,7 @@
 		},
 		{
 			"key": "s1713021225",
-			"species": "malay-cruiser-butterfly-",
+			"species": "malay-cruiser-butterfly",
 			"date": "26-10-2022",
 			"city": "South Andaman",
 			"state": "Andaman & Nicobar Islands",
@@ -173,7 +179,7 @@
 		},
 		{
 			"key": "s1713021125",
-			"species": "himalayan-orange-oakleaf-butterfly-",
+			"species": "himalayan-orange-oakleaf-butterfly",
 			"date": "25-09-2022",
 			"city": "Rongo",
 			"state": "West Bengal",
@@ -187,7 +193,7 @@
 		},
 		{
 			"key": "s1713021394",
-			"species": "chinese-peacock-butt-",
+			"species": "chinese-peacock-butterfly",
 			"date": "30-04-2022",
 			"city": "Chafi",
 			"state": "Uttarakhand",

@@ -6,31 +6,42 @@
 			"tags": [
 				"Butterfly"
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
-		"chinese-peacock-butt-": {
-			"key": "chinese-peacock-butt-",
+		"chinese-peacock-butterfly": {
+			"key": "chinese-peacock-butterfly",
 			"name": "Chinese Peacock Butterfly",
 			"tags": [
 				"Butterfly "
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
-		"clouded-yellow-butterfly-": {
-			"key": "clouded-yellow-butterfly-",
+		"clouded-yellow-butterfly": {
+			"key": "clouded-yellow-butterfly",
 			"name": "Clouded Yellow Butterfly",
 			"tags": [
 				"Butterfly "
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
 		"common-green-bottle-fly": {
 			"key": "common-green-bottle-fly",
 			"name": "Common Green Bottle Fly",
 			"tags": [
+				"Fly",
+				"Bottle Fly",
+				"Blowfly"
+			],
+			"family": "Flies"
+		},
+		"common-housefly": {
+			"key": "common-housefly",
+			"name": "Common Housefly",
+			"tags": [
+				"Housefly",
 				"Fly"
 			],
-			"family": "Blowfly"
+			"family": "Houseflies & Allies"
 		},
 		"golden-silk-orb-weaver": {
 			"key": "golden-silk-orb-weaver",
@@ -40,24 +51,15 @@
 				"Spider",
 				"Golden Silk Orb-Weaver"
 			],
-			"family": "Spider"
+			"family": "Spiders"
 		},
-		"hairy-maggot-blowfly": {
-			"key": "hairy-maggot-blowfly",
-			"name": "Hairy Maggot Blowfly",
-			"tags": [
-				"Fly",
-				"Blowfly"
-			],
-			"family": "Blowfly"
-		},
-		"himalayan-orange-oakleaf-butterfly-": {
-			"key": "himalayan-orange-oakleaf-butterfly-",
+		"himalayan-orange-oakleaf-butterfly": {
+			"key": "himalayan-orange-oakleaf-butterfly",
 			"name": "Himalayan Orange Oakleaf Butterfly",
 			"tags": [
 				"Butterfly "
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
 		"himalayan-punchinello-butterfly": {
 			"key": "himalayan-punchinello-butterfly",
@@ -65,7 +67,7 @@
 			"tags": [
 				"Butterfly"
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
 		"housefly": {
 			"key": "housefly",
@@ -74,7 +76,7 @@
 				"Fly",
 				"Housefly"
 			],
-			"family": "Housefly"
+			"family": "Houseflies & Allies"
 		},
 		"kaempfer-cicada": {
 			"key": "kaempfer-cicada",
@@ -82,7 +84,7 @@
 			"tags": [
 				"Cicada"
 			],
-			"family": "Cicada"
+			"family": "Cicadas"
 		},
 		"lesser-housefly": {
 			"key": "lesser-housefly",
@@ -91,15 +93,15 @@
 				"Housefly",
 				"Fly"
 			],
-			"family": "Housefly"
+			"family": "Houseflies & Allies"
 		},
-		"malay-cruiser-butterfly-": {
-			"key": "malay-cruiser-butterfly-",
+		"malay-cruiser-butterfly": {
+			"key": "malay-cruiser-butterfly",
 			"name": "Malay Cruiser Butterfly",
 			"tags": [
 				"Butterfly "
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
 		"paris-peacock-butterfly": {
 			"key": "paris-peacock-butterfly",
@@ -107,7 +109,7 @@
 			"tags": [
 				"Butterfly "
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
 		},
 		"stag-beetle": {
 			"key": "stag-beetle",
@@ -116,17 +118,26 @@
 				"Beetle",
 				"Stag Beetle"
 			],
-			"family": "Beetle"
+			"family": "Beetles"
 		},
-		"vanessa-indica-butterfly-": {
-			"key": "vanessa-indica-butterfly-",
+		"indian-red-admiral-butterfly": {
+			"key": "indian-red-admiral-butterfly",
 			"name": "Indian Red Admiral Butterfly",
 			"tags": [
 				"Butterfly",
 				"Vanessa Butterfly",
 				"Vanessa Indica"
 			],
-			"family": "Butterfly"
+			"family": "Butterflies"
+		},
+		"yellow-bush-dart": {
+			"key": "yellow-bush-dart",
+			"name": "Yellow Bush Dart",
+			"tags": [
+				"Bush Dart",
+				"Damselfly"
+			],
+			"family": "Damselflies"
 		}
 	}
 }

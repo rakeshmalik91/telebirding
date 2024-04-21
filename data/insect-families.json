@@ -1,22 +1,25 @@
 {
 	"families": [
 		{
-			"name": "Housefly"
+			"name": "Houseflies & Allies"
 		},
 		{
-			"name": "Blowfly"
+			"name": "Flies"
 		},
 		{
-			"name": "Beetle"
+			"name": "Beetles"
 		},
 		{
-			"name": "Cicada"
+			"name": "Cicadas"
 		},
 		{
-			"name": "Butterfly"
+			"name": "Butterflies"
 		},
 		{
-			"name": "Spider"
+			"name": "Spiders"
+		},
+		{
+			"name": "Damselflies"
 		}
 	]
 }
