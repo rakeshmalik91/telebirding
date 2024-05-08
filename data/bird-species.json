@@ -1,5 +1,14 @@
 {
 	"species": {
+		"aberrant-bush-warbler": {
+			"key": "aberrant-bush-warbler",
+			"name": "Aberrant Bush Warbler",
+			"tags": [
+				"Bush Warbler",
+				"Warbler"
+			],
+			"family": "Bush-Warblers and Allies"
+		},
 		"alexandrine-parakeet": {
 			"key": "alexandrine-parakeet",
 			"name": "Alexandrine Parakeet",
@@ -511,6 +520,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"black-eared-shrike-babbler": {
+			"key": "black-eared-shrike-babbler",
+			"name": "Black-eared Shrike-Babbler",
+			"tags": [
+				"Shrike-Babbler"
+			],
+			"family": "Shrike-babblers & Erpornis"
+		},
 		"black-faced-laughingthrush": {
 			"key": "black-faced-laughingthrush",
 			"name": "Black-faced Laughingthrush",
@@ -816,11 +833,12 @@
 		},
 		"blue-robin": {
 			"key": "blue-robin",
-			"name": "Blue Robin",
+			"name": "Indian Blue Robin",
 			"tags": [
 				"Robin",
 				"Flycatcher",
-				"Old World Flycatcher"
+				"Old World Flycatcher",
+				"Blue Robin"
 			],
 			"family": "Old World Flycatchers"
 		},

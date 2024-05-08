@@ -26,10 +26,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/greater-necklaced-laughingthrush-1715138756.jpg"
+					"src": "images/greater-necklaced-laughingthrush-1715176462.jpg"
 				},
 				{
-					"src": "images/greater-necklaced-laughingthrush-1715138836.jpg"
+					"src": "images/greater-necklaced-laughingthrush-1715176485.jpg"
 				}
 			]
 		},
@@ -44,7 +44,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/pond-heron-1715138728.jpg"
+					"src": "images/pond-heron-1715176542.jpg"
 				}
 			],
 			"plumage": "Breeding"
@@ -136,7 +136,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/silver-eared-mesia-1715000116.jpg"
+					"src": "images/silver-eared-mesia-1715185490.jpg"
+				},
+				{
+					"src": "images/silver-eared-mesia-1715185504.jpg"
 				}
 			]
 		},
@@ -206,6 +209,21 @@
 			"gender": "M"
 		},
 		{
+			"key": "s1715184648",
+			"species": "black-eared-shrike-babbler",
+			"date": "05-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-eared-shrike-babbler-1715184683.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1714915909",
 			"species": "white-tailed-robin",
 			"date": "05-05-2024",
@@ -255,6 +273,21 @@
 				}
 			],
 			"gender": "F"
+		},
+		{
+			"key": "s1715183224",
+			"species": "blyths-leaf-warbler",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blyths-leaf-warbler-1715183271.jpg"
+				}
+			]
 		},
 		{
 			"key": "s1714831473",
@@ -1038,7 +1071,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/nepal-fulvetta-1714569111.jpg"
+					"src": "images/nepal-fulvetta-1715177278.jpg"
+				},
+				{
+					"src": "images/nepal-fulvetta-1715177393.jpg"
 				}
 			]
 		},
@@ -1057,6 +1093,54 @@
 				},
 				{
 					"src": "images/rufous-necked-laughingthrush-1714569036.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715180424",
+			"species": "green-billed-malkoha",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Shibkhola",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-billed-malkoha-1715180448.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715180179",
+			"species": "shikra",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Chattakpur",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/shikra-1715180194.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715179843",
+			"species": "grey-capped-pygmy-woodpecker",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Chattakpur",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-capped-pygmy-woodpecker-1715179945.jpg"
+				},
+				{
+					"src": "images/grey-capped-pygmy-woodpecker-1715179867.jpg"
 				}
 			]
 		},
@@ -1108,6 +1192,9 @@
 			"media": [
 				{
 					"src": "images/pin-tailed-green-pigeon-1714489696.jpg"
+				},
+				{
+					"src": "images/pin-tailed-green-pigeon-1715178756.jpg"
 				}
 			]
 		},
@@ -1160,7 +1247,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/collared-falconet-1714486584.jpg"
+					"src": "images/collared-falconet-1715179575.jpg"
+				},
+				{
+					"src": "images/collared-falconet-1715179587.jpg"
 				}
 			]
 		},
@@ -1190,7 +1280,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/black-baza-1714486570.jpg"
+					"src": "images/black-baza-1715179079.jpg"
 				}
 			]
 		},
@@ -1205,10 +1295,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/blue-throated-blue-flycatcher-1714486664.jpg"
+					"src": "images/blue-throated-blue-flycatcher-1715179370.jpg"
 				},
 				{
-					"src": "images/blue-throated-blue-flycatcher-1714486672.jpg"
+					"src": "images/blue-throated-blue-flycatcher-1715178619.jpg"
 				}
 			]
 		},
@@ -1223,10 +1313,42 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/short-billed-minivet-1714570668.jpg"
+					"src": "images/short-billed-minivet-1715180062.jpg"
 				}
 			],
 			"gender": "F"
+		},
+		{
+			"key": "s1715177996",
+			"species": "blue-capped-rock-thrush",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Shibkhola",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blue-capped-rock-thrush-1715179215.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1715181591",
+			"species": "blue-robin",
+			"date": "29-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blue-robin-1715181727.jpg"
+				}
+			],
+			"gender": "M"
 		},
 		{
 			"key": "s1714489820",
@@ -1239,7 +1361,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/yellow-vented-warbler-1714489838.jpg"
+					"src": "images/yellow-vented-warbler-1715181355.jpg"
+				},
+				{
+					"src": "images/yellow-vented-warbler-1715181464.jpg"
 				}
 			]
 		},
@@ -1254,10 +1379,13 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/crimson-naped-woodpecker-1714400232.jpg"
+					"src": "images/crimson-naped-woodpecker-1715176791.jpg"
 				},
 				{
 					"src": "images/crimson-naped-woodpecker-1714404642.jpg"
+				},
+				{
+					"src": "images/crimson-naped-woodpecker-1715176661.jpg"
 				}
 			],
 			"gender": "F"
@@ -1308,6 +1436,9 @@
 				},
 				{
 					"src": "images/himalayan-cutia-1714399309.jpg"
+				},
+				{
+					"src": "images/himalayan-cutia-1715180688.jpg"
 				}
 			],
 			"gender": "M"
@@ -1323,7 +1454,40 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/white-naped-yuhina-1715181056.jpg"
+				},
+				{
 					"src": "images/white-naped-yuhina-1714399682.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715182368",
+			"species": "aberrant-bush-warbler",
+			"date": "28-04-2024",
+			"place": "Mahananda Wildlife Sanctuary",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/aberrant-bush-warbler-1715182386.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715182187",
+			"species": "rufous-bellied-eagle",
+			"date": "28-04-2024",
+			"place": "Mahananda Wildlife Sanctuary",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-bellied-eagle-1715182219.jpg"
 				}
 			]
 		},
@@ -1356,7 +1520,7 @@
 					"src": "images/square-tailed-drongo-cuckoo-1714400138.jpg"
 				},
 				{
-					"src": "images/square-tailed-drongo-cuckoo-1714400125.jpg"
+					"src": "images/square-tailed-drongo-cuckoo-1715180897.jpg"
 				}
 			]
 		},
@@ -20486,7 +20650,8 @@
 				{
 					"src": "images/jungle-myna.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "common-myna-2",
