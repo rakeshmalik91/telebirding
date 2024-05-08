@@ -130,6 +130,8 @@ var SHORTEN_LIST = [
 	[/\band\b/gi, "&"]
 ];
 
+var SHORTEN_BLOCK_LIST = ["Isl", "Monastery", "Zoo"];
+
 function trimPlaceName(name, threshold) {
 	if(name.length <= threshold) {
 		return name;
@@ -142,7 +144,7 @@ function trimPlaceName(name, threshold) {
 			var trimmed = tokens[0].length > threshold ? (tokens.splice(0, threshold-3) + "...") : '';
 			if(tokens.length > 1) {
 				//tokens.splice(1).forEach(t => trimmed += ' ' + t[0].toUpperCase() + (t.length>1?'.':''));
-				tokens.forEach(t => trimmed += t[0].toUpperCase());
+				tokens.forEach(t => trimmed += ((SHORTEN_BLOCK_LIST.indexOf(t) < 0) ? t[0].toUpperCase() : (" " + t)));
 			}
 			return trimmed;
 		}
