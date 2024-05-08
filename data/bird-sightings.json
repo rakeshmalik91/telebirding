@@ -1,6 +1,1484 @@
 {
 	"sightings": [
 		{
+			"key": "s1715138762",
+			"species": "lesser-adjutant",
+			"date": "06-05-2024",
+			"place": "Bengal Safari",
+			"city": "Siliguri",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-adjutant-1715138828.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715138741",
+			"species": "greater-necklaced-laughingthrush",
+			"date": "06-05-2024",
+			"place": "Bengal Safari",
+			"city": "Siliguri",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-necklaced-laughingthrush-1715138756.jpg"
+				},
+				{
+					"src": "images/greater-necklaced-laughingthrush-1715138836.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715138716",
+			"species": "pond-heron",
+			"date": "06-05-2024",
+			"place": "Bengal Safari",
+			"city": "Siliguri",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pond-heron-1715138728.jpg"
+				}
+			],
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1715138418",
+			"species": "chestnut-headed-bee-eater",
+			"date": "06-05-2024",
+			"place": "Bengal Safari",
+			"city": "Siliguri",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-headed-bee-eater-1715138445.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715138029",
+			"species": "indochinese-roller",
+			"date": "06-05-2024",
+			"place": "",
+			"city": "Gorubathan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indochinese-roller-1715138405.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715137842",
+			"species": "jungle-myna",
+			"date": "06-05-2024",
+			"place": "",
+			"city": "Gorubathan",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jungle-myna-1715137867.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715000714",
+			"species": "long-tailed-minivet",
+			"date": "06-05-2024",
+			"place": "Doorkhola",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/long-tailed-minivet-1715000736.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714919019",
+			"species": "large-hawk-cuckoo",
+			"date": "06-05-2024",
+			"place": "Doorkhola",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/large-hawk-cuckoo-1714999348.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714999917",
+			"species": "silver-eared-mesia",
+			"date": "06-05-2024",
+			"place": "Doorkhola",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/silver-eared-mesia-1715000116.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715003676",
+			"species": "rufous-bellied-niltava",
+			"date": "06-05-2024",
+			"place": "Doorkhola",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-bellied-niltava-1715003880.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714999841",
+			"species": "rufous-capped-babbler",
+			"date": "06-05-2024",
+			"place": "Kagyu Thekchen Ling Monastery",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-capped-babbler-1714999883.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714999648",
+			"species": "brownish-flanked-bush-warbler",
+			"date": "06-05-2024",
+			"place": "Kagyu Thekchen Ling Monastery",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brownish-flanked-bush-warbler-1714999818.jpg"
+				},
+				{
+					"src": "images/brownish-flanked-bush-warbler-1714999946.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1715003224",
+			"species": "darjeeling-woodpecker",
+			"date": "05-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/darjeeling-woodpecker-1715003286.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714915909",
+			"species": "white-tailed-robin",
+			"date": "05-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-tailed-robin-1714915945.jpg"
+				},
+				{
+					"src": "images/white-tailed-robin-1714915961.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714916896",
+			"species": "white-browed-bush-robin",
+			"date": "05-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-browed-bush-robin-1714916934.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714916243",
+			"species": "red-headed-bullfinch",
+			"date": "05-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-headed-bullfinch-1714916275.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714831473",
+			"species": "yellow-throated-fulvetta",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-throated-fulvetta-1714831600.jpg"
+				},
+				{
+					"src": "images/yellow-throated-fulvetta-1714831576.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714831219",
+			"species": "golden-babbler",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/golden-babbler-1714831368.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714831079",
+			"species": "black-throated-parrotbill",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-throated-parrotbill-1714831108.jpg"
+				},
+				{
+					"src": "images/black-throated-parrotbill-1714831125.jpg"
+				},
+				{
+					"src": "images/black-throated-parrotbill-1714831139.jpg"
+				}
+			],
+			"subspecies": "Orange-eared"
+		},
+		{
+			"key": "s1714830724",
+			"species": "streak-breasted-scimitar-babbler",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/streak-breasted-scimitar-babbler-1714830757.jpg"
+				},
+				{
+					"src": "images/streak-breasted-scimitar-babbler-1714830782.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714830040",
+			"species": "common-rosefinch",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-rosefinch-1714830090.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714915446",
+			"species": "russet-sparrow",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Kolakham",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/russet-sparrow-1714915473.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714915387",
+			"species": "rufous-bellied-niltava",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Kolakham",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-bellied-niltava-1714915429.jpg"
+				},
+				{
+					"src": "images/rufous-bellied-niltava-1714915496.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714828026",
+			"species": "black-throated-prinia",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Kolakham",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-throated-prinia-1714829696.jpg"
+				},
+				{
+					"src": "images/black-throated-prinia-1714829639.jpg"
+				},
+				{
+					"src": "images/black-throated-prinia-1714829742.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714827901",
+			"species": "white-throated-fantail",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Kolakham",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-throated-fantail-1714827960.jpg"
+				},
+				{
+					"src": "images/white-throated-fantail-1714915352.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714827130",
+			"species": "barred-cuckoo-dove",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/barred-cuckoo-dove-1714827259.jpg"
+				},
+				{
+					"src": "images/barred-cuckoo-dove-1714827275.jpg"
+				},
+				{
+					"src": "images/barred-cuckoo-dove-1714915260.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714827034",
+			"species": "yellow-cheeked-tit",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-cheeked-tit-1714827052.jpg"
+				},
+				{
+					"src": "images/yellow-cheeked-tit-1714827073.jpg"
+				},
+				{
+					"src": "images/yellow-cheeked-tit-1714827097.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714826950",
+			"species": "striated-bulbul",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/striated-bulbul-1714826982.jpg"
+				},
+				{
+					"src": "images/striated-bulbul-1715000018.jpg"
+				},
+				{
+					"src": "images/striated-bulbul-1715000038.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714826779",
+			"species": "verditer-flycatcher",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/verditer-flycatcher-1714826801.jpg"
+				},
+				{
+					"src": "images/verditer-flycatcher-1715000448.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714826549",
+			"species": "fire-breasted-flowerpecker",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/fire-breasted-flowerpecker-1714826635.jpg"
+				},
+				{
+					"src": "images/fire-breasted-flowerpecker-1714917039.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714826431",
+			"species": "little-pied-flycatcher",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-pied-flycatcher-1714826465.jpg"
+				},
+				{
+					"src": "images/little-pied-flycatcher-1714826499.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714826357",
+			"species": "white-tailed-nuthatch",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-tailed-nuthatch-1714826386.jpg"
+				},
+				{
+					"src": "images/white-tailed-nuthatch-1714826410.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714826259",
+			"species": "black-faced-warbler",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-faced-warbler-1714826325.jpg"
+				},
+				{
+					"src": "images/black-faced-warbler-1714826345.jpg"
+				},
+				{
+					"src": "images/black-faced-warbler-1714953919.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714826703",
+			"species": "mrs-goulds-sunbird",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/mrs-goulds-sunbird-1714922396.jpg"
+				},
+				{
+					"src": "images/mrs-goulds-sunbird-1714826727.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714826091",
+			"species": "whiskered-yuhina",
+			"date": "04-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/whiskered-yuhina-1714826131.jpg"
+				},
+				{
+					"src": "images/whiskered-yuhina-1714826178.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714917052",
+			"species": "short-billed-minivet",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/short-billed-minivet-1714917094.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714922528",
+			"species": "grey-chinned-minivet",
+			"date": "04-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-chinned-minivet-1714922568.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714954856",
+			"species": "maroon-oriole",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/maroon-oriole-1714954938.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714837805",
+			"species": "brown-bullfinch",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-bullfinch-1714838079.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714751308",
+			"species": "lesser-cuckoo",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-cuckoo-1714825978.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714751227",
+			"species": "common-cuckoo",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-cuckoo-1714751514.jpg"
+				},
+				{
+					"src": "images/common-cuckoo-1714751540.jpg"
+				},
+				{
+					"src": "images/common-cuckoo-1715000493.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714751136",
+			"species": "hodgsons-hawk-cuckoo",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hodgsons-hawk-cuckoo-1714751170.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714749998",
+			"species": "rusty-fronted-barwing",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rusty-fronted-barwing-1714750016.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714749924",
+			"species": "rufous-winged-fulvetta",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-winged-fulvetta-1714749972.jpg"
+				},
+				{
+					"src": "images/rufous-winged-fulvetta-1714749986.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714750697",
+			"species": "chestnut-crowned-warbler",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-crowned-warbler-1714750793.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714749579",
+			"species": "blyths-shrike-babbler",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blyths-shrike-babbler-1714749607.jpg"
+				},
+				{
+					"src": "images/blyths-shrike-babbler-1714749645.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714748807",
+			"species": "blyths-shrike-babbler",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blyths-shrike-babbler-1714749558.jpg"
+				},
+				{
+					"src": "images/blyths-shrike-babbler-1714749539.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714749889",
+			"species": "chestnut-bellied-rock-thrush",
+			"date": "03-05-2024",
+			"place": "Neora Valley National Park",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-bellied-rock-thrush-1714749911.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714750201",
+			"species": "red-tailed-minla",
+			"date": "03-05-2024",
+			"place": "Kagyu Thekchen Ling Monastery",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-tailed-minla-1714750243.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714750190",
+			"species": "green-backed-tit",
+			"date": "03-05-2024",
+			"place": "Kagyu Thekchen Ling Monastery",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-backed-tit-1714750262.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714750180",
+			"species": "chestnut-crowned-laughingthrush",
+			"date": "03-05-2024",
+			"place": "",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-crowned-laughingthrush-1714750303.jpg"
+				},
+				{
+					"src": "images/chestnut-crowned-laughingthrush-1714750648.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714569863",
+			"species": "rufous-throated-wren-babbler",
+			"date": "02-05-2024",
+			"place": "",
+			"city": "Bagora",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-throated-wren-babbler-1714662287.jpg"
+				},
+				{
+					"src": "images/rufous-throated-wren-babbler-1714662303.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714637987",
+			"species": "rufous-necked-hornbill",
+			"date": "02-05-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-necked-hornbill-1714638037.jpg"
+				},
+				{
+					"src": "images/rufous-necked-hornbill-1714638026.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714569607",
+			"species": "gray-sided-laughingthrush",
+			"date": "01-05-2024",
+			"place": "Tiger Hill",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/gray-sided-laughingthrush-1714569634.jpg"
+				},
+				{
+					"src": "images/gray-sided-laughingthrush-1714569659.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714569511",
+			"species": "spotted-laughingthrush",
+			"date": "01-05-2024",
+			"place": "Tiger Hill",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spotted-laughingthrush-1714569546.jpg"
+				},
+				{
+					"src": "images/spotted-laughingthrush-1714569554.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714569397",
+			"species": "scaly-laughingthrush",
+			"date": "01-05-2024",
+			"place": "Tiger Hill",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/scaly-laughingthrush-1714569433.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714569319",
+			"species": "chestnut-crowned-laughingthrush",
+			"date": "01-05-2024",
+			"place": "Tiger Hill",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-crowned-laughingthrush-1714569340.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714569263",
+			"species": "hill-partridge",
+			"date": "01-05-2024",
+			"place": "Tiger Hill",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hill-partridge-1714569284.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714569187",
+			"species": "hill-partridge",
+			"date": "01-05-2024",
+			"place": "Tiger Hill",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hill-partridge-1714569256.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714569058",
+			"species": "sikkim-treecreeper",
+			"date": "01-05-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sikkim-treecreeper-1714569082.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714569089",
+			"species": "nepal-fulvetta",
+			"date": "01-05-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/nepal-fulvetta-1714569111.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714490276",
+			"species": "rufous-necked-laughingthrush",
+			"date": "01-05-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-necked-laughingthrush-1714569025.jpg"
+				},
+				{
+					"src": "images/rufous-necked-laughingthrush-1714569036.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714489306",
+			"species": "gray-throoated-babbler",
+			"date": "30-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/gray-throoated-babbler-1714519556.jpg"
+				},
+				{
+					"src": "images/gray-throoated-babbler-1714519568.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714489064",
+			"species": "white-bellied-erpornis",
+			"date": "30-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-bellied-erpornis-1714489123.jpg"
+				},
+				{
+					"src": "images/white-bellied-erpornis-1714491448.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714489562",
+			"species": "pin-tailed-green-pigeon",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Rongtong",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pin-tailed-green-pigeon-1714489696.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714486323",
+			"species": "great-hornbill",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Rongtong",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-hornbill-1714486385.jpg"
+				},
+				{
+					"src": "images/great-hornbill-1714486398.jpg"
+				},
+				{
+					"src": "images/great-hornbill-1714486407.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714570718",
+			"species": "great-hornbill",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Rongtong",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-hornbill-1714570742.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714486466",
+			"species": "collared-falconet",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Shibkhola",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/collared-falconet-1714486584.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714488685",
+			"species": "rufescent-prinia",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Shibkhola",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufescent-prinia-1714488704.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714486554",
+			"species": "black-baza",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Shibkhola",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-baza-1714486570.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714486644",
+			"species": "blue-throated-blue-flycatcher",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Shibkhola",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blue-throated-blue-flycatcher-1714486664.jpg"
+				},
+				{
+					"src": "images/blue-throated-blue-flycatcher-1714486672.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714570623",
+			"species": "short-billed-minivet",
+			"date": "30-04-2024",
+			"place": "",
+			"city": "Chattakpur",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/short-billed-minivet-1714570668.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714489820",
+			"species": "yellow-vented-warbler",
+			"date": "29-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-vented-warbler-1714489838.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714400198",
+			"species": "crimson-naped-woodpecker",
+			"date": "29-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/crimson-naped-woodpecker-1714400232.jpg"
+				},
+				{
+					"src": "images/crimson-naped-woodpecker-1714404642.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714398624",
+			"species": "golden-throated-barbet",
+			"date": "29-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/golden-throated-barbet-1714398678.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714399278",
+			"species": "himalayan-cutia",
+			"date": "29-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-cutia-1714399290.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1714399239",
+			"species": "himalayan-cutia",
+			"date": "29-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-cutia-1714399260.jpg"
+				},
+				{
+					"src": "images/himalayan-cutia-1714399309.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714399640",
+			"species": "white-naped-yuhina",
+			"date": "29-04-2024",
+			"place": "Mana Hills",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-naped-yuhina-1714399682.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714400969",
+			"species": "chestnut-winged-cuckoo",
+			"date": "28-04-2024",
+			"place": "Mahananda Wildlife Sanctuary",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnut-winged-cuckoo-1714401081.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714400109",
+			"species": "square-tailed-drongo-cuckoo",
+			"date": "28-04-2024",
+			"place": "Mahananda Wildlife Sanctuary",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/square-tailed-drongo-cuckoo-1714400138.jpg"
+				},
+				{
+					"src": "images/square-tailed-drongo-cuckoo-1714400125.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714399839",
+			"species": "hodgsons-frogmouth",
+			"date": "28-04-2024",
+			"place": "Mahananda Wildlife Sanctuary",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hodgsons-frogmouth-1714399876.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714399091",
+			"species": "sultan-tit",
+			"date": "28-04-2024",
+			"place": "Mahananda Wildlife Sanctuary",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sultan-tit-1714399111.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714398749",
+			"species": "red-headed-trogon",
+			"date": "28-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-headed-trogon-1714398766.jpg"
+				},
+				{
+					"src": "images/red-headed-trogon-1714398778.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714570841",
+			"species": "great-hornbill",
+			"date": "27-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-hornbill-1714570897.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1714398911",
+			"species": "long-tailed-broadbill",
+			"date": "27-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/long-tailed-broadbill-1714398930.jpg"
+				},
+				{
+					"src": "images/long-tailed-broadbill-1714398952.jpg"
+				},
+				{
+					"src": "images/long-tailed-broadbill-1714399049.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714398840",
+			"species": "common-green-magpie",
+			"date": "27-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-green-magpie-1714398902.jpg"
+				}
+			],
+			"plumage": "Breeding"
+		},
+		{
+			"key": "s1714398709",
+			"species": "red-headed-trogon",
+			"date": "27-04-2024",
+			"place": "",
+			"city": "Latpanchar",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-headed-trogon-1714398743.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
 			"key": "s1710577134",
 			"species": "delicate-prinia",
 			"date": "16-03-2024",
@@ -6116,8 +7594,8 @@
 			"key": "s1699790513",
 			"species": "oriental-turtle-dove",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -6131,8 +7609,8 @@
 			"key": "s1678284848",
 			"species": "white-tailed-nuthatch",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -6149,8 +7627,8 @@
 			"key": "s1678282944",
 			"species": "green-tailed-sunbird",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -6168,8 +7646,8 @@
 			"key": "s1678282841",
 			"species": "chestnut-crowned-warbler",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -6183,8 +7661,8 @@
 			"key": "s1678283106",
 			"species": "chestnut-tailed-minla",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -6204,8 +7682,8 @@
 			"key": "s1678286891",
 			"species": "rufous-winged-fulvetta",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -6219,8 +7697,8 @@
 			"key": "s1678283527",
 			"species": "buff-barred-warbler",
 			"date": "08-03-2023",
-			"place": "Sonada",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Sonada",
 			"state": "West Bengal",
 			"country": "India",
 			"hidden": false,
@@ -12912,7 +14390,8 @@
 				{
 					"src": "images/rufous-bellied-niltava-female.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "coppersmith-barbet-2",
@@ -13907,7 +15386,7 @@
 			"gender": "M",
 			"date": "25-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -13921,8 +15400,8 @@
 			"species": "golden-fronted-leafbird",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -13935,8 +15414,8 @@
 			"key": "grey-headed-canary-flycatcher",
 			"species": "grey-headed-canary-flycatcher",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -13951,7 +15430,7 @@
 			"gender": "M",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -13966,8 +15445,8 @@
 			"species": "fire-tailed-sunbird",
 			"gender": "F",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -13982,7 +15461,7 @@
 			"gender": "M",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14000,7 +15479,7 @@
 			"gender": "F",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14014,8 +15493,8 @@
 			"species": "orange-bellied-leafbird",
 			"gender": "F",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14028,8 +15507,8 @@
 			"key": "slaty-backed-forktail-2",
 			"species": "slaty-backed-forktail",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14042,8 +15521,8 @@
 			"key": "streaked-spiderhunter",
 			"species": "streaked-spiderhunter",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14059,8 +15538,8 @@
 			"key": "grey-backed-shrike",
 			"species": "grey-backed-shrike",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14074,7 +15553,7 @@
 			"species": "sultan-tit",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14090,8 +15569,8 @@
 			"key": "black-lored-tit",
 			"species": "black-lored-tit",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14108,8 +15587,8 @@
 			"species": "brown-shrike",
 			"age": "Immature",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14124,8 +15603,8 @@
 			"key": "black-bulbul-2",
 			"species": "black-bulbul",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14145,8 +15624,8 @@
 			"species": "chestnut-bellied-nuthatch",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14160,8 +15639,8 @@
 			"species": "chestnut-headed-bee-eater",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14174,8 +15653,8 @@
 			"key": "long-tailed-broadbill",
 			"species": "long-tailed-broadbill",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14189,8 +15668,8 @@
 			"species": "rufous-necked-hornbill",
 			"gender": "F",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14213,8 +15692,8 @@
 			"species": "rufous-necked-hornbill",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14231,8 +15710,8 @@
 			"species": "oriental-pied-hornbill",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14249,7 +15728,7 @@
 			"species": "golden-throated-barbet",
 			"date": "24-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14262,8 +15741,8 @@
 			"key": "rufous-gorgeted-flycatcher",
 			"species": "rufous-gorgeted-flycatcher",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14283,8 +15762,8 @@
 			"species": "blue-rock-thrush",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14298,8 +15777,8 @@
 			"species": "blue-rock-thrush",
 			"gender": "F",
 			"date": "24-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14313,8 +15792,8 @@
 			"species": "grey-capped-pygmy-woodpecker",
 			"gender": "F",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14328,8 +15807,8 @@
 			"species": "scarlet-minivet",
 			"gender": "M",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14343,8 +15822,8 @@
 			"species": "scarlet-minivet",
 			"gender": "F",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14357,8 +15836,8 @@
 			"key": "bronzed-drongo",
 			"species": "bronzed-drongo",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14371,8 +15850,8 @@
 			"key": "hair-crested-drongo-2",
 			"species": "hair-crested-drongo",
 			"date": "24-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14651,8 +16130,8 @@
 			"key": "greater-yellownape",
 			"species": "greater-yellownape",
 			"date": "22-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14665,8 +16144,8 @@
 			"key": "blyths-shrike-babbler",
 			"species": "blyths-shrike-babbler",
 			"date": "22-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14680,8 +16159,8 @@
 			"key": "nepal-fulvetta",
 			"species": "nepal-fulvetta",
 			"date": "22-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14695,7 +16174,7 @@
 			"species": "blue-winged-minla",
 			"date": "22-12-2021",
 			"place": "Mahananda Wildlife Sanctuary",
-			"city": "Darjeeling",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14712,8 +16191,8 @@
 			"species": "red-headed-trogon",
 			"gender": "F",
 			"date": "22-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14726,8 +16205,8 @@
 			"key": "white-browed-scimitar-babbler",
 			"species": "white-browed-scimitar-babbler",
 			"date": "22-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14740,8 +16219,8 @@
 			"key": "little-forktail",
 			"species": "little-forktail",
 			"date": "22-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14755,8 +16234,8 @@
 			"species": "eurasian-tree-sparrow",
 			"gender": "",
 			"date": "21-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14770,8 +16249,8 @@
 			"species": "chestnut-bellied-nuthatch",
 			"gender": "F",
 			"date": "21-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14784,23 +16263,24 @@
 			"key": "little-pied-flycatcher",
 			"species": "little-pied-flycatcher",
 			"date": "21-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
 				{
 					"src": "images/little-pied-flycatcher.jpg"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"key": "orange-bellied-leafbird-male",
 			"species": "orange-bellied-leafbird",
 			"gender": "M",
 			"date": "21-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14815,8 +16295,8 @@
 			"species": "long-tailed-minivet",
 			"gender": "M",
 			"date": "21-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14829,8 +16309,8 @@
 			"key": "black-chinned-yuhina",
 			"species": "black-chinned-yuhina",
 			"date": "20-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14843,8 +16323,8 @@
 			"key": "rufous-bellied-eagle",
 			"species": "rufous-bellied-eagle",
 			"date": "20-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14857,8 +16337,8 @@
 			"key": "collared-falconet",
 			"species": "collared-falconet",
 			"date": "19-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14871,8 +16351,8 @@
 			"key": "mountain-imperial-pigeon",
 			"species": "mountain-imperial-pigeon",
 			"date": "19-12-2021",
-			"place": "Latpanchar",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Latpanchar",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -14885,8 +16365,8 @@
 			"key": "black-crested-bulbul",
 			"species": "black-crested-bulbul",
 			"date": "19-12-2021",
-			"place": "Shibkhola Forest",
-			"city": "Darjeeling",
+			"place": "",
+			"city": "Shibkhola",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -16242,7 +17722,7 @@
 			"species": "chestnut-bellied-rock-thrush",
 			"gender": "M",
 			"date": "22-03-2021",
-			"city": "Mcleodganj",
+			"city": "Dalhousie",
 			"state": "Himachal Pradesh",
 			"country": "India",
 			"media": [
@@ -16655,8 +18135,8 @@
 			"key": "rufous-vented-yuhina",
 			"species": "rufous-vented-yuhina",
 			"date": "30-12-2020",
-			"place": "Lava",
-			"city": "Kalimpong",
+			"place": "",
+			"city": "Lava",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -16672,8 +18152,8 @@
 			"key": "rufous-sibia",
 			"species": "rufous-sibia",
 			"date": "30-12-2020",
-			"place": "Lava",
-			"city": "Kalimpong",
+			"place": "",
+			"city": "Lava",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -16713,8 +18193,8 @@
 			"species": "plumbeous-water-redstart",
 			"gender": "F",
 			"date": "30-12-2020",
-			"place": "Lava",
-			"city": "Kalimpong",
+			"place": "",
+			"city": "Lava",
 			"state": "West Bengal",
 			"country": "India",
 			"media": [
@@ -17803,7 +19283,7 @@
 		},
 		{
 			"key": "collared-scops-owl",
-			"species": "collared-scops-owl",
+			"species": "indian-scops-owl",
 			"date": "24-12-2018",
 			"place": "Bheemeshwari",
 			"state": "Karnataka",

@@ -2,7 +2,7 @@
 	"sightings": [
 		{
 			"key": "s1713700308",
-			"species": "yellow-bush-dart",
+			"species": "black-marsh-dart",
 			"date": "21-04-2024",
 			"city": "Howrah",
 			"state": "West Bengal",
@@ -15,7 +15,8 @@
 				{
 					"src": "images/yellow-bush-dart-1713701791.jpg"
 				}
-			]
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1712992955",
@@ -147,7 +148,8 @@
 				{
 					"src": "images/stag-beetle-1713020185.jpg"
 				}
-			]
+			],
+			"gender": "F"
 		},
 		{
 			"key": "s1713033824",
@@ -212,7 +214,7 @@
 			"city": "Thattekad",
 			"state": "Kerala",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/golden-silk-orb-weaver-1713021704.jpg"
