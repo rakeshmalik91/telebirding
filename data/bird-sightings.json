@@ -3,7 +3,7 @@
 		{
 			"key": "s1715138762",
 			"species": "lesser-adjutant",
-			"date": "06-05-2024",
+			"date": "07-05-2024",
 			"place": "Bengal Safari",
 			"city": "Siliguri",
 			"state": "West Bengal",
@@ -18,7 +18,7 @@
 		{
 			"key": "s1715138741",
 			"species": "greater-necklaced-laughingthrush",
-			"date": "06-05-2024",
+			"date": "07-05-2024",
 			"place": "Bengal Safari",
 			"city": "Siliguri",
 			"state": "West Bengal",
@@ -36,7 +36,7 @@
 		{
 			"key": "s1715138716",
 			"species": "pond-heron",
-			"date": "06-05-2024",
+			"date": "07-05-2024",
 			"place": "Bengal Safari",
 			"city": "Siliguri",
 			"state": "West Bengal",
@@ -52,7 +52,7 @@
 		{
 			"key": "s1715138418",
 			"species": "chestnut-headed-bee-eater",
-			"date": "06-05-2024",
+			"date": "07-05-2024",
 			"place": "Bengal Safari",
 			"city": "Siliguri",
 			"state": "West Bengal",
@@ -67,7 +67,7 @@
 		{
 			"key": "s1715138029",
 			"species": "indochinese-roller",
-			"date": "06-05-2024",
+			"date": "07-05-2024",
 			"place": "",
 			"city": "Gorubathan",
 			"state": "West Bengal",
@@ -82,7 +82,7 @@
 		{
 			"key": "s1715137842",
 			"species": "jungle-myna",
-			"date": "06-05-2024",
+			"date": "07-05-2024",
 			"place": "",
 			"city": "Gorubathan",
 			"state": "West Bengal",
@@ -95,6 +95,40 @@
 			]
 		},
 		{
+			"key": "s1715216358",
+			"species": "striated-laughingthrush",
+			"date": "06-05-2024",
+			"place": "Doorkhola",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/striated-laughingthrush-1715216423.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1714570623",
+			"species": "short-billed-minivet",
+			"date": "06-05-2024",
+			"place": "Doorkhola",
+			"city": "Lava",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/short-billed-minivet-1715216189.jpg"
+				},
+				{
+					"src": "images/short-billed-minivet-1715180062.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
 			"key": "s1715000714",
 			"species": "long-tailed-minivet",
 			"date": "06-05-2024",
@@ -105,7 +139,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/long-tailed-minivet-1715000736.jpg"
+					"src": "images/long-tailed-minivet-1715216507.jpg"
 				}
 			],
 			"gender": "F"
@@ -121,7 +155,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/large-hawk-cuckoo-1714999348.jpg"
+					"src": "images/large-hawk-cuckoo-1715216655.jpg"
 				}
 			]
 		},
@@ -170,7 +204,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/rufous-capped-babbler-1714999883.jpg"
+					"src": "images/rufous-capped-babbler-1715215857.jpg"
 				}
 			]
 		},
@@ -185,10 +219,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/brownish-flanked-bush-warbler-1714999818.jpg"
+					"src": "images/brownish-flanked-bush-warbler-1715215574.jpg"
 				},
 				{
-					"src": "images/brownish-flanked-bush-warbler-1714999946.jpg"
+					"src": "images/brownish-flanked-bush-warbler-1715215582.jpg"
 				}
 			]
 		},
@@ -1301,22 +1335,6 @@
 					"src": "images/blue-throated-blue-flycatcher-1715178619.jpg"
 				}
 			]
-		},
-		{
-			"key": "s1714570623",
-			"species": "short-billed-minivet",
-			"date": "30-04-2024",
-			"place": "",
-			"city": "Chattakpur",
-			"state": "West Bengal",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/short-billed-minivet-1715180062.jpg"
-				}
-			],
-			"gender": "F"
 		},
 		{
 			"key": "s1715177996",

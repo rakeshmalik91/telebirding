@@ -441,7 +441,7 @@ function isSlideshowPlaying() {
 	return slideshowIntervalId != null;
 }
 function startSlideshow() {
-	slideshowIntervalId = setInterval(function() { scrollPreviewImage(1, true); }, 3000);
+	slideshowIntervalId = setInterval(function() { scrollPreviewImage(1, true); }, 6000);
 	$('button.slideshow-button img').attr("src", "icons/pause.png");
 }
 function stopSlideshow() {
@@ -469,8 +469,34 @@ function scrollPreviewImageSighting(direction) {
 }
 
 // called on arrow key press
-// scrolls through images inside sightings, then trough sightings as well
+// scrolls through images inside sightings
 function scrollPreviewImage(direction, wrap) {
+	if($('.preview-image').is(':visible')) {
+		var index = parseInt($('.preview-image').attr('data-index'));
+		var sighting = data.filteredSightings[index];
+		var mediaSrc = $('.preview-image').find('img, video source').attr('src');
+		var mediaIndex = data.filteredSightings[index].media.map((m,i) => (m.src == mediaSrc) ? i : null).filter(k => k != null)[0];
+		mediaIndex += direction;
+		if(mediaIndex >= 0 && mediaIndex < data.filteredSightings[index].media.length) {
+			var media = data.filteredSightings[index].media[mediaIndex];
+			previewImage(media.src, sighting.key, index);
+		} else {
+			if(wrap) {
+				index = (index + 1 + data.filteredSightings.length) % data.filteredSightings.length;
+			} else {
+				index += direction;
+			}
+			if(index >= 0 && index < data.filteredSightings.length) {
+				var sighting = data.filteredSightings[index];
+				previewImage(sighting.media[0].src, sighting.key);
+			}
+		}
+	}
+}
+
+// UNUSED METHOD
+// scrolls through images inside sightings, then through other sightings as well
+function scrollPreviewImageIncludingOtherSightings(direction, wrap) {
 	if($('.preview-image').is(':visible')) {
 		var index = parseInt($('.preview-image').attr('data-index'));
 		var sighting = data.filteredSightings[index];
