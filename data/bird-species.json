@@ -615,10 +615,12 @@
 		},
 		"black-lored-tit": {
 			"key": "black-lored-tit",
-			"name": "Black-lored Tit",
+			"name": "Himalayan Black-lored Tit",
 			"tags": [
 				"Tit",
-				"Indian Yellow Tit"
+				"Indian Yellow Tit",
+				"Black-lored Tit",
+				"Indian Black-lored Tit"
 			],
 			"family": "Tits"
 		},
@@ -2075,6 +2077,14 @@
 			],
 			"family": "Ibises"
 		},
+		"gold-naped-finch": {
+			"key": "gold-naped-finch",
+			"name": "Gold-naped Finch",
+			"tags": [
+				"Finch"
+			],
+			"family": "Finches & Allies"
+		},
 		"goldcrest": {
 			"key": "goldcrest",
 			"name": "Goldcrest",
@@ -3043,7 +3053,8 @@
 			"key": "indochinese-roller",
 			"name": "Indochinese Roller",
 			"tags": [
-				"Roller"
+				"Roller",
+				"Indian Roller"
 			],
 			"family": "Rollers & Dollarbirds"
 		},
@@ -3667,9 +3678,10 @@
 		},
 		"olive-backed-sunbird": {
 			"key": "olive-backed-sunbird",
-			"name": "Olive-backed Sunbird",
+			"name": "Ornate Sunbird",
 			"tags": [
-				"Sunbird"
+				"Sunbird",
+				"Olive-backed Sunbird"
 			],
 			"family": "Sunbirds & Spiderhunters"
 		},
