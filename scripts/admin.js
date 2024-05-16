@@ -7,6 +7,14 @@ var IMAGE_SIZE = 1000;
 
 var SYNC_SCHEDULE_TIME = 60000;
 
+var OPT_RATING = {
+	"0": "-",
+	"1": "★",
+	"2": "★★",
+	"3": "★★★",
+	"4": "★★★★",
+	"5": "★★★★★"
+}
 var OPT_GENDER = {
 	'': '-', 
 	'M': "Male", 
@@ -391,6 +399,7 @@ function render() {
 		// row += "<br>";
 		// row += "<span style='width: 200px;' class='label'>" + data.species[sighting.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
 		row += "<textarea data-field='description' style='width:190px;height:80px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
+		row += getSelectDOM("rating", OPT_RATING, getValue(sighting, 'rating'), "200px");
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";

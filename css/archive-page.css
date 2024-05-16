@@ -430,6 +430,6 @@ span.tags {
 	padding-right: 5px;
 }
 
-.newspeciesfilter.active {
-	background-color: white;
+.box.active {
+	background-color: #ffffff;
 }

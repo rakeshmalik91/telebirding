@@ -2153,8 +2153,8 @@
 			],
 			"family": "Laughingthrushes & Allies"
 		},
-		"gray-throoated-babbler": {
-			"key": "gray-throoated-babbler",
+		"gray-throated-babbler": {
+			"key": "gray-throated-babbler",
 			"name": "Gray-throated Babbler",
 			"tags": [
 				"Babbler",
@@ -4818,15 +4818,6 @@
 				"Kingfisher"
 			],
 			"family": "Kingfishers"
-		},
-		"streak-breasted-scimital-babbler": {
-			"key": "streak-breasted-scimital-babbler",
-			"name": "Streak-breasted Scimitar-babbler",
-			"tags": [
-				"Scimitar-babbler",
-				"Babbler"
-			],
-			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
 		"streak-breasted-scimitar-babbler": {
 			"key": "streak-breasted-scimitar-babbler",

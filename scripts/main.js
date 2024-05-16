@@ -10,6 +10,7 @@ var currentRenderOffset = 0;
 var noMoreDataToRender = false;
 var sightingFamilyFilter = null;
 var newSpeciesFilter = false;
+var ratingFilter = 0;
 
 var currentPage = HOME;
 var currentMode = MODE_BIRD;
@@ -163,6 +164,11 @@ function filterAndSortData(filter, params) {
 	if(filter.date) {
 		data.filteredSightings = data.filteredSightings.filter(b => b.dateString.match('.*\\b' + filter.date));
 	}
+
+	//rating filter
+	if(ratingFilter) {
+		data.filteredSightings = data.filteredSightings.filter(b => (b.rating||0) >= ratingFilter);
+	}
 	
 	//sort
 	switch(sort.by) {
@@ -218,11 +224,19 @@ function initAutocomplete() {
 	autocomplete($(".filter input[data-value='place']")[0], placeAutocomplete);
 }
 
+function resetRatingFilter() {
+	ratingFilter = (Number(ratingFilter) + 1) % 6;
+	refresh();
+}
+
 function fillStats() {
 	$(".sightings-count").html(data.filteredSightings.length);
 
 	var selectedSpecies = [...new Set(data.filteredSightings.map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))];
 	$(".species-count").html(selectedSpecies.length);
+
+	(ratingFilter > 0 || getCookie("credentials")) ? $(".rating").parent().show() : $(".rating").parent().hide();
+	$(".rating").html((ratingFilter == 0) ? "All" : (ratingFilter + " +"));
 
 	var filters = getFilters();
 	if(filters.date || filters.place) {
@@ -560,7 +574,8 @@ function getFilters() {
 		sighting: getFilter('sighting') || '',
 		place: getFilter('place') || '',
 		date: getFilter('date') || '',
-		newspecies: newSpeciesFilter
+		newspecies: newSpeciesFilter,
+		rating:ratingFilter
 	};
 }
 
@@ -862,6 +877,7 @@ function showPage(page, params, isPopstate) {
 		filter.date = params.date || filter.date || '';
 		filter.sighting = params.sighting || filter.sighting || '';
 		filter.newspecies = params.newspecies;
+		filter.rating = params.rating;
 	}
 
 	if(!isPopstate) {
@@ -971,6 +987,7 @@ function getUrlFromState(state) {
 		if([EXPLORE_PAGE, ARCHIVE, MAP].includes(state.page) && state.sort && state.sort.descending) url += "&sort_descending=" + encodeURIComponent(state.sort.descending);
 	}
 	if(newSpeciesFilter) url += "&newspecies=true";
+	if(ratingFilter) url += "&rating=" + ratingFilter;
 	return url;
 }
 
@@ -1000,6 +1017,9 @@ function retrieveStateFromUrlParams() {
 	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.newspecies) {
 		newSpeciesFilter = urlParams.newspecies;
 		$('.newspeciesfilter').ready(setNewSpeciesFilterState);
+	}
+	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.rating) {
+		ratingFilter = urlParams.rating;
 	}
 	if([ARCHIVE, MAP].includes(urlParams.page)) {
 		$(".filter").ready(function() {
