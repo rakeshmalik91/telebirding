@@ -46,7 +46,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/indian-roller-1715662423.jpg"
+					"src": "images/indian-roller-1716084770.jpg"
 				}
 			],
 			"rating": "1"
@@ -232,10 +232,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/rufous-capped-babbler-1715215857.jpg"
+					"src": "images/rufous-capped-babbler-1716050409.jpg"
 				}
 			],
-			"rating": "2"
+			"rating": "3"
 		},
 		{
 			"key": "s1714999648",
@@ -248,13 +248,16 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/brownish-flanked-bush-warbler-1716050389.jpg"
+				},
+				{
 					"src": "images/brownish-flanked-bush-warbler-1715215574.jpg"
 				},
 				{
 					"src": "images/brownish-flanked-bush-warbler-1715215582.jpg"
 				}
 			],
-			"rating": "2"
+			"rating": "3"
 		},
 		{
 			"key": "s1715003224",
@@ -357,7 +360,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/blyths-leaf-warbler-1715183271.jpg"
+					"src": "images/blyths-leaf-warbler-1716050997.jpg"
 				}
 			],
 			"rating": "2"
@@ -373,10 +376,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/yellow-throated-fulvetta-1714831600.jpg"
+					"src": "images/yellow-throated-fulvetta-1716049985.jpg"
 				},
 				{
-					"src": "images/yellow-throated-fulvetta-1714831576.jpg"
+					"src": "images/yellow-throated-fulvetta-1716050001.jpg"
 				}
 			],
 			"rating": "4"
@@ -392,7 +395,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/golden-babbler-1714831368.jpg"
+					"src": "images/golden-babbler-1716049976.jpg"
 				}
 			],
 			"rating": "3"
@@ -1058,12 +1061,19 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/rufous-throated-wren-babbler-1714662287.jpg"
+					"src": "images/rufous-throated-wren-babbler-1716086655.jpg"
 				},
 				{
-					"src": "images/rufous-throated-wren-babbler-1714662303.jpg"
+					"src": "images/rufous-throated-wren-babbler-1716086496.jpg"
+				},
+				{
+					"src": "images/rufous-throated-wren-babbler-1716085747.jpg"
+				},
+				{
+					"src": "images/rufous-throated-wren-babbler-1716085759.jpg"
 				}
-			]
+			],
+			"rating": "4"
 		},
 		{
 			"key": "s1714637987",
@@ -1320,13 +1330,13 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/gray-throoated-babbler-1714519556.jpg"
+					"src": "images/gray-throated-babbler-1716049142.jpg"
 				},
 				{
-					"src": "images/gray-throoated-babbler-1714519568.jpg"
+					"src": "images/gray-throated-babbler-1716049063.jpg"
 				}
 			],
-			"rating": "3"
+			"rating": "4"
 		},
 		{
 			"key": "s1714489064",
@@ -4088,7 +4098,8 @@
 					"src": "images/scaly-breasted-cupwing-1703775170.jpg"
 				}
 			],
-			"variation": "Fulvous Morph"
+			"variation": "Fulvous Morph",
+			"rating": "3"
 		},
 		{
 			"key": "s1706537755",
@@ -4235,7 +4246,8 @@
 				{
 					"src": "images/eurasian-wren-1703777536.jpg"
 				}
-			]
+			],
+			"rating": "3"
 		},
 		{
 			"key": "s1703768240",
@@ -4626,7 +4638,8 @@
 					"src": "images/scaly-breasted-cupwing-1704170189.jpg"
 				}
 			],
-			"variation": "White Morph"
+			"variation": "White Morph",
+			"rating": "3"
 		},
 		{
 			"key": "s1703774094",

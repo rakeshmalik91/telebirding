@@ -2888,6 +2888,7 @@
 			"tags": [
 				"Wren",
 				"Cupwing",
+				"Nepal Cupwing",
 				"Wren-Babbler",
 				"Nepal Wren-Babbler"
 			],
@@ -4821,10 +4822,10 @@
 		},
 		"streak-breasted-scimitar-babbler": {
 			"key": "streak-breasted-scimitar-babbler",
-			"name": "Streak-breasted Scimitar-Babbler",
+			"name": "Streak-breasted Scimitar-babbler",
 			"tags": [
 				"Babbler",
-				"Scimitar-Babbler"
+				"Scimitar-babbler"
 			],
 			"family": "Tree-babblers, Scimitar-babblers & Allies"
 		},
