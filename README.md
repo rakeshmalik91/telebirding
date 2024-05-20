@@ -12,9 +12,7 @@ A bird watching blog by Rakesh Malik.
 ```
 npm install firebase
 firebase init
-
 gsutil init
-gsutil cors set cors.json gs://telebirding-49623.appspot.com
 ```
 
 ### Host locally
@@ -25,6 +23,11 @@ firebase serve --only hosting
 ### Deploy
 ```
 firebase deploy
+```
+
+### Adding new domain for CORS
+```
+gsutil cors set cors.json gs://telebirding-49623.appspot.com
 ```
 
 ### Fire Storage Url
