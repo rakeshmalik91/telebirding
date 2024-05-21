@@ -1254,6 +1254,27 @@
 			"rating": "3"
 		},
 		{
+			"key": "s1716265404",
+			"species": "thick-billed-green-pigeon",
+			"date": "30-04-2024",
+			"place": "Rongtong",
+			"city": "Darjeeling",
+			"state": "West Bengal",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "videos/thick-billed-green-pigeon.mp4",
+					"thumbnail": "images/thick-billed-green-pigeon-1716265437.jpg",
+					"mute": true,
+					"type": "video"
+				},
+				{
+					"src": "images/thick-billed-green-pigeon-1716265437.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1715344689",
 			"species": "common-hill-myna",
 			"date": "30-04-2024",

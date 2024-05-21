@@ -4966,6 +4966,16 @@
 			],
 			"family": "Flowerpeckers"
 		},
+		"thick-billed-green-pigeon": {
+			"key": "thick-billed-green-pigeon",
+			"name": "Thick-billed Green-Pigeon",
+			"tags": [
+				"Green-Pigeon",
+				"Dove",
+				"Pigeon"
+			],
+			"family": "Doves & Pigeons"
+		},
 		"tibetan-lark": {
 			"key": "tibetan-lark",
 			"name": "Tibetan Lark",
