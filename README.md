@@ -3,10 +3,10 @@
 A bird watching blog by Rakesh Malik.
 
 ### Hosted On
+ - https://telebirding.info
  - https://telebirding-49623.web.app
  - https://telebirding-49623.firebaseapp.com
- - https://telebirding.info
- - https://www.telebirding.info
+ - https://telebirding.netlify.app
 
 ### Local Setup on Firebase
 ```
