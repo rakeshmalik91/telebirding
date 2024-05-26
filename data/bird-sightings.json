@@ -43,7 +43,7 @@
 			"city": "Siliguri",
 			"state": "West Bengal",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/indian-roller-1716084770.jpg"
@@ -65,23 +65,6 @@
 					"src": "images/lesser-adjutant-1715659044.jpg"
 				}
 			],
-			"rating": "1"
-		},
-		{
-			"key": "s1715138716",
-			"species": "pond-heron",
-			"date": "07-05-2024",
-			"place": "Bengal Safari",
-			"city": "Siliguri",
-			"state": "West Bengal",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/pond-heron-1715176542.jpg"
-				}
-			],
-			"plumage": "Breeding",
 			"rating": "1"
 		},
 		{
@@ -108,26 +91,10 @@
 			"city": "Gorubathan",
 			"state": "West Bengal",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/jungle-myna-1715137867.jpg"
-				}
-			],
-			"rating": "1"
-		},
-		{
-			"key": "s1715216358",
-			"species": "striated-laughingthrush",
-			"date": "06-05-2024",
-			"place": "Doorkhola",
-			"city": "Lava",
-			"state": "West Bengal",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/striated-laughingthrush-1715216423.jpg"
 				}
 			],
 			"rating": "1"
@@ -147,23 +114,6 @@
 				},
 				{
 					"src": "images/short-billed-minivet-1715180062.jpg"
-				}
-			],
-			"gender": "F",
-			"rating": "2"
-		},
-		{
-			"key": "s1715000714",
-			"species": "long-tailed-minivet",
-			"date": "06-05-2024",
-			"place": "Doorkhola",
-			"city": "Lava",
-			"state": "West Bengal",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/long-tailed-minivet-1715216507.jpg"
 				}
 			],
 			"gender": "F",
@@ -212,7 +162,7 @@
 			"city": "Lava",
 			"state": "West Bengal",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/rufous-bellied-niltava-1715003880.jpg"
