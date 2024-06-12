@@ -1,6 +1,668 @@
 {
 	"sightings": [
 		{
+			"key": "s1718184378",
+			"species": "blanfords-snowfinch",
+			"date": "10-06-2024",
+			"place": "",
+			"city": "Debring Plains",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blanfords-snowfinch-1718184398.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718181979",
+			"species": "bearded-vulture",
+			"date": "10-06-2024",
+			"place": "",
+			"city": "Tso Kar",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bearded-vulture-1718181998.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718113613",
+			"species": "common-merganser",
+			"date": "10-06-2024",
+			"place": "",
+			"city": "Nyoma",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-merganser-1718182631.jpg"
+				},
+				{
+					"src": "images/common-merganser-1718113695.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1718113140",
+			"species": "common-merganser",
+			"date": "10-06-2024",
+			"place": "",
+			"city": "Nyoma",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-merganser-1718182464.jpg"
+				},
+				{
+					"src": "images/common-merganser-1718181965.jpg"
+				},
+				{
+					"src": "images/common-merganser-1718113465.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1718112491",
+			"species": "saker-falcon",
+			"date": "10-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/saker-falcon-1718112957.jpg"
+				},
+				{
+					"src": "images/saker-falcon-1718112509.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718033418",
+			"species": "eurasian-eagle-owl",
+			"date": "09-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-eagle-owl-1718033656.jpg"
+				},
+				{
+					"src": "images/eurasian-eagle-owl-1718111601.jpg"
+				},
+				{
+					"src": "images/eurasian-eagle-owl-1718184789.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037884",
+			"species": "upland-buzzard",
+			"date": "09-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/upland-buzzard-1718037934.jpg"
+				}
+			],
+			"variation": "Dark Morph"
+		},
+		{
+			"key": "s1718036718",
+			"species": "tibetan-lark",
+			"date": "09-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tibetan-lark-1718036779.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718036887",
+			"species": "ground-tit",
+			"date": "09-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ground-tit-1718036909.jpg"
+				},
+				{
+					"src": "images/ground-tit-1718036924.jpg"
+				},
+				{
+					"src": "images/ground-tit-1718036936.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718036792",
+			"species": "black-necked-crane",
+			"date": "09-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-necked-crane-1718184684.jpg"
+				},
+				{
+					"src": "images/black-necked-crane-1718036817.jpg"
+				},
+				{
+					"src": "images/black-necked-crane-1718036868.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718112202",
+			"species": "eurasian-kestrel",
+			"date": "08-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-kestrel-1718112217.jpg",
+					"title": "Chased by Red-billed Chough"
+				}
+			]
+		},
+		{
+			"key": "s1718037802",
+			"species": "humes-lark",
+			"date": "08-06-2024",
+			"place": "",
+			"city": "Hanle",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/humes-lark-1718037837.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718036999",
+			"species": "chinese-rubythroat",
+			"date": "08-06-2024",
+			"place": "",
+			"city": "Saga La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chinese-rubythroat-1718037036.jpg"
+				},
+				{
+					"src": "images/chinese-rubythroat-1718112375.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718034818",
+			"species": "golden-eagle",
+			"date": "08-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/golden-eagle-1718034923.jpg"
+				},
+				{
+					"src": "images/golden-eagle-1718036089.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037724",
+			"species": "alpine-accentor",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/alpine-accentor-1718037774.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037610",
+			"species": "tibetan-snowfinch",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tibetan-snowfinch-1718037656.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037455",
+			"species": "robin-accentor",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Tangse",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/robin-accentor-1718037501.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037391",
+			"species": "bar-headed-goose",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bar-headed-goose-1718037473.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037370",
+			"species": "ruddy-shelduck",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ruddy-shelduck-1718037432.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037212",
+			"species": "great-rosefinch",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-rosefinch-1718037235.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037184",
+			"species": "hill-pigeon",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/hill-pigeon-1718037201.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037136",
+			"species": "twite",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/twite-1718037156.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037049",
+			"species": "tibetan-sandgrouse",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Merak",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tibetan-sandgrouse-1718037119.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717668056",
+			"species": "sulpher-bellied-warbler",
+			"date": "06-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/sulpher-bellied-warbler-1717668084.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717667863",
+			"species": "himalayan-snowcock",
+			"date": "06-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/himalayan-snowcock-1717667881.jpg"
+				},
+				{
+					"src": "images/himalayan-snowcock-1717667896.jpg"
+				},
+				{
+					"src": "images/himalayan-snowcock-1717667915.jpg"
+				},
+				{
+					"src": "images/himalayan-snowcock-1718037520.jpg"
+				},
+				{
+					"src": "images/himalayan-snowcock-1717667931.jpg"
+				},
+				{
+					"src": "images/himalayan-snowcock-1717667948.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717667795",
+			"species": "tibetan-snowcock",
+			"date": "06-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tibetan-snowcock-1717667818.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717667960",
+			"species": "bearded-vulture",
+			"date": "06-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bearded-vulture-1717667977.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717667742",
+			"species": "white-winged-redstart",
+			"date": "06-06-2024",
+			"place": "",
+			"city": "Chang La",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-winged-redstart-1717667782.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717588588",
+			"species": "white-browed-tit-warbler",
+			"date": "05-06-2024",
+			"place": "",
+			"city": "Agham Village",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-browed-tit-warbler-1717588634.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1717588245",
+			"species": "little-owl",
+			"date": "05-06-2024",
+			"place": "",
+			"city": "Warilla Pass",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-owl-1717588278.jpg"
+				},
+				{
+					"src": "images/little-owl-1717588304.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717588732",
+			"species": "tibetan-partridge",
+			"date": "04-06-2024",
+			"place": "",
+			"city": "Agham Village",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tibetan-partridge-1717588742.jpg"
+				},
+				{
+					"src": "images/tibetan-partridge-1717588754.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717588582",
+			"species": "white-browed-tit-warbler",
+			"date": "04-06-2024",
+			"place": "",
+			"city": "Agham Village",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-browed-tit-warbler-1717588671.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
+			"key": "s1717588681",
+			"species": "white-throated-dipper",
+			"date": "04-06-2024",
+			"place": "",
+			"city": "Agham Village",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-throated-dipper-1717588701.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717397069",
+			"species": "ibisbill",
+			"date": "03-06-2024",
+			"place": "",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ibisbill-1717397082.jpg"
+				},
+				{
+					"src": "images/ibisbill-1717412087.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717396897",
+			"species": "carrion-crow",
+			"date": "03-06-2024",
+			"place": "",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/carrion-crow-1717396975.jpg"
+				},
+				{
+					"src": "images/carrion-crow-1717396927.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717396710",
+			"species": "lesser-whitethroat",
+			"date": "03-06-2024",
+			"place": "Sindhu Ghat",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/lesser-whitethroat-1717396735.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717396623",
+			"species": "red-billed-chough",
+			"date": "03-06-2024",
+			"place": "Sindhu Ghat",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-billed-chough-1717396636.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1717396116",
+			"species": "bluethroat",
+			"date": "03-06-2024",
+			"place": "Sindhu Ghat",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bluethroat-1717396280.jpg"
+				},
+				{
+					"src": "images/bluethroat-1717396377.jpg"
+				}
+			],
+			"variation": "White-spotted"
+		},
+		{
+			"key": "s1717396062",
+			"species": "bluethroat",
+			"date": "03-06-2024",
+			"place": "Sindhu Ghat",
+			"city": "Leh",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bluethroat-1717396106.jpg"
+				},
+				{
+					"src": "images/bluethroat-1717396164.jpg"
+				}
+			],
+			"variation": "Red-spotted"
+		},
+		{
 			"key": "s1715138741",
 			"species": "greater-necklaced-laughingthrush",
 			"date": "07-05-2024",
@@ -877,7 +1539,7 @@
 					"src": "images/blyths-shrike-babbler-1714749607.jpg"
 				},
 				{
-					"src": "images/blyths-shrike-babbler-1714749645.jpg"
+					"src": "images/blyths-shrike-babbler-1716867234.jpg"
 				}
 			],
 			"gender": "M",
@@ -5719,10 +6381,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/red-tailed-minla-1698713169.jpg"
+					"src": "images/red-tailed-minla-1698713178.jpg"
 				},
 				{
-					"src": "images/red-tailed-minla-1698713178.jpg"
+					"src": "images/red-tailed-minla-1698713169.jpg"
 				}
 			]
 		},
@@ -8905,7 +9567,8 @@
 					"src": "images/bluethroat-1675497218.jpg"
 				}
 			],
-			"gender": "M"
+			"gender": "M",
+			"plumage": "Non-Breeding"
 		},
 		{
 			"key": "s1675086353",

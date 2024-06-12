@@ -1154,6 +1154,15 @@
 			],
 			"family": "Warblers"
 		},
+		"carrion-crow": {
+			"key": "carrion-crow",
+			"name": "Carrion Crow",
+			"tags": [
+				"Carrion",
+				"Crow"
+			],
+			"family": "Crows, Treepies, Magpies & Choughs"
+		},
 		"cattle-egret": {
 			"key": "cattle-egret",
 			"name": "Cattle Egret",
@@ -1472,6 +1481,17 @@
 				"Kingfisher"
 			],
 			"family": "Kingfishers"
+		},
+		"common-merganser": {
+			"key": "common-merganser",
+			"name": "Common Merganser",
+			"tags": [
+				"Merganser",
+				"Duck",
+				"Goosander",
+				"Common Goosander "
+			],
+			"family": "Ducks, Swans & Geese"
 		},
 		"common-myna": {
 			"key": "common-myna",
@@ -1811,6 +1831,15 @@
 			],
 			"family": "Sandpipers & Allies"
 		},
+		"eurasian-eagle-owl": {
+			"key": "eurasian-eagle-owl",
+			"name": "Eurasian Eagle-Owl",
+			"tags": [
+				"Eagle-Owl",
+				"Owl"
+			],
+			"family": "Owls"
+		},
 		"eurasian-griffon": {
 			"key": "eurasian-griffon",
 			"name": "Eurasian Griffon",
@@ -2116,8 +2145,7 @@
 			"key": "golden-eagle",
 			"name": "Golden Eagle",
 			"tags": [
-				"Eagle",
-				"Raptor"
+				"Eagle"
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
@@ -2767,6 +2795,14 @@
 			],
 			"family": "Rubythroats"
 		},
+		"himalayan-snowcock": {
+			"key": "himalayan-snowcock",
+			"name": "Himalayan Snowcock",
+			"tags": [
+				"Snowcock"
+			],
+			"family": "Pheasants, Partridges & Fowls"
+		},
 		"himalayan-woodpecker": {
 			"key": "himalayan-woodpecker",
 			"name": "Himalayan Woodpecker",
@@ -3361,6 +3397,14 @@
 				"Grebe"
 			],
 			"family": "Grebes"
+		},
+		"little-owl": {
+			"key": "little-owl",
+			"name": "Little Owl",
+			"tags": [
+				"Owl"
+			],
+			"family": "Owls"
 		},
 		"little-pied-flycatcher": {
 			"key": "little-pied-flycatcher",
@@ -4904,6 +4948,14 @@
 			],
 			"family": "Yuhinas & White-eyes"
 		},
+		"sulpher-bellied-warbler": {
+			"key": "sulpher-bellied-warbler",
+			"name": "Sulpher-bellied Warbler",
+			"tags": [
+				"Warbler"
+			],
+			"family": "Warblers"
+		},
 		"sultan-tit": {
 			"key": "sultan-tit",
 			"name": "Sultan Tit",
@@ -4983,6 +5035,14 @@
 				"Lark"
 			],
 			"family": "Larks"
+		},
+		"tibetan-partridge": {
+			"key": "tibetan-partridge",
+			"name": "Tibetan Partridge",
+			"tags": [
+				"Partridge"
+			],
+			"family": "Pheasants, Partridges & Fowls"
 		},
 		"tibetan-sandgrouse": {
 			"key": "tibetan-sandgrouse",
@@ -5350,6 +5410,16 @@
 				"Babbler"
 			],
 			"family": "Tree-babblers, Scimitar-babblers & Allies"
+		},
+		"white-browed-tit-warbler": {
+			"key": "white-browed-tit-warbler",
+			"name": "White-browed Tit-Warbler",
+			"tags": [
+				"Tit",
+				"Warbler",
+				"Tit-Warbler"
+			],
+			"family": "Long-tailed Tits & Bushtits"
 		},
 		"white-browed-wagtail": {
 			"key": "white-browed-wagtail",
