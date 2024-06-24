@@ -1,6 +1,47 @@
 {
 	"sightings": [
 		{
+			"key": "s1718502784",
+			"species": "baya-weaver",
+			"date": "16-06-2024",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/baya-weaver-1718515540.jpg"
+				}
+			],
+			"gender": "F"
+		},
+		{
+			"key": "s1718422136",
+			"species": "baya-weaver",
+			"date": "15-06-2024",
+			"place": "",
+			"city": "Sohna",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/baya-weaver-1718422158.jpg"
+				},
+				{
+					"src": "images/baya-weaver-1718422164.jpg"
+				},
+				{
+					"src": "images/baya-weaver-1718502776.jpg"
+				},
+				{
+					"src": "images/baya-weaver-1718502804.jpg"
+				}
+			],
+			"gender": "M"
+		},
+		{
 			"key": "s1718184378",
 			"species": "blanfords-snowfinch",
 			"date": "10-06-2024",
@@ -27,6 +68,9 @@
 			"media": [
 				{
 					"src": "images/bearded-vulture-1718181998.jpg"
+				},
+				{
+					"src": "images/bearded-vulture-1719242646.jpg"
 				}
 			]
 		},
@@ -243,10 +287,43 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/golden-eagle-1719242343.jpg"
+				},
+				{
 					"src": "images/golden-eagle-1718034923.jpg"
 				},
 				{
 					"src": "images/golden-eagle-1718036089.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1718037455",
+			"species": "robin-accentor",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Tangtse",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/robin-accentor-1718037501.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1719242376",
+			"species": "common-raven",
+			"date": "07-06-2024",
+			"place": "",
+			"city": "Tangtse",
+			"state": "Ladakh",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-raven-1719242429.jpg"
 				}
 			]
 		},
@@ -277,21 +354,6 @@
 			"media": [
 				{
 					"src": "images/tibetan-snowfinch-1718037656.jpg"
-				}
-			]
-		},
-		{
-			"key": "s1718037455",
-			"species": "robin-accentor",
-			"date": "07-06-2024",
-			"place": "",
-			"city": "Tangse",
-			"state": "Ladakh",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/robin-accentor-1718037501.jpg"
 				}
 			]
 		},
@@ -352,6 +414,9 @@
 			"media": [
 				{
 					"src": "images/hill-pigeon-1718037201.jpg"
+				},
+				{
+					"src": "images/hill-pigeon-1719242369.jpg"
 				}
 			]
 		},
@@ -554,7 +619,10 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/white-throated-dipper-1717588701.jpg"
+					"src": "images/white-throated-dipper-1719242976.jpg"
+				},
+				{
+					"src": "images/white-throated-dipper-1719242986.jpg"
 				}
 			]
 		},
@@ -13131,7 +13199,7 @@
 			"city": "Sumdo",
 			"state": "Ladakh",
 			"country": "India",
-			"hidden": false,
+			"hidden": true,
 			"media": [
 				{
 					"src": "images/white-throated-dipper-1663038308.jpg"
