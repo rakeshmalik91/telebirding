@@ -1,6 +1,12 @@
 {
     "featured": [
         {
+            "src": "featured-images/eurasian-eagle-owl.jpg",
+            "titleLine1": "Eurasian Eagle-Owl, Hanle",
+            "titleLine2": "© Rakesh Malik, 2024",
+            "alt": "Eurasian Eagle-Owl"
+        },
+        {
             "src": "featured-images/mountain-hawk-eagle.jpg",
             "titleLine1": "Mountain Hawk-Eagle, Chafi",
             "titleLine2": "© Rakesh Malik, 2023",
