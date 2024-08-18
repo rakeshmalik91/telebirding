@@ -1,6 +1,39 @@
 {
 	"sightings": [
 		{
+			"key": "s1722760012",
+			"species": "grey-bellied-cuckoo",
+			"date": "04-08-2024",
+			"place": "",
+			"city": "Tijara",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-bellied-cuckoo-1722778980.jpg"
+				},
+				{
+					"src": "images/grey-bellied-cuckoo-1722778905.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1722759957",
+			"species": "jacobin-cuckoo",
+			"date": "04-08-2024",
+			"place": "",
+			"city": "Tijara",
+			"state": "Rajasthan",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jacobin-cuckoo-1722759981.jpg"
+				}
+			]
+		},
+		{
 			"key": "s1718502784",
 			"species": "baya-weaver",
 			"date": "16-06-2024",
