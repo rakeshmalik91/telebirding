@@ -1,1 +1,1 @@
-firebase serve --only hosting
+firebase.cmd serve --only hosting

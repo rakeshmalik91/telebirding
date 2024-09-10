@@ -10,19 +10,42 @@ A bird watching blog by Rakesh Malik.
 
 ### Local Setup on Firebase
 ```
+winget install Schniz.fnm
+fnm env --use-on-cd | Out-String | Invoke-Expression
+fnm use --install-if-missing 20
 npm install firebase
+firebase login
+```
+
+to change firebase setup:
+```
 firebase init
 gsutil init
+```
+
+Env variables for Windows:
+```
+PATH:
+    C:\Users\User\AppData\Roaming\npm
+    C:\Users\User\AppData\Roaming\fnm\node-versions\v20.17.0\installation
 ```
 
 ### Host locally
 ```
 firebase serve --only hosting
 ```
+or
+```
+firebase.cmd serve --only hosting
+```
 
 ### Deploy
 ```
 firebase deploy
+```
+or
+```
+firebase.cmd deploy
 ```
 
 ### Adding new domain for CORS
