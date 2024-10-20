@@ -1,6 +1,12 @@
 {
     "featured": [
         {
+            "src": "featured-images/upland-buzzard.jpg",
+            "titleLine1": "Upland Buzzard, Tso Kar",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Upland Buzzard"
+        },
+        {
             "src": "featured-images/eurasian-eagle-owl.jpg",
             "titleLine1": "Eurasian Eagle-Owl, Hanle",
             "titleLine2": "© Rakesh Malik, 2024",
@@ -11,12 +17,6 @@
             "titleLine1": "Mountain Hawk-Eagle, Chafi",
             "titleLine2": "© Rakesh Malik, 2023",
             "alt": "Mountain Hawk-Eagle"
-        },
-        {
-            "src": "featured-images/upland-buzzard.jpg",
-            "titleLine1": "Upland Buzzard, Tso Kar",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Upland Buzzard"
         },
         {
             "src": "featured-images/collared-kingfisher.jpg",

@@ -4,3 +4,7 @@ featured-images
 
 firebase-debug*.log
 .firebase
+
+node_modules
+package.json
+package-lock.json

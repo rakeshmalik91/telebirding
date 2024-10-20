@@ -48,7 +48,10 @@
 			"key": "amur-stonechat",
 			"name": "Amur Stonechat",
 			"tags": [
-				"Stonechat"
+				"Stonechat",
+				"Stejneger's Stonechat",
+				"Flycatcher",
+				"Chat"
 			],
 			"family": "Chats"
 		},
@@ -4108,6 +4111,18 @@
 			],
 			"family": "Sunbirds & Spiderhunters"
 		},
+		"red-avadavat": {
+			"key": "red-avadavat",
+			"name": "Red Avadavat",
+			"tags": [
+				"Avadavat",
+				"Munia",
+				"Finch",
+				"Strawberry Finch",
+				"Red Munia"
+			],
+			"family": "Finches & Allies"
+		},
 		"red-billed-blue-magpie": {
 			"key": "red-billed-blue-magpie",
 			"name": "Red-billed Blue Magpie",
@@ -4665,7 +4680,8 @@
 			"tags": [
 				"Stonechat",
 				"Chat",
-				"Flycatcher"
+				"Flycatcher",
+				"Common Stonechat"
 			],
 			"family": "Chats"
 		},
