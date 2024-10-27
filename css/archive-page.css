@@ -107,6 +107,10 @@ span.tags {
 	font-size: 14px;
 }
 
+.sighting-desc.rating {
+	color: #455674;
+}
+
 .sighting-name a, .sighting-name span, .sighting-desc a, .sighting-desc span, .sighting-tags span {
 	transition-duration: 0.2s;
 }

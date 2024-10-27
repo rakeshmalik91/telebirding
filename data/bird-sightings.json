@@ -50,7 +50,7 @@
 				}
 			],
 			"plumage": "Immature/Non-Breeding",
-			"rating": "2"
+			"rating": "3"
 		},
 		{
 			"key": "s1722760012",
@@ -206,7 +206,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": "2"
+			"rating": "1"
 		},
 		{
 			"key": "s1718112491",
@@ -876,7 +876,7 @@
 					"src": "images/greater-necklaced-laughingthrush-1715176485.jpg"
 				}
 			],
-			"rating": "3"
+			"rating": "4"
 		},
 		{
 			"key": "s1715138418",
@@ -908,7 +908,7 @@
 					"src": "images/indian-roller-1716084770.jpg"
 				}
 			],
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1715138762",
@@ -924,7 +924,7 @@
 					"src": "images/lesser-adjutant-1715659044.jpg"
 				}
 			],
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1715138029",
@@ -940,7 +940,7 @@
 					"src": "images/indochinese-roller-1715659886.jpg"
 				}
 			],
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1715137842",
@@ -956,7 +956,7 @@
 					"src": "images/jungle-myna-1715137867.jpg"
 				}
 			],
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1714570623",
@@ -2028,7 +2028,7 @@
 					"src": "images/sikkim-treecreeper-1714569082.jpg"
 				}
 			],
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1714569089",
@@ -2648,7 +2648,7 @@
 				}
 			],
 			"plumage": "Breeding",
-			"rating": "2"
+			"rating": "3"
 		},
 		{
 			"key": "s1714398709",
@@ -4192,7 +4192,7 @@
 					"src": "images/little-grebe-1705194192.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1705194019",
@@ -4209,7 +4209,7 @@
 				}
 			],
 			"plumage": "Non-Breeding",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1705193834",
@@ -4225,7 +4225,7 @@
 					"src": "images/sirkeer-malkoha-1705193865.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1705194350",
@@ -4241,7 +4241,7 @@
 					"src": "images/white-tailed-lapwing-1705194364.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1705193597",
@@ -4258,7 +4258,7 @@
 				}
 			],
 			"plumage": "Non-Breeding",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1705197880",
@@ -4275,7 +4275,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1705197531",
@@ -4308,7 +4308,7 @@
 				}
 			],
 			"plumage": "Non-Breeding",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1705227187",
@@ -4325,7 +4325,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1705227151",
@@ -4342,7 +4342,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1703939299",
@@ -5662,7 +5662,7 @@
 					"src": "images/green-bee-eater-1703048111.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1702902892",
@@ -5703,7 +5703,7 @@
 					"src": "images/greater-hoopoe-lark-1703047312.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1702901946",
@@ -5725,7 +5725,7 @@
 					"src": "images/trumpeter-finch-1702901972.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702823262",
@@ -5747,7 +5747,7 @@
 					"src": "images/laggar-falcon-1702823402.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1703047638",
@@ -5763,7 +5763,7 @@
 					"src": "images/bimaculated-lark-1703047820.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1703047046",
@@ -5779,7 +5779,7 @@
 					"src": "images/chestnnut-bellied-sandgrouse-1703047064.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702822183",
@@ -5795,7 +5795,7 @@
 					"src": "images/intermediate-egret-1702822229.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1703044241",
@@ -5811,7 +5811,7 @@
 					"src": "images/greater-short-toed-lark-1703044257.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702903246",
@@ -5849,7 +5849,7 @@
 					"src": "images/desert-lark-1702902167.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702862557",
@@ -5868,7 +5868,7 @@
 					"src": "images/persian-wheatear-1702862600.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1702824675",
@@ -5887,7 +5887,7 @@
 					"src": "images/eurasian-sparrowhawk-1702824726.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1702823204",
@@ -5919,7 +5919,7 @@
 					"src": "images/yellow-throated-sparrow-1703045816.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702905334",
@@ -5935,7 +5935,7 @@
 					"src": "images/white-eared-bulbul-1702905395.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1702903026",
@@ -5963,7 +5963,7 @@
 					"src": "images/great-indian-bustard-1702903090.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702824914",
@@ -5982,7 +5982,7 @@
 					"src": "images/lesser-whitethroat-1703046644.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1702824803",
@@ -5998,7 +5998,7 @@
 					"src": "images/eurasian-collared-dove-1702824878.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702824004",
@@ -6037,7 +6037,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1702822425",
@@ -6054,7 +6054,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1708169804",
@@ -6070,7 +6070,7 @@
 					"src": "images/rock-pigeon-1708169843.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1703037883",
@@ -6086,7 +6086,7 @@
 					"src": "images/tawny-pipit-1703037891.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1703037153",
@@ -6102,7 +6102,7 @@
 					"src": "images/eurasian-kestrel-1703085813.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1702823847",
@@ -6139,7 +6139,7 @@
 			],
 			"subspecies": "Capistrata Form",
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1702822736",
@@ -6156,7 +6156,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1729826818",
@@ -6171,7 +6171,8 @@
 				{
 					"src": "images/shikra-1729826868.jpg"
 				}
-			]
+			],
+			"rating": "1"
 		},
 		{
 			"key": "s1701692808",
@@ -6534,7 +6535,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1701696655",
@@ -6640,7 +6641,7 @@
 					"src": "images/long-billed-thrush-1698713544.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1698713365",
@@ -6659,7 +6660,7 @@
 					"src": "images/slender-billed-scimitar-babbler-1698714597.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1698713972",
@@ -6675,7 +6676,7 @@
 					"src": "images/streak-breasted-scimital-babbler-1699167965.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698713832",
@@ -6691,7 +6692,7 @@
 					"src": "images/rufous-winged-fulvetta-1699168612.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698713239",
@@ -6710,7 +6711,7 @@
 					"src": "images/ashy-wood-pigeon-1698719575.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698713153",
@@ -6729,7 +6730,7 @@
 					"src": "images/red-tailed-minla-1698713169.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698712514",
@@ -6748,7 +6749,7 @@
 					"src": "images/collared-owlet-1701324020.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698841253",
@@ -6800,7 +6801,7 @@
 					"src": "images/grey-sided-bush-warbler-1698712410.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698712169",
@@ -6852,7 +6853,7 @@
 					"src": "images/black-faced-laughingthrush-1698711815.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698711700",
@@ -6874,7 +6875,7 @@
 					"src": "images/rufous-vented-tit-1698841752.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698711616",
@@ -6910,7 +6911,7 @@
 					"src": "images/himalayan-buzzard-1698842141.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1699845148",
@@ -6929,7 +6930,7 @@
 					"src": "images/eurasian-kestrel-1699845306.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1698711511",
@@ -6968,7 +6969,7 @@
 					"src": "images/rufous-capped-babbler-1698840399.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1698711301",
@@ -7004,7 +7005,7 @@
 					"src": "images/common-green-magpie-1698711128.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698725471",
@@ -7053,7 +7054,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1698710918",
@@ -7075,7 +7076,7 @@
 					"src": "images/white-browed-fulvetta-1698764199.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698710718",
@@ -7091,7 +7092,7 @@
 					"src": "images/fire-breasted-flowerpecker-1704684640.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1698687836",
@@ -7113,7 +7114,7 @@
 					"src": "images/rufous-vented-yuhina-1698687849.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698710554",
@@ -7129,7 +7130,7 @@
 					"src": "images/bronzed-drongo-1698710571.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1698710502",
@@ -7164,7 +7165,7 @@
 			],
 			"gender": "M",
 			"variation": "Maroon",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698764161",
@@ -7180,7 +7181,7 @@
 					"src": "images/great-barbet-1698764187.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698688977",
@@ -7216,7 +7217,7 @@
 					"src": "images/silver-eared-mesia-1700528764.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698688738",
@@ -7267,7 +7268,7 @@
 					"src": "images/verditer-flycatcher-1698762616.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698723755",
@@ -7277,13 +7278,13 @@
 			"city": "Nimachen",
 			"state": "Sikkim",
 			"country": "India",
-			"hidden": true,
+			"hidden": false,
 			"media": [
 				{
 					"src": "images/little-forktail-1698723766.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1698723721",
@@ -7299,7 +7300,7 @@
 					"src": "images/wedge-tailed-green-pigeon-1698723749.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1698688645",
@@ -7457,7 +7458,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1698686907",
@@ -7496,7 +7497,7 @@
 					"src": "images/rusty-fronted-barwing-1698687191.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1698687427",
@@ -7536,7 +7537,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": "1"
+			"rating": "2"
 		},
 		{
 			"key": "s1698686586",
@@ -7609,7 +7610,7 @@
 					"src": "images/black-throated-bushtit-1699168361.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1697354551",
@@ -7626,7 +7627,7 @@
 				}
 			],
 			"age": "Juvenile/Immature",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1697354142",
@@ -7648,7 +7649,7 @@
 					"src": "images/common-hawk-cuckoo-1697354270.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1697377053",
@@ -7664,7 +7665,7 @@
 					"src": "images/knob-billed-duck-1697377087.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1697355521",
@@ -7681,7 +7682,7 @@
 				}
 			],
 			"age": "Juvenile",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1697356011",
@@ -7735,7 +7736,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1697355070",
@@ -7801,7 +7802,7 @@
 				}
 			],
 			"age": "Juvenile",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1697261555",
@@ -7985,7 +7986,7 @@
 				}
 			],
 			"age": "Juvenile/Immature",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1696229237",
@@ -8002,7 +8003,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1696229286",
@@ -8019,7 +8020,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1696229857",
@@ -8039,7 +8040,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1696229959",
@@ -8055,7 +8056,7 @@
 					"src": "images/rufous-fronted-prinia-1696229985.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1696306033",
@@ -8071,7 +8072,7 @@
 					"src": "images/eurasian-kestrel-1696306074.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "1"
 		},
 		{
 			"key": "s1696229039",
@@ -8103,7 +8104,7 @@
 					"src": "images/isabelline-wheatear-1696229426.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696255571",
@@ -8120,7 +8121,7 @@
 				}
 			],
 			"plumage": "Immature/Non-Breeding",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696148987",
@@ -8141,7 +8142,7 @@
 			],
 			"gender": "F",
 			"subspecies": "Asian",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1696149107",
@@ -8163,7 +8164,7 @@
 			"gender": "M",
 			"variation": "",
 			"subspecies": "Asian",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696300541",
@@ -8179,7 +8180,7 @@
 					"src": "images/eurasian-hobby-1696300565.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696147865",
@@ -8201,7 +8202,7 @@
 					"src": "images/pied-avocet-1696147918.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1696148220",
@@ -8234,7 +8235,7 @@
 				}
 			],
 			"plumage": "Breeding",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696148076",
@@ -8253,7 +8254,7 @@
 					"src": "images/blue-cheeked-bee-eater-1696262111.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1696175754",
@@ -8274,7 +8275,7 @@
 			],
 			"variation": "Opistholeuca Form",
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1696335055",
@@ -8292,7 +8293,7 @@
 			],
 			"variation": "Opistholeuca Form",
 			"gender": "F",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696569861",
@@ -8308,7 +8309,7 @@
 					"src": "images/crested-lark-1696569873.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696569751",
@@ -8318,13 +8319,13 @@
 			"city": "Tal Chhapar",
 			"state": "Rajasthan",
 			"country": "India",
-			"hidden": true,
+			"hidden": false,
 			"media": [
 				{
 					"src": "images/black-winged-stilt-1696569768.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696569723",
@@ -8340,7 +8341,7 @@
 					"src": "images/marsh-sandpiper-1696569746.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696647059",
@@ -8356,7 +8357,7 @@
 					"src": "images/red-rumped-swallow-1696647084.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696176467",
@@ -8514,7 +8515,7 @@
 					"src": "images/red-naped-ibis-1696091277.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696300094",
@@ -8601,7 +8602,7 @@
 					"src": "images/common-babbler-1694139384.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1692598659",
@@ -8623,7 +8624,7 @@
 					"src": "images/rufous-fronted-prinia-1692670921.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1692597983",
@@ -8644,7 +8645,7 @@
 			],
 			"variation": "Picata Form",
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1692597282",
@@ -8663,7 +8664,7 @@
 					"src": "images/crested-lark-1692613779.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1692597513",
@@ -8700,7 +8701,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1692599517",
@@ -8735,7 +8736,7 @@
 					"src": "images/laggar-falcon-1692597664.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "5"
 		},
 		{
 			"key": "s1692671505",
@@ -8752,7 +8753,7 @@
 				}
 			],
 			"age": "Juvenile/Immature",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1692597742",
@@ -8823,7 +8824,7 @@
 					"src": "images/red-naped-ibis-1692599936.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1692598220",
@@ -8884,7 +8885,7 @@
 					"src": "images/large-grey-babbler-1692671371.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1692598424",
@@ -9000,7 +9001,7 @@
 					"src": "images/laughing-dove-1692670621.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1692671667",
@@ -9017,7 +9018,7 @@
 				}
 			],
 			"age": "Juvenile/Immature",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1692671998",
@@ -9168,7 +9169,7 @@
 					"src": "images/oriental-turtle-dove-1699790527.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1678284848",
@@ -9223,7 +9224,7 @@
 					"src": "images/chestnut-crowned-warbler-1679144605.jpg"
 				}
 			],
-			"rating": "4"
+			"rating": "3"
 		},
 		{
 			"key": "s1678283106",
@@ -9245,7 +9246,7 @@
 					"src": "images/chestnut-tailed-minla-1678283135.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1678286891",
@@ -9261,7 +9262,7 @@
 					"src": "images/rufous-winged-fulvetta-1678358674.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1678283527",
@@ -9293,7 +9294,7 @@
 					"src": "images/little-forktail-1678285034.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1675082550",
@@ -10111,7 +10112,7 @@
 			],
 			"gender": "M",
 			"plumage": "Breeding",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1673765103",
@@ -10128,7 +10129,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1715784539",
@@ -10161,7 +10162,7 @@
 					"src": "images/white-cheeked-barbet-1672213125.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672212840",
@@ -10184,7 +10185,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1672212784",
@@ -10201,7 +10202,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672212816",
@@ -10218,7 +10219,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672040581",
@@ -10256,7 +10257,7 @@
 					"src": "images/malabar-starling-1672041199.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672288878",
@@ -10276,7 +10277,7 @@
 				}
 			],
 			"gender": "",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672213325",
@@ -10292,7 +10293,7 @@
 					"src": "images/vernal-hanging-parrot-1672213344.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672288765",
@@ -10326,7 +10327,7 @@
 			],
 			"gender": "",
 			"age": "Juvenile",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672150213",
@@ -10342,7 +10343,7 @@
 					"src": "images/indian-pitta-1672150235.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672150042",
@@ -10358,7 +10359,7 @@
 					"src": "images/jungle-owlet-1675826407.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672151370",
@@ -10417,7 +10418,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672124426",
@@ -10433,7 +10434,7 @@
 					"src": "images/fork-tailed-drongo-cuckoo-1672124450.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672046570",
@@ -10452,7 +10453,7 @@
 					"src": "images/indian-roller-1672124413.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672041027",
@@ -10468,7 +10469,7 @@
 					"src": "images/brown-capped-pygmy-woodpecker-1672041056.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672041239",
@@ -10547,7 +10548,7 @@
 					"src": "images/asian-brown-flycatcher-1672042688.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672044061",
@@ -10623,7 +10624,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672043581",
@@ -10640,7 +10641,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672041584",
@@ -10659,7 +10660,7 @@
 					"src": "images/grey-headed-bulbul-1672041697.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672042748",
@@ -10676,7 +10677,7 @@
 				}
 			],
 			"variation": "White-throated",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672013420",
@@ -10708,7 +10709,7 @@
 					"src": "images/black-baza-1672014080.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672042360",
@@ -10868,7 +10869,7 @@
 					"src": "images/brown-cheeked-fulvetta-1672046446.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672045679",
@@ -10884,7 +10885,7 @@
 					"src": "images/oriental-bay-owl-1672045818.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672043946",
@@ -10900,7 +10901,7 @@
 					"src": "images/brown-breasted-flycatcher-1672043966.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672040858",
@@ -10916,7 +10917,7 @@
 					"src": "images/white-bellied-woodpecker-1672040892.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1672045971",
@@ -10933,7 +10934,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1673076169",
@@ -10999,7 +11000,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672046697",
@@ -11016,7 +11017,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672043374",
@@ -11040,7 +11041,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672043097",
@@ -11062,7 +11063,7 @@
 					"src": "images/brown-boobook-1675583123.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1672043000",
@@ -11078,7 +11079,7 @@
 					"src": "images/white-bellied-treepie-1672043021.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672041941",
@@ -11094,7 +11095,7 @@
 					"src": "images/lesser-yellownape-1672041977.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1672040477",
@@ -11135,7 +11136,7 @@
 					"src": "images/yellow-browed-bulbul-1672043528.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1672040744",
@@ -11189,7 +11190,7 @@
 					"src": "images/purple-heron-1669603089.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1669602277",
@@ -11224,7 +11225,7 @@
 					"src": "images/lesser-whistling-duck-1669603941.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669604719",
@@ -11242,7 +11243,7 @@
 			],
 			"gender": "",
 			"plumage": "Breeding",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1669604715",
@@ -11258,7 +11259,7 @@
 					"src": "images/black-headed-ibis-1669604757.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669603643",
@@ -11274,7 +11275,7 @@
 					"src": "images/common-snipe-1669603679.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669603167",
@@ -11293,7 +11294,7 @@
 					"src": "images/glossy-ibis-1669603635.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669603645",
@@ -11309,7 +11310,7 @@
 					"src": "images/grey-headed-lapwing-1669603688.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669737595",
@@ -11326,7 +11327,7 @@
 				}
 			],
 			"plumage": "Non-Breeding",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669602522",
@@ -11395,7 +11396,7 @@
 				}
 			],
 			"age": "Immature",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669602681",
@@ -11412,7 +11413,7 @@
 				}
 			],
 			"plumage": "Non-Breeding",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1669738109",
@@ -11461,7 +11462,7 @@
 					"src": "images/chestnut-crowned-laughingthrush-1668652432.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1668331487",
@@ -11478,7 +11479,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668298676",
@@ -11494,7 +11495,7 @@
 					"src": "images/little-forktail-1673078307.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668298644",
@@ -11510,7 +11511,7 @@
 					"src": "images/red-billed-chough-1668299898.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668298059",
@@ -11526,7 +11527,7 @@
 					"src": "images/black-faced-laughingthrush-1668298452.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668300461",
@@ -11542,7 +11543,7 @@
 					"src": "images/hodgsons-treecreeper-1668393338.jpg"
 				}
 			],
-			"rating": "2"
+			"rating": "3"
 		},
 		{
 			"key": "s1668298659",
@@ -11578,7 +11579,7 @@
 					"src": "images/blanfords-snowfinch-1668270951.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668270845",
@@ -11595,7 +11596,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668397302",
@@ -11627,7 +11628,7 @@
 					"src": "images/eurasian-kestrel-1668271630.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1668269908",
@@ -11643,7 +11644,7 @@
 					"src": "images/eurasian-tree-sparrow-1668270331.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668270294",
@@ -11662,7 +11663,7 @@
 					"src": "images/little-bunting-1668270383.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668270510",
@@ -11678,7 +11679,7 @@
 					"src": "images/rusty-fronted-barwing-1668270562.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668302382",
@@ -11694,7 +11695,7 @@
 					"src": "images/red-vented-bulbul-1668302460.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1668301200",
@@ -11710,7 +11711,7 @@
 					"src": "images/green-backed-tit-1668301305.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668269637",
@@ -11745,7 +11746,7 @@
 					"src": "images/grey-treepie-1668481730.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1668303515",
@@ -11763,7 +11764,7 @@
 			],
 			"subspecies": "ssp. ocularis",
 			"variation": "",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668572489",
@@ -11779,7 +11780,7 @@
 					"src": "images/himalayan-bulbul-1668572527.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1668269022",
@@ -11796,7 +11797,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1668268790",
@@ -11816,7 +11817,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668268696",
@@ -11832,7 +11833,7 @@
 					"src": "images/white-rumped-munia-1668268718.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1668268358",
@@ -11848,7 +11849,7 @@
 					"src": "images/olive-backed-pipit-1668268414.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1668268055",
@@ -11864,7 +11865,7 @@
 					"src": "images/spotted-forktail-1668268315.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1666790856",
@@ -13163,7 +13164,7 @@
 					"src": "images/indian-silverbill-1665898972.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1665898824",
@@ -13180,7 +13181,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1665897515",
@@ -13209,7 +13210,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1665716269",
@@ -13242,7 +13243,7 @@
 					"src": "images/bronzed-drongo-1664716488.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "s1664377396",
@@ -13262,7 +13263,7 @@
 				}
 			],
 			"gender": "F",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1664166493",
@@ -13281,7 +13282,7 @@
 					"src": "images/little-cormorant-1664166506.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1664166368",
@@ -13300,7 +13301,7 @@
 					"src": "images/slaty-backed-forktail-1664172916.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1664173793",
@@ -13317,7 +13318,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1664166247",
@@ -13333,7 +13334,7 @@
 					"src": "images/common-hawk-cuckoo-1664204216.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1662860671",
@@ -13379,7 +13380,7 @@
 				}
 			],
 			"description": "",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1662518262",
@@ -13405,7 +13406,7 @@
 				}
 			],
 			"description": "They can be seen flying in a large flock almost every morning and evening around Nabanna. And they make their nest in the small holes under the structures of Vidyasagar Setu.",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1662806022",
@@ -13522,7 +13523,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "bluethroat-red-spotted",
@@ -13542,7 +13543,7 @@
 					"src": "images/bluethroat-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "1"
 		},
 		{
 			"key": "chukar-2",
@@ -13619,7 +13620,7 @@
 				}
 			],
 			"city": "Tso Kar",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "ruddy-shelduck-3",
@@ -13650,7 +13651,7 @@
 				}
 			],
 			"city": "Tso Kar",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "upland-buzzard-dark",
@@ -13737,7 +13738,7 @@
 				}
 			],
 			"city": "Tso Kar",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "robin-accentor-juvenile",
@@ -13758,7 +13759,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1663038211",
@@ -13809,7 +13810,7 @@
 				}
 			],
 			"city": "Karzok",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "brown-headed-gull-breeding",
@@ -13834,7 +13835,7 @@
 				}
 			],
 			"city": "Karzok",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "red-billed-chough",
@@ -13857,7 +13858,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "twite",
@@ -13875,7 +13876,7 @@
 				}
 			],
 			"place": "",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "great-cormorant-2",
@@ -13907,7 +13908,7 @@
 				}
 			],
 			"gender": "M",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "saker-falcon",
@@ -13924,7 +13925,7 @@
 					"src": "images/saker-falcon.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "desert-wheatear-female",
@@ -13939,7 +13940,7 @@
 					"src": "images/desert-wheatear-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "black-redstart-3",
@@ -13955,7 +13956,7 @@
 					"src": "images/black-redstart-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "desert-wheatear-male",
@@ -13979,7 +13980,7 @@
 					"src": "images/desert-wheatear-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "desert-wheatear-juvenile",
@@ -13994,7 +13995,7 @@
 					"src": "images/desert-wheatear-juvenile.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "tibetan-lark",
@@ -14056,7 +14057,7 @@
 					"src": "images/rock-pigeon-1662690050.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "1"
 		},
 		{
 			"key": "tickells-leaf-warbler",
@@ -14103,7 +14104,7 @@
 					"src": "images/black-redstart-1663037819.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "horned-lark-3",
@@ -14144,7 +14145,7 @@
 				}
 			],
 			"city": "Pangong Tso",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "humes-lark",
@@ -14183,7 +14184,7 @@
 					"src": "images/black-winged-stilt-1662688212.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "common-tern",
@@ -14218,7 +14219,7 @@
 					"src": "images/black-headed-mountain-finch-1662687278.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "horned-lark-female",
@@ -14236,7 +14237,7 @@
 					"src": "images/horned-lark-1662687515.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "common-raven",
@@ -14250,7 +14251,7 @@
 					"src": "images/common-raven.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "upland-buzzard-juvenile",
@@ -14314,7 +14315,7 @@
 					"src": "images/robin-accentor-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "citrine-wagtail-2",
@@ -14331,7 +14332,7 @@
 					"src": "images/citrine-wagtail-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "hill-pigeon",
@@ -14351,7 +14352,7 @@
 					"src": "images/hill-pigeon.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "black-redstart-female",
@@ -14367,7 +14368,7 @@
 					"src": "images/black-redstart-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "white-winged-redstart",
@@ -14382,7 +14383,7 @@
 					"src": "images/white-winged-redstart.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "black-redstart",
@@ -14398,7 +14399,7 @@
 					"src": "images/black-redstart.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "mallard-male-breeding",
@@ -14415,7 +14416,7 @@
 					"src": "images/mallard-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "mallard-male-molting",
@@ -14435,7 +14436,7 @@
 					"src": "images/mallard-male-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "mallard-female",
@@ -14451,7 +14452,7 @@
 					"src": "images/mallard-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "white-wagtail-personata-2",
@@ -14467,7 +14468,7 @@
 				}
 			],
 			"variation": "",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "horned-lark",
@@ -14482,7 +14483,7 @@
 					"src": "images/horned-lark-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "tibetan-snowfinch",
@@ -14496,7 +14497,7 @@
 					"src": "images/tibetan-snowfinch.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "alpine-chough-2",
@@ -14513,7 +14514,7 @@
 					"src": "images/alpine-chough-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "western-yellow-wagtail-immature",
@@ -14528,7 +14529,7 @@
 					"src": "images/western-yellow-wagtail-immature.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "grey-wagtail-2",
@@ -14542,7 +14543,7 @@
 					"src": "images/grey-wagtail-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "indian-paradise-flycatcher-white-male-3",
@@ -14561,7 +14562,7 @@
 					"src": "images/indian-paradise-flycatcher-white-male-3-1661480881.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "hair-crested-drongo-3",
@@ -14578,7 +14579,7 @@
 					"src": "images/hair-crested-drongo-1663123558.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "scaly-breasted-munia-4",
@@ -14625,7 +14626,7 @@
 					"src": "images/spotted-forktail-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "dark-sided-thrush",
@@ -14676,7 +14677,7 @@
 					"src": "images/cinereous-tit-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "red-rumped-swallow",
@@ -15872,7 +15873,7 @@
 				}
 			],
 			"place": "Tindar",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "eurasian-sparrowhawk",
@@ -15887,7 +15888,7 @@
 				}
 			],
 			"place": "Tindar",
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "himalayan-griffon",
@@ -15938,7 +15939,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "himalayan-bulbul-2",
@@ -15953,7 +15954,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "whiskered-yuhina",
@@ -15968,7 +15969,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "brownish-flanked-bush-warbler",
@@ -16018,7 +16019,7 @@
 					"src": "images/black-bulbul-1663299638.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "chestnut-tailed-minla",
@@ -16039,7 +16040,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "red-headed-bullfinch",
@@ -16058,7 +16059,7 @@
 				}
 			],
 			"place": "Tindar",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "yellow-breasted-greenfinch-male",
@@ -16074,7 +16075,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "yellow-breasted-greenfinch-female",
@@ -16090,7 +16091,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "common-hoopoe-3",
@@ -16105,7 +16106,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "crested-kingfisher",
@@ -16216,7 +16217,7 @@
 					"src": "images/red-billed-blue-magpie-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "yellow-billed-blue-magpie-2",
@@ -16242,7 +16243,7 @@
 					"src": "images/yellow-billed-blue-magpie-6.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "indian-grey-hornbill-2",
@@ -16308,7 +16309,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "alexandrine-parakeet-2",
@@ -16329,7 +16330,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "green-backed-tit-2",
@@ -16343,7 +16344,7 @@
 					"src": "images/green-backed-tit-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "dark-sided-flycatcher",
@@ -16446,7 +16447,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "grey-treepie-2",
@@ -16460,7 +16461,7 @@
 					"src": "images/grey-treepie-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "white-crested-laughingthrush",
@@ -16483,7 +16484,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "plumbeous-water-redstart-female-3",
@@ -16499,7 +16500,7 @@
 				}
 			],
 			"city": "Nimachen",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "alpine-accentor",
@@ -16517,7 +16518,7 @@
 				}
 			],
 			"city": "Zuluk",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "himalayan-monal-female",
@@ -16579,7 +16580,7 @@
 					"src": "images/eurasian-tree-sparrow-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "blue-capped-rock-thrush-male",
@@ -16622,7 +16623,7 @@
 					"src": "images/little-bunting.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "red-tailed-minla",
@@ -16637,7 +16638,7 @@
 					"src": "images/red-tailed-minla.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "blue-whistling-thrush-2",
@@ -16657,7 +16658,7 @@
 					"src": "images/blue-whistling-thrush-4.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "rufous-breasted-accentor-2",
@@ -16671,7 +16672,7 @@
 					"src": "images/rufous-breasted-accentor-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "verditer-flycatcher-4",
@@ -16686,7 +16687,7 @@
 					"src": "images/verditer-flycatcher-4.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "humes-leaf-warbler-3",
@@ -16720,7 +16721,7 @@
 				}
 			],
 			"hidden": true,
-			"rating": 1
+			"rating": "1"
 		},
 		{
 			"key": "oriental-magpie-robin-male-3",
@@ -16751,7 +16752,7 @@
 					"src": "images/house-sparrow-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "great-cormorant",
@@ -16834,7 +16835,7 @@
 					"src": "images/cattle-egret-non-breeding.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "brown-shrike-3",
@@ -16884,7 +16885,7 @@
 					"src": "images/grey-heron-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "streak-throated-swallow",
@@ -16972,7 +16973,7 @@
 					"src": "images/brown-headed-gull-non-breeding-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "greater-painted-snipe-female",
@@ -16987,7 +16988,7 @@
 					"src": "images/greater-painted-snipe-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "eastern-yellow-wagtail",
@@ -17003,7 +17004,7 @@
 			],
 			"plumage": "Breeding",
 			"subspecies": "Thunbergi",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "s1705320708",
@@ -17019,7 +17020,7 @@
 					"src": "images/grey-headed-swamphen-1705320750.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "pheasant-tailed-jacana",
@@ -17048,7 +17049,7 @@
 					"src": "images/slaty-breasted-rail.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "ruddy-breasted-crake",
@@ -17062,7 +17063,7 @@
 					"src": "images/ruddy-breasted-crake.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "ruff-non-breeding",
@@ -17077,7 +17078,7 @@
 					"src": "images/ruff-non-breeding.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "little-ringed-plover-breeding",
@@ -17092,7 +17093,7 @@
 					"src": "images/little-ringed-plover-breeding.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "asian-koel-female-2",
@@ -17137,7 +17138,7 @@
 					"src": "images/gadwall-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "gadwall-female",
@@ -17167,7 +17168,7 @@
 					"src": "images/whiskered-tern-non-breeding-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "chestnut-tailed-starling-2",
@@ -17181,7 +17182,7 @@
 					"src": "images/chestnut-tailed-starling-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "blyths-warbler",
@@ -17226,7 +17227,7 @@
 					"src": "images/spotted-owlet-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "eurasian-marsh-harrier",
@@ -17240,7 +17241,7 @@
 					"src": "images/eurasian-marsh-harrier.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "eurasian-moorhen-immature",
@@ -17255,7 +17256,7 @@
 					"src": "images/eurasian-moorhen-immature.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "yellow-bittern",
@@ -17269,7 +17270,7 @@
 					"src": "images/yellow-bittern.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "knob-billed-duck",
@@ -17283,7 +17284,7 @@
 					"src": "images/knob-billed-duck.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "oriental-skylark",
@@ -17298,7 +17299,7 @@
 				}
 			],
 			"hidden": false,
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "northern-shoveler-female",
@@ -17313,7 +17314,7 @@
 					"src": "images/northern-shoveler-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "common-kingfisher-2",
@@ -17341,7 +17342,7 @@
 					"src": "images/blue-tailed-bee-eater-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "white-browed-bulbul",
@@ -17355,7 +17356,7 @@
 					"src": "images/white-browed-bulbul.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "booted-warbler",
@@ -17369,7 +17370,7 @@
 					"src": "images/booted-warbler.jpg"
 				}
 			],
-			"rating": "3"
+			"rating": "2"
 		},
 		{
 			"key": "wood-sandpiper",
@@ -17383,7 +17384,7 @@
 					"src": "images/wood-sandpiper.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "open-billed-stork-2",
@@ -17397,7 +17398,7 @@
 					"src": "images/open-billed-stork-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "northern-shoveler-breeding-male",
@@ -17413,7 +17414,7 @@
 					"src": "images/northern-shoveler-breeding-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "indian-spot-billed-duck-3",
@@ -17427,7 +17428,7 @@
 					"src": "images/indian-spot-billed-duck-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "bronze-winged-jacana-male-2",
@@ -17442,7 +17443,7 @@
 					"src": "images/bronze-winged-jacana-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "grey-capped-pygmy-woodpecker-male",
@@ -17489,7 +17490,7 @@
 					"src": "images/grey-headed-canary-flycatcher.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "maroon-oriole-male",
@@ -17522,7 +17523,7 @@
 					"src": "images/fire-tailed-sunbird-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "green-tailed-sunbird-male",
@@ -17541,7 +17542,7 @@
 					"src": "images/green-tailed-sunbird-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "green-tailed-sunbird-female",
@@ -17588,7 +17589,7 @@
 					"src": "images/slaty-backed-forktail-1663684386.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "streaked-spiderhunter",
@@ -17657,7 +17658,7 @@
 					"src": "images/black-lored-tit-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "brown-shrike-2",
@@ -17696,7 +17697,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "chestnut-bellied-nuthatch-male",
@@ -17728,7 +17729,7 @@
 					"src": "images/chestnut-headed-bee-eater-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "long-tailed-broadbill",
@@ -17984,7 +17985,7 @@
 					"src": "images/grey-headed-lapwing.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "little-cormorant-2",
@@ -17999,7 +18000,7 @@
 					"src": "images/little-cormorant-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "5"
 		},
 		{
 			"key": "pacific-golden-plover-non-breeding-2",
@@ -18021,7 +18022,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "5"
 		},
 		{
 			"key": "red-crested-pochard-male",
@@ -18043,7 +18044,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "red-crested-pochard-female",
@@ -18059,7 +18060,7 @@
 					"src": "images/red-crested-pochard-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "green-winged-teal-female",
@@ -18075,7 +18076,7 @@
 					"src": "images/green-winged-teal-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "green-winged-teal-male",
@@ -18091,7 +18092,7 @@
 					"src": "images/green-winged-teal-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "falcated-duck-male",
@@ -18133,7 +18134,7 @@
 					"src": "images/great-crested-grebe-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "bank-swallow",
@@ -18148,7 +18149,7 @@
 					"src": "images/bank-swallow.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "river-lapwing",
@@ -18166,7 +18167,7 @@
 					"src": "images/river-lapwing-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "ruddy-shelduck-2",
@@ -18181,7 +18182,7 @@
 					"src": "images/ruddy-shelduck-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "northern-lapwing",
@@ -18202,7 +18203,7 @@
 					"type": "video"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "eurasian-wigeon-male",
@@ -18298,7 +18299,7 @@
 					"src": "images/blue-winged-minla-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "red-headed-trogon-female",
@@ -18329,7 +18330,7 @@
 					"src": "images/white-browed-scimitar-babbler.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "little-forktail",
@@ -18485,7 +18486,7 @@
 					"src": "images/mountain-imperial-pigeon.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "black-crested-bulbul",
@@ -18503,7 +18504,7 @@
 					"src": "images/black-crested-bulbul-1663684831.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "white-throated-fantail",
@@ -18520,7 +18521,7 @@
 					"src": "images/white-throated-fantail.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "lineated-barbet",
@@ -18535,7 +18536,7 @@
 					"src": "images/lineated-barbet.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "spotted-dove",
@@ -18549,7 +18550,7 @@
 					"src": "images/spotted-dove.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "brown-winged-kingfisher",
@@ -18607,7 +18608,7 @@
 					"src": "images/fulvous-breasted-woodpecker-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "fulvous-breasted-woodpecker-male",
@@ -18622,7 +18623,7 @@
 					"src": "images/fulvous-breasted-woodpecker-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "collared-kingfisher",
@@ -18693,7 +18694,7 @@
 					"src": "images/spotted-owlet-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "common-greenshank",
@@ -18707,7 +18708,7 @@
 					"src": "images/common-greenshank.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "common-sandpiper",
@@ -18721,7 +18722,7 @@
 					"src": "images/common-sandpiper.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "painted-stork",
@@ -18738,7 +18739,7 @@
 					"src": "images/painted-stork.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "kentish-plover",
@@ -18769,7 +18770,7 @@
 					"src": "images/eurasian-curlew.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "barn-owl",
@@ -18804,7 +18805,7 @@
 					"src": "images/black-crowned-night-heron-juvenile.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "striated-heron",
@@ -18818,7 +18819,7 @@
 					"src": "images/striated-heron.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "pied-avocet",
@@ -18835,7 +18836,7 @@
 					"src": "images/pied-avocet-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "pacific-golden-plover-non-breeding",
@@ -18850,7 +18851,7 @@
 					"src": "images/pacific-golden-plover-non-breeding.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "cotton-pygmy-goose-female",
@@ -18865,7 +18866,7 @@
 					"src": "images/cotton-pygmy-goose-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "pallas-gull-non-breeding",
@@ -18924,7 +18925,7 @@
 					"src": "images/eurasian-whimbrel.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "black-naped-monarch-female",
@@ -18953,7 +18954,7 @@
 					"src": "images/black-drongo-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "black-headed-cuckoo-shrike-female",
@@ -18986,7 +18987,7 @@
 				}
 			],
 			"city": "Leh",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "chukar",
@@ -19000,7 +19001,7 @@
 					"src": "images/chukar.jpg"
 				}
 			],
-			"rating": "3"
+			"rating": "2"
 		},
 		{
 			"key": "brown-headed-gull-non-breeding",
@@ -19016,7 +19017,7 @@
 				}
 			],
 			"city": "Pangong Tso",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "alpine-chough",
@@ -19030,7 +19031,7 @@
 					"src": "images/alpine-chough.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1669776826",
@@ -19122,7 +19123,7 @@
 					"src": "images/red-vented-bulbul-4.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "red-vented-bulbul-3",
@@ -19137,7 +19138,7 @@
 					"src": "images/red-vented-bulbul-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "house-crow-2",
@@ -19151,7 +19152,7 @@
 					"src": "images/house-crow-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "brown-shrike",
@@ -19247,7 +19248,7 @@
 					"src": "images/great-barbet-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "bar-tailed-treecreeper",
@@ -19275,7 +19276,7 @@
 					"src": "images/black-throated-bushtit.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "grey-wagtail",
@@ -19289,7 +19290,7 @@
 					"src": "images/grey-wagtail.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "brown-fronted-woodpecker-male",
@@ -19318,7 +19319,7 @@
 					"src": "images/eurasian-jay.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "black-headed-jay",
@@ -19363,7 +19364,7 @@
 					"src": "images/jungle-babbler-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "grey-winged-blackbird-male",
@@ -19381,7 +19382,7 @@
 					"src": "images/grey-winged-blackbird-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "oriental-turtle-dove",
@@ -19395,7 +19396,7 @@
 					"src": "images/oriental-turtle-dove.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "common-hoopoe-2",
@@ -19409,7 +19410,7 @@
 					"src": "images/common-hoopoe-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "siberian-stonechat-female",
@@ -19424,7 +19425,7 @@
 					"src": "images/siberian-stonechat-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "siberian-stonechat-male",
@@ -19439,7 +19440,7 @@
 					"src": "images/siberian-stonechat-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "rufous-bellied-niltava",
@@ -19482,7 +19483,7 @@
 					"src": "images/collared-owlet.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "house-sparrow-female-2",
@@ -19603,7 +19604,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "grey-bushchat-female",
@@ -19622,7 +19623,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "grey-treepie",
@@ -19637,7 +19638,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "spotted-forktail",
@@ -19651,7 +19652,7 @@
 					"src": "images/spotted-forktail.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "himalayan-prinia",
@@ -19666,7 +19667,7 @@
 				}
 			],
 			"city": "Tirthan Valley",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "blue-throated-blue-flycatcher-female",
@@ -19700,7 +19701,7 @@
 					"src": "images/pink-browed-rosefinch-female-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "common-rosefinch-male",
@@ -19718,7 +19719,7 @@
 					"src": "images/common-rosefinch-male-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "common-rosefinch-female",
@@ -19806,7 +19807,7 @@
 					"src": "images/ultramarine-flycatcher-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "variegated-laughingthrush",
@@ -19837,7 +19838,7 @@
 					"src": "images/coal-tit.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "large-billed-crow",
@@ -19898,7 +19899,7 @@
 					"src": "images/pied-bushchat-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "grey-bushchat-male",
@@ -19919,7 +19920,7 @@
 					"src": "images/grey-bushchat-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "chestnut-bellied-rock-thrush-female",
@@ -19995,7 +19996,7 @@
 					"src": "images/bar-headed-goose-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "kentish-plover-2",
@@ -20040,7 +20041,7 @@
 				}
 			],
 			"variation": "",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "greylag-goose-2",
@@ -20071,7 +20072,7 @@
 					"src": "images/verditer-flycatcher-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "green-backed-tit",
@@ -20085,7 +20086,7 @@
 					"src": "images/green-backed-tit.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "small-pratincole",
@@ -20099,7 +20100,7 @@
 					"src": "images/small-pratincole.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "russet-sparrow-female",
@@ -20128,7 +20129,7 @@
 					"src": "images/slaty-headed-parakeet.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "russet-sparrow-male",
@@ -20143,7 +20144,7 @@
 					"src": "images/russet-sparrow-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "blue-fronted-redstart-female",
@@ -20173,7 +20174,7 @@
 					"src": "images/blue-whistling-thrush.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "grey-hooded-warbler",
@@ -20215,7 +20216,7 @@
 					"src": "images/black-kite-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "himalayan-bulbul",
@@ -20395,7 +20396,7 @@
 					"src": "images/rufous-vented-yuhina-2.jpg"
 				}
 			],
-			"rating": "3"
+			"rating": "4"
 		},
 		{
 			"key": "rufous-sibia",
@@ -20485,7 +20486,7 @@
 					"src": "images/marsh-sandpiper.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "great-egret",
@@ -20499,7 +20500,7 @@
 					"src": "images/great-egret.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "glossy-ibis",
@@ -20969,7 +20970,7 @@
 					"src": "images/russet-sparrow-male-2.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "yellow-browed-bulbul-2",
@@ -21095,7 +21096,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "white-bellied-woodpecker",
@@ -21128,7 +21129,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "blue-tailed-bee-eater",
@@ -21181,7 +21182,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "malabar-grey-hornbill-male",
@@ -21197,7 +21198,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "jungle-owlet",
@@ -21212,7 +21213,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "malabar-woodshrike",
@@ -21230,7 +21231,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": "1"
+			"rating": "3"
 		},
 		{
 			"key": "green-imperial-pigeon",
@@ -21284,7 +21285,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "stork-billed-kingfisher",
@@ -21423,7 +21424,7 @@
 					"src": "images/spotted-owlet.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "green-bee-eater-2",
@@ -21465,7 +21466,7 @@
 					"src": "images/hoary-throated-barwing.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "1"
 		},
 		{
 			"key": "blue-robin",
@@ -21523,7 +21524,7 @@
 					"src": "images/blue-fronted-redstart-male.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "white-throated-redstart",
@@ -21551,7 +21552,7 @@
 					"src": "images/rufous-breasted-accentor.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "black-stork",
@@ -21880,7 +21881,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "ceylon-frogmouth-male",
@@ -21896,7 +21897,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "fork-tailed-drongo-cuckoo",
@@ -21982,7 +21983,7 @@
 					"src": "images/yellow-browed-bulbul.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "indian-white-eye",
@@ -22042,7 +22043,7 @@
 					"src": "images/eurasian-collared-dove.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "yellow-footed-green-pigeon",
@@ -22056,7 +22057,7 @@
 					"src": "images/yellow-footed-green-pigeon.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "pied-myna",
@@ -22087,7 +22088,7 @@
 			],
 			"hidden": false,
 			"plumage": "Breeding",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "black-headed-gull-non-breeding",
@@ -22136,7 +22137,7 @@
 					"src": "images/shikra-juvenile-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "indian-spot-billed-duck-2",
@@ -22401,7 +22402,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "black-crowned-night-heron",
@@ -22419,7 +22420,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "oriental-darter",
@@ -22434,7 +22435,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "spot-billed-pelican",
@@ -22455,7 +22456,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": "3"
+			"rating": "4"
 		},
 		{
 			"key": "intermediate-egret",
@@ -22485,7 +22486,7 @@
 					"src": "images/white-breasted-waterhen.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "little-cormorant",
@@ -22500,7 +22501,7 @@
 				}
 			],
 			"city": "Thattekad Bird Sanctuary",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "common-kingfisher",
@@ -22579,7 +22580,7 @@
 					"src": "images/shikra-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "purple-rumped-sunbird-male",
@@ -22601,7 +22602,7 @@
 					"src": "images/purple-rumped-sunbird-male-3.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "little-egret",
@@ -22730,7 +22731,7 @@
 					"src": "images/black-drongo-1705320432.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "4"
 		},
 		{
 			"key": "lotens-sunbird-female",
@@ -22783,7 +22784,7 @@
 					"title": "Nest"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "plain-prinia",
@@ -23302,7 +23303,7 @@
 					"src": "images/white-breasted-kingfisher.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "orange-headed-thrush",
@@ -23317,7 +23318,7 @@
 					"src": "images/orange-headed-thrush.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "rock-pigeon",
@@ -23332,7 +23333,7 @@
 					"src": "images/rock-pigeon.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "common-myna",
@@ -23362,7 +23363,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": 1
+			"rating": "3"
 		},
 		{
 			"key": "pond-heron-non-breeding",
@@ -23378,7 +23379,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "common-coot",
@@ -23408,7 +23409,7 @@
 				}
 			],
 			"city": "Chennai",
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1697681138",

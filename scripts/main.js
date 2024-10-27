@@ -225,7 +225,8 @@ function initAutocomplete() {
 }
 
 function resetRatingFilter() {
-	ratingFilter = (Number(ratingFilter) + 1) % 6;
+	if(ratingFilter != 0) ratingFilter = 0;
+	// ratingFilter = (Number(ratingFilter) + 1) % 6;
 	refresh();
 }
 
@@ -235,7 +236,7 @@ function fillStats() {
 	var selectedSpecies = [...new Set(data.filteredSightings.map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))];
 	$(".species-count").html(selectedSpecies.length);
 
-	(ratingFilter > 0 || getCookie("credentials")) ? $(".rating").parent().show() : $(".rating").parent().hide();
+	(ratingFilter > 0) ? $(".rating").parent().show() : $(".rating").parent().hide();
 	$(".rating").html((ratingFilter == 0) ? "All" : (ratingFilter + " +"));
 
 	var filters = getFilters();
@@ -306,6 +307,14 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var aMonth = '<a onclick="triggerFilter(\'date\', \'' + sighting.date.format(FILTER_MONTH_FORMAT) + '\')">' + dateSplit[1] + '</a>, ';
 	var aYear = '<a onclick="triggerFilter(\'date\', \'' + sighting.date.format(FILTER_YEAR_FORMAT) + '\')">' + dateSplit[2] + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc">' + aDay + aMonth + aYear + '</div>');
+
+	if(sighting.rating > 0) {
+		// var rating = [...Array(Number(sighting.rating)).keys().map(k => "★")].join("");			// Not working on iOS chrome/firefox
+		var rating = "";
+		for(i=0; i<Number(sighting.rating); i++) rating += "★";
+		var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')">' + rating + '</a>';
+		sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
+	}
 }
 
 function renderSighting(sightingDiv, sighting) {
@@ -580,14 +589,18 @@ function getFilters() {
 }
 
 function setFilter(type, value) {
-	$(".filter input[data-value='" + type + "']")[0].value = value ? value : null;
-	if(value) {
-		$(".filter input[data-value='" + type + "']").addClass("button-active");
-		$(".filter input[data-value='" + type + "'] + button").removeClass("hidden");
-		if(type == 'date') $(".filter input[data-value='" + type + "'] + button").addClass("button-active").html(value);
+	if(type == 'rating') {
+		ratingFilter = value || 0;
 	} else {
-		$(".filter input[data-value='" + type + "']").removeClass("button-active");
-		if(type == 'date') $(".filter input[data-value='" + type + "'] + button").addClass("hidden");
+		$(".filter input[data-value='" + type + "']")[0].value = value ? value : null;
+		if(value) {
+			$(".filter input[data-value='" + type + "']").addClass("button-active");
+			$(".filter input[data-value='" + type + "'] + button").removeClass("hidden");
+			if(type == 'date') $(".filter input[data-value='" + type + "'] + button").addClass("button-active").html(value);
+		} else {
+			$(".filter input[data-value='" + type + "']").removeClass("button-active");
+			if(type == 'date') $(".filter input[data-value='" + type + "'] + button").addClass("hidden");
+		}
 	}
 }
 
@@ -596,6 +609,7 @@ function setFilters(filter) {
 		setFilter('sighting', filter.sighting);
 		setFilter('place', filter.place);
 		setFilter('date', filter.date);
+		setFilter('rating', filter.rating);
 	}
 }
 
@@ -614,6 +628,9 @@ function triggerFilter(type, value) {
 	if(type == 'place' && currentPage == MAP_MENU) {
 		showPage(MAP, {place: value});
 		setFilter(type, value);
+	} else if(type == 'rating') {
+		ratingFilter = value || 0;
+		showPage(currentPage, {rating: value});
 	} else {
 		if($('.filter').is(':visible')) {
 			setFilter(type, value);
@@ -1019,7 +1036,7 @@ function retrieveStateFromUrlParams() {
 		$('.newspeciesfilter').ready(setNewSpeciesFilterState);
 	}
 	if([EXPLORE_PAGE, ARCHIVE, MAP].includes(urlParams.page) && urlParams.rating) {
-		ratingFilter = urlParams.rating;
+		ratingFilter = urlParams.rating || 0;
 	}
 	if([ARCHIVE, MAP].includes(urlParams.page)) {
 		$(".filter").ready(function() {
