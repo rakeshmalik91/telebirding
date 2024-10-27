@@ -1,6 +1,12 @@
 {
     "featured": [
         {
+            "src": "featured-images/common-green-magpie.jpg",
+            "titleLine1": "Common Green Magpie, Kathgodam",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Common Green Magpie"
+        },
+        {
             "src": "featured-images/upland-buzzard.jpg",
             "titleLine1": "Upland Buzzard, Tso Kar",
             "titleLine2": "© Rakesh Malik, 2022",
@@ -23,12 +29,6 @@
             "titleLine1": "Collared Kingfisher, Bhitarkanika National Park",
             "titleLine2": "© Rakesh Malik, 2021",
             "alt": "Collared Kingfisher"
-        },
-        {
-            "src": "featured-images/common-green-magpie.jpg",
-            "titleLine1": "Common Green Magpie, Kathgodam",
-            "titleLine2": "© Rakesh Malik, 2023",
-            "alt": "Common Green Magpie"
         },
         {
             "src": "featured-images/himalayan-rubythroat.jpg",

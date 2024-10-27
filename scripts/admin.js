@@ -523,7 +523,7 @@ $(document).ready(function() {
 	});
 	$('button.previous').click(function() {
 		if(OFFSET > 0) {
-			OFFSET -= ROWS;
+			OFFSET = Math.max(OFFSET - ROWS, 0);
 			refresh();
 			showOverlay();
 		}
@@ -545,6 +545,10 @@ $(document).ready(function() {
 			refresh();
 			showOverlay();
 		}
+	});
+	$('select[name=page-size]').click(function() {
+		ROWS = Number($("select[name=page-size]").val());
+		refresh();
 	});
 	$("input[name=filter-sighting]").change(function() {
 		OFFSET = 0;
