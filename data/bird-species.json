@@ -1414,6 +1414,14 @@
 			],
 			"family": "Ground Babblers and Allies"
 		},
+		"common-buzzard": {
+			"key": "common-buzzard",
+			"name": "Common Buzzard",
+			"tags": [
+				"Buzzard"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"common-chiffchaff": {
 			"key": "common-chiffchaff",
 			"name": "Common Chiffchaff",
@@ -1433,6 +1441,14 @@
 				"Wading Bird"
 			],
 			"family": "Rails & Crakes"
+		},
+		"common-crane": {
+			"key": "common-crane",
+			"name": "Common Crane",
+			"tags": [
+				"Crane"
+			],
+			"family": "Cranes"
 		},
 		"common-cuckoo": {
 			"key": "common-cuckoo",
@@ -3943,6 +3959,23 @@
 			],
 			"family": "Gulls & Terns"
 		},
+		"pallid-harrier": {
+			"key": "pallid-harrier",
+			"name": "Pallid Harrier",
+			"tags": [
+				"Raptor",
+				"Harrier"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
+		"peregrine-falcon": {
+			"key": "peregrine-falcon",
+			"name": "Peregrine Falcon",
+			"tags": [
+				"Falcon"
+			],
+			"family": "Falcons & Caracaras"
+		},
 		"persian-wheatear": {
 			"key": "persian-wheatear",
 			"name": "Persian Wheatear",
@@ -4673,6 +4706,16 @@
 				"Minivet"
 			],
 			"family": "Cuckoo-shrikes & Allies"
+		},
+		"short-toed-snake-eagle": {
+			"key": "short-toed-snake-eagle",
+			"name": "Short-Toed Snake-Eagle",
+			"tags": [
+				"Eagle",
+				"Raptor",
+				"Snake-Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"siberian-stonechat": {
 			"key": "siberian-stonechat",
