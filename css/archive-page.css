@@ -245,6 +245,8 @@ span.tags {
 	bottom: 0px;
 	color: #dddddd;
 	line-height: 1.6;
+	background-color: inherit;
+	width: 100%;
 }
 .sighting-tags span.tags {
 	font-size: 14px;
@@ -284,6 +286,7 @@ span.tags {
 .preview-image-desc {
 	left: calc(100vh - var(--preview-image-margin) * 2 + var(--preview-image-padding) * 2);
 	width: calc(100vw - 100vh + var(--preview-image-margin) - var(--preview-image-padding) * 4);
+	overflow: hidden;
 }
 .preview-image img, .preview-image video {
 	background-color: #1e2e40;
@@ -304,6 +307,7 @@ span.tags {
 .preview-image-desc .photos.section-1 {
 	padding-top: 30px;
 	padding-bottom: 15px;
+	overflow: hidden;
 }
 .preview-image-desc div.description {
 	padding-top: 15px;
@@ -313,6 +317,7 @@ span.tags {
 }
 .preview-image-desc .photos.section-2 {
 	padding-top: 5px;
+	overflow: hidden;
 }
 .preview-image-desc .photos div {
 	position: relative;
