@@ -34,6 +34,7 @@ var OPT_PLUMAGE = {
 	'Eclipse': 'Eclipse', 
 	'Molting': 'Molting', 
 	'Immature/Non-Breeding': 'Immature/Non-Breeding', 
+	'Immature/Female': 'Immature/Female',
 	'Female/Non-Breeding-Male': 'Female/Non-Breeding'
 };
 
