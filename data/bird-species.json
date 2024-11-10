@@ -454,6 +454,14 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"black-breasted-weaver": {
+			"key": "black-breasted-weaver",
+			"name": "Black-breasted Weaver",
+			"tags": [
+				"Weaver"
+			],
+			"family": "Weavers"
+		},
 		"black-bulbul": {
 			"key": "black-bulbul",
 			"name": "Black Bulbul",
@@ -1995,6 +2003,15 @@
 				"Winter Wren"
 			],
 			"family": "Wrens"
+		},
+		"eurasian-wryneck": {
+			"key": "eurasian-wryneck",
+			"name": "Eurasian Wryneck",
+			"tags": [
+				"Wryneck",
+				"Woodpecker"
+			],
+			"family": "Woodpeckers"
 		},
 		"european-goldfinch": {
 			"key": "european-goldfinch",
@@ -5008,6 +5025,14 @@
 				"Weaver"
 			],
 			"family": "Weavers"
+		},
+		"striated-babbler": {
+			"key": "striated-babbler",
+			"name": "Striated Babbler",
+			"tags": [
+				"Babbler"
+			],
+			"family": "Laughingthrushes & Allies"
 		},
 		"striated-bulbul": {
 			"key": "striated-bulbul",

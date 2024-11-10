@@ -1,6 +1,117 @@
 {
 	"sightings": [
 		{
+			"key": "s1731219100",
+			"species": "eurasian-wryneck",
+			"date": "10-11-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-wryneck-1731219114.jpg"
+				},
+				{
+					"src": "images/eurasian-wryneck-1731219121.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1731218806",
+			"species": "red-avadavat",
+			"date": "10-11-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-avadavat-1731218824.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1731218830",
+			"species": "long-tailed-shrike",
+			"date": "10-11-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/long-tailed-shrike-1731218878.jpg"
+				}
+			],
+			"variation": "Caniceps",
+			"rating": "3"
+		},
+		{
+			"key": "s1731218750",
+			"species": "striated-babbler",
+			"date": "10-11-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/striated-babbler-1731219484.jpg"
+				},
+				{
+					"src": "images/striated-babbler-1731218800.jpg"
+				},
+				{
+					"src": "images/striated-babbler-1731219541.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1731218938",
+			"species": "black-breasted-weaver",
+			"date": "10-11-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-breasted-weaver-1731218962.jpg"
+				},
+				{
+					"src": "images/black-breasted-weaver-1731218969.jpg"
+				}
+			],
+			"plumage": "Female/Non-Breeding-Male",
+			"rating": "3"
+		},
+		{
+			"key": "s1731218977",
+			"species": "paddyfield-pipit",
+			"date": "10-11-2024",
+			"place": "Chandu-Budhera Canal Area",
+			"city": "Gurugram",
+			"state": "Haryana",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/paddyfield-pipit-1731218988.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
 			"key": "s1730770126",
 			"species": "greater-flamingo",
 			"date": "03-11-2024",
@@ -311,23 +422,6 @@
 				}
 			],
 			"rating": "3"
-		},
-		{
-			"key": "s1729409548",
-			"species": "red-avadavat",
-			"date": "20-10-2024",
-			"place": "Sultanpur National Park",
-			"city": "Gurugram",
-			"state": "Haryana",
-			"country": "India",
-			"hidden": false,
-			"media": [
-				{
-					"src": "images/red-avadavat-1729409575.jpg"
-				}
-			],
-			"gender": "M",
-			"rating": "1"
 		},
 		{
 			"key": "s1726328652",
