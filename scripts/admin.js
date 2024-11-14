@@ -292,6 +292,9 @@ function sightingMatches(sighting, searchKey) {
 	if(searchKey == "hidden") {
 		return sighting.hidden;
 	}
+	if(searchKey.match(/^rating=/i)) {
+		return sighting.rating == searchKey.split("=")[1] || 0;
+	}
 	return sighting.key.indexOf(searchKey) >= 0
 		|| data.species[sighting.species].name.toLowerCase().indexOf(searchKey) >= 0
 		|| data.species[sighting.species].tags.map(t => t.toLowerCase().indexOf(searchKey) >= 0).reduce((a,b) => a || b)
