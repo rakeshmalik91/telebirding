@@ -388,6 +388,17 @@
 			],
 			"family": "Swallows & Martins"
 		},
+		"barred-buttonquail": {
+			"key": "barred-buttonquail",
+			"name": "Barred Buttonquail",
+			"tags": [
+				"Buttonquail",
+				"Quail",
+				"Bustard-Quail",
+				"Common Bustard-Quail"
+			],
+			"family": "Buttonquails"
+		},
 		"barred-cuckoo-dove": {
 			"key": "barred-cuckoo-dove",
 			"name": "Barred Cuckoo-Dove",
@@ -569,6 +580,14 @@
 				"Partridge"
 			],
 			"family": "Pheasants, Partridges & Fowls"
+		},
+		"black-headed-bunting": {
+			"key": "black-headed-bunting",
+			"name": "Black-headed Bunting",
+			"tags": [
+				"Bunting"
+			],
+			"family": "Buntings"
 		},
 		"black-headed-cuckoo-shrike": {
 			"key": "black-headed-cuckoo-shrike",
@@ -1182,6 +1201,14 @@
 			],
 			"family": "Crows, Treepies, Magpies & Choughs"
 		},
+		"caspian-tern": {
+			"key": "caspian-tern",
+			"name": "Caspian Tern",
+			"tags": [
+				"Tern"
+			],
+			"family": "Gulls & Terns"
+		},
 		"cattle-egret": {
 			"key": "cattle-egret",
 			"name": "Cattle Egret",
@@ -1200,6 +1227,17 @@
 				"Nocturnal"
 			],
 			"family": "Frogmouths"
+		},
+		"changeagle-hawk-eagle": {
+			"key": "changeagle-hawk-eagle",
+			"name": "Changeable Hawk-Eagle",
+			"tags": [
+				"Hawk",
+				"Eagle",
+				"Raptor",
+				"Hawk-Eagle"
+			],
+			"family": "Eagles, Hawks & Allies"
 		},
 		"cheer-pheasant": {
 			"key": "cheer-pheasant",
@@ -1512,6 +1550,14 @@
 				"Hoopoe"
 			],
 			"family": "Hoopoes"
+		},
+		"common-iora": {
+			"key": "common-iora",
+			"name": "Common Iora",
+			"tags": [
+				"Iora"
+			],
+			"family": "Ioras"
 		},
 		"common-kingfisher": {
 			"key": "common-kingfisher",
@@ -2226,6 +2272,14 @@
 			],
 			"family": "Barbets"
 		},
+		"gray-necked-bunting": {
+			"key": "gray-necked-bunting",
+			"name": "Gray-necked Bunting",
+			"tags": [
+				"Bunting"
+			],
+			"family": "Buntings"
+		},
 		"gray-sided-laughingthrush": {
 			"key": "gray-sided-laughingthrush",
 			"name": "Gray-sided Laughingthrush",
@@ -2296,7 +2350,9 @@
 			"key": "great-grey-shrike",
 			"name": "Great Grey Shrike",
 			"tags": [
-				"Shrike"
+				"Shrike",
+				"Southern Grey Shrike",
+				"Grey Shrike"
 			],
 			"family": "Shrikes"
 		},
@@ -2597,6 +2653,15 @@
 				"Fowl"
 			],
 			"family": "Pheasants, Partridges & Fowls"
+		},
+		"grey-fronted-green-pigeon": {
+			"key": "grey-fronted-green-pigeon",
+			"name": "Grey-fronted Green-Pigeon",
+			"tags": [
+				"Pigeon",
+				"Green-Pigeon"
+			],
+			"family": "Doves & Pigeons"
 		},
 		"grey-headed-bulbul": {
 			"key": "grey-headed-bulbul",
@@ -3002,6 +3067,15 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"indian-blackbird": {
+			"key": "indian-blackbird",
+			"name": "Indian Blackbird",
+			"tags": [
+				"Blackbird",
+				"Thrush"
+			],
+			"family": "Thrushes"
+		},
 		"indian-bush-lark": {
 			"key": "indian-bush-lark",
 			"name": "Indian Bush-Lark",
@@ -3021,6 +3095,14 @@
 			],
 			"family": "Cormorants & Darters"
 		},
+		"indian-courser": {
+			"key": "indian-courser",
+			"name": "Indian Courser",
+			"tags": [
+				"Courser"
+			],
+			"family": "Coursers"
+		},
 		"indian-grey-hornbill": {
 			"key": "indian-grey-hornbill",
 			"name": "Indian Grey Hornbill",
@@ -3029,6 +3111,14 @@
 				"Grey Hornbill"
 			],
 			"family": "Hornbills"
+		},
+		"indian-nightjar": {
+			"key": "indian-nightjar",
+			"name": "Indian Nightjar",
+			"tags": [
+				"Nightjar"
+			],
+			"family": "Nightjars"
 		},
 		"indian-paradise-flycatcher": {
 			"key": "indian-paradise-flycatcher",
@@ -3193,6 +3283,14 @@
 			],
 			"family": "Cuckoos"
 		},
+		"jerdons-nightjar": {
+			"key": "jerdons-nightjar",
+			"name": "Jerdon's Nightjar",
+			"tags": [
+				"Nightjar"
+			],
+			"family": "Nightjars"
+		},
 		"jungle-babbler": {
 			"key": "jungle-babbler",
 			"name": "Jungle Babbler",
@@ -3209,6 +3307,14 @@
 				"Starling"
 			],
 			"family": "Starlings"
+		},
+		"jungle-nightjar": {
+			"key": "jungle-nightjar",
+			"name": "Jungle Nightjar",
+			"tags": [
+				"Nightjar"
+			],
+			"family": "Nightjars"
 		},
 		"jungle-owlet": {
 			"key": "jungle-owlet",
@@ -3587,6 +3693,14 @@
 			],
 			"family": "Hornbills"
 		},
+		"malabar-lark": {
+			"key": "malabar-lark",
+			"name": "Malabar Lark",
+			"tags": [
+				"Lark"
+			],
+			"family": "Larks"
+		},
 		"malabar-parakeet": {
 			"key": "malabar-parakeet",
 			"name": "Malabar Parakeet",
@@ -3595,6 +3709,14 @@
 				"Parrot"
 			],
 			"family": "Parakeets & Parrots"
+		},
+		"malabar-pied-hornbill": {
+			"key": "malabar-pied-hornbill",
+			"name": "Malabar Pied-Hornbill",
+			"tags": [
+				"Hornbill"
+			],
+			"family": "Hornbills"
 		},
 		"malabar-starling": {
 			"key": "malabar-starling",
@@ -3667,6 +3789,33 @@
 				"Thrush"
 			],
 			"family": "Thrushes"
+		},
+		"mongolian-short-toed-lark": {
+			"key": "mongolian-short-toed-lark",
+			"name": "Mongolian Short-toed Lark",
+			"tags": [
+				"Lark",
+				"Short-toed Lark"
+			],
+			"family": "Larks"
+		},
+		"montagus-harrier": {
+			"key": "montagus-harrier",
+			"name": "Montagu's Harrier",
+			"tags": [
+				"Harrier",
+				"Raptor"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
+		"mottled-wood-owl": {
+			"key": "mottled-wood-owl",
+			"name": "Mottled Wood-Owl",
+			"tags": [
+				"Owl",
+				"Wood-Owl"
+			],
+			"family": "Owls"
 		},
 		"mountain-bulbul": {
 			"key": "mountain-bulbul",
@@ -3985,6 +4134,15 @@
 			],
 			"family": "Eagles, Hawks & Allies"
 		},
+		"pallid-scops-owl": {
+			"key": "pallid-scops-owl",
+			"name": "Pallid Scops-Owl",
+			"tags": [
+				"Owl",
+				"Scops-Owl"
+			],
+			"family": "Owls"
+		},
 		"peregrine-falcon": {
 			"key": "peregrine-falcon",
 			"name": "Peregrine Falcon",
@@ -4248,6 +4406,14 @@
 			],
 			"family": "Finches & Allies"
 		},
+		"red-headed-bunting": {
+			"key": "red-headed-bunting",
+			"name": "Red-headed Bunting",
+			"tags": [
+				"Bunting"
+			],
+			"family": "Buntings"
+		},
 		"red-headed-trogon": {
 			"key": "red-headed-trogon",
 			"name": "Red-headed Trogon",
@@ -4370,6 +4536,26 @@
 			],
 			"family": "Buntings"
 		},
+		"rock-bush-quail": {
+			"key": "rock-bush-quail",
+			"name": "Rock Bush-Quail",
+			"tags": [
+				"Quail",
+				"Bush-Quail"
+			],
+			"family": "Quails"
+		},
+		"rock-eagle-owl": {
+			"key": "rock-eagle-owl",
+			"name": "Rock Eagle-Owl",
+			"tags": [
+				"Owl",
+				"Eagle-Owl",
+				"Indian Eagle-Owl",
+				"Bengal Eagle-Owl"
+			],
+			"family": "Owls"
+		},
 		"rock-pigeon": {
 			"key": "rock-pigeon",
 			"name": "Rock Pigeon",
@@ -4448,6 +4634,14 @@
 				"Water Bird"
 			],
 			"family": "Sandpipers & Allies"
+		},
+		"rufous-babbler": {
+			"key": "rufous-babbler",
+			"name": "Rufous Babbler",
+			"tags": [
+				"Babbler"
+			],
+			"family": "Laughingthrushes & Allies"
 		},
 		"rufous-bellied-eagle": {
 			"key": "rufous-bellied-eagle",
@@ -4652,6 +4846,14 @@
 			],
 			"family": "Cranes"
 		},
+		"savanna-nightjar": {
+			"key": "savanna-nightjar",
+			"name": "Savanna Nightjar",
+			"tags": [
+				"Nightjar"
+			],
+			"family": "Nightjars"
+		},
 		"scaly-bellied-woodpecker": {
 			"key": "scaly-bellied-woodpecker",
 			"name": "Scaly Bellied Woodpecker",
@@ -4723,6 +4925,14 @@
 				"Minivet"
 			],
 			"family": "Cuckoo-shrikes & Allies"
+		},
+		"short-eared-owl": {
+			"key": "short-eared-owl",
+			"name": "Short-eared Owl",
+			"tags": [
+				"Owl"
+			],
+			"family": "Owls"
 		},
 		"short-toed-snake-eagle": {
 			"key": "short-toed-snake-eagle",
@@ -5111,6 +5321,14 @@
 				"Fosh-Owl"
 			],
 			"family": "Owls"
+		},
+		"tawny-lark": {
+			"key": "tawny-lark",
+			"name": "Tawny Lark",
+			"tags": [
+				"Lark"
+			],
+			"family": "Larks"
 		},
 		"tawny-pipit": {
 			"key": "tawny-pipit",
@@ -5643,6 +5861,14 @@
 			],
 			"family": "Finches & Allies"
 		},
+		"white-rumped-shama": {
+			"key": "white-rumped-shama",
+			"name": "White-rumped Shama",
+			"tags": [
+				"Shama"
+			],
+			"family": "Old World Flycatchers"
+		},
 		"white-rumped-vulture": {
 			"key": "white-rumped-vulture",
 			"name": "White-rumped Vulture",
@@ -5819,6 +6045,14 @@
 			],
 			"family": "Tits"
 		},
+		"yellow-eyed-babbler": {
+			"key": "yellow-eyed-babbler",
+			"name": "Yellow-eyed Babbler",
+			"tags": [
+				"Babbler"
+			],
+			"family": "Parrotbills, Wrentit and Allies"
+		},
 		"yellow-eyed-pigeon": {
 			"key": "yellow-eyed-pigeon",
 			"name": "Yellow-eyed Pigeon",
@@ -5864,6 +6098,14 @@
 				"Warbler"
 			],
 			"family": "Warblers"
+		},
+		"yellow-wattled-lapwing": {
+			"key": "yellow-wattled-lapwing",
+			"name": "Yellow-wattled Lapwing",
+			"tags": [
+				"Lapwing"
+			],
+			"family": "Lapwings"
 		},
 		"zitting-cisticola": {
 			"key": "zitting-cisticola",

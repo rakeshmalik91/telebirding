@@ -1,6 +1,1702 @@
 {
 	"sightings": [
 		{
+			"key": "s1735438407",
+			"species": "indian-bush-lark",
+			"date": "28-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-bush-lark-1735438432.jpg"
+				}
+			]
+		},
+		{
+			"key": "s1735364750",
+			"species": "wooly-necked-stork",
+			"date": "28-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/wooly-necked-stork-1735364767.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735364706",
+			"species": "spoonbill",
+			"date": "28-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spoonbill-1735364744.jpg"
+				}
+			],
+			"rating": "3",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735364668",
+			"species": "black-headed-bunting",
+			"date": "28-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-headed-bunting-1735364686.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1735364612",
+			"species": "black-headed-bunting",
+			"date": "28-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-headed-bunting-1735364629.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "3"
+		},
+		{
+			"key": "s1735364534",
+			"species": "barred-buttonquail",
+			"date": "28-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/barred-buttonquail-1735364551.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735307714",
+			"species": "small-pratincole",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/small-pratincole-1735307733.jpg"
+				},
+				{
+					"src": "images/small-pratincole-1735307743.jpg"
+				},
+				{
+					"src": "images/small-pratincole-1735307819.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735307677",
+			"species": "brown-headed-gull",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-headed-gull-1735307695.jpg"
+				},
+				{
+					"src": "images/brown-headed-gull-1735307706.jpg"
+				},
+				{
+					"src": "images/brown-headed-gull-1735309526.jpg"
+				}
+			],
+			"rating": "4",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735307544",
+			"species": "greater-flamingo",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-flamingo-1735307802.jpg"
+				},
+				{
+					"src": "images/greater-flamingo-1735309385.jpg"
+				},
+				{
+					"src": "images/greater-flamingo-1735308759.jpg"
+				},
+				{
+					"src": "images/greater-flamingo-1735307588.jpg"
+				},
+				{
+					"src": "images/greater-flamingo-1735308029.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735307610",
+			"species": "whiskered-tern",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/whiskered-tern-1735313360.jpg"
+				},
+				{
+					"src": "images/whiskered-tern-1735307632.jpg"
+				},
+				{
+					"src": "images/whiskered-tern-1735373994.jpg"
+				}
+			],
+			"rating": "4",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735308269",
+			"species": "garganey",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/garganey-1735308305.jpg"
+				}
+			],
+			"rating": "3",
+			"plumage": "Female/Non-Breeding-Male"
+		},
+		{
+			"key": "s1735307500",
+			"species": "greater-flamingo",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-flamingo-1735307537.jpg"
+				}
+			],
+			"rating": "3",
+			"age": "Juvenile/Immature"
+		},
+		{
+			"key": "s1735313159",
+			"species": "caspian-tern",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/caspian-tern-1735314159.jpg"
+				}
+			],
+			"rating": "1",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735364958",
+			"species": "black-headed-gull",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-headed-gull-1735364991.jpg"
+				}
+			],
+			"rating": "1"
+		},
+		{
+			"key": "s1735277062",
+			"species": "rock-eagle-owl",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rock-eagle-owl-1735277078.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735276915",
+			"species": "tawny-lark",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tawny-lark-1735277089.jpg"
+				},
+				{
+					"src": "images/tawny-lark-1735277098.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735276806",
+			"species": "great-grey-shrike",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/great-grey-shrike-1735276823.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735276764",
+			"species": "steppe-eagle",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/steppe-eagle-1735276780.jpg"
+				},
+				{
+					"src": "images/steppe-eagle-1735276789.jpg"
+				},
+				{
+					"src": "images/steppe-eagle-1735364817.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735277477",
+			"species": "black-kite",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-kite-1735277772.jpg"
+				}
+			],
+			"rating": "3",
+			"variation": "Black-eared"
+		},
+		{
+			"key": "s1735276728",
+			"species": "rufous-tailed-lark",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-tailed-lark-1735276758.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735136828",
+			"species": "greater-spotted-eagle",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/greater-spotted-eagle-1735276848.jpg"
+				},
+				{
+					"src": "images/greater-spotted-eagle-1735136844.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735231565",
+			"species": "indian-nightjar",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-nightjar-1735232258.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1735231436",
+			"species": "mottled-wood-owl",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/mottled-wood-owl-1735231546.jpg"
+				},
+				{
+					"src": "images/mottled-wood-owl-1735231557.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735231406",
+			"species": "short-eared-owl",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/short-eared-owl-1735231708.jpg"
+				},
+				{
+					"src": "images/short-eared-owl-1735231721.jpg"
+				},
+				{
+					"src": "images/short-eared-owl-1735231734.jpg"
+				},
+				{
+					"src": "images/short-eared-owl-1735231745.jpg"
+				},
+				{
+					"src": "images/short-eared-owl-1735231758.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1735231502",
+			"species": "spotted-owlet",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/spotted-owlet-1735231521.jpg"
+				},
+				{
+					"src": "images/spotted-owlet-1735231532.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735231294",
+			"species": "mongolian-short-toed-lark",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/mongolian-short-toed-lark-1735231491.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735195763",
+			"species": "yellow-eyed-babbler",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-eyed-babbler-1735195779.jpg"
+				},
+				{
+					"src": "images/yellow-eyed-babbler-1735195879.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735195893",
+			"species": "eurasian-wryneck",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-wryneck-1735195920.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735196006",
+			"species": "chestnnut-bellied-sandgrouse",
+			"date": "26-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/chestnnut-bellied-sandgrouse-1735196049.jpg"
+				}
+			],
+			"rating": "3",
+			"gender": "M"
+		},
+		{
+			"key": "s1735136363",
+			"species": "yellow-wattled-lapwing",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-wattled-lapwing-1735136377.jpg"
+				},
+				{
+					"src": "images/yellow-wattled-lapwing-1735136386.jpg"
+				},
+				{
+					"src": "images/yellow-wattled-lapwing-1735136396.jpg"
+				}
+			],
+			"rating": "5"
+		},
+		{
+			"key": "s1735136945",
+			"species": "indian-courser",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-courser-1735137020.jpg"
+				},
+				{
+					"src": "images/indian-courser-1735136966.jpg"
+				},
+				{
+					"src": "images/indian-courser-1735137011.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735136755",
+			"species": "pallid-harrier",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pallid-harrier-1735136774.jpg"
+				},
+				{
+					"src": "images/pallid-harrier-1735136786.jpg"
+				},
+				{
+					"src": "images/pallid-harrier-1735364837.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "4"
+		},
+		{
+			"key": "s1735136521",
+			"species": "montagus-harrier",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/montagus-harrier-1735136555.jpg"
+				},
+				{
+					"src": "images/montagus-harrier-1735136565.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1735136571",
+			"species": "montagus-harrier",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/montagus-harrier-1735136726.jpg"
+				},
+				{
+					"src": "images/montagus-harrier-1735196019.jpg"
+				},
+				{
+					"src": "images/montagus-harrier-1735136736.jpg"
+				},
+				{
+					"src": "images/montagus-harrier-1735136745.jpg"
+				},
+				{
+					"src": "images/montagus-harrier-1735364850.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "4"
+		},
+		{
+			"key": "s1735136851",
+			"species": "indian-robin",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-robin-1735136875.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1735136275",
+			"species": "zitting-cisticola",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/zitting-cisticola-1735136294.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735104503",
+			"species": "gray-necked-bunting",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/gray-necked-bunting-1735136160.jpg"
+				},
+				{
+					"src": "images/gray-necked-bunting-1735104525.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735104897",
+			"species": "rock-bush-quail",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rock-bush-quail-1735104925.jpg"
+				},
+				{
+					"src": "images/rock-bush-quail-1735104934.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1735104572",
+			"species": "bay-backed-shrike",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bay-backed-shrike-1735104590.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735104531",
+			"species": "red-headed-bunting",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-headed-bunting-1735104547.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "2",
+			"plumage": ""
+		},
+		{
+			"key": "s1735104446",
+			"species": "short-toed-snake-eagle",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/short-toed-snake-eagle-1735104471.jpg"
+				},
+				{
+					"src": "images/short-toed-snake-eagle-1735106019.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735104477",
+			"species": "indian-robin",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-robin-1735104495.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "3"
+		},
+		{
+			"key": "s1735104731",
+			"species": "little-ringed-plover",
+			"date": "24-12-2024",
+			"place": "",
+			"city": "Lonavala",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/little-ringed-plover-1735104758.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Breeding",
+			"rating": "3"
+		},
+		{
+			"key": "s1735104694",
+			"species": "desert-wheatear",
+			"date": "24-12-2024",
+			"place": "",
+			"city": "Lonavala",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/desert-wheatear-1735104725.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "3"
+		},
+		{
+			"key": "s1735104675",
+			"species": "eurasian-kestrel",
+			"date": "24-12-2024",
+			"place": "",
+			"city": "Lonavala",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-kestrel-1735104687.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1735104633",
+			"species": "eurasian-crag-martin",
+			"date": "24-12-2024",
+			"place": "",
+			"city": "Lonavala",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/eurasian-crag-martin-1735104654.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735104597",
+			"species": "malabar-lark",
+			"date": "24-12-2024",
+			"place": "",
+			"city": "Lonavala",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-lark-1735104628.jpg"
+				},
+				{
+					"src": "images/malabar-lark-1735104668.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734968845",
+			"species": "indian-paradise-flycatcher",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-paradise-flycatcher-1734968867.jpg"
+				}
+			],
+			"gender": "M",
+			"variation": "White",
+			"rating": "1"
+		},
+		{
+			"key": "s1734968820",
+			"species": "tickells-blue-flycatcher",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/tickells-blue-flycatcher-1734968838.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "3"
+		},
+		{
+			"key": "s1734963215",
+			"species": "white-rumped-shama",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-rumped-shama-1734963232.jpg"
+				},
+				{
+					"src": "images/white-rumped-shama-1734963242.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734963283",
+			"species": "red-breasted-flycatcher",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-breasted-flycatcher-1734968160.jpg"
+				},
+				{
+					"src": "images/red-breasted-flycatcher-1734963308.jpg"
+				},
+				{
+					"src": "images/red-breasted-flycatcher-1734968146.jpg"
+				},
+				{
+					"src": "images/red-breasted-flycatcher-1734968176.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "5"
+		},
+		{
+			"key": "s1734968193",
+			"species": "red-breasted-flycatcher",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-breasted-flycatcher-1734968240.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1734963035",
+			"species": "yellow-browed-bulbul",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-browed-bulbul-1734963059.jpg"
+				},
+				{
+					"src": "images/yellow-browed-bulbul-1734963068.jpg"
+				},
+				{
+					"src": "images/yellow-browed-bulbul-1734963082.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734969168",
+			"species": "brown-cheeked-fulvetta",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/brown-cheeked-fulvetta-1734969191.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1734962981",
+			"species": "puff-throated-babbler",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/puff-throated-babbler-1734963008.jpg"
+				},
+				{
+					"src": "images/puff-throated-babbler-1734963017.jpg"
+				},
+				{
+					"src": "images/puff-throated-babbler-1734963028.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734962956",
+			"species": "orange-headed-thrush",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/orange-headed-thrush-1734963109.jpg"
+				},
+				{
+					"src": "images/orange-headed-thrush-1734962974.jpg"
+				}
+			],
+			"variation": "White-throated",
+			"rating": "5"
+		},
+		{
+			"key": "s1734963092",
+			"species": "red-whiskered-bulbul",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-whiskered-bulbul-1734963125.jpg"
+				},
+				{
+					"src": "images/red-whiskered-bulbul-1734963133.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734967918",
+			"species": "red-vented-bulbul",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-vented-bulbul-1734968104.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734962883",
+			"species": "red-spurfowl",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-spurfowl-1734962905.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1734962850",
+			"species": "red-spurfowl",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-spurfowl-1734962920.jpg"
+				},
+				{
+					"src": "images/red-spurfowl-1734962875.jpg"
+				},
+				{
+					"src": "images/red-spurfowl-1734962950.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "3"
+		},
+		{
+			"key": "s1734962813",
+			"species": "indian-paradise-flycatcher",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-paradise-flycatcher-1734962842.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1734962774",
+			"species": "blyths-reed-warbler",
+			"date": "23-12-2024",
+			"place": "",
+			"city": "Tahmini",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/blyths-reed-warbler-1734962806.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734880471",
+			"species": "malabar-lark",
+			"date": "22-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-lark-1734880552.jpg"
+				},
+				{
+					"src": "images/malabar-lark-1734880627.jpg"
+				},
+				{
+					"src": "images/malabar-lark-1734928628.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734930957",
+			"species": "indian-roller",
+			"date": "22-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-roller-1734931029.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734880384",
+			"species": "malabar-pied-hornbill",
+			"date": "22-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-grey-hornbill-1734880524.jpg"
+				},
+				{
+					"src": "images/malabar-grey-hornbill-1734880571.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734803460",
+			"species": "jerdons-nightjar",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jerdons-nightjar-1734803514.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734803375",
+			"species": "savanna-nightjar",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/savanna-nightjar-1734803570.jpg"
+				},
+				{
+					"src": "images/savanna-nightjar-1734803556.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734803311",
+			"species": "pallid-scops-owl",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pallid-scops-owl-1734803329.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734803205",
+			"species": "indian-scops-owl",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-scops-owl-1734803301.jpg"
+				},
+				{
+					"src": "images/indian-scops-owl-1734803343.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734803073",
+			"species": "indian-scimitar-babbler",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-scimitar-babbler-1734803106.jpg"
+				},
+				{
+					"src": "images/indian-scimitar-babbler-1734803154.jpg"
+				},
+				{
+					"src": "images/indian-scimitar-babbler-1734803175.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734766599",
+			"species": "indian-blackbird",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-blackbird-1734803004.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734767039",
+			"species": "white-cheeked-barbet",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/white-cheeked-barbet-1734767064.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734766983",
+			"species": "rufous-babbler",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rufous-babbler-1734767000.jpg"
+				},
+				{
+					"src": "images/rufous-babbler-1734767144.jpg"
+				},
+				{
+					"src": "images/rufous-babbler-1734767016.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734766803",
+			"species": "changeagle-hawk-eagle",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/changeagle-hawk-eagle-1734766826.jpg"
+				},
+				{
+					"src": "images/changeagle-hawk-eagle-1734766842.jpg"
+				},
+				{
+					"src": "images/changeagle-hawk-eagle-1734766853.jpg"
+				},
+				{
+					"src": "images/changeagle-hawk-eagle-1735471716.jpg"
+				}
+			],
+			"variation": "Light Morph",
+			"rating": "3"
+		},
+		{
+			"key": "s1734766682",
+			"species": "grey-fronted-green-pigeon",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-fronted-green-pigeon-1734766697.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "2"
+		},
+		{
+			"key": "s1734766658",
+			"species": "grey-fronted-green-pigeon",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/grey-fronted-green-pigeon-1734766675.jpg"
+				},
+				{
+					"src": "images/grey-fronted-green-pigeon-1734766715.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "2"
+		},
+		{
+			"key": "s1734766466",
+			"species": "common-iora",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-iora-1734766541.jpg"
+				},
+				{
+					"src": "images/common-iora-1734766554.jpg"
+				},
+				{
+					"src": "images/common-iora-1734766567.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734766426",
+			"species": "crimson-backed-sunbird",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/crimson-backed-sunbird-1734766441.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "1"
+		},
+		{
+			"key": "s1734766395",
+			"species": "crimson-backed-sunbird",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/crimson-backed-sunbird-1734766420.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1734766345",
+			"species": "green-bee-eater",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/green-bee-eater-1734766359.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734766313",
+			"species": "purple-sunbird",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-sunbird-1734766331.jpg"
+				},
+				{
+					"src": "images/purple-sunbird-1734766340.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Breeding",
+			"rating": "4"
+		},
+		{
+			"key": "s1734766252",
+			"species": "indian-white-eye",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-white-eye-1734766305.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734784050",
+			"species": "purple-sunbird",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/purple-sunbird-1734784073.jpg"
+				}
+			],
+			"gender": "M",
+			"plumage": "Molting",
+			"rating": "4"
+		},
+		{
+			"key": "s1734766225",
+			"species": "common-tailorbird",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-tailorbird-1734766273.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734698555",
+			"species": "jungle-babbler",
+			"date": "21-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jungle-babbler-1734766904.jpg"
+				},
+				{
+					"src": "images/jungle-babbler-1734698576.jpg"
+				}
+			],
+			"rating": "3"
+		},
+		{
+			"key": "s1734719683",
+			"species": "jungle-nightjar",
+			"date": "20-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/jungle-nightjar-1734720074.jpg"
+				},
+				{
+					"src": "images/jungle-nightjar-1734719704.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734719355",
+			"species": "pallid-scops-owl",
+			"date": "20-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/pallid-scops-owl-1734719374.jpg"
+				},
+				{
+					"src": "images/pallid-scops-owl-1734719385.jpg"
+				},
+				{
+					"src": "images/pallid-scops-owl-1734719400.jpg"
+				}
+			],
+			"rating": "4"
+		},
+		{
+			"key": "s1734719578",
+			"species": "ceylon-frogmouth",
+			"date": "20-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ceylon-frogmouth-1734719632.jpg"
+				},
+				{
+					"src": "images/ceylon-frogmouth-1734719657.jpg"
+				}
+			],
+			"gender": "M",
+			"rating": "3"
+		},
+		{
+			"key": "s1734719598",
+			"species": "ceylon-frogmouth",
+			"date": "20-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/rock-pigeon-1734719613.jpg"
+				},
+				{
+					"src": "images/rock-pigeon-1734719718.jpg"
+				}
+			],
+			"gender": "F",
+			"rating": "3"
+		},
+		{
+			"key": "s1734698479",
+			"species": "malabar-parakeet",
+			"date": "20-12-2024",
+			"place": "",
+			"city": "Koyna",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/malabar-parakeet-1734698535.jpg"
+				},
+				{
+					"src": "images/malabar-parakeet-1734698547.jpg"
+				},
+				{
+					"src": "images/malabar-parakeet-1734766383.jpg",
+					"title": "Male"
+				}
+			],
+			"rating": "3"
+		},
+		{
 			"key": "s1731219100",
 			"species": "eurasian-wryneck",
 			"date": "10-11-2024",
@@ -275,7 +1971,7 @@
 			],
 			"rating": "4",
 			"gender": "",
-			"age": "Immature"
+			"age": "Juvenile/Immature"
 		},
 		{
 			"key": "s1730529684",
@@ -6669,7 +8365,7 @@
 					"src": "images/grey-throated-martin-1701787942.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1701744222",
@@ -8366,7 +10062,7 @@
 					"src": "images/grey-throated-martin-1697517067.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1696229461",
@@ -11569,7 +13265,8 @@
 					"src": "images/malabar-parakeet-1672040764.jpg"
 				}
 			],
-			"rating": 1
+			"rating": 1,
+			"gender": "M"
 		},
 		{
 			"key": "s1669598505",
@@ -14227,7 +15924,7 @@
 				}
 			],
 			"city": "Karzok",
-			"rating": "2"
+			"rating": "3"
 		},
 		{
 			"key": "brown-headed-gull-breeding",
@@ -19534,7 +21231,7 @@
 			"city": "Howrah",
 			"state": "West Bengal",
 			"country": "India",
-			"variation": "Black-cheeked",
+			"variation": "",
 			"media": [
 				{
 					"src": "images/red-vented-bulbul-4.jpg"
@@ -19549,7 +21246,7 @@
 			"city": "Howrah",
 			"state": "West Bengal",
 			"country": "India",
-			"variation": "Brown-cheeked",
+			"variation": "",
 			"media": [
 				{
 					"src": "images/red-vented-bulbul-3.jpg"
@@ -21184,7 +22881,7 @@
 		{
 			"key": "garganey-female",
 			"species": "garganey",
-			"gender": "F",
+			"gender": "",
 			"date": "19-12-2020",
 			"place": "Mangalajodi Wetlands",
 			"state": "Odisha",
@@ -21194,7 +22891,8 @@
 					"src": "images/garganey-female.jpg"
 				}
 			],
-			"rating": 1
+			"rating": 1,
+			"plumage": "Female/Non-Breeding-Male"
 		},
 		{
 			"key": "oriental-magpie-robin-male-4",
@@ -23296,7 +24994,7 @@
 			"city": "Munnar",
 			"state": "Kerala",
 			"country": "India",
-			"variation": "Black-cheeked",
+			"variation": "",
 			"media": [
 				{
 					"src": "images/red-vented-bulbul-2.jpg"
@@ -23385,7 +25083,7 @@
 			"city": "Howrah",
 			"state": "West Bengal",
 			"country": "India",
-			"variation": "Brown-cheeked",
+			"variation": "",
 			"media": [
 				{
 					"src": "images/red-vented-bulbul.jpg"
