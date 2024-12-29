@@ -7,8 +7,8 @@ MODE[MODE_BIRD] = {
 	"title": "Telebirding - Rakesh's Bird Catalogue"
 }
 MODE[MODE_INSECT] = {
-	"logo": "icons/insectvision-logo.png",
-	"title": "InsectVision - Rakesh's Insect Catalogue"
+	"logo": "icons/teleinsecta-logo.png",
+	"title": "Teleinsecta - Rakesh's Insect Catalogue"
 }
 
 
