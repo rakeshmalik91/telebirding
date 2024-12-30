@@ -102,19 +102,20 @@ function backup() {
 	showOverlay("Backing up...");
 	console.log("Backing up...");
 	var backedUp = 0;
-	firebase.storage() .ref("backup/data/" + currentMode + "-species.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-species.json")).then(() => {
+	var date = moment(Date.now()).format(BACKUP_DATE_FORMAT);
+	firebase.storage() .ref("backup/" + date + "/" + currentMode + "-species.json") .put(new File(JSON.stringify({ species: data.species}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-species.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
 		}
 	});
-	firebase.storage() .ref("backup/data/" + currentMode + "-families.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-families.json")).then(() => {
+	firebase.storage() .ref("backup/" + date + "/" + currentMode + "-families.json") .put(new File(JSON.stringify({ families: data.families}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-families.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
 		}
 	});
-	firebase.storage() .ref("backup/data/" + currentMode + "-sightings.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-sightings.json")).then(() => {
+	firebase.storage() .ref("backup/" + date + "/" + currentMode + "-sightings.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-sightings.json")).then(() => {
 		if(++backedUp == 3) {
 			refresh();
 			console.log("Backup completed");
