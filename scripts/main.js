@@ -49,8 +49,9 @@ function computeInternalDataFields() {
 		family.imagesrc = ((((data.sightings.filter(b => b.species.family == family.name)||[])[0]||{}).media||[])[0]||{}).src;
 		family.count = data.sightings.filter(b => b.species.family == family).length;
 	})
+	
 	//sort families
-	data.families.sort((a, b) => compare(a.name, b.name));
+	//data.families.sort((a, b) => compare(a.name, b.name));
 
 	//places
 	if(!Object.entries(data.countries)[0][1].count) {

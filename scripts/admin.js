@@ -83,11 +83,15 @@ function uploadJSONData(type) {
 	showOverlay("Saving");
 	var fileData = {};
 	fileData[type] = data[type];
-	fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
+
+	//fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
+	fileData = [JSON.stringify(fileData)];
+	
 	// if(fileData.length < 50) {
 	// 	alert("Error uploading...");
 	// 	return;
 	// }
+
 	var file = new File(fileData, type + ".json");
 	firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
 		console.log("uploaded data/" + currentMode + "-" + type + ".json");
@@ -281,9 +285,12 @@ function addFamily(name) {
 		alert("Name is mandatory");
 	} else {
 		data.families = data.families.filter(f => f.name != name);
-		data.families.push({
-			name: name
-		});
+		if(name.trim()) {
+			data.families.push({
+				name: name
+			});
+		}
+		data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
 		uploadJSONData("families");
 	}
 }
