@@ -974,6 +974,15 @@
 			],
 			"family": "Shrike-babblers & Erpornis"
 		},
+		"bonellis-eagle": {
+			"key": "bonellis-eagle",
+			"name": "Bonelli's Eagle",
+			"tags": [
+				"Eagle",
+				"Raptor"
+			],
+			"family": "Eagles, Hawks & Allies"
+		},
 		"booted-eagle": {
 			"key": "booted-eagle",
 			"name": "Booted Eagle",
@@ -4477,6 +4486,14 @@
 				"Laughingthrush"
 			],
 			"family": "Minlas"
+		},
+		"red-throated-pipit": {
+			"key": "red-throated-pipit",
+			"name": "Red-throated Pipit",
+			"tags": [
+				"Pipit"
+			],
+			"family": "Pipits"
 		},
 		"red-vented-bulbul": {
 			"key": "red-vented-bulbul",

@@ -100,6 +100,92 @@
 			"rating": "2"
 		},
 		{
+			"key": "s1735613080",
+			"species": "black-tailed-godwit",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/black-tailed-godwit-1735613096.jpg"
+				}
+			],
+			"rating": "3",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735612967",
+			"species": "ruff",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/ruff-1735613194.jpg"
+				},
+				{
+					"src": "images/ruff-1735612997.jpg"
+				}
+			],
+			"rating": "3",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735612756",
+			"species": "common-greenshank",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/common-greenshank-1735612779.jpg"
+				}
+			],
+			"rating": "2",
+			"plumage": "Non-Breeding"
+		},
+		{
+			"key": "s1735611945",
+			"species": "indian-spot-billed-duck",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/indian-spot-billed-duck-1735611960.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
+			"key": "s1735611774",
+			"species": "yellow-throated-sparrow",
+			"date": "27-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/yellow-throated-sparrow-1735611793.jpg"
+				}
+			],
+			"rating": "2"
+		},
+		{
 			"key": "s1735307714",
 			"species": "small-pratincole",
 			"date": "27-12-2024",
@@ -139,6 +225,9 @@
 				},
 				{
 					"src": "images/brown-headed-gull-1735309526.jpg"
+				},
+				{
+					"src": "images/brown-headed-gull-1735612143.jpg"
 				}
 			],
 			"rating": "4",
@@ -155,22 +244,22 @@
 			"hidden": false,
 			"media": [
 				{
+					"src": "images/greater-flamingo-1735613460.jpg"
+				},
+				{
 					"src": "images/greater-flamingo-1735307802.jpg"
 				},
 				{
 					"src": "images/greater-flamingo-1735309385.jpg"
 				},
 				{
-					"src": "images/greater-flamingo-1735308759.jpg"
-				},
-				{
 					"src": "images/greater-flamingo-1735307588.jpg"
 				},
 				{
-					"src": "images/greater-flamingo-1735308029.jpg"
+					"src": "images/greater-flamingo-1735308759.jpg"
 				}
 			],
-			"rating": "3"
+			"rating": "4"
 		},
 		{
 			"key": "s1735307610",
@@ -481,6 +570,12 @@
 			"media": [
 				{
 					"src": "images/mongolian-short-toed-lark-1735231491.jpg"
+				},
+				{
+					"src": "images/mongolian-short-toed-lark-1735564368.jpg"
+				},
+				{
+					"src": "images/mongolian-short-toed-lark-1735564936.jpg"
 				}
 			],
 			"rating": "3"
@@ -536,6 +631,22 @@
 			],
 			"rating": "3",
 			"gender": "M"
+		},
+		{
+			"key": "s1735564742",
+			"species": "bonellis-eagle",
+			"date": "25-12-2024",
+			"place": "",
+			"city": "Bhigwan",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/bonellis-eagle-1735564767.jpg"
+				}
+			],
+			"rating": "3"
 		},
 		{
 			"key": "s1735136363",
@@ -751,7 +862,7 @@
 			"hidden": false,
 			"media": [
 				{
-					"src": "images/red-headed-bunting-1735104547.jpg"
+					"src": "images/red-headed-bunting-1735564147.jpg"
 				}
 			],
 			"gender": "M",
@@ -793,6 +904,23 @@
 			],
 			"gender": "M",
 			"rating": "3"
+		},
+		{
+			"key": "s1735561505",
+			"species": "red-throated-pipit",
+			"date": "24-12-2024",
+			"place": "",
+			"city": "Lonavala",
+			"state": "Maharastra",
+			"country": "India",
+			"hidden": false,
+			"media": [
+				{
+					"src": "images/red-throated-pipit-1735561529.jpg"
+				}
+			],
+			"age": "Juvenile/Immature",
+			"rating": "2"
 		},
 		{
 			"key": "s1735558770",
@@ -10908,7 +11036,7 @@
 					"src": "images/indian-bush-lark-1693454328.jpg"
 				}
 			],
-			"rating": 1
+			"rating": "2"
 		},
 		{
 			"key": "s1692597603",
