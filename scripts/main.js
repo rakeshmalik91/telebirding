@@ -301,6 +301,7 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var aState = '<a class="state" onclick="triggerFilter(\'place\', \'' + stateFullName + '\')">' + (inPreviewPage ? stateFullName : trimPlaceName(stateFullName, 15)) + '</a>, ';
 	var countryFullName = getCountryFullName(sighting.country);
 	var aCountry = '<a class="country" onclick="triggerFilter(\'place\', \'' + countryFullName + '\')">' + countryFullName + '</a>';
+	if(stateFullName == countryFullName) aState = '';
 	sightingLabelDiv.append('<div class="sighting-desc">' + aPlace + aCity + aState + aCountry + '</div>');
 
 	var dateSplit = sighting.dateString.split(/, | /);
@@ -980,6 +981,7 @@ function showPage(page, params, isPopstate) {
 			}
 			setFilters({});
 			renderHome();
+			setMode(DEFAULT_MODE);
 		}
 
 		setSiteLogo();
@@ -1060,13 +1062,7 @@ function setMode(mode) {
 	currentMode = mode;
 }
 function setSiteLogo() {
-	jQuery('.site-logo a').hide();
-	// jQuery('.site-logo a.' + mode).show();
-	if(currentMode == MODE_INSECT && currentPage == ARCHIVE) {
-		jQuery('.site-logo a.insect').show();
-	} else {
-		jQuery('.site-logo a.bird').show();
-	}
+	jQuery('a.site-logo img').attr("src", MODE[currentMode].logo).attr("title", MODE[currentMode].title).attr("alt", MODE[currentMode].title);
 }
 
 (function($) {
@@ -1084,6 +1080,8 @@ function setSiteLogo() {
 
 
 $(document).ready(function() {
+	setSiteLogo();
+	
 	//feed infinite scroll
 	$(window).scroll(function() {
 	   if($(window).scrollTop() > $(document).height() - window.innerHeight * 2) {

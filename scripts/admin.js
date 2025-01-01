@@ -7,39 +7,6 @@ var IMAGE_SIZE = 1000;
 
 var SYNC_SCHEDULE_TIME = 60000;
 
-var OPT_RATING = {
-	"0": "-",
-	"1": "★",
-	"2": "★★",
-	"3": "★★★",
-	"4": "★★★★",
-	"5": "★★★★★"
-}
-var OPT_GENDER = {
-	'': '-', 
-	'M': "Male", 
-	'F': 'Female'
-};
-var OPT_AGE = {
-	'': 'Adult', 
-	'Juvenile': 'Juvenile', 
-	'Immature': 'Immature',
-	'Juvenile/Immature': 'Juvenile/Immature'
-};
-var OPT_PLUMAGE = {
-	'': 'Basic', 
-	'Non-Breeding': 'Non-Breeding', 
-	'Breeding': 'Breeding', 
-	'Winter': 'Winter', 
-	'Eclipse': 'Eclipse', 
-	'Molting': 'Molting', 
-	'Immature/Non-Breeding': 'Immature/Non-Breeding', 
-	'Immature/Female': 'Immature/Female',
-	'Female/Non-Breeding-Male': 'Female/Non-Breeding'
-};
-
-var DATA_DATE_FORMAT = "DD-MM-yyyy";
-
 var MODE_BIRD = "bird";
 var MODE_INSECT = "insect";
 var currentMode = getUrlParams().mode || MODE_BIRD;
@@ -470,6 +437,10 @@ function render() {
 		sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
 			var value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
 			updateField(sighting.key, $(this).attr("data-field"), value);
+		});
+		sightingRow.find("select[data-field=country]").change(function() {
+			var firstStateInCountry = Object.keys(data.countries[$(this).val()].states)[0];
+			updateField(sighting.key, 'state', firstStateInCountry);
 		});
 		sightingRow.find("button.delete-media").click(function() {
 			deleteMedia(sighting.key, $(this).attr("data-mediasrc"));

@@ -52,8 +52,8 @@
         "Madhya Pradesh": {
           "name": "Madhya Pradesh"
         },
-        "Maharastra": {
-          "name": "Maharastra"
+        "Maharashtra": {
+          "name": "Maharashtra"
         },
         "Meghalaya": {
           "name": "Meghalaya"
@@ -126,6 +126,38 @@
       "states": {
         "Colombo": {
           "name": "Colombo"
+        }
+      }
+    },
+    "Iceland": {
+      "name": "Iceland",
+      "states": {
+        "Iceland": {
+          "name": "Iceland"
+        }
+      }
+    },
+    "Norway": {
+      "name": "Norway",
+      "states": {
+        "Norway": {
+          "name": "Norway"
+        }
+      }
+    },
+    "Greenland": {
+      "name": "Greenland",
+      "states": {
+        "Greenland": {
+          "name": "Greenland"
+        }
+      }
+    },
+    "Finland": {
+      "name": "Finland",
+      "states": {
+        "Finland": {
+          "name": "Finland"
         }
       }
     }

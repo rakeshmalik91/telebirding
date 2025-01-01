@@ -1,7 +1,7 @@
 var MODE_BIRD = "bird";
 var MODE_INSECT = "insect";
-
 var MODE = {};
+var DEFAULT_MODE = MODE_BIRD;
 MODE[MODE_BIRD] = {
 	"logo": "icons/telebirding-logo.png",
 	"title": "Telebirding - Rakesh's Bird Catalogue"
@@ -10,7 +10,6 @@ MODE[MODE_INSECT] = {
 	"logo": "icons/teleinsecta-logo.png",
 	"title": "Teleinsecta - Rakesh's Insect Catalogue"
 }
-
 
 var HOME = "home";
 var ARCHIVE = "feed";
@@ -31,9 +30,40 @@ PAGE[MAP] = {name: "Bird Map"};
 PAGE[VIDEOS] = {name: "Birding Trips"};
 PAGE[ABOUT] = {name: "About"};
 
-
 var DATA_DATE_FORMAT = "DD-MM-yyyy";
 var DISPLAY_DATE_FORMAT = 'D MMM, YYYY';
 var FILTER_MONTH_FORMAT = 'MMM, YYYY';
 var FILTER_YEAR_FORMAT = 'YYYY';
 var BACKUP_DATE_FORMAT = "yyyy-MM-DD";
+
+var OPT_RATING = {
+	"0": "-",
+	"1": "★",
+	"2": "★★",
+	"3": "★★★",
+	"4": "★★★★",
+	"5": "★★★★★"
+}
+var OPT_GENDER = {
+	'': '-', 
+	'M': "Male", 
+	'F': 'Female'
+};
+var OPT_AGE = {
+	'': 'Adult', 
+	'Juvenile': 'Juvenile', 
+	'Immature': 'Immature',
+	'Juvenile/Immature': 'Juvenile/Immature'
+};
+var OPT_PLUMAGE = {
+	'': 'Basic', 
+	'Non-Breeding': 'Non-Breeding', 
+	'Breeding': 'Breeding', 
+	'Winter': 'Winter', 
+	'Eclipse': 'Eclipse', 
+	'Molting': 'Molting', 
+	'Immature/Non-Breeding': 'Immature/Non-Breeding', 
+	'Immature/Female': 'Immature/Female',
+	'Female/Non-Breeding-Male': 'Female/Non-Breeding',
+	'1st-Winter': '1st-Winter'
+};
