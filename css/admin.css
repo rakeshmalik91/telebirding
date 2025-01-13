@@ -105,7 +105,7 @@ textarea {
 	transform: translate(-5px, 3px);
 }
 
-.delete-sighting, .hide-checkbox, .move-up, .move-down {
+.delete-sighting, .hide-checkbox, .move-up, .move-down, .move-upx5, .move-downx5 {
 	display: block;
 	padding: 0;
 	margin: 0;
@@ -116,7 +116,7 @@ textarea {
 .delete-sighting, .hide-checkbox {
 	margin-right: 5px;
 }
-.move-up, .move-down {
+.move-up, .move-down, .move-upx5, .move-downx5 {
 	margin-left: 5px;
 }
 .submit {

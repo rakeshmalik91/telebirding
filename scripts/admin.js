@@ -283,14 +283,14 @@ function sightingMatches(sighting, searchKey) {
 		|| (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0);
 }
 
-function moveSighting(sightingKey, direction) {
+function moveSighting(sightingKey, value) {
 	var sighting = data.sightings.filter(b => b.key == sightingKey)[0];
 	var index = data.sightings.map(b => b.key).indexOf(sightingKey);
-	if(direction > 0 && index < data.sightings.length-1) {
-		data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index+1, index+2), [sighting], data.sightings.slice(index+2)].flat();
+	if(value > 0 && index < data.sightings.length-value) { // move down
+		data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index+1, index+value+1), [sighting], data.sightings.slice(index+value+1)].flat();
 		syncSightingsData(0);
-	} else if(direction < 0 && index > 0) {
-		data.sightings = [data.sightings.slice(0, index-1), [sighting], data.sightings.slice(index-1, index), data.sightings.slice(index+1)].flat();
+	} else if(value < 0 && index >= value) { // move up
+		data.sightings = [data.sightings.slice(0, index+value), [sighting], data.sightings.slice(index+value, index), data.sightings.slice(index+1)].flat();
 		syncSightingsData(0);
 	}
 }
@@ -418,8 +418,10 @@ function render() {
 		row += "</td>";
 
 		row += "<td class='noborder'>"
-		row += "<button class='move-up' title='Move Up' " + (OFFSET+i==0?"disabled":"") + ">▲</button>";
-		row += "<button class='move-down' title='Move down' " + (OFFSET+i==filteredSightings.length-1?"disabled":"") + ">▼</button>";
+		row += "<button class='move-upx5' title='Move Up' " + (OFFSET+i<=4?"disabled":"") + ">⯭</button>";
+		row += "<button class='move-up' title='Move Up' " + (OFFSET+i<=0?"disabled":"") + ">⏶</button>";
+		row += "<button class='move-down' title='Move down' " + (OFFSET+i>=filteredSightings.length-1?"disabled":"") + ">⏷</button>";
+		row += "<button class='move-downx5' title='Move down' " + (OFFSET+i>=filteredSightings.length-5?"disabled":"") + ">⯯</button>";
 		row += "</td>";
 
 		row += "</tr>";
@@ -452,8 +454,10 @@ function render() {
 			updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
 		});
 		sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
+		sightingRow.find(".move-upx5").click(() => moveSighting(sighting.key, -5));
 		sightingRow.find(".move-up").click(() => moveSighting(sighting.key, -1));
 		sightingRow.find(".move-down").click(() => moveSighting(sighting.key, 1));
+		sightingRow.find(".move-downx5").click(() => moveSighting(sighting.key, 5));
 		sightingRow.find("select[data-field=country]").change(function() {
 			sightingRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state')));
 			sightingRow.find("select[data-field=state]").select2();
