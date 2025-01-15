@@ -151,6 +151,20 @@ function trimPlaceName(name, threshold) {
 	}
 }
 
+var PLUMAGE_SHORTEN_LIST = [
+	[/\bJuvenile\b/gi, "Juv."],
+	[/\bImmature\b/gi, "Imm."],
+	[/\bBreeding(-Male|)\b/gi, "Br."],
+	[/\bEclipse\b/gi, "Ecl."],
+	[/\bMale\b/gi, "M"],
+	[/\bFemale\b/gi, "F"]
+];
+
+function shortenPlumage(plumage) {
+	PLUMAGE_SHORTEN_LIST.forEach((s) => plumage = plumage.replaceAll(s[0], s[1]));
+	return plumage;
+}
+
 function getCountryFullName(country) {
 	if(data.countries[country])
 		return data.countries[country].name;

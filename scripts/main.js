@@ -291,7 +291,8 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	
 	$(TAG_TYPES).each(function(i, tagType) {
 		if(sighting[tagType]) {
-			sightingNameDiv.append('<span class="tags" title="' + capitalize(tagType) + '">' + sighting[tagType] + '</span> ');
+			var plumage = inPreviewPage ? sighting[tagType] : shortenPlumage(sighting[tagType]);
+			sightingNameDiv.append('<span class="tags" title="' + capitalize(tagType) + '">' + plumage + '</span> ');
 		}
 	});
 	
@@ -368,7 +369,7 @@ function getSightingPhotoTitle(sighting, image) {
 	if(image.title) return image.title;
 	var plumage = [];
 	TAG_TYPES.forEach(function(type) {
-		if(sighting[type]) plumage.push(capitalize(sighting[type]));
+		if(sighting[type]) plumage.push(shortenPlumage(capitalize(sighting[type])));
 	});
 	if(sighting.gender) plumage.push({"M": "Male", "F": "Female"}[sighting.gender]);
 	return plumage.length ? plumage.join(" ").trim() : DEFAULT_PLUMAGE;
