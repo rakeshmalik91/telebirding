@@ -67,3 +67,19 @@ var OPT_PLUMAGE = {
 	'Female/Non-Breeding-Male': 'Female/Non-Breeding',
 	'1st-Winter': '1st-Winter'
 };
+var OPT_TIME_OF_DAY = {
+	'': '-',
+	"Dawn": "Dawn",
+	"Day": "Day",
+	"Dusk": "Dusk",
+	"Night": "Night"
+};
+var OPT_WEATHER = {
+	'': '-',
+	"Sunny": "Sunny",
+	"Rainy": "Rainy",
+	"Hazy": "Hazy",
+	"Foggy": "Foggy",
+	"Cloudy": "Cloudy",
+	"Snowy": "Snowy"
+};

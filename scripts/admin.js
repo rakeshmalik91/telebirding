@@ -401,6 +401,8 @@ function render() {
 
 		row += "<td class='place-fields'>";
 		row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:180px'></input>";
+		row += getSelectDOM("time_of_day", OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "90px");
+		row += getSelectDOM("weather", OPT_WEATHER, getValue(sighting, 'weather'), "90px");
 		row += "<br>";
 		row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "180px");
 		row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "180px");

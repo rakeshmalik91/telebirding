@@ -311,12 +311,18 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var aYear = '<a onclick="triggerFilter(\'date\', \'' + sighting.date.format(FILTER_YEAR_FORMAT) + '\')">' + dateSplit[2] + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc">' + aDay + aMonth + aYear + '</div>');
 
-	if(sighting.rating > 0) {
-		// var rating = [...Array(Number(sighting.rating)).keys().map(k => "★")].join("");			// Not working on iOS chrome/firefox
-		var rating = "";
-		for(i=0; i<Number(sighting.rating); i++) rating += "★";
-		var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')">' + rating + '</a>';
-		sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
+	sighting.rating = sighting.rating | 0;
+	// var rating = [...Array(Number(sighting.rating)).keys().map(k => "★")].join("");			// Not working on iOS chrome/firefox
+	var rating = "";
+	for(i=0; i<Number(sighting.rating); i++) rating += "★";
+	for(i=0; i<5-Number(sighting.rating); i++) rating += "✰";
+	var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')" title="Image Rated ' + sighting.rating + '">' + rating + '</a>';
+	sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
+	if(sighting.time_of_day) {
+		sightingLabelDiv.append('<div class="sighting-desc time-of-day ' + sighting.time_of_day.toLowerCase() + '" title="Photo taken during ' + sighting.time_of_day + '"></div>');
+	}
+	if(sighting.weather) {
+		sightingLabelDiv.append('<div class="sighting-desc weather ' + sighting.weather.toLowerCase() + '" title="Photo taken in ' + sighting.weather + ' weather"></div>');
 	}
 }
 
