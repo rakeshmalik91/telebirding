@@ -49,13 +49,22 @@ var OPT_GENDER = {
 	'M': "Male", 
 	'F': 'Female'
 };
-var OPT_AGE = {
+
+var OPT_AGE = {};
+OPT_AGE[MODE_BIRD] = {
 	'': 'Adult', 
 	'Juvenile': 'Juvenile', 
 	'Immature': 'Immature',
 	'Juvenile/Immature': 'Juvenile/Immature'
 };
-var OPT_PLUMAGE = {
+OPT_AGE[MODE_INSECT] = {
+	'': 'Adult', 
+	'Larva': 'Larva', 
+	'Pupa': 'Pupa'
+};
+
+var OPT_PLUMAGE = {};
+OPT_PLUMAGE[MODE_BIRD] = {
 	'': 'Basic', 
 	'Non-Breeding': 'Non-Breeding', 
 	'Breeding': 'Breeding', 
@@ -67,6 +76,10 @@ var OPT_PLUMAGE = {
 	'Female/Non-Breeding-Male': 'Female/Non-Breeding',
 	'1st-Winter': '1st-Winter'
 };
+OPT_PLUMAGE[MODE_INSECT] = {
+	'': 'Basic'
+};
+
 var OPT_TIME_OF_DAY = {
 	'': '-',
 	"Dawn": "Dawn",

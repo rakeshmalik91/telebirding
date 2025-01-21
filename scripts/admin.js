@@ -11,7 +11,7 @@ var MODE_BIRD = "bird";
 var MODE_INSECT = "insect";
 var currentMode = getUrlParams().mode || MODE_BIRD;
 
-var lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "housefly" : 'rock-pigeon';
+var lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "unidentified" : 'rock-pigeon';
 
 function switchMode() {
 	if(currentMode == MODE_BIRD) {
@@ -412,8 +412,8 @@ function render() {
 
 		row += "<td>";
 		row += getSelectDOM("gender", OPT_GENDER, getValue(sighting, 'gender'), "160px");
-		row += getSelectDOM("age", OPT_AGE, getValue(sighting, 'age'), "160px");
-		row += getSelectDOM("plumage", OPT_PLUMAGE, getValue(sighting, 'plumage'), "160px");
+		row += getSelectDOM("age", OPT_AGE[currentMode], getValue(sighting, 'age'), "160px");
+		row += getSelectDOM("plumage", OPT_PLUMAGE[currentMode], getValue(sighting, 'plumage'), "160px");
 		row += "<br>";
 		row += "<input type='text' data-field='variation' value='" + getValue(sighting, 'variation') + "' style='width:160px' placeholder='Add variation'></input>";
 		row += "<input type='text' data-field='subspecies' value='" + getValue(sighting, 'subspecies') + "' style='width:160px' placeholder='Add subspecies'></input>";
