@@ -267,15 +267,17 @@ function sortByOnChange(value) {
 }
 
 function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
-	var nameSplit = sighting.species.name.split(' ');
+	var nameSplit = sighting.species.name.replace(/\bunidentified\b\s*/gi, '').split(' ');
 	var nameFirst = nameSplit.reverse().splice(1).reverse().join(' ');
 	var nameLast = nameSplit.splice(-1);
 
 	if(inPreviewPage) {
 		sightingLabelDiv.append('<div class="vgap30px"></div> ');
 	}
-	sightingLabelDiv.append('<div class="sighting-name"><a>' + nameFirst + '</a> <a>' + nameLast + '</a></div> ');
-	sightingLabelDiv.find('a:first-child').click(function() { triggerFilter('sighting', sighting.species.name); })
+	unidentifiedSpan = sighting.species.name.match(/.*\bunidentified\b.*/gi) ? '<a class="unidentified">Unidentified</a> ' : '';
+	sightingLabelDiv.append('<div class="sighting-name">' + unidentifiedSpan + '<a>' + nameFirst + '</a> <a>' + nameLast + '</a></div> ');
+	sightingLabelDiv.find('a.unidentified:not(:last-child)').click(function() { triggerFilter('sighting', sighting.species.name); })
+	sightingLabelDiv.find('a:not(.unidentified):not(:last-child)').click(function() { triggerFilter('sighting', nameFirst + " " + nameLast); })
 	sightingLabelDiv.find('a:last-child').click(function() { triggerFilter('sighting', nameLast); })
 	var sightingNameDiv = sightingLabelDiv.find(".sighting-name");
 	
@@ -319,10 +321,10 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')" title="Image Rated ' + sighting.rating + '">' + rating + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
 	if(sighting.time_of_day) {
-		sightingLabelDiv.append('<div class="sighting-desc time-of-day ' + sighting.time_of_day.toLowerCase() + '" title="Photo taken during ' + sighting.time_of_day + '"></div>');
+		sightingLabelDiv.append('<div class="sighting-desc time-of-day ' + sighting.time_of_day.toLowerCase() + '" title="Shot during ' + sighting.time_of_day + '"></div>');
 	}
 	if(sighting.weather) {
-		sightingLabelDiv.append('<div class="sighting-desc weather ' + sighting.weather.toLowerCase() + '" title="Photo taken in ' + sighting.weather + ' weather"></div>');
+		sightingLabelDiv.append('<div class="sighting-desc weather ' + sighting.weather.toLowerCase() + '" title="Shot during a ' + sighting.weather + ' weather"></div>');
 	}
 }
 

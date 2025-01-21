@@ -64,6 +64,13 @@
 	line-height: 1.6;
 }
 
+.sighting-name .unidentified {
+	color: #df8787;
+	font-size: 12px;
+	padding-top: 8px;
+	cursor: pointer;
+}
+
 span.new-species {
 	margin-left: 10px;
 	color: #45ffc9;
