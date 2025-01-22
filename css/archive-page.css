@@ -133,6 +133,10 @@ span.tags {
   background-repeat: no-repeat;
   opacity: 60%;
 }
+span.text-seperator {
+	color: #56697c;
+	padding-left: 10px;
+}
 .sighting-desc.time-of-day.day, .sighting-desc.weather.sunny {
   background-position: -0px -0px;
 }
