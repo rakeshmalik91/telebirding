@@ -120,7 +120,7 @@ span.tags {
   opacity: 60%;
 }
 
-.sighting-desc.time-of-day, .sighting-desc.weather {
+.sighting-desc.weather {
 	display: inline-block;
 	height: 20px;
 	width: 20px;
@@ -137,32 +137,32 @@ span.text-seperator {
 	color: #56697c;
 	padding-left: 10px;
 }
-.sighting-desc.time-of-day.day, .sighting-desc.weather.sunny {
+.sighting-desc.weather.sunny-day {
   background-position: -0px -0px;
 }
-.sighting-desc.time-of-day.night {
-  background-position: -20px -0px;
-}
-.sighting-desc.time-of-day.dusk {
-  background-position: -40px -0px;
-}
-.sighting-desc.time-of-day.dawn {
-  background-position: -60px -0px;
-}
-.sighting-desc.weather.cloudy {
+.sighting-desc.weather.cloudy-day {
   background-position: -20px -20px;
 }
-.sighting-desc.weather.rainy {
+.sighting-desc.weather.rainy-day {
   background-position: -40px -20px;
 }
-.sighting-desc.weather.foggy {
+.sighting-desc.weather.foggy-day {
   background-position: -60px -20px;
 }
-.sighting-desc.weather.snowy {
+.sighting-desc.weather.snowy-day {
   background-position: -80px -20px;
 }
-.sighting-desc.weather.hazy {
+.sighting-desc.weather.hazy-day {
   background-position: -60px -30px;
+}
+.sighting-desc.weather.night {
+  background-position: -20px -0px;
+}
+.sighting-desc.weather.dusk {
+  background-position: -40px -0px;
+}
+.sighting-desc.weather.dawn {
+  background-position: -60px -0px;
 }
 
 .sighting-name a, .sighting-name span, .sighting-desc a, .sighting-desc span, .sighting-tags span {
