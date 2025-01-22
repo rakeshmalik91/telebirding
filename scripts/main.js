@@ -321,7 +321,7 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')" title="Image Rated ' + sighting.rating + '">' + rating + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
 	if(sighting.time_of_day) {
-		sightingLabelDiv.append('<span class="text-seperator">|</span><div class="sighting-desc time-of-day ' + sighting.time_of_day.toLowerCase() + '" title="Shot during ' + sighting.time_of_day + '"></div>');
+		sightingLabelDiv.append('<span class="text-seperator">|</span><div class="sighting-desc time-of-day ' + sighting.time_of_day.toLowerCase() + '" title="Shot at ' + sighting.time_of_day + '"></div>');
 	}
 	if(sighting.weather) {
 		sightingLabelDiv.append('<span class="text-seperator">|</span><div class="sighting-desc weather ' + sighting.weather.toLowerCase() + '" title="Shot during a ' + sighting.weather + ' weather"></div>');

@@ -52,12 +52,14 @@ function uploadJSONData(type) {
 	fileData[type] = data[type];
 
 	//fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
-	fileData = [JSON.stringify(fileData)];
+
+	fileData = JSON.stringify(fileData);
+	if(fileData.length < 100) {
+		alert("Unknown error while uploading (file data too small) ...");
+		return;
+	}
+	fileData = [fileData];
 	
-	// if(fileData.length < 50) {
-	// 	alert("Error uploading...");
-	// 	return;
-	// }
 
 	var file = new File(fileData, type + ".json");
 	firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
