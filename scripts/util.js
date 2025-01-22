@@ -85,7 +85,7 @@ function getUrlParams() {
 }
 
 function plural(word) {
-	return word.match(/[scz](h|)$/g) ? (word + "es") : (word + "s");
+	return word.match(/(s|sh|ch|z)$/g) ? (word + "es") : (word + "s");
 }
 
 var TAG_NORMALIZE_REPLACE_MAPPING = {
