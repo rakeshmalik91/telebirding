@@ -1,6 +1,12 @@
 {
     "featured": [
         {
+            "src": "featured-images/mountain-hawk-eagle.jpg",
+            "titleLine1": "Mountain Hawk-Eagle, Chafi",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Mountain Hawk-Eagle"
+        },
+        {
             "src": "featured-images/common-green-magpie.jpg",
             "titleLine1": "Common Green Magpie, Kathgodam",
             "titleLine2": "© Rakesh Malik, 2023",
@@ -19,10 +25,10 @@
             "alt": "Eurasian Eagle-Owl"
         },
         {
-            "src": "featured-images/mountain-hawk-eagle.jpg",
-            "titleLine1": "Mountain Hawk-Eagle, Chafi",
-            "titleLine2": "© Rakesh Malik, 2023",
-            "alt": "Mountain Hawk-Eagle"
+            "src": "featured-images/ducks.jpg",
+            "titleLine1": "Ducks, Gurugram",
+            "titleLine2": "© Rakesh Malik, 2025",
+            "alt": "Ducks"
         },
         {
             "src": "featured-images/collared-kingfisher.jpg",
