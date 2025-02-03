@@ -1,70 +1,163 @@
+
 {
   "countries": {
-    "IN": {
+    "India": {
       "name": "India",
       "states": {
-        "AP": {
+        "Andaman & Nicobar Islands": {
+          "name": "Andaman & Nicobar Islands"
+        },
+        "Andhra Pradesh": {
           "name": "Andhra Pradesh"
         },
-        "AR": {
+        "Arunachal Pradesh": {
           "name": "Arunachal Pradesh"
         },
-        "AS": {
+        "Assam": {
           "name": "Assam"
         },
-        "GA": {
+        "Chhattisgarh": {
+          "name": "Chhattisgarh"
+        },
+        "Goa": {
           "name": "Goa"
         },
-        "GJ": {
+        "Gujarat": {
           "name": "Gujarat"
         },
-        "HP": {
+        "Haryana": {
+          "name": "Haryana"
+        },
+        "Himachal Pradesh": {
           "name": "Himachal Pradesh"
         },
-        "JK": {
+        "Jammu & Kashmir": {
           "name": "Jammu & Kashmir"
         },
-        "KA": {
+        "Jharkhand": {
+          "name": "Jharkhand"
+        },
+        "Karnataka": {
           "name": "Karnataka"
         },
-        "KL": {
+        "Kerala": {
           "name": "Kerala"
         },
-        "LA": {
+        "Ladakh": {
           "name": "Ladakh"
         },
-        "LD": {
+        "Lakshadweep Islands": {
           "name": "Lakshadweep Islands"
         },
-        "MP": {
+        "Madhya Pradesh": {
           "name": "Madhya Pradesh"
         },
-        "MH": {
-          "name": "Maharastra"
+        "Maharashtra": {
+          "name": "Maharashtra"
         },
-        "ML": {
+        "Meghalaya": {
           "name": "Meghalaya"
         },
-        "OR": {
+        "Mizoram": {
+          "name": "Mizoram"
+        },
+        "Manipur": {
+          "name": "Manipur"
+        },
+        "Nagaland": {
+          "name": "Nagaland"
+        },
+        "Odisha": {
           "name": "Odisha"
         },
-        "PY": {
+        "Pondicherry": {
           "name": "Pondicherry"
         },
-        "SK": {
+        "Punjab": {
+          "name": "Punjab"
+        },
+        "Rajasthan": {
+          "name": "Rajasthan"
+        },
+        "Sikkim": {
           "name": "Sikkim"
         },
-        "TN": {
+        "Tamil Nadu": {
           "name": "Tamil Nadu"
         },
-        "UK": {
+        "Telengana": {
+          "name": "Telengana"
+        },
+        "Tripura": {
+          "name": "Tripura"
+        },
+        "Uttarakhand": {
           "name": "Uttarakhand"
         },
-        "UP": {
+        "Uttar Pradesh": {
           "name": "Uttar Pradesh"
         },
-        "WB": {
+        "West Bengal": {
           "name": "West Bengal"
+        }
+      }
+    },
+    "Nepal": {
+      "name": "Nepal",
+      "states": {
+        "Province No. 1": {
+          "name": "Province No. 1"
+        } 
+      }
+    },
+    "Bhutan": {
+      "name": "Bhutan",
+      "states": {
+        "Thimphu": {
+          "name": "Thimphu"
+        },
+        "Paro": {
+          "name": "Paro"
+        }
+      }
+    },
+    "Sri Lanka": {
+      "name": "Sri Lanka",
+      "states": {
+        "Colombo": {
+          "name": "Colombo"
+        }
+      }
+    },
+    "Iceland": {
+      "name": "Iceland",
+      "states": {
+        "Iceland": {
+          "name": "Iceland"
+        }
+      }
+    },
+    "Norway": {
+      "name": "Norway",
+      "states": {
+        "Norway": {
+          "name": "Norway"
+        }
+      }
+    },
+    "Greenland": {
+      "name": "Greenland",
+      "states": {
+        "Greenland": {
+          "name": "Greenland"
+        }
+      }
+    },
+    "Finland": {
+      "name": "Finland",
+      "states": {
+        "Finland": {
+          "name": "Finland"
         }
       }
     }

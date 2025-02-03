@@ -34,6 +34,15 @@
   100% 	{opacity: 1;}
 }
 
+.fadein-50percent {
+  animation-name: fadein-50percent;
+  animation-duration: 0.5s;
+}
+@keyframes fadein-50percent {
+  0%  {opacity: 0;}
+  100%  {opacity: 0.5;}
+}
+
 .fadeout {
   animation-name: fadeout;
     -webkit-animation-name: fadeout;
@@ -68,10 +77,10 @@
     -webkit-animation-name: carousal-animation;
     -moz-animation-name: carousal-animation;
     -ms-animation-name: carousal-animation;
-  animation-duration: 15s;
-    -webkit-animation-duration: 15s;
-    -moz-animation-duration: 15s;
-    -ms-animation-duration: 15s;
+  animation-duration: 30s;
+    -webkit-animation-duration: 30s;
+    -moz-animation-duration: 30s;
+    -ms-animation-duration: 30s;
 }
 @-webkit-keyframes carousal-animation {
   0% 	{opacity: 0;}
@@ -154,3 +163,4 @@
   0%  {transform: translateX(0);}
   100%  {transform: translateX(100vw);}
 }
+

@@ -3,6 +3,8 @@ body {
 	scroll-behavior: smooth;
 	background-color: #64768a;
   overflow-x: hidden;
+  width: 100vw;
+  background-image: url('../icons/background.jpg');
 }
 
 h1 {
@@ -65,33 +67,18 @@ button, input {
   vertical-align: baseline;
   width: auto;
   opacity: 0.4;
+	font-size: 16px;
+	padding: 3px 10px;
 }
 
-@media screen and (orientation:landscape) and (min-width:1199px) { 
+@media screen and (min-aspect-ratio: 13/9) and (min-width:1199px) { 
 	input { 
-		width: 350px;
-	}
-	button, input {
-		font-size: 16px;
-		padding: 3px 10px;
+		width: 300px;
 	}
 }
-@media screen and (orientation:landscape) and (max-width:1200px) { 
+@media screen and (min-aspect-ratio: 13/9) and (max-width:1200px) { 
 	input { 
 		width: 200px;
-	}
-	button, input {
-		font-size: 16px;
-		padding: 3px 10px;
-	}
-}
-@media screen and (orientation:portrait) { 
-	input { 
-		width: 80px;
-	} 
-	button, input {
-		font-size: 10px;
-		padding: 3px;
 	}
 }
 
@@ -183,4 +170,44 @@ div.three-column {
 div.four-column {
 	display: inline-block;
 	width: 25%;
+}
+
+
+.overlay, .overlay-on-body {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+  /*backdrop-filter: blur(3px);
+  	-webkit-backdrop-filter: blur(3px);*/
+}
+
+.floatleft {
+	float: left;
+}
+.floatright {
+	float: right;
+}
+
+.centeralign {
+	text-align: center;
+	justify-content: center;
+}
+
+.padleft20 {
+	padding-left: 20px;
+}
+
+.cursorpointer {
+	cursor: pointer;
+}
+
+.hide {
+	display: none;
+}
+
+.vgap30px {
+	height: 30px;
 }

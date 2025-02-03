@@ -24,7 +24,7 @@ function renderHomePageCarousal(featured) {
 function renderTrips(trips) {
 	var div = $('.videos');
 	trips.forEach(function(trip) {
-		var videoHtml = '<iframe src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+		var videoHtml = '<iframe class="youtube" src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" allowscriptaccess="always"></iframe>';
 		var video = $(videoHtml).get(0);
 		$('.videos').append('<div class="video"><h1>' + trip.title + '</h1>' + video.outerHTML + '</div>');
 	});
@@ -34,14 +34,15 @@ $(document).ready(function() {
 	readJSONFile(getData('data/site-data.json'), function(json) {
 		renderHomePageCarousal(json.featured);
 
-		carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
+		carousalVisibleIndex = -1;
+		// carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
 		$('.home .featured .image').hide();
 
 		playCarousal();
 
 		setInterval(function () {
 			playCarousal();
-		}, 15000);
+		}, 30000);
 
 		renderTrips(json.trips);
 	});

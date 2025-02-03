@@ -1,0 +1,310 @@
+{
+	"families": [
+		{
+			"name": "Accentors"
+		},
+		{
+			"name": "Barbets"
+		},
+		{
+			"name": "Bee-eaters"
+		},
+		{
+			"name": "Broadbills"
+		},
+		{
+			"name": "Bulbuls"
+		},
+		{
+			"name": "Buntings"
+		},
+		{
+			"name": "Bush-Warblers and Allies"
+		},
+		{
+			"name": "Bustards"
+		},
+		{
+			"name": "Buttonquails"
+		},
+		{
+			"name": "Chats"
+		},
+		{
+			"name": "Cisticolas"
+		},
+		{
+			"name": "Cormorants & Darters"
+		},
+		{
+			"name": "Coursers"
+		},
+		{
+			"name": "Cranes"
+		},
+		{
+			"name": "Crows, Treepies, Magpies & Choughs"
+		},
+		{
+			"name": "Cuckoo-shrikes & Allies"
+		},
+		{
+			"name": "Cuckoos"
+		},
+		{
+			"name": "Cupwings"
+		},
+		{
+			"name": "Dippers"
+		},
+		{
+			"name": "Doves & Pigeons"
+		},
+		{
+			"name": "Drongos"
+		},
+		{
+			"name": "Ducks, Swans & Geese"
+		},
+		{
+			"name": "Eagles, Hawks & Allies"
+		},
+		{
+			"name": "Fairy Flycatchers"
+		},
+		{
+			"name": "Fairy-bluebirds"
+		},
+		{
+			"name": "Falcons & Caracaras"
+		},
+		{
+			"name": "Fantails"
+		},
+		{
+			"name": "Finches & Allies"
+		},
+		{
+			"name": "Flamingos"
+		},
+		{
+			"name": "Flowerpeckers"
+		},
+		{
+			"name": "Flycatcher-shrikes"
+		},
+		{
+			"name": "Forktails"
+		},
+		{
+			"name": "Frogmouths"
+		},
+		{
+			"name": "Grebes"
+		},
+		{
+			"name": "Ground Babblers and Allies"
+		},
+		{
+			"name": "Gulls & Terns"
+		},
+		{
+			"name": "Herons & Egrets"
+		},
+		{
+			"name": "Hoopoes"
+		},
+		{
+			"name": "Hornbills"
+		},
+		{
+			"name": "Ibisbills"
+		},
+		{
+			"name": "Ibises"
+		},
+		{
+			"name": "Ioras"
+		},
+		{
+			"name": "Jacanas"
+		},
+		{
+			"name": "Kingfishers"
+		},
+		{
+			"name": "Kinglets"
+		},
+		{
+			"name": "Lapwings"
+		},
+		{
+			"name": "Larks"
+		},
+		{
+			"name": "Laughingthrushes & Allies"
+		},
+		{
+			"name": "Leafbirds"
+		},
+		{
+			"name": "Long-tailed Tits & Bushtits"
+		},
+		{
+			"name": "Minlas"
+		},
+		{
+			"name": "Monarch Flycatchers"
+		},
+		{
+			"name": "Nightjars"
+		},
+		{
+			"name": "Old World Flycatchers"
+		},
+		{
+			"name": "Old World Pittas"
+		},
+		{
+			"name": "Orioles"
+		},
+		{
+			"name": "Owls"
+		},
+		{
+			"name": "Parakeets & Parrots"
+		},
+		{
+			"name": "Parrotbills, Wrentit and Allies"
+		},
+		{
+			"name": "Pelicans"
+		},
+		{
+			"name": "Pheasants, Partridges & Fowls"
+		},
+		{
+			"name": "Pipits"
+		},
+		{
+			"name": "Plovers"
+		},
+		{
+			"name": "Pratincoles"
+		},
+		{
+			"name": "Prinias"
+		},
+		{
+			"name": "Quails"
+		},
+		{
+			"name": "Rails & Crakes"
+		},
+		{
+			"name": "Redstarts"
+		},
+		{
+			"name": "Rock-Thrushes"
+		},
+		{
+			"name": "Rollers & Dollarbirds"
+		},
+		{
+			"name": "Rubythroats"
+		},
+		{
+			"name": "Sandgrouses"
+		},
+		{
+			"name": "Sandpipers & Allies"
+		},
+		{
+			"name": "Shrike-babblers & Erpornis"
+		},
+		{
+			"name": "Shrikes"
+		},
+		{
+			"name": "Sparrows"
+		},
+		{
+			"name": "Spoonbills"
+		},
+		{
+			"name": "Starlings"
+		},
+		{
+			"name": "Stilts & Avocets"
+		},
+		{
+			"name": "Storks"
+		},
+		{
+			"name": "Sunbirds & Spiderhunters"
+		},
+		{
+			"name": "Swallows & Martins"
+		},
+		{
+			"name": "Swifts"
+		},
+		{
+			"name": "Sylviid Warblers"
+		},
+		{
+			"name": "Tailorbirds"
+		},
+		{
+			"name": "Thick-knees"
+		},
+		{
+			"name": "Thrushes"
+		},
+		{
+			"name": "Tits"
+		},
+		{
+			"name": "Tree-babblers, Scimitar-babblers & Allies"
+		},
+		{
+			"name": "Treecreepers, Wallcreepers & Nuthatches"
+		},
+		{
+			"name": "Trogons"
+		},
+		{
+			"name": "Vultures"
+		},
+		{
+			"name": "Wagtails"
+		},
+		{
+			"name": "Warblers"
+		},
+		{
+			"name": "Weavers"
+		},
+		{
+			"name": "Wheatears"
+		},
+		{
+			"name": "Whistling-Thrushes"
+		},
+		{
+			"name": "Woodpeckers"
+		},
+		{
+			"name": "Woodshrikes"
+		},
+		{
+			"name": "Woodswallows"
+		},
+		{
+			"name": "Wrens"
+		},
+		{
+			"name": "Yuhinas & White-eyes"
+		}
+	]
+}

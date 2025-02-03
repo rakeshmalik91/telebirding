@@ -1,0 +1,139 @@
+/* ----------------- mobile ------------------- */
+
+@media screen and (max-aspect-ratio: 13/9) {
+	:root {
+		--header-height: 100px;
+		--header-padding: 25px;
+	}
+
+	.home .featured, .home-page {
+		display: none;
+	}
+
+	.home .menu {
+		margin-top: 20px;
+	}
+	.home .menu, .home .menu button {
+		width: 100vw;
+	}
+	.home .menu button {
+		font-size: 20px;
+		font-weight: bold;
+		padding: 5px;
+		padding-left: 20px;
+		margin-bottom: 5px;
+	}
+	.filter-panel {
+		position:absolute;
+		top: 95px;
+	}
+	.site-logo, .site-logo img {
+		/*max-height: 40px;*/
+		height: 60px;
+		max-width: unset;
+	}
+	.site-header {
+		min-height: var(--header-height);
+		position: relative;
+	}
+
+	.videos {
+		margin-top: 0;
+	}
+	.sightings-list {
+		margin-top: 110px;
+	}
+	.home, {
+		margin-top: calc(var(--header-height) + var(--header-padding));
+	}
+	.sightings-list .sighting-panel {
+		transform: translateX(2px);
+	}
+	.sighting-label {
+		min-height: 170px;
+	}
+	.sighting-panel .sighting-tags {
+		padding-right: 15px;
+	}
+
+
+	.page-name {
+		display: none;
+	}
+
+	.about-page {
+		width: 90vw;
+		padding-top: 10px;
+		padding-left: 20px;
+		text-align: left;
+	}
+	.about-page h1 {
+		font-size: 18px;
+	}
+	.about-page span {
+		font-size: 12px;
+	}
+	.about-page .social-icon img {
+		padding-top: 20px;
+	}
+
+	.videos {
+		left: 0;
+		padding-left: 5vw;
+	}
+	.videos, .videos .video iframe {
+		width: 90vw;
+	}
+
+	.explore-menu {
+		width: 100vw;
+		height: calc(100% - var(--header-height) - 25px);
+	}
+	.explore-menu .sighting-family, .explore-menu .sighting-family img {
+		height: 60px;
+		width: 100vw;
+	}
+	.explore-menu .sighting-family span {
+		padding-left: 10px;
+		font-size: 24px;
+		font-weight: normal;
+	}
+	.explore-menu .sighting-family span.count {
+		right: 30;
+	}
+
+	.filter-panel {
+		width: 100vw;
+		height: 122px;
+		background-color: #111b26;
+		padding-bottom: 10px;
+	}
+	.sortby, .filter {
+		float: none;
+	}
+	.filter input {
+		width: 90vw;
+		padding-left: 5px;
+	}
+	.filter input, .filter button {
+		margin-bottom: 5px;
+	}
+	.right-pane-button-container {
+		display: none;
+	}
+
+	.map-menu {
+		margin-top: 10px;
+		margin-left: 30px;
+		margin-right: 10px;
+	}
+}
+
+
+/* ----------------- ipad ------------------- */
+
+@media (pointer:coarse) and (min-aspect-ratio: 13/9) {
+	.sightings-list .sighting-panel {
+		transform: translateX(10px);
+	}
+}

@@ -1,67 +1,105 @@
 {
     "featured": [
         {
-            "src": "featured-images/1.jpg",
-            "titleLine1": "Blue Rock Thrush, Shivkhola Forest",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Blue Rock Thrush"
+            "src": "featured-images/mountain-hawk-eagle.jpg",
+            "titleLine1": "Mountain Hawk-Eagle, Chafi",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Mountain Hawk-Eagle"
         },
         {
-            "src": "featured-images/7.jpg",
-            "titleLine1": "Oriental Pied Hornbill, Shivkhola Forest",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Oriental Pied Hornbill"
+            "src": "featured-images/common-green-magpie.jpg",
+            "titleLine1": "Common Green Magpie, Kathgodam",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Common Green Magpie"
         },
         {
-            "src": "featured-images/9.jpg",
-            "titleLine1": "Purple Sunbird, Bhimtal",
+            "src": "featured-images/upland-buzzard.jpg",
+            "titleLine1": "Upland Buzzard, Tso Kar",
             "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Purple Sunbird"
+            "alt": "Upland Buzzard"
         },
         {
-            "src": "featured-images/2.jpg",
-            "titleLine1": "Rufous-necked Hornbill, Latpanchar",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Rufous-necked Hornbill"
+            "src": "featured-images/eurasian-eagle-owl.jpg",
+            "titleLine1": "Eurasian Eagle-Owl, Hanle",
+            "titleLine2": "© Rakesh Malik, 2024",
+            "alt": "Eurasian Eagle-Owl"
         },
         {
-            "src": "featured-images/4.jpg",
-            "titleLine1": "Whiskered Tern, Mangalajodi Wetlands",
-            "titleLine2": "© Rakesh Malik, 2021",
-            "alt": "Whiskered Tern"
+            "src": "featured-images/ducks.jpg",
+            "titleLine1": "Ducks, Gurugram",
+            "titleLine2": "© Rakesh Malik, 2025",
+            "alt": "Ducks"
         },
         {
-            "src": "featured-images/5.jpg",
-            "titleLine1": "Streak-throated Swallow and Bank Swallow, Mangalajodi Wetlands",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Streak-throated Swallow and Bank Swallow"
-        },
-        {
-            "src": "featured-images/6.jpg",
-            "titleLine1": "Bronze-winged Jacana, Mangalajodi Wetlands",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Bronze-winged Jacana"
-        },
-        {
-            "src": "featured-images/3.jpg",
-            "titleLine1": "Grey Heron, Mangalajodi Wetlands",
-            "titleLine2": "© Rakesh Malik, 2022",
-            "alt": "Grey Heron"
-        },
-        {
-            "src": "featured-images/8.jpg",
+            "src": "featured-images/collared-kingfisher.jpg",
             "titleLine1": "Collared Kingfisher, Bhitarkanika National Park",
             "titleLine2": "© Rakesh Malik, 2021",
             "alt": "Collared Kingfisher"
         },
         {
-            "src": "featured-images/10.jpg",
+            "src": "featured-images/himalayan-rubythroat.jpg",
+            "titleLine1": "Himalayan Rubythroat, Kathgodam",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Himalayan Rubythroat"
+        },
+        {
+            "src": "featured-images/blue-rock-thrush.jpg",
+            "titleLine1": "Blue Rock Thrush, Shivkhola Forest",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Blue Rock Thrush"
+        },
+        {
+            "src": "featured-images/rufous-necked-hornbill.jpg",
+            "titleLine1": "Rufous-necked Hornbill, Latpanchar",
+            "titleLine2": "© Rakesh Malik, 2021",
+            "alt": "Rufous-necked Hornbill"
+        },
+        {
+            "src": "featured-images/grey-heron.jpg",
+            "titleLine1": "Grey Heron, Mangalajodi Wetlands",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Grey Heron"
+        },
+        {
+            "src": "featured-images/black-winged-stilts.jpg",
+            "titleLine1": "Black-winged Stilts, Pangong Tso",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Black-winged Stilt"
+        },
+        {
+            "src": "featured-images/barn-owl.jpg",
             "titleLine1": "Barn Owl, Bhitarkanika National Park",
             "titleLine2": "© Rakesh Malik, 2021",
             "alt": "Barn Owl"
+        },
+        {
+            "src": "featured-images/robin-accentor.jpg",
+            "titleLine1": "Robin Accentor, Khardung La",
+            "titleLine2": "© Rakesh Malik, 2022",
+            "alt": "Robin Accentor"
+        },
+        {
+            "src": "featured-images/osprey.jpg",
+            "titleLine1": "Osprey, Purbasthali",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Osprey"
+        },
+        {
+            "src": "featured-images/painted-storks.jpg",
+            "titleLine1": "Painted Storks, Bharatpur",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Painted Storks"
         }
     ],
     "trips": [
+        {
+            "title": "South Andaman Islands | Oct 2022",
+            "youtubeVideoId": "nYTv07uDX5U"
+        },
+        {
+            "title": "Ladakh | June 2022",
+            "youtubeVideoId": "AUshy6QoV6M"
+        },
         {
             "title": "Latpanchar-Gajoldoba-Shivkhola, West Bengal | Dec 2021",
             "youtubeVideoId": "rcn8NojlOxg"

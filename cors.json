@@ -1,0 +1,19 @@
+[
+  {
+    "origin": [
+      "http://localhost:5000",
+      "https://telebirding-49623.web.app",
+      "https://telebirding-49623.firebaseapp.com",
+      "https://telebirding.info",
+      "https://www.telebirding.info",
+      "https://telebirding.netlify.app"
+    ],
+    "responseHeader": [
+      "Content-Type"
+    ],
+    "method": [
+      "GET"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]

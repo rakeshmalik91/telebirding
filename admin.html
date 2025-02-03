@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<title>Telebirding Admin</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 
+		
+		<link rel="icon" type="image/png" href="icons/favicon-admin-48x48.png">
+		<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
+		<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
+		
+		<link rel="stylesheet" charset="UTF-8" href="css/animations.css">
+		<link rel="stylesheet" charset="UTF-8" href="css/admin.css">
+		
+		<script type="text/javascript" charset="UTF-8" src="scripts/jquery.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="scripts/moment.js"></script>
+		<link rel="stylesheet" charset="UTF-8" href="css/select2.min.css">
+		<script type="text/javascript" charset="UTF-8" src="scripts/select2.min.js"></script>
+
+		<script type="text/javascript" charset="UTF-8" src="scripts/constants.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="scripts/util.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="scripts/admin.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+		<script src="/__/firebase/5.0.1/firebase-app.js"></script>
+		<script src="/__/firebase/5.0.1/firebase-storage.js"></script>
+		<script src="/__/firebase/5.0.1/firebase-auth.js"></script>
+		<script>
+		  	var config = {
+				apiKey: "AIzaSyApVjVcNDeMkA-oz-tYa46Lm-Ja7qCCVjQ",
+				authDomain: "telebirding-49623.firebaseapp.com",
+				projectId: "telebirding-49623",
+				storageBucket: "telebirding-49623.appspot.com",
+				messagingSenderId: "660434055884",
+				appId: "1:660434055884:web:43dd0ca8c46f8280250869",
+				measurementId: "G-MRPL6NX33K"
+			};
+		  	firebase.initializeApp(config);
+
+			function tryLogin(password) {
+				showOverlay("Logging in");
+				firebase.auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
+					$('.data').show();
+					$("#login-page").hide();
+					if($("#login-page input[name=rememberme]").is(":checked")) {
+						setCookie("credentials", password, 7);
+					}
+					$(".overlay").hide();
+				}).catch(e => {
+					alert(e.message);
+				});
+			}
+
+			$(document).ready(function() {
+				if(getCookie("credentials")) {
+					setTimeout(() => { tryLogin(getCookie("credentials")); }, 1000);
+				}
+				$("#login-page button").click(function() {
+					tryLogin($("#login-page input[type=password]").val());
+				});
+				$("#login-page input").keypress(function(e) {
+					if(e.code == 'Enter') {
+						tryLogin($("#login-page input[type=password]").val());
+					}
+				});
+				$("button.logout").click(function() {
+					eraseCookie("credentials");
+					location.reload();
+				});
+
+				$('.site-logo').html('<img class="logo" src="' + MODE[currentMode].logo + '" alt="' + MODE[currentMode].title + '" title="' + MODE[currentMode].title + '" />');
+
+				$("button.mode").html("Mode: " + currentMode.toUpperCase());
+				$("button.mode").click(function() {
+					switchMode();
+				});
+			});
+		</script>
+
+	</head>
+	<body>
+		<div id="login-page">
+			<a href="/" class='site-logo'></a>
+			<h1>Admin</h1>
+			<table>
+				<tr>
+					<td><span>Email:</span></td>
+					<td><input type="text" name="email" value="rakeshmalik91@gmail.com" disabled/></td>
+				</tr>
+				<tr>
+					<td><span>Password:</span></td>
+					<td><input type="password" name="password"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="rememberme"/>Remember me</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button>Log in</button></td>
+				</tr>
+			</table>
+		</div>
+		<div class='data' style='display: none;'>
+			<a href="/" class='site-logo'></a>
+			<h1>Admin</h1>
+			<button class="logout">Log Out</button>
+			<button class="mode" title='Change Mode'>Switch Mode</button>
+
+			<br>
+			<h2>Add Family</h2>
+			<table id="add-family-form">
+				<tr>
+					<th>Name</th>
+					<th class='noborder'></th>
+				</tr>
+				<tr>
+					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
+					<td class='noborder'><button class='submit'>Add</button></td>
+				</tr>
+			</table>
+
+			<br>
+			<h2>Add/Modify Species</h2>
+			<table id="update-species-form">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Tags</th>
+					<th>Family</th>
+				</tr>
+				<tr>
+					<td><select data-field='key' style="width: 200px;"/></td>
+					<td><input type='text' data-field='name' placeholder="Enter name" /></td>
+					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..."  style="width: 300px;"/></td>
+					<td><select data-field='family' style="width: 200px;"/></td>
+				</tr>
+				<tr>
+					<td class='noborder'><button class='submit'>Add</button></td>
+				</tr>
+			</table>
+
+			<br>
+			<h2>Add/Modify Sightings</h2>
+			<div class='nav-top'>
+				<span>Watermark: </span>
+				<input type="checkbox" name="watermark-on" checked>
+				<input type="text" name="watermark" value="© Rakesh Malik">
+				<input type="color" name="watermark-color" value="#ffffff">
+				<br>
+				<br>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+				<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+				<button class='backup' title='Backup Data'>Backup Data</button>
+				<button class='add-sighting' title='Add new sighting'>Add New</button>
+				<br>
+				<button class='first-page' title='First page'><<</button>
+				<button class='previous' title='Previous page'><</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>></button>
+				<button class='last-page' title='Last page'>>></button>
+				<span class='text'>Rows: </span>
+				<select name="page-size">
+					<option>10</option>
+					<option>25</option>
+					<option>50</option>
+				</select>
+				<input type="text" name="filter-sighting" placeholder="Filter"/>
+			</div>
+			<table id="sightings-table"></table>
+			<div class='nav-bottom'>
+				<button class='first-page' title='First page'><<</button>
+				<button class='previous' title='Previous page'><</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>></button>
+				<button class='last-page' title='Last page'>>></button>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+			</div>
+		</div>
+
+		<div class="overlay fadein" style="display:none;">
+			<span>Please wait...</span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    allow write: if request.auth.token.email == 'rakeshmalik91@gmail.com';
+    match /test/{fileName} {
+      allow read;
+      allow write: if request.auth != null 
+          && (request.resource == null || request.resource.size < 1024 * 1024);
+    }
+    match /data/{fileName} {
+      allow read;
+      allow write: if request.auth != null 
+          && request.resource.size < 1024 * 1024 
+          && fileName.matches("^.*\\.json$");
+      allow delete: if false;
+    }
+    match /images/{fileName} {
+      allow read;
+      allow write: if request.auth != null 
+          && (request.resource == null || (request.resource.size < 300 * 1024 && fileName.matches("^.*\\.jpg$")));
+    }
+    match /videos/{fileName} {
+      allow read;
+      allow write: if request.auth != null 
+          && (request.resource == null || (request.resource.size < 50 * 1024 * 1024 && fileName.matches("^.*\\.mp4$")));
+    }
+    match /featured-images/{fileName} {
+      allow read;
+      allow write: if request.auth != null && request.resource.size < 2 * 1024 * 1024 && fileName.matches("^[0-9]+\\.jpg$");
+    }
+  }
+}

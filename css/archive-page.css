@@ -1,4 +1,4 @@
-.bird-panel {
+.sighting-panel {
 	display: block;
 	float: left;
 	margin: 5px;
@@ -7,27 +7,27 @@
 }
 
 @media screen and (max-width: 600px) {
-	.bird-panel, .bird-image, .bird-image img, .bird-image video, .bird-label { width: calc(100vw - 15px); }
-	.bird-image, .bird-image img, .bird-image video { height: calc(100vw - 15px); }
+	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(100vw - 15px); }
+	.sighting-image, .sighting-image img, .sighting-image video { height: calc(100vw - 15px); }
 }
 @media screen and (min-width: 601px) {
-	.bird-panel, .bird-image, .bird-image img, .bird-image video, .bird-label { width: calc(49.3vw - 15px); }
-	.bird-image, .bird-image img, .bird-image video { height: calc(49.3vw - 15px); }
+	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(49.3vw - 15px); }
+	.sighting-image, .sighting-image img, .sighting-image video { height: calc(49.3vw - 15px); }
 }
 @media screen and (min-width: 1000px) and (max-width: 1500px) and (orientation:landscape) {
-	.bird-panel, .bird-image, .bird-image img, .bird-image video, .bird-label { width: calc(33.2vw - 15px); }
-	.bird-image, .bird-image img, .bird-image video { height: calc(33.2vw - 15px); }
+	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(33.2vw - 15px); }
+	.sighting-image, .sighting-image img, .sighting-image video { height: calc(33.2vw - 15px); }
 }
 @media screen and (min-width: 1501px) and (orientation:landscape) {
-	.bird-panel, .bird-image, .bird-image img, .bird-image video, .bird-label { width: calc(25vw - 15px); }
-	.bird-image, .bird-image img, .bird-image video { height: calc(25vw - 15px); }
+	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(25vw - 15px); }
+	.sighting-image, .sighting-image img, .sighting-image video { height: calc(25vw - 15px); }
 }
 
-.bird-panel, .bird-image, .bird-image img, .bird-image video, .bird-label {
+.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label {
 	overflow: hidden;
 }
 
-.bird-image {
+.sighting-image {
 	background-color: #21242d;
   background-image: url('../icons/loading.gif');
   background-position: center;
@@ -35,8 +35,9 @@
   background-size: cover;
 }
 
-.bird-image img {
-	object-fit: scale-down;
+.sighting-image img {
+	/*object-fit: scale-down;*/
+	object-fit: fill;
 	/*pointer-events: none;*/
 	opacity: 0;
   -webkit-transition: all 1s ease; 
@@ -46,14 +47,14 @@
   transition-duration: 0.5s;
 }
 
-.bird-label {
+.sighting-label {
 	background-color: #1e2e40;
-	min-height: 120px;
+	min-height: 145px;
 	padding-top: 5px;
 	padding-bottom: 20px;
 }
 
-.bird-name {
+.sighting-name {
 	color: #c0f2ff;
 	bottom: 0px;
 	margin-top: 10px;
@@ -61,6 +62,21 @@
 	font-weight: bold;
 	font-size: 20px;
 	line-height: 1.6;
+}
+
+.sighting-name .unidentified {
+	color: #df8787;
+	font-size: 12px;
+	padding-top: 8px;
+	cursor: pointer;
+}
+
+span.new-species {
+	margin-left: 10px;
+	color: #45ffc9;
+}
+span.new-species::before {
+	content: "•";
 }
 
 span.male {
@@ -90,7 +106,7 @@ span.tags {
 	white-space: pre;
 }
 
-.bird-desc {
+.sighting-desc {
 	color: #cccccc;
 	bottom: 0px;
 	padding-top: 3px;
@@ -98,11 +114,62 @@ span.tags {
 	font-size: 14px;
 }
 
-.bird-name a, .bird-name span, .bird-desc a, .bird-desc span, .bird-tags span {
+.sighting-desc.rating {
+	display: inline-block;
+	color: #b9f2ff;
+  opacity: 60%;
+}
+
+.sighting-desc.weather {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	padding-top: 0px;
+	padding-left: 0px;
+	margin-left: 10px;
+	transform: translateY(5px);
+	background-image: url("../icons/weather-icons.png");
+	background-size: 100px 60px;
+  background-repeat: no-repeat;
+  opacity: 60%;
+}
+span.text-seperator {
+	color: #56697c;
+	padding-left: 10px;
+}
+.sighting-desc.weather.sunny-day {
+  background-position: -0px -0px;
+}
+.sighting-desc.weather.cloudy-day {
+  background-position: -20px -20px;
+}
+.sighting-desc.weather.rainy-day {
+  background-position: -40px -20px;
+}
+.sighting-desc.weather.foggy-day {
+  background-position: -60px -20px;
+}
+.sighting-desc.weather.snowy-day {
+  background-position: -80px -20px;
+}
+.sighting-desc.weather.hazy-day {
+  background-position: -60px -30px;
+}
+.sighting-desc.weather.night {
+  background-position: -20px -0px;
+}
+.sighting-desc.weather.dusk {
+  background-position: -40px -0px;
+}
+.sighting-desc.weather.dawn {
+  background-position: -60px -0px;
+}
+
+.sighting-name a, .sighting-name span, .sighting-desc a, .sighting-desc span, .sighting-tags span {
 	transition-duration: 0.2s;
 }
 
-.bird-name a:hover, .bird-name a:hover ~ a, .bird-desc a:hover, .bird-desc a:hover ~ a {
+.sighting-name a:hover, .sighting-name a:hover ~ a, .sighting-desc a:hover, .sighting-desc a:hover ~ a {
 	color: #ffffff;
 	cursor: pointer;
 }
@@ -112,11 +179,6 @@ span.tags {
 	/*float: right;*/
 	right: 0%;
 	padding-right: 10px;
-}
-@media screen and (orientation:portrait) {
-	.filter-panel {
-		/*top: 135px;*/
-	}
 }
 .filter, .sortby {
 	float: right;
@@ -151,6 +213,11 @@ span.tags {
 .sortby div.component button.button-active span.order.desc:after {
 	content: '↓';
 }
+.filter .component button.date-filter:after {
+	padding-left: 10px;
+	content: "✕";
+	color: #bc7e7e;
+}
 
 .stats {
 	float: right;
@@ -173,8 +240,8 @@ span.tags {
 	font-size: 14px;
 	color: #999999;
 }
-.stats div.label.sightings-count, .stats div.label.species-count {
-	min-width: 30px;
+.stats div.label.count {
+	min-width: 40px;
 	color: #ff8181;
 	text-align: right;
 }
@@ -185,9 +252,7 @@ span.tags {
 }
 
 
-
-
-.bird-image-carousal {
+.sighting-image-carousal {
 	position: relative;
 }
 .carousal-button-left, .carousal-button-right {
@@ -226,6 +291,34 @@ span.tags {
 /*.carousal-button-left:hover, .carousal-button-right:hover {;
 }*/
 
+.sighting-tags {
+	padding-left: 15px;
+	padding-bottom: 20px;
+	padding-right: 50px;
+	position: absolute;
+	bottom: 0px;
+	color: #dddddd;
+	line-height: 1.6;
+	background-color: inherit;
+	width: 100%;
+}
+.sighting-tags span.tags {
+	font-size: 14px;
+	background-color: transparent;
+	border: 1px solid #bbbbbb;
+	color: #cccccc;
+	cursor: pointer;
+	margin-left: 0;
+}
+.sighting-tags span.tags:hover {
+	border: 1px solid white;
+	color: white;
+}
+
+
+
+/* ------------------- preview image ------------------ */
+
 :root {
   --preview-image-margin: 60px;
   --preview-image-padding: 15px;
@@ -247,6 +340,7 @@ span.tags {
 .preview-image-desc {
 	left: calc(100vh - var(--preview-image-margin) * 2 + var(--preview-image-padding) * 2);
 	width: calc(100vw - 100vh + var(--preview-image-margin) - var(--preview-image-padding) * 4);
+	overflow: hidden;
 }
 .preview-image img, .preview-image video {
 	background-color: #1e2e40;
@@ -257,68 +351,60 @@ span.tags {
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
-  object-fit: scale-down;
-}
-
-.overlay {
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	width: 100vw;
-	height: 100vh;
-	background-color: black;
-	opacity: 0.7;
-}
-
-.bird-tags {
-	padding-left: 15px;
-	padding-bottom: 20px;
-	padding-right: 50px;
-	position: absolute;
-	bottom: 0px;
-	color: #dddddd;
-	line-height: 1.6;
-}
-.bird-tags span.tags {
-	font-size: 14px;
-	background-color: transparent;
-	border: 1px solid #bbbbbb;
-	color: #cccccc;
-	cursor: pointer;
-	margin-left: 0;
-}
-.bird-tags span.tags:hover {
-	border: 1px solid white;
-	color: white;
+  object-fit: cover;
 }
 
 .preview-image-desc .photos {
-	padding-top: 50px;
+	padding-right: 30px;
+	padding-left: 10px;
+}
+.preview-image-desc .photos.section-1 {
+	padding-top: 30px;
+	padding-bottom: 15px;
+	overflow: hidden;
+}
+.preview-image-desc div.description {
+	padding-top: 15px;
+	padding-right: 30px;
+	text-align: justify;
+	max-width: 600px;
+}
+.preview-image-desc .photos.section-2 {
+	padding-top: 5px;
+	overflow: hidden;
 }
 .preview-image-desc .photos div {
 	position: relative;
 	width: 14vh;
 	height: 14vh;
 	display: inline-block;
-	margin: 5px;
+	margin: 2px;
 	cursor: pointer;
 	opacity: 0.8;
   border-radius: 0.5rem; 
   overflow: hidden;
+	border: 2px solid transparent;
 }
-.preview-image-desc .photos div:hover {
+.preview-image-desc .photos.section-2 div {
+	width: 10vh;
+	height: 10vh;
+}
+.preview-image-desc .photos div:not(.selected):hover {
 	opacity: 1;
+}
+.preview-image-desc .photos div.selected {
+	border: 2px solid white;
 }
 .preview-image-desc .photos span {
 	position: absolute;
-	bottom: 7px;
-	left: 7px;
+	bottom: 0;
+	left: 0;
 	color: #cccccc;
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 12px;
+	padding-left: 2px;
+	padding-right: 2px;
+	font-size: 10px;
 	background-color: rgba(0, 0, 0, 0.7);
-	border-radius: 6px;
+	border-radius: 0.5px;
 }
 .preview-image-desc .photos div img.image-thumbnail, .preview-image-desc .photos div img.video-thumbnail {
 	width: 100%;
@@ -356,7 +442,7 @@ span.tags {
 	margin: 0;
 	opacity: 1;
 	font-size: 30px;
-	padding-right: 40px;
+	padding-right: 25px;
 	border-radius: 0.5rem;
 	background-color: #1e2e40;
 	border: none;
@@ -393,10 +479,20 @@ span.tags {
 .preview-image-desc button.left-button {
 	position: fixed;
 	top: 50%;
-	left: 28px;
+	left: 23px;
 	padding-left: 10px;
 	padding-right: 20px;
 }
 .preview-image-desc button.left-button:before {
 	content: "❮";
+}
+
+.preview-image-desc button.slideshow-button {
+	top: 50px;
+	right: 60px;
+	padding-right: 5px;
+}
+
+.box.active {
+	background-color: #ffffff;
 }
