@@ -183,6 +183,9 @@ function filterAndSortData(filter, params) {
 			data.filteredSightings.sort((a,b) => (sort.descending ? -1 : 1) * compare(a[sort.by], b[sort.by], compare(b.index, a.index)));				
 			break;
 	}
+
+	//clear right panel for recalculation
+	$(".right-pane").html('');
 }
 
 function rollCarousal(image, direction) {
@@ -824,28 +827,6 @@ function renderYearList(container) {
 }
 
 function toggleRightPane() {
-	if($(".right-pane").html() == '') {
-
-		$(".right-pane").append("<h1>Index by Location</h1>");
-		renderLocationList($(".right-pane"));
-
-		$(".right-pane").append("<h1>Index by Year</h1>");
-		renderYearList($(".right-pane"));
-
-		var filteredSpecies = [...new Set(data.filteredSightings.map(b => b.species.key))];
-		$(".right-pane").append("<h1>Species List<span class='count'>" + filteredSpecies.length + "<span></h1>");
-		filteredSpecies.sort().forEach(function(species) {
-			$(".right-pane").append("<div class='species'><button class='family' onclick='triggerFilter(\"sighting\", \"" + data.species[species].name + "\")'><span>" + data.species[species].name + "</span></button></div>");
-		});
-
-		/*$(".right-pane").append("<h1>Index by Category</h1>");
-		data.families.forEach(function(family) {
-			var count = getSpeciesCount(data.sightings.filter(b => b.species.family == family.name));
-			$(".right-pane").append("<div class='families'><button class='family' onclick='triggerFilter(\"sighting\", \"" + family.name + "\")'><span>" + family.name + "</span><span class='count'>" + count + "</span></button></div>");
-		});*/
-
-		$(".right-pane").append("<h1></h1>");
-	}
 
 	if($(".right-pane").is(":visible")) {
 		$(".right-pane-button").removeClass('button-active');
@@ -857,6 +838,28 @@ function toggleRightPane() {
 		setTimeout(function() { $('.overlay-on-body').removeClass('fadeout').hide() }, 250);
 		// document.body.style.overflow = 'visible';
 	} else {
+		if($(".right-pane").html() == '') {
+
+			$(".right-pane").append("<h1>Index by Location</h1>");
+			renderLocationList($(".right-pane"));
+
+			$(".right-pane").append("<h1>Index by Year</h1>");
+			renderYearList($(".right-pane"));
+
+			var filteredSpecies = [...new Set(data.filteredSightings.map(b => b.species.key))];
+			$(".right-pane").append("<h1>Species List<span class='count'>" + filteredSpecies.length + "<span></h1>");
+			filteredSpecies.sort().forEach(function(species) {
+				$(".right-pane").append("<div class='species'><button class='family' onclick='triggerFilter(\"sighting\", \"" + data.species[species].name + "\")'><span>" + data.species[species].name + "</span></button></div>");
+			});
+
+			/*$(".right-pane").append("<h1>Index by Category</h1>");
+			data.families.forEach(function(family) {
+				var count = getSpeciesCount(data.sightings.filter(b => b.species.family == family.name));
+				$(".right-pane").append("<div class='families'><button class='family' onclick='triggerFilter(\"sighting\", \"" + family.name + "\")'><span>" + family.name + "</span><span class='count'>" + count + "</span></button></div>");
+			});*/
+
+			$(".right-pane").append("<h1></h1>");
+		}
 		$(".right-pane-button").addClass('button-active');
 		$(".right-pane").removeClass("slide-out").show();
 		$('.overlay-on-body').show();

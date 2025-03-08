@@ -242,7 +242,7 @@ function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
 			name: name,
 			tags: tags.split(/\s*,\s*/ig),
 			family: family,
-			latin_name: (latin_name || null),
+			latin_name: (latin_name ? latin_name.toLowerCase() : null),
 			ebird_code: (ebird_code || null)
 		};
 		data.species = Object.fromEntries(Object.entries(data.species).sort());
