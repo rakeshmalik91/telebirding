@@ -117,13 +117,16 @@
 }
 .text table tr td, .text table tr th {
 	color: white;
-	border: 1px solid #6e8999;
 	width: auto !important;
 	margin: 0;
 	padding: 5px;
 	padding-left: 10px;
+	border: 1px solid #6e8999;
 }
-.text table tr td:first-child, .text table tr th:first-child {
+.noborder {
+	border: none !important;
+}
+.text table tr td:first-child, .text table tr td.highlight, .text table tr th {
 	color: #98c1ff;
 }
 
