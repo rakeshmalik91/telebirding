@@ -10,11 +10,7 @@ A bird watching blog by Rakesh Malik.
 
 ### Local Setup on Firebase
 ```
-winget install Schniz.fnm
-fnm env --use-on-cd | Out-String | Invoke-Expression
-fnm use --install-if-missing 20
-npm install firebase
-firebase login
+./setup.ps1
 ```
 
 to change firebase setup:
