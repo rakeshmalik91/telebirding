@@ -269,28 +269,32 @@
 	height: 35px;
 	width: 35px;
 }
+.home .menu a { 
+	color: inherit;
+	text-decoration: none;
+} 
 @media screen and (min-aspect-ratio: 13/9) {
-	.home .menu button:nth-child(2) {
+	.home .menu button.seq2 {
 		font-size: 30px;
 		margin-bottom: 18px;
 	}
-	.home .menu button:nth-child(2) .icon {
+	.home .menu button.seq2 .icon {
 		height: 30px;
 		width: 30px;
 	}
-	.home .menu button:nth-child(3) {
+	.home .menu button.seq3 {
 		font-size: 26px;
 		margin-bottom: 15px;
 	}
-	.home .menu button:nth-child(3) .icon {
+	.home .menu button.seq3 .icon {
 		height: 26px;
 		width: 26px;
 	}
-	.home .menu button:nth-child(4) {
+	.home .menu button.seq4 {
 		font-size: 22px;
 		margin-bottom: 12px;
 	}
-	.home .menu button:nth-child(4) .icon {
+	.home .menu button.seq4 .icon {
 		height: 22px;
 		width: 22px;
 	}
@@ -722,6 +726,16 @@ button.right-pane-button.button-active:before {
   66%  {transform: translateY(0px); opacity: 0%;}
   66.001%  {transform: translateY(50px); opacity: 30%;}
   100%  {transform: translateY(0px); opacity: 0%;}
+}
+
+.collpasible-section-button {
+	text-decoration: none !important;
+}
+.collpasible-section-button:not(.active):after {
+	content: ' (Click to expand)';
+}
+.collpasible-section-button.active:after {
+	content: ':';
 }
 
 

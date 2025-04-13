@@ -312,3 +312,14 @@ function resizeImage(file, size, watermark) {
         reader.readAsDataURL(file);
     });
 }
+
+function toggleCollpasible(container) {
+	target = jQuery(container).parent().find('.collapsible')
+	if(jQuery(target).is(':visible')) {
+		jQuery(target).hide();
+		jQuery(container).removeClass('active')
+	} else {
+		jQuery(target).show();
+		jQuery(container).addClass('active')
+	}
+}

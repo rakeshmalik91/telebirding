@@ -1151,7 +1151,7 @@ $(document).ready(function() {
 	if(getCookie("credentials")) {
 		$("#admin-button").show();
 		$("#admin-button").click(function() {
-			window.location.replace("/admin");
+			window.open("/admin", "_blank");
 		});
 	}
 
