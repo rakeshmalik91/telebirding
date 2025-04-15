@@ -1,10 +1,26 @@
 {
   "hosting": {
-    "public": "/",
+    "public": ".",
     "ignore": [
       "firebase.json",
+      "firebase-debug.log",
+      ".firebase/**",
+      ".ipynb_checkpoints/**",
+      ".github/**",
+      ".git/**",
+      ".DS_Store/**",
       "**/.*",
-      "**/node_modules/**"
+      "node_modules/**",
+      "**/*.bat",
+      "**/*.ipynb",
+      "**/*.ps1",
+      "**/*.sh",
+      "**/*.py",
+      "images/**",
+      "featured-images/**",
+      "videos/**",
+      "data/**",
+      "utils/**"
     ],
     "rewrites": [
       {
