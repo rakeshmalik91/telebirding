@@ -214,6 +214,7 @@ function addSighting() {
 		"city": (data.sightings[0] || {}).city || "Howrah",
 		"state": (data.sightings[0] || {}).state || "West Bengal",
 		"country": (data.sightings[0] || {}).country || "India",
+		"time_of_day":"Day",
 		"hidden": true,
 		"media": []
 	});
