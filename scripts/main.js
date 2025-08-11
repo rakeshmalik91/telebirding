@@ -328,16 +328,18 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	var aYear = '<a onclick="triggerFilter(\'date\', \'' + sighting.date.format(FILTER_YEAR_FORMAT) + '\')">' + dateSplit[2] + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc">' + aDay + aMonth + aYear + '</div>');
 
-	sighting.rating = sighting.rating||0;
-	// var rating = [...Array(Number(sighting.rating)).keys().map(k => "★")].join("");			// Not working on iOS chrome/firefox
-	var rating = "";
-	for(i=0; i<Number(sighting.rating); i++) rating += "★";
-	for(i=0; i<5-Number(sighting.rating); i++) rating += "✰";
-	var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')" title="Image Rated ' + sighting.rating + '">' + rating + '</a>';
-	sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
-	if(sighting.time_of_day || sighting.weather) {
-		var weather = (((sighting.time_of_day=='Day' && sighting.weather) ? (sighting.weather + ' ') : '') + (sighting.time_of_day||'Day')).toLowerCase()
-		sightingLabelDiv.append('<span class="text-seperator">|</span><div class="sighting-desc weather ' + weather.replace(' ', '-') + '" title="Shot during ' + weather + '"></div>');
+	if(inPreviewPage || ratingFilter || isAdmin()) {
+		sighting.rating = sighting.rating||0;
+		// var rating = [...Array(Number(sighting.rating)).keys().map(k => "★")].join("");			// Not working on iOS chrome/firefox
+		var rating = "";
+		for(i=0; i<Number(sighting.rating); i++) rating += "★";
+		for(i=0; i<5-Number(sighting.rating); i++) rating += "✰";
+		var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')" title="Image Rated ' + sighting.rating + '">' + rating + '</a>';
+		sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
+		if(sighting.time_of_day || sighting.weather) {
+			var weather = (((sighting.time_of_day=='Day' && sighting.weather) ? (sighting.weather + ' ') : '') + (sighting.time_of_day||'Day')).toLowerCase()
+			sightingLabelDiv.append('<span class="text-seperator">|</span><div class="sighting-desc weather ' + weather.replace(' ', '-') + '" title="Shot during ' + weather + '"></div>');
+		}
 	}
 }
 
@@ -1109,6 +1111,10 @@ function setSiteLogo() {
 	};
 })(jQuery);
 
+function isAdmin() {
+	return getCookie("credentials") != null;
+}
+
 
 $(document).ready(function() {
 	setSiteLogo();
@@ -1148,7 +1154,7 @@ $(document).ready(function() {
 		}
 	});
 
-	if(getCookie("credentials")) {
+	if(isAdmin()) {
 		$("#admin-button").show();
 		$("#admin-button").click(function() {
 			window.open("/admin", "_blank");
