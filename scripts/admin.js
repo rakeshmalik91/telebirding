@@ -112,7 +112,7 @@ function uploadMedia(sightingKey, files) {
 	var watermark = null;
 	if($('input[name=watermark-on]').is(":checked")) {
 		watermark = {
-			text: $('input[name=watermark]').val(),
+			text: $('input[name=watermark]').val().replace("${author}", (data.sightings.filter(b => b.key == sightingKey)[0].author || DEFAULT_AUTHOR)).trim(),
 			color: $('input[name=watermark-color]').val() + "33"
 		};
 	}
@@ -214,7 +214,9 @@ function addSighting() {
 		"city": (data.sightings[0] || {}).city || "Howrah",
 		"state": (data.sightings[0] || {}).state || "West Bengal",
 		"country": (data.sightings[0] || {}).country || "India",
-		"time_of_day":"Day",
+		"author": (data.sightings[0] || {}).author || DEFAULT_AUTHOR,
+		"time_of_day": "Day",
+		"weather": (data.sightings[0] || {}).weather || null,
 		"hidden": true,
 		"media": []
 	});
@@ -388,8 +390,9 @@ function render() {
 		// row += "<span style='width: 200px;' class='label'>" + data.species[sighting.species].family + "</span>";
 		// row += "<br>";
 		// row += "<span style='width: 200px;' class='label'>" + data.species[sighting.species].tags.map(t => "&lt;"+t+"&gt;").join(", ") + "</span>";
-		row += "<textarea data-field='description' style='width:190px;height:80px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
+		row += "<textarea data-field='description' style='width:190px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
 		row += getSelectDOM("rating", OPT_RATING, getValue(sighting, 'rating'), "200px");
+		row += "<input type='text' data-field='author' value='" + getValue(sighting, 'author') + "' style='width:180px' placeholder='" + DEFAULT_AUTHOR + "'></input>";
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";

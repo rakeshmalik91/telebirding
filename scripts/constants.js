@@ -97,4 +97,29 @@ var OPT_WEATHER = {
 	"Snowy": "Snowy"
 };
 
+var RATING_DISPLAY_NAME = {
+	"0": "-",
+	"1": "Record",
+	"2": "Got the Bird",
+	"3": "Decent Capture",
+	"4": "Beauty Shot",
+	"5": "Wow Factor"
+}
+var RATING_CSS_CLASS_MAPPING = {
+	0: 'image-rating-icon-bino',
+	1: 'image-rating-icon-bino',
+	2: 'image-rating-icon-bino',
+	3: 'image-rating-icon-cam-blue',
+	4: 'image-rating-icon-cam-yellow',
+	5: 'image-rating-icon-cam-yellow'
+}
+
 var EBIRD_SPECIES_BASE_URL = "https://ebird.org/species/";
+
+var DEFAULT_AUTHOR = "Rakesh Malik";
+var AUTHOR_URL = {
+	"Rakesh Malik": "https://www.instagram.com/rakeshmalik_art",
+	"Ranjan Malik": "https://www.instagram.com/ranjan_033",
+	"Chinmaya Mohini": "https://www.instagram.com/ratdon",
+	"Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani"
+};

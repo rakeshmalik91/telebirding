@@ -131,7 +131,25 @@ span.tags {
 .sighting-desc.rating {
 	display: inline-block;
 	color: #b9f2ff;
-  opacity: 60%;
+	opacity: 30%;
+}
+
+.sighting-desc.rating .image-rating-icon-cam-yellow, .sighting-desc.rating .image-rating-icon-cam-blue, .sighting-desc.rating .image-rating-icon-bino {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	background-size: 20px 20px;
+	margin-right: 8px;
+	transform: translateY(5px);
+}
+.sighting-desc.rating .image-rating-icon-cam-yellow {
+	background-image: url("../icons/camera-icon-yellow.png");
+}
+.sighting-desc.rating .image-rating-icon-cam-blue {
+	background-image: url("../icons/camera-icon-blue.png");
+}
+.sighting-desc.rating .image-rating-icon-bino {
+	background-image: url("../icons/bino-icon.png");
 }
 
 .sighting-desc.weather {
@@ -145,7 +163,7 @@ span.tags {
 	background-image: url("../icons/weather-icons.png");
 	background-size: 100px 60px;
   background-repeat: no-repeat;
-  opacity: 60%;
+  opacity: 30%;
 }
 span.text-seperator {
 	color: #56697c;
@@ -179,9 +197,18 @@ span.text-seperator {
   background-position: -60px -0px;
 }
 
+.opacity-30pc {
+	opacity: 30%;
+}
+
 .sighting-name a, .sighting-name span, .sighting-desc a, .sighting-desc span, .sighting-tags span {
 	transition-duration: 0.2s;
 }
+.sighting-desc a {
+	text-decoration: none;
+	color: #cccccc;
+}
+
 
 .sighting-name a:hover, .sighting-name a:hover ~ a, .sighting-desc a:hover, .sighting-desc a:hover ~ a {
 	color: #ffffff;
