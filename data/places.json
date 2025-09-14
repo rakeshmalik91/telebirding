@@ -92,11 +92,11 @@
       "name": "Iceland",
       "states": {
         "Capital Region": { "name": "Capital Region" },
-        " Southern Peninsula": { "name": " Southern Peninsula" },
-        " Western Region": { "name": " Western Region" },
+        "Southern Peninsula": { "name": "Southern Peninsula" },
+        "Western Region": { "name": "Western Region" },
         "Westfjords": { "name": "Westfjords" },
         "Northwestern Region": { "name": "Northwestern Region" },
-        " Northeastern Region": { "name": " Northeastern Region" },
+        "Northeastern Region": { "name": "Northeastern Region" },
         "Eastern Region": { "name": "Eastern Region" },
         "Southern Region": { "name": "Southern Region" }
       }
