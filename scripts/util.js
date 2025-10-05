@@ -114,23 +114,23 @@ function tagMatchesSubstring(tag, search) {
 }
 
 var SHORTEN_LIST = [
-	[/\bNational\s+Park\b/gi, "NP"],
-	[/\bBiological\s+Park\b/gi, "BP"],
+	[/\bNational\s+Park\b/gi, "N.P."],
+	[/\bBiological\s+Park\b/gi, "B.P."],
 	[/\bZoological\s+Park\b/gi, "Zoo"],
-	[/\bBotanical\s+Garden\b/gi, "BG"],
-	[/\bWildlife\s+Sanctuary\b/gi, "WS"],
-	[/\bBird\s+Sanctuary\b/gi, "BS"],
-	[/\bTiger\s+Reserve\b/gi, "TR"],
-	[/\bConservation\s+Reserve\b/gi, "CR"],
-	[/\bNorth\b/gi, "N"],
-	[/\bSouth\b/gi, "S"],
-	[/\bEast\b/gi, "E"],
-	[/\bWest\b/gi, "W"],
-	[/\bIslands\b/gi, "Isl"],
+	[/\bBotanical\s+Garden\b/gi, "B.G."],
+	[/\bWildlife\s+Sanctuary\b/gi, "W.S."],
+	[/\bBird\s+Sanctuary\b/gi, "B.S."],
+	[/\bTiger\s+Reserve\b/gi, "T.R."],
+	[/\bConservation\s+Reserve\b/gi, "C.R."],
+	[/\bNorth(|ern)\b/gi, "N."],
+	[/\bSouth(|ern)\b/gi, "S."],
+	[/\bEast(|ern)\b/gi, "E."],
+	[/\bWest(|ern)\b/gi, "W."],
+	[/\bIslands\b/gi, "Isl."],
 	[/\band\b/gi, "&"]
 ];
 
-var SHORTEN_BLOCK_LIST = ["Isl", "Monastery", "Zoo"];
+var SHORTEN_BLOCK_LIST = ["Isl.", "Monastery", "Zoo"];
 
 function trimPlaceName(name, threshold) {
 	if(name.length <= threshold) {
