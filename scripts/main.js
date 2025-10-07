@@ -314,7 +314,7 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	}
 	
 	var aPlace = (sighting.place ? ('<a class="place" onclick="triggerFilter(\'place\', \'' + sighting.place + '\')">' + (inPreviewPage ? sighting.place : trimPlaceName(sighting.place, 25)) + '</a>, ') : '');
-	var aCity = (sighting.city ? ('<a class="city" onclick="triggerFilter(\'place\', \'' + sighting.city + '\')">' + (inPreviewPage ? sighting.city : trimPlaceName(sighting.city, 15)) + '</a>, ') : '');
+	var aCity = (sighting.city ? ('<a class="city" onclick="triggerFilter(\'place\', \'' + sighting.city + '\')">' + (inPreviewPage ? sighting.city : trimPlaceName(sighting.city, (sighting.place ? 15 : 25))) + '</a>, ') : '');
 	var stateFullName = getStateFullName(sighting.country, sighting.state);
 	var aState = '<a class="state" onclick="triggerFilter(\'place\', \'' + stateFullName + '\')">' + (inPreviewPage ? stateFullName : trimPlaceName(stateFullName, 15)) + '</a>, ';
 	var countryFullName = getCountryFullName(sighting.country);
