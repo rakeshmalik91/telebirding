@@ -323,3 +323,19 @@ function toggleCollpasible(container) {
 		jQuery(container).addClass('active')
 	}
 }
+
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
+function getClientId() {
+  const key = 'my_app_client_id';
+  let id = localStorage.getItem(key);
+  if (!id) {
+    id = uuidv4();
+    localStorage.setItem(key, id);
+  }
+  return id;
+}

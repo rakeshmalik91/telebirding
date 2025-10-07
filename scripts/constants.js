@@ -123,3 +123,5 @@ var AUTHOR_URL = {
 	"Chinmaya Mohini": "https://www.instagram.com/ratdon",
 	"Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani"
 };
+
+var LIKE_ENABLED = false;

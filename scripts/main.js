@@ -342,6 +342,11 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 		for(i=0; i<5-Number(sighting.rating); i++) rating += "✰";
 		rating += " )";
 	}
+	if(LIKE_ENABLED && data.likes) {
+		var likes = data.likes[sighting.key] || [];
+		sightingLabelDiv.append('<div class="sighting-desc likes"><span class="heart ' + (likes.indexOf(getClientId()) >= 0 ? '' : ' hollow') + '"></span>' + likes.length + '</div>');
+		sightingLabelDiv.append('<span class="text-seperator">|</span>');
+	}
 	var ratingIconSpan = '<span class="' + RATING_CSS_CLASS_MAPPING[sighting.rating] + '"></span>';
 	var ratingHtml = '<a onclick="triggerFilter(\'rating\', \'' + (sighting.rating) + '\')" title="Photograph Rated ' + sighting.rating + '/5">' + ratingIconSpan + rating + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
@@ -956,7 +961,7 @@ function showPage(page, params, isPopstate) {
 	}
 
 	currentPage = page;
-	var files = [getData("data/" + currentMode + "-sightings.json"), getData("data/" + currentMode + "-species.json"), getData("data/" + currentMode + "-families.json"), getData("data/places.json")];
+	var files = [getData("data/" + currentMode + "-sightings.json"), getData("data/" + currentMode + "-species.json"), getData("data/" + currentMode + "-families.json"), getData("data/places.json"), getData("data/" + currentMode + "-likes.json")];
 	readJSONFiles(files, function(json) {
 		data = json;
 		computeInternalDataFields();

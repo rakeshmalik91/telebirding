@@ -128,13 +128,24 @@ span.tags {
 	text-decoration: none;
 }
 
+.sighting-desc.likes {
+	display: inline-block;
+	color: #d1a1a8;
+	opacity: 50%;
+}
+.sighting-desc.likes:hover {
+	color: white;
+	opacity: 100%;
+	cursor: pointer;
+}
+
 .sighting-desc.rating {
 	display: inline-block;
 	color: #b9f2ff;
 	opacity: 30%;
 }
 
-.sighting-desc.rating .image-rating-icon-cam-yellow, .sighting-desc.rating .image-rating-icon-cam-blue, .sighting-desc.rating .image-rating-icon-bino {
+.sighting-desc.rating .image-rating-icon-cam-yellow, .sighting-desc.rating .image-rating-icon-cam-blue, .sighting-desc.rating .image-rating-icon-bino, .sighting-desc.likes .heart {
 	display: inline-block;
 	height: 20px;
 	width: 20px;
@@ -150,6 +161,12 @@ span.tags {
 }
 .sighting-desc.rating .image-rating-icon-bino {
 	background-image: url("../icons/bino-icon.png");
+}
+.sighting-desc.likes .heart {
+	background-image: url("../icons/heart.png");
+}
+.sighting-desc.likes .heart.hollow {
+	background-image: url("../icons/heart-hollow.png");
 }
 
 .sighting-desc.weather {
