@@ -6,7 +6,7 @@ firestoragePath = "https://firebasestorage.googleapis.com/v0/b/telebirding-49623
 dataDir = "data"
 
 for mode in ["bird", "insect"]:
-	for filename in ["sightings", "species", "families"]:
+	for filename in ["sightings", "species", "families", "likes"]:
 		src = firestoragePath + dataDir + "%2F" + mode + "-" + filename + ".json?alt=media"
 		dst = dataDir + "/" + mode + "-" + filename + ".json"
 		print("Downloading " + dst + " ...")

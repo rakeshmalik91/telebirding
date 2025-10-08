@@ -144,6 +144,11 @@ span.tags {
 	color: #b9f2ff;
 	opacity: 30%;
 }
+.sighting-desc.rating:hover {
+	color: white;
+	opacity: 100%;
+	cursor: pointer;
+}
 
 .sighting-desc.rating .image-rating-icon-cam-yellow, .sighting-desc.rating .image-rating-icon-cam-blue, .sighting-desc.rating .image-rating-icon-bino, .sighting-desc.likes .heart {
 	display: inline-block;

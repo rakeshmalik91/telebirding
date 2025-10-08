@@ -344,7 +344,12 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	}
 	if(LIKE_ENABLED && data.likes) {
 		var likes = data.likes[sighting.key] || [];
-		sightingLabelDiv.append('<div class="sighting-desc likes"><span class="heart ' + (likes.indexOf(getClientId()) >= 0 ? '' : ' hollow') + '"></span>' + likes.length + '</div>');
+		var likeText = ' Like' + (likes.length==1?'':'s');
+		sightingLabelDiv.append('<div class="sighting-desc likes" title="' + likes.length + likeText + '">'
+			+ '<span onclick="like(\'' + sighting.key + '\')" class="heart ' + (likes.indexOf(getClientId()) >= 0 ? '' : ' hollow') + '"></span>'
+			+ '<span class="count">' + likes.length + '</span>'
+			+ (inPreviewPage ? likeText : '')
+			+ '</div>');
 		sightingLabelDiv.append('<span class="text-seperator">|</span>');
 	}
 	var ratingIconSpan = '<span class="' + RATING_CSS_CLASS_MAPPING[sighting.rating] + '"></span>';
@@ -363,6 +368,46 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 		sightingLabelDiv.append('<span class="text-seperator">|</span>');
 		sightingLabelDiv.append('<span class="sighting-desc opacity-30pc">by <a href="' + (AUTHOR_URL[author] || '') + '" target="_blank">' + author + '</a></div>');
 	}
+}
+
+var likeLocked = false;
+var remainingLikes = 25; // to rate limit
+function like(key) {
+	if(!LIKE_ENABLED || likeLocked || remainingLikes <= 0) {
+		console.log("like " + key + " skipped");
+		return;
+	}
+	likeLocked = true;
+	data.likes = data.likes || {};
+	data.likes[key] = data.likes[key] || [];
+	var clientId = getClientId();
+	var liked = false;
+	if(data.likes[key].indexOf(clientId) >= 0) {
+		data.likes[key] = data.likes[key].filter(el => el !== clientId);
+	} else {
+		data.likes[key] = data.likes[key].concat([ clientId ]);
+		liked = true;
+	}
+	var fileData = { likes: data.likes };
+	fileData = [JSON.stringify(fileData)];
+	var file = new File(fileData, currentMode + "-likes.json");
+	getFirebase().storage().ref("data/" + currentMode + "-likes.json").put(file).then(() => {
+		var likeDiv = jQuery("#" + key + " .sighting-desc.likes");
+		var count = likeDiv.find("span.count").text() * 1;
+		if(liked) {
+			likeDiv.find("span.count").text(count + 1);
+			likeDiv.find("span.heart").removeClass("hollow");
+		} else {
+			likeDiv.find("span.count").text(count - 1);
+			likeDiv.find("span.heart").addClass("hollow");
+		}
+		remainingLikes--;
+		console.log("liked " + key);
+		setTimeout(() => { likeLocked = false; }, 300); // to rate limit
+	}).catch(e => {
+		console.log("like " + key + " failed");
+		setTimeout(() => { likeLocked = false; }, 60000); // as circuit breaker
+	});
 }
 
 function renderSighting(sightingDiv, sighting) {
@@ -961,7 +1006,13 @@ function showPage(page, params, isPopstate) {
 	}
 
 	currentPage = page;
-	var files = [getData("data/" + currentMode + "-sightings.json"), getData("data/" + currentMode + "-species.json"), getData("data/" + currentMode + "-families.json"), getData("data/places.json"), getData("data/" + currentMode + "-likes.json")];
+	var files = [
+		getData("data/" + currentMode + "-sightings.json"),
+		getData("data/" + currentMode + "-species.json"),
+		getData("data/" + currentMode + "-families.json"),
+		getData("data/" + currentMode + "-likes.json"),
+		getData("data/places.json")
+	];
 	readJSONFiles(files, function(json) {
 		data = json;
 		computeInternalDataFields();

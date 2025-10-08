@@ -1,5 +1,6 @@
 var FILE_CACHE = {};
-var FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
+// var FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
+var FIREBASE_ENABLED = true;
 
 function readTextFile(file, callback) {
 	if(FILE_CACHE[file]) {
@@ -338,4 +339,22 @@ function getClientId() {
     localStorage.setItem(key, id);
   }
   return id;
+}
+
+var firebaseInitialized = false;
+function getFirebase() {
+	if(firebaseInitialized)
+		return firebase;
+	var config = {
+		apiKey: "AIzaSyApVjVcNDeMkA-oz-tYa46Lm-Ja7qCCVjQ",
+		authDomain: "telebirding-49623.firebaseapp.com",
+		projectId: "telebirding-49623",
+		storageBucket: "telebirding-49623.appspot.com",
+		messagingSenderId: "660434055884",
+		appId: "1:660434055884:web:43dd0ca8c46f8280250869",
+		measurementId: "G-MRPL6NX33K"
+	};
+	firebase.initializeApp(config);
+	firebaseInitialized = true;
+	return firebase;
 }
