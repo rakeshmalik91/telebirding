@@ -122,6 +122,9 @@ textarea {
 .submit {
 	margin-left: 10px;
 }
+.unconfirmed-checkbox {
+	transform: translateY(0px) !important;
+}
 
 span.disabled {
 	color: grey;

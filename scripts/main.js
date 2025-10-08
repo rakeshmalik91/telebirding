@@ -293,6 +293,10 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	if(sighting.newSpecies && !inPreviewPage) {
 		sightingNameDiv.append('<span class="new-species" title="New Species"/>');
 	}
+
+	if(sighting.unconfirmed) {
+		sightingNameDiv.append('<span class="unconfirmed" title="Identification yet to be confirmed">Unconfirmed</span>');
+	}
 	
 	$(TAG_TYPES).each(function(i, tagType) {
 		if(sighting[tagType]) {

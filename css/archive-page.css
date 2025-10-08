@@ -378,6 +378,17 @@ span.text-seperator {
 	color: white;
 }
 
+.unconfirmed {
+	color: white;
+	background-color: #742727;
+	border-color: #742727;
+	border-radius: 7px;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 0px 8px;
+	margin-left: 10px;
+}
+
 
 
 /* ------------------- preview image ------------------ */
@@ -444,8 +455,8 @@ span.text-seperator {
 	margin: 2px;
 	cursor: pointer;
 	opacity: 0.8;
-  border-radius: 0.5rem; 
-  overflow: hidden;
+	border-radius: 0.5rem; 
+	overflow: hidden;
 	border: 2px solid transparent;
 }
 .preview-image-desc .photos.section-2 div {

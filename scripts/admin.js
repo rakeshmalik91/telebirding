@@ -215,6 +215,7 @@ function addSighting() {
 		"state": (data.sightings[0] || {}).state || "West Bengal",
 		"country": (data.sightings[0] || {}).country || "India",
 		"author": (data.sightings[0] || {}).author || DEFAULT_AUTHOR,
+		"unconfirmed": false,
 		"time_of_day": "Day",
 		"weather": (data.sightings[0] || {}).weather || null,
 		"hidden": true,
@@ -393,6 +394,7 @@ function render() {
 		row += "<textarea data-field='description' style='width:190px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
 		row += getSelectDOM("rating", OPT_RATING, getValue(sighting, 'rating'), "200px");
 		row += "<input type='text' data-field='author' value='" + getValue(sighting, 'author') + "' style='width:180px' placeholder='" + DEFAULT_AUTHOR + "'></input>";
+		row += "<input class='unconfirmed-checkbox' type='checkbox' data-field='unconfirmed' " + (sighting.unconfirmed ? "checked" : "") + " title='Unconfirmed'> Unconfirmed</input>";
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";
