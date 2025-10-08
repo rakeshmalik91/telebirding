@@ -394,7 +394,7 @@ function render() {
 		row += "<textarea data-field='description' style='width:190px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
 		row += getSelectDOM("rating", OPT_RATING, getValue(sighting, 'rating'), "200px");
 		row += "<input type='text' data-field='author' value='" + getValue(sighting, 'author') + "' style='width:180px' placeholder='" + DEFAULT_AUTHOR + "'></input>";
-		row += "<input class='unconfirmed-checkbox' type='checkbox' data-field='unconfirmed' " + (sighting.unconfirmed ? "checked" : "") + " title='Unconfirmed'> Unconfirmed</input>";
+		row += "<input class='unconfirmed-checkbox' type='checkbox' data-field='unconfirmed' " + (sighting.unconfirmed ? "checked" : "") + " title='Unconfirmed'/> <span class='label'>Unconfirmed</span>";
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";

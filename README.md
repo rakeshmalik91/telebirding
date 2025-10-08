@@ -8,6 +8,8 @@ A bird watching blog by Rakesh Malik.
  - https://telebirding-49623.firebaseapp.com
  - https://telebirding.netlify.app
 
+ Note: New domains to be registered in cors.json and here -> https://www.google.com/recaptcha/admin/site/736295256/settings
+
 ### Local Setup on Firebase
 ```
 ./setup.ps1

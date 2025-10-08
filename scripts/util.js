@@ -355,6 +355,7 @@ function getFirebase() {
 		measurementId: "G-MRPL6NX33K"
 	};
 	firebase.initializeApp(config);
+	firebase.appCheck().activate(new firebase.appCheck.ReCaptchaV3Provider("6LdY-eIrAAAAAPBNq0RoVnRfRGLUZ3VqissKhq5r"), true);	// TODO app check enforcement
 	firebaseInitialized = true;
 	return firebase;
 }
