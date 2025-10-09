@@ -2,11 +2,14 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
 		allow write: if request.auth.token.email == 'rakeshmalik91@gmail.com';
-    match /test/{fileName} {
-      allow read;
-      allow write: if request.auth != null 
-      		&& (request.resource == null || request.resource.size < 1024 * 1024);
-    }
+    // match /debug/{fileName} {
+    //   allow write: if request.app != null;
+    // }
+    // match /test/{fileName} {
+    //   allow read;
+    //   allow write: if request.auth != null 
+    //   		&& (request.resource == null || request.resource.size < 1024 * 1024);
+    // }
     match /backup/{folder}/{fileName} {
       allow read;
       allow write: if request.auth != null 
@@ -22,11 +25,11 @@ service firebase.storage {
       }
       match /bird-likes.json {
         allow read;
-        allow write: if request.resource.size < 25 * 1024;
+        allow write: if request.resource.size < 200 * 1024;
       }
       match /insect-likes.json {
         allow read;
-        allow write: if request.resource.size < 5 * 1024;
+        allow write: if request.resource.size < 20 * 1024;
       }
     }
     match /images/{fileName} {
