@@ -76,24 +76,21 @@ function backup() {
 	console.log("Backing up...");
 	var backedUp = 0;
 	var date = moment(Date.now()).format(BACKUP_DATE_FORMAT);
-	firebase.storage() .ref("backup/" + date + "/" + currentMode + "-species.json") .put(new File(JSON.stringify({ species: data.species}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-species.json")).then(() => {
-		if(++backedUp == 3) {
-			refresh();
-			console.log("Backup completed");
-		}
-	});
-	firebase.storage() .ref("backup/" + date + "/" + currentMode + "-families.json") .put(new File(JSON.stringify({ families: data.families}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-families.json")).then(() => {
-		if(++backedUp == 3) {
-			refresh();
-			console.log("Backup completed");
-		}
-	});
-	firebase.storage() .ref("backup/" + date + "/" + currentMode + "-sightings.json") .put(new File(JSON.stringify({ sightings: data.sightings}, null, '\t').split('\n').map(l => l + '\n'), currentMode + "-sightings.json")).then(() => {
-		if(++backedUp == 3) {
-			refresh();
-			console.log("Backup completed");
-		}
-	});
+	var filesToBackup = ["species", "families", "sightings", "likes"];
+	for (file of filesToBackup) {
+		var fileData = {};
+		fileData[file] = data[file];
+		var fileName = currentMode + "-" + file + ".json";
+		getFirebase().storage()
+			.ref("backup/" + date + "/" + fileName)
+			.put(new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName))
+			.then(() => {
+				if(++backedUp == filesToBackup.length) {
+					refresh();
+					console.log("Backup completed");
+				}
+			});
+	}
 }
 
 var syncRef;
@@ -501,7 +498,13 @@ function refresh() {
 	FIREBASE_ENABLED = true
 	clearFileCache();
 	data = {};
-	readJSONFiles([getData("data/" + currentMode + "-sightings.json"), getData("data/" + currentMode + "-species.json"), getData("data/" + currentMode + "-families.json"), getData("data/places.json")], function(json) {
+	readJSONFiles([
+		getData("data/" + currentMode + "-sightings.json"), 
+		getData("data/" + currentMode + "-species.json"), 
+		getData("data/" + currentMode + "-families.json"), 
+		getData("data/" + currentMode + "-likes.json"), 
+		getData("data/places.json")
+	], function(json) {
 		data = json;
 		render();
 		$(".overlay").hide();
