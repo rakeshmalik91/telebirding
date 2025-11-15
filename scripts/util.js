@@ -1,6 +1,7 @@
 var FILE_CACHE = {};
 // var FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
 var FIREBASE_ENABLED = true;
+var FIREBASE_APPCHECK_ENABLED = false;
 
 function readTextFile(file, callback) {
 	if(FILE_CACHE[file]) {
@@ -355,7 +356,9 @@ function getFirebase() {
 		measurementId: "G-MRPL6NX33K"
 	};
 	firebase.initializeApp(config);
-	firebase.appCheck().activate(new firebase.appCheck.ReCaptchaV3Provider("6LdY-eIrAAAAAPBNq0RoVnRfRGLUZ3VqissKhq5r"), true);	// TODO app check enforcement
+	if(FIREBASE_APPCHECK_ENABLED) {
+		firebase.appCheck().activate(new firebase.appCheck.ReCaptchaV3Provider("6LdY-eIrAAAAAPBNq0RoVnRfRGLUZ3VqissKhq5r"), true);	// TODO app check enforcement
+	}
 	firebaseInitialized = true;
 	return firebase;
 }

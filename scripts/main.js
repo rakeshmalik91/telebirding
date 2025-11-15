@@ -396,8 +396,8 @@ function like(key) {
 	fileData = [JSON.stringify(fileData)];
 	var file = new File(fileData, currentMode + "-likes.json");
 	getFirebase().storage().ref("data/" + currentMode + "-likes.json").put(file).then(() => {
-		var likeDiv = jQuery("#" + key + " .sighting-desc.likes");
-		var count = likeDiv.find("span.count").text() * 1;
+		var likeDiv = jQuery(".preview-image-desc, #" + key).find(".sighting-desc.likes");
+		var count = likeDiv.find("span.count").eq(0).text() * 1;
 		if(liked) {
 			likeDiv.find("span.count").text(count + 1);
 			likeDiv.find("span.heart").removeClass("hollow");
