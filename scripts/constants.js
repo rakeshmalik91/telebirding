@@ -1,7 +1,7 @@
-var MODE_BIRD = "bird";
-var MODE_INSECT = "insect";
-var MODE = {};
-var DEFAULT_MODE = MODE_BIRD;
+const MODE_BIRD = "bird";
+const MODE_INSECT = "insect";
+const MODE = {};
+const DEFAULT_MODE = MODE_BIRD;
 MODE[MODE_BIRD] = {
 	"logo": "icons/telebirding-logo.png",
 	"title": "Telebirding - Rakesh's Bird Catalogue"
@@ -11,16 +11,16 @@ MODE[MODE_INSECT] = {
 	"title": "Teleinsecta - Rakesh's Insect Catalogue"
 }
 
-var HOME = "home";
-var ARCHIVE = "feed";
-var EXPLORE_MENU = "explore_menu";
-var EXPLORE_PAGE = "explore_page";
-var MAP_MENU = "map_menu";
-var MAP = "map";
-var VIDEOS = "videos";
-var ABOUT = "about";
+const HOME = "home";
+const ARCHIVE = "feed";
+const EXPLORE_MENU = "explore_menu";
+const EXPLORE_PAGE = "explore_page";
+const MAP_MENU = "map_menu";
+const MAP = "map";
+const VIDEOS = "videos";
+const ABOUT = "about";
 
-var PAGE = {};
+const PAGE = {};
 PAGE[HOME] = {name: "Home"};
 PAGE[ARCHIVE] = {name: "Feed"};
 PAGE[EXPLORE_MENU] = {name: "Explore Birds"};
@@ -30,13 +30,13 @@ PAGE[MAP] = {name: "Bird Map"};
 PAGE[VIDEOS] = {name: "Birding Trips"};
 PAGE[ABOUT] = {name: "About"};
 
-var DATA_DATE_FORMAT = "DD-MM-yyyy";
-var DISPLAY_DATE_FORMAT = 'D MMM, YYYY';
-var FILTER_MONTH_FORMAT = 'MMM, YYYY';
-var FILTER_YEAR_FORMAT = 'YYYY';
-var BACKUP_DATE_FORMAT = "yyyy-MM-DD";
+const DATA_DATE_FORMAT = "DD-MM-yyyy";
+const DISPLAY_DATE_FORMAT = 'D MMM, YYYY';
+const FILTER_MONTH_FORMAT = 'MMM, YYYY';
+const FILTER_YEAR_FORMAT = 'YYYY';
+const BACKUP_DATE_FORMAT = "yyyy-MM-DD";
 
-var OPT_RATING = {
+const OPT_RATING = {
 	"0": "-",
 	"1": "★",
 	"2": "★★",
@@ -44,13 +44,13 @@ var OPT_RATING = {
 	"4": "★★★★",
 	"5": "★★★★★"
 }
-var OPT_GENDER = {
+const OPT_GENDER = {
 	'': '-', 
 	'M': "Male", 
 	'F': 'Female'
 };
 
-var OPT_AGE = {};
+const OPT_AGE = {};
 OPT_AGE[MODE_BIRD] = {
 	'': 'Adult', 
 	'Juvenile': 'Juvenile', 
@@ -63,7 +63,7 @@ OPT_AGE[MODE_INSECT] = {
 	'Pupa': 'Pupa'
 };
 
-var OPT_PLUMAGE = {};
+const OPT_PLUMAGE = {};
 OPT_PLUMAGE[MODE_BIRD] = {
 	'': 'Basic', 
 	'Non-Breeding': 'Non-Breeding', 
@@ -80,14 +80,14 @@ OPT_PLUMAGE[MODE_INSECT] = {
 	'': 'Basic'
 };
 
-var OPT_TIME_OF_DAY = {
+const OPT_TIME_OF_DAY = {
 	'': '-',
 	"Dawn": "Dawn",
 	"Day": "Day",
 	"Dusk": "Dusk",
 	"Night": "Night"
 };
-var OPT_WEATHER = {
+const OPT_WEATHER = {
 	'': '-',
 	"Sunny": "Sunny",
 	"Rainy": "Rainy",
@@ -97,7 +97,7 @@ var OPT_WEATHER = {
 	"Snowy": "Snowy"
 };
 
-var RATING_DISPLAY_NAME = {
+const RATING_DISPLAY_NAME = {
 	"0": "-",
 	"1": "Record",
 	"2": "Got the Bird",
@@ -105,7 +105,7 @@ var RATING_DISPLAY_NAME = {
 	"4": "Beauty Shot",
 	"5": "Wow Factor"
 }
-var RATING_CSS_CLASS_MAPPING = {
+const RATING_CSS_CLASS_MAPPING = {
 	0: 'image-rating-icon-bino',
 	1: 'image-rating-icon-bino',
 	2: 'image-rating-icon-bino',
@@ -114,14 +114,14 @@ var RATING_CSS_CLASS_MAPPING = {
 	5: 'image-rating-icon-cam-yellow'
 }
 
-var EBIRD_SPECIES_BASE_URL = "https://ebird.org/species/";
+const EBIRD_SPECIES_BASE_URL = "https://ebird.org/species/";
 
-var DEFAULT_AUTHOR = "Rakesh Malik";
-var AUTHOR_URL = {
+const DEFAULT_AUTHOR = "Rakesh Malik";
+const AUTHOR_URL = {
 	"Rakesh Malik": "https://www.instagram.com/rakeshmalik_art",
 	"Ranjan Malik": "https://www.instagram.com/ranjan_033",
 	"Chinmaya Mohini": "https://www.instagram.com/ratdon",
 	"Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani"
 };
 
-var LIKE_ENABLED = true;
+const LIKE_ENABLED = true;

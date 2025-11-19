@@ -1,7 +1,7 @@
 var carousalVisibleIndex;
 
 function showCarousalImage(index) {
-	var images = $('.home .featured .image');
+	let images = $('.home .featured .image');
 	$(images[carousalVisibleIndex]).hide();
 	carousalVisibleIndex = index;
 	$(images[carousalVisibleIndex]).show();
@@ -10,7 +10,7 @@ function showCarousalImage(index) {
 }
 
 function playCarousal() {
-	var images = $('.home .featured .image');
+	let images = $('.home .featured .image');
 	showCarousalImage((carousalVisibleIndex + 1 + images.length) % images.length);
 }
 
@@ -22,10 +22,10 @@ function renderHomePageCarousal(featured) {
 }
 
 function renderTrips(trips) {
-	var div = $('.videos');
+	const div = $('.videos');
 	trips.forEach(function(trip) {
-		var videoHtml = '<iframe class="youtube" src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" allowscriptaccess="always"></iframe>';
-		var video = $(videoHtml).get(0);
+		const videoHtml = '<iframe class="youtube" src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" allowscriptaccess="always"></iframe>';
+		const video = $(videoHtml).get(0);
 		$('.videos').append('<div class="video"><h1>' + trip.title + '</h1>' + video.outerHTML + '</div>');
 	});
 }

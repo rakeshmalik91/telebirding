@@ -1,17 +1,17 @@
-var data = {};
+let data = {};
 
-var OFFSET = 0;
-var ROWS = 10;
+let OFFSET = 0;
+let ROWS = 10;
 
-var IMAGE_SIZE = 1000;
+const IMAGE_SIZE = 1000;
 
-var SYNC_SCHEDULE_TIME = 60000;
+const SYNC_SCHEDULE_TIME = 60000;
 
-var MODE_BIRD = "bird";
-var MODE_INSECT = "insect";
-var currentMode = getUrlParams().mode || MODE_BIRD;
+const MODE_BIRD = "bird";
+const MODE_INSECT = "insect";
+const currentMode = getUrlParams().mode || MODE_BIRD;
 
-var lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "unidentified" : 'rock-pigeon';
+let lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "unidentified" : 'rock-pigeon';
 
 function switchMode() {
 	if(currentMode == MODE_BIRD) {
@@ -31,16 +31,16 @@ function getValue(sighting, prop) {
 }
 
 function getSelectOptionsDOM(field, options, value) {
-	var dom = "";
+	let dom = "";
 	for (const [k, v] of Object.entries(options)) {
-		var name = v instanceof Object ? v.name : v;
+		let name = v instanceof Object ? v.name : v;
 		dom += "<option value='" + k + "' " + (k == value ? 'selected' : '') + ">" + name + "</option>";
 	}
 	return dom;
 }
 
 function getSelectDOM(field, options, value, width) {
-	var dom = "<select data-field='" + field + "' style='width:" + width + "'>";
+	let dom = "<select data-field='" + field + "' style='width:" + width + "'>";
 	dom += getSelectOptionsDOM(field, options, value);
 	dom += "</select>";
 	return dom;
@@ -48,7 +48,7 @@ function getSelectDOM(field, options, value, width) {
 
 function uploadJSONData(type) {
 	showOverlay("Saving");
-	var fileData = {};
+	let fileData = {};
 	fileData[type] = data[type];
 
 	//fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
@@ -61,7 +61,7 @@ function uploadJSONData(type) {
 	fileData = [fileData];
 	
 
-	var file = new File(fileData, type + ".json");
+	const file = new File(fileData, type + ".json");
 	firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
 		console.log("uploaded data/" + currentMode + "-" + type + ".json");
 		refresh();
@@ -74,13 +74,13 @@ function uploadJSONData(type) {
 function backup() {
 	showOverlay("Backing up...");
 	console.log("Backing up...");
-	var backedUp = 0;
-	var date = moment(Date.now()).format(BACKUP_DATE_FORMAT);
-	var filesToBackup = ["species", "families", "sightings", "likes"];
-	for (file of filesToBackup) {
-		var fileData = {};
+	let backedUp = 0;
+	const date = moment(Date.now()).format(BACKUP_DATE_FORMAT);
+	const filesToBackup = ["species", "families", "sightings", "likes"];
+	for (const file of filesToBackup) {
+		let fileData = {};
 		fileData[file] = data[file];
-		var fileName = currentMode + "-" + file + ".json";
+		const fileName = currentMode + "-" + file + ".json";
 		getFirebase().storage()
 			.ref("backup/" + date + "/" + fileName)
 			.put(new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName))
@@ -93,7 +93,7 @@ function backup() {
 	}
 }
 
-var syncRef;
+let syncRef;
 function syncSightingsData(scheduleAfter) {
 	$('.save').removeAttr("disabled");
 	clearTimeout(syncRef);
@@ -106,7 +106,7 @@ function syncSightingsData(scheduleAfter) {
 
 function uploadMedia(sightingKey, files) {
 	showOverlay("Uploading Media");
-	var watermark = null;
+	let watermark = null;
 	if($('input[name=watermark-on]').is(":checked")) {
 		watermark = {
 			text: $('input[name=watermark]').val().replace("${author}", (data.sightings.filter(b => b.key == sightingKey)[0].author || DEFAULT_AUTHOR)).trim(),
@@ -114,9 +114,9 @@ function uploadMedia(sightingKey, files) {
 		};
 	}
 	Array.from(files).forEach(function(file) {
-		var mediaSrc;
+		let mediaSrc;
 		if(file.type.match(/image.*/)) {
-			var speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
+			const speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
 			mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
 			console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
 			resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
@@ -165,7 +165,7 @@ function deleteMedia(sightingKey, mediaSrc) {
 function moveMediaLeft(sightingKey, mediaSrc) {
 	data.sightings.forEach(function(sighting) {
 		if(sighting.key != sightingKey) return;
-		var index = sighting.media.map(m => m.src).indexOf(mediaSrc);
+		let index = sighting.media.map(m => m.src).indexOf(mediaSrc);
 		if(index > 0) {
 			sighting.media = [sighting.media.slice(0, index-1), [sighting.media[index]], [sighting.media[index-1]], sighting.media.slice(index+1)].flat();
 			syncSightingsData(0);
@@ -236,10 +236,10 @@ function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
 		alert("All fields are mandatory");
 	} else {
 		name = name.replaceAll("’", "'");
-		var key = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
+		const newKey = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
 		tags = tags.replaceAll("’", "'");
-		data.species[key] = {
-			key: key,
+		data.species[newKey] = {
+			key: newKey,
 			name: name,
 			tags: tags.split(/\s*,\s*/ig),
 			family: family,
@@ -248,7 +248,7 @@ function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
 		};
 		data.species = Object.fromEntries(Object.entries(data.species).sort());
 		uploadJSONData("species");
-		lastUpdatedSpecies = key;
+		lastUpdatedSpecies = newKey;
 	}
 }
 
@@ -289,8 +289,8 @@ function sightingMatches(sighting, searchKey) {
 }
 
 function moveSighting(sightingKey, value) {
-	var sighting = data.sightings.filter(b => b.key == sightingKey)[0];
-	var index = data.sightings.map(b => b.key).indexOf(sightingKey);
+	let sighting = data.sightings.filter(b => b.key == sightingKey)[0];
+	let index = data.sightings.map(b => b.key).indexOf(sightingKey);
 	if(value > 0 && index < data.sightings.length-value) { // move down
 		data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index+1, index+value+1), [sighting], data.sightings.slice(index+value+1)].flat();
 		syncSightingsData(0);
@@ -301,11 +301,11 @@ function moveSighting(sightingKey, value) {
 }
 
 function fillUpdateSpeciesForm() {
-	var updateSpeciesForm = $("#update-species-form");
-	var key = updateSpeciesForm.find("select[data-field=key]").val();
+	const updateSpeciesForm = $("#update-species-form");
+	let key = updateSpeciesForm.find("select[data-field=key]").val();
 	updateSpeciesForm.find("select[data-field=family] option").removeAttr("selected");
 	if(key) {
-		var species = data.species[key];
+		const species = data.species[key];
 		updateSpeciesForm.find("input[data-field=name]").val(species.name);
 		updateSpeciesForm.find("input[data-field=tags]").val(species.tags.join(", "));
 		updateSpeciesForm.find("select[data-field=family]").val(species.family).trigger("change");
@@ -332,13 +332,13 @@ function render() {
 	data.species = Object.fromEntries(Object.entries(data.species).sort((a,b) => compare(a[1].name, b[1].name)));
 
 	// add family form
-	var addFamilyForm = $("#add-family-form");
+	const addFamilyForm = $("#add-family-form");
 	addFamilyForm.find("button.submit").click(function() {
 		addFamily(addFamilyForm.find("input[data-field=name]").val());
 	});
 
 	// add/update species form
-	var updateSpeciesForm = $("#update-species-form");
+	const updateSpeciesForm = $("#update-species-form");
 	updateSpeciesForm.find("select[data-field=family], select[data-field=key]").html('');
 	updateSpeciesForm.find("select[data-field=family]").append("<option value=''>-</option>");
 	data.families.forEach(function(family) {
@@ -359,7 +359,7 @@ function render() {
 	updateSpeciesForm.find("select[data-field=family]").select2();
 
 	// sightings table
-	var table = $("#sightings-table");
+	const table = $("#sightings-table");
 	table.html("");
 	table.append("<tr>" +
 			"<th class='noborder'></th>" +
@@ -370,10 +370,10 @@ function render() {
 			"<th>Properties</th>" +
 			"<th class='noborder'></th>" +
 		"</tr>");
-	var searchKey = $("input[name=filter-sighting]").val();
-	var filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
+	const searchKey = $("input[name=filter-sighting]").val();
+	const filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
 	filteredSightings.slice(OFFSET, OFFSET+ROWS).forEach(function(sighting, i) {
-		var row = "<tr id='" + sighting.key + "'>";
+		let row = "<tr id='" + sighting.key + "'>";
 
 		row += "<td class='noborder'>"
 		row += "<button class='delete-sighting' title='Delete sighting'>-</button>";
@@ -444,7 +444,7 @@ function render() {
 		table.append(row);
 		table.find("select").select2();
 
-		var sightingRow = $("#" + sighting.key);
+		const sightingRow = $("#" + sighting.key);
 		sightingRow.find(".upload-button").click(function() {
 			sightingRow.find(".upload").click();
 		});
@@ -452,11 +452,11 @@ function render() {
 			uploadMedia(sighting.key, this.files)
 		});
 		sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
-			var value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
+			let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
 			updateField(sighting.key, $(this).attr("data-field"), value);
 		});
 		sightingRow.find("select[data-field=country]").change(function() {
-			var firstStateInCountry = Object.keys(data.countries[$(this).val()].states)[0];
+			const firstStateInCountry = Object.keys(data.countries[$(this).val()].states)[0];
 			updateField(sighting.key, 'state', firstStateInCountry);
 		});
 		sightingRow.find("button.delete-media").click(function() {
@@ -537,8 +537,8 @@ $(document).ready(function() {
 		}
 	});
 	$('button.next').click(function() {
-		var searchKey = $("input[name=filter-sighting]").val();
-		var length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
+		const searchKey = $("input[name=filter-sighting]").val();
+		const length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
 		if(OFFSET + ROWS < length) {
 			OFFSET += ROWS;
 			refresh();
@@ -546,8 +546,8 @@ $(document).ready(function() {
 		}
 	});
 	$('button.last-page').click(function() {
-		var searchKey = $("input[name=filter-sighting]").val();
-		var length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
+		const searchKey = $("input[name=filter-sighting]").val();
+		const length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
 		if(OFFSET + ROWS < length) {
 			OFFSET = Math.floor(length / ROWS) * ROWS;
 			refresh();

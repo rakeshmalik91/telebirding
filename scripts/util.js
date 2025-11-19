@@ -8,7 +8,7 @@ function readTextFile(file, callback) {
 		callback(FILE_CACHE[file]);
 		return;
 	}
-	var rawFile = new XMLHttpRequest();
+		let rawFile = new XMLHttpRequest();
 	rawFile.overrideMimeType("application/json");
 	rawFile.open("GET", file, true);
 	rawFile.onreadystatechange = function() {
@@ -31,12 +31,12 @@ function readJSONFile(file, callback) {
 }
 
 function readJSONFiles(files, callback) {
-	var fileRead = [];
-	var allJSON = {};
+	let fileRead = [];
+	let allJSON = {};
 	files.forEach(function(file) {
 		readTextFile(file, function(text) {
 			fileRead.push(file);
-			var json = JSON.parse(text);
+			const json = JSON.parse(text);
 			Object.keys(json).forEach(k => allJSON[k] = json[k]);
 			if(fileRead.length == files.length) {
 				callback(allJSON);
@@ -79,11 +79,11 @@ function setIntersect(x, y) {
 }
 
 function getUrlParams() {
-	return window.location.search.slice(1).split('&').reduce(function (res, item) {
-	    var parts = item.split('=');
-	    res[parts[0]] = parts[1];
-	    return res;
-	}, {});
+    return window.location.search.slice(1).split('&').reduce(function (res, item) {
+    	let parts = item.split('=');
+    	res[parts[0]] = parts[1];
+    	return res;
+    }, {});
 }
 
 function plural(word) {
@@ -142,8 +142,8 @@ function trimPlaceName(name, threshold) {
 		if(name.length <= threshold) {
 			return name;
 		} else {
-			var tokens = name.split(' ');
-			var trimmed = tokens[0].length > threshold ? (tokens.splice(0, threshold-3) + "...") : '';
+				let tokens = name.split(' ');
+				let trimmed = tokens[0].length > threshold ? (tokens.splice(0, threshold-3) + "...") : '';
 			if(tokens.length > 1) {
 				//tokens.splice(1).forEach(t => trimmed += ' ' + t[0].toUpperCase() + (t.length>1?'.':''));
 				tokens.forEach(t => trimmed += ((SHORTEN_BLOCK_LIST.indexOf(t) < 0) ? t[0].toUpperCase() : (" " + t)));
@@ -188,10 +188,10 @@ function autoScroll(container, amount) {
 				container.animate({scrollTop: container.attr('data-scroll') }, 100, 'linear');
 		}, 100);
 		container.mousemove(function(e) {
-			var val = (e.pageY - container.offset().top) / container.height() - 0.5;
-			if(val > 0.4)		container.attr('data-scroll', '+=' + (amount * (val - 0.4)));
+			let val = (e.pageY - container.offset().top) / container.height() - 0.5;
+			if(val > 0.4) 		container.attr('data-scroll', '+=' + (amount * (val - 0.4)));
 			else if(val < -0.4) container.attr('data-scroll', '+=' + (amount * (val + 0.4)));
-			else 				container.attr('data-scroll', null);
+			else 			container.attr('data-scroll', null);
 		});
 		container.hover(function() {
 			
@@ -219,19 +219,19 @@ function getData(path) {
 }
 
 function setCookie(name,value,days) {
-    var expires = "";
+	let expires = "";
     if (days) {
-        var date = new Date();
+		const date = new Date();
         date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
 function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
+	const nameEQ = name + "=";
+	const ca = document.cookie.split(';');
+	for(let i=0;i < ca.length;i++) {
+		let c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
@@ -242,77 +242,77 @@ function eraseCookie(name) {
 }
 
 function dataURLToBlob(dataURL) {
-    var BASE64_MARKER = ';base64,';
-    if (dataURL.indexOf(BASE64_MARKER) == -1) {
-        var parts = dataURL.split(',');
-        var contentType = parts[0].split(':')[1];
-        var raw = parts[1];
+	const BASE64_MARKER = ';base64,';
+	if (dataURL.indexOf(BASE64_MARKER) == -1) {
+		const parts = dataURL.split(',');
+		const contentType = parts[0].split(':')[1];
+		const raw = parts[1];
 
-        return new Blob([raw], {type: contentType});
-    }
+		return new Blob([raw], {type: contentType});
+	}
 
-    var parts = dataURL.split(BASE64_MARKER);
-    var contentType = parts[0].split(':')[1];
-    var raw = window.atob(parts[1]);
-    var rawLength = raw.length;
+	const parts = dataURL.split(BASE64_MARKER);
+	const contentType = parts[0].split(':')[1];
+	const raw = window.atob(parts[1]);
+	const rawLength = raw.length;
 
-    var uInt8Array = new Uint8Array(rawLength);
+	const uInt8Array = new Uint8Array(rawLength);
 
-    for (var i = 0; i < rawLength; ++i) {
-        uInt8Array[i] = raw.charCodeAt(i);
-    }
+	for (let i = 0; i < rawLength; ++i) {
+		uInt8Array[i] = raw.charCodeAt(i);
+	}
 
-    return new Blob([uInt8Array], {type: contentType});
+	return new Blob([uInt8Array], {type: contentType});
 }
 
 function resizeImage(file, size, watermark) {
-    var reader = new FileReader();
-    var image = new Image();
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    var dataURItoBlob = function (dataURI) {
-        var bytes = dataURI.split(',')[0].indexOf('base64') >= 0 ?
-            atob(dataURI.split(',')[1]) :
-            unescape(dataURI.split(',')[1]);
-        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        var max = bytes.length;
-        var ia = new Uint8Array(max);
-        for (var i = 0; i < max; i++)
-            ia[i] = bytes.charCodeAt(i);
-        return new Blob([ia], { type: mime });
-    };
-    var resize = function () {
-        var width = image.width;
-        var height = image.height;
-        if(width <= size && height <= size && height == width && !watermark) {
-        	return dataURItoBlob(image.src);
-        }
-        canvas.width = size;
-        canvas.height = size;
-        if(width >= height) {
-        	ctx.drawImage(image, (width-height)/2, 0, height, height, 0, 0, size, size);
-        } else {
-        	ctx.drawImage(image, 0, (height-width)/2, width, width, 0, 0, size, size);
-        }
-        if(watermark) {
-	        ctx.font = '20px Calibri';
-	        ctx.fillStyle = watermark.color;
-	        ctx.fillText(watermark.text, size * 0.75, size * 0.95);
-	    }
-        var dataUrl = canvas.toDataURL('image/jpeg');
-        return dataURItoBlob(dataUrl);
-    };
-    return new Promise(function (ok, no) {
-        if (!file.type.match(/image.*/)) {
-            no(new Error("Not an image"));
-            return;
-        }
-        reader.onload = function (readerEvent) {
-            image.onload = function () { return ok(resize()); };
-            image.src = readerEvent.target.result;
-        };
-        reader.readAsDataURL(file);
-    });
+	const reader = new FileReader();
+	const image = new Image();
+	const canvas = document.createElement('canvas');
+	const ctx = canvas.getContext('2d');
+	const dataURItoBlob = function (dataURI) {
+		const bytes = dataURI.split(',')[0].indexOf('base64') >= 0 ?
+			atob(dataURI.split(',')[1]) :
+			unescape(dataURI.split(',')[1]);
+		const mime = dataURI.split(',')[0].split(':')[1].split(';')[0];
+		const max = bytes.length;
+		const ia = new Uint8Array(max);
+		for (let i = 0; i < max; i++)
+			ia[i] = bytes.charCodeAt(i);
+		return new Blob([ia], { type: mime });
+	};
+	const resize = function () {
+		let width = image.width;
+		let height = image.height;
+		if(width <= size && height <= size && height == width && !watermark) {
+			return dataURItoBlob(image.src);
+		}
+		canvas.width = size;
+		canvas.height = size;
+		if(width >= height) {
+			ctx.drawImage(image, (width-height)/2, 0, height, height, 0, 0, size, size);
+		} else {
+			ctx.drawImage(image, 0, (height-width)/2, width, width, 0, 0, size, size);
+		}
+		if(watermark) {
+			ctx.font = '20px Calibri';
+			ctx.fillStyle = watermark.color;
+			ctx.fillText(watermark.text, size * 0.75, size * 0.95);
+		}
+		const dataUrl = canvas.toDataURL('image/jpeg');
+		return dataURItoBlob(dataUrl);
+	};
+	return new Promise(function (ok, no) {
+		if (!file.type.match(/image.*/)) {
+			no(new Error("Not an image"));
+			return;
+		}
+		reader.onload = function (readerEvent) {
+			image.onload = function () { return ok(resize()); };
+			image.src = readerEvent.target.result;
+		};
+		reader.readAsDataURL(file);
+	});
 }
 
 function toggleCollpasible(container) {
