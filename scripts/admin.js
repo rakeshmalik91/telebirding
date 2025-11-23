@@ -7,8 +7,6 @@ const IMAGE_SIZE = 1000;
 
 const SYNC_SCHEDULE_TIME = 60000;
 
-const MODE_BIRD = "bird";
-const MODE_INSECT = "insect";
 const currentMode = getUrlParams().mode || MODE_BIRD;
 
 let lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "unidentified" : 'rock-pigeon';
@@ -582,3 +580,42 @@ window.onbeforeunload = function (e) {
 	    return 'Changes you made is not saved.';
 	}
 };
+
+function tryLogin(password) {
+	showOverlay("Logging in");
+	getFirebase().auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
+		$('.data').show();
+		$("#login-page").hide();
+		if($("#login-page input[name=rememberme]").is(":checked")) {
+			setCookie("credentials", password, 7);
+		}
+		$(".overlay").hide();
+	}).catch(e => {
+		alert(e.message);
+	});
+}
+
+$(document).ready(function() {
+	if(getCookie("credentials")) {
+		setTimeout(() => { tryLogin(getCookie("credentials")); }, 1000);
+	}
+	$("#login-page button").click(function() {
+		tryLogin($("#login-page input[type=password]").val());
+	});
+	$("#login-page input").keypress(function(e) {
+		if(e.code == 'Enter') {
+			tryLogin($("#login-page input[type=password]").val());
+		}
+	});
+	$("button.logout").click(function() {
+		eraseCookie("credentials");
+		location.reload();
+	});
+
+	$('.site-logo').html('<img class="logo" src="' + MODE[currentMode].logo + '" alt="' + MODE[currentMode].title + '" title="' + MODE[currentMode].title + '" />');
+
+	$("button.mode").html("Mode: " + currentMode.toUpperCase());
+	$("button.mode").click(function() {
+		switchMode();
+	});
+});
