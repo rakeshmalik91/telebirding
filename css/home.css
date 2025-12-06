@@ -3,7 +3,6 @@
 		-webkit-user-select: none;      
 		-moz-user-select: none;
 		-ms-user-select: none;
-  user-drag: none;
     -webkit-user-drag: none; 
 		-moz-user-drag: none;
 		-ms-user-drag: none;
@@ -135,7 +134,6 @@
 
 
 .home .featured {
-	display: inline-block;
 	float: left;
 	position: relative;
 	background-color: #000000;
@@ -200,13 +198,11 @@
 }
 
 .home .menu {
-	display: inline-block;
 	float: left;
 	margin-top: 50px;
 	/*height: 400px;*/
 }
 .home .menu button {
-	display: inline-block; 
 	float: left;
 	background-color: #2f4054aa;
 	color: #8293a6;
@@ -661,6 +657,7 @@ button.right-pane-button.button-active:before {
     -moz-transition: all 0.3s ease; 
     -ms-transition: all 0.3s ease; 
     -o-transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 .explore-menu .sighting-family:hover, .explore-menu .sighting-family:hover img {
 	opacity: 1;
