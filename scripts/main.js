@@ -357,7 +357,7 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 		sightingLabelDiv.append('<span class="text-seperator">|</span>');
 	}
 	const ratingIconSpan = '<span class="' + RATING_CSS_CLASS_MAPPING[sighting.rating] + '"></span>';
-	const ratingHtml = '<a onclick="triggerFilter(\'rating\', \'" + (sighting.rating) + "\')" title="Photograph Graded ' + sighting.rating + '/5 (Click to Filter by ' + sighting.rating + '+ Grade)">' + ratingIconSpan + rating + '</a>';
+	const ratingHtml = '<a onclick="triggerFilter(\'rating\', ' + (sighting.rating) + ')" title="Photograph Graded ' + sighting.rating + '/5 (Click to Filter by ' + sighting.rating + '+ Grade)">' + ratingIconSpan + rating + '</a>';
 	sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
 	if(sighting.time_of_day || sighting.weather) {
 		let weather = (((sighting.time_of_day=='Day' && sighting.weather) ? (sighting.weather + ' ') : '') + (sighting.time_of_day||'Day')).toLowerCase()
