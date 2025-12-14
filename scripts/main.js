@@ -300,15 +300,26 @@ function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
 	
 	$(TAG_TYPES).each(function(i, tagType) {
 		if(sighting[tagType]) {
-			let plumage = inPreviewPage ? sighting[tagType] : shortenPlumage(sighting[tagType]);
-			sightingNameDiv.append('<span class="tags" title="' + capitalize(tagType) + '">' + plumage + '</span> ');
+			if((tagType == TAG_VARIATION && sighting[TAG_SUBSPECIES]) // skip variation if subspecies is available
+				|| (tagType == TAG_SUBSPECIES && inPreviewPage)) {	// skip subspecies in preview page
+				return;
+			}
+			let tagValue = inPreviewPage ? sighting[tagType] : shortenPlumage(sighting[tagType]);
+			if(tagType == TAG_SUBSPECIES && sighting[TAG_VARIATION]) { // append variarion to subspecies, if available
+				tagValue += ' (' + sighting[TAG_VARIATION] + ')';
+			}
+			sightingNameDiv.append('<span class="tags" title="' + capitalize(tagType) + '">' + tagValue + '</span> ');
 		}
 	});
 
 	if(inPreviewPage && (sighting.species.latin_name || sighting.species.ebird_code)) {
 		let refDiv = '<div class="sighting-desc margin-bottom-10px">';
 		if(sighting.species.latin_name) {
-			refDiv += '<span class="latin-name">' + sighting.species.latin_name + '</span>';
+			let latin_name = sighting.species.latin_name;
+			if(sighting[TAG_SUBSPECIES]) { // append subspecies to latin name, if available
+				latin_name += ' ' + sighting[TAG_SUBSPECIES];
+			}
+			refDiv += '<span class="latin-name">' + latin_name + '</span>';
 		}
 		if(sighting.species.ebird_code) {
 			refDiv += '<a class="ref" href="' + EBIRD_SPECIES_BASE_URL + sighting.species.ebird_code + '" target="_blank">( 🔗eBird )</a>';

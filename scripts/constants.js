@@ -36,6 +36,11 @@ const FILTER_MONTH_FORMAT = 'MMM, YYYY';
 const FILTER_YEAR_FORMAT = 'YYYY';
 const BACKUP_DATE_FORMAT = "yyyy-MM-DD";
 
+const TAG_SUBSPECIES = "subspecies";
+const TAG_VARIATION = "variation";
+const TAG_PLUMAGE = "plumage";
+const TAG_AGE = "age";
+
 const OPT_RATING = {
 	"0": "-",
 	"1": "★",
