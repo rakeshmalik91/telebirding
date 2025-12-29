@@ -241,7 +241,7 @@ function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
 			name: name,
 			tags: tags.split(/\s*,\s*/ig),
 			family: family,
-			latin_name: (latin_name ? latin_name.toLowerCase() : null),
+			latin_name: (latin_name ? latin_name.toLowerCase().trim() : null),
 			ebird_code: (ebird_code || null)
 		};
 		data.species = Object.fromEntries(Object.entries(data.species).sort());
@@ -355,6 +355,8 @@ function render() {
 	});
 	updateSpeciesForm.find("select[data-field=key]").select2();
 	updateSpeciesForm.find("select[data-field=family]").select2();
+	// trim and lowercase latin name on change
+	updateSpeciesForm.find("input[data-field=latin-name]").change(function(){let v=$(this).val(); if(v!=null && v!=undefined)$(this).val(v.toLowerCase().trim());});
 
 	// sightings table
 	const table = $("#sightings-table");
