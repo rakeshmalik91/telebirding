@@ -1,6 +1,6 @@
 /* ----------------- mobile ------------------- */
 
-@media screen and (max-aspect-ratio: 13/9) {
+@media screen and (max-aspect-ratio: 13/9), screen and (max-width: 900px) {
 	:root {
 		--header-height: 100px;
 		--header-padding: 25px;
@@ -14,14 +14,14 @@
 		margin-top: 20px;
 	}
 	.home .menu, .home .menu button {
-		width: 100vw;
+		width: 100vw !important;
 	}
 	.home .menu button {
-		font-size: 20px;
-		font-weight: bold;
-		padding: 5px;
-		padding-left: 20px;
-		margin-bottom: 5px;
+		font-size: 20px !important;
+		font-weight: bold !important;
+		padding: 5px !important;
+		padding-left: 20px !important;
+		margin-bottom: 5px !important;
 	}
 	.filter-panel {
 		position:absolute;
@@ -42,13 +42,14 @@
 	}
 	.sightings-list {
 		margin-top: 110px;
+		transform: translateX(-5px);
 	}
 	.home {
 		margin-top: calc(var(--header-height) + var(--header-padding));
 	}
-	.sightings-list .sighting-panel {
+	/* .sightings-list .sighting-panel {
 		transform: translateX(2px);
-	}
+	} */
 	.sighting-label {
 		min-height: 170px;
 	}
@@ -86,20 +87,20 @@
 	}
 
 	.explore-menu {
-		width: 100vw;
-		height: calc(100% - var(--header-height) - 25px);
+		width: 100vw !important;
+		height: calc(100% - var(--header-height) - 25px) !important;
 	}
 	.explore-menu .sighting-family, .explore-menu .sighting-family img {
-		height: 60px;
-		width: 100vw;
+		height: 60px !important;
+		width: 100vw !important;
 	}
 	.explore-menu .sighting-family span {
-		padding-left: 10px;
-		font-size: 24px;
-		font-weight: normal;
+		padding-left: 10px !important;
+		font-size: 24px !important;
+		font-weight: normal !important;
 	}
 	.explore-menu .sighting-family span.count {
-		right: 30px;
+		right: 30px !important;
 	}
 
 	.filter-panel {
@@ -113,7 +114,7 @@
 	}
 	.filter input {
 		width: 95vw;
-		padding-left: 5px;
+		transform: translateX(5px);
 	}
 	.filter input, .filter button {
 		margin-bottom: 5px;

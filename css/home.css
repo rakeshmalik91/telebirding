@@ -264,36 +264,35 @@
 .home .menu button .icon {
 	height: 35px;
 	width: 35px;
+	padding-bottom: 10px;
 }
 .home .menu a { 
 	color: inherit;
 	text-decoration: none;
 } 
-@media screen and (min-aspect-ratio: 13/9) {
-	.home .menu button.seq2 {
-		font-size: 30px;
-		margin-bottom: 18px;
-	}
-	.home .menu button.seq2 .icon {
-		height: 30px;
-		width: 30px;
-	}
-	.home .menu button.seq3 {
-		font-size: 26px;
-		margin-bottom: 15px;
-	}
-	.home .menu button.seq3 .icon {
-		height: 26px;
-		width: 26px;
-	}
-	.home .menu button.seq4 {
-		font-size: 22px;
-		margin-bottom: 12px;
-	}
-	.home .menu button.seq4 .icon {
-		height: 22px;
-		width: 22px;
-	}
+.home .menu button.seq2 {
+	font-size: 30px;
+	margin-bottom: 18px;
+}
+.home .menu button.seq2 .icon {
+	height: 30px;
+	width: 30px;
+}
+.home .menu button.seq3 {
+	font-size: 26px;
+	margin-bottom: 15px;
+}
+.home .menu button.seq3 .icon {
+	height: 26px;
+	width: 26px;
+}
+.home .menu button.seq4 {
+	font-size: 22px;
+	margin-bottom: 12px;
+}
+.home .menu button.seq4 .icon {
+	height: 22px;
+	width: 22px;
 }
 .site-logo, .site-logo img { 
 	max-height: 70px;
@@ -663,30 +662,28 @@ button.right-pane-button.button-active:before {
 	opacity: 1;
 }
 
-@media screen and (orientation:landscape) {
-	.explore-menu {
-		width: 40vw;
-		height: calc(100% - var(--header-height) - 25px);
-	}
-	.explore-menu.expanded {
-		width: 90vw;
-	}
-	.explore-menu .sighting-family {
-		margin-right: 5px;
-	}
-	.explore-menu .sighting-family, .explore-menu .sighting-family img {
-		height: 80px;
-		width: 400px;
-	}
-	.explore-menu .sighting-family:hover img {
-		height: 200px;
-		position: absolute;
-		transform: translateY(-60px)/* translateX(-1vw)*/;
-	}
-	.explore-menu .sighting-family:hover {
-		overflow: visible;
-		z-index: 1;
-	}
+.explore-menu {
+	width: 40vw;
+	height: calc(100% - var(--header-height) - 25px);
+}
+.explore-menu.expanded {
+	width: 90vw;
+}
+.explore-menu .sighting-family {
+	margin-right: 5px;
+}
+.explore-menu .sighting-family, .explore-menu .sighting-family img {
+	height: 80px;
+	width: 400px;
+}
+.explore-menu .sighting-family:hover img {
+	height: 200px;
+	position: absolute;
+	transform: translateY(-60px)/* translateX(-1vw)*/;
+}
+.explore-menu .sighting-family:hover {
+	overflow: visible;
+	z-index: 1;
 }
 
 .explore-menu .sighting-family span.name {

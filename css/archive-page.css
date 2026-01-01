@@ -10,11 +10,11 @@
 	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(100vw - 15px); }
 	.sighting-image, .sighting-image img, .sighting-image video { height: calc(100vw - 15px); }
 }
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 601px) and (max-width: 1000px) {
 	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(49.3vw - 15px); }
 	.sighting-image, .sighting-image img, .sighting-image video { height: calc(49.3vw - 15px); }
 }
-@media screen and (min-width: 1000px) and (max-width: 1500px) and (orientation:landscape) {
+@media screen and (min-width: 1001px) and (max-width: 1500px) and (orientation:landscape) {
 	.sighting-panel, .sighting-image, .sighting-image img, .sighting-image video, .sighting-label { width: calc(33.2vw - 15px); }
 	.sighting-image, .sighting-image img, .sighting-image video { height: calc(33.2vw - 15px); }
 }

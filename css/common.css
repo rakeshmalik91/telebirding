@@ -1,10 +1,21 @@
 body {
 	margin: 0px;
 	scroll-behavior: smooth;
-	background-color: #64768a;
-  overflow-x: hidden;
-  width: 100vw;
-  background-image: url('../icons/background.jpg');
+	/* Solid fallback color for environments that don't render gradients */
+	background-color: #10263a;
+	/* SVG data-URI fallback (works in WebViews that don't support CSS gradients) */
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2310263a'/><stop offset='1' stop-color='%236688ac'/></linearGradient></defs><rect width='100' height='100' fill='url(%23g)'/></svg>");
+	/* Vendor-prefixed gradients for older WebViews */
+	background-image: -webkit-linear-gradient(135deg, #10263a 0%, #6687ac 100%);
+	/* Standards-compliant gradient */
+	background-image: linear-gradient(135deg, #10263a 0%, #6687ac 100%);
+	/* Make sure background covers the viewport */
+	background-size: cover;
+	background-position: center center;
+	overflow-x: hidden;
+	width: 100%;
+	min-height: 100vh; /* ensure gradient covers viewport */
+	/* background-image: url('../icons/background.jpg'); */
 }
 
 h1 {
