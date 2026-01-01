@@ -10,3 +10,20 @@ package.json
 package-lock.json
 
 .ipynb_checkpoints
+
+# Android App
+telebirding-app/local.properties
+telebirding-app/.gradle/
+telebirding-app/build/
+telebirding-app/app/build/
+telebirding-app/.idea/
+telebirding-app/*.iml
+telebirding-app/app/*.iml
+telebirding-app/captures/
+telebirding-app/.externalNativeBuild/
+telebirding-app/.cxx/
+telebirding-app/**/*.apk
+telebirding-app/**/*.ap_
+telebirding-app/**/*.aab
+telebirding-app/**/*.dex
+telebirding-app/**/local.properties
