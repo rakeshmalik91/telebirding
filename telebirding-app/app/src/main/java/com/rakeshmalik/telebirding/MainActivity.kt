@@ -2,8 +2,12 @@ package com.rakeshmalik.telebirding
 
 import android.os.Build
 import android.os.Bundle
+import android.webkit.JavascriptInterface
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.webkit.WebSettings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -49,6 +53,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
+    var lastFailedUrl by remember { mutableStateOf<String?>(null) }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -73,6 +78,18 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                 })();
                             """.trimIndent(), null)
                         }
+
+                        override fun onReceivedError(
+                            view: WebView?,
+                            request: WebResourceRequest?,
+                            error: WebResourceError?
+                        ) {
+                            super.onReceivedError(view, request, error)
+                            if (error?.errorCode == ERROR_HOST_LOOKUP && request?.isForMainFrame == true) {
+                                lastFailedUrl = request.url.toString()
+                                view?.loadUrl("file:///android_asset/offline.html")
+                            }
+                        }
                     }
                     settings.apply {
                         javaScriptEnabled = true
@@ -88,8 +105,19 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         allowContentAccess = true
                         userAgentString = "Mozilla/5.0 (Linux; Android ${Build.VERSION.RELEASE}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
                         textZoom = 100
+                        cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                     }
-                    clearCache(true)
+                    addJavascriptInterface(
+                        object {
+                            @JavascriptInterface
+                            fun reloadPage() {
+                                lastFailedUrl?.let {
+                                    this@apply.post { loadUrl(it) }
+                                }
+                            }
+                        },
+                        "Android"
+                    )
                     loadUrl("https://telebirding.info/?page=f")
                     onWebViewCreated(this)
                 }
