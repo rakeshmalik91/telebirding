@@ -1,3 +1,7 @@
+body, #page, #container, #main, #wrapper, #page-f {
+    min-width: 0 !important;
+}
+
 /* ----------------- mobile ------------------- */
 
 @media screen and (max-aspect-ratio: 13/9) {
