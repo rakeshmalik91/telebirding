@@ -46,7 +46,7 @@ function computeInternalDataFields() {
 	data.families.concat(data.sightings.filter(b => !familyNames.includes(b.species.family)).map(function(b) { return {name: b.family}; }));
 	//fix missing family images or paths
 	data.families.forEach(function(family) {
-		family.imagesrc = ((((data.sightings.filter(b => b.species.family == family.name)||[])[0]||{}).media||[])[0]||{}).src;
+		family.imagesrc = ((((data.sightings.filter(b => b.species.family == family.name)||[])[0]||{}).media||[]).filter(m => m.type !== 'video')[0]||{}).src;
 		family.count = data.sightings.filter(b => b.species.family == family).length;
 	})
 	
