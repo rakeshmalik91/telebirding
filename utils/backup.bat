@@ -1,2 +1,2 @@
 cd ..
-python3 utils/backup.py
+python utils/backup.py
