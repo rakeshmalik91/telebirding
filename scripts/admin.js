@@ -326,6 +326,24 @@ function sortByDate() {
 	syncSightingsData(0);
 }
 
+function fetchEbirdCode(name) {
+	return name
+		? fetch('https://api.ebird.org/v2/ref/taxon/find?cat=species&key=jfekjedvescr&locale=en&q='+encodeURIComponent(name.trim()))
+			.then(r=>r.json())
+			.then(a=>a&&a[0]&&a[0].code)
+			.catch(()=>undefined)
+		: Promise.resolve(undefined);
+}
+
+function fetchEbirdSciName(code) {
+	return code
+		? fetch('https://api.ebird.org/v2/ref/taxonomy/ebird?cat=species&fmt=json&species='+encodeURIComponent(code.trim())+'&locale=en')
+			.then(r=>r.json())
+			.then(a=>a&&a[0]&&a[0].sciName&&a[0].sciName)
+			.catch(()=>undefined)
+		: Promise.resolve(undefined);
+}
+
 function render() {
 	data.species = Object.fromEntries(Object.entries(data.species).sort((a,b) => compare(a[1].name, b[1].name)));
 
@@ -355,8 +373,25 @@ function render() {
 	});
 	updateSpeciesForm.find("select[data-field=key]").select2();
 	updateSpeciesForm.find("select[data-field=family]").select2();
-	// trim and lowercase latin name on change
-	updateSpeciesForm.find("input[data-field=latin-name]").change(function(){let v=$(this).val(); if(v!=null && v!=undefined)$(this).val(v.toLowerCase().trim());});
+	updateSpeciesForm.find("input[data-field=name]").change(function(){
+		let v=$(this).val(); 
+		if(!v || !v.trim()) return; 
+		let tagsInput = updateSpeciesForm.find("input[data-field=tags]");
+		if(!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
+		fetchEbirdCode(v).then(c => { 
+			if(c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
+				updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
+		});
+	});
+	updateSpeciesForm.find("input[data-field=ebird-code]").change(function() {
+		let v=$(this).val(); 
+		if(!v || !v.trim()) return;
+		fetchEbirdSciName(v).then(s => s && updateSpeciesForm.find("input[data-field=latin-name]").val(s).change());
+	});
+	updateSpeciesForm.find("input[data-field=latin-name]").change(function() {
+		let v=$(this).val();
+		if(v!=null && v!=undefined)$(this).val(v.toLowerCase().trim());
+	});
 
 	// sightings table
 	const table = $("#sightings-table");
