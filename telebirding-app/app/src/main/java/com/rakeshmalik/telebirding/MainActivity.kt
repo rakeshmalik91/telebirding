@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.util.AttributeSet
 import android.webkit.JavascriptInterface
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
@@ -66,6 +67,33 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * A custom SwipeRefreshLayout that can be told by Javascript whether a nested scrollable
+ * element is being touched and can be scrolled up.
+ */
+class CustomSwipeRefreshLayout @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null
+) : SwipeRefreshLayout(context, attrs) {
+
+    @Volatile
+    var nestedCanScrollUp = false
+    private var webView: WebView? = null
+
+    fun setWebView(webView: WebView) {
+        this.webView = webView
+    }
+
+    override fun canChildScrollUp(): Boolean {
+        // If JS tells us the nested element can scroll, we return true to prevent refresh.
+        if (nestedCanScrollUp) {
+            return true
+        }
+        // Otherwise, fall back to the default behavior of checking the WebView's scroll position.
+        return webView?.scrollY ?: 0 > 0
+    }
+}
+
 @Composable
 fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     var lastFailedUrl by remember { mutableStateOf<String?>(null) }
@@ -76,6 +104,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
         }
     }
     var webViewForScrolling by remember { mutableStateOf<WebView?>(null) }
+    var swipeRefreshLayout by remember { mutableStateOf<CustomSwipeRefreshLayout?>(null) }
 
 
     Box(
@@ -92,7 +121,8 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                     }
                 }
                 webViewForScrolling = webView
-                val swipeRefreshLayout = SwipeRefreshLayout(context).apply {
+                val localSwipeRefreshLayout = CustomSwipeRefreshLayout(context).apply {
+                    setWebView(webView)
                     addView(webView)
                     setOnRefreshListener {
                         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -108,12 +138,13 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         }
                     }
                 }
+                swipeRefreshLayout = localSwipeRefreshLayout
 
                 webView.apply {
                     webViewClient = object : WebViewClient() {
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
-                            swipeRefreshLayout.isRefreshing = false
+                            swipeRefreshLayout?.isRefreshing = false
                             // Ensure the viewport is set correctly for mobile devices.
                             view?.evaluateJavascript("""
                                 (function() {
@@ -124,6 +155,63 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                         document.head.appendChild(viewport);
                                     }
                                     viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover');
+                                })();
+                            """.trimIndent(), null)
+
+                            // Inject JS to handle nested scrolling
+                            view?.evaluateJavascript("""
+                                (function() {
+                                    var scrollableElement = null;
+
+                                    // Find the first scrollable parent of an element
+                                    function findScrollableElement(element) {
+                                        if (!element || element === document.body || element === document.documentElement) {
+                                            return null;
+                                        }
+                                        const style = window.getComputedStyle(element);
+                                        const isOverFlowYScroll = style.overflowY === 'scroll' || style.overflowY === 'auto';
+                                        if (isOverFlowYScroll && element.scrollHeight > element.clientHeight) {
+                                            return element;
+                                        }
+                                        return findScrollableElement(element.parentElement);
+                                    }
+
+                                    // Check the state of the scrollable element and notify Android
+                                    function updateScrollState() {
+                                        let canScroll = false;
+                                        if (scrollableElement && scrollableElement.scrollTop > 0) {
+                                            canScroll = true;
+                                        }
+                                        if (window.Android && window.Android.setNestedCanScrollUp) {
+                                            window.Android.setNestedCanScrollUp(canScroll);
+                                        }
+                                    }
+
+                                    // On touch start, find the scrollable element
+                                    document.body.addEventListener('touchstart', function(event) {
+                                        scrollableElement = findScrollableElement(event.target);
+                                        updateScrollState(); // Initial check
+                                    }, { passive: true });
+
+                                    // As the user moves their finger, continuously update the scroll state
+                                    document.body.addEventListener('touchmove', function() {
+                                        if (scrollableElement) {
+                                            updateScrollState();
+                                        }
+                                    }, { passive: true });
+
+                                    // When the touch ends, reset everything
+                                    const endTouch = () => {
+                                        if (scrollableElement) {
+                                            if (window.Android && window.Android.setNestedCanScrollUp) {
+                                                window.Android.setNestedCanScrollUp(false);
+                                            }
+                                            scrollableElement = null;
+                                        }
+                                    };
+
+                                    document.body.addEventListener('touchend', endTouch, { passive: true });
+                                    document.body.addEventListener('touchcancel', endTouch, { passive: true });
                                 })();
                             """.trimIndent(), null)
                         }
@@ -164,6 +252,11 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                     this@apply.post { loadUrl(it) }
                                 }
                             }
+
+                            @JavascriptInterface
+                            fun setNestedCanScrollUp(canScroll: Boolean) {
+                                swipeRefreshLayout?.nestedCanScrollUp = canScroll
+                            }
                         },
                         "Android"
                     )
@@ -171,7 +264,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                     onWebViewCreated(this)
                 }
 
-                swipeRefreshLayout
+                localSwipeRefreshLayout
             },
             modifier = Modifier
                 .fillMaxSize()
