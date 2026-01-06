@@ -15,19 +15,30 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rakeshmalik.telebirding.ui.theme.TelebirdingTheme
@@ -58,6 +69,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     var lastFailedUrl by remember { mutableStateOf<String?>(null) }
+    val scrollY = remember { mutableStateOf(0) }
+    val showButton by remember {
+        derivedStateOf {
+            scrollY.value > 2500  // Show button after scrolling down
+        }
+    }
+    var webViewForScrolling by remember { mutableStateOf<WebView?>(null) }
+
 
     Box(
         modifier = Modifier
@@ -66,7 +85,13 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     ) {
         AndroidView(
             factory = { context ->
-                val webView = WebView(context)
+                val webView = object : WebView(context) {
+                    override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
+                        super.onScrollChanged(l, t, oldl, oldt)
+                        scrollY.value = t
+                    }
+                }
+                webViewForScrolling = webView
                 val swipeRefreshLayout = SwipeRefreshLayout(context).apply {
                     addView(webView)
                     setOnRefreshListener {
@@ -152,5 +177,22 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.statusBars) // Add padding to start below status bar
         )
+
+        AnimatedVisibility(
+            visible = showButton,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp),
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            FloatingActionButton(
+                onClick = {
+                    webViewForScrolling?.scrollTo(0, 0)
+                },
+            ) {
+                Icon(Icons.Filled.ArrowUpward, contentDescription = "Scroll to top")
+            }
+        }
     }
 }
