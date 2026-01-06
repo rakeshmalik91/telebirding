@@ -102,6 +102,9 @@
 	.explore-menu .sighting-family span.count {
 		right: 30px !important;
 	}
+	.explore-menu .sighting-family:hover img {
+		transform: none !important;
+	}
 
 	.filter-panel {
 		width: 100vw;
