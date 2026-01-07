@@ -1,6 +1,12 @@
 {
     "featured": [
         {
+            "src": "featured-images/white-stork.jpg",
+            "titleLine1": "White Stork, Bajana Wildass Sanctuary",
+            "titleLine2": "© Rakesh Malik, 2026",
+            "alt": "White Stork"
+        },
+        {
             "src": "featured-images/mountain-hawk-eagle.jpg",
             "titleLine1": "Mountain Hawk-Eagle, Chafi",
             "titleLine2": "© Rakesh Malik, 2023",
