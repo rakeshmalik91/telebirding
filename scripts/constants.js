@@ -99,7 +99,8 @@ const OPT_WEATHER = {
 	"Hazy": "Hazy",
 	"Foggy": "Foggy",
 	"Cloudy": "Cloudy",
-	"Snowy": "Snowy"
+	"Snowy": "Snowy",
+	"Stormy": "Stormy"
 };
 
 const RATING_DISPLAY_NAME = {

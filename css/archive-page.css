@@ -208,7 +208,10 @@ span.text-seperator {
   background-position: -80px -20px;
 }
 .sighting-desc.weather.hazy-day {
-  background-position: -60px -30px;
+  background-position: -60px -40px;
+}
+.sighting-desc.weather.stormy-day {
+  background-position: -40px -40px;
 }
 .sighting-desc.weather.night {
   background-position: -20px -0px;
