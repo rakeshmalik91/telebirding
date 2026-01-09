@@ -269,8 +269,9 @@ function sightingMatches(sighting, searchKey) {
 	searchKey = searchKey.toLowerCase().trim();
 	if(searchKey == "hidden") {
 		return sighting.hidden;
-	}
-	if(searchKey.match(/^rating=/i)) {
+	} else if(searchKey == "unconfirmed") {
+		return sighting.unconfirmed;
+	} else if(searchKey.match(/^rating=/i)) {
 		return sighting.rating == searchKey.split("=")[1] || 0;
 	}
 	return sighting.key.indexOf(searchKey) >= 0
