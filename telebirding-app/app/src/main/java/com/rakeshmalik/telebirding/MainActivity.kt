@@ -1,12 +1,15 @@
 package com.rakeshmalik.telebirding
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.os.Message
 import android.util.AttributeSet
 import android.webkit.JavascriptInterface
+import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -141,6 +144,21 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                 swipeRefreshLayout = localSwipeRefreshLayout
 
                 webView.apply {
+                    webChromeClient = object : WebChromeClient() {
+                        override fun onCreateWindow(view: WebView, isDialog: Boolean, isUserGesture: Boolean, resultMsg: Message): Boolean {
+                            val newWebView = WebView(view.context)
+                            newWebView.webViewClient = object : WebViewClient() {
+                                override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+                                    val browserIntent = Intent(Intent.ACTION_VIEW, request.url)
+                                    context.startActivity(browserIntent)
+                                    return true
+                                }
+                            }
+                            (resultMsg.obj as WebView.WebViewTransport).webView = newWebView
+                            resultMsg.sendToTarget()
+                            return true
+                        }
+                    }
                     webViewClient = object : WebViewClient() {
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
@@ -236,6 +254,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         builtInZoomControls = true
                         displayZoomControls = false
                         setSupportZoom(true)
+                        setSupportMultipleWindows(true)
                         javaScriptCanOpenWindowsAutomatically = true
                         mediaPlaybackRequiresUserGesture = false
                         allowFileAccess = true
