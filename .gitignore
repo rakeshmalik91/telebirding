@@ -16,6 +16,7 @@ telebirding-app/local.properties
 telebirding-app/.gradle/
 telebirding-app/build/
 telebirding-app/app/build/
+telebirding-app/app/release/
 telebirding-app/.idea/
 telebirding-app/*.iml
 telebirding-app/app/*.iml
