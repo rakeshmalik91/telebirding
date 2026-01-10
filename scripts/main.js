@@ -1021,6 +1021,9 @@ function showPage(page, params, isPopstate) {
 	}
 
 	currentPage = page;
+	if([ARCHIVE, EXPLORE_PAGE, MAP].includes(page)) {
+		showLoader();
+	}
 	var files = [
 		getData("data/" + currentMode + "-sightings.json"),
 		getData("data/" + currentMode + "-species.json"),
@@ -1046,6 +1049,13 @@ function showPage(page, params, isPopstate) {
 			fillStats();
 			renderSightings(0, DATA_PER_PAGE);
 			break;
+		  case EXPLORE_MENU:
+			$('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
+			$('.home, .home .explore-menu').show();
+			$('.home .featured').removeClass('hidden');
+			setFilters({});
+			renderExploreMenu();
+			break;
 		  case EXPLORE_PAGE:
 			$('.home .explore-menu, .home .menu, .about-page, .filter-panel .filter, .filter-panel .sortby, .videos, .home-page').hide();
 			$('.home, .sightings-list, .filter-panel, .filter-panel .stats').show();
@@ -1054,13 +1064,6 @@ function showPage(page, params, isPopstate) {
 			filterAndSortData(filter, params);
 			fillStats();
 			renderSightings(0, DATA_PER_PAGE, params);
-			break;
-		  case EXPLORE_MENU:
-			$('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
-			$('.home, .home .explore-menu').show();
-			$('.home .featured').removeClass('hidden');
-			setFilters({});
-			renderExploreMenu();
 			break;
 		  case MAP_MENU:
 			$('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
@@ -1106,6 +1109,7 @@ function showPage(page, params, isPopstate) {
 		if(currentPage != HOME) {
 			$('.scroll-up-highlighter').remove();
 		}
+		hideLoader();
 	});
 }
 
@@ -1186,7 +1190,32 @@ function setSiteLogo() {
 	jQuery('a.site-logo img').attr("src", MODE[currentMode].logo).attr("title", MODE[currentMode].title).attr("alt", MODE[currentMode].title);
 }
 
+function ensurePageLoader() {
+	if(jQuery('#page-loader').length) return;
+	const loaderHtml = '<div id="page-loader" aria-hidden="true"><div class="page-loader-overlay"></div><div class="spinner" role="status" aria-label="Loading"></div></div>';
+	jQuery('body').append(loaderHtml);
+}
+
+let _pageLoaderShownAt = 0;
+const PAGE_LOADER_MIN_MS = 150; // keep loader visible at least this long to ensure it paints
+function showLoader() {
+	ensurePageLoader();
+	jQuery('#page-loader').show();
+	_pageLoaderShownAt = Date.now();
+}
+function hideLoader() {
+	const elapsed = Date.now() - (_pageLoaderShownAt || 0);
+	const remaining = PAGE_LOADER_MIN_MS - elapsed;
+	if(remaining > 0) {
+		setTimeout(function() { jQuery('#page-loader').fadeOut(150); _pageLoaderShownAt = 0; }, remaining);
+	} else {
+		jQuery('#page-loader').fadeOut(150);
+		_pageLoaderShownAt = 0;
+	}
+}
+
 (function($) {
+	showLoader();
 	retrieveStateFromUrlParams();
 	showPage(currentPage, { family: decodeURIComponent(getUrlParams().family), newspecies: decodeURIComponent(getUrlParams().newspecies), rating: ratingFilter }, false);
 
@@ -1205,6 +1234,7 @@ function isAdmin() {
 
 
 $(document).ready(function() {
+	showLoader();
 	setSiteLogo();
 	
 	//feed infinite scroll
