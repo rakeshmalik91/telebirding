@@ -1,3 +1,6 @@
+REM this script will upload missing data/site-data.json, data/places.json and featured-images/* to Firebase Storage
+REM it will also scan index.html for featured images and prompt to delete any files under featured-images/ that are not referenced (asks per-file confirmation)
+
 @echo off
 
 REM Ensure Google Cloud credentials are available

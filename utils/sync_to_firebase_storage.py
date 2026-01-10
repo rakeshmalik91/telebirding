@@ -16,6 +16,7 @@ import urllib.request
 import urllib.parse
 from pathlib import Path
 import json
+import re
 import mimetypes
 
 # Google Cloud Storage client
@@ -150,6 +151,39 @@ def _collect_referenced_featured_images_from_site_data():
     return refs
 
 
+def _collect_referenced_featured_images_from_html_files():
+    """Return set of Paths (absolute) for featured images referenced in all .html files in ROOT"""
+    refs = set()
+    # check all .html files in the root folder only (avoid node_modules etc if any)
+    for html_file in ROOT.glob("*.html"):
+        content = None
+        for enc in ['utf-16', 'utf-8', 'cp1252', 'latin-1']:
+            try:
+                content = html_file.read_text(encoding=enc)
+                break
+            except Exception:
+                continue
+
+        if content is None:
+            print(f"Warning: Could not read {html_file.name} with common encodings. Skipping.")
+            continue
+
+        # Regex to find string starting with featured-images/ or featured-images%2F
+        match_iter = re.finditer(r'(featured-images(?:/|%2F)[^\s"\'\)]+)', content)
+        for m in match_iter:
+            path_str = m.group(1)
+            # Decode URL (e.g. %2F -> /)
+            decoded_path = urllib.parse.unquote(path_str)
+            # Remove query parameters
+            if '?' in decoded_path:
+                decoded_path = decoded_path.split('?')[0]
+                
+            abs_path = (ROOT / decoded_path).resolve()
+            refs.add(abs_path)
+    
+    return refs
+
+
 def cleanup_unused_featured_images():
     """Detect unused featured-images and prompt to delete the remote objects.
 
@@ -161,6 +195,7 @@ def cleanup_unused_featured_images():
     Local files are left untouched by this operation.
     """
     referenced = _collect_referenced_featured_images_from_site_data()
+    referenced.update(_collect_referenced_featured_images_from_html_files())
     referenced_rel = set(p.relative_to(ROOT).as_posix() for p in referenced)
 
     # List blobs under featured-images/ prefix on the remote bucket

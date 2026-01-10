@@ -42,7 +42,7 @@ def _collect_referenced_images(root):
 		def walk(o):
 			if isinstance(o, dict):
 				for k, v in o.items():
-					if k == 'src' and isinstance(v, str) and (v.startswith('images/') or v.startswith('featured-images/')):
+					if k == 'src' and isinstance(v, str) and (v.startswith('images/')):
 						refs.add((root / v).resolve())
 					else:
 						walk(v)
@@ -51,8 +51,8 @@ def _collect_referenced_images(root):
 					walk(i)
 		walk(obj)
 
-	# 2) Search project text files for occurrences of images/ or featured-images/
-	pattern = re.compile(r"(?:images|featured-images)/[A-Za-z0-9_\-\./()\[\]@,]+?\.(?:jpg|jpeg|png|gif|webp|svg|bmp|tif|tiff|ico|heic)", re.I)
+	# 2) Search project text files for occurrences of images/
+	pattern = re.compile(r"(?:images)/[A-Za-z0-9_\-\./()\[\]@,]+?\.(?:jpg|jpeg|png|gif|webp|svg|bmp|tif|tiff|ico|heic)", re.I)
 	for p in root.rglob('*.*'):
 		# skip reading image binaries themselves
 		if p.suffix.lower() in {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.bmp', '.tif', '.tiff', '.ico', '.heic'}:
@@ -67,7 +67,7 @@ def _collect_referenced_images(root):
 	return refs
 
 
-def _find_local_image_files(root, folders=('images', 'featured-images')):
+def _find_local_image_files(root, folders=('images')):
 	"""Return list of local image Paths under the specified folders."""
 	exts = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.bmp', '.tif', '.tiff', '.ico', '.heic'}
 	files = []
@@ -81,7 +81,7 @@ def _find_local_image_files(root, folders=('images', 'featured-images')):
 	return files
 
 
-def _cleanup_unused_images(root, yes=False, folders=('images', 'featured-images')):
+def _cleanup_unused_images(root, yes=False, folders=('images')):
 	"""Detect unused local images and optionally delete them after confirmation.
 	Returns number of files deleted."""
 	refs = _collect_referenced_images(root)

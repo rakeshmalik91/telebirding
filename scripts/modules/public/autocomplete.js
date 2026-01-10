@@ -10,7 +10,7 @@ export class Autocomplete {
     init() {
         if (!this.inp) return;
 
-        // Remove any existing autocomplete list associated with this input
+        // Remove any existing autocomplete list
         this.closeAllLists();
 
         // Input event listener
