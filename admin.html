@@ -12,20 +12,21 @@
 		<link rel="stylesheet" charset="UTF-8" href="css/animations.css">
 		<link rel="stylesheet" charset="UTF-8" href="css/admin.css">
 		
+		<!-- jQuery, moment, and select2 (keep as regular scripts for compatibility) -->
 		<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
 		<link rel="stylesheet" charset="UTF-8" href="lib/css/select2.min.css">
 		<script type="text/javascript" charset="UTF-8" src="lib/js/select2.min.js"></script>
-
-		<script type="text/javascript" charset="UTF-8" src="scripts/constants.js"></script>
-		<script type="text/javascript" charset="UTF-8" src="scripts/util/util.js"></script>
-		<script type="text/javascript" charset="UTF-8" src="scripts/admin.js"></script>
-
+		
+		<!-- Firebase scripts (not ES modules) -->
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
+		
+		<!-- Admin module (loads all dependencies) -->
+		<script type="module" src="scripts/admin.js"></script>
 
 	</head>
 	<body>

@@ -1,6 +1,9 @@
-var carousalVisibleIndex;
+// Import dependencies (jQuery is loaded as regular script in HTML)
+import { readJSONFile, getData, getMedia } from './util/util.js';
 
-function showCarousalImage(index) {
+export var carousalVisibleIndex;
+
+export function showCarousalImage(index) {
 	let images = $('.home .featured .image');
 	$(images[carousalVisibleIndex]).hide();
 	carousalVisibleIndex = index;
@@ -9,29 +12,29 @@ function showCarousalImage(index) {
 	$($('.home .featured .carousal-buttons button').get(carousalVisibleIndex)).addClass('active-carousal-button');
 }
 
-function playCarousal() {
+export function playCarousal() {
 	let images = $('.home .featured .image');
 	showCarousalImage((carousalVisibleIndex + 1 + images.length) % images.length);
 }
 
-function renderHomePageCarousal(featured) {
-	featured.forEach(function(image, index) {
+export function renderHomePageCarousal(featured) {
+	featured.forEach(function (image, index) {
 		$('.home .featured .images').append('<div class="image carousal-animation" style="opacity:0;"><img src="' + getMedia(image.src) + '" alt="' + image.alt + '" title="' + image.alt + '"/><span class="title">' + image.titleLine1 + '<br>' + image.titleLine2 + '</span></div>');
 		$('.home .featured .carousal-buttons').append('<button type="button" onclick="showCarousalImage(' + index + ')"></button>');
 	});
 }
 
-function renderTrips(trips) {
+export function renderTrips(trips) {
 	const div = $('.videos');
-	trips.forEach(function(trip) {
-		const videoHtml = '<iframe class="youtube" src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" allowscriptaccess="always"></iframe>';
+	trips.forEach(function (trip) {
+		const videoHtml = '<iframe class="youtube" src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" allowscriptaccess="always"></iframe>';
 		const video = $(videoHtml).get(0);
 		$('.videos').append('<div class="video"><h1>' + trip.title + '</h1>' + video.outerHTML + '</div>');
 	});
 }
 
-$(document).ready(function() {
-	readJSONFile(getData('data/site-data.json'), function(json) {
+$(document).ready(function () {
+	readJSONFile(getData('data/site-data.json'), function (json) {
 		renderHomePageCarousal(json.featured);
 
 		carousalVisibleIndex = -1;
@@ -47,3 +50,6 @@ $(document).ready(function() {
 		renderTrips(json.trips);
 	});
 });
+
+// Expose function for onclick handlers
+window.showCarousalImage = showCarousalImage;

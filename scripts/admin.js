@@ -1,3 +1,7 @@
+// Import dependencies (jQuery and moment are loaded as regular scripts in HTML)
+import { MODE_BIRD, MODE_INSECT, MODE, BACKUP_DATE_FORMAT, DEFAULT_AUTHOR, DATA_DATE_FORMAT, OPT_RATING, OPT_GENDER, OPT_AGE, OPT_PLUMAGE, OPT_TIME_OF_DAY, OPT_WEATHER } from './constants.js';
+import { getUrlParams, readJSONFiles, resizeImage, getFirebase, setCookie, getCookie, clearFileCache, getData, getMedia, compare, eraseCookie } from './util/util.js';
+
 let data = {};
 
 let OFFSET = 0;
@@ -12,7 +16,7 @@ const currentMode = getUrlParams().mode || MODE_BIRD;
 let lastUpdatedSpecies = (currentMode == MODE_INSECT) ? "unidentified" : 'rock-pigeon';
 
 function switchMode() {
-	if(currentMode == MODE_BIRD) {
+	if (currentMode == MODE_BIRD) {
 		window.location.href = window.location.origin + "/admin?mode=" + MODE_INSECT;
 	} else {
 		window.location.href = window.location.origin + "/admin?mode=" + MODE_BIRD;
@@ -52,12 +56,12 @@ function uploadJSONData(type) {
 	//fileData = JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n');
 
 	fileData = JSON.stringify(fileData);
-	if(fileData.length < 100) {
+	if (fileData.length < 100) {
 		alert("Unknown error while uploading (file data too small) ...");
 		return;
 	}
 	fileData = [fileData];
-	
+
 
 	const file = new File(fileData, type + ".json");
 	firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
@@ -83,7 +87,7 @@ function backup() {
 			.ref("backup/" + date + "/" + fileName)
 			.put(new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName))
 			.then(() => {
-				if(++backedUp == filesToBackup.length) {
+				if (++backedUp == filesToBackup.length) {
 					refresh();
 					console.log("Backup completed");
 				}
@@ -95,7 +99,7 @@ let syncRef;
 function syncSightingsData(scheduleAfter) {
 	$('.save').removeAttr("disabled");
 	clearTimeout(syncRef);
-	syncRef = setTimeout(function() {
+	syncRef = setTimeout(function () {
 		uploadJSONData('sightings');
 		syncRef = undefined;
 		$('.save').attr("disabled", "disabled");
@@ -105,23 +109,23 @@ function syncSightingsData(scheduleAfter) {
 function uploadMedia(sightingKey, files) {
 	showOverlay("Uploading Media");
 	let watermark = null;
-	if($('input[name=watermark-on]').is(":checked")) {
+	if ($('input[name=watermark-on]').is(":checked")) {
 		watermark = {
 			text: $('input[name=watermark]').val().replace("${author}", (data.sightings.filter(b => b.key == sightingKey)[0].author || DEFAULT_AUTHOR)).trim(),
 			color: $('input[name=watermark-color]').val() + "33"
 		};
 	}
-	Array.from(files).forEach(function(file) {
+	Array.from(files).forEach(function (file) {
 		let mediaSrc;
-		if(file.type.match(/image.*/)) {
+		if (file.type.match(/image.*/)) {
 			const speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
 			mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
 			console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
 			resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
 				firebase.storage().ref(mediaSrc).put(resizedImage).then(() => {
 					console.log("uploaded image " + mediaSrc);
-					data.sightings.forEach(function(sighting) {
-						if(sighting.key == sightingKey) {
+					data.sightings.forEach(function (sighting) {
+						if (sighting.key == sightingKey) {
 							sighting.media.push({
 								src: mediaSrc
 							});
@@ -138,20 +142,20 @@ function uploadMedia(sightingKey, files) {
 }
 
 function deleteMedia(sightingKey, mediaSrc) {
-	if(!mediaSrc.toLowerCase().endsWith(".jpg")) {
+	if (!mediaSrc.toLowerCase().endsWith(".jpg")) {
 		alert("Unsupported!!!");
 		return;
 	}
-	if(confirm("You are about to delete this media.")) {
+	if (confirm("You are about to delete this media.")) {
 		showOverlay("Deleting Media");
-		data.sightings.forEach(function(sighting) {
-			if(sighting.key != sightingKey) return;
+		data.sightings.forEach(function (sighting) {
+			if (sighting.key != sightingKey) return;
 			sighting.media = sighting.media.filter(m => m.src != mediaSrc);
 		});
 		firebase.storage().ref(mediaSrc).delete().then(() => {
 			syncSightingsData(0);
 		}, (error) => {
-			if(error.code === 'storage/object-not-found') {
+			if (error.code === 'storage/object-not-found') {
 				syncSightingsData(0);
 			} else {
 				alert(error.message);
@@ -161,11 +165,11 @@ function deleteMedia(sightingKey, mediaSrc) {
 }
 
 function moveMediaLeft(sightingKey, mediaSrc) {
-	data.sightings.forEach(function(sighting) {
-		if(sighting.key != sightingKey) return;
+	data.sightings.forEach(function (sighting) {
+		if (sighting.key != sightingKey) return;
 		let index = sighting.media.map(m => m.src).indexOf(mediaSrc);
-		if(index > 0) {
-			sighting.media = [sighting.media.slice(0, index-1), [sighting.media[index]], [sighting.media[index-1]], sighting.media.slice(index+1)].flat();
+		if (index > 0) {
+			sighting.media = [sighting.media.slice(0, index - 1), [sighting.media[index]], [sighting.media[index - 1]], sighting.media.slice(index + 1)].flat();
 			syncSightingsData(0);
 			return;
 		}
@@ -173,11 +177,11 @@ function moveMediaLeft(sightingKey, mediaSrc) {
 }
 
 function updateField(sightingKey, field, value) {
-	data.sightings.forEach(function(sighting) {
-		if(sighting.key != sightingKey) return;
-		if(field == 'date') {
+	data.sightings.forEach(function (sighting) {
+		if (sighting.key != sightingKey) return;
+		if (field == 'date') {
 			sighting[field] = moment(value, 'yyyy-mm-DD').format('DD-mm-yyyy');
-		} else if(field == 'hidden') {
+		} else if (field == 'hidden') {
 			sighting[field] = !value;
 		} else {
 			sighting[field] = value;
@@ -187,10 +191,10 @@ function updateField(sightingKey, field, value) {
 }
 
 function updateMediaProperty(sightingKey, mediaSrc, property, value) {
-	data.sightings.forEach(function(sighting) {
-		if(sighting.key != sightingKey) return;
+	data.sightings.forEach(function (sighting) {
+		if (sighting.key != sightingKey) return;
 		sighting.media.forEach(media => {
-			if(media.src == mediaSrc) {
+			if (media.src == mediaSrc) {
 				media[property] = value;
 			}
 		});
@@ -220,8 +224,8 @@ function addSighting() {
 }
 
 function deleteSighting(sightingKey) {
-	if(confirm("You are about to delete this sighting.")) {
-		data.sightings.filter(b => b.key == sightingKey)[0].media.forEach(function(media) {
+	if (confirm("You are about to delete this sighting.")) {
+		data.sightings.filter(b => b.key == sightingKey)[0].media.forEach(function (media) {
 			deleteMedia(sightingKey, media.src);
 		});
 		data.sightings = data.sightings.filter(b => b.key != sightingKey);
@@ -230,7 +234,7 @@ function deleteSighting(sightingKey) {
 }
 
 function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
-	if(!name || !tags || !family) {
+	if (!name || !tags || !family) {
 		alert("All fields are mandatory");
 	} else {
 		name = name.replaceAll("’", "'");
@@ -251,11 +255,11 @@ function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
 }
 
 function addFamily(name) {
-	if(!name) {
+	if (!name) {
 		alert("Name is mandatory");
 	} else {
 		data.families = data.families.filter(f => f.name != name);
-		if(name.trim()) {
+		if (name.trim()) {
 			data.families.push({
 				name: name
 			});
@@ -267,16 +271,16 @@ function addFamily(name) {
 
 function sightingMatches(sighting, searchKey) {
 	searchKey = searchKey.toLowerCase().trim();
-	if(searchKey == "hidden") {
+	if (searchKey == "hidden") {
 		return sighting.hidden;
-	} else if(searchKey == "unconfirmed") {
+	} else if (searchKey == "unconfirmed") {
 		return sighting.unconfirmed;
-	} else if(searchKey.match(/^rating=/i)) {
+	} else if (searchKey.match(/^rating=/i)) {
 		return sighting.rating == searchKey.split("=")[1] || 0;
 	}
 	return sighting.key.indexOf(searchKey) >= 0
 		|| data.species[sighting.species].name.toLowerCase().indexOf(searchKey) >= 0
-		|| data.species[sighting.species].tags.map(t => t.toLowerCase().indexOf(searchKey) >= 0).reduce((a,b) => a || b)
+		|| data.species[sighting.species].tags.map(t => t.toLowerCase().indexOf(searchKey) >= 0).reduce((a, b) => a || b)
 		|| (sighting.place && sighting.place.toLowerCase().indexOf(searchKey) >= 0)
 		|| (sighting.city && sighting.city.toLowerCase().indexOf(searchKey) >= 0)
 		|| sighting.state.toLowerCase().indexOf(searchKey) >= 0
@@ -290,11 +294,11 @@ function sightingMatches(sighting, searchKey) {
 function moveSighting(sightingKey, value) {
 	let sighting = data.sightings.filter(b => b.key == sightingKey)[0];
 	let index = data.sightings.map(b => b.key).indexOf(sightingKey);
-	if(value > 0 && index < data.sightings.length-value) { // move down
-		data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index+1, index+value+1), [sighting], data.sightings.slice(index+value+1)].flat();
+	if (value > 0 && index < data.sightings.length - value) { // move down
+		data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index + 1, index + value + 1), [sighting], data.sightings.slice(index + value + 1)].flat();
 		syncSightingsData(0);
-	} else if(value < 0 && index >= value) { // move up
-		data.sightings = [data.sightings.slice(0, index+value), [sighting], data.sightings.slice(index+value, index), data.sightings.slice(index+1)].flat();
+	} else if (value < 0 && index >= value) { // move up
+		data.sightings = [data.sightings.slice(0, index + value), [sighting], data.sightings.slice(index + value, index), data.sightings.slice(index + 1)].flat();
 		syncSightingsData(0);
 	}
 }
@@ -303,7 +307,7 @@ function fillUpdateSpeciesForm() {
 	const updateSpeciesForm = $("#update-species-form");
 	let key = updateSpeciesForm.find("select[data-field=key]").val();
 	updateSpeciesForm.find("select[data-field=family] option").removeAttr("selected");
-	if(key) {
+	if (key) {
 		const species = data.species[key];
 		updateSpeciesForm.find("input[data-field=name]").val(species.name);
 		updateSpeciesForm.find("input[data-field=tags]").val(species.tags.join(", "));
@@ -323,34 +327,34 @@ function fillUpdateSpeciesForm() {
 }
 
 function sortByDate() {
-	data.sightings.sort((a,b) => compare(moment(b.date, DATA_DATE_FORMAT), moment(a.date, DATA_DATE_FORMAT)));
+	data.sightings.sort((a, b) => compare(moment(b.date, DATA_DATE_FORMAT), moment(a.date, DATA_DATE_FORMAT)));
 	syncSightingsData(0);
 }
 
 function fetchEbirdCode(name) {
 	return name
-		? fetch('https://api.ebird.org/v2/ref/taxon/find?cat=species&key=jfekjedvescr&locale=en&q='+encodeURIComponent(name.trim()))
-			.then(r=>r.json())
-			.then(a=>a&&a[0]&&a[0].code)
-			.catch(()=>undefined)
+		? fetch('https://api.ebird.org/v2/ref/taxon/find?cat=species&key=jfekjedvescr&locale=en&q=' + encodeURIComponent(name.trim()))
+			.then(r => r.json())
+			.then(a => a && a[0] && a[0].code)
+			.catch(() => undefined)
 		: Promise.resolve(undefined);
 }
 
 function fetchEbirdSciName(code) {
 	return code
-		? fetch('https://api.ebird.org/v2/ref/taxonomy/ebird?cat=species&fmt=json&species='+encodeURIComponent(code.trim())+'&locale=en')
-			.then(r=>r.json())
-			.then(a=>a&&a[0]&&a[0].sciName&&a[0].sciName)
-			.catch(()=>undefined)
+		? fetch('https://api.ebird.org/v2/ref/taxonomy/ebird?cat=species&fmt=json&species=' + encodeURIComponent(code.trim()) + '&locale=en')
+			.then(r => r.json())
+			.then(a => a && a[0] && a[0].sciName && a[0].sciName)
+			.catch(() => undefined)
 		: Promise.resolve(undefined);
 }
 
 function render() {
-	data.species = Object.fromEntries(Object.entries(data.species).sort((a,b) => compare(a[1].name, b[1].name)));
+	data.species = Object.fromEntries(Object.entries(data.species).sort((a, b) => compare(a[1].name, b[1].name)));
 
 	// add family form
 	const addFamilyForm = $("#add-family-form");
-	addFamilyForm.find("button.submit").click(function() {
+	addFamilyForm.find("button.submit").click(function () {
 		addFamily(addFamilyForm.find("input[data-field=name]").val());
 	});
 
@@ -358,57 +362,57 @@ function render() {
 	const updateSpeciesForm = $("#update-species-form");
 	updateSpeciesForm.find("select[data-field=family], select[data-field=key]").html('');
 	updateSpeciesForm.find("select[data-field=family]").append("<option value=''>-</option>");
-	data.families.forEach(function(family) {
+	data.families.forEach(function (family) {
 		updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
 	});
 	updateSpeciesForm.find("select[data-field=key]").append("<option value=''>New (auto-generated)</option>");
-	Object.values(data.species).forEach(function(species, i) {
+	Object.values(data.species).forEach(function (species, i) {
 		updateSpeciesForm.find("select[data-field=key]").append("<option value='" + species.key + "'>" + species.key + "</option>");
 	});
 	fillUpdateSpeciesForm();
 	updateSpeciesForm.find("select[data-field=key]").change(fillUpdateSpeciesForm);
-	updateSpeciesForm.find("button.submit").click(function() {
-		saveSpecies(updateSpeciesForm.find("select[data-field=key]").val(), updateSpeciesForm.find("input[data-field=name]").val(), 
+	updateSpeciesForm.find("button.submit").click(function () {
+		saveSpecies(updateSpeciesForm.find("select[data-field=key]").val(), updateSpeciesForm.find("input[data-field=name]").val(),
 			updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val(),
 			updateSpeciesForm.find("input[data-field=latin-name]").val(), updateSpeciesForm.find("input[data-field=ebird-code]").val());
 	});
 	updateSpeciesForm.find("select[data-field=key]").select2();
 	updateSpeciesForm.find("select[data-field=family]").select2();
-	updateSpeciesForm.find("input[data-field=name]").change(function(){
-		let v=$(this).val(); 
-		if(!v || !v.trim()) return; 
+	updateSpeciesForm.find("input[data-field=name]").change(function () {
+		let v = $(this).val();
+		if (!v || !v.trim()) return;
 		let tagsInput = updateSpeciesForm.find("input[data-field=tags]");
-		if(!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
-		fetchEbirdCode(v).then(c => { 
-			if(c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
+		if (!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
+		fetchEbirdCode(v).then(c => {
+			if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
 				updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
 		});
 	});
-	updateSpeciesForm.find("input[data-field=ebird-code]").change(function() {
-		let v=$(this).val(); 
-		if(!v || !v.trim()) return;
+	updateSpeciesForm.find("input[data-field=ebird-code]").change(function () {
+		let v = $(this).val();
+		if (!v || !v.trim()) return;
 		fetchEbirdSciName(v).then(s => s && updateSpeciesForm.find("input[data-field=latin-name]").val(s).change());
 	});
-	updateSpeciesForm.find("input[data-field=latin-name]").change(function() {
-		let v=$(this).val();
-		if(v!=null && v!=undefined)$(this).val(v.toLowerCase().trim());
+	updateSpeciesForm.find("input[data-field=latin-name]").change(function () {
+		let v = $(this).val();
+		if (v != null && v != undefined) $(this).val(v.toLowerCase().trim());
 	});
 
 	// sightings table
 	const table = $("#sightings-table");
 	table.html("");
 	table.append("<tr>" +
-			"<th class='noborder'></th>" +
-			"<th>ID</th>" +
-			"<th>Species</th>" +
-			"<th>Media</th>" +
-			"<th>Date & Place</th>" +
-			"<th>Properties</th>" +
-			"<th class='noborder'></th>" +
+		"<th class='noborder'></th>" +
+		"<th>ID</th>" +
+		"<th>Species</th>" +
+		"<th>Media</th>" +
+		"<th>Date & Place</th>" +
+		"<th>Properties</th>" +
+		"<th class='noborder'></th>" +
 		"</tr>");
 	const searchKey = $("input[name=filter-sighting]").val();
 	const filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
-	filteredSightings.slice(OFFSET, OFFSET+ROWS).forEach(function(sighting, i) {
+	filteredSightings.slice(OFFSET, OFFSET + ROWS).forEach(function (sighting, i) {
 		let row = "<tr id='" + sighting.key + "'>";
 
 		row += "<td class='noborder'>"
@@ -431,17 +435,17 @@ function render() {
 		row += "</td>";
 
 		row += "<td><div style='width: calc(100vw - 820px);'>";
-		sighting.media.forEach(function(media, i) {
+		sighting.media.forEach(function (media, i) {
 			row += "<div class='thumbnail'>";
 			row += "<span>." + (media.type == "video" ? "mp4" : "jpg") + "</span>";
 			row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media' " + (media.type == "video" ? "disabled" : "") + ">-</button>";
 			row += "<button class='move-media-left' data-mediasrc='" + media.src + "' title='Move Left' " + (i <= 0 ? "disabled" : "") + "><</button>";
-			if(media.type == 'video') {
+			if (media.type == 'video') {
 				row += "<img src='" + getMedia(media.thumbnail) + "' title='" + media.src + "'/>";
 			} else {
 				row += "<img src='" + getMedia(media.src) + "' title='" + media.src + "'/>";
 			}
-			row += "<input class='title-textbox' data-mediasrc='" + media.src + "' type='text' value='" + (media.title||"") + "' placeholder='Add title'></input>";
+			row += "<input class='title-textbox' data-mediasrc='" + media.src + "' type='text' value='" + (media.title || "") + "' placeholder='Add title'></input>";
 			row += "</div>";
 		});
 		row += "<button class='upload-button' title='Add media'>+</button>";
@@ -469,10 +473,10 @@ function render() {
 		row += "</td>";
 
 		row += "<td class='noborder'>"
-		row += "<button class='move-upx5' title='Move Up' " + (OFFSET+i<=4?"disabled":"") + ">⯭</button>";
-		row += "<button class='move-up' title='Move Up' " + (OFFSET+i<=0?"disabled":"") + ">⏶</button>";
-		row += "<button class='move-down' title='Move down' " + (OFFSET+i>=filteredSightings.length-1?"disabled":"") + ">⏷</button>";
-		row += "<button class='move-downx5' title='Move down' " + (OFFSET+i>=filteredSightings.length-5?"disabled":"") + ">⯯</button>";
+		row += "<button class='move-upx5' title='Move Up' " + (OFFSET + i <= 4 ? "disabled" : "") + ">⯭</button>";
+		row += "<button class='move-up' title='Move Up' " + (OFFSET + i <= 0 ? "disabled" : "") + ">⏶</button>";
+		row += "<button class='move-down' title='Move down' " + (OFFSET + i >= filteredSightings.length - 1 ? "disabled" : "") + ">⏷</button>";
+		row += "<button class='move-downx5' title='Move down' " + (OFFSET + i >= filteredSightings.length - 5 ? "disabled" : "") + ">⯯</button>";
 		row += "</td>";
 
 		row += "</tr>";
@@ -481,27 +485,27 @@ function render() {
 		table.find("select").select2();
 
 		const sightingRow = $("#" + sighting.key);
-		sightingRow.find(".upload-button").click(function() {
+		sightingRow.find(".upload-button").click(function () {
 			sightingRow.find(".upload").click();
 		});
-		sightingRow.find(".upload").change(function() {
+		sightingRow.find(".upload").change(function () {
 			uploadMedia(sighting.key, this.files)
 		});
-		sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function() {
+		sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
 			let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
 			updateField(sighting.key, $(this).attr("data-field"), value);
 		});
-		sightingRow.find("select[data-field=country]").change(function() {
+		sightingRow.find("select[data-field=country]").change(function () {
 			const firstStateInCountry = Object.keys(data.countries[$(this).val()].states)[0];
 			updateField(sighting.key, 'state', firstStateInCountry);
 		});
-		sightingRow.find("button.delete-media").click(function() {
+		sightingRow.find("button.delete-media").click(function () {
 			deleteMedia(sighting.key, $(this).attr("data-mediasrc"));
 		});
-		sightingRow.find("button.move-media-left").click(function() {
+		sightingRow.find("button.move-media-left").click(function () {
 			moveMediaLeft(sighting.key, $(this).attr("data-mediasrc"));
 		});
-		sightingRow.find(".thumbnail .title-textbox").change(function() {
+		sightingRow.find(".thumbnail .title-textbox").change(function () {
 			updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
 		});
 		sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
@@ -509,21 +513,21 @@ function render() {
 		sightingRow.find(".move-up").click(() => moveSighting(sighting.key, -1));
 		sightingRow.find(".move-down").click(() => moveSighting(sighting.key, 1));
 		sightingRow.find(".move-downx5").click(() => moveSighting(sighting.key, 5));
-		sightingRow.find("select[data-field=country]").change(function() {
+		sightingRow.find("select[data-field=country]").change(function () {
 			sightingRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state')));
 			sightingRow.find("select[data-field=state]").select2();
 		});
 	});
 
-	$('.page-number').html(OFFSET + " - " + Math.min(OFFSET+ROWS, filteredSightings.length) + " of " + filteredSightings.length);
-	
-	if(OFFSET == 0) {
+	$('.page-number').html(OFFSET + " - " + Math.min(OFFSET + ROWS, filteredSightings.length) + " of " + filteredSightings.length);
+
+	if (OFFSET == 0) {
 		$('button.first-page, button.previous').attr("disabled", "disabled");
 	} else {
 		$('button.first-page, button.previous').removeAttr("disabled");
 	}
-	
-	if(OFFSET+ROWS >= filteredSightings.length) {
+
+	if (OFFSET + ROWS >= filteredSightings.length) {
 		$('button.last-page, button.next').attr("disabled", "disabled");
 	} else {
 		$('button.last-page, button.next').removeAttr("disabled");
@@ -531,91 +535,90 @@ function render() {
 }
 
 function refresh() {
-	FIREBASE_ENABLED = true
 	clearFileCache();
 	data = {};
 	readJSONFiles([
-		getData("data/" + currentMode + "-sightings.json"), 
-		getData("data/" + currentMode + "-species.json"), 
-		getData("data/" + currentMode + "-families.json"), 
-		getData("data/" + currentMode + "-likes.json"), 
+		getData("data/" + currentMode + "-sightings.json"),
+		getData("data/" + currentMode + "-species.json"),
+		getData("data/" + currentMode + "-families.json"),
+		getData("data/" + currentMode + "-likes.json"),
 		getData("data/places.json")
-	], function(json) {
+	], function (json) {
 		data = json;
 		render();
 		$(".overlay").hide();
 	});
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 	refresh();
 
-	$('.save').click(function() {
-		if(syncRef) {
+	$('.save').click(function () {
+		if (syncRef) {
 			syncSightingsData(0);
 		}
 	});
 	$('.sort-by-date').click(sortByDate);
 	$('.add-sighting').click(addSighting);
 	$('.backup').click(backup);
-	$('button.first-page').click(function() {
-		if(OFFSET > 0) {
+	$('button.first-page').click(function () {
+		if (OFFSET > 0) {
 			OFFSET = 0;
 			refresh();
 			showOverlay();
 		}
 	});
-	$('button.previous').click(function() {
-		if(OFFSET > 0) {
+	$('button.previous').click(function () {
+		if (OFFSET > 0) {
 			OFFSET = Math.max(OFFSET - ROWS, 0);
 			refresh();
 			showOverlay();
 		}
 	});
-	$('button.next').click(function() {
+	$('button.next').click(function () {
 		const searchKey = $("input[name=filter-sighting]").val();
 		const length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
-		if(OFFSET + ROWS < length) {
+		if (OFFSET + ROWS < length) {
 			OFFSET += ROWS;
 			refresh();
 			showOverlay();
 		}
 	});
-	$('button.last-page').click(function() {
+	$('button.last-page').click(function () {
 		const searchKey = $("input[name=filter-sighting]").val();
 		const length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
-		if(OFFSET + ROWS < length) {
+		if (OFFSET + ROWS < length) {
 			OFFSET = Math.floor(length / ROWS) * ROWS;
 			refresh();
 			showOverlay();
 		}
 	});
-	$('select[name=page-size]').click(function() {
+	$('select[name=page-size]').click(function () {
 		ROWS = Number($("select[name=page-size]").val());
 		refresh();
 	});
-	$("input[name=filter-sighting]").change(function() {
+	$("input[name=filter-sighting]").change(function () {
 		OFFSET = 0;
 		refresh();
 		$(this).blur();
 		showOverlay();
 	});
-	$("input[name=filter-sighting]").focus(function() {
+	$("input[name=filter-sighting]").focus(function () {
 		$(this).select();
 	});
 });
 
 window.onbeforeunload = function (e) {
-	if(syncRef) {
-	    e = e || window.event;
+	if (syncRef) {
+		e = e || window.event;
 
-	    // For IE and Firefox prior to version 4
-	    if (e) {
-	        e.returnValue = 'Changes you made is not saved.';
-	    }
+		// For IE and Firefox prior to version 4
+		if (e) {
+			e.returnValue = 'Changes you made is not saved.';
+		}
 
-	    // For Safari
-	    return 'Changes you made is not saved.';
+		// For Safari
+		return 'Changes you made is not saved.';
 	}
 };
 
@@ -624,7 +627,7 @@ function tryLogin(password) {
 	getFirebase().auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
 		$('.data').show();
 		$("#login-page").hide();
-		if($("#login-page input[name=rememberme]").is(":checked")) {
+		if ($("#login-page input[name=rememberme]").is(":checked")) {
 			setCookie("credentials", password, 7);
 		}
 		$(".overlay").hide();
@@ -633,19 +636,19 @@ function tryLogin(password) {
 	});
 }
 
-$(document).ready(function() {
-	if(getCookie("credentials")) {
+$(document).ready(function () {
+	if (getCookie("credentials")) {
 		setTimeout(() => { tryLogin(getCookie("credentials")); }, 1000);
 	}
-	$("#login-page button").click(function() {
+	$("#login-page button").click(function () {
 		tryLogin($("#login-page input[type=password]").val());
 	});
-	$("#login-page input").keypress(function(e) {
-		if(e.code == 'Enter') {
+	$("#login-page input").keypress(function (e) {
+		if (e.code == 'Enter') {
 			tryLogin($("#login-page input[type=password]").val());
 		}
 	});
-	$("button.logout").click(function() {
+	$("button.logout").click(function () {
 		eraseCookie("credentials");
 		location.reload();
 	});
@@ -653,7 +656,7 @@ $(document).ready(function() {
 	$('.site-logo').html('<img class="logo" src="' + MODE[currentMode].logo + '" alt="' + MODE[currentMode].title + '" title="' + MODE[currentMode].title + '" />');
 
 	$("button.mode").html("Mode: " + currentMode.toUpperCase());
-	$("button.mode").click(function() {
+	$("button.mode").click(function () {
 		switchMode();
 	});
 });

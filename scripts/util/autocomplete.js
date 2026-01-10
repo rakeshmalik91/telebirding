@@ -1,107 +1,118 @@
-function autocomplete(inp, arr) {
-  /*the autocomplete function takes two arguments,
-  the text field element and an array of possible autocompleted values:*/
-	let currentFocus;
-  
-  /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
-    	let a, b, i;
-    	const val = this.value;
-	  /*close any already open lists of autocompleted values*/
-	  closeAllLists();
-	  if (!val) { return false;}
-	  currentFocus = -1;
-	  /*create a DIV element that will contain the items (values):*/
-	  a = document.createElement("DIV");
-	  a.setAttribute("id", this.id + "autocomplete-list");
-	  a.setAttribute("class", "autocomplete-items");
-	  /*append the DIV element as a child of the autocomplete container:*/
-	  this.parentNode.appendChild(a);
-	  /*for each item in the array...*/
-	  for (i = 0; i < arr.length; i++) {
-			/*check if the item starts with the same letters as the text field value:*/
-			if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-			  /*create a DIV element for each matching element:*/
-			  b = document.createElement("DIV");
-			  /*make the matching letters bold:*/
-			  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-			  b.innerHTML += arr[i].substr(val.length);
-			  /*insert a input field that will hold the current array item's value:*/
-			  b.innerHTML += "<input type='hidden' value=\"" + arr[i] + "\">";
-			  /*execute a function when someone clicks on the item value (DIV element):*/
-			  b.addEventListener("click", function(e) {
-				  /*insert the value for the autocomplete text field:*/
-				  inp.value = this.getElementsByTagName("input")[0].value;
-				  inp.onchange();
-				  /*close the list of autocompleted values,
-				  (or any other open lists of autocompleted values:*/
-				  closeAllLists();
-			  });
-			  a.appendChild(b);
-			}
-	  }
-  });
-  
-  /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
-    	let x = document.getElementById(this.id + "autocomplete-list");
-	  if (x) x = x.getElementsByTagName("div");
-	  if (e.keyCode == 40) { //DOWN
-			/*If the arrow DOWN key is pressed,
-			increase the currentFocus variable:*/
-			currentFocus++;
-			/*and and make the current item more visible:*/
-			addActive(x);
-	  } else if (e.keyCode == 38) { //up
-			/*If the arrow UP key is pressed,
-			decrease the currentFocus variable:*/
-			currentFocus--;
-			/*and and make the current item more visible:*/
-			addActive(x);
-	  } else if (e.keyCode == 13) {
-			/*If the ENTER key is pressed, prevent the form from being submitted,*/
-			e.preventDefault();
-			if (currentFocus > -1) {
-			  /*and simulate a click on the "active" item:*/
-			  if (x) x[currentFocus].click();
-			} else {
-				inp.onchange();
-				closeAllLists();
-			}
-	  }
-  });
-  
-  function addActive(x) {
-		/*a function to classify an item as "active":*/
-		if (!x) return false;
-		/*start by removing the "active" class on all items:*/
-		removeActive(x);
-		if (currentFocus >= x.length) currentFocus = 0;
-			if (currentFocus < 0) currentFocus = (x.length - 1);
-			/*add class "autocomplete-active":*/
-			x[currentFocus].classList.add("autocomplete-active");
-	}
+export class Autocomplete {
+    constructor(inp, arr, onSelect) {
+        this.inp = inp;
+        this.arr = arr;
+        this.onSelect = onSelect;
+        this.currentFocus = -1;
+        this.init();
+    }
 
-  function removeActive(x) {
-		/*a function to remove the "active" class from all autocomplete items:*/
-		for (let i = 0; i < x.length; i++) {
-		  x[i].classList.remove("autocomplete-active");
-		}
-  }
+    init() {
+        if (!this.inp) return;
 
-  function closeAllLists(elmnt) {
-		/*close all autocomplete lists in the document,
-		except the one passed as an argument:*/
-		let x = document.getElementsByClassName("autocomplete-items");
-		for (let i = 0; i < x.length; i++) {
-		  if (elmnt != x[i] && elmnt != inp) {
-				x[i].parentNode.removeChild(x[i]);
-		  }
-		}
-  }
-  
-  /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
-	  closeAllLists(e.target);
-  });
+        // Remove any existing autocomplete list associated with this input
+        this.closeAllLists();
+
+        // Input event listener
+        this.inp.addEventListener("input", (e) => this.onInput(e));
+
+        // Keydown event listener
+        this.inp.addEventListener("keydown", (e) => this.onKeyDown(e));
+
+        // Click listener to close lists
+        document.addEventListener("click", (e) => {
+            this.closeAllLists(e.target);
+        });
+    }
+
+    onInput(e) {
+        let a, b, i, val = this.inp.value;
+        this.closeAllLists();
+        if (!val) return false;
+        this.currentFocus = -1;
+
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.inp.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.inp.parentNode.appendChild(a);
+
+        for (i = 0; i < this.arr.length; i++) {
+            if (this.arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                b = document.createElement("DIV");
+                b.innerHTML = "<strong>" + this.arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += this.arr[i].substr(val.length);
+                b.innerHTML += "<input type='hidden' value='" + this.arr[i] + "'>";
+
+                b.addEventListener("mousedown", (e) => {
+                    // Prevent blur event on input to ensure we capture the selection first
+                    e.preventDefault();
+
+                    const selectedValue = e.currentTarget.getElementsByTagName("input")[0].value;
+                    this.inp.value = selectedValue;
+
+                    this.closeAllLists();
+                    if (this.onSelect) this.onSelect(selectedValue);
+                });
+                a.appendChild(b);
+            }
+        }
+    }
+
+    onKeyDown(e) {
+        let x = document.getElementById(this.inp.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+
+        if (e.keyCode == 40) { // DOWN
+            this.currentFocus++;
+            this.addActive(x);
+        } else if (e.keyCode == 38) { // UP
+            this.currentFocus--;
+            this.addActive(x);
+        } else if (e.keyCode == 13) { // ENTER
+            e.preventDefault();
+            if (this.currentFocus > -1) {
+                // Simulate selection manually since we listen to mousedown now, and click() won't trigger it
+                const selectedValue = x[this.currentFocus].getElementsByTagName("input")[0].value;
+                this.inp.value = selectedValue;
+                this.closeAllLists();
+                if (this.onSelect) this.onSelect(selectedValue);
+            } else {
+                // If no item selected via arrows, but Enter pressed, check if we should trigger select
+                // Or just close list. For now, close list. 
+                // Optionally if exact match, trigger select? 
+                // Let's stick to closing logic or fallback trigger if needed.
+                // Keeping it simple: close list.
+                this.closeAllLists();
+                // If the user typed an exact full match manually and hit enter, maybe trigger?
+                // For now relying on click or arrow selection.
+                // If manual typing + enter is desired to trigger filter, main.js usually handles that via form/change?
+                // But we are overriding behavior.
+                // Let's ensure callback is called if value is non-empty? 
+                if (this.onSelect && this.inp.value) this.onSelect(this.inp.value);
+            }
+        }
+    }
+
+    addActive(x) {
+        if (!x) return false;
+        this.removeActive(x);
+        if (this.currentFocus >= x.length) this.currentFocus = 0;
+        if (this.currentFocus < 0) this.currentFocus = (x.length - 1);
+        x[this.currentFocus].classList.add("autocomplete-active");
+    }
+
+    removeActive(x) {
+        for (let i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+
+    closeAllLists(elmnt) {
+        let x = document.getElementsByClassName("autocomplete-items");
+        for (let i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != this.inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
 }
