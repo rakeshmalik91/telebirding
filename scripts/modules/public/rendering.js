@@ -1,7 +1,7 @@
 import Constants from '../constants.js';
 import Util from '../util.js';
 import State from './state.js';
-import { makeCarousal } from './ui-helpers.js';
+import { initSightingCarousal } from './ui-helpers.js';
 import { getFilter } from './filters.js';
 
 export function getSightingPhotoTitle(sighting, image) {
@@ -144,7 +144,7 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
     }
 }
 
-export function renderSighting(sightingDiv, sighting, IS_MOBILE) {
+export function renderSighting(sightingDiv, sighting, IS_MOBILE_DEVICE) {
     sightingDiv.append('<div class="sighting-image-carousal"></div>');
     let sightingCarousal = sightingDiv.find(".sighting-image-carousal");
     $.each(sighting.media, function (i, image) {
@@ -156,18 +156,18 @@ export function renderSighting(sightingDiv, sighting, IS_MOBILE) {
             mediaDiv.append('<img class="fadein" src="' + image.src + '" alt="' + sighting.species.name + '" onload="this.style.opacity=1"/>');
         }
     });
-    makeCarousal(sightingCarousal);
+    initSightingCarousal(sightingCarousal);
 
     sightingDiv.append('<div class="sighting-label"></div>');
     let sightingLabelDiv = sightingDiv.find(".sighting-label");
 
     renderSightingDetails(sightingLabelDiv, sighting);
-    if (IS_MOBILE) {
+    if (IS_MOBILE_DEVICE) {
         renderSightingTags(sightingLabelDiv, sighting);
     }
 }
 
-export function renderSightings(offset, pageSize, IS_MOBILE) {
+export function renderSightings(offset, pageSize, IS_MOBILE_DEVICE) {
     if (offset == 0) {
         $(".sightings-list").html('');
         State.updateCurrentRenderOffset(0);
@@ -184,7 +184,7 @@ export function renderSightings(offset, pageSize, IS_MOBILE) {
     $.each(dataToRender, function (i, sighting) {
         $(".sightings-list").append('<div id="' + sighting.key + '" class="sighting-panel"></div>');
         let sightingDiv = $("#" + sighting.key);
-        renderSighting(sightingDiv, sighting, IS_MOBILE)
+        renderSighting(sightingDiv, sighting, IS_MOBILE_DEVICE)
     });
     State.updateCurrentRenderOffset(State.currentRenderOffset + Constants.ARCHIVE_DATA_PER_PAGE);
 }

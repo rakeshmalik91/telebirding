@@ -96,6 +96,9 @@ function updateNavigationButtons(index) {
 }
 
 export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
+    if (State.IS_MOBILE_DEVICE) {
+        return;
+    }
     // If same sighting but different image, just update the main image without any animation
     if ($('.preview-image').length && sightingKey === currentPreviewSightingKey) {
         updatePreviewMedia(sightingKey, imageSrc);

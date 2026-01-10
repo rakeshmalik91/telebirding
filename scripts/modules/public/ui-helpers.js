@@ -1,14 +1,8 @@
 import Util from '../util.js';
 
-export function stopYoutubeVideos() {
-    $('.youtube').each(function () {
-        if (this.contentWindow) {
-            this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-        }
-    });
-}
+// ----------------- archive page sighting carousal -----------------
 
-export function rollCarousal(image, direction) {
+export function rollSightingCarousal(image, direction) {
     let images = $(image).parent().find('.sighting-image')
     let index = 0;
     images.each(function (i, img) {
@@ -22,14 +16,55 @@ export function rollCarousal(image, direction) {
     $('.sightings-list video:visible').trigger('play');
 }
 
-export function makeCarousal(container) {
+export function initSightingCarousal(container) {
     if ($(container).children().length > 1) {
         $(container).children().addClass('hidden');
         $(container).children().eq(0).removeClass('hidden');
-        container.append('<button tabindex="-1" class="carousal-button-left" onclick="rollCarousal(this, -1)"></button>');
-        container.append('<button tabindex="-1" class="carousal-button-right" onclick="rollCarousal(this, 1)"></button>');
+        container.append('<button tabindex="-1" class="carousal-button-left" onclick="rollSightingCarousal(this, -1)"></button>');
+        container.append('<button tabindex="-1" class="carousal-button-right" onclick="rollSightingCarousal(this, 1)"></button>');
     }
 }
+
+// ----------------- home page carousal -----------------
+
+export var _homePageCarousalIndex;
+
+export function rollHomePageCarousal(index) {
+    let images = $('.home .featured .image');
+    $(images[_homePageCarousalIndex]).hide();
+    _homePageCarousalIndex = index;
+    $(images[_homePageCarousalIndex]).show();
+    $('.home .featured .carousal-buttons button').removeClass('active-carousal-button');
+    $($('.home .featured .carousal-buttons button').get(_homePageCarousalIndex)).addClass('active-carousal-button');
+}
+
+export function renderHomePageCarousal(featured) {
+    featured.forEach(function (image, index) {
+        $('.home .featured .images').append('<div class="image carousal-animation" style="opacity:0;"><img src="' + Util.getMedia(image.src) + '" alt="' + image.alt + '" title="' + image.alt + '"/><span class="title">' + image.titleLine1 + '<br>' + image.titleLine2 + '</span></div>');
+        $('.home .featured .carousal-buttons').append('<button type="button" onclick="rollHomePageCarousal(' + index + ')"></button>');
+    });
+}
+
+export function initHomePageCarousal() {
+    Util.readJSONFile(Util.getData('data/site-data.json'), function (json) {
+        renderHomePageCarousal(json.featured);
+
+        _homePageCarousalIndex = -1;
+        // _homePageCarousalIndex = Math.floor(Math.random() * $('.home .featured .image').length)
+        $('.home .featured .image').hide();
+
+        let images = $('.home .featured .image');
+        rollHomePageCarousal((_homePageCarousalIndex + 1 + images.length) % images.length);
+
+        setInterval(function () {
+            playCarousal();
+        }, 30000);
+
+        renderTrips(json.trips);
+    });
+}
+
+// ----------------- home page -----------------
 
 export function showMore() {
     jQuery('.home-page .hidden-story').show();
@@ -39,6 +74,8 @@ export function showMore() {
 export function setSiteLogo(modeConfig, currentMode) {
     jQuery('a.site-logo img').attr("src", modeConfig[currentMode].logo).attr("title", modeConfig[currentMode].title).attr("alt", modeConfig[currentMode].title);
 }
+
+// ----------------- page loader/spinner -----------------
 
 export function ensurePageLoader() {
     if (jQuery('#page-loader').length) return;
@@ -66,28 +103,7 @@ export function hideLoader() {
     }
 }
 
-export var carousalVisibleIndex;
-
-export function showCarousalImage(index) {
-    let images = $('.home .featured .image');
-    $(images[carousalVisibleIndex]).hide();
-    carousalVisibleIndex = index;
-    $(images[carousalVisibleIndex]).show();
-    $('.home .featured .carousal-buttons button').removeClass('active-carousal-button');
-    $($('.home .featured .carousal-buttons button').get(carousalVisibleIndex)).addClass('active-carousal-button');
-}
-
-export function playCarousal() {
-    let images = $('.home .featured .image');
-    showCarousalImage((carousalVisibleIndex + 1 + images.length) % images.length);
-}
-
-export function renderHomePageCarousal(featured) {
-    featured.forEach(function (image, index) {
-        $('.home .featured .images').append('<div class="image carousal-animation" style="opacity:0;"><img src="' + Util.getMedia(image.src) + '" alt="' + image.alt + '" title="' + image.alt + '"/><span class="title">' + image.titleLine1 + '<br>' + image.titleLine2 + '</span></div>');
-        $('.home .featured .carousal-buttons').append('<button type="button" onclick="showCarousalImage(' + index + ')"></button>');
-    });
-}
+// ----------------- stories, trips & videos -----------------
 
 export function renderTrips(trips) {
     const div = $('.videos');
@@ -98,20 +114,10 @@ export function renderTrips(trips) {
     });
 }
 
-export function initSiteData() {
-    Util.readJSONFile(Util.getData('data/site-data.json'), function (json) {
-        renderHomePageCarousal(json.featured);
-
-        carousalVisibleIndex = -1;
-        // carousalVisibleIndex = Math.floor(Math.random() * $('.home .featured .image').length)
-        $('.home .featured .image').hide();
-
-        playCarousal();
-
-        setInterval(function () {
-            playCarousal();
-        }, 30000);
-
-        renderTrips(json.trips);
+export function stopYoutubeVideos() {
+    $('.youtube').each(function () {
+        if (this.contentWindow) {
+            this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+        }
     });
 }

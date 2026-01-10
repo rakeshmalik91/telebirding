@@ -1,7 +1,9 @@
 export default class EbirdApi {
+    static apiKey = "jfekjedvescr"
+
     static fetchEbirdCode(name) {
         return name
-            ? fetch('https://api.ebird.org/v2/ref/taxon/find?cat=species&key=jfekjedvescr&locale=en&q=' + encodeURIComponent(name.trim()))
+            ? fetch('https://api.ebird.org/v2/ref/taxon/find?cat=species&key=' + EbirdApi.apiKey + '&locale=en&q=' + encodeURIComponent(name.trim()))
                 .then(r => r.json())
                 .then(a => a && a[0] && a[0].code)
                 .catch(() => undefined)

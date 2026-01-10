@@ -1,8 +1,8 @@
 import Constants from './modules/constants.js';
 import Util from './modules/util.js';
 import {
-	showLoader, rollCarousal, showMore, setSiteLogo,
-	initSiteData, showCarousalImage
+	showLoader, rollSightingCarousal, showMore, setSiteLogo,
+	initHomePageCarousal, rollHomePageCarousal
 } from './modules/public/ui-helpers.js';
 import State from './modules/public/state.js';
 import { renderSightings, renderPageName } from './modules/public/rendering.js';
@@ -24,8 +24,8 @@ window.showPage = showPage;
 
 window.toggleCollpasible = Util.toggleCollpasible;
 
-window.showCarousalImage = showCarousalImage;
-window.rollCarousal = rollCarousal;
+window.rollHomePageCarousal = rollHomePageCarousal;
+window.rollSightingCarousal = rollSightingCarousal;
 window.previewImage = previewImage;
 window.removePreviewImage = removePreviewImage;
 window.scrollPreviewImageSighting = scrollPreviewImageSighting;
@@ -99,7 +99,7 @@ $(document).ready(function () {
 	$(".home").scroll(() => { $('.scroll-up-highlighter').remove(); $(".home").off("scroll"); $(".home").off("click"); });
 	$(".home").click(() => { $('.scroll-up-highlighter').remove(); $(".home").off("scroll"); $(".home").off("click"); });
 
-	initSiteData();
+	initHomePageCarousal();
 });
 
 

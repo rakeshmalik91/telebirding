@@ -2,7 +2,7 @@ import Util from '../util.js';
 import Constants from '../constants.js';
 
 export default class State {
-    static IS_MOBILE = !Util.isDeviceOnLandscapeOrientation();
+    static IS_MOBILE_DEVICE = !Util.isDeviceOnLandscapeOrientation();
 
     static data = { "sightings": [] };
     static sort = { by: undefined, descending: undefined };

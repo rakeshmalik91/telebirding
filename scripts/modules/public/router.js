@@ -186,7 +186,7 @@ export function showPage(page, params, isPopstate) {
 
                 filterAndSortData(filter);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
-                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, State.IS_MOBILE);
+                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, State.IS_MOBILE_DEVICE);
                 break;
             case Constants.EXPLORE_MENU:
                 $('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
@@ -202,7 +202,7 @@ export function showPage(page, params, isPopstate) {
                 setFilters({});
                 filterAndSortData(filter, params);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
-                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, params, State.IS_MOBILE);
+                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, params, State.IS_MOBILE_DEVICE);
                 break;
             case Constants.MAP_MENU:
                 $('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
@@ -234,7 +234,7 @@ export function showPage(page, params, isPopstate) {
             default:
                 $('.filter-panel, .sightings-list, .home .explore-menu, .about-page, .videos, .map-menu').hide();
                 $('.home, .home .menu').show();
-                if (!State.IS_MOBILE) {
+                if (!State.IS_MOBILE_DEVICE) {
                     $('.home-page').show();
                 }
                 setFilters({});
