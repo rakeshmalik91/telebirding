@@ -251,11 +251,11 @@ export function renderExploreMenu() {
 export function renderHome() {
     $('.home .featured').removeClass('hidden');
     // clearExploreMenu(); // these are from router, need to check dependencies.
-    // clearVideosPage(); // Moving these logic to router or keeping them in main. 
+    // clearStoriesPage(); // Moving these logic to router or keeping them in main. 
     // Actually renderHome does UI manipulation mostly.
     $('.home .featured').removeClass('collapsed');
     $('.explore-menu').removeClass('expanded');
-    $('.videos').removeClass('expanded');
+    $('.stories').removeClass('expanded');
 }
 
 export function renderMapPage() {
@@ -376,9 +376,9 @@ export function renderPageName(currentPage, params) {
             icon = "<img class='icon' src='icons/archive-icon.png'/>";
             $('.page-name').html(icon + "<span class='active'>" + Constants.PAGE[Constants.ARCHIVE].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + Constants.PAGE[Constants.HOME].name + "</a>");
             break;
-        case Constants.VIDEOS:
+        case Constants.STORIES:
             icon = "<img class='icon' src='icons/video-icon.png'/>";
-            $('.page-name').html(icon + "<span class='active'>" + Constants.PAGE[Constants.VIDEOS].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + Constants.PAGE[Constants.HOME].name + "</a>");
+            $('.page-name').html(icon + "<span class='active'>" + Constants.PAGE[Constants.STORIES].name + "</span> " + delim + " <a onclick=\"showPage('home')\">" + Constants.PAGE[Constants.HOME].name + "</a>");
             break;
         case Constants.MAP_MENU:
             icon = "<img class='icon' src='icons/map-icon.png'/>";

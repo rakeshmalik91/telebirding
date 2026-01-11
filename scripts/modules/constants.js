@@ -20,7 +20,7 @@ export default class Constants {
 	static EXPLORE_PAGE = "explore_page";
 	static MAP_MENU = "map_menu";
 	static MAP = "map";
-	static VIDEOS = "videos";
+	static STORIES = "stories";
 	static ABOUT = "about";
 
 	static PAGE = {
@@ -30,7 +30,7 @@ export default class Constants {
 		[Constants.EXPLORE_PAGE]: { name: "Explore Birds" },
 		[Constants.MAP_MENU]: { name: "Bird Map" },
 		[Constants.MAP]: { name: "Bird Map" },
-		[Constants.VIDEOS]: { name: "Birding Trips" },
+		[Constants.STORIES]: { name: "Stories" },
 		[Constants.ABOUT]: { name: "About" }
 	};
 

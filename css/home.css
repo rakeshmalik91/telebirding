@@ -482,7 +482,7 @@
 	padding: 5px;
 }
 
-.videos {
+.stories {
 	position: relative;
 	float: left;
 	left: 60vw;
@@ -491,39 +491,39 @@
 	opacity: 0;
 }
 
-.videos.expanded {
+.stories.expanded {
 	opacity: 1;
 }
 
 @media screen and (orientation:landscape) {
-	.videos.expanded {
+	.stories.expanded {
 		left: 10vw;
 	}
 }
 
-.videos .video {
+.stories .video {
 	margin-bottom: 80px;
 	border-bottom: 1px solid #334455;
 	padding-bottom: 40px;
 }
 
-.videos .video:last-child {
+.stories .video:last-child {
 	border-bottom: none;
 }
 
-.videos h1 {
+.stories h1 {
 	font-size: 2.2em;
 	color: #98c1ff;
 	margin-bottom: 5px;
 }
 
-.videos .date {
+.stories .date {
 	font-size: 1.1em;
 	color: #8293a6;
 	margin-bottom: 20px;
 }
 
-.videos iframe.youtube {
+.stories iframe.youtube {
 	width: 100%;
 	max-width: 900px;
 	height: 500px;
@@ -532,7 +532,7 @@
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.videos .image-container {
+.stories .image-container {
 	display: inline-block;
 	width: 48%;
 	margin-right: 1%;
@@ -540,7 +540,7 @@
 	vertical-align: top;
 }
 
-.videos .image-container img {
+.stories .image-container img {
 	width: 100%;
 	max-height: 400px;
 	object-fit: contain;
@@ -549,12 +549,12 @@
 	border: 1px solid #455667;
 }
 
-.videos .text {
+.stories .text {
 	margin-top: 25px;
 	max-width: 900px;
 }
 
-.videos .text p {
+.stories .text p {
 	font-size: 1.25em;
 	/* Increased size */
 	line-height: 1.6;
@@ -564,22 +564,22 @@
 	text-align: left;
 }
 
-.videos .text a {
+.stories .text a {
 	color: #64b5f6;
 	text-decoration: none;
 }
 
-.videos .text a:hover {
+.stories .text a:hover {
 	text-decoration: underline;
 	color: #90caf9;
 }
 
-.videos hr {
+.stories hr {
 	display: none;
 	/* Hide default HR as we use border-bottom on .video */
 }
 
-.videos .video iframe {
+.stories .video iframe {
 	width: 800px;
 	height: 450px;
 }

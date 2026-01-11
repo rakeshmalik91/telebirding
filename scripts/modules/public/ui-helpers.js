@@ -175,7 +175,7 @@ export function hideLoader(key) {
 // ----------------- stories, trips & videos -----------------
 
 export function renderStories(trips) {
-    const div = $('.videos');
+    const div = $('.stories');
     div.empty();
 
     const generateTripHtml = (trip, index) => {

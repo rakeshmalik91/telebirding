@@ -16,9 +16,9 @@ export function setMode(mode) {
     State.updateCurrentMode(mode);
 }
 
-export function showVideosPage() {
+export function showStoriesPage() {
     $('.home .featured').removeClass('hidden').addClass('collapsed');
-    $('.videos').addClass('expanded');
+    $('.stories').addClass('expanded');
 }
 
 export function showAboutPage() {
@@ -30,8 +30,8 @@ export function clearExploreMenu() {
     $('.explore-menu').removeClass('expanded');
 }
 
-export function clearVideosPage() {
-    $('.videos').removeClass('expanded');
+export function clearStoriesPage() {
+    $('.stories').removeClass('expanded');
 }
 
 export function hideRightPane() {
@@ -220,20 +220,20 @@ export function showPage(page, params, isPopstate) {
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
                 renderMapPage();
                 break;
-            case Constants.VIDEOS:
+            case Constants.STORIES:
                 $('.filter-panel, .home .menu, .sightings-list, .about-page, .home-page').hide();
-                $('.videos, .home').show();
+                $('.stories, .home').show();
                 setFilters({});
-                showVideosPage();
+                showStoriesPage();
                 break;
             case Constants.ABOUT:
-                $('.filter-panel, .sightings-list, .home .explore-menu, .home .menu, .videos, .home-page').hide();
+                $('.filter-panel, .sightings-list, .home .explore-menu, .home .menu, .stories, .home-page').hide();
                 $('.home, .about-page').show();
                 setFilters({});
                 showAboutPage();
                 break;
             default:
-                $('.filter-panel, .sightings-list, .home .explore-menu, .about-page, .videos, .map-menu').hide();
+                $('.filter-panel, .sightings-list, .home .explore-menu, .about-page, .stories, .map-menu').hide();
                 $('.home, .home .menu').show();
                 if (!State.IS_MOBILE_DEVICE) {
                     $('.home-page').show();

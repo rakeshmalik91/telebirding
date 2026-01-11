@@ -163,7 +163,7 @@ screen and (max-width: 900px) {
 
 	@keyframes scroll-up-highlighter {}
 
-	.videos {
+	.stories {
 		left: 0 !important;
 		width: 100% !important;
 		padding-left: 20px !important;
@@ -171,22 +171,22 @@ screen and (max-width: 900px) {
 		box-sizing: border-box;
 	}
 
-	.videos.expanded {
+	.stories.expanded {
 		left: 0 !important;
 	}
 
-	.videos iframe.youtube {
+	.stories iframe.youtube {
 		height: auto !important;
 		aspect-ratio: 16 / 9;
 	}
 
-	.videos .image-container {
+	.stories .image-container {
 		width: 100%;
 		display: block;
 		margin-bottom: 20px;
 	}
 
-	.videos h1 {
+	.stories h1 {
 		font-size: 1.8em;
 	}
 }
