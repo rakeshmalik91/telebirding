@@ -305,3 +305,10 @@ div.four-column {
 		transform: rotate(360deg);
 	}
 }
+
+.heading-hr {
+	border: none;
+	border-bottom: 2px solid #99b3ce;
+	margin-top: 30px;
+	margin-bottom: 60px;
+}

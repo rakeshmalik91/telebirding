@@ -115,7 +115,7 @@ export function initHomePageCarousal() {
             });
         }
 
-        renderStories(json.trips);
+        renderStories(json.stories);
     });
 }
 
@@ -174,30 +174,31 @@ export function hideLoader(key) {
 
 // ----------------- stories, trips & videos -----------------
 
-export function renderStories(trips) {
+export function renderStories(stories) {
     const div = $('.stories');
     div.empty();
+    div.append('<h1>Stories</h1><hr class="heading-hr" />');
 
-    const generateTripHtml = (trip, index) => {
+    const generateStoryHtml = (story, index) => {
         let mediaHtml = '';
-        if (trip.youtubeVideoId) {
-            mediaHtml = `<iframe class="youtube" src="https://tube.rvere.com/embed?v=${trip.youtubeVideoId}" title="${trip.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        } else if (trip.images && trip.images.length > 0) {
-            trip.images.forEach(img => {
-                mediaHtml += `<div class="image-container"><img style="width: 100%; padding: 5px; border: 1px solid white;" src="${img}" alt="${trip.title}" /></div>`;
+        if (story.youtubeVideoId) {
+            mediaHtml = `<iframe class="youtube" src="https://tube.rvere.com/embed?v=${story.youtubeVideoId}" title="${story.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else if (story.images && story.images.length > 0) {
+            story.images.forEach(img => {
+                mediaHtml += `<div class="image-container"><img style="width: 100%; padding: 5px; border: 1px solid white;" src="${img}" alt="${story.title}" /></div>`;
             });
         }
 
         let html = `
         <div class="video">
-            <h1>${trip.title}</h1>
-            <div class="date">${trip.date}</div>
+            <h1>${story.title}</h1>
+            <div class="date">${story.date}</div>
             <div>
                 ${mediaHtml}
             </div>
             <div class="text">
-                ${trip.storyHtml}
-                ${trip.itineraryHtml ? `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${trip.itineraryHtml}` : ''}
+                ${story.storyHtml}
+                ${story.itineraryHtml ? `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}` : ''}
             </div>
             <hr />
         </div>
@@ -205,8 +206,8 @@ export function renderStories(trips) {
         return html;
     };
 
-    trips.forEach((trip, index) => {
-        div.append(generateTripHtml(trip, index));
+    stories.forEach((story, index) => {
+        div.append(generateStoryHtml(story, index));
     });
 }
 

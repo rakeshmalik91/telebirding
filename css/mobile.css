@@ -168,6 +168,10 @@ screen and (max-width: 900px) {
 		width: 100% !important;
 		padding-left: 20px !important;
 		padding-right: 20px !important;
+		padding-top: 0 !important;
+		margin-top: 40px !important;
+		float: none !important;
+		position: static !important;
 		box-sizing: border-box;
 	}
 
@@ -176,6 +180,7 @@ screen and (max-width: 900px) {
 	}
 
 	.stories iframe.youtube {
+		width: 100% !important;
 		height: auto !important;
 		aspect-ratio: 16 / 9;
 	}

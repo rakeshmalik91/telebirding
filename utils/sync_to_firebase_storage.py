@@ -149,10 +149,10 @@ def _collect_referenced_featured_images_from_site_data():
         if src.startswith('featured-images/'):
             refs.add((ROOT / src).resolve())
 
-    # Check images in trips (often full URLs)
-    trips = obj.get('trips', [])
-    for trip in trips:
-        images = trip.get('images', [])
+    # Check images in stories (often full URLs)
+    stories = obj.get('stories', [])
+    for story in stories:
+        images = story.get('images', [])
         for img_url in images:
             # We are looking for something like .../featured-images%2FOsprey.jpg?alt=...
             # or possibly featured-images/Osprey.jpg
