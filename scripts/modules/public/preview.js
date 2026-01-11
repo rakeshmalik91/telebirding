@@ -17,7 +17,7 @@ export function toggleSlideshow() {
         slideshowIntervalId = null;
         $('.slideshow-button img').attr('src', 'icons/play.png');
     } else {
-        slideshowIntervalId = setInterval(() => { scrollPreviewImage(1) }, 5000);
+        slideshowIntervalId = setInterval(() => { scrollPreviewImage(1) }, Constants.SIGHTING_SLIDESHOW_INTERVAL);
         $('.slideshow-button img').attr('src', 'icons/pause.png');
     }
 }
@@ -132,9 +132,12 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         $('.preview-image-desc').append('<button class="slideshow-button" onclick="toggleSlideshow()"><img src="icons/' + (isSlideshowPlaying() ? "pause" : "play") + '.png" title="Slideshow"/></button>');
         $('.preview-image-desc').append('<button class="left-button" onclick="scrollPreviewImageSighting(-1)"></button>');
         $('.preview-image-desc').append('<button class="right-button" onclick="scrollPreviewImageSighting(1)"></button>');
-        renderSightingDetails($('.preview-image-desc'), sighting, true);
-        renderSightingThumbnailsAndDescription($('.preview-image-desc'), sighting, [imageSrc], index);
-        renderSightingTags($('.preview-image-desc'), sighting);
+        $('.preview-image-desc').append('<div class="preview-content"></div>');
+        const contentContainer = $('.preview-image-desc .preview-content');
+
+        renderSightingDetails(contentContainer, sighting, true);
+        renderSightingThumbnailsAndDescription(contentContainer, sighting, [imageSrc], index);
+        renderSightingTags(contentContainer, sighting);
 
         // Update navigation buttons visibility
         updateNavigationButtons(index);

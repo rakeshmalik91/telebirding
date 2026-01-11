@@ -158,6 +158,9 @@ export default class Constants {
 
 	static ARCHIVE_DATA_PER_PAGE = 12;
 	static MIN_COUNT_FOR_LOCATION_LISTING = 5;
+	static SIGHTING_SLIDESHOW_INTERVAL = 5000;
+	static HOME_PAGE_SLIDESHOW_INTERVAL = 10000;
+	static HOME_PAGE_SLIDESHOW_FADE_INTERVAL = 1000;
 
 	static DEFAULT_TITLE = "Telebirding";
 	static DEFAULT_DESCRIPTION = "Rakesh's Bird Catalogue";

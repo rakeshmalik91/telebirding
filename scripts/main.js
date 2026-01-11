@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 
 // Initialize the application
-showLoader();
+showLoader('app-init');
 retrieveStateFromUrlParams();
 const params = Util.getUrlParams();
 showPage(State.currentPage, {

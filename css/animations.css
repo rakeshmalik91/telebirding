@@ -72,40 +72,7 @@
 
 
 
-.carousal-animation {
-  animation-name: carousal-animation;
-    -webkit-animation-name: carousal-animation;
-    -moz-animation-name: carousal-animation;
-    -ms-animation-name: carousal-animation;
-  animation-duration: 30s;
-    -webkit-animation-duration: 30s;
-    -moz-animation-duration: 30s;
-    -ms-animation-duration: 30s;
-}
-@-webkit-keyframes carousal-animation {
-  0% 	{opacity: 0;}
-  20% 	{opacity: 1;}
-  90% 	{opacity: 1;}
-  100% 	{opacity: 0;}
-}
-@-moz-keyframes carousal-animation {
-  0% 	{opacity: 0;}
-  20% 	{opacity: 1;}
-  90% 	{opacity: 1;}
-  100% 	{opacity: 0;}
-}
-@-ms-keyframes carousal-animation {
-  0% 	{opacity: 0;}
-  20% 	{opacity: 1;}
-  90% 	{opacity: 1;}
-  100% 	{opacity: 0;}
-}
-@keyframes carousal-animation {
-  0% 	{opacity: 0;}
-  20% 	{opacity: 1;}
-  90% 	{opacity: 1;}
-  100% 	{opacity: 0;}
-}
+
 
 
 

@@ -9,7 +9,7 @@ import {
     renderMapMenu, renderMapPage, renderHome, renderLocationList, renderYearList
 } from './rendering.js';
 import State from './state.js';
-import { showLoader, hideLoader, setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
+import { showLoader, hideLoader, resetLoader, setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
 export function setMode(mode) {
@@ -138,6 +138,7 @@ export function retrieveStateFromUrlParams() {
 
 export function showPage(page, params, isPopstate) {
     stopYoutubeVideos();
+    resetLoader();
 
     var filter = getFilters();
     if (params) {
@@ -160,7 +161,7 @@ export function showPage(page, params, isPopstate) {
 
     State.updateCurrentPage(page);
     if ([Constants.ARCHIVE, Constants.EXPLORE_PAGE, Constants.MAP].includes(page)) {
-        showLoader();
+        showLoader('page-load');
     }
     var files = [
         Util.getData("data/" + State.currentMode + "-sightings.json"),
@@ -247,6 +248,6 @@ export function showPage(page, params, isPopstate) {
         if (State.currentPage != Constants.HOME) {
             $('.scroll-up-highlighter').remove();
         }
-        hideLoader();
+        hideLoader('page-load');
     });
 }

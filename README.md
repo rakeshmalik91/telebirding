@@ -10,6 +10,11 @@ A bird watching blog by Rakesh Malik.
 
  Note: New domains to be registered in cors.json and here -> https://www.google.com/recaptcha/admin/site/736295256/settings
 
+### Android app
+
+- [Play Store](https://play.google.com/store/apps/details?id=com.rakeshmalik.telebirding)
+- [Dropbox](https://www.dropbox.com/scl/fo/5t1zgkn419ctlzkuacu3h/ACC-_MbfOOu151yPRRH25XU?rlkey=3tirqkq5xland2qx3dfa8hrda&st=0aosjy2b&dl=0)
+
 ### Local Setup on Firebase
 ```
 ./setup.ps1
