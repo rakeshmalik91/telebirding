@@ -116,31 +116,34 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
         for (let i = 0; i < 5 - Number(sighting.rating); i++) rating += "✰";
         rating += " )";
     }
+    sightingLabelDiv.append('<div class="sighting-meta-stats"></div>');
+    let metaStatsDiv = sightingLabelDiv.find(".sighting-meta-stats");
+
     if (Constants.LIKE_ENABLED && State.data.likes) {
         const likes = State.data.likes[sighting.key] || [];
         const likeText = ' Like' + (likes.length == 1 ? '' : 's');
-        sightingLabelDiv.append('<div class="sighting-desc likes" title="' + likes.length + likeText + '">'
+        metaStatsDiv.append('<div class="sighting-desc likes" title="' + likes.length + likeText + '">'
             + '<span onclick="like(\'' + sighting.key + '\')" class="heart ' + (likes.indexOf(Util.getClientId()) >= 0 ? '' : ' hollow') + '"></span>'
             + '<span class="count">' + likes.length + '</span>'
             + (inPreviewPage ? likeText : '')
             + '</div>');
-        sightingLabelDiv.append('<span class="text-seperator">|</span>');
+        metaStatsDiv.append('<span class="text-seperator">|</span>');
     }
     const ratingIconSpan = '<span class="' + Constants.RATING_CSS_CLASS_MAPPING[sighting.rating] + '"></span>';
     const ratingHtml = '<a' + ti + ' onclick="triggerFilter(\'rating\', ' + (sighting.rating) + ')" title="Photograph Graded ' + sighting.rating + '/5 (Click to Filter by ' + sighting.rating + '+ Grade)">' + ratingIconSpan + rating + '</a>';
-    sightingLabelDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
+    metaStatsDiv.append('<div class="sighting-desc rating">' + ratingHtml + '</div>');
     if (sighting.time_of_day || sighting.weather) {
         let weather = (((sighting.time_of_day == 'Day' && sighting.weather) ? (sighting.weather + ' ') : '') + (sighting.time_of_day || 'Day')).toLowerCase()
-        sightingLabelDiv.append('<span class="text-seperator">|</span>');
-        sightingLabelDiv.append('<div class="sighting-desc weather ' + weather.replace(' ', '-') + '" title="Shot on ' + weather + '"></div>');
+        metaStatsDiv.append('<span class="text-seperator">|</span>');
+        metaStatsDiv.append('<div class="sighting-desc weather ' + weather.replace(' ', '-') + '" title="Shot on ' + weather + '"></div>');
         if (inPreviewPage) {
-            sightingLabelDiv.append('<span class="text-seperator">Shot on ' + weather + '</span>');
+            metaStatsDiv.append('<span class="text-seperator">Shot on ' + weather + '</span>');
         }
     }
     if (!inPreviewPage && (sighting.author && sighting.author != Constants.DEFAULT_AUTHOR)) {
         let author = sighting.author || Constants.DEFAULT_AUTHOR;
-        sightingLabelDiv.append('<span class="text-seperator">|</span>');
-        sightingLabelDiv.append('<span class="sighting-desc opacity-30pc">by <a ' + ti + ' href="' + (Constants.AUTHOR_URL[author] || '') + '" target="_blank">' + author + '</a></div>');
+        metaStatsDiv.append('<span class="text-seperator">|</span>');
+        metaStatsDiv.append('<span class="sighting-desc opacity-30pc">by <a ' + ti + ' href="' + (Constants.AUTHOR_URL[author] || '') + '" target="_blank">' + author + '</a></div>');
     }
 }
 
@@ -200,7 +203,7 @@ export function renderSightingThumbnail(photosDiv, sightingToRender, mediaToRend
         mediaDiv = "<img class='image-thumbnail' src='" + mediaToRender.src + "'/></img>";
     }
     const classes = selectedMedia.includes(mediaToRender.src) ? 'selected' : '';
-    photosDiv.append("<div class='" + classes + "' onclick=\"previewImage('" + sightingToRender.key + "', '" + mediaToRender.src + "', " + baseSightingIndex + ")\"><span>" + getSightingPhotoTitle(sightingToRender, mediaToRender) + "</span>" + mediaDiv + "</div>");
+    photosDiv.append("<div class='" + classes + "' onclick=\"previewImage('" + sightingToRender.key + "', '" + mediaToRender.src + "', " + baseSightingIndex + ", true)\"><span>" + getSightingPhotoTitle(sightingToRender, mediaToRender) + "</span>" + mediaDiv + "</div>");
 }
 
 export function renderSightingThumbnailsAndDescription(div, selectedSighting, selectedMedia, baseSightingIndex) {

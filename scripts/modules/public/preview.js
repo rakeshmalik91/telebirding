@@ -29,11 +29,10 @@ export function removePreviewImage() {
         $('body').removeClass('no-scroll');
         currentPreviewSightingKey = null;  // Reset current sighting key
         // Slide out sideways instead of up
-        $('.preview-image, .preview-image-desc').addClass('slide-out');
+        $('.preview-wrapper').removeClass('slide-in').addClass('slide-out');
         setTimeout(() => {
-            $('.preview-image').remove();
-            $('.preview-image-desc').remove();
-        }, 150);
+            $('.preview-wrapper').remove();
+        }, 300);
         $('.overlay').hide();
         $('.sightings-list video').trigger('play');
     }
@@ -105,7 +104,7 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         return;
     }
 
-    const createNewPreview = function () {
+    const createNewPreview = function (shouldSlideIn) {
         $('.overlay').show();
         const sighting = State.data.sightings.filter(b => b.key == sightingKey)[0];
         if (!sighting) {
@@ -126,8 +125,13 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
             //this check makes sure selecting a media from a different sighting does not move the flow to that sighting 
             index = State.data.filteredSightings.map((b, i) => (b.key == sightingKey) ? i : null).filter(k => k != null)[0];
         }
-        $('body').append('<div class="preview-image" data-index="' + index + '">' + mediaTag + '</div>');
-        $('body').append('<div class="preview-image-desc"></div>');
+        const wrapperClass = 'preview-wrapper' + (shouldSlideIn ? ' slide-in' : '');
+        $('body').append('<div class="' + wrapperClass + '"></div>');
+        const wrapper = $('.preview-wrapper');
+
+        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + '</div>');
+        wrapper.append('<div class="preview-image-desc"></div>');
+
         $('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png" title="Close"/></button>');
         $('.preview-image-desc').append('<button class="slideshow-button" onclick="toggleSlideshow()"><img src="icons/' + (isSlideshowPlaying() ? "pause" : "play") + '.png" title="Slideshow"/></button>');
         $('.preview-image-desc').append('<button class="left-button" onclick="scrollPreviewImageSighting(-1)"></button>');
@@ -146,22 +150,20 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         $('.sightings-list video').trigger('pause');
     };
 
-    if ($('.preview-image').length) {
+    if ($('.preview-wrapper').length) {
         // When navigating between sightings, don't use slide-out animation - just replace content quickly
         if (skipAnimation) {
-            $('.preview-image').remove();
-            $('.preview-image-desc').remove();
-            createNewPreview();
+            $('.preview-wrapper').remove();
+            createNewPreview(false);
         } else {
-            $('.preview-image, .preview-image-desc').addClass('slide-out');
+            $('.preview-wrapper').addClass('slide-out');
             setTimeout(() => {
-                $('.preview-image').remove();
-                $('.preview-image-desc').remove();
-                createNewPreview();
-            }, 150);
+                $('.preview-wrapper').remove();
+                createNewPreview(true);
+            }, 300);
         }
     } else {
-        createNewPreview();
+        createNewPreview(true);
     }
 }
 

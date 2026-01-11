@@ -518,9 +518,25 @@ span.text-seperator {
 /* ------------------- preview image ------------------ */
 
 :root {
-	--preview-image-margin: 100px;
+	--preview-image-margin: 120px;
 	--preview-image-padding: 15px;
 	--preview-image-width: calc(100vh - var(--preview-image-margin) * 2);
+}
+
+.preview-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	pointer-events: none;
+	background-color: transparent;
+	/* Ensure wrapper is above overlay */
+	z-index: 10000;
+}
+
+.preview-wrapper>* {
+	pointer-events: auto;
 }
 
 .preview-image,
@@ -558,7 +574,7 @@ span.text-seperator {
 
 .preview-image-desc {
 	left: calc(100vh - var(--preview-image-margin) * 2 + var(--preview-image-padding) * 2);
-	width: calc(100vw - var(--preview-image-width));
+	width: calc(100% - var(--preview-image-width));
 	height: calc(100vh + var(--preview-image-padding) * 2 - var(--preview-image-margin) * 2);
 	overflow: hidden;
 	box-sizing: border-box;
@@ -604,6 +620,13 @@ span.text-seperator {
 	max-width: 600px;
 }
 
+.preview-image-desc .description,
+.preview-image-desc .sighting-meta-stats,
+.preview-image-desc .photos.section-1,
+.preview-image-desc .photos.section-2 {
+	margin-right: 120px;
+}
+
 .preview-image-desc .photos.section-1 {
 	padding-bottom: 15px;
 	overflow-y: hidden;
@@ -623,7 +646,6 @@ span.text-seperator {
 }
 
 .preview-content {
-	margin-right: 60px;
 	overflow: hidden;
 }
 
@@ -756,7 +778,7 @@ span.text-seperator {
 .preview-image-desc button.left-button {
 	position: fixed;
 	top: 50%;
-	left: calc(var(--preview-image-margin) + var(--preview-image-padding) - 45px);
+	left: calc(var(--preview-image-margin) + var(--preview-image-padding) - 50px);
 	padding-left: 10px;
 	padding-right: 20px;
 }
