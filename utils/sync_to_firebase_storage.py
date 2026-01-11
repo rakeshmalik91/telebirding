@@ -148,6 +148,27 @@ def _collect_referenced_featured_images_from_site_data():
             continue
         if src.startswith('featured-images/'):
             refs.add((ROOT / src).resolve())
+
+    # Check images in trips (often full URLs)
+    trips = obj.get('trips', [])
+    for trip in trips:
+        images = trip.get('images', [])
+        for img_url in images:
+            # We are looking for something like .../featured-images%2FOsprey.jpg?alt=...
+            # or possibly featured-images/Osprey.jpg
+            if not img_url:
+                continue
+            
+            # Simple heuristic: find "featured-images" in the URL/path
+            # URL-decode first to handle %2F
+            decoded = urllib.parse.unquote(img_url)
+            
+            # Pattern match for featured-images/filename
+            # We assume the file is stored under featured-images/
+            match = re.search(r'(featured-images/[^?#]+)', decoded)
+            if match:
+                rel_path = match.group(1)
+                refs.add((ROOT / rel_path).resolve())
     return refs
 
 

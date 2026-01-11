@@ -502,7 +502,81 @@
 }
 
 .videos .video {
-	margin-bottom: 50px;
+	margin-bottom: 80px;
+	border-bottom: 1px solid #334455;
+	padding-bottom: 40px;
+}
+
+.videos .video:last-child {
+	border-bottom: none;
+}
+
+.videos h1 {
+	font-size: 2.2em;
+	color: #98c1ff;
+	margin-bottom: 5px;
+}
+
+.videos .date {
+	font-size: 1.1em;
+	color: #8293a6;
+	margin-bottom: 20px;
+}
+
+.videos iframe.youtube {
+	width: 100%;
+	max-width: 900px;
+	height: 500px;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.videos .image-container {
+	display: inline-block;
+	width: 48%;
+	margin-right: 1%;
+	margin-bottom: 10px;
+	vertical-align: top;
+}
+
+.videos .image-container img {
+	width: 100%;
+	max-height: 400px;
+	object-fit: contain;
+	/* changed from cover to contain to show full image */
+	border-radius: 4px;
+	border: 1px solid #455667;
+}
+
+.videos .text {
+	margin-top: 25px;
+	max-width: 900px;
+}
+
+.videos .text p {
+	font-size: 1.25em;
+	/* Increased size */
+	line-height: 1.6;
+	color: #dbe4ef;
+	/* Lighter text color for better contrast */
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+.videos .text a {
+	color: #64b5f6;
+	text-decoration: none;
+}
+
+.videos .text a:hover {
+	text-decoration: underline;
+	color: #90caf9;
+}
+
+.videos hr {
+	display: none;
+	/* Hide default HR as we use border-bottom on .video */
 }
 
 .videos .video iframe {

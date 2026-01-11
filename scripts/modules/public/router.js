@@ -17,12 +17,12 @@ export function setMode(mode) {
 }
 
 export function showVideosPage() {
-    $('.home .featured').addClass('collapsed');
+    $('.home .featured').removeClass('hidden').addClass('collapsed');
     $('.videos').addClass('expanded');
 }
 
 export function showAboutPage() {
-    $('.home .featured').addClass('collapsed');
+    $('.home .featured').removeClass('hidden').addClass('collapsed');
 }
 
 export function clearExploreMenu() {

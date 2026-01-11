@@ -115,15 +115,15 @@ export function initHomePageCarousal() {
             });
         }
 
-        renderTrips(json.trips);
+        renderStories(json.trips);
     });
 }
 
 // ----------------- home page -----------------
 
 export function showMore() {
-    jQuery('.home-page .hidden-story').show();
-    jQuery('.home-page .show-more').hide();
+    jQuery('.hidden-story').show();
+    jQuery('.show-more').hide();
 }
 
 export function setSiteLogo(modeConfig, currentMode) {
@@ -174,12 +174,39 @@ export function hideLoader(key) {
 
 // ----------------- stories, trips & videos -----------------
 
-export function renderTrips(trips) {
+export function renderStories(trips) {
     const div = $('.videos');
-    trips.forEach(function (trip) {
-        const videoHtml = '<iframe class="youtube" src="https://www.youtube.com/embed/' + trip.youtubeVideoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" allowscriptaccess="always"></iframe>';
-        const video = $(videoHtml).get(0);
-        $('.videos').append('<div class="video"><h1>' + trip.title + '</h1>' + video.outerHTML + '</div>');
+    div.empty();
+
+    const generateTripHtml = (trip, index) => {
+        let mediaHtml = '';
+        if (trip.youtubeVideoId) {
+            mediaHtml = `<iframe class="youtube" src="https://tube.rvere.com/embed?v=${trip.youtubeVideoId}" title="${trip.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else if (trip.images && trip.images.length > 0) {
+            trip.images.forEach(img => {
+                mediaHtml += `<div class="image-container"><img style="width: 100%; padding: 5px; border: 1px solid white;" src="${img}" alt="${trip.title}" /></div>`;
+            });
+        }
+
+        let html = `
+        <div class="video">
+            <h1>${trip.title}</h1>
+            <div class="date">${trip.date}</div>
+            <div>
+                ${mediaHtml}
+            </div>
+            <div class="text">
+                ${trip.storyHtml}
+                ${trip.itineraryHtml ? `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${trip.itineraryHtml}` : ''}
+            </div>
+            <hr />
+        </div>
+        `;
+        return html;
+    };
+
+    trips.forEach((trip, index) => {
+        div.append(generateTripHtml(trip, index));
     });
 }
 
