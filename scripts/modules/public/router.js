@@ -6,7 +6,7 @@ import {
 } from './filters.js';
 import {
     renderPageName, renderSightings, renderExploreMenu, fillStats,
-    renderMapMenu, renderMapPage, renderHome, renderLocationList, renderYearList
+    renderMapMenu, renderMapPage, renderHome, renderLocationList, renderYearList, renderStories
 } from './rendering.js';
 import State from './state.js';
 import { showLoader, hideLoader, resetLoader, setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
@@ -136,6 +136,69 @@ export function retrieveStateFromUrlParams() {
     }
 }
 
+
+const UI_VIEWS = [
+    '.home', '.home-page', '.home .menu', '.home .explore-menu', '.map-menu', '.about-page', '.stories',
+    '.sightings-list', '.filter-panel', '.filter-panel .filter', '.filter-panel .sortby', '.filter-panel .stats'
+];
+
+const VIEW_STATES = {
+    [Constants.ARCHIVE]: {
+        show: ['.home', '.sightings-list', '.filter-panel', '.filter-panel .filter', '.filter-panel .sortby', '.filter-panel .stats'],
+        featured: 'hidden'
+    },
+    [Constants.EXPLORE_MENU]: {
+        show: ['.home', '.home .explore-menu'],
+        featured: 'visible'
+    },
+    [Constants.EXPLORE_PAGE]: {
+        show: ['.home', '.sightings-list', '.filter-panel', '.filter-panel .stats'],
+        featured: 'hidden'
+    },
+    [Constants.MAP_MENU]: {
+        show: ['.home', '.home .map-menu'],
+        featured: 'collapsed'
+    },
+    [Constants.MAP]: {
+        show: ['.home', '.sightings-list', '.filter-panel', '.filter-panel .filter', '.filter-panel .sortby', '.filter-panel .stats'],
+        featured: 'hidden'
+    },
+    [Constants.STORIES]: {
+        show: ['.stories', '.home'],
+        featured: 'collapsed'
+    },
+    [Constants.ABOUT]: {
+        show: ['.home', '.about-page'],
+        featured: 'collapsed'
+    },
+    'DEFAULT': {
+        show: (isMobile) => isMobile ? ['.home', '.home .menu'] : ['.home', '.home .menu', '.home-page'],
+        featured: 'visible'
+    }
+};
+
+function updatePageUI(page) {
+    const config = VIEW_STATES[page] || VIEW_STATES.DEFAULT;
+
+    // Hide all managed views
+    $(UI_VIEWS.join(', ')).hide();
+
+    // Show specific views
+    let toShow = config.show;
+    if (typeof toShow === 'function') {
+        toShow = toShow(State.IS_MOBILE_DEVICE);
+    }
+    $(toShow.join(', ')).show();
+
+    // Handle Featured Section
+    const featured = $('.home .featured');
+    featured.removeClass('hidden collapsed');
+    if (config.featured === 'hidden') featured.addClass('hidden');
+    else if (config.featured === 'collapsed') featured.addClass('collapsed');
+
+
+}
+
 export function showPage(page, params, isPopstate) {
     stopYoutubeVideos();
     resetLoader();
@@ -168,79 +231,50 @@ export function showPage(page, params, isPopstate) {
         Util.getData("data/" + State.currentMode + "-species.json"),
         Util.getData("data/" + State.currentMode + "-families.json"),
         Util.getData("data/" + State.currentMode + "-likes.json"),
-        Util.getData("data/places.json")
+        Util.getData("data/places.json"),
+        Util.getData('data/stories.json')
     ];
     Util.readJSONFiles(files, function (json) {
         State.updateData(json);
         computeInternalDataFields();
         initAutocomplete();
         renderPageName(page, params);
-        if (params) {
-            setFilters(filter);
+        if ([Constants.ARCHIVE, Constants.MAP].includes(State.currentPage)) {
+            if (params) setFilters(filter);
+        } else {
+            setFilters({});
         }
+        updatePageUI(State.currentPage);
         switch (State.currentPage) {
+            case Constants.HOME:
+                renderHome();
+                setMode(Constants.DEFAULT_MODE);
+                break;
+            case Constants.EXPLORE_MENU:
+                renderExploreMenu();
+                break;
+            case Constants.MAP_MENU:
+                renderMapMenu();
+                break;
+            case Constants.STORIES:
+                renderStories();
+                break;
             case Constants.ARCHIVE:
-                $('.home .explore-menu, .home .menu, .about-page, .videos, .home-page').hide();
-                $('.home, .sightings-list, .filter-panel, .filter-panel .filter, .filter-panel .sortby, .filter-panel .stats').show();
-                $('.home .featured').addClass('hidden');
                 State.updateData({ ...State.data, sightingFamilyFilter: null });
-
                 filterAndSortData(filter);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
                 renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, State.IS_MOBILE_DEVICE);
                 break;
-            case Constants.EXPLORE_MENU:
-                $('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
-                $('.home, .home .explore-menu').show();
-                $('.home .featured').removeClass('hidden');
-                setFilters({});
-                renderExploreMenu();
-                break;
             case Constants.EXPLORE_PAGE:
-                $('.home .explore-menu, .home .menu, .about-page, .filter-panel .filter, .filter-panel .sortby, .videos, .home-page').hide();
-                $('.home, .sightings-list, .filter-panel, .filter-panel .stats').show();
-                $('.home .featured').addClass('hidden');
-                setFilters({});
                 filterAndSortData(filter, params);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
                 renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, params, State.IS_MOBILE_DEVICE);
                 break;
-            case Constants.MAP_MENU:
-                $('.filter-panel, .sightings-list, .home .menu, .about-page, .videos, .home-page').hide();
-                $('.home, .home .map-menu').show();
-                $('.home .featured').removeClass('hidden');
-                setFilters({});
-                renderMapMenu();
-                break;
             case Constants.MAP:
-                $('.home .explore-menu, .home .menu, .about-page, .videos, .map-menu, .home-page').hide();
-                $('.home, .sightings-list, .filter-panel, .filter-panel .filter, .filter-panel .sortby, .filter-panel .stats').show();
-                $('.home .featured').addClass('hidden');
                 filterAndSortData(filter);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
                 renderMapPage();
                 break;
-            case Constants.STORIES:
-                $('.filter-panel, .home .menu, .sightings-list, .about-page, .home-page').hide();
-                $('.stories, .home').show();
-                setFilters({});
-                showStoriesPage();
-                break;
-            case Constants.ABOUT:
-                $('.filter-panel, .sightings-list, .home .explore-menu, .home .menu, .stories, .home-page').hide();
-                $('.home, .about-page').show();
-                setFilters({});
-                showAboutPage();
-                break;
-            default:
-                $('.filter-panel, .sightings-list, .home .explore-menu, .about-page, .stories, .map-menu').hide();
-                $('.home, .home .menu').show();
-                if (!State.IS_MOBILE_DEVICE) {
-                    $('.home-page').show();
-                }
-                setFilters({});
-                renderHome();
-                setMode(Constants.DEFAULT_MODE);
         }
 
         setSiteLogo(Constants.MODE, State.currentMode);

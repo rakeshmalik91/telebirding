@@ -1,5 +1,6 @@
 import Util from '../util.js';
 import Constants from '../constants.js';
+import { renderStories } from './rendering.js';
 
 // ----------------- archive page sighting carousal -----------------
 
@@ -114,8 +115,6 @@ export function initHomePageCarousal() {
                 }
             });
         }
-
-        renderStories(json.stories);
     });
 }
 
@@ -172,44 +171,8 @@ export function hideLoader(key) {
     }
 }
 
-// ----------------- stories, trips & videos -----------------
 
-export function renderStories(stories) {
-    const div = $('.stories');
-    div.empty();
-    div.append('<h1>Stories</h1><hr class="heading-hr" />');
-
-    const generateStoryHtml = (story, index) => {
-        let mediaHtml = '';
-        if (story.youtubeVideoId) {
-            mediaHtml = `<iframe class="youtube" src="https://tube.rvere.com/embed?v=${story.youtubeVideoId}" title="${story.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        } else if (story.images && story.images.length > 0) {
-            story.images.forEach(img => {
-                mediaHtml += `<div class="image-container"><img style="width: 100%; padding: 5px; border: 1px solid white;" src="${img}" alt="${story.title}" /></div>`;
-            });
-        }
-
-        let html = `
-        <div class="video">
-            <h1>${story.title}</h1>
-            <div class="date">${story.date}</div>
-            <div>
-                ${mediaHtml}
-            </div>
-            <div class="text">
-                ${story.storyHtml}
-                ${story.itineraryHtml ? `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}` : ''}
-            </div>
-            <hr />
-        </div>
-        `;
-        return html;
-    };
-
-    stories.forEach((story, index) => {
-        div.append(generateStoryHtml(story, index));
-    });
-}
+// ----------------- youtube videos -----------------
 
 export function stopYoutubeVideos() {
     $('.youtube').each(function () {

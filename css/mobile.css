@@ -175,9 +175,7 @@ screen and (max-width: 900px) {
 		box-sizing: border-box;
 	}
 
-	.stories.expanded {
-		left: 0 !important;
-	}
+
 
 	.stories iframe.youtube {
 		width: 100% !important;

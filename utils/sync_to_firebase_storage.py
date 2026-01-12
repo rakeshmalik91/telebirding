@@ -48,7 +48,7 @@ except Exception as e:
         ) from e
     raise
 
-DATA_FILES = ["data/site-data.json", "data/places.json"]
+DATA_FILES = ["data/site-data.json", "data/stories.json", "data/places.json"]
 FEATURED_DIR = ROOT / "featured-images"
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".bmp", ".tif", ".tiff", ".ico", ".heic"}
 
@@ -132,43 +132,52 @@ def upload_featured_images():
         print("  -> uploaded." if ok else "  -> upload failed.")
 
 
-def _collect_referenced_featured_images_from_site_data():
-    """Return set of Paths (absolute) for featured images referenced in data/site-data.json"""
-    site_path = ROOT / "data" / "site-data.json"
+def _collect_referenced_featured_images_from_site_data_and_stories():
+    """Return set of Paths (absolute) for featured images referenced in data/site-data.json and data/stories.json"""
     refs = set()
-    try:
-        obj = json.loads(site_path.read_text(encoding='utf8'))
-    except Exception as e:
-        print("Failed to read/parse site-data.json:", e)
-        return refs
-    featured = obj.get('featured', [])
-    for item in featured:
-        src = item.get('src')
-        if not src:
-            continue
-        if src.startswith('featured-images/'):
-            refs.add((ROOT / src).resolve())
 
-    # Check images in stories (often full URLs)
-    stories = obj.get('stories', [])
-    for story in stories:
-        images = story.get('images', [])
-        for img_url in images:
-            # We are looking for something like .../featured-images%2FOsprey.jpg?alt=...
-            # or possibly featured-images/Osprey.jpg
-            if not img_url:
-                continue
-            
-            # Simple heuristic: find "featured-images" in the URL/path
-            # URL-decode first to handle %2F
-            decoded = urllib.parse.unquote(img_url)
-            
-            # Pattern match for featured-images/filename
-            # We assume the file is stored under featured-images/
-            match = re.search(r'(featured-images/[^?#]+)', decoded)
-            if match:
-                rel_path = match.group(1)
-                refs.add((ROOT / rel_path).resolve())
+    # 1. Check site-data.json (mostly for 'featured')
+    site_path = ROOT / "data" / "site-data.json"
+    if site_path.exists():
+        try:
+            obj = json.loads(site_path.read_text(encoding='utf8'))
+            featured = obj.get('featured', [])
+            for item in featured:
+                src = item.get('src')
+                if not src:
+                    continue
+                if src.startswith('featured-images/'):
+                    refs.add((ROOT / src).resolve())
+        except Exception as e:
+            print("Failed to read/parse site-data.json:", e)
+
+    # 2. Check stories.json (for 'stories')
+    stories_path = ROOT / "data" / "stories.json"
+    if stories_path.exists():
+        try:
+            obj = json.loads(stories_path.read_text(encoding='utf8'))
+            stories = obj.get('stories', [])
+            for story in stories:
+                images = story.get('images', [])
+                for img_url in images:
+                    # We are looking for something like .../featured-images%2FOsprey.jpg?alt=...
+                    # or possibly featured-images/Osprey.jpg
+                    if not img_url:
+                        continue
+                    
+                    # Simple heuristic: find "featured-images" in the URL/path
+                    # URL-decode first to handle %2F
+                    decoded = urllib.parse.unquote(img_url)
+                    
+                    # Pattern match for featured-images/filename
+                    # We assume the file is stored under featured-images/
+                    match = re.search(r'(featured-images/[^?#]+)', decoded)
+                    if match:
+                        rel_path = match.group(1)
+                        refs.add((ROOT / rel_path).resolve())
+        except Exception as e:
+            print("Failed to read/parse stories.json:", e)
+
     return refs
 
 
@@ -215,7 +224,7 @@ def cleanup_unused_featured_images():
 
     Local files are left untouched by this operation.
     """
-    referenced = _collect_referenced_featured_images_from_site_data()
+    referenced = _collect_referenced_featured_images_from_site_data_and_stories()
     referenced.update(_collect_referenced_featured_images_from_html_files())
     referenced_rel = set(p.relative_to(ROOT).as_posix() for p in referenced)
 

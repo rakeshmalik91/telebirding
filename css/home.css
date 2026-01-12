@@ -488,18 +488,16 @@
 	left: 60vw;
 	padding-top: 20px;
 	padding-left: 50px;
-	opacity: 0;
-}
-
-.stories.expanded {
 	opacity: 1;
 }
 
 @media screen and (orientation:landscape) {
-	.stories.expanded {
+	.stories {
 		left: 10vw;
 	}
 }
+
+
 
 .stories .video {
 	margin-bottom: 80px;
