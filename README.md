@@ -1,75 +1,77 @@
 # Telebirding
 
-A bird watching blog by Rakesh Malik.
+<div align="center">
+	<img src="icons/favicon-64x64.png" alt="Telebirding Logo" width="80"/>
+	<br/>
+	<b>Rakesh's Bird Watching & Photography Blog</b>
+</div>
+<br/>
 
-### Hosted On
- - https://telebirding.info
- - https://telebirding-49623.web.app
- - https://telebirding-49623.firebaseapp.com
- - https://telebirding.netlify.app
+**Telebirding** is a personal blog and digital catalogue documenting bird sightings from across the Indian subcontinent. It serves as a visual diary of avian encounters, featuring detailed logs, photography, and stories from various birding expeditions.
 
- Note: New domains to be registered in cors.json and here -> https://www.google.com/recaptcha/admin/site/736295256/settings
+## 🌐 Live Site
+Explore the catalogue online:
+- **Primary**: [telebirding.info](https://telebirding.info)
+- **Mirrors**: [Firebase](https://telebirding-49623.web.app) | [Netlify](https://telebirding.netlify.app)
 
-### Android app
+## 📱 Mobile App (Android)
+Access the bird database on the go.
+- **[Google Play Store](https://play.google.com/store/apps/details?id=com.rakeshmalik.telebirding)**
+- **APK Archive**: [Google Drive](https://drive.google.com/drive/folders/1UNogisKp3rtcOnigcibAPiNsQB-gZJpD?usp=drive_link) | [Dropbox](https://www.dropbox.com/scl/fo/5t1zgkn419ctlzkuacu3h/ACC-_MbfOOu151yPRRH25XU?rlkey=3tirqkq5xland2qx3dfa8hrda&st=0aosjy2b&dl=0)
 
-- [Play Store](https://play.google.com/store/apps/details?id=com.rakeshmalik.telebirding)
-- [Dropbox](https://www.dropbox.com/scl/fo/5t1zgkn419ctlzkuacu3h/ACC-_MbfOOu151yPRRH25XU?rlkey=3tirqkq5xland2qx3dfa8hrda&st=0aosjy2b&dl=0)
+## 📸 Features
+- **Bird Feed**: A comprehensive timeline of bird sightings.
+- **Interactive Map**: View sightings plotted on a map.
+- **Stories**: Detailed blog posts and videos from birding trips (e.g., Ladakh, Uttarakhand, Rajasthan).
+- **Insect ID Integration**: Links to the sister project, [Insect ID](https://github.com/rakeshmalik91/insect-id/blob/main/README.md).
+- **Filtering & Sorting**: Filter by location, date, species name, and image grade.
 
-### Local Setup on Firebase
-```
-./setup.ps1
-```
+## 🛠️ Technical Setup
 
-to change firebase setup:
-```
-firebase init
-gsutil init
-```
+The project is a static web app hosted on Firebase, using Vanilla JS, HTML, and CSS.
 
-Env variables for Windows:
-```
-PATH:
-    C:\Users\User\AppData\Roaming\npm
-    C:\Users\User\AppData\Roaming\fnm\node-versions\v20.17.0\installation
-```
+### Prerequisites
+- **Node.js** (v20.x recommended)
+- **Firebase CLI**
+- **gsutil** (Google Cloud Storage utility)
 
-### Host locally
-```
-firebase serve --only hosting
-```
-or
-```
-firebase.cmd serve --only hosting
-```
+### Local Development
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/rakeshmalik91/telebirding.git
+   ```
+2. **Setup Environment**:
+   Run the setup script (Windows PowerShell):
+   ```powershell
+   ./setup.ps1
+   ```
+   *Alternatively, install Firebase tools globally: `npm install -g firebase-tools`*
 
-### Deploy
-```
+3. **Run Locally**:
+   ```bash
+   firebase serve --only hosting
+   ```
+   Access at `http://localhost:5000`
+
+### Deployment
+To deploy changes to the live site:
+```bash
 firebase deploy
 ```
-or
-```
-firebase.cmd deploy
-```
 
-### Adding new domain for CORS
-```
+### Data Management
+Data and media are stored in **Firebase Storage**.
+
+**File Structure**:
+- `data/`: JSON files (`birds.json`, `species.json`, `places.json`, etc.)
+- `images/`: Bird photography (`*.jpg`)
+- `videos/`: Sighting videos (`*.mp4`)
+- `featured-images/`: Highlight thumbnails
+
+**CORS Configuration**:
+To add a new domain for CORS access:
+```bash
 gsutil cors set cors.json gs://telebirding-49623.appspot.com
 ```
-
-### Fire Storage Url
-
-https://console.firebase.google.com/u/0/project/telebirding-49623/storage/telebirding-49623.appspot.com/files/~2F
-
-### File structure in Fire Storage
-- data
-    - birds.json
-    - species.json
-    - families.json
-    - places.json
-    - site-data.json
-- images
-    - *.jpg
-- videos
-    - *.mp4
-- featured-images
-    - *.jpg
+---
+*Developed by Rakesh Malik*
