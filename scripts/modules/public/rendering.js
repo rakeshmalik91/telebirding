@@ -428,6 +428,26 @@ export function renderStories() {
             });
         }
 
+        let itineraryHtml = '';
+        if (story.itinerary && story.itinerary.length > 0) {
+            const rows = story.itinerary.map(item => `<tr><td>${item.date}</td><td>${item.activity}</td></tr>`).join('');
+            itineraryHtml = `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br /><table class='collapsible hide'>${rows}</table>`;
+        } else if (story.itineraryHtml) {
+            // Fallback for legacy data if any
+            itineraryHtml = `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}`;
+        }
+
+        let sightingsHtml = '';
+        if (story.sightings && story.sightings.length > 0) {
+            const links = story.sightings.map(s => {
+                // Convert params object back to JS object string usage with single quotes to match original style if needed
+                // or just use valid object literal syntax
+                const paramsStr = JSON.stringify(s.params).replace(/"/g, "'");
+                return `<a onclick="showPage('feed', ${paramsStr})">${s.text}</a>`;
+            }).join(' | ');
+            sightingsHtml = `<p>${links} >></p>`;
+        }
+
         let html = `
         <div class="video">
             <h1>${story.title}</h1>
@@ -437,7 +457,8 @@ export function renderStories() {
             </div>
             <div class="text">
                 ${story.storyHtml}
-                ${story.itineraryHtml ? `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}` : ''}
+                ${sightingsHtml}
+                ${itineraryHtml}
             </div>
             <hr />
         </div>

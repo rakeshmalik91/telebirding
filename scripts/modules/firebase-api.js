@@ -1,6 +1,6 @@
 export default class FirebaseApi {
-    // var FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
-    static FIREBASE_ENABLED = true;
+    static FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
+    // static FIREBASE_ENABLED = true;
     static FIREBASE_APPCHECK_ENABLED = false;
 
     static #firebaseInitialized = false;
