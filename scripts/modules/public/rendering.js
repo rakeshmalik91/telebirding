@@ -445,7 +445,30 @@ export function renderStories() {
         return html;
     };
 
-    stories.forEach((story, index) => {
-        div.append(generateStoryHtml(story, index));
-    });
+    let renderedCount = 0;
+    const BATCH_SIZE = 5;
+
+    const renderNextBatch = () => {
+        const end = Math.min(renderedCount + BATCH_SIZE, stories.length);
+        for (let i = renderedCount; i < end; i++) {
+            div.append(generateStoryHtml(stories[i], i));
+        }
+        renderedCount = end;
+
+        div.find('.scroll-sentinel').remove();
+        if (renderedCount < stories.length) {
+            const sentinel = $('<div class="scroll-sentinel" style="height: 20px;"></div>');
+            div.append(sentinel);
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    observer.disconnect();
+                    renderNextBatch();
+                }
+            });
+            observer.observe(sentinel[0]);
+        }
+    };
+
+    renderNextBatch();
 }
