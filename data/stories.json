@@ -5,6 +5,7 @@
             "date": "August 2025, January 2026",
             "youtubeVideoId": "jxE1H7RRWlQ",
             "storyHtml": "<p>It was 2 trips, 3 days in Nalsarovar during monsoon and 4 days in Nalsarovar & LRK during winter, with <a href='https://www.instagram.com/nalsarovar_latif_alvani' target='_blank'>Latif Alvani</a> as guide in Nalsarovar and <a href='https://www.instagram.com/gopal.khambhala.37/' target='_blank'>Gopal Khambhala</a> as guide in LRK.</p>",
+            "itineraryExpanded": true,
             "itinerary": [
                 {
                     "date": "21/08/2025",
@@ -56,7 +57,7 @@
             "title": "Iceland",
             "date": "September - October 2025",
             "youtubeVideoId": "CI9VZwTVawo",
-            "storyHtml": "<p>A 2 week trip to Snaefellsnes and Southern Region of Iceland, mainly targeted towards Aurora and wildlife. Got aurora sightings only 2 days though, due to clouds. But got some good amount of pellagic birds, dolphins, seals.</p>",
+            "storyHtml": "<p>A 2 week trip to Snaefellsnes, Capital & Southern Region of Iceland, mainly targeted towards Aurora and wildlife/birds.</p><p>Got aurora sightings only 2 days though, due to clouds. About Kp-index of 4-5. Found <a href='https://vedur.is' target='_blank'>vedur.is</a> pretty useful for tracking the spots for aurora though, during these extremely cloudy days.</p><p>Got some good amount of pellagic birds, dolphins, seals with <a href='https://www.instagram.com/lakitours/' target='_blank'>Laki Tours</a> at Olafsvik and with <a href='https://icelagoon.is/' target='_blank'>icelagoon.is</a> for Zodiac Tour at Jökulsárlón.</p>",
             "sightings": [
                 {
                     "text": "Sightings",
@@ -77,11 +78,11 @@
                 },
                 {
                     "date": "22/09/2025",
-                    "activity": "Travel & birding at Snaefellsnes (Grundarfjörður, Kirkjufell, Olafsvik)<br/>Cruise at Olafsvik for Whale/Dolphin/Pellagics<br/>Stay at Grundarfjörður"
+                    "activity": "Travel & birding in Snaefellsnes Peninsula<br/> - Sightseeing around Grundarfjörður, Kirkjufell<br/> - Birding at Kolgrafarfjörður<br/> - Cruise for Whale/Dolphin & Pellagic birds watching at Olafsvik<br/>Stay at Grundarfjörður"
                 },
                 {
                     "date": "23 - 24/09/2025",
-                    "activity": "Travel to and stay at Hofgarðar<br/>Travel & birding at Snaefellsnes Peninsula (Hofgarðar, Ytri Tunga, Arnarstapi, Skarðsvík, Hellissandur)<br/>Seal watching at Ytri Tunga"
+                    "activity": "Travel to and stay at Hofgarðar<br/>Travel & birding in Snaefellsnes Peninsula<br/> - Sightseeing around Hofgarðar, Arnarstapi, Gatklettur, Bjarnarfoss, Skarðsvík, Hellissandur<br/> - Seal watching at Ytri Tunga beach"
                 },
                 {
                     "date": "25/09/2025",
@@ -97,7 +98,7 @@
                 },
                 {
                     "date": "28/09/2025",
-                    "activity": "Morning boating & seal watching at Jökulsárlón<br/>Travel to and stay at Höfn."
+                    "activity": "Morning Zodiac tour boating & seal watching at Jökulsárlón<br/>Visit Diamond beach<br/>Travel to and stay at Höfn."
                 },
                 {
                     "date": "29/09/2025",
@@ -125,7 +126,7 @@
             "title": "Sambhar Lake, Rajasthan",
             "date": "24 May 2025",
             "youtubeVideoId": "CAa7B17NWUU",
-            "storyHtml": "<p>Another trip to Sambhar lake with <a href='https://www.instagram.com/gourav.wildlife/' target='_blank'>Gaurav Dadhich</a>, mainly targetted for Lesser Flamingoes.</p>",
+            "storyHtml": "<p>Another trip to Sambhar lake with <a href='https://www.instagram.com/gourav.wildlife/' target='_blank'>Gaurav Dadhich</a>, mainly targeted for Lesser Flamingoes.</p>",
             "sightings": [
                 {
                     "text": "Sightings",

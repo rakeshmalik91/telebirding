@@ -256,6 +256,8 @@ export function renderHome() {
     $('.home .featured').removeClass('collapsed');
     $('.explore-menu').removeClass('expanded');
     $('.stories').removeClass('expanded');
+
+    renderStories('.home-stories', 5);
 }
 
 export function renderMapPage() {
@@ -412,11 +414,16 @@ export function fillStats(ratingFilter, newSpeciesFilter, getFilters) {
     }
 }
 
-export function renderStories() {
-    let stories = State.data.stories;
-    const div = $('.stories');
+export function renderStories(containerSelector = '.stories', limit = 0) {
+    let stories = State.data.stories || [];
+    const div = $(containerSelector);
     div.empty();
-    div.append('<h1>Stories</h1><hr class="heading-hr" />');
+
+    if (containerSelector === '.stories') {
+        div.append('<h1>Stories</h1><hr class="heading-hr" />');
+    }
+
+    const isHomePage = containerSelector === '.home-stories';
 
     const generateStoryHtml = (story, index) => {
         let mediaHtml = '';
@@ -430,11 +437,18 @@ export function renderStories() {
 
         let itineraryHtml = '';
         if (story.itinerary && story.itinerary.length > 0) {
+            const shouldExpand = isHomePage && story.itineraryExpanded;
+            const buttonClass = shouldExpand ? 'collpasible-section-button active' : 'collpasible-section-button';
+            const contentClass = shouldExpand ? 'collapsible' : 'collapsible hide';
+
             const rows = story.itinerary.map(item => `<tr><td>${item.date}</td><td>${item.activity}</td></tr>`).join('');
-            itineraryHtml = `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br /><table class='collapsible hide'>${rows}</table>`;
+            itineraryHtml = `<p><a class='${buttonClass}' onclick='toggleCollpasible(this)'>Itinerary</a><br /><table class='${contentClass}'>${rows}</table>`;
         } else if (story.itineraryHtml) {
             // Fallback for legacy data if any
-            itineraryHtml = `<p><a class='collpasible-section-button' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}`;
+            const shouldExpand = isHomePage && story.itineraryExpanded;
+            const buttonClass = shouldExpand ? 'collpasible-section-button active' : 'collpasible-section-button';
+
+            itineraryHtml = `<p><a class='${buttonClass}' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}`;
         }
 
         let sightingsHtml = '';
@@ -452,7 +466,7 @@ export function renderStories() {
         <div class="video">
             <h1>${story.title}</h1>
             <div class="date">${story.date}</div>
-            <div>
+            <div class="story-media">
                 ${mediaHtml}
             </div>
             <div class="text">
@@ -470,11 +484,19 @@ export function renderStories() {
     const BATCH_SIZE = 5;
 
     const renderNextBatch = () => {
-        const end = Math.min(renderedCount + BATCH_SIZE, stories.length);
+        const remainingInStories = stories.length - renderedCount;
+        const remainingInLimit = limit > 0 ? (limit - renderedCount) : Infinity;
+        const countToRender = Math.min(BATCH_SIZE, remainingInStories, remainingInLimit);
+
+        if (countToRender <= 0) return;
+
+        const end = renderedCount + countToRender;
         for (let i = renderedCount; i < end; i++) {
             div.append(generateStoryHtml(stories[i], i));
         }
         renderedCount = end;
+
+        if (limit > 0 && renderedCount >= limit) return;
 
         div.find('.scroll-sentinel').remove();
         if (renderedCount < stories.length) {
