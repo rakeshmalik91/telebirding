@@ -414,7 +414,7 @@ export function fillStats(ratingFilter, newSpeciesFilter, getFilters) {
     }
 }
 
-export function renderStories(containerSelector = '.stories', limit = 0) {
+export function renderStories(containerSelector = '.stories', limit = 0, targetStory = null) {
     let stories = State.data.stories || [];
     const div = $(containerSelector);
     div.empty();
@@ -437,7 +437,7 @@ export function renderStories(containerSelector = '.stories', limit = 0) {
 
         let itineraryHtml = '';
         if (story.itinerary && story.itinerary.length > 0) {
-            const shouldExpand = isHomePage && story.itineraryExpanded;
+            const shouldExpand = !isHomePage || story.itineraryExpanded;
             const buttonClass = shouldExpand ? 'collpasible-section-button active' : 'collpasible-section-button';
             const contentClass = shouldExpand ? 'collapsible' : 'collapsible hide';
 
@@ -445,7 +445,7 @@ export function renderStories(containerSelector = '.stories', limit = 0) {
             itineraryHtml = `<p><a class='${buttonClass}' onclick='toggleCollpasible(this)'>Itinerary</a><br /><table class='${contentClass}'>${rows}</table>`;
         } else if (story.itineraryHtml) {
             // Fallback for legacy data if any
-            const shouldExpand = isHomePage && story.itineraryExpanded;
+            const shouldExpand = !isHomePage || story.itineraryExpanded;
             const buttonClass = shouldExpand ? 'collpasible-section-button active' : 'collpasible-section-button';
 
             itineraryHtml = `<p><a class='${buttonClass}' onclick='toggleCollpasible(this)'>Itinerary</a><br />${story.itineraryHtml}`;
@@ -462,9 +462,10 @@ export function renderStories(containerSelector = '.stories', limit = 0) {
             sightingsHtml = `<p>${links} >></p>`;
         }
 
+        const slug = Util.slugify(story.title + " " + story.date);
         let html = `
-        <div class="video">
-            <h1>${story.title}</h1>
+        <div class="video" id="${slug}">
+            <h1>${story.title} <a href="javascript:void(0)" onclick="copyStoryLink('${slug}')" title="Copy Link to Story">🔗</a></h1>
             <div class="date">${story.date}</div>
             <div class="story-media">
                 ${mediaHtml}
@@ -482,11 +483,24 @@ export function renderStories(containerSelector = '.stories', limit = 0) {
 
     let renderedCount = 0;
     const BATCH_SIZE = 5;
+    let initialCount = BATCH_SIZE;
 
-    const renderNextBatch = () => {
+    if (targetStory) {
+        const targetIndex = stories.findIndex(s => {
+            const fullSlug = Util.slugify(s.title + " " + s.date);
+            const titleSlug = Util.slugify(s.title);
+            // Match exact full slug OR match title-only slug (backward compatibility/relaxed matching)
+            return fullSlug === targetStory || titleSlug === targetStory;
+        });
+        if (targetIndex >= 0) {
+            initialCount = Math.max(BATCH_SIZE, targetIndex + 1);
+        }
+    }
+
+    const renderNextBatch = (forcedCount) => {
         const remainingInStories = stories.length - renderedCount;
         const remainingInLimit = limit > 0 ? (limit - renderedCount) : Infinity;
-        const countToRender = Math.min(BATCH_SIZE, remainingInStories, remainingInLimit);
+        const countToRender = Math.min(forcedCount || BATCH_SIZE, remainingInStories, remainingInLimit);
 
         if (countToRender <= 0) return;
 
@@ -513,5 +527,24 @@ export function renderStories(containerSelector = '.stories', limit = 0) {
         }
     };
 
-    renderNextBatch();
+    renderNextBatch(initialCount);
+
+    if (targetStory) {
+        setTimeout(() => {
+            let targetEl = document.getElementById(targetStory);
+            // If strict match fails, try finding by title-part match
+            if (!targetEl) {
+                // Find the story that matched in logic above
+                const matchedStory = stories.find(s => Util.slugify(s.title) === targetStory);
+                if (matchedStory) {
+                    const fullSlug = Util.slugify(matchedStory.title + " " + matchedStory.date);
+                    targetEl = document.getElementById(fullSlug);
+                }
+            }
+
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 500);
+    }
 }

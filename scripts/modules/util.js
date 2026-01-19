@@ -60,6 +60,15 @@ export default class Util {
 		return string.split(" ").map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ");
 	}
 
+	static slugify(text) {
+		return text.toString().toLowerCase()
+			.replace(/\s+/g, '-')           // Replace spaces with -
+			.replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+			.replace(/\-\-+/g, '-')         // Replace multiple - with single -
+			.replace(/^-+/, '')             // Trim - from start of text
+			.replace(/-+$/, '');            // Trim - from end of text
+	}
+
 	static isTouchDevice() {
 		return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
 	}

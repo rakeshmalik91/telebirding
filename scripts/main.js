@@ -2,7 +2,7 @@ import Constants from './modules/constants.js';
 import Util from './modules/util.js';
 import {
 	showLoader, rollSightingCarousal, showMore, setSiteLogo,
-	initHomePageCarousal, rollHomePageCarousal
+	initHomePageCarousal, rollHomePageCarousal, copyStoryLink
 } from './modules/public/ui-helpers.js';
 import State from './modules/public/state.js';
 import { renderSightings, renderPageName } from './modules/public/rendering.js';
@@ -42,6 +42,7 @@ window.setMode = setMode;
 window.showMore = showMore;
 window.like = like;
 window.renderPageName = renderPageName;
+window.copyStoryLink = copyStoryLink;
 
 
 
@@ -114,6 +115,7 @@ showPage(State.currentPage, {
 	sighting: params.sighting ? decodeURIComponent(params.sighting) : undefined,
 	place: params.place ? decodeURIComponent(params.place) : undefined,
 	date: params.date ? decodeURIComponent(params.date) : undefined,
+	story: params.story ? decodeURIComponent(params.story) : undefined,
 	sort_by: params.sort_by ? decodeURIComponent(params.sort_by) : undefined,
 	sort_descending: params.sort_descending
 }, false);

@@ -488,6 +488,7 @@
 	margin-bottom: 50px;
 	border-bottom: 1px solid #334455;
 	padding-bottom: 40px;
+	scroll-margin-top: calc(var(--header-height) + var(--header-padding) + 20px);
 }
 
 .stories .video:last-child,
@@ -593,6 +594,25 @@
 .home-stories .text a:hover {
 	text-decoration: underline;
 	color: #90caf9;
+}
+
+.stories h1 a,
+.home-stories h1 a {
+	text-decoration: none !important;
+	border: none !important;
+	box-shadow: none !important;
+	cursor: pointer;
+	font-size: 0.6em;
+	vertical-align: middle;
+	opacity: 0.5;
+	margin-left: 10px;
+	filter: grayscale(100%);
+}
+
+.stories h1 a:hover,
+.home-stories h1 a:hover {
+	opacity: 1;
+	filter: none;
 }
 
 .stories hr,

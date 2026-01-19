@@ -89,6 +89,7 @@ export function getUrlFromState(state) {
     }
     if (State.newSpeciesFilter) url += "&newspecies=true";
     if (State.ratingFilter) url += "&rating=" + State.ratingFilter;
+    if (state.params && state.params.story) url += "&story=" + encodeURIComponent(state.params.story);
     return url;
 }
 
@@ -257,7 +258,7 @@ export function showPage(page, params, isPopstate) {
                 renderMapMenu();
                 break;
             case Constants.STORIES:
-                renderStories();
+                renderStories('.stories', 0, params ? params.story : null);
                 break;
             case Constants.ARCHIVE:
                 State.updateData({ ...State.data, sightingFamilyFilter: null });

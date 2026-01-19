@@ -181,3 +181,21 @@ export function stopYoutubeVideos() {
         }
     });
 }
+
+export function copyStoryLink(slug) {
+    const url = window.location.origin + window.location.pathname + "?page=" + Constants.STORIES + "&story=" + slug;
+    navigator.clipboard.writeText(url).then(function () {
+        // Optional: Show a toast or feedback
+        const toast = $('<div class="toast">Link copied to clipboard</div>');
+        $('body').append(toast);
+        setTimeout(() => {
+            toast.addClass('show');
+            setTimeout(() => {
+                toast.removeClass('show');
+                setTimeout(() => toast.remove(), 500);
+            }, 2000);
+        }, 100);
+    }, function (err) {
+        console.error('Async: Could not copy text: ', err);
+    });
+}
