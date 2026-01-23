@@ -14,7 +14,7 @@ export default class EbirdApi {
         return code
             ? fetch('https://api.ebird.org/v2/ref/taxonomy/ebird?cat=species&fmt=json&species=' + encodeURIComponent(code.trim()) + '&locale=en')
                 .then(r => r.json())
-                .then(a => a && a[0] && a[0].sciName && a[0].sciName)
+                .then(a => a && a[0])
                 .catch(() => undefined)
             : Promise.resolve(undefined);
     }

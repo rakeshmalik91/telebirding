@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 import Util from '../util.js';
-import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js';
+import { getSelectDOM, getSelectOptionsDOM, showOverlay } from '../ui-helpers.js';
 import EbirdApi from '../ebird-api.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaLeft, updateField, updateMediaProperty,
@@ -34,12 +34,7 @@ export function fillUpdateSpeciesForm() {
     }
 }
 
-export function setupFamilyForm() {
-    const addFamilyForm = $("#add-family-form");
-    addFamilyForm.find("button.submit").unbind("click").click(function () {
-        addFamily(addFamilyForm.find("input[data-field=name]").val());
-    });
-}
+
 
 export function setupUpdateSpeciesForm() {
     const updateSpeciesForm = $("#update-species-form");
@@ -66,21 +61,52 @@ export function setupUpdateSpeciesForm() {
         if (!v || !v.trim()) return;
         let tagsInput = updateSpeciesForm.find("input[data-field=tags]");
         if (!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
+
+        showOverlay("Fetching eBird Code");
         EbirdApi.fetchEbirdCode(v).then(c => {
             if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
                 updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
+        }).finally(() => {
+            $(".overlay").hide();
         });
     });
     updateSpeciesForm.find("input[data-field=ebird-code]").unbind("change").change(function () {
         let v = $(this).val();
         if (!v || !v.trim()) return;
-        EbirdApi.fetchEbirdSciName(v).then(s => s && updateSpeciesForm.find("input[data-field=latin-name]").val(s).change());
+
+        showOverlay("Fetching Scientific Name & Family");
+        EbirdApi.fetchEbirdSciName(v).then(s => {
+            if (s) {
+                if (s.sciName) updateSpeciesForm.find("input[data-field=latin-name]").val(s.sciName).change();
+                if (s.familyComName) {
+                    let familySelect = updateSpeciesForm.find("select[data-field=family]");
+                    let matchingOption = familySelect.find("option").filter(function () {
+                        return $(this).text() === s.familyComName;
+                    });
+
+                    if (matchingOption.length > 0) {
+                        familySelect.val(matchingOption.val()).trigger('change');
+                    } else {
+                        // Family doesn't exist, add it
+                        addFamily(s.familyComName, s.familyCode, s.familySciName);
+                        // Re-populate and select
+                        // Since addFamily updates data.families but we need to update UI dropdown
+                        // We can either simple append option or refresh the whole select
+                        familySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
+                        familySelect.val(s.familyComName).trigger('change');
+                    }
+                }
+            }
+        }).finally(() => {
+            $(".overlay").hide();
+        });
     });
     updateSpeciesForm.find("input[data-field=latin-name]").unbind("change").change(function () {
         let v = $(this).val();
         if (v != null && v != undefined) $(this).val(v.toLowerCase().trim());
     });
 }
+
 
 export function renderSightingsTable(OFFSET, ROWS) {
     const table = $("#sightings-table");

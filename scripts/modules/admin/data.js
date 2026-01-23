@@ -37,7 +37,7 @@ function refresh() {
     refreshData();
 }
 
-export function uploadJSONData(type) {
+export function uploadJSONData(type, skipRefresh) {
     showOverlay("Saving");
     let fileData = {};
     fileData[type] = data[type];
@@ -53,7 +53,8 @@ export function uploadJSONData(type) {
     const file = new File(fileData, type + ".json");
     firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
         console.log("uploaded data/" + currentMode + "-" + type + ".json");
-        refresh();
+        if (!skipRefresh) refresh();
+        else $(".overlay").hide();
     }).catch(e => {
         alert(e.message);
         $(".overlay").hide();
@@ -322,18 +323,19 @@ export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
     }
 }
 
-export function addFamily(name) {
+export function addFamily(name, ebirdCode, sciName) {
     if (!name) {
         alert("Name is mandatory");
     } else {
         data.families = data.families.filter(f => f.name != name);
         if (name.trim()) {
-            data.families.push({
-                name: name
-            });
+            let fam = { name: name };
+            if (ebirdCode) fam.ebird_code = ebirdCode;
+            if (sciName) fam.sci_name = sciName;
+            data.families.push(fam);
         }
         data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
-        uploadJSONData("families");
+        uploadJSONData("families", true);
     }
 }
 
