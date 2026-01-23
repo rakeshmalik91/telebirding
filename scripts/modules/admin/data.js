@@ -104,8 +104,9 @@ export function uploadMedia(sightingKey, files) {
     }
     Array.from(files).forEach(function (file) {
         let mediaSrc;
+        const speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
+
         if (file.type.match(/image.*/)) {
-            const speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
             mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
             console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
             Util.resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
@@ -124,12 +125,34 @@ export function uploadMedia(sightingKey, files) {
                     $(".overlay").hide();
                 });
             });
+        } else if (file.type.match(/video.*/)) {
+            // Upload video as is
+            mediaSrc = 'videos/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".mp4";
+            console.log("uploading video " + file.name + " for " + sightingKey + " as " + mediaSrc);
+
+            firebase.storage().ref(mediaSrc).put(file).then(() => {
+                console.log("uploaded video " + mediaSrc);
+                data.sightings.forEach(function (sighting) {
+                    if (sighting.key == sightingKey) {
+                        sighting.media.push({
+                            src: mediaSrc,
+                            type: 'video',
+                            mute: true,
+                            thumbnail: data.sightings.find(s => s.key == sightingKey).media.find(m => m.type !== 'video')?.src || mediaSrc // Use first image as thumbnail if available
+                        });
+                    }
+                });
+                syncSightingsData(0);
+            }).catch(e => {
+                alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                $(".overlay").hide();
+            });
         }
     });
 }
 
 export function deleteMedia(sightingKey, mediaSrc) {
-    if (!mediaSrc.toLowerCase().endsWith(".jpg")) {
+    if (!mediaSrc.toLowerCase().endsWith(".jpg") && !mediaSrc.toLowerCase().endsWith(".mp4")) {
         alert("Unsupported!!!");
         return;
     }
@@ -191,9 +214,9 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
         const parts = media.src.split('/');
         const filename = parts[parts.length - 1];
 
-        // Only rename if it matches the pattern <oldSpeciesKey>-<timestamp>.jpg
+        // Only rename if it matches the pattern <oldSpeciesKey>-<timestamp>.{jpg|mp4}
         // and avoid partial matches by checking the boundary (hyphen)
-        if (filename.startsWith(oldSpeciesKey + "-") && media.src.toLowerCase().endsWith(".jpg")) {
+        if (filename.startsWith(oldSpeciesKey + "-") && (media.src.toLowerCase().endsWith(".jpg") || media.src.toLowerCase().endsWith(".mp4"))) {
             const newFilename = filename.replace(oldSpeciesKey, newSpeciesKey);
             const newSrc = media.src.replace(filename, newFilename);
 
@@ -201,6 +224,19 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
 
             const p = FirebaseApi.moveFile(media.src, newSrc).then(() => {
                 media.src = newSrc;
+                if (media.type === 'video' && media.thumbnail && media.thumbnail.includes(oldSpeciesKey)) {
+                    // Try to update thumbnail path if it was also renamed (though thumbnail is usually a separate image src, 
+                    // if it points to an image that was just renamed, we should update it too. 
+                    // However, the Thumbnail string usually mimics an image src. 
+                    // If the thumbnail is one of the images we are renaming, its string update might need care.
+                    // But here we are just updating the reference in the media object.
+                    const thumbParts = media.thumbnail.split('/');
+                    const thumbFilename = thumbParts[thumbParts.length - 1];
+                    if (thumbFilename.startsWith(oldSpeciesKey + "-")) {
+                        const newThumbFilename = thumbFilename.replace(oldSpeciesKey, newSpeciesKey);
+                        media.thumbnail = media.thumbnail.replace(thumbFilename, newThumbFilename);
+                    }
+                }
             }).catch(err => {
                 console.error("Failed to move " + media.src, err);
                 errors.push(`Failed to move ${media.src}: ${err.message}`);

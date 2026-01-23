@@ -125,7 +125,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
         sighting.media.forEach(function (media, i) {
             row += "<div class='thumbnail'>";
             row += "<span>." + (media.type == "video" ? "mp4" : "jpg") + "</span>";
-            row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media' " + (media.type == "video" ? "disabled" : "") + ">-</button>";
+            row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>-</button>";
             row += "<button class='move-media-left' data-mediasrc='" + media.src + "' title='Move Left' " + (i <= 0 ? "disabled" : "") + "><</button>";
             if (media.type == 'video') {
                 row += "<img src='" + Util.getMedia(media.thumbnail) + "' title='" + media.src + "'/>";
@@ -136,7 +136,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
             row += "</div>";
         });
         row += "<button class='upload-button' title='Add media'>+</button>";
-        row += "<input class='upload' type='file' accept='.jpg' hidden/>";
+        row += "<input class='upload' type='file' accept='.jpg,.mp4' hidden/>";
         row += "</div></td>";
 
         row += "<td class='place-fields'>";
