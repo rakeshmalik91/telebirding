@@ -1,6 +1,5 @@
 export default class FirebaseApi {
-    static FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig);
-    // static FIREBASE_ENABLED = true;
+    static FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig) || window.location.pathname == '/admin';
     static FIREBASE_APPCHECK_ENABLED = false;
 
     static #firebaseInitialized = false;
@@ -26,5 +25,20 @@ export default class FirebaseApi {
         }
         FirebaseApi.#firebaseInitialized = true;
         return firebase;
+    }
+
+    static moveFile(oldPath, newPath) {
+        const oldRef = FirebaseApi.getFirebase().storage().ref(oldPath);
+        const newRef = FirebaseApi.getFirebase().storage().ref(newPath);
+
+        return oldRef.getDownloadURL().then(url => {
+            return fetch(url);
+        }).then(response => {
+            return response.blob();
+        }).then(blob => {
+            return newRef.put(blob);
+        }).then(() => {
+            return oldRef.delete();
+        });
     }
 }

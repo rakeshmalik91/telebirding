@@ -166,6 +166,11 @@ export function moveMediaLeft(sightingKey, mediaSrc) {
 export function updateField(sightingKey, field, value) {
     data.sightings.forEach(function (sighting) {
         if (sighting.key != sightingKey) return;
+
+        if (field == 'species' && sighting.species !== value) {
+            renameSightingMedia(sighting, sighting.species, value);
+        }
+
         if (field == 'date') {
             sighting[field] = moment(value, 'yyyy-mm-DD').format('DD-mm-yyyy');
         } else if (field == 'hidden') {
@@ -175,6 +180,47 @@ export function updateField(sightingKey, field, value) {
         }
     });
     syncSightingsData(SYNC_SCHEDULE_TIME);
+}
+
+function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
+    showOverlay("Renaming Media...");
+    const promises = [];
+    const errors = [];
+
+    sighting.media.forEach((media, index) => {
+        const parts = media.src.split('/');
+        const filename = parts[parts.length - 1];
+
+        // Only rename if it matches the pattern <oldSpeciesKey>-<timestamp>.jpg
+        // and avoid partial matches by checking the boundary (hyphen)
+        if (filename.startsWith(oldSpeciesKey + "-") && media.src.toLowerCase().endsWith(".jpg")) {
+            const newFilename = filename.replace(oldSpeciesKey, newSpeciesKey);
+            const newSrc = media.src.replace(filename, newFilename);
+
+            console.log(`Renaming ${media.src} to ${newSrc}`);
+
+            const p = FirebaseApi.moveFile(media.src, newSrc).then(() => {
+                media.src = newSrc;
+            }).catch(err => {
+                console.error("Failed to move " + media.src, err);
+                errors.push(`Failed to move ${media.src}: ${err.message}`);
+            });
+            promises.push(p);
+        }
+    });
+
+    if (promises.length > 0) {
+        Promise.all(promises).then(() => {
+            $(".overlay").hide();
+            if (errors.length > 0) {
+                alert("Some files could not be renamed:\n" + errors.join("\n"));
+            }
+            syncSightingsData(0); // Force immediate sync to save new paths
+            console.log("Renaming process completed.");
+        });
+    } else {
+        $(".overlay").hide();
+    }
 }
 
 export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
