@@ -184,6 +184,7 @@ function updatePageUI(page) {
 
     // Hide all managed views
     $(UI_VIEWS.join(', ')).hide();
+    $(UI_VIEWS.join(', ')).removeClass('fadein');
 
     // Show specific views
     let toShow = config.show;
@@ -191,6 +192,12 @@ function updatePageUI(page) {
         toShow = toShow(State.IS_MOBILE_DEVICE);
     }
     $(toShow.join(', ')).show();
+    if (page === Constants.HOME || !page) {
+        const elementsToAnimate = $('.home-page, .home .menu');
+        elementsToAnimate.removeClass('fadein');
+        void elementsToAnimate[0].offsetWidth; // trigger reflow
+        elementsToAnimate.addClass('fadein');
+    }
 
     // Handle Featured Section
     const featured = $('.home .featured');
@@ -218,6 +225,8 @@ export function showPage(page, params, isPopstate) {
         var state = { page: page, params: params, filter: filter, sort: State.sort };
         history.pushState(state, '', getUrlFromState(state));
     }
+
+    if (page == Constants.HOME && State.currentPage == Constants.HOME) return;
 
     if (page == State.currentPage && JSON.stringify(filter) == JSON.stringify(State.data.filter) && JSON.stringify(State.sort) == JSON.stringify(State.data.sort)) {
         // dont reload page if all content are same 
