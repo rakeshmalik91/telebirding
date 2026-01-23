@@ -147,7 +147,7 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
     }
 }
 
-export function renderSighting(sightingDiv, sighting, IS_MOBILE_DEVICE) {
+export function renderSighting(sightingDiv, sighting) {
     sightingDiv.append('<div class="sighting-image-carousal"></div>');
     let sightingCarousal = sightingDiv.find(".sighting-image-carousal");
     $.each(sighting.media, function (i, image) {
@@ -165,12 +165,12 @@ export function renderSighting(sightingDiv, sighting, IS_MOBILE_DEVICE) {
     let sightingLabelDiv = sightingDiv.find(".sighting-label");
 
     renderSightingDetails(sightingLabelDiv, sighting);
-    if (IS_MOBILE_DEVICE) {
+    if (State.IS_MOBILE_DEVICE) {
         renderSightingTags(sightingLabelDiv, sighting);
     }
 }
 
-export function renderSightings(offset, pageSize, IS_MOBILE_DEVICE) {
+export function renderSightings(offset, pageSize) {
     if (offset == 0) {
         $(".sightings-list").html('');
         State.updateCurrentRenderOffset(0);
@@ -187,7 +187,7 @@ export function renderSightings(offset, pageSize, IS_MOBILE_DEVICE) {
     $.each(dataToRender, function (i, sighting) {
         $(".sightings-list").append('<div id="' + sighting.key + '" class="sighting-panel"></div>');
         let sightingDiv = $("#" + sighting.key);
-        renderSighting(sightingDiv, sighting, IS_MOBILE_DEVICE)
+        renderSighting(sightingDiv, sighting)
     });
     State.updateCurrentRenderOffset(State.currentRenderOffset + Constants.ARCHIVE_DATA_PER_PAGE);
 }

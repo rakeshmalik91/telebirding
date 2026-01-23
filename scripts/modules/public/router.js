@@ -265,12 +265,12 @@ export function showPage(page, params, isPopstate) {
                 State.updateData({ ...State.data, sightingFamilyFilter: null });
                 filterAndSortData(filter);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
-                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, State.IS_MOBILE_DEVICE);
+                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE);
                 break;
             case Constants.EXPLORE_PAGE:
                 filterAndSortData(filter, params);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
-                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE, params, State.IS_MOBILE_DEVICE);
+                renderSightings(0, Constants.ARCHIVE_DATA_PER_PAGE);
                 break;
             case Constants.MAP:
                 filterAndSortData(filter);
