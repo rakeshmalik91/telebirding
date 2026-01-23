@@ -266,6 +266,8 @@ export default class Util {
 			}
 			canvas.width = size;
 			canvas.height = size;
+			ctx.imageSmoothingEnabled = true;
+			ctx.imageSmoothingQuality = 'high';
 			if (width >= height) {
 				ctx.drawImage(image, (width - height) / 2, 0, height, height, 0, 0, size, size);
 			} else {
@@ -276,7 +278,8 @@ export default class Util {
 				ctx.fillStyle = watermark.color;
 				ctx.fillText(watermark.text, size * 0.75, size * 0.95);
 			}
-			const dataUrl = canvas.toDataURL('image/jpeg');
+			const compressionQuality = 0.8;
+			const dataUrl = canvas.toDataURL('image/jpeg', compressionQuality);
 			return dataURItoBlob(dataUrl);
 		};
 		return new Promise(function (ok, no) {
