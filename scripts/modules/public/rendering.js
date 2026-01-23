@@ -239,10 +239,11 @@ export function renderExploreMenu() {
     if ($('.explore-menu .list').html() == '') {
         State.data.families.forEach(function (family, i) {
             const nameSpan = "<span class='name'>" + family.name + "</span>";
+            const sciNameSpan = family.sci_name ? "<span class='sci-name'>" + family.sci_name + "</span>" : "";
             const count = State.data.sightings.filter(b => !b.hidden && b.species.family == family.name).length;
             const countSpan = "<span class='count'>" + count + "</span>";
             const img = "<img class='fadein-50percent' src='" + Util.getMedia(family.imagesrc) + "' alt='" + family.name + "'></img>";
-            const div = "<div class='sighting-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + nameSpan + countSpan + img + "</div>";
+            const div = "<div class='sighting-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + nameSpan + sciNameSpan + countSpan + img + "</div>";
             $('.explore-menu .list').append(div);
         });
     }

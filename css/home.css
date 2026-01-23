@@ -884,7 +884,6 @@ button.right-pane-button.button-active:before {
 
 .explore-menu .sighting-family span {
 	position: absolute;
-	bottom: 5px;
 	color: white;
 	opacity: 1;
 }
@@ -952,11 +951,22 @@ button.right-pane-button.button-active:before {
 	padding-left: 20px;
 	font-size: 20px;
 	font-weight: bold;
+	bottom: 25px;
+}
+
+.explore-menu .sighting-family span.sci-name {
+	padding-left: 20px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: italic;
+	bottom: 5px;
+	opacity: 0.8;
 }
 
 .explore-menu .sighting-family span.count {
 	top: 0;
 	right: 0;
+	bottom: auto;
 	padding-top: 10px;
 	padding-right: 10px;
 	font-size: 15px;
