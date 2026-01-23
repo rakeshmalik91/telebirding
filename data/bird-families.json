@@ -11,14 +11,14 @@
             "sci_name": "Anhingidae"
         },
         {
-            "name": "Asian Barbets",
-            "ebird_code": "megala2",
-            "sci_name": "Megalaimidae"
-        },
-        {
             "name": "Asian and Grauer's Broadbills",
             "ebird_code": "euryla1",
             "sci_name": "Eurylaimidae"
+        },
+        {
+            "name": "Asian Barbets",
+            "ebird_code": "megala2",
+            "sci_name": "Megalaimidae"
         },
         {
             "name": "Auks, Murres, and Puffins",
@@ -369,6 +369,11 @@
             "name": "Shearwaters and Petrels",
             "ebird_code": "procel3",
             "sci_name": "Procellariidae"
+        },
+        {
+            "name": "Shoebill",
+            "ebird_code": "balaen1",
+            "sci_name": "Balaenicipitidae"
         },
         {
             "name": "Shrikes",

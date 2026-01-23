@@ -14,6 +14,10 @@ for mode in ["bird", "insect"]:
 		dst = dataDir + "/" + mode + "-" + filename + ".json"
 		print("Downloading " + dst + " ...")
 		urllib.request.urlretrieve(src, dst)
+		with open(dst, 'r', encoding='utf-8') as f:
+			content = json.load(f)
+		with open(dst, 'w', encoding='utf-8') as f:
+			json.dump(content, f, indent=4, ensure_ascii=False)
 	data = json.load(open(dataDir + "/" + mode + "-sightings.json"))
 	for sighting in data['sightings']:
 		for media in sighting['media']:
