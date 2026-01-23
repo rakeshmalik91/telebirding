@@ -13,6 +13,8 @@ import { showLoader, hideLoader, resetLoader } from '../loader.js';
 import { setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
+let isSamePageNavigation = false;
+
 export function setMode(mode) {
     State.updateCurrentMode(mode);
 }
@@ -174,7 +176,7 @@ const VIEW_STATES = {
         featured: 'collapsed'
     },
     'DEFAULT': {
-        show: (isMobile) => isMobile ? ['.home', '.home .menu'] : ['.home', '.home .menu', '.home-page'],
+        show: ['.home', '.home .menu', '.home-page'], // Always allow home-page, let CSS hide it on mobile if needed
         featured: 'visible'
     }
 };
@@ -191,9 +193,19 @@ function updatePageUI(page) {
     if (typeof toShow === 'function') {
         toShow = toShow(State.IS_MOBILE_DEVICE);
     }
-    $(toShow.join(', ')).show();
-    if (page === Constants.HOME || !page) {
+    // Use css('display', '') to allow CSS media queries (e.g. mobile.css) to control visibility
+    // instead of show() which forces inline display: block
+    $(toShow.join(', ')).css('display', '');
+
+    if ((page === Constants.HOME || !page) && !isSamePageNavigation) {
         const elementsToAnimate = $('.home-page, .home .menu');
+        elementsToAnimate.removeClass('fadein');
+        void elementsToAnimate[0].offsetWidth; // trigger reflow
+        elementsToAnimate.addClass('fadein');
+    }
+
+    if (page === Constants.EXPLORE_MENU) {
+        const elementsToAnimate = $('.explore-menu');
         elementsToAnimate.removeClass('fadein');
         void elementsToAnimate[0].offsetWidth; // trigger reflow
         elementsToAnimate.addClass('fadein');
@@ -226,13 +238,7 @@ export function showPage(page, params, isPopstate) {
         history.pushState(state, '', getUrlFromState(state));
     }
 
-    if (page == Constants.HOME && State.currentPage == Constants.HOME) return;
-
-    if (page == State.currentPage && JSON.stringify(filter) == JSON.stringify(State.data.filter) && JSON.stringify(State.sort) == JSON.stringify(State.data.sort)) {
-        // dont reload page if all content are same 
-        return;
-    }
-
+    isSamePageNavigation = (page == State.currentPage);
     State.updateCurrentPage(page);
     if ([Constants.ARCHIVE, Constants.EXPLORE_PAGE, Constants.MAP].includes(page)) {
         showLoader('page-load');

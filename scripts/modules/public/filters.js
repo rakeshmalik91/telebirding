@@ -41,7 +41,7 @@ export function filterAndSortData(filter, params) {
             Util.tagMatchesSubstring(b.species.name, filter.sighting)
             || Util.tagMatches(b.species.name, filter.sighting)
             || b.species.family.toLowerCase() == filter.sighting.toLowerCase()
-            || b.species.tags && b.species.tags.map(t => Util.tagMatches(t, filter.sighting)).reduce((a, b) => a || b)
+            || b.species.tags && b.species.tags.some(t => Util.tagMatches(t, filter.sighting))
         );
     }
 
