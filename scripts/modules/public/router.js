@@ -9,7 +9,8 @@ import {
     renderMapMenu, renderMapPage, renderHome, renderLocationList, renderYearList, renderStories
 } from './rendering.js';
 import State from './state.js';
-import { showLoader, hideLoader, resetLoader, setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
+import { showLoader, hideLoader, resetLoader } from '../loader.js';
+import { setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
 export function setMode(mode) {

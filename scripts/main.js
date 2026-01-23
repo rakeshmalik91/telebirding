@@ -1,7 +1,8 @@
 import Constants from './modules/constants.js';
 import Util from './modules/util.js';
+import { showLoader } from './modules/loader.js';
 import {
-	showLoader, rollSightingCarousal, showMore, setSiteLogo,
+	rollSightingCarousal, showMore, setSiteLogo,
 	initHomePageCarousal, rollHomePageCarousal, copyStoryLink
 } from './modules/public/ui-helpers.js';
 import State from './modules/public/state.js';
