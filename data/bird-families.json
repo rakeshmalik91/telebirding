@@ -1,322 +1,499 @@
 {
     "families": [
         {
-            "name": "Accentors"
+            "name": "Accentors",
+            "ebird_code": "prunel1",
+            "sci_name": "Prunellidae"
         },
         {
-            "name": "Alcids"
+            "name": "Anhingas",
+            "ebird_code": "anhing3",
+            "sci_name": "Anhingidae"
         },
         {
-            "name": "Barbets"
+            "name": "Asian Barbets",
+            "ebird_code": "megala2",
+            "sci_name": "Megalaimidae"
         },
         {
-            "name": "Bee-eaters"
+            "name": "Asian and Grauer's Broadbills",
+            "ebird_code": "euryla1",
+            "sci_name": "Eurylaimidae"
         },
         {
-            "name": "Broadbills"
+            "name": "Auks, Murres, and Puffins",
+            "ebird_code": "alcida1",
+            "sci_name": "Alcidae"
         },
         {
-            "name": "Bulbuls"
+            "name": "Barn-Owls",
+            "ebird_code": "tytoni1",
+            "sci_name": "Tytonidae"
         },
         {
-            "name": "Buntings"
+            "name": "Bee-eaters",
+            "ebird_code": "meropi1",
+            "sci_name": "Meropidae"
         },
         {
-            "name": "Bush-Warblers and Allies"
+            "name": "Boobies and Gannets",
+            "ebird_code": "sulida1",
+            "sci_name": "Sulidae"
         },
         {
-            "name": "Bustards"
+            "name": "Bulbuls",
+            "ebird_code": "pycnon4",
+            "sci_name": "Pycnonotidae"
         },
         {
-            "name": "Buttonquails"
+            "name": "Bush Warblers and Allies",
+            "ebird_code": "scotoc1",
+            "sci_name": "Cettiidae"
         },
         {
-            "name": "Chats"
+            "name": "Bustards",
+            "ebird_code": "otidid1",
+            "sci_name": "Otididae"
         },
         {
-            "name": "Cisticolas"
+            "name": "Buttonquail",
+            "ebird_code": "turnic1",
+            "sci_name": "Turnicidae"
         },
         {
-            "name": "Cormorants & Darters"
+            "name": "Cisticolas and Allies",
+            "ebird_code": "cistic2",
+            "sci_name": "Cisticolidae"
         },
         {
-            "name": "Coursers"
+            "name": "Cormorants and Shags",
+            "ebird_code": "phalac1",
+            "sci_name": "Phalacrocoracidae"
         },
         {
-            "name": "Cranes"
+            "name": "Cranes",
+            "ebird_code": "gruida1",
+            "sci_name": "Gruidae"
         },
         {
-            "name": "Crows, Treepies, Magpies & Choughs"
+            "name": "Crows, Jays, and Magpies",
+            "ebird_code": "corvid1",
+            "sci_name": "Corvidae"
         },
         {
-            "name": "Cuckoo-shrikes & Allies"
+            "name": "Cuckoos",
+            "ebird_code": "cuculi1",
+            "sci_name": "Cuculidae"
         },
         {
-            "name": "Cuckoos"
+            "name": "Cuckooshrikes",
+            "ebird_code": "campep2",
+            "sci_name": "Campephagidae"
         },
         {
-            "name": "Cupwings"
+            "name": "Cupwings",
+            "ebird_code": "pnoepy1",
+            "sci_name": "Pnoepygidae"
         },
         {
-            "name": "Dippers"
+            "name": "Dippers",
+            "ebird_code": "cincli1",
+            "sci_name": "Cinclidae"
         },
         {
-            "name": "Doves & Pigeons"
+            "name": "Drongos",
+            "ebird_code": "dicrur1",
+            "sci_name": "Dicruridae"
         },
         {
-            "name": "Drongos"
+            "name": "Ducks, Geese, and Waterfowl",
+            "ebird_code": "anatid1",
+            "sci_name": "Anatidae"
         },
         {
-            "name": "Ducks, Swans & Geese"
+            "name": "Fairy Flycatchers",
+            "ebird_code": "stenos1",
+            "sci_name": "Stenostiridae"
         },
         {
-            "name": "Eagles, Hawks & Allies"
+            "name": "Fairy-bluebirds",
+            "ebird_code": "irenid1",
+            "sci_name": "Irenidae"
         },
         {
-            "name": "Fairy Flycatchers"
+            "name": "Falcons and Caracaras",
+            "ebird_code": "falcon1",
+            "sci_name": "Falconidae"
         },
         {
-            "name": "Fairy-bluebirds"
+            "name": "Fantails",
+            "ebird_code": "rhipid1",
+            "sci_name": "Rhipiduridae"
         },
         {
-            "name": "Falcons & Caracaras"
+            "name": "Finches, Euphonias, and Allies",
+            "ebird_code": "fringi1",
+            "sci_name": "Fringillidae"
         },
         {
-            "name": "Fantails"
+            "name": "Flamingos",
+            "ebird_code": "phoeni1",
+            "sci_name": "Phoenicopteridae"
         },
         {
-            "name": "Finches & Allies"
+            "name": "Flowerpeckers",
+            "ebird_code": "dicaei1",
+            "sci_name": "Dicaeidae"
         },
         {
-            "name": "Flamingos"
+            "name": "Frogmouths",
+            "ebird_code": "podarg1",
+            "sci_name": "Podargidae"
         },
         {
-            "name": "Flowerpeckers"
+            "name": "Grassbirds and Allies",
+            "ebird_code": "locust5",
+            "sci_name": "Locustellidae"
         },
         {
-            "name": "Flycatcher-shrikes"
+            "name": "Grebes",
+            "ebird_code": "podici1",
+            "sci_name": "Podicipedidae"
         },
         {
-            "name": "Forktails"
+            "name": "Ground Babblers and Allies",
+            "ebird_code": "pellor2",
+            "sci_name": "Pellorneidae"
         },
         {
-            "name": "Frigatebirds, Boobies & Gannets"
+            "name": "Gulls, Terns, and Skimmers",
+            "ebird_code": "larida1",
+            "sci_name": "Laridae"
         },
         {
-            "name": "Frogmouths"
+            "name": "Hawks, Eagles, and Kites",
+            "ebird_code": "accipi1",
+            "sci_name": "Accipitridae"
         },
         {
-            "name": "Grassbirds & Allies"
+            "name": "Herons, Egrets, and Bitterns",
+            "ebird_code": "ardeid1",
+            "sci_name": "Ardeidae"
         },
         {
-            "name": "Grebes"
+            "name": "Hoopoes",
+            "ebird_code": "upupid1",
+            "sci_name": "Upupidae"
         },
         {
-            "name": "Ground Babblers and Allies"
+            "name": "Hornbills",
+            "ebird_code": "bucero1",
+            "sci_name": "Bucerotidae"
         },
         {
-            "name": "Gulls, Terns & Skimmers"
+            "name": "Ibisbill",
+            "ebird_code": "ibidor1",
+            "sci_name": "Ibidorhynchidae"
         },
         {
-            "name": "Herons & Egrets"
+            "name": "Ibises and Spoonbills",
+            "ebird_code": "thresk1",
+            "sci_name": "Threskiornithidae"
         },
         {
-            "name": "Hoopoes"
+            "name": "Ioras",
+            "ebird_code": "aegith1",
+            "sci_name": "Aegithinidae"
         },
         {
-            "name": "Hornbills"
+            "name": "Jacanas",
+            "ebird_code": "jacani1",
+            "sci_name": "Jacanidae"
         },
         {
-            "name": "Ibisbills"
+            "name": "Kingfishers",
+            "ebird_code": "alcedi1",
+            "sci_name": "Alcedinidae"
         },
         {
-            "name": "Ibises"
+            "name": "Kinglets",
+            "ebird_code": "reguli1",
+            "sci_name": "Regulidae"
         },
         {
-            "name": "Ioras"
+            "name": "Larks",
+            "ebird_code": "alaudi1",
+            "sci_name": "Alaudidae"
         },
         {
-            "name": "Jacanas"
+            "name": "Laughingthrushes and Allies",
+            "ebird_code": "leioth1",
+            "sci_name": "Leiothrichidae"
         },
         {
-            "name": "Kingfishers"
+            "name": "Leaf Warblers",
+            "ebird_code": "phyllo4",
+            "sci_name": "Phylloscopidae"
         },
         {
-            "name": "Kinglets"
+            "name": "Leafbirds",
+            "ebird_code": "chloro5",
+            "sci_name": "Chloropseidae"
         },
         {
-            "name": "Lapwings"
+            "name": "Long-tailed Tits",
+            "ebird_code": "aegith2",
+            "sci_name": "Aegithalidae"
         },
         {
-            "name": "Larks"
+            "name": "Monarch Flycatchers",
+            "ebird_code": "monarc2",
+            "sci_name": "Monarchidae"
         },
         {
-            "name": "Laughingthrushes & Allies"
+            "name": "Nightjars and Allies",
+            "ebird_code": "caprim2",
+            "sci_name": "Caprimulgidae"
         },
         {
-            "name": "Leafbirds"
+            "name": "Nuthatches",
+            "ebird_code": "sittid1",
+            "sci_name": "Sittidae"
         },
         {
-            "name": "Long-tailed Tits & Bushtits"
+            "name": "Old World Buntings",
+            "ebird_code": "emberi2",
+            "sci_name": "Emberizidae"
         },
         {
-            "name": "Minlas"
+            "name": "Old World Flycatchers",
+            "ebird_code": "muscic3",
+            "sci_name": "Muscicapidae"
         },
         {
-            "name": "Monarch Flycatchers"
+            "name": "Old World Orioles",
+            "ebird_code": "orioli1",
+            "sci_name": "Oriolidae"
         },
         {
-            "name": "Nightjars"
+            "name": "Old World Parrots",
+            "ebird_code": "psitta4",
+            "sci_name": "Psittaculidae"
         },
         {
-            "name": "Old World Flycatchers"
+            "name": "Old World Sparrows",
+            "ebird_code": "passer4",
+            "sci_name": "Passeridae"
         },
         {
-            "name": "Old World Pittas"
+            "name": "Osprey",
+            "ebird_code": "pandio1",
+            "sci_name": "Pandionidae"
         },
         {
-            "name": "Orioles"
+            "name": "Owls",
+            "ebird_code": "strigi1",
+            "sci_name": "Strigidae"
         },
         {
-            "name": "Owls"
+            "name": "Oystercatchers",
+            "ebird_code": "haemat1",
+            "sci_name": "Haematopodidae"
         },
         {
-            "name": "Parakeets & Parrots"
+            "name": "Painted-Snipes",
+            "ebird_code": "rostra1",
+            "sci_name": "Rostratulidae"
         },
         {
-            "name": "Parrotbills, Wrentit and Allies"
+            "name": "Parrotbills",
+            "ebird_code": "parado1",
+            "sci_name": "Paradoxornithidae"
         },
         {
-            "name": "Pelicans"
+            "name": "Pelicans",
+            "ebird_code": "peleca1",
+            "sci_name": "Pelecanidae"
         },
         {
-            "name": "Petrels, Shearwaters & Diving-Petrels"
+            "name": "Pheasants, Grouse, and Allies",
+            "ebird_code": "phasia1",
+            "sci_name": "Phasianidae"
         },
         {
-            "name": "Pheasants, Partridges & Fowls"
+            "name": "Pigeons and Doves",
+            "ebird_code": "columb2",
+            "sci_name": "Columbidae"
         },
         {
-            "name": "Pipits"
+            "name": "Pittas",
+            "ebird_code": "pittid1",
+            "sci_name": "Pittidae"
         },
         {
-            "name": "Plovers"
+            "name": "Plovers and Lapwings",
+            "ebird_code": "charad1",
+            "sci_name": "Charadriidae"
         },
         {
-            "name": "Pratincoles"
+            "name": "Pratincoles and Coursers",
+            "ebird_code": "glareo1",
+            "sci_name": "Glareolidae"
         },
         {
-            "name": "Prinias"
+            "name": "Rails, Gallinules, and Coots",
+            "ebird_code": "rallid1",
+            "sci_name": "Rallidae"
         },
         {
-            "name": "Quails"
+            "name": "Reed Warblers and Allies",
+            "ebird_code": "acroce2",
+            "sci_name": "Acrocephalidae"
         },
         {
-            "name": "Rails & Crakes"
+            "name": "Rollers",
+            "ebird_code": "coraci1",
+            "sci_name": "Coraciidae"
         },
         {
-            "name": "Redstarts"
+            "name": "Sandgrouse",
+            "ebird_code": "pteroc1",
+            "sci_name": "Pteroclidae"
         },
         {
-            "name": "Rock-Thrushes"
+            "name": "Sandpipers and Allies",
+            "ebird_code": "scolop2",
+            "sci_name": "Scolopacidae"
         },
         {
-            "name": "Rollers & Dollarbirds"
+            "name": "Shearwaters and Petrels",
+            "ebird_code": "procel3",
+            "sci_name": "Procellariidae"
         },
         {
-            "name": "Rubythroats"
+            "name": "Shrikes",
+            "ebird_code": "laniid1",
+            "sci_name": "Laniidae"
         },
         {
-            "name": "Sandgrouses"
+            "name": "Spotted Creepers",
+            "ebird_code": "spocre4",
+            "sci_name": "Salpornithidae"
         },
         {
-            "name": "Sandpipers & Allies"
+            "name": "Starlings",
+            "ebird_code": "sturni1",
+            "sci_name": "Sturnidae"
         },
         {
-            "name": "Shrike-babblers & Erpornis"
+            "name": "Stilts and Avocets",
+            "ebird_code": "recurv1",
+            "sci_name": "Recurvirostridae"
         },
         {
-            "name": "Shrikes"
+            "name": "Storks",
+            "ebird_code": "ciconi2",
+            "sci_name": "Ciconiidae"
         },
         {
-            "name": "Sparrows"
+            "name": "Sunbirds and Spiderhunters",
+            "ebird_code": "nectar1",
+            "sci_name": "Nectariniidae"
         },
         {
-            "name": "Spoonbills"
+            "name": "Swallows",
+            "ebird_code": "hirund2",
+            "sci_name": "Hirundinidae"
         },
         {
-            "name": "Starlings"
+            "name": "Swifts",
+            "ebird_code": "apodid1",
+            "sci_name": "Apodidae"
         },
         {
-            "name": "Stilts & Avocets"
+            "name": "Sylviid Warblers and Allies",
+            "ebird_code": "sylvii1",
+            "sci_name": "Sylviidae"
         },
         {
-            "name": "Storks"
+            "name": "Thick-knees",
+            "ebird_code": "burhin2",
+            "sci_name": "Burhinidae"
         },
         {
-            "name": "Sunbirds & Spiderhunters"
+            "name": "Thrushes and Allies",
+            "ebird_code": "turdid1",
+            "sci_name": "Turdidae"
         },
         {
-            "name": "Swallows & Martins"
+            "name": "Tits, Chickadees, and Titmice",
+            "ebird_code": "parida1",
+            "sci_name": "Paridae"
         },
         {
-            "name": "Swifts"
+            "name": "Tree-Babblers, Scimitar-Babblers, and Allies",
+            "ebird_code": "timali1",
+            "sci_name": "Timaliidae"
         },
         {
-            "name": "Sylviid Warblers"
+            "name": "Treecreepers",
+            "ebird_code": "certhi2",
+            "sci_name": "Certhiidae"
         },
         {
-            "name": "Tailorbirds"
+            "name": "Trogons",
+            "ebird_code": "trogon1",
+            "sci_name": "Trogonidae"
         },
         {
-            "name": "Thick-knees"
+            "name": "Vangas, Helmetshrikes, and Allies",
+            "ebird_code": "vangid2",
+            "sci_name": "Vangidae"
         },
         {
-            "name": "Thrushes"
+            "name": "Vireos, Shrike-Babblers, and Erpornis",
+            "ebird_code": "vireon1",
+            "sci_name": "Vireonidae"
         },
         {
-            "name": "Tits"
+            "name": "Wagtails and Pipits",
+            "ebird_code": "motaci1",
+            "sci_name": "Motacillidae"
         },
         {
-            "name": "Tree-babblers, Scimitar-babblers & Allies"
+            "name": "Wallcreeper",
+            "ebird_code": "tichod1",
+            "sci_name": "Tichodromidae"
         },
         {
-            "name": "Treecreepers, Wallcreepers & Nuthatches"
+            "name": "Waxbills and Allies",
+            "ebird_code": "estril1",
+            "sci_name": "Estrildidae"
         },
         {
-            "name": "Trogons"
+            "name": "Weavers and Allies",
+            "ebird_code": "plocei1",
+            "sci_name": "Ploceidae"
         },
         {
-            "name": "Vultures"
+            "name": "White-eyes, Yuhinas, and Allies",
+            "ebird_code": "zoster2",
+            "sci_name": "Zosteropidae"
         },
         {
-            "name": "Wagtails"
+            "name": "Woodpeckers",
+            "ebird_code": "picida1",
+            "sci_name": "Picidae"
         },
         {
-            "name": "Warblers"
+            "name": "Woodswallows, Bellmagpies, and Allies",
+            "ebird_code": "artami1",
+            "sci_name": "Artamidae"
         },
         {
-            "name": "Weavers"
-        },
-        {
-            "name": "Wheatears"
-        },
-        {
-            "name": "Whistling-Thrushes"
-        },
-        {
-            "name": "Woodpeckers"
-        },
-        {
-            "name": "Woodshrikes"
-        },
-        {
-            "name": "Woodswallows"
-        },
-        {
-            "name": "Wrens"
-        },
-        {
-            "name": "Yuhinas & White-eyes"
+            "name": "Wrens",
+            "ebird_code": "troglo1",
+            "sci_name": "Troglodytidae"
         }
     ]
 }
