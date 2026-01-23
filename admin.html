@@ -1,129 +1,137 @@
 <html>
-	<head>
-		<title>Telebirding Admin</title>
 
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 
-		
-		<link rel="icon" type="image/png" href="icons/favicon-admin-48x48.png">
-		<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
-		<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
-		
-		<link rel="stylesheet" charset="UTF-8" href="css/animations.css">
-		<link rel="stylesheet" charset="UTF-8" href="css/admin.css">
-		
-		<!-- jQuery, moment, and select2 (keep as regular scripts for compatibility) -->
-		<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
-		<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
-		<link rel="stylesheet" charset="UTF-8" href="lib/css/select2.min.css">
-		<script type="text/javascript" charset="UTF-8" src="lib/js/select2.min.js"></script>
-		
-		<!-- Firebase scripts (not ES modules) -->
-		<!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script> -->
-		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-		
-		<!-- Admin module (loads all dependencies) -->
-		<script type="module" src="scripts/admin.js"></script>
+<head>
+	<title>Telebirding Admin</title>
 
-	</head>
-	<body>
-		<div id="login-page">
-			<a href="/" class='site-logo'></a>
-			<h1>Admin</h1>
-			<table>
-				<tr>
-					<td><span>Email:</span></td>
-					<td><input type="text" name="email" value="rakeshmalik91@gmail.com" disabled/></td>
-				</tr>
-				<tr>
-					<td><span>Password:</span></td>
-					<td><input type="password" name="password"/></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="checkbox" name="rememberme"/>Remember me</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><button>Log in</button></td>
-				</tr>
-			</table>
-		</div>
-		<div class='data' style='display: none;'>
-			<a href="/" class='site-logo'></a>
-			<h1>Admin</h1>
-			<button class="logout">Log Out</button>
-			<button class="mode" title='Change Mode'>Switch Mode</button>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+	<link rel="icon" type="image/png" href="icons/favicon-admin-48x48.png">
+	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
+
+	<link rel="stylesheet" charset="UTF-8" href="css/animations.css">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css">
+
+	<!-- jQuery, moment, and select2 (keep as regular scripts for compatibility) -->
+	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
+	<link rel="stylesheet" charset="UTF-8" href="lib/css/select2.min.css">
+	<script type="text/javascript" charset="UTF-8" src="lib/js/select2.min.js"></script>
+
+	<!-- Firebase scripts (not ES modules) -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
+
+	<!-- Admin module (loads all dependencies) -->
+	<script type="module" src="scripts/admin.js"></script>
+
+</head>
+
+<body>
+	<div id="login-page">
+		<a href="/" class='site-logo'></a>
+		<h1>Admin</h1>
+		<table>
+			<tr>
+				<td><span>Email:</span></td>
+				<td><input type="text" name="email" value="rakeshmalik91@gmail.com" disabled /></td>
+			</tr>
+			<tr>
+				<td><span>Password:</span></td>
+				<td><input type="password" name="password" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="checkbox" name="rememberme" />Remember me</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button>Log in</button></td>
+			</tr>
+		</table>
+	</div>
+	<div class='data' style='display: none;'>
+		<a href="/" class='site-logo'></a>
+		<h1>Admin</h1>
+		<button class="logout">Log Out</button>
+		<button class="mode" title='Change Mode'>Switch Mode</button>
+
+		<br>
+
+
+		<br>
+		<h2>Add/Modify Species</h2>
+		<table id="update-species-form">
+			<tr>
+				<th>ID & Name</th>
+				<th>Family & Tags</th>
+				<th>Scientific name & eBird Code</th>
+			</tr>
+			<tr>
+				<td><select data-field='key' style="width: 300px;" /></td>
+				<td><select data-field='family' style="width: 500px;" /></td>
+				<td><input type='text' data-field='latin-name' placeholder="scientific name" style="width: 250px;" />
+				</td>
+			</tr>
+			<tr>
+				<td><input type='text' data-field='name' placeholder="Enter name" style="width: 300px;" /></td>
+				<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 500px;" /></td>
+				<td><input type='text' data-field='ebird-code' placeholder="code" style="width: 250px;" /></td>
+			</tr>
+			<tr>
+				<td class='noborder'><button class='submit'>Add</button></td>
+			</tr>
+		</table>
+
+		<br>
+		<h2>Add/Modify Sightings</h2>
+		<div class='nav-top'>
+			<span>Watermark: </span>
+			<input type="checkbox" name="watermark-on" checked>
+			<input type="text" name="watermark" value="© ${author}">
+			<input type="color" name="watermark-color" value="#ffffff">
 			<br>
-
-
 			<br>
-			<h2>Add/Modify Species</h2>
-			<table id="update-species-form">
-				<tr>
-					<th>ID & Name</th>
-					<th>Family & Tags</th>
-					<th>Latin name & eBird Code</th>
-				</tr>
-				<tr>
-					<td><select data-field='key' style="width: 300px;"/></td>
-					<td><select data-field='family' style="width: 500px;"/></td>
-					<td><input type='text' data-field='latin-name' placeholder="scientific name" style="width: 250px;"/></td>
-				</tr>
-				<tr>
-					<td><input type='text' data-field='name' placeholder="Enter name" style="width: 300px;"/></td>
-					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 500px;"/></td>
-					<td><input type='text' data-field='ebird-code' placeholder="code" style="width: 250px;"/></td>
-				</tr>
-				<tr>
-					<td class='noborder'><button class='submit'>Add</button></td>
-				</tr>
-			</table>
-
+			<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+			<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+			<button class='backup' title='Backup Data'>Backup Data</button>
+			<button class='add-sighting' title='Add new sighting'>Add New</button>
 			<br>
-			<h2>Add/Modify Sightings</h2>
-			<div class='nav-top'>
-				<span>Watermark: </span>
-				<input type="checkbox" name="watermark-on" checked>
-				<input type="text" name="watermark" value="© ${author}">
-				<input type="color" name="watermark-color" value="#ffffff">
-				<br>
-				<br>
-				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
-				<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
-				<button class='backup' title='Backup Data'>Backup Data</button>
-				<button class='add-sighting' title='Add new sighting'>Add New</button>
-				<br>
-				<button class='first-page' title='First page'><<</button>
-				<button class='previous' title='Previous page'><</button>
-				<span class='page-number'></span>
-				<button class='next' title='Next page'>></button>
-				<button class='last-page' title='Last page'>>></button>
-				<span class='text'>Rows: </span>
-				<select name="page-size">
-					<option>10</option>
-					<option>25</option>
-					<option>50</option>
-				</select>
-				<input type="text" name="filter-sighting" placeholder="Filter"/>
-			</div>
-			<table id="sightings-table"></table>
-			<div class='nav-bottom'>
-				<button class='first-page' title='First page'><<</button>
-				<button class='previous' title='Previous page'><</button>
-				<span class='page-number'></span>
-				<button class='next' title='Next page'>></button>
-				<button class='last-page' title='Last page'>>></button>
-				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
-			</div>
+			<button class='first-page' title='First page'>
+				<<< /button>
+					<button class='previous' title='Previous page'>
+						<< /button>
+							<span class='page-number'></span>
+							<button class='next' title='Next page'>></button>
+							<button class='last-page' title='Last page'>>></button>
+							<span class='text'>Rows: </span>
+							<select name="page-size">
+								<option>10</option>
+								<option>25</option>
+								<option>50</option>
+							</select>
+							<input type="text" name="filter-sighting" placeholder="Filter" />
 		</div>
+		<table id="sightings-table"></table>
+		<div class='nav-bottom'>
+			<button class='first-page' title='First page'>
+				<<< /button>
+					<button class='previous' title='Previous page'>
+						<< /button>
+							<span class='page-number'></span>
+							<button class='next' title='Next page'>></button>
+							<button class='last-page' title='Last page'>>></button>
+							<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+		</div>
+	</div>
 
-		<div class="overlay fadein" style="display:none;">
-			<span>Please wait...</span>
-		</div>
-	</body>
+	<div class="overlay fadein" style="display:none;">
+		<span>Please wait...</span>
+	</div>
+</body>
+
 </html>
