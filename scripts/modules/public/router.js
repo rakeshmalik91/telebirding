@@ -240,7 +240,7 @@ export function showPage(page, params, isPopstate) {
 
     isSamePageNavigation = (page == State.currentPage);
     State.updateCurrentPage(page);
-    if ([Constants.ARCHIVE, Constants.EXPLORE_PAGE, Constants.MAP].includes(page)) {
+    if ([Constants.ARCHIVE, Constants.EXPLORE_PAGE, Constants.MAP, Constants.STORIES].includes(page)) {
         showLoader('page-load');
     }
     var files = [
