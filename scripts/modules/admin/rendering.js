@@ -7,6 +7,8 @@ import {
     deleteSighting, moveSighting, sightingMatches, addFamily, saveSpecies
 } from './data.js';
 
+import { openCropper } from '../cropper.js';
+
 export function getValue(sighting, prop) {
     return sighting[prop] ? sighting[prop] : '';
 }
@@ -74,7 +76,7 @@ export function setupUpdateSpeciesForm() {
                 if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
                     updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
             }).finally(() => {
-                $(".overlay").hide();
+                $(".overlay:not(#crop-modal)").hide();
             });
         }
     });
@@ -107,7 +109,7 @@ export function setupUpdateSpeciesForm() {
                     }
                 }
             }).finally(() => {
-                $(".overlay").hide();
+                $(".overlay:not(#crop-modal)").hide();
             });
         }
     });
@@ -212,7 +214,14 @@ export function renderSightingsTable(OFFSET, ROWS) {
             sightingRow.find(".upload").click();
         });
         sightingRow.find(".upload").change(function () {
-            uploadMedia(sighting.key, this.files)
+            if (this.files[0] && this.files[0].type.match(/image.*/)) {
+                openCropper(this.files[0], (croppedFile) => {
+                    uploadMedia(sighting.key, [croppedFile]);
+                });
+                $(this).val(''); // Reset input
+            } else {
+                uploadMedia(sighting.key, this.files);
+            }
         });
         sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
             let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();

@@ -10,7 +10,7 @@ export function tryLogin(password) {
         if ($("#login-page input[name=rememberme]").is(":checked")) {
             Util.setCookie("credentials", password, 7);
         }
-        $(".overlay").hide();
+        $(".overlay:not(#crop-modal)").hide();
     }).catch(e => {
         alert(e.message);
     });

@@ -29,7 +29,7 @@ export function refreshData() {
     ], function (json) {
         data = json;
         renderCallback();
-        $(".overlay").hide();
+        $(".overlay:not(#crop-modal)").hide();
     });
 }
 
@@ -54,10 +54,10 @@ export function uploadJSONData(type, skipRefresh) {
     firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
         console.log("uploaded data/" + currentMode + "-" + type + ".json");
         if (!skipRefresh) refresh();
-        else $(".overlay").hide();
+        else $(".overlay:not(#crop-modal)").hide();
     }).catch(e => {
         alert(e.message);
-        $(".overlay").hide();
+        $(".overlay:not(#crop-modal)").hide();
     });
 }
 
@@ -123,7 +123,7 @@ export function uploadMedia(sightingKey, files) {
                     syncSightingsData(0);
                 }).catch(e => {
                     alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
-                    $(".overlay").hide();
+                    $(".overlay:not(#crop-modal)").hide();
                 });
             });
         } else if (file.type.match(/video.*/)) {
@@ -146,7 +146,7 @@ export function uploadMedia(sightingKey, files) {
                 syncSightingsData(0);
             }).catch(e => {
                 alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
-                $(".overlay").hide();
+                $(".overlay:not(#crop-modal)").hide();
             });
         }
     });
@@ -248,7 +248,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
 
     if (promises.length > 0) {
         Promise.all(promises).then(() => {
-            $(".overlay").hide();
+            $(".overlay:not(#crop-modal)").hide();
             if (errors.length > 0) {
                 alert("Some files could not be renamed:\n" + errors.join("\n"));
             }
@@ -256,7 +256,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
             console.log("Renaming process completed.");
         });
     } else {
-        $(".overlay").hide();
+        $(".overlay:not(#crop-modal)").hide();
     }
 }
 

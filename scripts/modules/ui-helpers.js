@@ -1,6 +1,6 @@
 export function showOverlay(text) {
-    $(".overlay span").html((text || "Please Wait") + "...");
-    $(".overlay").show();
+    $(".overlay:not(#crop-modal) span").html((text || "Please Wait") + "...");
+    $(".overlay:not(#crop-modal)").show();
 }
 
 export function getSelectOptionsDOM(field, options, value) {
