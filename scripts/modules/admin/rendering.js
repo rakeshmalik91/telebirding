@@ -38,6 +38,12 @@ export function fillUpdateSpeciesForm() {
 
 export function setupUpdateSpeciesForm() {
     const updateSpeciesForm = $("#update-species-form");
+
+    if (currentMode != Constants.MODE_BIRD) {
+        updateSpeciesForm.find("tr:first th:eq(2)").html("Scientific Name");
+        updateSpeciesForm.find("input[data-field=ebird-code]").remove();
+    }
+
     updateSpeciesForm.find("select[data-field=family], select[data-field=key]").html('');
     updateSpeciesForm.find("select[data-field=family]").append("<option value=''>-</option>");
     data.families.forEach(function (family) {
@@ -62,44 +68,48 @@ export function setupUpdateSpeciesForm() {
         let tagsInput = updateSpeciesForm.find("input[data-field=tags]");
         if (!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
 
-        showOverlay("Fetching eBird Code");
-        EbirdApi.fetchEbirdCode(v).then(c => {
-            if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
-                updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
-        }).finally(() => {
-            $(".overlay").hide();
-        });
+        if (currentMode == Constants.MODE_BIRD) {
+            showOverlay("Fetching eBird Code");
+            EbirdApi.fetchEbirdCode(v).then(c => {
+                if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
+                    updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
+            }).finally(() => {
+                $(".overlay").hide();
+            });
+        }
     });
     updateSpeciesForm.find("input[data-field=ebird-code]").unbind("change").change(function () {
         let v = $(this).val();
         if (!v || !v.trim()) return;
 
-        showOverlay("Fetching Scientific Name & Family");
-        EbirdApi.fetchEbirdSciName(v).then(s => {
-            if (s) {
-                if (s.sciName) updateSpeciesForm.find("input[data-field=latin-name]").val(s.sciName).change();
-                if (s.familyComName) {
-                    let familySelect = updateSpeciesForm.find("select[data-field=family]");
-                    let matchingOption = familySelect.find("option").filter(function () {
-                        return $(this).text() === s.familyComName;
-                    });
+        if (currentMode == Constants.MODE_BIRD) {
+            showOverlay("Fetching Scientific Name & Family");
+            EbirdApi.fetchEbirdSciName(v).then(s => {
+                if (s) {
+                    if (s.sciName) updateSpeciesForm.find("input[data-field=latin-name]").val(s.sciName).change();
+                    if (s.familyComName) {
+                        let familySelect = updateSpeciesForm.find("select[data-field=family]");
+                        let matchingOption = familySelect.find("option").filter(function () {
+                            return $(this).text() === s.familyComName;
+                        });
 
-                    if (matchingOption.length > 0) {
-                        familySelect.val(matchingOption.val()).trigger('change');
-                    } else {
-                        // Family doesn't exist, add it
-                        addFamily(s.familyComName, s.familyCode, s.familySciName);
-                        // Re-populate and select
-                        // Since addFamily updates data.families but we need to update UI dropdown
-                        // We can either simple append option or refresh the whole select
-                        familySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
-                        familySelect.val(s.familyComName).trigger('change');
+                        if (matchingOption.length > 0) {
+                            familySelect.val(matchingOption.val()).trigger('change');
+                        } else {
+                            // Family doesn't exist, add it
+                            addFamily(s.familyComName, s.familyCode, s.familySciName);
+                            // Re-populate and select
+                            // Since addFamily updates data.families but we need to update UI dropdown
+                            // We can either simple append option or refresh the whole select
+                            familySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
+                            familySelect.val(s.familyComName).trigger('change');
+                        }
                     }
                 }
-            }
-        }).finally(() => {
-            $(".overlay").hide();
-        });
+            }).finally(() => {
+                $(".overlay").hide();
+            });
+        }
     });
     updateSpeciesForm.find("input[data-field=latin-name]").unbind("change").change(function () {
         let v = $(this).val();
@@ -250,5 +260,26 @@ export function updatePaginationControls(OFFSET, ROWS) {
         $('button.last-page, button.next').attr("disabled", "disabled");
     } else {
         $('button.last-page, button.next').removeAttr("disabled");
+    }
+}
+
+export function setupAddFamilyForm() {
+    const addFamilyForm = $("#add-family-form");
+    if (currentMode != Constants.MODE_BIRD) {
+        $("#add-family-section").show();
+        addFamilyForm.find("button.submit").unbind("click").click(function () {
+            addFamily(
+                addFamilyForm.find("input[data-field=name]").val(),
+                null,
+                addFamilyForm.find("input[data-field=sci-name]").val()
+            );
+
+            // Refresh logic to update dropdown in species form
+            $("#update-species-form").find("select[data-field=family]").append("<option value='" + addFamilyForm.find("input[data-field=name]").val() + "'>" + addFamilyForm.find("input[data-field=name]").val() + "</option>");
+
+            addFamilyForm.find("input").val('');
+        });
+    } else {
+        $("#add-family-section").hide();
     }
 }

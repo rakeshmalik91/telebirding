@@ -4,7 +4,7 @@ import {
 	currentMode, refreshData, setRenderCallback
 } from './modules/admin/data.js';
 import {
-	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls
+	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm
 } from './modules/admin/rendering.js';
 import { setupAuthListeners } from './modules/admin/auth.js';
 import { setupDashboardListeners } from './modules/admin/listeners.js';
@@ -25,6 +25,7 @@ function switchMode() {
 function render() {
 
 	setupUpdateSpeciesForm();
+	setupAddFamilyForm();
 	renderSightingsTable(viewState.offset, viewState.rows);
 	updatePaginationControls(viewState.offset, viewState.rows);
 }
