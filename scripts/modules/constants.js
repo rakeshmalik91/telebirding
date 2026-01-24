@@ -162,6 +162,8 @@ export default class Constants {
 	static HOME_PAGE_SLIDESHOW_INTERVAL = 10000;
 	static HOME_PAGE_SLIDESHOW_FADE_INTERVAL = 1000;
 
+	static IMAGE_COMPRESSION_QUALITY = 0.7;
+
 	static DEFAULT_TITLE = "Telebirding";
 	static DEFAULT_DESCRIPTION = "Rakesh's Bird Catalogue";
 

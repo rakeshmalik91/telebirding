@@ -278,8 +278,7 @@ export default class Util {
 				ctx.fillStyle = watermark.color;
 				ctx.fillText(watermark.text, size * 0.75, size * 0.95);
 			}
-			const compressionQuality = 0.8;
-			const dataUrl = canvas.toDataURL('image/jpeg', compressionQuality);
+			const dataUrl = canvas.toDataURL('image/jpeg', Constants.IMAGE_COMPRESSION_QUALITY);
 			return dataURItoBlob(dataUrl);
 		};
 		return new Promise(function (ok, no) {

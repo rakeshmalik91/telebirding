@@ -75,6 +75,17 @@
             "family": "Butterflies",
             "latin_name": "papilio bianor"
         },
+        "chocolate-pansy-butterfly": {
+            "key": "chocolate-pansy-butterfly",
+            "name": "Chocolate Pansy Butterfly",
+            "tags": [
+                "Butterfly",
+                "Pansy Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "junonia iphita",
+            "ebird_code": null
+        },
         "clouded-yellow-butterfly": {
             "key": "clouded-yellow-butterfly",
             "name": "Clouded Yellow Butterfly",
@@ -145,15 +156,16 @@
             "family": "Butterflies",
             "latin_name": null
         },
-        "common-sailor-butterfly": {
-            "key": "common-sailor-butterfly",
-            "name": "Common Sailor Butterfly",
+        "common-sailer-butterfly": {
+            "key": "common-sailer-butterfly",
+            "name": "Common Sailer Butterfly",
             "tags": [
-                "Sailor Butterfly",
+                "Sailer Butterfly",
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": null
+            "latin_name": "neptis hylas",
+            "ebird_code": null
         },
         "cruiser-butterfly": {
             "key": "cruiser-butterfly",
@@ -212,6 +224,17 @@
             ],
             "family": "Spiders",
             "latin_name": null
+        },
+        "grey-swallowtail-moth": {
+            "key": "grey-swallowtail-moth",
+            "name": "Grey Swallowtail Moth",
+            "tags": [
+                "Swallowtail Moth",
+                "Moth"
+            ],
+            "family": "Moths",
+            "latin_name": "micronia aculeata",
+            "ebird_code": null
         },
         "himalayan-dark-clouded-yellow-butterfly": {
             "key": "himalayan-dark-clouded-yellow-butterfly",
@@ -381,9 +404,9 @@
             "family": "Butterflies",
             "latin_name": "danaus chrysippus"
         },
-        "sailor-butterfly": {
-            "key": "sailor-butterfly",
-            "name": "Sailor Butterfly",
+        "sailer-butterfly": {
+            "key": "sailer-butterfly",
+            "name": "Sailer Butterfly",
             "tags": [
                 "Butterfly",
                 "neptis"
