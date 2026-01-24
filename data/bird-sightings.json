@@ -1395,6 +1395,26 @@
             "variation": "Brown morph"
         },
         {
+            "key": "s1769271039",
+            "species": "white-bellied-drongo",
+            "date": "27-12-2025",
+            "place": "",
+            "city": "Chinnar",
+            "state": "Kerala",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": false,
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/white-bellied-drongo-1769271082.jpg"
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1766966024",
             "species": "white-rumped-shama",
             "date": "27-12-2025",

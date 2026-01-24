@@ -37,8 +37,6 @@ export function fillUpdateSpeciesForm() {
     }
 }
 
-
-
 export function setupUpdateSpeciesForm() {
     const updateSpeciesForm = $("#update-species-form");
 
@@ -71,14 +69,18 @@ export function setupUpdateSpeciesForm() {
         let tagsInput = updateSpeciesForm.find("input[data-field=tags]");
         if (!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
 
-        if (currentMode == Constants.MODE_BIRD) {
+        if (currentMode == Constants.MODE_INSECT) {
+            let lastWord = v.trim().split(/\s+/).slice(-1)[0];
+            let pluralWord = Util.plural(lastWord);
+            let family = data.families.find(f => f.name.toLowerCase() == pluralWord.toLowerCase());
+            if (family) {
+                updateSpeciesForm.find("select[data-field=family]").val(family.name).trigger("change");
+            }
+        } else if (currentMode == Constants.MODE_BIRD) {
             showLoader("ebird-code", "Fetching eBird Code");
-            EbirdApi.fetchEbirdCode(v).then(c => {
-                if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
-                    updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
-            }).finally(() => {
-                hideLoader("ebird-code");
-            });
+            EbirdApi.fetchEbirdCode(v).then(code => {
+                if (code) updateSpeciesForm.find("input[data-field=ebird-code]").val(code).change();
+            }).finally(() => hideLoader("ebird-code"));
         }
     });
     updateSpeciesForm.find("input[data-field=ebird-code]").unbind("change").change(function () {
@@ -109,9 +111,7 @@ export function setupUpdateSpeciesForm() {
                         }
                     }
                 }
-            }).finally(() => {
-                hideLoader("sci-name");
-            });
+            }).finally(() => hideLoader("sci-name"));
         }
     });
     updateSpeciesForm.find("input[data-field=latin-name]").unbind("change").change(function () {

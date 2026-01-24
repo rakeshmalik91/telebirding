@@ -138,6 +138,16 @@
             "family": "Flies",
             "latin_name": null
         },
+        "common-gull-butterfly": {
+            "key": "common-gull-butterfly",
+            "name": "Common Gull Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "cepora nerissa",
+            "ebird_code": null
+        },
         "common-housefly": {
             "key": "common-housefly",
             "name": "Common Housefly",
@@ -202,7 +212,7 @@
         },
         "eopycna-repanda": {
             "key": "eopycna-repanda",
-            "name": "Cicada (eopycna repanda)",
+            "name": "Eopycna Repanda Cicada",
             "tags": [
                 "Cicada"
             ],
@@ -212,7 +222,7 @@
         },
         "eupterote-undata": {
             "key": "eupterote-undata",
-            "name": "Monkey Moth (eupterote undata)",
+            "name": "Monkey Moth",
             "tags": [
                 "Moth",
                 "Monkey Moth",
@@ -221,7 +231,8 @@
                 "Eupterote Undata"
             ],
             "family": "Moths",
-            "latin_name": "eupterote undata"
+            "latin_name": "eupterote undata",
+            "ebird_code": null
         },
         "golden-silk-orb-weaver": {
             "key": "golden-silk-orb-weaver",

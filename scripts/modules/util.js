@@ -101,7 +101,9 @@ export default class Util {
 	}
 
 	static plural(word) {
-		return word.match(/(s|sh|ch|z)$/g) ? (word + "es") : (word + "s");
+		return word.match(/[^aeiou]y$/i) ? (word.slice(0, -1) + "ies")
+			: (word.match(/(s|sh|ch|z)$/g) ? (word + "es")
+				: (word + "s"));
 	}
 
 	static normalizeForTagMatch(tag) {

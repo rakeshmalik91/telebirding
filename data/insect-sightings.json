@@ -36,7 +36,7 @@
                     "src": "images/chocolate-pansy-butterfly-1769238736.jpg"
                 }
             ],
-            "rating": "3"
+            "rating": "4"
         },
         {
             "key": "s1769222270",
@@ -55,7 +55,7 @@
                     "src": "images/grey-swallowtail-moth-1769229318.jpg"
                 }
             ],
-            "rating": "3"
+            "rating": "4"
         },
         {
             "key": "s1769222267",
@@ -72,6 +72,25 @@
             "media": [
                 {
                     "src": "images/common-sailer-butterfly-1769228263.jpg"
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1769271234",
+            "species": "common-gull-butterfly",
+            "date": "27-12-2025",
+            "city": "Chinnar",
+            "state": "Kerala",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": false,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/common-gull-butterfly-1769271254.jpg"
                 }
             ],
             "rating": "3"
