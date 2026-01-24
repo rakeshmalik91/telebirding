@@ -1,6 +1,21 @@
 export function showOverlay(text) {
-    $(".overlay:not(#crop-modal) span").html((text || "Please Wait") + "...");
-    $(".overlay:not(#crop-modal)").show();
+    // Legacy text overlay support removed/ignored in favor of Binoculars Loader
+    // Check if the binoculars loader exists, if not, append it
+    if ($("#page-loader").length === 0) {
+        const loaderHtml = '<div id="page-loader" aria-hidden="true"><div class="page-loader-overlay"></div><div class="loader-binoculars"><div class="barrel"></div><div class="connector"></div><div class="barrel"></div></div></div>';
+        $('body').append(loaderHtml);
+    }
+
+    // Show the binoculars loader
+    $("#page-loader").css('display', 'flex').fadeIn(100);
+
+    // Ensure the old text overlay is hidden if it exists
+    $(".overlay:not(#crop-modal)").hide();
+}
+
+export function hideOverlay() {
+    $("#page-loader").fadeOut(150);
+    $(".overlay:not(#crop-modal)").hide();
 }
 
 export function getSelectOptionsDOM(field, options, value) {

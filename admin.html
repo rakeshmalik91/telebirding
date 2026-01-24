@@ -5,14 +5,17 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
 
 	<link rel="icon" type="image/png" href="icons/favicon-admin-48x48.png">
 	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
 	<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
 
-	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260124af">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260124af">
-	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260124af">
+	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=202601241335">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=202601241335">
+	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=202601241335">
 
 	<!-- jQuery, moment, and select2 (keep as regular scripts for compatibility) -->
 	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
@@ -96,7 +99,7 @@
 			<tr>
 				<td><select data-field='key' style="width: 300px;" /></td>
 				<td><select data-field='family' style="width: 500px;" /></td>
-				<td><input type='text' data-field='latin-name' placeholder="scientific name" style="width: 250px;" />
+				<td><input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 250px;" />
 				</td>
 			</tr>
 			<tr>
@@ -164,8 +167,17 @@
 		</div>
 	</div>
 
-	<div class="overlay fadein" style="display:none;">
-		<span>Please wait...</span>
+
+	<div id="page-loader" aria-hidden="true" style="display:none">
+		<div class="page-loader-overlay"></div>
+		<div class="loader-content">
+			<div class="loader-binoculars">
+				<div class="barrel"></div>
+				<div class="connector"></div>
+				<div class="barrel"></div>
+			</div>
+			<div class="loader-text"></div>
+		</div>
 	</div>
 </body>
 

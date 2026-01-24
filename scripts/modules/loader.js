@@ -4,7 +4,7 @@ let _loaderBlockers = new Set();
 
 export function ensurePageLoader() {
     if (jQuery('#page-loader').length) return;
-    const loaderHtml = '<div id="page-loader" aria-hidden="true"><div class="page-loader-overlay"></div><div class="loader-binoculars"><div class="barrel"></div><div class="connector"></div><div class="barrel"></div></div></div>';
+    const loaderHtml = '<div id="page-loader" aria-hidden="true"><div class="page-loader-overlay"></div><div class="loader-content"><div class="loader-binoculars"><div class="barrel"></div><div class="connector"></div><div class="barrel"></div></div><div class="loader-text"></div></div></div>';
     jQuery('body').append(loaderHtml);
 }
 
@@ -12,10 +12,22 @@ export function resetLoader() {
     _loaderBlockers.clear();
 }
 
-export function showLoader(key) {
+export function showLoader(key, text) {
     if (key) _loaderBlockers.add(key);
     ensurePageLoader();
-    jQuery('#page-loader').show().css('display', 'flex');
+
+    // Update text if provided
+    if (text) {
+        jQuery('#page-loader .loader-text').text(text).show();
+    } else {
+        jQuery('#page-loader .loader-text').hide();
+    }
+
+    const loader = jQuery('#page-loader');
+    loader.show().css('display', 'flex');
+    // Force reflow/repaint for iOS
+    if (loader[0]) void loader[0].offsetHeight;
+
     _pageLoaderShownAt = Date.now();
 }
 

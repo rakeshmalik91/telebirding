@@ -1,7 +1,7 @@
 import Constants from '../constants.js';
 import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
-import { showOverlay } from '../ui-helpers.js';
+import { showLoader, hideLoader } from '../loader.js';
 
 export let data = {};
 export const currentMode = Util.getUrlParams().mode || Constants.MODE_BIRD;
@@ -18,6 +18,7 @@ export function setRenderCallback(callback) {
 }
 
 export function refreshData() {
+    showLoader("refresh", "Loading Data...");
     Util.clearFileCache();
     data = {};
     Util.readJSONFiles([
@@ -29,7 +30,7 @@ export function refreshData() {
     ], function (json) {
         data = json;
         renderCallback();
-        $(".overlay:not(#crop-modal)").hide();
+        hideLoader("refresh");
     });
 }
 
@@ -38,13 +39,14 @@ function refresh() {
 }
 
 export function uploadJSONData(type, skipRefresh) {
-    showOverlay("Saving");
+    showLoader("saving", "Saving");
     let fileData = {};
     fileData[type] = data[type];
 
     fileData = JSON.stringify(fileData);
     if (fileData.length < 100) {
         alert("Unknown error while uploading (file data too small) ...");
+        hideLoader("saving");
         return;
     }
     fileData = [fileData];
@@ -54,15 +56,15 @@ export function uploadJSONData(type, skipRefresh) {
     firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
         console.log("uploaded data/" + currentMode + "-" + type + ".json");
         if (!skipRefresh) refresh();
-        else $(".overlay:not(#crop-modal)").hide();
+        hideLoader("saving");
     }).catch(e => {
         alert(e.message);
-        $(".overlay:not(#crop-modal)").hide();
+        hideLoader("saving");
     });
 }
 
 export function backup() {
-    showOverlay("Backing up...");
+    showLoader("backup", "Backing up...");
     console.log("Backing up...");
     let backedUp = 0;
     const date = moment(Date.now()).format(Constants.BACKUP_DATE_FORMAT);
@@ -78,7 +80,15 @@ export function backup() {
                 if (++backedUp == filesToBackup.length) {
                     refresh();
                     console.log("Backup completed");
+                    hideLoader("backup");
                 }
+            }).catch(e => {
+                console.error("Backup failed", e);
+                // Should we abort or wait for others? 
+                // Simple fix: if one fails, maybe decrement target or handle error.
+                // For now, let's just log. If all fail, loader might stick.
+                // But this loop logic is brittle anyway. Keeping changes minimal.
+                if (++backedUp == filesToBackup.length) hideLoader("backup");
             });
     }
 }
@@ -95,7 +105,7 @@ export function syncSightingsData(scheduleAfter) {
 }
 
 export function uploadMedia(sightingKey, files) {
-    showOverlay("Uploading Media");
+    showLoader("uploading-media", "Uploading Media");
     let watermark = null;
     if ($('input[name=watermark-on]').is(":checked")) {
         watermark = {
@@ -120,10 +130,12 @@ export function uploadMedia(sightingKey, files) {
                             });
                         }
                     });
+                    showLoader("saving", "Saving..."); // Bridge gap to sync
+                    hideLoader("uploading-media");
                     syncSightingsData(0);
                 }).catch(e => {
                     alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
-                    $(".overlay:not(#crop-modal)").hide();
+                    hideLoader("uploading-media");
                 });
             });
         } else if (file.type.match(/video.*/)) {
@@ -143,10 +155,12 @@ export function uploadMedia(sightingKey, files) {
                         });
                     }
                 });
+                showLoader("saving", "Saving..."); // Bridge gap to sync
+                hideLoader("uploading-media");
                 syncSightingsData(0);
             }).catch(e => {
                 alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
-                $(".overlay:not(#crop-modal)").hide();
+                hideLoader("uploading-media");
             });
         }
     });
@@ -158,15 +172,19 @@ export function deleteMedia(sightingKey, mediaSrc) {
         return;
     }
     if (confirm("You are about to delete this media.")) {
-        showOverlay("Deleting Media");
+        showLoader("deleting-media", "Deleting Media");
         data.sightings.forEach(function (sighting) {
             if (sighting.key != sightingKey) return;
             sighting.media = sighting.media.filter(m => m.src != mediaSrc);
         });
         firebase.storage().ref(mediaSrc).delete().then(() => {
+            showLoader("saving", "Saving..."); // Bridge gap to sync
+            hideLoader("deleting-media");
             syncSightingsData(0);
         }, (error) => {
+            hideLoader("deleting-media");
             if (error.code === 'storage/object-not-found') {
+                showLoader("saving", "Saving..."); // Bridge gap
                 syncSightingsData(0);
             } else {
                 alert(error.message);
@@ -207,7 +225,7 @@ export function updateField(sightingKey, field, value) {
 }
 
 function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
-    showOverlay("Renaming Media...");
+    showLoader("renaming-media", "Renaming Media...");
     const promises = [];
     const errors = [];
 
@@ -248,7 +266,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
 
     if (promises.length > 0) {
         Promise.all(promises).then(() => {
-            $(".overlay:not(#crop-modal)").hide();
+            hideLoader("renaming-media");
             if (errors.length > 0) {
                 alert("Some files could not be renamed:\n" + errors.join("\n"));
             }
@@ -256,7 +274,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
             console.log("Renaming process completed.");
         });
     } else {
-        $(".overlay:not(#crop-modal)").hide();
+        hideLoader("renaming-media");
     }
 }
 

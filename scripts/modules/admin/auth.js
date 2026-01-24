@@ -1,16 +1,16 @@
 import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
-import { showOverlay } from '../ui-helpers.js';
+import { showLoader, hideLoader } from '../loader.js';
 
 export function tryLogin(password) {
-    showOverlay("Logging in");
+    showLoader("login", "Logging in");
     FirebaseApi.getFirebase().auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
         $('.data').show();
         $("#login-page").hide();
         if ($("#login-page input[name=rememberme]").is(":checked")) {
             Util.setCookie("credentials", password, 7);
         }
-        $(".overlay:not(#crop-modal)").hide();
+        hideLoader("login");
     }).catch(e => {
         alert(e.message);
     });

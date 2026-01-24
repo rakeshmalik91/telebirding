@@ -1,6 +1,7 @@
 import Constants from '../constants.js';
 import Util from '../util.js';
-import { getSelectDOM, getSelectOptionsDOM, showOverlay } from '../ui-helpers.js';
+import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js';
+import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaLeft, updateField, updateMediaProperty,
@@ -71,12 +72,12 @@ export function setupUpdateSpeciesForm() {
         if (!tagsInput.val() || !tagsInput.val().trim()) tagsInput.val(v.trim().split(/\s+/).slice(-1)[0]);
 
         if (currentMode == Constants.MODE_BIRD) {
-            showOverlay("Fetching eBird Code");
+            showLoader("ebird-code", "Fetching eBird Code");
             EbirdApi.fetchEbirdCode(v).then(c => {
                 if (c && !updateSpeciesForm.find("input[data-field=ebird-code]").val())
                     updateSpeciesForm.find("input[data-field=ebird-code]").val(c).change();
             }).finally(() => {
-                $(".overlay:not(#crop-modal)").hide();
+                hideLoader("ebird-code");
             });
         }
     });
@@ -85,7 +86,7 @@ export function setupUpdateSpeciesForm() {
         if (!v || !v.trim()) return;
 
         if (currentMode == Constants.MODE_BIRD) {
-            showOverlay("Fetching Scientific Name & Family");
+            showLoader("sci-name", "Fetching Scientific Name & Family");
             EbirdApi.fetchEbirdSciName(v).then(s => {
                 if (s) {
                     if (s.sciName) updateSpeciesForm.find("input[data-field=latin-name]").val(s.sciName).change();
@@ -109,7 +110,7 @@ export function setupUpdateSpeciesForm() {
                     }
                 }
             }).finally(() => {
-                $(".overlay:not(#crop-modal)").hide();
+                hideLoader("sci-name");
             });
         }
     });

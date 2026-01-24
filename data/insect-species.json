@@ -116,6 +116,16 @@
             "family": "Butterflies",
             "latin_name": "euploea core"
         },
+        "common-five-ring-butterfly": {
+            "key": "common-five-ring-butterfly",
+            "name": "Common Five-ring Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "ypthima baldus",
+            "ebird_code": null
+        },
         "common-green-bottle-fly": {
             "key": "common-green-bottle-fly",
             "name": "Common Green Bottle Fly",
