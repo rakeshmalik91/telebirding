@@ -3012,10 +3012,12 @@
         "goldcrest": {
             "key": "goldcrest",
             "name": "Goldcrest",
-            "tags": [],
+            "tags": [
+                "Gold Crest"
+            ],
             "family": "Kinglets",
-            "ebird_code": "goldcr1",
-            "latin_name": "regulus regulus"
+            "latin_name": "regulus regulus",
+            "ebird_code": "goldcr1"
         },
         "golden-babbler": {
             "key": "golden-babbler",

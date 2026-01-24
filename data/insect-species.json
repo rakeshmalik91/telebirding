@@ -2,13 +2,14 @@
     "species": {
         "apona-caschmirensis": {
             "key": "apona-caschmirensis",
-            "name": "Moth (apona caschmirensis)",
+            "name": "Apona Caschmirensis Moth",
             "tags": [
                 "Apona",
                 "Moth"
             ],
             "family": "Moths",
-            "latin_name": "apona cascgmirensis"
+            "latin_name": "apona cascgmirensis",
+            "ebird_code": null
         },
         "assam-unbroken-sergeant-butterfly": {
             "key": "assam-unbroken-sergeant-butterfly",
@@ -375,17 +376,6 @@
             "latin_name": "rathinda amor",
             "ebird_code": null
         },
-        "moth-(thalassodes-quadraria)": {
-            "key": "moth-(thalassodes-quadraria)",
-            "name": "Moth (thalassodes quadraria)",
-            "tags": [
-                "thalassodes quadraria",
-                "Moth"
-            ],
-            "family": "Moths",
-            "latin_name": "thalassodes quadraria",
-            "ebird_code": null
-        },
         "northern-lime-sallowtail-butterfly": {
             "key": "northern-lime-sallowtail-butterfly",
             "name": "Northern Lime Sallowtail Butterfly",
@@ -464,6 +454,17 @@
             ],
             "family": "Butterflies",
             "latin_name": "acraea terpsicore"
+        },
+        "thalassodes-quadraria": {
+            "key": "thalassodes-quadraria",
+            "name": "Geometrid Moth",
+            "tags": [
+                "Geometrid",
+                "Moth"
+            ],
+            "family": "Moths",
+            "latin_name": "thalassodes quadraria",
+            "ebird_code": null
         },
         "unidentified": {
             "key": "unidentified",

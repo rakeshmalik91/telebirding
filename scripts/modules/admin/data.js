@@ -385,7 +385,7 @@ export function sightingMatches(sighting, searchKey) {
     }
     return sighting.key.indexOf(searchKey) >= 0
         || data.species[sighting.species].name.toLowerCase().indexOf(searchKey) >= 0
-        || data.species[sighting.species].tags.map(t => t.toLowerCase().indexOf(searchKey) >= 0).reduce((a, b) => a || b)
+        || (data.species[sighting.species].tags && data.species[sighting.species].tags.length > 0 && data.species[sighting.species].tags.some(t => t.toLowerCase().indexOf(searchKey) >= 0))
         || (sighting.place && sighting.place.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.city && sighting.city.toLowerCase().indexOf(searchKey) >= 0)
         || sighting.state.toLowerCase().indexOf(searchKey) >= 0

@@ -60,8 +60,8 @@
         {
             "key": "s1769222267",
             "species": "common-sailer-butterfly",
-            "date": "26-12-2025",
-            "city": "Munnar",
+            "date": "27-12-2025",
+            "city": "Chinnar",
             "state": "Kerala",
             "country": "India",
             "author": "Rakesh Malik",
@@ -537,7 +537,7 @@
         },
         {
             "key": "s1745672028",
-            "species": "moth-(thalassodes-quadraria)",
+            "species": "thalassodes-quadraria",
             "date": "21-03-2022",
             "city": "Mangalajodi",
             "state": "Odisha",
@@ -550,7 +550,7 @@
                 }
             ],
             "rating": "3",
-            "unconfirmed": true
+            "unconfirmed": false
         },
         {
             "key": "s1713021675",
