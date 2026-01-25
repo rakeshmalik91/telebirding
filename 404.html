@@ -27,22 +27,34 @@
 	<style type="text/css">
 		body {
 			background-color: #111b26;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			font-family: sans-serif;
 		}
 
 		div.notfound {
-			display: block;
-			position: relative;
-			left: calc(50% - 200px);
-			width: 400px;
-			top: 5vw;
+			text-align: center;
+			margin-bottom: 2rem;
 		}
 
 		div.notfound img {
 			height: 300px;
+			max-width: 100%;
+			height: auto;
 		}
 
 		h1 {
-			font-size: 80px;
+			font-size: 30px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		h2 {
+			font-size: 20px;
 		}
 
 		h1,
@@ -52,23 +64,35 @@
 			color: #c9e0ff;
 		}
 
-		button.back {
+		button {
 			display: block;
-			position: fixed;
-			left: calc(50% - 50px);
-			bottom: 50px;
-			width: 100px;
-			/*border-radius: 0.25rem;*/
-			opacity: 1;
-			background-color: #2f4054;
-			margin-top: 20px;
+			width: 200px;
+			margin: 10px 0;
 			padding: 10px;
+			border: none;
+			cursor: pointer;
+			text-align: center;
+			opacity: 1;
 		}
 
-		button.back,
-		button.back a {
-			color: #8293a6;
+		button.stay {
+			background-color: #3b4d61;
+		}
+
+		button.back {
+			background-color: #1b2638;
+		}
+
+		button,
+		button a {
+			color: #97adc7;
 			text-decoration: none;
+			font-size: 16px;
+		}
+
+		/* Optional hover effect for better UX */
+		button:hover {
+			background-color: #496b92;
 		}
 	</style>
 </head>
@@ -76,10 +100,21 @@
 <body>
 	<div class="notfound">
 		<img src="icons/aerodactyl.png" />
-		<h1>404</h1>
-		<h2>Oops... Page Not Found!</h2>
+		<h1 style="color: #f19b9b;">Do you think you are allowed here!!!</h1>
+		<h2><span class="inline-loader"></span></h2>
 	</div>
+	<button class="stay" onclick="location.reload()">Stay Here Nevertheless</button>
 	<button class="back"><a href="/">Go Back</a></button>
+	<script>
+		fetch('https://naas.isalman.dev/no')
+			.then(response => response.json())
+			.then(data => {
+				if (data.reason) {
+					document.querySelector('h2').textContent = data.reason;
+				}
+			})
+			.catch(error => console.error('Error fetching 404 message:', error));
+	</script>
 </body>
 
 </html>

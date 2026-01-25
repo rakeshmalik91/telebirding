@@ -973,70 +973,7 @@ button.right-pane-button.button-active:before {
 	font-weight: bold;
 }
 
-.scroll-up-highlighter {
-	color: white;
-	text-align: center;
-	font-size: 30px;
-	position: fixed;
-	left: calc(100% - 100px);
-	top: calc(100% - 100px);
-	opacity: 0%;
-	margin: 0;
-	padding: 0;
-	animation-name: scroll-up-highlighter;
-	animation-duration: 6s;
-}
 
-@keyframes scroll-up-highlighter {
-	0% {
-		transform: translateY(50px);
-		opacity: 90%;
-	}
-
-	33% {
-		transform: translateY(0px);
-		opacity: 0%;
-	}
-
-	33.001% {
-		transform: translateY(50px);
-		opacity: 60%;
-	}
-
-	66% {
-		transform: translateY(0px);
-		opacity: 0%;
-	}
-
-	66.001% {
-		transform: translateY(50px);
-		opacity: 30%;
-	}
-
-	100% {
-		transform: translateY(0px);
-		opacity: 0%;
-	}
-}
-
-.collpasible-section-button {
-	text-decoration: none !important;
-}
-
-.collpasible-section-button:not(.active):after {
-	content: ' (Click to expand)';
-}
-
-.collpasible-section-button.active:after {
-	content: ':';
-}
-
-
-/* ------------------- z-index ------------------ */
-
-.scroll-up-highlighter {
-	z-index: 100;
-}
 
 .preview-image,
 .preview-image-desc {

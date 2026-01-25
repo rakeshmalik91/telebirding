@@ -146,7 +146,8 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         // Update navigation buttons visibility
         updateNavigationButtons(index);
 
-        if (!Util.isTouchDevice()) disableScroll();
+        disableScroll();
+        $('body').addClass('no-scroll');
         $('.sightings-list video').trigger('pause');
     };
 

@@ -588,7 +588,8 @@
                 }
             ],
             "rating": "3",
-            "time_of_day": "Day"
+            "time_of_day": "Day",
+            "unconfirmed": true
         },
         {
             "key": "s1738039137",
@@ -638,7 +639,8 @@
                     "src": "images/unidentified-beetle-1738467799.jpg"
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1738467754",
@@ -774,7 +776,8 @@
                     "src": "images/golden-silk-orb-weaver-1738465599.jpg"
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1738484224",

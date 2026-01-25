@@ -97,9 +97,7 @@ $(document).ready(function () {
 		});
 	}
 
-	// remove scroll-up-highlighter on scroll/click
-	$(".home").scroll(() => { $('.scroll-up-highlighter').remove(); $(".home").off("scroll"); $(".home").off("click"); });
-	$(".home").click(() => { $('.scroll-up-highlighter').remove(); $(".home").off("scroll"); $(".home").off("click"); });
+
 
 	initHomePageCarousal();
 });

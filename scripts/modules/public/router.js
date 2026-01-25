@@ -297,7 +297,7 @@ export function showPage(page, params, isPopstate) {
         setSiteLogo(Constants.MODE, State.currentMode);
 
         if (State.currentPage != Constants.HOME) {
-            $('.scroll-up-highlighter').remove();
+
         }
         hideLoader('page-load');
     });

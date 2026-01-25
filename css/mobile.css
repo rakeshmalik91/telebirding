@@ -166,7 +166,7 @@ screen and (max-width: 900px) {
 		margin-right: 10px;
 	}
 
-	@keyframes scroll-up-highlighter {}
+
 
 	.stories {
 		left: 0 !important;
@@ -206,5 +206,17 @@ screen and (max-width: 900px) {
 @media (pointer:coarse) and (min-aspect-ratio: 13/9) {
 	.sightings-list .sighting-panel {
 		transform: translateX(10px);
+	}
+
+	:root {
+		--preview-image-margin-top: 100px;
+		--preview-image-margin-bottom: 200px;
+	}
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+	:root {
+		--preview-image-margin-top: 100px;
+		--preview-image-margin-bottom: 200px;
 	}
 }

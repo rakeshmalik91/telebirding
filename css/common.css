@@ -36,6 +36,10 @@ body {
 	/* background-image: url('../icons/background.jpg'); */
 }
 
+.no-scroll {
+	overflow: hidden !important;
+}
+
 h1 {
 	color: var(--text-header);
 }
@@ -351,4 +355,36 @@ input+.button-clear:before {
 	border-bottom: 2px solid #99b3ce;
 	margin-top: 30px;
 	margin-bottom: 60px;
+}
+
+.inline-loader {
+	border: 3px solid rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	border-top: 3px solid #c9e0ff;
+	width: 24px;
+	height: 24px;
+	-webkit-animation: spin 1s linear infinite;
+	animation: spin 1s linear infinite;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
 }

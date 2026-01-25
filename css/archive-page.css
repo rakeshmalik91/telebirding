@@ -518,9 +518,11 @@ span.text-seperator {
 /* ------------------- preview image ------------------ */
 
 :root {
-	--preview-image-margin: 120px;
+	--preview-image-margin-top: 80px;
+	--preview-image-margin-bottom: 80px;
+	--preview-image-margin-left: 60px;
 	--preview-image-padding: 15px;
-	--preview-image-width: calc(100vh - var(--preview-image-margin) * 2);
+	--preview-image-width: calc(100vh - var(--preview-image-margin-top) - var(--preview-image-margin-bottom));
 }
 
 .preview-wrapper {
@@ -543,11 +545,11 @@ span.text-seperator {
 .preview-image-desc {
 	background-color: #1e2e40;
 	position: fixed;
-	margin: var(--preview-image-margin) var(--preview-image-margin);
+	margin: var(--preview-image-margin-top) var(--preview-image-margin-left) var(--preview-image-margin-bottom);
 	padding: var(--preview-image-padding);
 	top: 0;
 	display: block;
-	height: calc(100vh - var(--preview-image-margin) * 2);
+	height: calc(100vh - var(--preview-image-margin-top) - var(--preview-image-margin-bottom));
 }
 
 /* ... */
@@ -573,9 +575,9 @@ span.text-seperator {
 }
 
 .preview-image-desc {
-	left: calc(100vh - var(--preview-image-margin) * 2 + var(--preview-image-padding) * 2);
+	left: calc(100vh - var(--preview-image-margin-top) - var(--preview-image-margin-bottom) + var(--preview-image-padding) * 2);
 	width: calc(100% - var(--preview-image-width));
-	height: calc(100vh + var(--preview-image-padding) * 2 - var(--preview-image-margin) * 2);
+	height: calc(100vh + var(--preview-image-padding) * 2 - var(--preview-image-margin-top) - var(--preview-image-margin-bottom));
 	overflow: hidden;
 	box-sizing: border-box;
 }
@@ -760,7 +762,7 @@ span.text-seperator {
 }
 
 .preview-image-desc button.close-button {
-	top: calc(var(--preview-image-margin) + var(--preview-image-padding) + 45px);
+	top: calc(var(--preview-image-margin-top) + var(--preview-image-padding) + 45px);
 	position: fixed;
 	right: 0;
 }
@@ -778,7 +780,7 @@ span.text-seperator {
 .preview-image-desc button.left-button {
 	position: fixed;
 	top: 50%;
-	left: calc(var(--preview-image-margin) + var(--preview-image-padding) - 50px);
+	left: calc(var(--preview-image-margin-left) + var(--preview-image-padding) - 50px);
 	padding-left: 10px;
 	padding-right: 20px;
 }
@@ -789,7 +791,7 @@ span.text-seperator {
 
 .preview-image-desc button.slideshow-button {
 	position: fixed;
-	top: calc(var(--preview-image-margin) + var(--preview-image-padding) + 45px);
+	top: calc(var(--preview-image-margin-top) + var(--preview-image-padding) + 45px);
 	right: 60px;
 	padding-right: 5px;
 }
