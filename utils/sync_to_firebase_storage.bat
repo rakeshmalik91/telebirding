@@ -73,5 +73,10 @@ if %ERRORLEVEL%==0 (
 )
 
 REM Upload missing data/site-data.json, data/places.json and featured-images/* to Firebase Storage
-python sync_to_firebase_storage.py
-PAUSE
+REM Upload missing data/site-data.json, data/places.json and featured-images/* to Firebase Storage
+python "%~dp0sync_static_files_to_firebase_storage.py"
+
+REM Upload bird/insect data (only changed files unless -f is passed)
+echo.
+echo Syncing bird/insect data...
+python "%~dp0sync_dynamic_files_to_firebase_storage.py" %*
