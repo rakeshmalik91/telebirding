@@ -5,7 +5,7 @@ import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaLeft, updateField, updateMediaProperty,
-    deleteSighting, moveSighting, sightingMatches, addFamily, saveSpecies
+    deleteSighting, moveSighting, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies
 } from './data.js';
 
 import { openCropper } from '../cropper.js';
@@ -26,14 +26,23 @@ export function fillUpdateSpeciesForm() {
         updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected").trigger("change");
         updateSpeciesForm.find("input[data-field=latin-name]").val(species.latin_name);
         updateSpeciesForm.find("input[data-field=ebird-code]").val(species.ebird_code);
+        let count = data.sightings.filter(s => s.species == key).length;
+        updateSpeciesForm.find("input[data-field=sighting-count]").val(count);
         updateSpeciesForm.find("button.submit").html("Update");
+        if (count == 0) {
+            updateSpeciesForm.find("button.delete").removeAttr("disabled");
+        } else {
+            updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
+        }
     } else {
         updateSpeciesForm.find("input[data-field=name]").val('');
         updateSpeciesForm.find("input[data-field=tags]").val('');
         updateSpeciesForm.find("select[data-field=family]").val('').trigger("change");
         updateSpeciesForm.find("input[data-field=latin-name]").val('');
         updateSpeciesForm.find("input[data-field=ebird-code]").val('');
+        updateSpeciesForm.find("input[data-field=sighting-count]").val('0');
         updateSpeciesForm.find("button.submit").html("Add");
+        updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
     }
 }
 
@@ -41,8 +50,9 @@ export function setupUpdateSpeciesForm() {
     const updateSpeciesForm = $("#update-species-form");
 
     if (currentMode != Constants.MODE_BIRD) {
-        updateSpeciesForm.find("tr:first th:eq(2)").html("Scientific Name");
-        updateSpeciesForm.find("input[data-field=ebird-code]").remove();
+        updateSpeciesForm.find("input[data-field=ebird-code]").closest('tr').hide();
+    } else {
+        updateSpeciesForm.find("input[data-field=ebird-code]").closest('tr').show();
     }
 
     updateSpeciesForm.find("select[data-field=family], select[data-field=key]").html('');
@@ -50,7 +60,7 @@ export function setupUpdateSpeciesForm() {
     data.families.forEach(function (family) {
         updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
     });
-    updateSpeciesForm.find("select[data-field=key]").append("<option value=''>New (auto-generated)</option>");
+    updateSpeciesForm.find("select[data-field=key]").append("<option value=''>(New Key/ID to be auto-generated)</option>");
     Object.values(data.species).forEach(function (species, i) {
         updateSpeciesForm.find("select[data-field=key]").append("<option value='" + species.key + "'>" + species.key + "</option>");
     });
@@ -61,7 +71,20 @@ export function setupUpdateSpeciesForm() {
             updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val(),
             updateSpeciesForm.find("input[data-field=latin-name]").val(), updateSpeciesForm.find("input[data-field=ebird-code]").val());
     });
-    updateSpeciesForm.find("select[data-field=key]").select2();
+    updateSpeciesForm.find("button.delete").unbind("click").click(function () {
+        let key = updateSpeciesForm.find("select[data-field=key]").val();
+        if (!key) return;
+        let oldSpeciesCount = Object.keys(data.species).length;
+        deleteSpecies(key);
+        if (Object.keys(data.species).length < oldSpeciesCount) {
+            updateSpeciesForm.find("select[data-field=key] option[value='" + key + "']").remove();
+            updateSpeciesForm.find("select[data-field=key]").val('').trigger('change');
+        }
+    });
+    updateSpeciesForm.find("select[data-field=key]").select2({
+        allowClear: true,
+        placeholder: "Select or Leave Empty for New Key/ID to be Auto-generated"
+    });
     updateSpeciesForm.find("select[data-field=family]").select2();
     updateSpeciesForm.find("input[data-field=name]").unbind("change").change(function () {
         let v = $(this).val();
@@ -273,23 +296,112 @@ export function updatePaginationControls(OFFSET, ROWS) {
     }
 }
 
+// Helper to fill form based on selection
+export function fillAddFamilyForm() {
+    const addFamilyForm = $("#add-family-form");
+    let name = addFamilyForm.find("select[data-field=name]").val();
+    name = $('<textarea />').html(name).text(); // Decode HTML entities
+    let family = data.families.find(f => f.name == name);
+    if (family) {
+        addFamilyForm.find("input[data-field=sci-name]").val(family.sci_name || "");
+        addFamilyForm.find("input[data-field=ebird-code]").val(family.ebird_code || "");
+
+        let count = Object.values(data.species).filter(s => s.family == name).length;
+        addFamilyForm.find("input[data-field=species-count]").val(count);
+
+        addFamilyForm.find("button.submit").html("Update");
+        addFamilyForm.find("button.submit").removeAttr("disabled");
+        addFamilyForm.find("button.delete").removeAttr("disabled");
+    } else {
+        addFamilyForm.find("input[data-field=sci-name]").val("");
+        addFamilyForm.find("input[data-field=ebird-code]").val("");
+        addFamilyForm.find("input[data-field=species-count]").val("0");
+        addFamilyForm.find("button.submit").html("Add");
+        addFamilyForm.find("button.delete").attr("disabled", "disabled");
+        if (currentMode == Constants.MODE_BIRD) {
+            addFamilyForm.find("button.submit").attr("disabled", "disabled");
+        } else {
+            addFamilyForm.find("button.submit").removeAttr("disabled");
+        }
+    }
+
+    if (currentMode != Constants.MODE_BIRD) {
+        addFamilyForm.find("input[data-field=ebird-code]").closest('tr').hide();
+    } else {
+        addFamilyForm.find("input[data-field=ebird-code]").closest('tr').show();
+    }
+}
+
 export function setupAddFamilyForm() {
     const addFamilyForm = $("#add-family-form");
-    if (currentMode != Constants.MODE_BIRD) {
-        $("#add-family-section").show();
-        addFamilyForm.find("button.submit").unbind("click").click(function () {
-            addFamily(
-                addFamilyForm.find("input[data-field=name]").val(),
-                null,
-                addFamilyForm.find("input[data-field=sci-name]").val()
-            );
+    $("#add-family-section").show();
 
-            // Refresh logic to update dropdown in species form
-            $("#update-species-form").find("select[data-field=family]").append("<option value='" + addFamilyForm.find("input[data-field=name]").val() + "'>" + addFamilyForm.find("input[data-field=name]").val() + "</option>");
+    // Populate family select
+    let $famSelect = addFamilyForm.find("select[data-field=name]");
 
-            addFamilyForm.find("input").val('');
-        });
-    } else {
-        $("#add-family-section").hide();
+    // Destroy existing Select2 if it exists to allow clean re-initialization
+    if ($famSelect.hasClass("select2-hidden-accessible")) {
+        $famSelect.select2('destroy');
     }
+
+    $famSelect.html('<option value="">- New Family -</option>');
+    data.families.forEach(function (family) {
+        $famSelect.append("<option value=\"" + family.name + "\">" + family.name + "</option>");
+    });
+
+    fillAddFamilyForm();
+    $famSelect.unbind("change").on("change select2:select", fillAddFamilyForm);
+
+    $famSelect.select2({
+        tags: true,
+        placeholder: "Select or Enter Name",
+        allowClear: true
+    });
+
+    addFamilyForm.find("button.submit").unbind("click").click(function () {
+        let name = addFamilyForm.find("select[data-field=name]").val();
+        if (!name) return;
+
+        addFamily(
+            name,
+            addFamilyForm.find("input[data-field=ebird-code]").val(),
+            addFamilyForm.find("input[data-field=sci-name]").val()
+        );
+
+        // Refresh update species form dropdown if it's a new family (or just refresh anyway)
+        let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
+        if (speciesFamilySelect.find("option[value='" + name + "']").length == 0) {
+            speciesFamilySelect.append("<option value='" + name + "'>" + name + "</option>");
+        }
+
+        // Also update this form's select if it's new
+        if ($famSelect.find("option[value='" + name + "']").length == 0) {
+            $famSelect.append("<option value='" + name + "'>" + name + "</option>");
+        }
+
+        // clear form
+        // We trigger change to reset UI via fillAddFamilyForm, but we also want to clear inputs.
+        // Actually fillAddFamilyForm clears inputs if value is empty.
+        $famSelect.val('').trigger('change');
+    });
+
+    addFamilyForm.find("button.delete").unbind("click").click(function () {
+        let name = addFamilyForm.find("select[data-field=name]").val();
+        if (!name) return;
+
+        let oldCount = data.families.length;
+        deleteFamily(name);
+
+        if (data.families.length < oldCount) {
+            // Deleted successfully
+
+            // Remove from select (both forms)
+            let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
+            speciesFamilySelect.find("option[value='" + name + "']").remove();
+
+            // Remove from this select and reset
+            $famSelect.find("option[value='" + name + "']").remove();
+            $famSelect.val('').trigger('change');
+        }
+    });
 }

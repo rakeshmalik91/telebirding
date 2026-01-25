@@ -357,6 +357,32 @@ export function addFamily(name, ebirdCode, sciName) {
     }
 }
 
+export function deleteFamily(name) {
+    if (!name) return;
+    if (Object.values(data.species).some(s => s.family == name)) {
+        alert("Cannot delete family '" + name + "' as it is used by one or more species.");
+        return;
+    }
+    if (confirm("Are you sure you want to delete family '" + name + "'?")) {
+        data.families = data.families.filter(f => f.name != name);
+        uploadJSONData("families", true);
+        alert("Family deleted successfully.");
+    }
+}
+
+export function deleteSpecies(key) {
+    if (!key) return;
+    if (data.sightings.some(s => s.species == key)) {
+        alert("Cannot delete species '" + key + "' as it has sightings.");
+        return;
+    }
+    if (confirm("Are you sure you want to delete species '" + key + "'?")) {
+        delete data.species[key];
+        uploadJSONData("species", true);
+        alert("Species deleted successfully.");
+    }
+}
+
 export function moveSighting(sightingKey, value) {
     let sighting = data.sightings.filter(b => b.key == sightingKey)[0];
     let index = data.sightings.map(b => b.key).indexOf(sightingKey);

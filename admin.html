@@ -5,9 +5,6 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
 
 	<link rel="icon" type="image/png" href="icons/favicon-admin-48x48.png">
 	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
@@ -73,17 +70,33 @@
 
 		<br>
 		<div id="add-family-section" style="display:none;">
-			<h2>Add Family</h2>
+			<h2>Add/Modify Family</h2>
 			<table id="add-family-form">
 				<tr>
-					<th>Name</th>
-					<th>Scientific Name</th>
+					<td>Name</td>
+					<td><select data-field='name' style="width: 500px;"></select></td>
 				</tr>
 				<tr>
-					<td><input type='text' data-field='name' placeholder="Enter name" style="width: 300px;" /></td>
-					<td><input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 300px;" />
+					<td>Scientific Name</td>
+					<td><input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 500px;" />
 					</td>
-					<td class='noborder'><button class='submit'>Add</button></td>
+				</tr>
+				<tr>
+					<td>eBird Code</td>
+					<td><input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 500px;" />
+					</td>
+				</tr>
+				<tr>
+					<td>Species Count</td>
+					<td><input type='text' data-field='species-count' placeholder="-"
+							style="width: 500px; text-align: left;" disabled />
+					</td>
+				</tr>
+				<tr>
+					<td class='noborder'>
+						<button class='submit'>Add</button>
+						<button class='delete' style='background-color: #d9534f;'>Delete</button>
+					</td>
 				</tr>
 			</table>
 			<br>
@@ -92,23 +105,40 @@
 		<h2>Add/Modify Species</h2>
 		<table id="update-species-form">
 			<tr>
-				<th>ID & Name</th>
-				<th>Family & Tags</th>
-				<th>Scientific Name & eBird Code</th>
+				<td>Key/ID</td>
+				<td><select data-field='key' style="width: 700px;" /></td>
 			</tr>
 			<tr>
-				<td><select data-field='key' style="width: 300px;" /></td>
-				<td><select data-field='family' style="width: 500px;" /></td>
-				<td><input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 250px;" />
+				<td>Name</td>
+				<td><input type='text' data-field='name' placeholder="Enter name" style="width: 700px;" /></td>
+			</tr>
+			<tr>
+				<td>Family</td>
+				<td><select data-field='family' style="width: 700px;" /></td>
+			</tr>
+			<tr>
+				<td>Tags</td>
+				<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 700px;" /></td>
+			</tr>
+			<tr>
+				<td>Scientific Name</td>
+				<td><input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 700px;" />
 				</td>
 			</tr>
 			<tr>
-				<td><input type='text' data-field='name' placeholder="Enter name" style="width: 300px;" /></td>
-				<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 500px;" /></td>
-				<td><input type='text' data-field='ebird-code' placeholder="code" style="width: 250px;" /></td>
+				<td>eBird Code</td>
+				<td><input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 700px;" /></td>
 			</tr>
 			<tr>
-				<td class='noborder'><button class='submit'>Add</button></td>
+				<td>Sighting Count</td>
+				<td><input type='text' data-field='sighting-count' placeholder="-"
+						style="width: 700px; text-align: left;" disabled /></td>
+			</tr>
+			<tr>
+				<td class='noborder'>
+					<button class='submit'>Add</button>
+					<button class='delete' style='background-color: #d9534f;'>Delete</button>
+				</td>
 			</tr>
 		</table>
 
