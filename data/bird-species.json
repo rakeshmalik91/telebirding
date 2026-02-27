@@ -3411,6 +3411,16 @@
             "ebird_code": "grseag1",
             "latin_name": "clanga clanga"
         },
+        "greater-white-fronted-goose": {
+            "key": "greater-white-fronted-goose",
+            "name": "Greater White-fronted Goose",
+            "tags": [
+                "Goose"
+            ],
+            "family": "Ducks, Geese, and Waterfowl",
+            "latin_name": "anser albifrons",
+            "ebird_code": "gwfgoo"
+        },
         "greater-yellownape": {
             "key": "greater-yellownape",
             "name": "Greater Yellownape",
@@ -7356,7 +7366,6 @@
             "name": "Sykes's Nightjar",
             "tags": [
                 "Nightjar",
-                "Syke's Nightjar",
                 "Nocturnal"
             ],
             "family": "Nightjars and Allies",
@@ -7367,8 +7376,7 @@
             "key": "sykes-warbler",
             "name": "Sykes's Warbler",
             "tags": [
-                "Warbler",
-                "Syke's Warbler"
+                "Warbler"
             ],
             "family": "Reed Warblers and Allies",
             "latin_name": "iduna rama",

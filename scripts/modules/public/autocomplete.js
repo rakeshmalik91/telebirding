@@ -39,9 +39,14 @@ export class Autocomplete {
         for (i = 0; i < this.arr.length; i++) {
             if (this.arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 b = document.createElement("DIV");
-                b.innerHTML = "<strong>" + this.arr[i].substr(0, val.length) + "</strong>";
-                b.innerHTML += this.arr[i].substr(val.length);
-                b.innerHTML += "<input type='hidden' value='" + this.arr[i] + "'>";
+                let strong = document.createElement("STRONG");
+                strong.textContent = this.arr[i].substr(0, val.length);
+                b.appendChild(strong);
+                b.appendChild(document.createTextNode(this.arr[i].substr(val.length)));
+                let hiddenInput = document.createElement("INPUT");
+                hiddenInput.type = "hidden";
+                hiddenInput.value = this.arr[i];
+                b.appendChild(hiddenInput);
 
                 b.addEventListener("mousedown", (e) => {
                     // Prevent blur event on input to ensure we capture the selection first

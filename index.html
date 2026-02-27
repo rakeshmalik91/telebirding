@@ -93,13 +93,15 @@
 				<div class="component">
 					<input type="text" data-value="place" onchange="filterOnChange('place')" tabindex="6"
 						placeholder="Filter by Location" />
-					<button type="button" class="button-clear" onclick="clearFilter('place')" tabindex="7"
+					<button type="button" class="button-clear"
+						onmousedown="clearFilter('place'); event.preventDefault();" tabindex="7"
 						title="Clear Place Filter"></button>
 				</div>
 				<div class="component">
 					<input type="text" data-value="sighting" onchange="filterOnChange('sighting')" tabindex="4"
 						placeholder="Filter by Name" />
-					<button type="button" class="button-clear" onclick="clearFilter('sighting')" tabindex="5"
+					<button type="button" class="button-clear"
+						onmousedown="clearFilter('sighting'); event.preventDefault();" tabindex="5"
 						title="Clear Bird Name Filter"></button>
 				</div>
 				<div class="component">
