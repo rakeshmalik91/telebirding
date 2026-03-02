@@ -103,6 +103,28 @@
             "ebird_code": "andcou1",
             "latin_name": "centropus andamanensis"
         },
+        "andaman-crake": {
+            "key": "andaman-crake",
+            "name": "Andaman Crake",
+            "tags": [
+                "Crake"
+            ],
+            "family": "Rails, Gallinules, and Coots",
+            "latin_name": "rallina canningi",
+            "ebird_code": "andcra1"
+        },
+        "andaman-cuckoo-dove": {
+            "key": "andaman-cuckoo-dove",
+            "name": "Andaman Cuckoo-Dove",
+            "tags": [
+                "Cuckoo-Dove",
+                "Dove",
+                "Pigeon"
+            ],
+            "family": "Pigeons and Doves",
+            "latin_name": "macropygia rufipennis",
+            "ebird_code": "ancdov1"
+        },
         "andaman-cuckoo-shrike": {
             "key": "andaman-cuckoo-shrike",
             "name": "Andaman Cuckooshrike",
@@ -151,12 +173,13 @@
             "key": "andaman-masked-owl",
             "name": "Andaman Masked-Owl",
             "tags": [
-                "Masked Owl",
                 "Andaman Barn Owl",
                 "Barn Owl",
+                "Bird of Prey",
+                "Masked Owl",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Barn-Owls",
             "ebird_code": "barowl5",
@@ -166,8 +189,10 @@
             "key": "andaman-nightjar",
             "name": "Andaman Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "andnig1",
@@ -177,10 +202,11 @@
             "key": "andaman-scops-owl",
             "name": "Andaman Scops-Owl",
             "tags": [
-                "Scops Owl",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
                 "Raptor",
-                "Nocturnal"
+                "Scops Owl"
             ],
             "family": "Owls",
             "ebird_code": "ansowl1",
@@ -211,6 +237,17 @@
             "ebird_code": "andsha1",
             "latin_name": "copsychus albiventris"
         },
+        "andaman-teal": {
+            "key": "andaman-teal",
+            "name": "Andaman Teal",
+            "tags": [
+                "Teal",
+                "Duck"
+            ],
+            "family": "Ducks, Geese, and Waterfowl",
+            "latin_name": "anas albogularis",
+            "ebird_code": "andtea1"
+        },
         "andaman-treepie": {
             "key": "andaman-treepie",
             "name": "Andaman Treepie",
@@ -221,6 +258,16 @@
             "ebird_code": "andtre1",
             "latin_name": "dendrocitta bayleii"
         },
+        "andaman-wood-pigeon": {
+            "key": "andaman-wood-pigeon",
+            "name": "Andaman Wood-Pigeon",
+            "tags": [
+                "Wood-Pigeon"
+            ],
+            "family": "Pigeons and Doves",
+            "latin_name": "columba palumboides",
+            "ebird_code": "anwpig1"
+        },
         "andaman-woodpecker": {
             "key": "andaman-woodpecker",
             "name": "Andaman Woodpecker",
@@ -230,6 +277,16 @@
             "family": "Woodpeckers",
             "ebird_code": "andwoo1",
             "latin_name": "dryocopus hodgei"
+        },
+        "arctic-warbler": {
+            "key": "arctic-warbler",
+            "name": "Arctic Warbler",
+            "tags": [
+                "Warbler"
+            ],
+            "family": "Leaf Warblers",
+            "latin_name": "phylloscopus borealis",
+            "ebird_code": "arcwar1"
         },
         "ashy-bulbul": {
             "key": "ashy-bulbul",
@@ -261,6 +318,17 @@
             "family": "Drongos",
             "ebird_code": "ashdro1",
             "latin_name": "dicrurus leucophaeus"
+        },
+        "ashy-minivet": {
+            "key": "ashy-minivet",
+            "name": "Ashy Minivet",
+            "tags": [
+                "Minivet",
+                "Cuckooshrike"
+            ],
+            "family": "Cuckooshrikes",
+            "latin_name": "pericrocotus divaricatus",
+            "ebird_code": "ashmin1"
         },
         "ashy-prinia": {
             "key": "ashy-prinia",
@@ -308,10 +376,11 @@
             "key": "asian-barred-owlet",
             "name": "Asian Barred Owlet",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
                 "Owlet",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "asbowl1",
@@ -348,6 +417,16 @@
             "family": "Fairy-bluebirds",
             "ebird_code": "asfblu1",
             "latin_name": "irena puella"
+        },
+        "asian-glossy-starling": {
+            "key": "asian-glossy-starling",
+            "name": "Asian Glossy Starling",
+            "tags": [
+                "Starling"
+            ],
+            "family": "Starlings",
+            "latin_name": "aplonis panayensis",
+            "ebird_code": "asgsta1"
         },
         "asian-houbara": {
             "key": "asian-houbara",
@@ -445,6 +524,7 @@
             "tags": [
                 "Duck",
                 "Goose",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -480,11 +560,12 @@
             "key": "barn-owl",
             "name": "Eastern Barn Owl",
             "tags": [
-                "Owl",
-                "Raptor",
+                "Asian Barn Owl",
                 "Barn Owl",
+                "Bird of Prey",
                 "Nocturnal",
-                "Asian Barn Owl"
+                "Owl",
+                "Raptor"
             ],
             "family": "Barn-Owls",
             "latin_name": "tyto javanica",
@@ -506,6 +587,7 @@
             "tags": [
                 "Duck",
                 "Goose",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -565,10 +647,11 @@
             "key": "bearded-vulture",
             "name": "Bearded Vulture",
             "tags": [
-                "Vulture",
+                "Bird of Prey",
+                "Lammergeier",
                 "Raptor",
                 "Scavenger",
-                "Lammergeier"
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "lammer1",
@@ -578,8 +661,9 @@
             "key": "besra",
             "name": "Besra",
             "tags": [
-                "Raptor",
-                "Hawk"
+                "Accipiter",
+                "Hawk",
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "besra1",
@@ -621,6 +705,8 @@
             "key": "black-bellied-tern",
             "name": "Black-bellied Tern",
             "tags": [
+                "Pelagic",
+                "Seabird",
                 "Tern"
             ],
             "family": "Gulls, Terns, and Skimmers",
@@ -646,6 +732,17 @@
             "family": "Weavers and Allies",
             "ebird_code": "benwea1",
             "latin_name": "ploceus benghalensis"
+        },
+        "black-browed-reed-warbler": {
+            "key": "black-browed-reed-warbler",
+            "name": "Black-browed Reed Warbler",
+            "tags": [
+                "Warbler",
+                "Reed Warbler"
+            ],
+            "family": "Reed Warblers and Allies",
+            "latin_name": "acrocephalus bistrigiceps",
+            "ebird_code": "bbrwar1"
         },
         "black-bulbul": {
             "key": "black-bulbul",
@@ -808,6 +905,8 @@
             "name": "Black-headed Gull",
             "tags": [
                 "Gull",
+                "Pelagic",
+                "Seabird",
                 "Wader",
                 "Wading Bird"
             ],
@@ -860,6 +959,7 @@
             "key": "black-kite",
             "name": "Black Kite",
             "tags": [
+                "Bird of Prey",
                 "Kite",
                 "Raptor"
             ],
@@ -871,8 +971,10 @@
             "key": "black-legged-kittiwake",
             "name": "Black-legged Kittiwake",
             "tags": [
+                "Gull",
                 "Kittiwake",
-                "Gull"
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Gulls, Terns, and Skimmers",
             "latin_name": "rissa tridactyla",
@@ -911,6 +1013,18 @@
             "family": "Old World Orioles",
             "ebird_code": "blnori1",
             "latin_name": "oriolus chinensis"
+        },
+        "black-naped-tern": {
+            "key": "black-naped-tern",
+            "name": "Black-naped Tern",
+            "tags": [
+                "Pelagic",
+                "Seabird",
+                "Tern"
+            ],
+            "family": "Gulls, Terns, and Skimmers",
+            "latin_name": "sterna sumatrana",
+            "ebird_code": "blnter1"
         },
         "black-necked-crane": {
             "key": "black-necked-crane",
@@ -1055,6 +1169,7 @@
             "key": "black-winged-kite",
             "name": "Black-winged Kite",
             "tags": [
+                "Bird of Prey",
                 "Kite",
                 "Raptor"
             ],
@@ -1265,6 +1380,16 @@
             "ebird_code": "blylew1",
             "latin_name": "phylloscopus reguloides"
         },
+        "blyths-paradise-flycatcher": {
+            "key": "blyths-paradise-flycatcher",
+            "name": "Blyth's Paradise Flycatcher",
+            "tags": [
+                "Flycatcher"
+            ],
+            "family": "Monarch Flycatchers",
+            "latin_name": "terpsiphone affinis",
+            "ebird_code": "blypaf1"
+        },
         "blyths-reed-warbler": {
             "key": "blyths-reed-warbler",
             "name": "Blyth's Reed Warbler",
@@ -1336,6 +1461,7 @@
             "key": "brahminy-kite",
             "name": "Brahminy Kite",
             "tags": [
+                "Bird of Prey",
                 "Kite",
                 "Raptor"
             ],
@@ -1370,9 +1496,10 @@
             "name": "Broad-billed Sandpiper",
             "tags": [
                 "Sandpiper",
+                "Shorebird",
                 "Wader",
-                "Water Bird",
-                "Wading Bird"
+                "Wading Bird",
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "brbsan",
@@ -1492,10 +1619,11 @@
             "key": "brown-fish-owl",
             "name": "Brown Fish-Owl",
             "tags": [
+                "Bird of Prey",
                 "Fish-Owl",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "brfowl1",
@@ -1526,6 +1654,8 @@
             "name": "Brown-headed Gull",
             "tags": [
                 "Gull",
+                "Pelagic",
+                "Seabird",
                 "Wader",
                 "Wading Bird"
             ],
@@ -1568,10 +1698,11 @@
             "key": "brown-wood-owl",
             "name": "Brown Wood-Owl",
             "tags": [
-                "Wood Owl",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
                 "Raptor",
-                "Nocturnal"
+                "Wood Owl"
             ],
             "family": "Owls",
             "ebird_code": "brwowl1",
@@ -1625,6 +1756,8 @@
             "key": "caspian-tern",
             "name": "Caspian Tern",
             "tags": [
+                "Pelagic",
+                "Seabird",
                 "Tern"
             ],
             "family": "Gulls, Terns, and Skimmers",
@@ -1647,9 +1780,11 @@
             "key": "ceylon-frogmouth",
             "name": "Sri Lanka Frogmouth",
             "tags": [
-                "Frogmouth",
+                "Bird of Prey",
                 "Ceylon Frogmouth",
+                "Frogmouth",
                 "Nocturnal",
+                "Raptor",
                 "Sri Lankan Frogmouth"
             ],
             "family": "Frogmouths",
@@ -1660,6 +1795,7 @@
             "key": "changeagle-hawk-eagle",
             "name": "Changeable Hawk-Eagle",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Eagle",
                 "Hawk",
@@ -1799,6 +1935,26 @@
             "ebird_code": "chwcuc1",
             "latin_name": "clamator coromandus"
         },
+        "chinese-egret": {
+            "key": "chinese-egret",
+            "name": "Chinese Egret",
+            "tags": [
+                "Egret"
+            ],
+            "family": "Herons, Egrets, and Bitterns",
+            "latin_name": "egretta eulophotes",
+            "ebird_code": "chiegr"
+        },
+        "chinese-pond-heron": {
+            "key": "chinese-pond-heron",
+            "name": "Chinese Pond Heron",
+            "tags": [
+                "Heron"
+            ],
+            "family": "Herons, Egrets, and Bitterns",
+            "latin_name": "ardeola bacchus",
+            "ebird_code": "chpher1"
+        },
         "chinese-rubythroat": {
             "key": "chinese-rubythroat",
             "name": "Chinese Rubythroat",
@@ -1836,9 +1992,10 @@
             "key": "cinereous-vulture",
             "name": "Cinereous Vulture",
             "tags": [
-                "Vulture",
+                "Bird of Prey",
                 "Raptor",
-                "Scavenger"
+                "Scavenger",
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "cinvul1",
@@ -1890,6 +2047,7 @@
             "key": "collared-falconet",
             "name": "Collared Falconet",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Falcon",
                 "Falconet",
@@ -1913,10 +2071,11 @@
             "key": "collared-owlet",
             "name": "Collared Owlet",
             "tags": [
-                "Owlet",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Owlet",
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "colowl1",
@@ -1936,9 +2095,10 @@
             "key": "collared-scops-owl",
             "name": "Collared Scops-Owl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "cosowl1",
@@ -1958,7 +2118,9 @@
             "key": "common-buzzard",
             "name": "Common Buzzard",
             "tags": [
-                "Buzzard"
+                "Bird of Prey",
+                "Buzzard",
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "combuz1",
@@ -2060,7 +2222,9 @@
             "key": "common-gull",
             "name": "Common Gull",
             "tags": [
-                "Gull"
+                "Gull",
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Gulls, Terns, and Skimmers",
             "ebird_code": "mewgul",
@@ -2070,6 +2234,7 @@
             "key": "common-hawk-cuckoo",
             "name": "Common Hawk-Cuckoo",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Cuckoo",
                 "Hawk-Cuckoo",
@@ -2203,6 +2368,7 @@
             "tags": [
                 "Plover",
                 "Ringed Plover",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -2228,6 +2394,7 @@
             "name": "Common Sandpiper",
             "tags": [
                 "Sandpiper",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -2262,6 +2429,8 @@
             "key": "common-tern",
             "name": "Common Tern",
             "tags": [
+                "Pelagic",
+                "Seabird",
                 "Tern"
             ],
             "family": "Gulls, Terns, and Skimmers",
@@ -2294,6 +2463,7 @@
             "tags": [
                 "Duck",
                 "Goose",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -2383,9 +2553,10 @@
             "name": "Curlew Sandpiper",
             "tags": [
                 "Sandpiper",
-                "Water Bird",
+                "Shorebird",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "cursan",
@@ -2455,6 +2626,16 @@
             "family": "Thrushes and Allies",
             "ebird_code": "dasthr1",
             "latin_name": "zoothera marginata"
+        },
+        "daurian-starling": {
+            "key": "daurian-starling",
+            "name": "Daurian Starling",
+            "tags": [
+                "Starling"
+            ],
+            "family": "Starlings",
+            "latin_name": "agropsar sturninus",
+            "ebird_code": "dausta1"
         },
         "delicate-prinia": {
             "key": "delicate-prinia",
@@ -2548,9 +2729,10 @@
             "key": "egyptian-vulture",
             "name": "Egyptian Vulture",
             "tags": [
-                "Vulture",
+                "Bird of Prey",
                 "Raptor",
-                "Scavenger"
+                "Scavenger",
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "egyvul1",
@@ -2634,10 +2816,12 @@
             "key": "eurasian-hobby",
             "name": "Eurasian Hobby",
             "tags": [
-                "Hobby",
-                "Raptor",
+                "Accipiter",
+                "Bird of Prey",
                 "Falcon",
-                "Hawk"
+                "Hawk",
+                "Hobby",
+                "Raptor"
             ],
             "family": "Falcons and Caracaras",
             "ebird_code": "eurhob",
@@ -2657,11 +2841,13 @@
             "key": "eurasian-kestrel",
             "name": "Eurasian Kestrel",
             "tags": [
-                "Kestrel",
-                "Hawk",
-                "Raptor",
+                "Accipiter",
+                "Bird of Prey",
                 "Common Kestrel",
-                "Falcon"
+                "Falcon",
+                "Hawk",
+                "Kestrel",
+                "Raptor"
             ],
             "family": "Falcons and Caracaras",
             "ebird_code": "eurkes",
@@ -2681,10 +2867,11 @@
             "key": "eurasian-marsh-harrier",
             "name": "Western Marsh Harrier",
             "tags": [
+                "Bird of Prey",
+                "Eurasian Marsh-Harrier",
                 "Harrier",
                 "Marsh-Harrier",
-                "Raptor",
-                "Eurasian Marsh-Harrier"
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "wemhar1",
@@ -2720,9 +2907,10 @@
             "key": "eurasian-sparrowhawk",
             "name": "Eurasian Sparrowhawk",
             "tags": [
-                "Sparrowhawk",
+                "Accipiter",
                 "Hawk",
-                "Raptor"
+                "Raptor",
+                "Sparrowhawk"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "eurspa1",
@@ -2793,6 +2981,7 @@
             "tags": [
                 "Golden-Plover",
                 "Plover",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -2850,6 +3039,7 @@
             "name": "Falcated Duck",
             "tags": [
                 "Duck",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -2865,6 +3055,7 @@
                 "Duck",
                 "Ferruginous Pochard",
                 "Pochard",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -2969,6 +3160,7 @@
             "name": "Fulvous Whistling-Duck",
             "tags": [
                 "Duck",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird",
@@ -3008,7 +3200,9 @@
             "key": "glaucous-gull",
             "name": "Glaucous Gull",
             "tags": [
-                "Gull"
+                "Gull",
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Gulls, Terns, and Skimmers",
             "latin_name": "larus hyperboreus",
@@ -3156,7 +3350,9 @@
             "name": "Great Black-backed Gull",
             "tags": [
                 "Black-backed Gull",
-                "Gull"
+                "Gull",
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Gulls, Terns, and Skimmers",
             "latin_name": "larus marinus",
@@ -3187,12 +3383,26 @@
             "ebird_code": "grcgre1",
             "latin_name": "podiceps cristatus"
         },
+        "great-crested-tern": {
+            "key": "great-crested-tern",
+            "name": "Great Crested Tern",
+            "tags": [
+                "Pelagic",
+                "Seabird",
+                "Tern"
+            ],
+            "family": "Gulls, Terns, and Skimmers",
+            "latin_name": "thalasseus bergii",
+            "ebird_code": "grcter1"
+        },
         "great-eared-nightjar": {
             "key": "great-eared-nightjar",
             "name": "Great Eared-Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "grenig1",
@@ -3387,6 +3597,22 @@
             "ebird_code": "grtdro1",
             "latin_name": "dicrurus paradiseus"
         },
+        "greater-sand-plover": {
+            "key": "greater-sand-plover",
+            "name": "Greater Sand-Plover",
+            "tags": [
+                "Plover",
+                "Sand Plover",
+                "Sand-Plover",
+                "Shorebird",
+                "Wader",
+                "Wading Bird",
+                "Water Bird"
+            ],
+            "family": "Plovers and Lapwings",
+            "latin_name": "anarhynchus leschenaultii",
+            "ebird_code": "grsplo"
+        },
         "greater-short-toed-lark": {
             "key": "greater-short-toed-lark",
             "name": "Greater Short-toed Lark",
@@ -3415,7 +3641,11 @@
             "key": "greater-white-fronted-goose",
             "name": "Greater White-fronted Goose",
             "tags": [
-                "Goose"
+                "Goose",
+                "Shorebird",
+                "Wader",
+                "Wading Bird",
+                "Water Bird"
             ],
             "family": "Ducks, Geese, and Waterfowl",
             "latin_name": "anser albifrons",
@@ -3482,9 +3712,10 @@
             "name": "Green Sandpiper",
             "tags": [
                 "Sandpiper",
-                "Water Bird",
+                "Shorebird",
+                "Wader",
                 "Wading Bird",
-                "Wader"
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "grnsan",
@@ -3735,8 +3966,10 @@
             "key": "grey-nightjar",
             "name": "Gray Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "grynig1",
@@ -3801,6 +4034,7 @@
                 "Duck",
                 "Goose",
                 "Greylag Goose",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -3848,7 +4082,9 @@
             "key": "hen-harrier",
             "name": "Hen Harrier",
             "tags": [
-                "Harrier"
+                "Bird of Prey",
+                "Harrier",
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "norhar1",
@@ -3912,11 +4148,23 @@
             "key": "himalayan-buzzard",
             "name": "Himalayan Buzzard",
             "tags": [
-                "Buzzard"
+                "Bird of Prey",
+                "Buzzard",
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "combuz9",
             "latin_name": "buteo refectus"
+        },
+        "himalayan-cuckoo": {
+            "key": "himalayan-cuckoo",
+            "name": "Himalayan Cuckoo",
+            "tags": [
+                "Cuckoo"
+            ],
+            "family": "Cuckoos",
+            "latin_name": "cuculus saturatus",
+            "ebird_code": "himcuc1"
         },
         "himalayan-cutia": {
             "key": "himalayan-cutia",
@@ -4009,8 +4257,10 @@
             "key": "hodgsons-frogmouth",
             "name": "Hodgson's Frogmouth",
             "tags": [
+                "Bird of Prey",
                 "Frogmouth",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Frogmouths",
             "ebird_code": "hodfro1",
@@ -4020,6 +4270,7 @@
             "key": "hodgsons-hawk-cuckoo",
             "name": "Hodgson's Hawk-Cuckoo",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Cuckoo",
                 "Hawk-Cuckoo",
@@ -4215,8 +4466,10 @@
             "key": "indian-nightjar",
             "name": "Indian Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "indnig1",
@@ -4292,10 +4545,11 @@
             "key": "indian-scops-owl",
             "name": "Indian Scops-Owl",
             "tags": [
-                "Scops Owl",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
                 "Raptor",
-                "Nocturnal"
+                "Scops Owl"
             ],
             "family": "Owls",
             "ebird_code": "insowl1",
@@ -4328,6 +4582,7 @@
             "name": "Indian Spot-billed Duck",
             "tags": [
                 "Duck",
+                "Shorebird",
                 "Spot-billed Duck",
                 "Wader",
                 "Wading Bird",
@@ -4373,9 +4628,11 @@
             "key": "indian-vulture",
             "name": "Indian Vulture",
             "tags": [
-                "Vulture",
+                "Bird of Prey",
                 "Indian Long-billed Vulture",
-                "Scavenger"
+                "Raptor",
+                "Scavenger",
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "latin_name": "gyps indicus",
@@ -4461,8 +4718,10 @@
             "key": "jerdons-nightjar",
             "name": "Jerdon's Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "jernig1",
@@ -4493,8 +4752,10 @@
             "key": "jungle-nightjar",
             "name": "Jungle Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "grynig2",
@@ -4504,10 +4765,11 @@
             "key": "jungle-owlet",
             "name": "Jungle Owlet",
             "tags": [
-                "Owlet",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Owlet",
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "junowl1",
@@ -4529,6 +4791,7 @@
             "name": "Kentish Plover",
             "tags": [
                 "Plover",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -4544,6 +4807,7 @@
                 "African Comb Duck",
                 "Comb Duck",
                 "Duck",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -4568,6 +4832,7 @@
             "key": "laggar-falcon",
             "name": "Laggar Falcon",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Falcon",
                 "Raptor"
@@ -4613,6 +4878,7 @@
             "key": "large-hawk-cuckoo",
             "name": "Large Hawk-Cuckoo",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Cuckoo",
                 "Hawk-Cuckoo",
@@ -4675,8 +4941,10 @@
             "key": "lesser-black-backed-gull",
             "name": "Lesser Black-backed Gull",
             "tags": [
+                "Black-backed Gull",
                 "Gull",
-                "Black-backed Gull"
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Gulls, Terns, and Skimmers",
             "latin_name": "larus fuscus",
@@ -4686,13 +4954,13 @@
             "key": "lesser-crested-tern",
             "name": "Lesser Crested Tern",
             "tags": [
-                "Tern",
-                "Wader",
-                "Wading Bird"
+                "Pelagic",
+                "Seabird",
+                "Tern"
             ],
             "family": "Gulls, Terns, and Skimmers",
-            "ebird_code": "lecter2",
-            "latin_name": "thalasseus bengalensis"
+            "latin_name": "thalasseus bengalensis",
+            "ebird_code": "lecter2"
         },
         "lesser-cuckoo": {
             "key": "lesser-cuckoo",
@@ -4738,27 +5006,12 @@
             "latin_name": "sypheotides indicus",
             "ebird_code": "lesflo2"
         },
-        "lesser-sand-plover": {
-            "key": "lesser-sand-plover",
-            "name": "Lesser Sand Plover",
-            "tags": [
-                "Sand Plover",
-                "Siberian Sand-Plover",
-                "Siberian/Tibetan Sand-Plover",
-                "Tibetan Sand-Plover",
-                "Wader",
-                "Wading Bird",
-                "Water Bird"
-            ],
-            "family": "Plovers",
-            "latin_name": "anarhynchus mongolus/atrifrons",
-            "ebird_code": "lesplo"
-        },
         "lesser-whistling-duck": {
             "key": "lesser-whistling-duck",
             "name": "Lesser Whistling-Duck",
             "tags": [
                 "Duck",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird",
@@ -4774,6 +5027,7 @@
             "tags": [
                 "Duck",
                 "Goose",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird",
@@ -4874,9 +5128,10 @@
             "key": "little-owl",
             "name": "Little Owl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "litowl1",
@@ -4899,6 +5154,7 @@
             "tags": [
                 "Plover",
                 "Ringed Plover",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -4932,6 +5188,8 @@
             "key": "little-tern",
             "name": "Little Tern",
             "tags": [
+                "Pelagic",
+                "Seabird",
                 "Tern"
             ],
             "family": "Gulls, Terns, and Skimmers",
@@ -4962,6 +5220,7 @@
             "key": "long-legged-buzzard",
             "name": "Long-legged Buzzard",
             "tags": [
+                "Bird of Prey",
                 "Buzzard",
                 "Raptor"
             ],
@@ -5140,6 +5399,16 @@
             "ebird_code": "mallar3",
             "latin_name": "anas platyrhynchos"
         },
+        "mangrove-whistler": {
+            "key": "mangrove-whistler",
+            "name": "Mangrove Whistler",
+            "tags": [
+                "Whistler"
+            ],
+            "family": "Whistlers and Allies",
+            "latin_name": "pachycephala cinerea",
+            "ebird_code": "manwhi1"
+        },
         "maroon-oriole": {
             "key": "maroon-oriole",
             "name": "Maroon Oriole",
@@ -5155,6 +5424,7 @@
             "name": "Marsh Sandpiper",
             "tags": [
                 "Sandpiper",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -5211,6 +5481,7 @@
             "key": "montagus-harrier",
             "name": "Montagu's Harrier",
             "tags": [
+                "Bird of Prey",
                 "Harrier",
                 "Raptor"
             ],
@@ -5222,9 +5493,11 @@
             "key": "mottled-wood-owl",
             "name": "Mottled Wood-Owl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Wood-Owl",
-                "Nocturnal"
+                "Raptor",
+                "Wood-Owl"
             ],
             "family": "Owls",
             "ebird_code": "mowowl1",
@@ -5256,6 +5529,7 @@
             "key": "mountain-hawk-eagle",
             "name": "Mountain Hawk-Eagle",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Eagle",
                 "Hawk",
@@ -5281,10 +5555,11 @@
             "key": "mountain-scops-owl",
             "name": "Mountain Scops-Owl",
             "tags": [
-                "Scops Owl",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
                 "Raptor",
-                "Nocturnal"
+                "Scops Owl"
             ],
             "family": "Owls",
             "ebird_code": "mosowl2",
@@ -5299,6 +5574,16 @@
             "family": "Sunbirds and Spiderhunters",
             "ebird_code": "gousun1",
             "latin_name": "aethopyga gouldiae"
+        },
+        "mugimaki-flycatcher": {
+            "key": "mugimaki-flycatcher",
+            "name": "Mugimaki Flycatcher",
+            "tags": [
+                "Flycatcher"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "ficedula mugimaki",
+            "ebird_code": "mugfly"
         },
         "namaqua-dove": {
             "key": "namaqua-dove",
@@ -5321,16 +5606,82 @@
             "ebird_code": "nepful1",
             "latin_name": "alcippe nipalensis"
         },
+        "nicobar-hooded-pitta": {
+            "key": "nicobar-hooded-pitta",
+            "name": "Nicobar Hooded-Pitta",
+            "tags": [
+                "Pitta"
+            ],
+            "family": "Pittas",
+            "latin_name": "pitta abbotti",
+            "ebird_code": "hoopit4"
+        },
+        "nicobar-imperial-pigeon": {
+            "key": "nicobar-imperial-pigeon",
+            "name": "Nicobar Imperial Pigeon",
+            "tags": [
+                "Pigeon",
+                "Imperial Pigeon"
+            ],
+            "family": "Pigeons and Doves",
+            "latin_name": "ducula nicobarica",
+            "ebird_code": "grnimp2"
+        },
+        "nicobar-jungle-flycatcher": {
+            "key": "nicobar-jungle-flycatcher",
+            "name": "Nicobar Jungle Flycatcher",
+            "tags": [
+                "Flycatcher",
+                "Jungle Flycatcher"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "cyornis nicobaricus",
+            "ebird_code": "nicjuf1"
+        },
+        "nicobar-parakeet": {
+            "key": "nicobar-parakeet",
+            "name": "Nicobar Parakeet",
+            "tags": [
+                "Parakeet"
+            ],
+            "family": "Old World Parrots",
+            "latin_name": "psittacula caniceps",
+            "ebird_code": "nicpar1"
+        },
         "nicobar-pigeon": {
             "key": "nicobar-pigeon",
             "name": "Nicobar Pigeon",
             "tags": [
-                "Dove",
                 "Pigeon"
             ],
             "family": "Pigeons and Doves",
-            "ebird_code": "nicpig1",
-            "latin_name": "caloenas nicobarica"
+            "latin_name": "caloenas nicobarica",
+            "ebird_code": "nicpig1"
+        },
+        "nicobar-scops-owl": {
+            "key": "nicobar-scops-owl",
+            "name": "Nicobar Scops-Owl",
+            "tags": [
+                "Bird of Prey",
+                "Nocturnal",
+                "Raptor",
+                "Scops-Owl"
+            ],
+            "family": "Owls",
+            "latin_name": "otus alius",
+            "ebird_code": "nicsco1"
+        },
+        "nicobar-serpent-eagle": {
+            "key": "nicobar-serpent-eagle",
+            "name": "Nicobar Serpent Eagle",
+            "tags": [
+                "Bird of Prey",
+                "Eagle",
+                "Raptor"
+            ],
+            "family": "Hawks, Eagles, and Kites",
+            "latin_name": "spilornis klossi",
+            "ebird_code": "nicsee1"
         },
         "nilgiri-flowerpecker": {
             "key": "nilgiri-flowerpecker",
@@ -5388,7 +5739,9 @@
             "key": "northern-gannet",
             "name": "Northern Gannet",
             "tags": [
-                "Gannet"
+                "Gannet",
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Boobies and Gannets",
             "latin_name": "morus bassanus",
@@ -5497,15 +5850,29 @@
             "name": "Sri Lanka Bay-Owl",
             "tags": [
                 "Bay Owl",
-                "Owl",
-                "Raptor",
+                "Bird of Prey",
                 "Ceylon Bay Owl",
                 "Nocturnal",
+                "Owl",
+                "Raptor",
                 "Sri-Lankan Bay Owl"
             ],
             "family": "Barn-Owls",
             "latin_name": "phodilus assimilis",
             "ebird_code": "srlbao1"
+        },
+        "oriental-cuckooshrike": {
+            "key": "oriental-cuckooshrike",
+            "name": "Oriental Cuckooshrike",
+            "tags": [
+                "Cuckooshrike",
+                "Cuckoo-shrike",
+                "Large Cuckooshrike",
+                "Oriental Cuckoo-shrike"
+            ],
+            "family": "Cuckooshrikes",
+            "latin_name": "coracina javensis",
+            "ebird_code": "larcuc11"
         },
         "oriental-darter": {
             "key": "oriental-darter",
@@ -5554,6 +5921,16 @@
             "ebird_code": "orphor1",
             "latin_name": "anthracoceros albirostris"
         },
+        "oriental-pratincole": {
+            "key": "oriental-pratincole",
+            "name": "Oriental Pratincole",
+            "tags": [
+                "Pratincole"
+            ],
+            "family": "Pratincoles and Coursers",
+            "latin_name": "glareola maldivarum",
+            "ebird_code": "oripra"
+        },
         "oriental-reed-warbler": {
             "key": "oriental-reed-warbler",
             "name": "Oriental Reed Warbler",
@@ -5568,10 +5945,11 @@
             "key": "oriental-scops-owl",
             "name": "Oriental Scops-Owl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
                 "Raptor",
-                "Scops Owl",
-                "Nocturnal"
+                "Scops Owl"
             ],
             "family": "Owls",
             "ebird_code": "orsowl",
@@ -5603,9 +5981,10 @@
             "key": "osprey",
             "name": "Osprey",
             "tags": [
+                "Bird of Prey",
                 "Hawk",
-                "River Hawk",
-                "Raptor"
+                "Raptor",
+                "River Hawk"
             ],
             "family": "Osprey",
             "latin_name": "pandion haliaetus",
@@ -5617,6 +5996,7 @@
             "tags": [
                 "Golden Plover",
                 "Plover",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -5726,6 +6106,8 @@
             "name": "Pallas's Gull",
             "tags": [
                 "Gull",
+                "Pelagic",
+                "Seabird",
                 "Wader",
                 "Wading Bird"
             ],
@@ -5737,8 +6119,9 @@
             "key": "pallid-harrier",
             "name": "Pallid Harrier",
             "tags": [
-                "Raptor",
-                "Harrier"
+                "Bird of Prey",
+                "Harrier",
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "palhar1",
@@ -5748,9 +6131,11 @@
             "key": "pallid-scops-owl",
             "name": "Pallid Scops-Owl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Scops-Owl",
-                "Nocturnal"
+                "Raptor",
+                "Scops-Owl"
             ],
             "family": "Owls",
             "ebird_code": "pasowl3",
@@ -5760,6 +6145,7 @@
             "key": "peregrine-falcon",
             "name": "Peregrine Falcon",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Falcon",
                 "Raptor"
@@ -5817,6 +6203,16 @@
             "ebird_code": "piebus1",
             "latin_name": "saxicola caprata"
         },
+        "pied-imperial-pigeon": {
+            "key": "pied-imperial-pigeon",
+            "name": "Pied Imperial-Pigeon",
+            "tags": [
+                "Imperial-Pigeon"
+            ],
+            "family": "Pigeons and Doves",
+            "latin_name": "ducula bicolor",
+            "ebird_code": "piipig1"
+        },
         "pied-kingfisher": {
             "key": "pied-kingfisher",
             "name": "Pied Kingfisher",
@@ -5840,6 +6236,17 @@
             "family": "Starlings",
             "latin_name": "gracupica contra",
             "ebird_code": "aspsta2"
+        },
+        "pied-triller": {
+            "key": "pied-triller",
+            "name": "Pied Triller",
+            "tags": [
+                "Triller",
+                "Cuckooshrike"
+            ],
+            "family": "Cuckooshrikes",
+            "latin_name": "lalage nigra",
+            "ebird_code": "pietri1"
         },
         "pin-tailed-green-pigeon": {
             "key": "pin-tailed-green-pigeon",
@@ -5881,6 +6288,7 @@
             "name": "Pink-footed Goose",
             "tags": [
                 "Goose",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -5988,6 +6396,7 @@
             "name": "Purple Sandpiper",
             "tags": [
                 "Sandpiper",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -6146,9 +6555,10 @@
             "key": "red-headed-vulture",
             "name": "Red-headed Vulture",
             "tags": [
-                "Vulture",
+                "Bird of Prey",
                 "Raptor",
-                "Scavenger"
+                "Scavenger",
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "rehvul1",
@@ -6182,6 +6592,7 @@
             "key": "red-necked-falcon",
             "name": "Red-necked Falcon",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Falcon",
                 "Raptor"
@@ -6199,6 +6610,16 @@
             "family": "Sandpipers and Allies",
             "latin_name": "phalaropus lobatus",
             "ebird_code": "renpha"
+        },
+        "red-necked-stint": {
+            "key": "red-necked-stint",
+            "name": "Red-necked Stint",
+            "tags": [
+                "Stint"
+            ],
+            "family": "Sandpipers and Allies",
+            "latin_name": "calidris ruficollis",
+            "ebird_code": "rensti"
         },
         "red-rumped-swallow": {
             "key": "red-rumped-swallow",
@@ -6284,6 +6705,16 @@
             "latin_name": "turdus iliacus",
             "ebird_code": "redwin"
         },
+        "richards-pipit": {
+            "key": "richards-pipit",
+            "name": "Richard's Pipit",
+            "tags": [
+                "Pipit"
+            ],
+            "family": "Wagtails and Pipits",
+            "latin_name": "anthus richardi",
+            "ebird_code": "ricpip1"
+        },
         "river-lapwing": {
             "key": "river-lapwing",
             "name": "River Lapwing",
@@ -6298,6 +6729,8 @@
             "key": "river-tern",
             "name": "River Tern",
             "tags": [
+                "Pelagic",
+                "Seabird",
                 "Tern",
                 "Wader",
                 "Wading Bird"
@@ -6419,6 +6852,7 @@
                 "Brahminy Shelduck",
                 "Duck",
                 "Shelduck",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -6703,6 +7137,7 @@
             "key": "saker-falcon",
             "name": "Saker Falcon",
             "tags": [
+                "Accipiter",
                 "Bird of Prey",
                 "Falcon",
                 "Raptor"
@@ -6746,8 +7181,10 @@
             "key": "savanna-nightjar",
             "name": "Savanna Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "ebird_code": "savnig1",
@@ -6823,8 +7260,9 @@
             "key": "shikra",
             "name": "Shikra",
             "tags": [
-                "Raptor",
-                "Hawk"
+                "Accipiter",
+                "Hawk",
+                "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "shikra1",
@@ -6844,8 +7282,10 @@
             "key": "short-eared-owl",
             "name": "Short-eared Owl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "sheowl",
@@ -7162,10 +7602,11 @@
             "key": "spotted-owlet",
             "name": "Spotted Owlet",
             "tags": [
-                "Owlet",
+                "Bird of Prey",
+                "Nocturnal",
                 "Owl",
-                "Raptor",
-                "Nocturnal"
+                "Owlet",
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "spoowl1",
@@ -7315,11 +7756,13 @@
             "tags": [
                 "Heron",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Little Heron",
+                "Little Green Heron"
             ],
-            "family": "Herons & Egrets",
-            "ebird_code": "strher",
-            "latin_name": "butorides striata"
+            "family": "Herons, Egrets, and Bitterns",
+            "latin_name": "butorides striata",
+            "ebird_code": "strher"
         },
         "striated-laughingthrush": {
             "key": "striated-laughingthrush",
@@ -7365,8 +7808,10 @@
             "key": "sykes-nightjar",
             "name": "Sykes's Nightjar",
             "tags": [
+                "Bird of Prey",
                 "Nightjar",
-                "Nocturnal"
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Nightjars and Allies",
             "latin_name": "caprimulgus mahrattensis",
@@ -7419,10 +7864,11 @@
             "key": "tawny-fish-owl",
             "name": "Tawny Fish-Owl",
             "tags": [
-                "Owl",
-                "Raptor",
+                "Bird of Prey",
                 "Fosh-Owl",
-                "Nocturnal"
+                "Nocturnal",
+                "Owl",
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "tafowl1",
@@ -7512,6 +7958,22 @@
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "tibpar1",
             "latin_name": "perdix hodgsoniae"
+        },
+        "tibetan-sand-plover": {
+            "key": "tibetan-sand-plover",
+            "name": "Tibetan Sand Plover",
+            "tags": [
+                "Lesser Sand Plover",
+                "Plover",
+                "Sand Plover",
+                "Shorebird",
+                "Wader",
+                "Wading Bird",
+                "Water Bird"
+            ],
+            "family": "Plovers and Lapwings",
+            "latin_name": "anarhynchus atrifrons",
+            "ebird_code": "lessap1"
         },
         "tibetan-sandgrouse": {
             "key": "tibetan-sandgrouse",
@@ -7618,6 +8080,7 @@
             "name": "Tufted Duck",
             "tags": [
                 "Duck",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -7651,6 +8114,7 @@
             "key": "upland-buzzard",
             "name": "Upland Buzzard",
             "tags": [
+                "Bird of Prey",
                 "Buzzard",
                 "Raptor"
             ],
@@ -7832,6 +8296,8 @@
             "key": "whiskered-tern",
             "name": "Whiskered Tern",
             "tags": [
+                "Pelagic",
+                "Seabird",
                 "Tern",
                 "Wader",
                 "Wading Bird"
@@ -8097,6 +8563,7 @@
             "key": "white-eyed-buzzard",
             "name": "White-eyed Buzzard",
             "tags": [
+                "Bird of Prey",
                 "Buzzard",
                 "Raptor"
             ],
@@ -8161,9 +8628,10 @@
             "key": "white-rumped-vulture",
             "name": "White-rumped Vulture",
             "tags": [
-                "Vulture",
+                "Bird of Prey",
                 "Raptor",
-                "Scavenger"
+                "Scavenger",
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "whrvul1",
@@ -8295,6 +8763,7 @@
             "name": "Wood Sandpiper",
             "tags": [
                 "Sandpiper",
+                "Shorebird",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"

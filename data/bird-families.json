@@ -481,6 +481,11 @@
             "sci_name": "Ploceidae"
         },
         {
+            "name": "Whistlers and Allies",
+            "ebird_code": "pachyc2",
+            "sci_name": "Pachycephalidae"
+        },
+        {
             "name": "White-eyes, Yuhinas, and Allies",
             "ebird_code": "zoster2",
             "sci_name": "Zosteropidae"

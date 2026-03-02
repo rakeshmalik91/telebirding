@@ -5,3 +5,4 @@ REM It will also remove any unreferenced images from local images folder
 
 cd ..
 python utils/backup.py
+timeout /t 10

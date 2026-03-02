@@ -106,7 +106,7 @@ def clean_data():
         # --- Apply User Rules ---
 
         # Rule 1: Eagle/Hawk/Falcon -> "Raptor", "Bird of Prey"
-        if any(x in name for x in ['Eagle', 'Hawk', 'Falcon']):
+        if any(x in name for x in ['Eagle', 'Hawk', 'Falcon', 'Hobby', 'Kite', 'Kestrel', 'Harrier', 'Buzzard', 'Osprey', 'Vulture', 'Eagle-Owl', 'Owl', 'Frogmouth', 'Nightjar']):
             tags_to_add.add('Raptor')
             tags_to_add.add('Bird of Prey')
 
@@ -123,6 +123,16 @@ def clean_data():
             tags_to_add.add('Wader')
             tags_to_add.add('Wading Bird')
             tags_to_add.add('Water Bird')
+            tags_to_add.add('Shorebird')
+
+        # Rule 5: Gull/Gannet/Tern -> "Seabird", "Pelagic"
+        if any(x in name for x in ['Gull', 'Gannet', 'Tern', 'Skua', 'Petrel', 'Shearwater', 'Albatross', 'Storm-petrel', 'Storm Petrel', 'Kittiwake']):
+            tags_to_add.add('Seabird')
+            tags_to_add.add('Pelagic')
+
+        # Rule 6: Accipiter -> "Raptor", "Bird of Prey"
+        if any(x in name for x in ['Falcon', 'Hawk', 'Hobby', 'Kestrel', 'Merlin', 'Sparrowhawk', 'Shikra', 'Besra']):
+            tags_to_add.add('Accipiter')
 
         # --- Process Existing Tags and Merged New Tags ---
         

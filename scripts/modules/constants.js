@@ -116,16 +116,16 @@ export default class Constants {
 	static RATING_DISPLAY_NAME = {
 		[Constants.MODE_BIRD]: {
 			"0": "-",
-			"1": "Record",
-			"2": "Got the Bird",
+			"1": "Got the Bird",
+			"2": "Record Shot",
 			"3": "Decent Capture",
 			"4": "Beauty Shot",
 			"5": "Wow Factor"
 		},
 		[Constants.MODE_INSECT]: {
 			"0": "-",
-			"1": "Record",
-			"2": "Got the Insect",
+			"1": "Got the Insect",
+			"2": "Record Shot",
 			"3": "Decent Capture",
 			"4": "Beauty Shot",
 			"5": "Wow Factor"
@@ -148,7 +148,8 @@ export default class Constants {
 		"Rakesh Malik": "https://www.instagram.com/rakeshmalik_art",
 		"Ranjan Malik": "https://www.instagram.com/ranjan_033",
 		"Chinmaya Mohini": "https://www.instagram.com/ratdon",
-		"Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani"
+		"Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani",
+		"Shakti Vel": "https://www.instagram.com/andaman_boy"
 	};
 
 	static LIKE_ENABLED = true;
@@ -183,6 +184,7 @@ export default class Constants {
 		[/\bBird\s+Sanctuary\b/gi, "B.S."],
 		[/\bTiger\s+Reserve\b/gi, "T.R."],
 		[/\bConservation\s+Reserve\b/gi, "C.R."],
+		[/\bBio(|sphere)\s+Reserve\b/gi, "B.R."],
 		[/\bNorth(|ern)\b/gi, "N."],
 		[/\bSouth(|ern)\b/gi, "S."],
 		[/\bEast(|ern)\b/gi, "E."],
