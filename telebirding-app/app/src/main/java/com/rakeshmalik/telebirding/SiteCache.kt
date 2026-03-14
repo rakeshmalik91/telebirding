@@ -11,22 +11,13 @@ import org.json.JSONArray
 
 /**
  * Manages a complete local copy of the telebirding website.
- *
- * Architecture:
- * - Maintains a "live" cache directory that the WebView serves from
- * - On update: downloads changes to a "staging" directory
- * - Only swaps staging → live if ALL downloads succeed (atomic)
- * - If any download fails, staging is discarded; live cache is untouched
- *
- * Directory structure:
- *   files/site-cache/live/          ← WebView serves from here
- *   files/site-cache/staging/       ← Temporary download area
  */
 class SiteCache(private val context: Context) {
+    private var isBusy = false
+    private val busyLock = Any()
 
     companion object {
         private const val TAG = "SiteCache"
-
         private const val SITE_BASE_URL = "https://telebirding.info"
         private const val FIREBASE_STORAGE_BASE =
             "https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/"
@@ -35,91 +26,33 @@ class SiteCache(private val context: Context) {
         private const val LIVE_DIR = "live"
         private const val STAGING_DIR = "staging"
 
-        // Shell files served from the website hosting
         private val SHELL_FILES = listOf(
-            "index.html",
-            "404.html",
-            "privacy-policy.html",
-            // CSS
-            "css/animations.css",
-            "css/common.css",
-            "css/home.css",
-            "css/archive-page.css",
-            "css/mobile.css",
-            "css/toast.css",
-            // JS - Libraries
-            "lib/js/jquery.min.js",
-            "lib/js/moment.min.js",
-            "lib/js/select2.min.js",
-            // JS - App modules
-            "scripts/main.js",
-            "scripts/modules/constants.js",
-            "scripts/modules/util.js",
-            "scripts/modules/loader.js",
-            "scripts/modules/firebase-api.js",
-            "scripts/modules/ebird-api.js",
-            "scripts/modules/cropper.js",
-            "scripts/modules/ui-helpers.js",
-            "scripts/modules/public/autocomplete.js",
-            "scripts/modules/public/data-helpers.js",
-            "scripts/modules/public/filters.js",
-            "scripts/modules/public/preview.js",
-            "scripts/modules/public/rendering.js",
-            "scripts/modules/public/router.js",
-            "scripts/modules/public/state.js",
-            "scripts/modules/public/ui-helpers.js",
-            // Fonts
+            "index.html", "404.html", "privacy-policy.html",
+            "css/animations.css", "css/common.css", "css/home.css", "css/archive-page.css", "css/mobile.css", "css/toast.css",
+            "lib/js/jquery.min.js", "lib/js/moment.min.js", "lib/js/select2.min.js",
+            "scripts/main.js", "scripts/modules/constants.js", "scripts/modules/util.js", "scripts/modules/loader.js",
+            "scripts/modules/firebase-api.js", "scripts/modules/ebird-api.js", "scripts/modules/cropper.js",
+            "scripts/modules/ui-helpers.js", "scripts/modules/public/autocomplete.js", "scripts/modules/public/data-helpers.js",
+            "scripts/modules/public/filters.js", "scripts/modules/public/preview.js", "scripts/modules/public/rendering.js",
+            "scripts/modules/public/router.js", "scripts/modules/public/state.js", "scripts/modules/public/ui-helpers.js",
             "fonts/Calibri.ttf"
         )
 
-        // Icon files served from the website hosting
         private val ICON_FILES = listOf(
-            "icons/Blog_Logo.png",
-            "icons/about-icon.png",
-            "icons/admin-icon.png",
-            "icons/appicon.512x512.png",
-            "icons/appicon.png",
-            "icons/archive-icon.png",
-            "icons/background.jpg",
-            "icons/bino-icon.png",
-            "icons/bird-icon.png",
-            "icons/camera-icon-blue.png",
-            "icons/camera-icon-yellow.png",
-            "icons/close.png",
-            "icons/email-icon.png",
-            "icons/favicon-16x16.png",
-            "icons/favicon-48x48.png",
-            "icons/favicon-64x64.png",
-            "icons/heart-hollow.png",
-            "icons/heart.png",
-            "icons/home-icon.png",
-            "icons/insect-feed.png",
-            "icons/insect-id-app-icon.png",
-            "icons/instagram-icon.png",
-            "icons/loading.gif",
-            "icons/map-icon.png",
-            "icons/pause.png",
-            "icons/play.png",
-            "icons/shuffle.png",
-            "icons/telebirding-logo.png",
-            "icons/teleinsecta-logo.png",
-            "icons/video-icon.png",
-            "icons/weather-icons.png"
+            "icons/Blog_Logo.png", "icons/about-icon.png", "icons/admin-icon.png", "icons/appicon.512x512.png",
+            "icons/appicon.png", "icons/archive-icon.png", "icons/background.jpg", "icons/bino-icon.png",
+            "icons/bird-icon.png", "icons/camera-icon-blue.png", "icons/camera-icon-yellow.png", "icons/close.png",
+            "icons/email-icon.png", "icons/favicon-16x16.png", "icons/favicon-48x48.png", "icons/favicon-64x64.png",
+            "icons/heart-hollow.png", "icons/heart.png", "icons/home-icon.png", "icons/insect-feed.png",
+            "icons/insect-id-app-icon.png", "icons/instagram-icon.png", "icons/loading.gif", "icons/map-icon.png",
+            "icons/pause.png", "icons/play.png", "icons/shuffle.png", "icons/telebirding-logo.png",
+            "icons/teleinsecta-logo.png", "icons/video-icon.png", "icons/weather-icons.png"
         )
 
-        // JSON data files served from Firebase Storage
         private val DATA_FILES = listOf(
-            "data/bird-sightings.json",
-            "data/bird-species.json",
-            "data/bird-families.json",
-            "data/bird-likes.json",
-            "data/insect-sightings.json",
-            "data/insect-species.json",
-            "data/insect-families.json",
-            "data/insect-likes.json",
-            "data/places.json",
-            "data/stories.json",
-            "data/site-data.json"
+            "data/bird-sightings.json", "data/bird-species.json", "data/bird-families.json", "data/bird-likes.json",
+            "data/insect-sightings.json", "data/insect-species.json", "data/insect-families.json", "data/insect-likes.json",
+            "data/places.json", "data/stories.json", "data/site-data.json"
         )
     }
 
@@ -127,13 +60,23 @@ class SiteCache(private val context: Context) {
     val liveDir = File(cacheBaseDir, LIVE_DIR)
     private val stagingDir = File(cacheBaseDir, STAGING_DIR)
 
-    /** Whether a usable local cache exists */
     val hasCachedSite: Boolean
-        get() = File(liveDir, "index.html").exists()
+        get() {
+            // Check if core UI files are present in EITHER live or staging.
+            // If they are in staging, it means we've at least finished Phase 1 of a sync.
+            fun checkDir(dir: File): Boolean {
+                return File(dir, "index.html").exists() && 
+                       File(dir, "css/common.css").exists() && 
+                       File(dir, "scripts/main.js").exists()
+            }
+            
+            val exists = checkDir(liveDir) || checkDir(stagingDir)
+            if (!exists) {
+                Log.i(TAG, "Site not present in live or staging.")
+            }
+            return exists
+        }
 
-    /**
-     * Listener for update progress notifications.
-     */
     interface UpdateListener {
         fun onUpdateStarted()
         fun onUpdateProgress(message: String, current: Int, total: Int)
@@ -141,310 +84,261 @@ class SiteCache(private val context: Context) {
         fun onUpdateFailed(error: String)
     }
 
-    /**
-     * Perform a full update check + download.
-     * If the cache is empty (first run), downloads everything.
-     * If the cache exists, downloads only deltas.
-     *
-     * ATOMIC: Only modifies the live cache if ALL downloads succeed.
-     *
-     * @return true if updates were applied, false if no changes or failed
-     */
     suspend fun checkAndUpdate(listener: UpdateListener? = null): Boolean {
+        synchronized(busyLock) {
+            if (isBusy) {
+                Log.i(TAG, "Update already in progress, skipping concurrent request.")
+                return false
+            }
+            isBusy = true
+        }
+
         return withContext(Dispatchers.IO) {
+            val isFirstRun = !hasCachedSite
             try {
                 listener?.onUpdateStarted()
 
-                // Clean up any leftover staging dir from a previous failed attempt
-                stagingDir.deleteRecursively()
-                stagingDir.mkdirs()
+                if (!stagingDir.exists()) {
+                    stagingDir.mkdirs()
+                } else {
+                    stagingDir.walkTopDown().filter { it.extension == "tmp" }.forEach { it.delete() }
+                }
 
-                val isFirstRun = !hasCachedSite
-
-                // Phase 1: Download shell files (HTML, CSS, JS, icons)
                 listener?.onUpdateProgress("Downloading app files...", 0, 0)
                 val shellResult = downloadShellFiles(isFirstRun)
-                if (isFirstRun && !shellResult) {
+                if (isFirstRun && !shellResult && !hasCachedSite) {
                     throw Exception("Failed to download shell files on first run")
                 }
 
-                // Phase 2: Download data files and check for changes
-                listener?.onUpdateProgress("Checking for data updates...", 0, 0)
-                val dataResult = downloadDataFiles()
+                // If this is the first run and we just got the shell, promote it to live
+                // immediately so the HUD can collapse and the WebView can start.
+                if (isFirstRun && shellResult) {
+                    commitShell()
+                }
 
-                // Phase 3: Download delta media based on data changes
+                val dataResult = downloadDataFiles()
                 val mediaResult = downloadDeltaMedia(listener)
 
-                // ====== ATOMIC COMMIT ======
-                // All downloads succeeded — apply staging to live
                 if (isFirstRun) {
-                    // First run: staging becomes live
+                    // Final commit: staging becomes live (robust move)
                     liveDir.deleteRecursively()
-                    stagingDir.renameTo(liveDir)
-                    Log.i(TAG, "First run: site cache created.")
+                    if (!stagingDir.renameTo(liveDir)) {
+                        stagingDir.copyRecursively(liveDir, overwrite = true)
+                        stagingDir.deleteRecursively()
+                    }
+                    Log.i(TAG, "First run: site cache commit successful.")
                     listener?.onUpdateComplete(true)
                     return@withContext true
-                } else if (dataResult.anyChanged || shellResult) {
-                    // Subsequent runs: merge staging into live
+                } else if (dataResult.anyChanged || shellResult || mediaResult) {
                     mergeStageIntoLive()
                     Log.i(TAG, "Update applied successfully.")
                     listener?.onUpdateComplete(true)
                     return@withContext true
                 } else {
-                    // No changes
                     stagingDir.deleteRecursively()
                     Log.i(TAG, "No updates found.")
                     listener?.onUpdateComplete(false)
                     return@withContext false
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Update failed, keeping existing cache: ${e.message}", e)
-                // Clean up staging — live cache is untouched
-                stagingDir.deleteRecursively()
+                if (e is CancellationException) throw e
+                Log.e(TAG, "Update failed: ${e.message}", e)
                 listener?.onUpdateFailed(e.message ?: "Unknown error")
                 return@withContext false
+            } finally {
+                synchronized(busyLock) {
+                    isBusy = false
+                }
             }
         }
     }
 
-    /**
-     * Download shell files (HTML, CSS, JS, icons, fonts) from website hosting.
-     * On first run, all files are required.
-     * On subsequent runs, this is best-effort (failure is OK).
-     *
-     * @return true if any files were downloaded or updated
-     */
     private fun downloadShellFiles(isFirstRun: Boolean): Boolean {
         var anyDownloaded = false
         val allFiles = SHELL_FILES + ICON_FILES
-
         for (relativePath in allFiles) {
             val url = "$SITE_BASE_URL/$relativePath"
             val stagingFile = File(stagingDir, relativePath)
             val liveFile = File(liveDir, relativePath)
-
             try {
                 val bytes = downloadUrl(url)
                 if (bytes != null) {
-                    // Only write if different from live version
                     if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
-                        stagingFile.parentFile?.mkdirs()
-                        stagingFile.writeBytes(bytes)
+                        atomicWrite(stagingFile, bytes)
                         anyDownloaded = true
                     }
                 } else if (isFirstRun) {
-                    throw Exception("Required shell file not available: $relativePath")
+                    throw Exception("Required file missing: $relativePath")
                 }
             } catch (e: Exception) {
-                if (isFirstRun) {
-                    throw e  // First run: all files are required
-                }
-                Log.w(TAG, "Shell file download failed (non-critical): $relativePath - ${e.message}")
+                if (isFirstRun) throw e
+                Log.w(TAG, "Minor file fail: $relativePath - ${e.message}")
             }
         }
-
         return anyDownloaded
     }
 
     /**
-     * Data class to hold data download results
+     * Promotes just the core shell files from staging to live.
+     * Used on first-run to allow the UI to start before media is finished.
      */
+    private fun commitShell() {
+        val shellDirs = listOf("css", "scripts", "lib", "icons", "fonts")
+        val shellFiles = listOf("index.html", "404.html", "privacy-policy.html")
+        
+        try {
+            // Copy top-level files
+            shellFiles.forEach { name ->
+                val src = File(stagingDir, name)
+                if (src.exists()) {
+                    val dest = File(liveDir, name)
+                    dest.parentFile?.mkdirs()
+                    src.copyTo(dest, overwrite = true)
+                }
+            }
+            // Copy shell directories
+            shellDirs.forEach { name ->
+                val src = File(stagingDir, name)
+                if (src.exists()) {
+                    val dest = File(liveDir, name)
+                    src.copyRecursively(dest, overwrite = true)
+                }
+            }
+            Log.i(TAG, "Shell files promoted to live.")
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to commit shell early: ${e.message}")
+        }
+    }
+
     data class DataResult(val anyChanged: Boolean)
 
-    /**
-     * Download JSON data files from Firebase Storage.
-     * Compares with live cache to detect changes.
-     * ALL data files must download successfully or the entire update is aborted.
-     */
     private fun downloadDataFiles(): DataResult {
         var anyChanged = false
-
         for (dataPath in DATA_FILES) {
             val url = toFirebaseUrl(dataPath)
             val stagingFile = File(stagingDir, dataPath)
             val liveFile = File(liveDir, dataPath)
-
-            val bytes = downloadUrl(url)
-                ?: throw Exception("Failed to download data file: $dataPath")
-
-            // Compare with live version
+            val bytes = downloadUrl(url) ?: throw Exception("Failed data: $dataPath")
             if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
                 anyChanged = true
-                Log.i(TAG, "Data changed: $dataPath")
             }
-
-            // Always write to staging (needed for media extraction)
-            stagingFile.parentFile?.mkdirs()
-            stagingFile.writeBytes(bytes)
+            atomicWrite(stagingFile, bytes)
         }
-
         return DataResult(anyChanged)
     }
 
-    /**
-     * Download delta media (images/videos) that are in the new data but not in the live cache.
-     * ANY failure aborts the entire update.
-     */
     private fun downloadDeltaMedia(listener: UpdateListener?): Boolean {
-        // Extract media URLs from staged data files
         val newMediaPaths = extractMediaPaths()
-
-        // Find which are not already in the live cache
-        val deltaPaths = newMediaPaths.filter { !File(liveDir, it).exists() }
-
-        if (deltaPaths.isEmpty()) {
-            Log.i(TAG, "No new media to download.")
-            return false
-        }
+        val deltaPaths = newMediaPaths.filter { !File(liveDir, it).exists() && !File(stagingDir, it).exists() }
+        if (deltaPaths.isEmpty()) return false
 
         Log.i(TAG, "${deltaPaths.size} new media files to download.")
-        listener?.onUpdateProgress("Downloading ${deltaPaths.size} new media files...", 0, deltaPaths.size)
+        listener?.onUpdateProgress("Downloading ${deltaPaths.size} media files...", 0, deltaPaths.size)
 
-        for ((index, mediaPath) in deltaPaths.withIndex()) {
+        deltaPaths.forEachIndexed { index, mediaPath ->
             val url = toFirebaseUrl(mediaPath)
             val stagingFile = File(stagingDir, mediaPath)
-
-            val bytes = downloadUrl(url)
-                ?: throw Exception("Failed to download media: $mediaPath")
-
-            stagingFile.parentFile?.mkdirs()
-            stagingFile.writeBytes(bytes)
-
+            val bytes = downloadUrl(url) ?: throw Exception("Failed media: $mediaPath")
+            atomicWrite(stagingFile, bytes)
             if ((index + 1) % 10 == 0 || index == deltaPaths.size - 1) {
-                listener?.onUpdateProgress(
-                    "Downloaded ${index + 1}/${deltaPaths.size} files...",
-                    index + 1,
-                    deltaPaths.size
-                )
+                listener?.onUpdateProgress("Downloaded ${index + 1}/${deltaPaths.size}...", index + 1, deltaPaths.size)
             }
         }
-
         return true
     }
 
-    /**
-     * Extract all media file paths from the staged JSON data files.
-     */
     private fun extractMediaPaths(): Set<String> {
         val paths = mutableSetOf<String>()
-
+        val mediaKeys = listOf("src", "image", "thumbnail", "static_map")
         for (dataPath in DATA_FILES) {
             val file = File(stagingDir, dataPath)
             if (!file.exists()) continue
-
             try {
-                val json = JSONObject(file.readText())
-
-                // Sightings files
-                if (dataPath.endsWith("-sightings.json") && json.has("sightings")) {
-                    val sightings = json.getJSONArray("sightings")
-                    for (i in 0 until sightings.length()) {
-                        val sighting = sightings.getJSONObject(i)
-                        if (sighting.has("media")) {
-                            val media = sighting.getJSONArray("media")
-                            for (j in 0 until media.length()) {
-                                val item = media.getJSONObject(j)
-                                addMediaPath(paths, item.optString("src", ""))
-                                addMediaPath(paths, item.optString("thumbnail", ""))
-                            }
-                        }
-                    }
-                }
-
-                // Site data (featured images)
-                if (dataPath == "data/site-data.json" && json.has("featured")) {
-                    val featured = json.getJSONArray("featured")
-                    for (i in 0 until featured.length()) {
-                        val item = featured.getJSONObject(i)
-                        addMediaPath(paths, item.optString("src", ""))
-                    }
-                }
-            } catch (e: Exception) {
-                Log.w(TAG, "Failed to parse data for media extraction: $dataPath - ${e.message}")
-            }
+                val content = file.readText()
+                if (content.startsWith("{")) findMediaInObject(JSONObject(content), mediaKeys, paths)
+                else if (content.startsWith("[")) findMediaInArray(JSONArray(content), mediaKeys, paths)
+            } catch (e: Exception) { }
         }
-
         return paths
     }
 
-    /**
-     * Add a media path to the set if it's a relative path (not an external URL).
-     */
-    private fun addMediaPath(paths: MutableSet<String>, path: String) {
-        if (path.isNotBlank() && !path.startsWith("http://") && !path.startsWith("https://") && !path.startsWith("data:")) {
-            paths.add(path)
+    private fun findMediaInObject(obj: JSONObject, keys: List<String>, paths: MutableSet<String>) {
+        val iter = obj.keys()
+        while (iter.hasNext()) {
+            val key = iter.next()
+            if (keys.contains(key)) addMediaPath(paths, obj.optString(key, ""))
+            val subObj = obj.optJSONObject(key)
+            if (subObj != null) findMediaInObject(subObj, keys, paths)
+            val subArr = obj.optJSONArray(key)
+            if (subArr != null) findMediaInArray(subArr, keys, paths)
         }
     }
 
-    /**
-     * Merge staging directory into live directory.
-     * Files in staging overwrite files in live. Files only in live are kept.
-     */
+    private fun findMediaInArray(arr: JSONArray, keys: List<String>, paths: MutableSet<String>) {
+        for (i in 0 until arr.length()) {
+            val subObj = arr.optJSONObject(i)
+            if (subObj != null) findMediaInObject(subObj, keys, paths)
+            val subArr = arr.optJSONArray(i)
+            if (subArr != null) findMediaInArray(subArr, keys, paths)
+            val str = arr.optString(i)
+            if (str != null && (str.endsWith(".jpg") || str.endsWith(".png") || str.endsWith(".mp4"))) addMediaPath(paths, str)
+        }
+    }
+
+    private fun addMediaPath(paths: MutableSet<String>, path: String) {
+        if (path.isNotBlank() && !path.startsWith("http") && !path.startsWith("data:")) {
+            paths.add(path.trimStart('/'))
+        }
+    }
+
     private fun mergeStageIntoLive() {
-        stagingDir.walkTopDown().filter { it.isFile }.forEach { stagingFile ->
-            val relativePath = stagingFile.relativeTo(stagingDir).path
-            val liveFile = File(liveDir, relativePath)
-            liveFile.parentFile?.mkdirs()
-            stagingFile.copyTo(liveFile, overwrite = true)
+        stagingDir.walkTopDown().filter { it.isFile && it.extension != "tmp" }.forEach {
+            val rel = it.relativeTo(stagingDir).path
+            val live = File(liveDir, rel)
+            live.parentFile?.mkdirs()
+            it.copyTo(live, overwrite = true)
         }
         stagingDir.deleteRecursively()
     }
 
-    /**
-     * Convert a relative path to a Firebase Storage URL.
-     * Matches the encoding used by the website's Util.getData().
-     */
-    private fun toFirebaseUrl(path: String): String {
-        return FIREBASE_STORAGE_BASE + path.replace("/", "%2F") + "?alt=media"
+    private fun atomicWrite(file: File, bytes: ByteArray) {
+        val tmp = File(file.parentFile, file.name + ".tmp")
+        file.parentFile?.mkdirs()
+        tmp.writeBytes(bytes)
+        if (!tmp.renameTo(file)) {
+            tmp.copyTo(file, overwrite = true)
+            tmp.delete()
+        }
     }
 
-    /**
-     * Download a URL and return the bytes, or null on failure.
-     */
+    private fun toFirebaseUrl(path: String) = FIREBASE_STORAGE_BASE + path.replace("/", "%2F") + "?alt=media"
+
     private fun downloadUrl(urlString: String): ByteArray? {
         var connection: HttpURLConnection? = null
-        try {
+        return try {
             val url = URL(urlString)
             connection = url.openConnection() as HttpURLConnection
             connection.connectTimeout = 15000
             connection.readTimeout = 30000
-            connection.requestMethod = "GET"
-            connection.setRequestProperty("Cache-Control", "no-cache")
-
-            if (connection.responseCode != HttpURLConnection.HTTP_OK) {
-                Log.w(TAG, "HTTP ${connection.responseCode} for $urlString")
-                return null
-            }
-
-            return connection.inputStream.readBytes()
-        } catch (e: Exception) {
-            Log.w(TAG, "Download failed: $urlString - ${e.message}")
-            return null
-        } finally {
-            connection?.disconnect()
-        }
+            if (connection.responseCode == HttpURLConnection.HTTP_OK) connection.inputStream.readBytes() else null
+        } catch (e: Exception) { null } finally { connection?.disconnect() }
     }
 
-    /**
-     * Get the MIME type for a file based on its extension.
-     */
-    fun getMimeType(path: String): String {
-        return when {
-            path.endsWith(".html") -> "text/html"
-            path.endsWith(".css") -> "text/css"
-            path.endsWith(".js") -> "application/javascript"
-            path.endsWith(".json") -> "application/json"
-            path.endsWith(".jpg") || path.endsWith(".jpeg") -> "image/jpeg"
-            path.endsWith(".png") -> "image/png"
-            path.endsWith(".gif") -> "image/gif"
-            path.endsWith(".webp") -> "image/webp"
-            path.endsWith(".svg") -> "image/svg+xml"
-            path.endsWith(".mp4") -> "video/mp4"
-            path.endsWith(".webm") -> "video/webm"
-            path.endsWith(".ttf") -> "font/ttf"
-            path.endsWith(".woff") -> "font/woff"
-            path.endsWith(".woff2") -> "font/woff2"
-            else -> "application/octet-stream"
-        }
+    fun getMimeType(path: String): String = when {
+        path.endsWith(".html") -> "text/html"
+        path.endsWith(".css") -> "text/css"
+        path.endsWith(".js") -> "application/javascript"
+        path.endsWith(".json") -> "application/json"
+        path.endsWith(".jpg") || path.endsWith(".jpeg") -> "image/jpeg"
+        path.endsWith(".png") -> "image/png"
+        path.endsWith(".gif") -> "image/gif"
+        path.endsWith(".webp") -> "image/webp"
+        path.endsWith(".svg") -> "image/svg+xml"
+        path.endsWith(".mp4") -> "video/mp4"
+        path.endsWith(".webm") -> "video/webm"
+        path.endsWith(".ttf") -> "font/ttf"
+        path.endsWith(".woff") -> "font/woff"
+        path.endsWith(".woff2") -> "font/woff2"
+        else -> "application/octet-stream"
     }
 }

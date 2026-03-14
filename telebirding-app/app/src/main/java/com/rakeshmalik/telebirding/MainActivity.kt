@@ -25,9 +25,11 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -35,6 +37,18 @@ import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -44,7 +58,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rakeshmalik.telebirding.ui.theme.TelebirdingTheme
@@ -115,6 +131,15 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     var webViewForScrolling by remember { mutableStateOf<WebView?>(null) }
     var swipeRefreshLayout by remember { mutableStateOf<CustomSwipeRefreshLayout?>(null) }
 
+    // Update progress state
+    var isUpdating by remember { mutableStateOf(false) }
+    var showUpdateOverlay by remember { mutableStateOf(false) }
+    var forceHideHUD by remember { mutableStateOf(false) }
+    var isStartupUpdate by remember { mutableStateOf(false) }
+    var isFirstLoadComplete by remember { mutableStateOf(false) }
+    var updateMessage by remember { mutableStateOf("") }
+    var updateProgress by remember { mutableStateOf(0f) } // 0.0 to 1.0
+
 
     Box(
         modifier = Modifier
@@ -127,6 +152,10 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                 val cachedClient = CachedWebViewClient(siteCache)
 
                 val webView = object : WebView(context) {
+                    init {
+                        // Set dark background to avoid white flash while loading
+                        setBackgroundColor(0xFF1F2B39.toInt())
+                    }
                     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
                         super.onScrollChanged(l, t, oldl, oldt)
                         scrollY.value = t
@@ -143,21 +172,43 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         val isConnected = networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 
                         if (isConnected) {
+                            // If already updating in background (e.g. startup), just show the HUD
+                            if (isUpdating) {
+                                showUpdateOverlay = true
+                                forceHideHUD = false 
+                                this@apply.isRefreshing = false
+                                return@setOnRefreshListener
+                            }
+
                             // On pull-to-refresh: trigger background update, then reload
                             CoroutineScope(Dispatchers.Main).launch {
                                 siteCache.checkAndUpdate(object : SiteCache.UpdateListener {
                                     override fun onUpdateStarted() {
                                         Log.i("MainActivity", "Pull-to-refresh: update started")
+                                        isUpdating = true
+                                        isStartupUpdate = false
+                                        showUpdateOverlay = true
+                                        forceHideHUD = false 
+                                        updateMessage = "Starting update..."
+                                        updateProgress = 0f
                                     }
                                     override fun onUpdateProgress(message: String, current: Int, total: Int) {
                                         Log.i("MainActivity", "Pull-to-refresh: $message")
+                                        updateMessage = message
+                                        if (total > 0) {
+                                            updateProgress = current.toFloat() / total.toFloat()
+                                        } else {
+                                            updateProgress = 0f
+                                        }
                                     }
                                     override fun onUpdateComplete(hadUpdates: Boolean) {
                                         Log.i("MainActivity", "Pull-to-refresh: update complete (hadUpdates=$hadUpdates)")
+                                        isUpdating = false
                                         webView.post { webView.reload() }
                                     }
                                     override fun onUpdateFailed(error: String) {
                                         Log.w("MainActivity", "Pull-to-refresh: update failed: $error")
+                                        isUpdating = false
                                         // Still reload — will serve from existing cache
                                         webView.post { webView.reload() }
                                     }
@@ -201,6 +252,13 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
                             swipeRefreshLayout?.isRefreshing = false
+                            isFirstLoadComplete = true
+
+                            // Auto-collapse HUD on startup
+                            if (isStartupUpdate && siteCache.hasCachedSite) {
+                                showUpdateOverlay = false
+                            }
+
                             // Ensure the viewport is set correctly for mobile devices.
                             view?.evaluateJavascript("""
                                 (function() {
@@ -332,12 +390,29 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         siteCache.checkAndUpdate(object : SiteCache.UpdateListener {
                             override fun onUpdateStarted() {
                                 Log.i("MainActivity", "Startup: update check started")
+                                isUpdating = true
+                                isStartupUpdate = true
+                                
+                                // Only show HUD on startup if we have NOTHING to show (first run).
+                                // If we have a cache, let the user see the local content immediately.
+                                showUpdateOverlay = !siteCache.hasCachedSite
+                                
+                                forceHideHUD = false
+                                updateMessage = "Checking for updates..."
+                                updateProgress = 0f
                             }
                             override fun onUpdateProgress(message: String, current: Int, total: Int) {
                                 Log.i("MainActivity", "Startup: $message")
+                                updateMessage = message
+                                if (total > 0) {
+                                    updateProgress = current.toFloat() / total.toFloat()
+                                } else {
+                                    updateProgress = 0f
+                                }
                             }
                             override fun onUpdateComplete(hadUpdates: Boolean) {
                                 Log.i("MainActivity", "Startup: update complete (hadUpdates=$hadUpdates)")
+                                isUpdating = false
                                 if (hadUpdates) {
                                     // Silently reload to show updated content
                                     this@apply.post { reload() }
@@ -345,6 +420,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             }
                             override fun onUpdateFailed(error: String) {
                                 Log.w("MainActivity", "Startup: update failed: $error")
+                                isUpdating = false
                                 // No action needed — site works from existing cache
                             }
                         })
@@ -374,6 +450,115 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                 },
             ) {
                 Icon(Icons.Filled.ArrowUpward, contentDescription = "Scroll to top")
+            }
+        }
+
+        // Update Progress Overlay
+        if (isUpdating) {
+            if (showUpdateOverlay) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = 0.5f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Surface(
+                        shape = RoundedCornerShape(16.dp),
+                        color = Color(0xFF1F2B39),
+                        elevation = 8.dp
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .padding(24.dp)
+                                .width(280.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(48.dp),
+                                color = Color(0xFF00BFA5),
+                                strokeWidth = 4.dp
+                            )
+                            Spacer(modifier = Modifier.height(20.dp))
+                            Text(
+                                text = "Updating Site Data",
+                                color = Color.White,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text = updateMessage,
+                                color = Color.White.copy(alpha = 0.7f),
+                                fontSize = 14.sp
+                            )
+                            
+                            if (updateProgress > 0) {
+                                Spacer(modifier = Modifier.height(16.dp))
+                                LinearProgressIndicator(
+                                    progress = updateProgress,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(4.dp),
+                                    color = Color(0xFF00BFA5),
+                                    backgroundColor = Color.White.copy(alpha = 0.1f)
+                                )
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    text = "${(updateProgress * 100).toInt()}%",
+                                    color = Color.White.copy(alpha = 0.5f),
+                                    fontSize = 12.sp
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.height(16.dp))
+                            TextButton(
+                                onClick = { 
+                                    showUpdateOverlay = false 
+                                    forceHideHUD = true
+                                    // Also hide the native SwipeRefreshLayout spinner immediately
+                                    swipeRefreshLayout?.isRefreshing = false
+                                }
+                            ) {
+                                Text(
+                                    text = "Run in Background",
+                                    color = Color(0xFF00BFA5),
+                                    fontWeight = FontWeight.Medium
+                                )
+                            }
+                        }
+                    }
+                }
+            } else if (!forceHideHUD) {
+                // Background Indicator: Small spinner at the top right
+                Surface(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(top = 12.dp, end = 12.dp)
+                        .clickable { 
+                            showUpdateOverlay = true
+                            forceHideHUD = false 
+                        },
+                    shape = RoundedCornerShape(20.dp),
+                    color = Color(0xFF1F2B39).copy(alpha = 0.9f),
+                    elevation = 4.dp
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(16.dp),
+                            color = Color(0xFF00BFA5),
+                            strokeWidth = 2.dp
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = if (updateProgress > 0) "${(updateProgress * 100).toInt()}% Updating..." else "Updating...",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+                }
             }
         }
     }
