@@ -3,9 +3,12 @@ package com.rakeshmalik.telebirding
 import android.content.Context
 import android.util.Log
 import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.concurrent.atomic.AtomicInteger
 import org.json.JSONObject
 import org.json.JSONArray
 
@@ -25,6 +28,9 @@ class SiteCache(private val context: Context) {
         private const val CACHE_DIR = "site-cache"
         private const val LIVE_DIR = "live"
         private const val STAGING_DIR = "staging"
+        
+        // Number of simultaneous downloads allowed
+        private const val MAX_PARALLEL_DOWNLOADS = 25
 
         private val SHELL_FILES = listOf(
             "index.html", "404.html", "privacy-policy.html",
@@ -62,8 +68,6 @@ class SiteCache(private val context: Context) {
 
     val hasCachedSite: Boolean
         get() {
-            // Check if core UI files are present in EITHER live or staging.
-            // If they are in staging, it means we've at least finished Phase 1 of a sync.
             fun checkDir(dir: File): Boolean {
                 return File(dir, "index.html").exists() && 
                        File(dir, "css/common.css").exists() && 
@@ -110,8 +114,6 @@ class SiteCache(private val context: Context) {
                     throw Exception("Failed to download shell files on first run")
                 }
 
-                // If this is the first run and we just got the shell, promote it to live
-                // immediately so the HUD can collapse and the WebView can start.
                 if (isFirstRun && shellResult) {
                     commitShell()
                 }
@@ -120,7 +122,6 @@ class SiteCache(private val context: Context) {
                 val mediaResult = downloadDeltaMedia(listener)
 
                 if (isFirstRun) {
-                    // Final commit: staging becomes live (robust move)
                     liveDir.deleteRecursively()
                     if (!stagingDir.renameTo(liveDir)) {
                         stagingDir.copyRecursively(liveDir, overwrite = true)
@@ -153,41 +154,45 @@ class SiteCache(private val context: Context) {
         }
     }
 
-    private fun downloadShellFiles(isFirstRun: Boolean): Boolean {
+    private suspend fun downloadShellFiles(isFirstRun: Boolean): Boolean = coroutineScope {
         var anyDownloaded = false
         val allFiles = SHELL_FILES + ICON_FILES
-        for (relativePath in allFiles) {
-            val url = "$SITE_BASE_URL/$relativePath"
-            val stagingFile = File(stagingDir, relativePath)
-            val liveFile = File(liveDir, relativePath)
-            try {
-                val bytes = downloadUrl(url)
-                if (bytes != null) {
-                    if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
-                        atomicWrite(stagingFile, bytes)
-                        anyDownloaded = true
+        val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
+        
+        val deferreds = allFiles.map { relativePath ->
+            async {
+                semaphore.withPermit {
+                    val url = "$SITE_BASE_URL/$relativePath"
+                    val stagingFile = File(stagingDir, relativePath)
+                    val liveFile = File(liveDir, relativePath)
+                    try {
+                        val bytes = downloadUrl(url)
+                        if (bytes != null) {
+                            if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
+                                atomicWrite(stagingFile, bytes)
+                                true
+                            } else false
+                        } else if (isFirstRun) {
+                            throw Exception("Required file missing: $relativePath")
+                        } else false
+                    } catch (e: Exception) {
+                        if (isFirstRun) throw e
+                        Log.w(TAG, "Minor file fail: $relativePath - ${e.message}")
+                        false
                     }
-                } else if (isFirstRun) {
-                    throw Exception("Required file missing: $relativePath")
                 }
-            } catch (e: Exception) {
-                if (isFirstRun) throw e
-                Log.w(TAG, "Minor file fail: $relativePath - ${e.message}")
             }
         }
-        return anyDownloaded
+        
+        deferreds.awaitAll().any { it }.also { anyDownloaded = it }
+        anyDownloaded
     }
 
-    /**
-     * Promotes just the core shell files from staging to live.
-     * Used on first-run to allow the UI to start before media is finished.
-     */
     private fun commitShell() {
         val shellDirs = listOf("css", "scripts", "lib", "icons", "fonts")
         val shellFiles = listOf("index.html", "404.html", "privacy-policy.html")
         
         try {
-            // Copy top-level files
             shellFiles.forEach { name ->
                 val src = File(stagingDir, name)
                 if (src.exists()) {
@@ -196,7 +201,6 @@ class SiteCache(private val context: Context) {
                     src.copyTo(dest, overwrite = true)
                 }
             }
-            // Copy shell directories
             shellDirs.forEach { name ->
                 val src = File(stagingDir, name)
                 if (src.exists()) {
@@ -212,39 +216,59 @@ class SiteCache(private val context: Context) {
 
     data class DataResult(val anyChanged: Boolean)
 
-    private fun downloadDataFiles(): DataResult {
+    private suspend fun downloadDataFiles(): DataResult = coroutineScope {
         var anyChanged = false
-        for (dataPath in DATA_FILES) {
-            val url = toFirebaseUrl(dataPath)
-            val stagingFile = File(stagingDir, dataPath)
-            val liveFile = File(liveDir, dataPath)
-            val bytes = downloadUrl(url) ?: throw Exception("Failed data: $dataPath")
-            if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
-                anyChanged = true
+        val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
+        
+        val deferreds = DATA_FILES.map { dataPath ->
+            async {
+                semaphore.withPermit {
+                    val url = toFirebaseUrl(dataPath)
+                    val stagingFile = File(stagingDir, dataPath)
+                    val liveFile = File(liveDir, dataPath)
+                    val bytes = downloadUrl(url) ?: throw Exception("Failed data: $dataPath")
+                    val changed = if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
+                        true
+                    } else false
+                    atomicWrite(stagingFile, bytes)
+                    changed
+                }
             }
-            atomicWrite(stagingFile, bytes)
         }
-        return DataResult(anyChanged)
+        
+        anyChanged = deferreds.awaitAll().any { it }
+        DataResult(anyChanged)
     }
 
-    private fun downloadDeltaMedia(listener: UpdateListener?): Boolean {
+    private suspend fun downloadDeltaMedia(listener: UpdateListener?): Boolean = coroutineScope {
         val newMediaPaths = extractMediaPaths()
         val deltaPaths = newMediaPaths.filter { !File(liveDir, it).exists() && !File(stagingDir, it).exists() }
-        if (deltaPaths.isEmpty()) return false
+        if (deltaPaths.isEmpty()) return@coroutineScope false
 
         Log.i(TAG, "${deltaPaths.size} new media files to download.")
         listener?.onUpdateProgress("Downloading ${deltaPaths.size} media files...", 0, deltaPaths.size)
 
-        deltaPaths.forEachIndexed { index, mediaPath ->
-            val url = toFirebaseUrl(mediaPath)
-            val stagingFile = File(stagingDir, mediaPath)
-            val bytes = downloadUrl(url) ?: throw Exception("Failed media: $mediaPath")
-            atomicWrite(stagingFile, bytes)
-            if ((index + 1) % 10 == 0 || index == deltaPaths.size - 1) {
-                listener?.onUpdateProgress("Downloaded ${index + 1}/${deltaPaths.size}...", index + 1, deltaPaths.size)
+        val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
+        val downloadedCount = AtomicInteger(0)
+        
+        val deferreds = deltaPaths.map { mediaPath ->
+            async {
+                semaphore.withPermit {
+                    val url = toFirebaseUrl(mediaPath)
+                    val stagingFile = File(stagingDir, mediaPath)
+                    val bytes = downloadUrl(url) ?: throw Exception("Failed media: $mediaPath")
+                    atomicWrite(stagingFile, bytes)
+                    
+                    val current = downloadedCount.incrementAndGet()
+                    if (current % 10 == 0 || current == deltaPaths.size) {
+                        listener?.onUpdateProgress("Downloaded $current/${deltaPaths.size}...", current, deltaPaths.size)
+                    }
+                }
             }
         }
-        return true
+        
+        deferreds.awaitAll()
+        true
     }
 
     private fun extractMediaPaths(): Set<String> {
