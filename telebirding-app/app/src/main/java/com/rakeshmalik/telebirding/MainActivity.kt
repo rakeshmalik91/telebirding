@@ -8,10 +8,12 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Message
 import android.util.AttributeSet
+import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.webkit.WebSettings
@@ -46,6 +48,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rakeshmalik.telebirding.ui.theme.TelebirdingTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,6 +123,9 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     ) {
         AndroidView(
             factory = { context ->
+                val siteCache = SiteCache(context)
+                val cachedClient = CachedWebViewClient(siteCache)
+
                 val webView = object : WebView(context) {
                     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
                         super.onScrollChanged(l, t, oldl, oldt)
@@ -134,8 +143,26 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         val isConnected = networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 
                         if (isConnected) {
-                            webView.clearCache(true)
-                            webView.reload()
+                            // On pull-to-refresh: trigger background update, then reload
+                            CoroutineScope(Dispatchers.Main).launch {
+                                siteCache.checkAndUpdate(object : SiteCache.UpdateListener {
+                                    override fun onUpdateStarted() {
+                                        Log.i("MainActivity", "Pull-to-refresh: update started")
+                                    }
+                                    override fun onUpdateProgress(message: String, current: Int, total: Int) {
+                                        Log.i("MainActivity", "Pull-to-refresh: $message")
+                                    }
+                                    override fun onUpdateComplete(hadUpdates: Boolean) {
+                                        Log.i("MainActivity", "Pull-to-refresh: update complete (hadUpdates=$hadUpdates)")
+                                        webView.post { webView.reload() }
+                                    }
+                                    override fun onUpdateFailed(error: String) {
+                                        Log.w("MainActivity", "Pull-to-refresh: update failed: $error")
+                                        // Still reload — will serve from existing cache
+                                        webView.post { webView.reload() }
+                                    }
+                                })
+                            }
                         } else {
                             isRefreshing = false
                         }
@@ -160,6 +187,17 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         }
                     }
                     webViewClient = object : WebViewClient() {
+                        override fun shouldInterceptRequest(
+                            view: WebView?,
+                            request: WebResourceRequest?
+                        ): WebResourceResponse? {
+                            // Let the cache intercept requests it can serve
+                            val cached = request?.let { cachedClient.shouldInterceptRequest(it) }
+                            if (cached != null) return cached
+                            
+                            return super.shouldInterceptRequest(view, request)
+                        }
+
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
                             swipeRefreshLayout?.isRefreshing = false
@@ -241,8 +279,13 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         ) {
                             super.onReceivedError(view, request, error)
                             if (error?.errorCode == ERROR_HOST_LOOKUP && request?.isForMainFrame == true) {
-                                lastFailedUrl = request.url.toString()
-                                view?.loadUrl("file:///android_asset/offline.html")
+                                // If we have a cached site, load from there instead of showing offline page
+                                if (siteCache.hasCachedSite) {
+                                    view?.loadUrl("https://telebirding.info/?page=f")
+                                } else {
+                                    lastFailedUrl = request.url.toString()
+                                    view?.loadUrl("file:///android_asset/offline.html")
+                                }
                             }
                         }
                     }
@@ -261,7 +304,8 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         allowContentAccess = true
                         userAgentString = "Mozilla/5.0 (Linux; Android ${Build.VERSION.RELEASE}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
                         textZoom = 100
-                        cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+                        // Use default cache mode — our interceptor handles serving from local cache
+                        cacheMode = WebSettings.LOAD_DEFAULT
                     }
                     addJavascriptInterface(
                         object {
@@ -279,7 +323,33 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         },
                         "Android"
                     )
+
+                    // Load the site URL — the interceptor will serve from cache if available
                     loadUrl("https://telebirding.info/?page=f")
+
+                    // Trigger background update check
+                    CoroutineScope(Dispatchers.Main).launch {
+                        siteCache.checkAndUpdate(object : SiteCache.UpdateListener {
+                            override fun onUpdateStarted() {
+                                Log.i("MainActivity", "Startup: update check started")
+                            }
+                            override fun onUpdateProgress(message: String, current: Int, total: Int) {
+                                Log.i("MainActivity", "Startup: $message")
+                            }
+                            override fun onUpdateComplete(hadUpdates: Boolean) {
+                                Log.i("MainActivity", "Startup: update complete (hadUpdates=$hadUpdates)")
+                                if (hadUpdates) {
+                                    // Silently reload to show updated content
+                                    this@apply.post { reload() }
+                                }
+                            }
+                            override fun onUpdateFailed(error: String) {
+                                Log.w("MainActivity", "Startup: update failed: $error")
+                                // No action needed — site works from existing cache
+                            }
+                        })
+                    }
+
                     onWebViewCreated(this)
                 }
 
