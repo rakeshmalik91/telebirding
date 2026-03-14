@@ -249,6 +249,12 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             return super.shouldInterceptRequest(view, request)
                         }
 
+                        override fun onPageStarted(view: WebView?, url: String?, favicon: android.graphics.Bitmap?) {
+                            super.onPageStarted(view, url, favicon)
+                            // Override Firebase early
+                            view?.evaluateJavascript("window.FIREBASE_ENABLED = false;", null)
+                        }
+
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
                             swipeRefreshLayout?.isRefreshing = false
@@ -258,6 +264,9 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             if (isStartupUpdate && siteCache.hasCachedSite) {
                                 showUpdateOverlay = false
                             }
+
+                            // Force override Firebase to false for local mode
+                            view?.evaluateJavascript("window.FIREBASE_ENABLED = false;", null)
 
                             // Ensure the viewport is set correctly for mobile devices.
                             view?.evaluateJavascript("""

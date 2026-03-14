@@ -1,5 +1,8 @@
 export default class FirebaseApi {
-    static FIREBASE_ENABLED = !window.location.origin.match(/.*(localhost|:5000).*/ig) || window.location.pathname == '/admin';
+    static get FIREBASE_ENABLED() {
+        if (typeof window !== 'undefined' && window.FIREBASE_ENABLED !== undefined) return window.FIREBASE_ENABLED;
+        return !window.location.origin.match(/.*(localhost|:5000).*/ig) || window.location.pathname == '/admin';
+    }
     static FIREBASE_APPCHECK_ENABLED = false;
 
     static #firebaseInitialized = false;
