@@ -148,11 +148,12 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
 }
 
 export function renderSighting(sightingDiv, sighting) {
-    sightingDiv.append('<div class="sighting-image-carousal"></div>');
+    sightingDiv.append('<div class="sighting-image-carousal"><div class="sighting-image-scroll"></div></div>');
     let sightingCarousal = sightingDiv.find(".sighting-image-carousal");
+    let sightingScroll = sightingDiv.find(".sighting-image-scroll");
     $.each(sighting.media, function (i, image) {
-        sightingCarousal.append('<div class="sighting-image" onclick="previewImage(\'' + sighting.key + '\', \'' + image.src + '\')"></div>');
-        let mediaDiv = sightingCarousal.find('.sighting-image');
+        sightingScroll.append('<div class="sighting-image" onclick="previewImage(\'' + sighting.key + '\', \'' + image.src + '\')"></div>');
+        let mediaDiv = sightingScroll.find('.sighting-image').last();
         if (image.type == Constants.MEDIA_TYPE_VIDEO) {
             mediaDiv.append('<video class="fadein" loop muted autoplay controls><source src="' + image.src + '" type="video/mp4"></video>');
         } else {

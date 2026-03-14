@@ -9,6 +9,7 @@
 @media screen and (max-width: 600px) {
 
 	.sighting-panel,
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video,
@@ -16,6 +17,7 @@
 		width: calc(100vw - 15px);
 	}
 
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video {
@@ -26,6 +28,7 @@
 @media screen and (min-width: 601px) and (max-width: 1000px) {
 
 	.sighting-panel,
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video,
@@ -33,6 +36,7 @@
 		width: calc(49.3vw - 15px);
 	}
 
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video {
@@ -43,6 +47,7 @@
 @media screen and (min-width: 1001px) and (max-width: 1500px) and (orientation:landscape) {
 
 	.sighting-panel,
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video,
@@ -50,6 +55,7 @@
 		width: calc(33.2vw - 15px);
 	}
 
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video {
@@ -60,6 +66,7 @@
 @media screen and (min-width: 1501px) and (orientation:landscape) {
 
 	.sighting-panel,
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video,
@@ -67,6 +74,7 @@
 		width: calc(25vw - 15px);
 	}
 
+	.sighting-image-carousal,
 	.sighting-image,
 	.sighting-image img,
 	.sighting-image video {
@@ -75,6 +83,7 @@
 }
 
 .sighting-panel,
+.sighting-image-carousal,
 .sighting-image,
 .sighting-image img,
 .sighting-image video,
@@ -88,6 +97,9 @@
 	background-position: center;
 	background-repeat: repeat;
 	background-size: cover;
+	flex: 0 0 100%;
+	width: 100%;
+	position: relative;
 }
 
 .sighting-image img {
@@ -426,6 +438,14 @@ span.text-seperator {
 
 .sighting-image-carousal {
 	position: relative;
+	overflow: hidden;
+}
+
+.sighting-image-scroll {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
 }
 
 .carousal-button-left,
