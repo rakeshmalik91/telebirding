@@ -69,9 +69,88 @@ def upload_minified_json(client, local_path, remote_path):
         print(f"  -> Failed to upload {remote_path}: {e}")
         return False
 
+def cleanup_remote_images(client):
+    """Deletes images from Firebase Storage that are not referenced in the JSON data."""
+    print("Cleaning up unused images from Firebase Storage...")
+    
+    # 1. Collect all referenced images from JSON files
+    referenced_images = set()
+    sighting_files = [
+        DATA_DIR / "bird-sightings.json",
+        DATA_DIR / "insect-sightings.json"
+    ]
+    
+    for f_path in sighting_files:
+        if not f_path.exists():
+            continue
+        try:
+            with open(f_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                for sighting in data.get('sightings', []):
+                    # Check media array
+                    for m in sighting.get('media', []):
+                        src = m.get('src')
+                        if src:
+                            referenced_images.add(src.lstrip('/'))
+                    
+                    # Check thumbnail field
+                    thumb = sighting.get('thumbnail')
+                    if thumb:
+                        referenced_images.add(thumb.lstrip('/'))
+        except Exception as e:
+            print(f"  Error reading {f_path.name}: {e}")
+
+    print(f"Found {len(referenced_images)} referenced images in JSON files.")
+
+    # 2. List all images in remote storage
+    bucket = client.bucket(BUCKET_NAME)
+    blobs = bucket.list_blobs(prefix="images/")
+    
+    remote_images = []
+    for blob in blobs:
+        # Skip directory markers
+        if blob.name.endswith('/'):
+            continue
+        remote_images.append(blob.name)
+
+    print(f"Found {len(remote_images)} images in remote storage (images/ folder).")
+
+    # 3. Identify orphaned images
+    orphaned_images = [img for img in remote_images if img not in referenced_images]
+    
+    if not orphaned_images:
+        print("No unused images found on remote.")
+        return
+
+    print(f"Found {len(orphaned_images)} unused images on remote:")
+    for img in sorted(orphaned_images):
+        print(f"  - {img}")
+    print()
+    
+    # Confirm deletion if in interactive terminal
+    if sys.stdin.isatty():
+        confirm = input(f"Are you sure you want to delete these {len(orphaned_images)} files? (y/n): ")
+        if confirm.lower() != 'y':
+            print("Cleanup aborted.")
+            return
+    else:
+        print("Non-interactive terminal detected. Proceeding with cleanup...")
+
+    # 4. Delete orphaned images
+    for img_path in orphaned_images:
+        print(f"  Deleting {img_path}...")
+        try:
+            bucket.blob(img_path).delete()
+            print(f"    -> Deleted.")
+        except Exception as e:
+            print(f"    -> Failed to delete {img_path}: {e}")
+
+    print("Cleanup complete.")
+
 def main():
     parser = argparse.ArgumentParser(description="Sync bird/insect data to Firebase.")
     parser.add_argument('-f', '--force', action='store_true', help="Force upload of all target files.")
+    parser.add_argument('--cleanup', action='store_true', help="Cleanup unused images from Firebase Storage.")
     args = parser.parse_args()
 
     # Initialize storage client
@@ -118,6 +197,10 @@ def main():
                 upload_minified_json(client, local_path, rel_path)
             else:
                 print(f"Warning: File not found {local_path}")
+
+    # Run cleanup if requested
+    if args.cleanup:
+        cleanup_remote_images(client)
 
 if __name__ == "__main__":
     main()
