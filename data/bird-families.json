@@ -246,6 +246,11 @@
             "sci_name": "Aegithalidae"
         },
         {
+            "name": "Megapodes",
+            "ebird_code": "megapo1",
+            "sci_name": "Megapodiidae"
+        },
+        {
             "name": "Monarch Flycatchers",
             "ebird_code": "monarc2",
             "sci_name": "Monarchidae"

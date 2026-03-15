@@ -153,7 +153,7 @@
             "state": "Andaman & Nicobar Islands",
             "country": "India",
             "author": "Rakesh Malik",
-            "unconfirmed": false,
+            "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
             "hidden": false,
@@ -346,6 +346,9 @@
             "hidden": false,
             "media": [
                 {
+                    "src": "images/nicobar-pigeon-1773571607.jpg"
+                },
+                {
                     "src": "images/nicobar-pigeon-1773129062.jpg"
                 },
                 {
@@ -393,6 +396,26 @@
                 }
             ],
             "rating": "3"
+        },
+        {
+            "key": "s1773583800",
+            "species": "nicobar-megapode",
+            "date": "09-03-2026",
+            "place": "Indira Point",
+            "city": "Great Nicobar",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": false,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/nicobar-megapode-1773583864.jpg"
+                }
+            ],
+            "rating": "1"
         },
         {
             "key": "s1773067448",
@@ -7694,7 +7717,7 @@
             "city": "Agra",
             "state": "Uttar Pradesh",
             "country": "India",
-            "hidden": true,
+            "hidden": false,
             "media": [
                 {
                     "src": "images/dalmatian-pelican-1736782540.jpg"
@@ -14166,14 +14189,14 @@
             "city": "Ramnagar",
             "state": "Uttarakhand",
             "country": "India",
-            "hidden": true,
+            "hidden": false,
             "media": [
                 {
                     "src": "images/indian-peafowl-1706577774.jpg"
                 }
             ],
             "gender": "M",
-            "rating": "1"
+            "rating": "2"
         },
         {
             "key": "s1706577121",
@@ -31434,7 +31457,8 @@
                     "src": "images/besra-female-2.jpg"
                 }
             ],
-            "rating": "2"
+            "rating": "2",
+            "unconfirmed": true
         },
         {
             "key": "northern-shoveler-non-breeding-male",
@@ -33924,7 +33948,8 @@
                     "src": "images/besra-female.jpg"
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "pond-heron-breeding",

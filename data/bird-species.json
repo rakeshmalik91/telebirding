@@ -5638,6 +5638,18 @@
             "latin_name": "cyornis nicobaricus",
             "ebird_code": "nicjuf1"
         },
+        "nicobar-megapode": {
+            "key": "nicobar-megapode",
+            "name": "Nicobar Megapode",
+            "tags": [
+                "Megapode",
+                "Spurfowl",
+                "Nicobar Spurfowl"
+            ],
+            "family": "Megapodes",
+            "latin_name": "megapodius nicobariensis",
+            "ebird_code": "nicscr1"
+        },
         "nicobar-parakeet": {
             "key": "nicobar-parakeet",
             "name": "Nicobar Parakeet",
