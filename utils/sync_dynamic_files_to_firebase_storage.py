@@ -151,6 +151,7 @@ def main():
     parser = argparse.ArgumentParser(description="Sync bird/insect data to Firebase.")
     parser.add_argument('-f', '--force', action='store_true', help="Force upload of all target files.")
     parser.add_argument('--cleanup', action='store_true', help="Cleanup unused images from Firebase Storage.")
+    parser.add_argument('--skip-login', action='store_true', help="Skip interactive login (handled by batch script).")
     args = parser.parse_args()
 
     # Initialize storage client

@@ -262,6 +262,8 @@
             "key": "andaman-wood-pigeon",
             "name": "Andaman Wood-Pigeon",
             "tags": [
+                "Dove",
+                "Pigeon",
                 "Wood-Pigeon"
             ],
             "family": "Pigeons and Doves",
@@ -354,8 +356,9 @@
             "key": "ashy-wood-pigeon",
             "name": "Ashy Wood-Pigeon",
             "tags": [
-                "Wood-Pigeon",
-                "Pigeon"
+                "Dove",
+                "Pigeon",
+                "Wood-Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "aswpig1",
@@ -613,8 +616,9 @@
             "key": "barred-cuckoo-dove",
             "name": "Barred Cuckoo-Dove",
             "tags": [
+                "Cuckoo-Dove",
                 "Dove",
-                "Cuckoo-Dove"
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "bacdov1",
@@ -662,6 +666,7 @@
             "name": "Besra",
             "tags": [
                 "Accipiter",
+                "Bird of Prey",
                 "Hawk",
                 "Raptor"
             ],
@@ -2908,6 +2913,7 @@
             "name": "Eurasian Sparrowhawk",
             "tags": [
                 "Accipiter",
+                "Bird of Prey",
                 "Hawk",
                 "Raptor",
                 "Sparrowhawk"
@@ -3869,8 +3875,9 @@
             "key": "grey-fronted-green-pigeon",
             "name": "Gray-fronted Green-Pigeon",
             "tags": [
-                "Pigeon",
-                "Green-Pigeon"
+                "Dove",
+                "Green-Pigeon",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "pomgrp2",
@@ -4905,7 +4912,8 @@
             "key": "laughing-dove",
             "name": "Laughing Dove",
             "tags": [
-                "Dove"
+                "Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "laudov1",
@@ -5589,7 +5597,8 @@
             "key": "namaqua-dove",
             "name": "Namaqua Dove",
             "tags": [
-                "Dove"
+                "Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "latin_name": "oena capensis",
@@ -5620,8 +5629,9 @@
             "key": "nicobar-imperial-pigeon",
             "name": "Nicobar Imperial Pigeon",
             "tags": [
-                "Pigeon",
-                "Imperial Pigeon"
+                "Dove",
+                "Imperial Pigeon",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "latin_name": "ducula nicobarica",
@@ -5664,6 +5674,7 @@
             "key": "nicobar-pigeon",
             "name": "Nicobar Pigeon",
             "tags": [
+                "Dove",
                 "Pigeon"
             ],
             "family": "Pigeons and Doves",
@@ -6219,7 +6230,9 @@
             "key": "pied-imperial-pigeon",
             "name": "Pied Imperial-Pigeon",
             "tags": [
-                "Imperial-Pigeon"
+                "Dove",
+                "Imperial-Pigeon",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "latin_name": "ducula bicolor",
@@ -6264,7 +6277,9 @@
             "key": "pin-tailed-green-pigeon",
             "name": "Pin-tailed Green-Pigeon",
             "tags": [
-                "Green-Pigeon"
+                "Dove",
+                "Green-Pigeon",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "pitpig1",
@@ -6510,8 +6525,9 @@
             "key": "red-collared-dove",
             "name": "Red Collared-Dove",
             "tags": [
-                "Dove",
                 "Collared Dove",
+                "Dove",
+                "Pigeon",
                 "Red Turtle Dove"
             ],
             "family": "Pigeons and Doves",
@@ -7273,6 +7289,7 @@
             "name": "Shikra",
             "tags": [
                 "Accipiter",
+                "Bird of Prey",
                 "Hawk",
                 "Raptor"
             ],
@@ -7509,6 +7526,7 @@
             "key": "speckled-wood-pigeon",
             "name": "Speckled Wood-Pigeon",
             "tags": [
+                "Dove",
                 "Pigeon",
                 "Wood-Pigeon"
             ],

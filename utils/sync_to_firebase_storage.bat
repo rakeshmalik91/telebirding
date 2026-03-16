@@ -3,6 +3,9 @@ REM it will also scan index.html for featured images and prompt to delete any fi
 
 @echo off
 
+set "SKIP_LOGIN="
+for %%a in (%*) do if /I "%%a"=="--skip-login" set SKIP_LOGIN=1
+
 REM Ensure Google Cloud credentials are available
 echo Checking Google Cloud credentials...
 if defined GOOGLE_APPLICATION_CREDENTIALS (
@@ -23,8 +26,12 @@ if defined GOOGLE_APPLICATION_CREDENTIALS (
       ) else (
         where gcloud >nul 2>&1
         if %ERRORLEVEL%==0 (
-          echo No service account found. Running 'gcloud auth application-default login' to set up credentials...
-          call gcloud auth application-default login
+          if not defined SKIP_LOGIN (
+            echo No service account found. Running 'gcloud auth application-default login' to set up credentials...
+            call gcloud auth application-default login
+          ) else (
+            echo No service account found and --skip-login is set. Skipping interactive login.
+          )
         ) else (
           echo.
           echo 'gcloud' not found. Attempting to download and run the Google Cloud SDK installer...
@@ -32,12 +39,16 @@ if defined GOOGLE_APPLICATION_CREDENTIALS (
           start /wait "" "%Temp%\GoogleCloudSDKInstaller.exe"
           where gcloud >nul 2>&1
           if %ERRORLEVEL%==0 (
-            echo 'gcloud' installed successfully. Running 'gcloud auth application-default login'...
-            call gcloud auth application-default login
+            if not defined SKIP_LOGIN (
+              echo 'gcloud' installed successfully. Running 'gcloud auth application-default login'...
+              call gcloud auth application-default login
+            ) else (
+              echo 'gcloud' installed successfully. Skipping interactive login as requested.
+            )
           ) else (
             echo.
             echo WARNING: Failed to install gcloud. Set GOOGLE_APPLICATION_CREDENTIALS to a service account JSON file or install Google Cloud SDK and run 'gcloud auth application-default login'.
-            pause
+            if not defined SKIP_LOGIN pause
           )
         )
       )
@@ -55,9 +66,13 @@ if exist "%ADC%" (
   if %ERRORLEVEL%==0 (
     echo Application Default Credentials appear to be available.
   ) else (
-    echo ERROR: Application Default Credentials not found. Please run 'gcloud auth application-default login' and try again.
-    pause
-    exit /b 1
+    if not defined SKIP_LOGIN (
+      echo ERROR: Application Default Credentials not found. Please run 'gcloud auth application-default login' and try again.
+      pause
+      exit /b 1
+    ) else (
+      echo WARNING: Application Default Credentials not found. Proceeding anyway as --skip-login is set...
+    )
   )
 )
 
