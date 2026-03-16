@@ -132,6 +132,7 @@ class SiteCache(private val context: Context) {
                     return@withContext true
                 } else if (dataResult.anyChanged || shellResult || mediaResult) {
                     mergeStageIntoLive()
+                    cleanupOrphanedMedia(liveDir)
                     Log.i(TAG, "Update applied successfully.")
                     listener?.onUpdateComplete(true)
                     return@withContext true
@@ -271,11 +272,11 @@ class SiteCache(private val context: Context) {
         true
     }
 
-    private fun extractMediaPaths(): Set<String> {
+    private fun extractMediaPaths(sourceDir: File = stagingDir): Set<String> {
         val paths = mutableSetOf<String>()
         val mediaKeys = listOf("src", "image", "thumbnail", "static_map")
         for (dataPath in DATA_FILES) {
-            val file = File(stagingDir, dataPath)
+            val file = File(sourceDir, dataPath)
             if (!file.exists()) continue
             try {
                 val content = file.readText()
@@ -310,9 +311,45 @@ class SiteCache(private val context: Context) {
     }
 
     private fun addMediaPath(paths: MutableSet<String>, path: String) {
-        if (path.isNotBlank() && !path.startsWith("http") && !path.startsWith("data:")) {
+        if (path.isBlank() || path.startsWith("data:")) return
+        
+        if (path.startsWith("http")) {
+            // If it's a Firebase Storage URL for our bucket, extract the relative path
+            if (path.contains(FIREBASE_STORAGE_BASE)) {
+                try {
+                    val afterPrefix = path.substring(path.indexOf(FIREBASE_STORAGE_BASE) + FIREBASE_STORAGE_BASE.length)
+                    val encodedPath = afterPrefix.split("?")[0]
+                    val decodedPath = java.net.URLDecoder.decode(encodedPath, "UTF-8")
+                    paths.add(decodedPath.trimStart('/'))
+                } catch (e: Exception) {
+                    Log.w(TAG, "Failed to decode Firebase URL: $path")
+                }
+            }
+        } else {
             paths.add(path.trimStart('/'))
         }
+    }
+
+    private fun cleanupOrphanedMedia(baseDir: File) {
+        Log.i(TAG, "Starting local media cleanup...")
+        val referencedPaths = extractMediaPaths(baseDir)
+        val dynamicDirs = listOf("images", "featured-images")
+        
+        dynamicDirs.forEach { dirName ->
+            val dir = File(baseDir, dirName)
+            if (dir.exists() && dir.isDirectory) {
+                dir.walkTopDown().forEach { file ->
+                    if (file.isFile) {
+                        val relPath = file.relativeTo(baseDir).path.replace('\\', '/')
+                        if (!referencedPaths.contains(relPath)) {
+                            Log.i(TAG, "Cleanup: deleting unused file $relPath")
+                            file.delete()
+                        }
+                    }
+                }
+            }
+        }
+        Log.i(TAG, "Local media cleanup complete.")
     }
 
     private fun mergeStageIntoLive() {
