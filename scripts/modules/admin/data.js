@@ -104,8 +104,32 @@ export function syncSightingsData(scheduleAfter) {
     }, scheduleAfter);
 }
 
+function getSightingDateFromExif(file) {
+    return new Promise((resolve) => {
+        EXIF.getData(file, function () {
+            const dateOriginal = EXIF.getTag(this, "DateTimeOriginal") ||
+                EXIF.getTag(this, "DateTimeDigitized") ||
+                EXIF.getTag(this, "DateTime");
+            if (dateOriginal) {
+                console.log("dateOriginal:", dateOriginal);
+                const parts = dateOriginal.split(' ')[0].split(':');
+                if (parts.length === 3) {
+                    const date = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                    console.log("Extracted date from EXIF:", date);
+                    resolve(date);
+                    return;
+                }
+            }
+            resolve(null);
+        });
+    });
+}
+
 export function uploadMedia(sightingKey, files) {
     showLoader("uploading-media", "Uploading Media");
+
+    const sighting = data.sightings.find(s => s.key === sightingKey);
+
     let watermark = null;
     if ($('input[name=watermark-on]').is(":checked")) {
         watermark = {
@@ -121,15 +145,13 @@ export function uploadMedia(sightingKey, files) {
             mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
             console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
             Util.resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
-                firebase.storage().ref(mediaSrc).put(resizedImage).then(() => {
+                firebase.storage().ref(mediaSrc).put(resizedImage).then(async () => {
                     console.log("uploaded image " + mediaSrc);
-                    data.sightings.forEach(function (sighting) {
-                        if (sighting.key == sightingKey) {
-                            sighting.media.push({
-                                src: mediaSrc
-                            });
-                        }
-                    });
+                    if (sighting.media.length === 0) {
+                        const date = await getSightingDateFromExif(file);
+                        if (date) sighting.date = date;
+                    }
+                    sighting.media.push({ src: mediaSrc });
                     showLoader("saving", "Saving..."); // Bridge gap to sync
                     hideLoader("uploading-media");
                     syncSightingsData(0);
