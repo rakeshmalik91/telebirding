@@ -1,0 +1,24 @@
+# Project Rules (Antigravity)
+
+This file defines coding standards and rules for the Antigravity agent to follow in this project.
+
+## General
+- Ensure all code is compatible with the existing project structure (Vanilla JS + jQuery).
+- Maintain responsiveness for mobile and desktop views.
+- Keep functions small and modular.
+
+## JavaScript
+- Use ES6+ syntax (const/let, arrow functions, modules).
+- Use strictly typed interactions where possible (even if just via JSDoc).
+- Avoid global variables; use the `State` module or `Constants`.
+
+## CSS
+- Use Vanilla CSS (no preprocessors unless requested).
+- Maintain the existing color palette defined in `common.css`.
+- Ensure z-indices are managed carefully (overlays, loaders).
+- **Cache Busting**: When making changes to CSS files, ALWAYS update the corresponding HTML files to append or update the `?v={current-timestamp}` query parameter on the CSS `<link>` imports.
+
+## Antigravity Specific
+- **Rule Enforcement**: Always refer to this file and `.cursorrules` before suggesting or implementing changes.
+- **Workflow Usage**: Check `.agents/workflows` for specific operational procedures before starting complex tasks.
+- **Project Structure**: Be mindful of the split between static files in the root and processing scripts in the `utils/` directory.
