@@ -13,6 +13,9 @@ from PIL import Image
 # We assume the user runs this from d:\Projects\telebirding
 BASE_DIR = Path(__file__).resolve().parents[1]
 INSECT_ID_DIR = BASE_DIR.parent / "insect-id"
+IMAGES_DIR = BASE_DIR / "images"
+SIGHTINGS_FILE = BASE_DIR / "data" / "insect-sightings.json"
+SPECIES_FILE = BASE_DIR / "data" / "insect-species.json"
 
 if INSECT_ID_DIR.exists():
     sys.path.append(str(INSECT_ID_DIR))
@@ -44,42 +47,46 @@ def slugify(text):
     return text
 
 def square_crop_image(img_path, output_dir, target_size=1000):
-    with Image.open(img_path) as img:
-        # Convert to RGB (to save as JPG)
-        if img.mode != 'RGB':
-            img = img.convert('RGB')
+    try:
+        with Image.open(img_path) as img:
+            # Convert to RGB (to save as JPG)
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
+                
+            width, height = img.size
             
-        width, height = img.size
-        
-        # Calculate square crop dimensions (center-aligned)
-        if width > height:
-            # Landscape: crop left and right
-            left = (width - height) / 2
-            top = 0
-            right = left + height
-            bottom = height
-        else:
-            # Portrait: crop top and bottom
-            left = 0
-            top = (height - width) / 2
-            right = width
-            bottom = top + width
-        
-        img = img.crop((left, top, right, bottom))
-        # Now resize smoothly to the target size
-        img = img.resize((target_size, target_size), Image.Resampling.LANCZOS)
-        
-        # Preserve EXIF
-        exif = img.info.get('exif')
-        
-        os.makedirs(output_dir, exist_ok=True)
-        output_path = Path(output_dir) / (img_path.stem + ".jpg")
-        
-        if exif:
-            img.save(output_path, 'JPEG', quality=95, exif=exif)
-        else:
-            img.save(output_path, 'JPEG', quality=95)
-        return output_path
+            # Calculate square crop dimensions (center-aligned)
+            if width > height:
+                # Landscape: crop left and right
+                left = (width - height) / 2
+                top = 0
+                right = left + height
+                bottom = height
+            else:
+                # Portrait: crop top and bottom
+                left = 0
+                top = (height - width) / 2
+                right = width
+                bottom = top + width
+            
+            img = img.crop((left, top, right, bottom))
+            # Now resize smoothly to the target size
+            img = img.resize((target_size, target_size), Image.Resampling.LANCZOS)
+            
+            # Preserve EXIF
+            exif = img.info.get('exif')
+            
+            os.makedirs(output_dir, exist_ok=True)
+            output_path = Path(output_dir) / (img_path.stem + ".jpg")
+            
+            if exif:
+                img.save(output_path, 'JPEG', quality=95, exif=exif)
+            else:
+                img.save(output_path, 'JPEG', quality=95)
+            return output_path
+    except Exception as e:
+        print(f"  Error cropping {img_path}: {e}")
+        return None
 
 def upload_to_firebase(local_path, remote_path):
     try:
@@ -162,14 +169,10 @@ def process_images(args):
             return singular + "s"
         return singular
 
-    # Load data
-    sightings_file = BASE_DIR / "data" / "insect-sightings.json"
-    species_file = BASE_DIR / "data" / "insect-species.json"
-    
-    with open(sightings_file, 'r', encoding='utf-8') as f:
+    with open(SIGHTINGS_FILE, 'r', encoding='utf-8') as f:
         sightings_data = json.load(f)
     
-    with open(species_file, 'r', encoding='utf-8') as f:
+    with open(SPECIES_FILE, 'r', encoding='utf-8') as f:
         species_data = json.load(f)
 
     # Parse place
@@ -195,6 +198,15 @@ def process_images(args):
     
     session_sightings = {} # species_key -> sighting_object
     processed_count = 0
+    
+    # Helpers
+    def parse_date(date_str):
+        try:
+            return time.mktime(time.strptime(date_str, "%d-%m-%Y"))
+        except (ValueError, TypeError):
+            return 0
+
+    WINDOW_SECONDS = 15 * 24 * 60 * 60 # 15 days
     
     for img_path in images:
         print(f"\nProcessing {img_path.name}...")
@@ -267,23 +279,51 @@ def process_images(args):
             print(f"  Warning: Could not read EXIF from {img_path.name}: {e}")
 
         if not timestamp:
-            timestamp = int(img_path.stat().st_ctime)
+            if args.date:
+                try:
+                    # Expecting date in dd-mm-yyyy format
+                    timestamp = int(time.mktime(time.strptime(args.date, "%d-%m-%Y")))
+                except (ValueError, TypeError) as e:
+                    print(f"  Warning: Invalid --date format '{args.date}'. Expected DD-MM-YYYY. Falling back to file date.")
+                    timestamp = int(img_path.stat().st_ctime)
+            else:
+                timestamp = int(img_path.stat().st_ctime)
 
         # Generate sighting key and filename
         # Add index to ensure uniqueness if multiple images have same timestamp
         unique_ts = timestamp + processed_count
         new_filename = f"{species_key}-{unique_ts}.jpg"
         
-        output_dir = Path(args.output_dir).resolve() if args.output_dir else BASE_DIR / "images"
+        # Determine physical move location (staging area)
+        output_dir = Path(args.output_dir).resolve()
         target_local_path = output_dir / new_filename
+
+        # Use the relative staging path in the JSON during the processing phase
+        rel_staging_path = output_dir.relative_to(BASE_DIR).as_posix()
+        json_src_path = f"{rel_staging_path}/{new_filename}"
         
         # Create or update sighting entry
+        existing_sighting = None
+        
+        # 1. Check if we already created a sighting for this species in this session
         if species_key in session_sightings:
-            sighting = session_sightings[species_key]
-            sighting["media"].append({
-                "src": f"{output_dir.relative_to(BASE_DIR).as_posix()}/{new_filename}"
+            existing_sighting = session_sightings[species_key]
+        else:
+            # 2. Check the global database for a sighting within +/- 15 days
+            for s in sightings_data['sightings']:
+                if s.get('species') == species_key:
+                    s_ts = parse_date(s.get('date', ''))
+                    if abs(s_ts - timestamp) <= WINDOW_SECONDS:
+                        existing_sighting = s
+                        # Cache it in session_sightings for subsequent images
+                        session_sightings[species_key] = s
+                        break
+
+        if existing_sighting:
+            existing_sighting["media"].append({
+                "src": json_src_path
             })
-            print(f"  Added to existing session sighting for {species_key}")
+            print(f"  Added to existing sighting for {species_key} (ID: {existing_sighting['key']}, Date: {existing_sighting['date']})")
         else:
             sighting_key = get_next_sighting_key(sightings_data['sightings'])
             date_str = time.strftime("%d-%m-%Y", time.localtime(timestamp))
@@ -302,7 +342,7 @@ def process_images(args):
                 "hidden": False,
                 "media": [
                     {
-                        "src": f"{output_dir.relative_to(BASE_DIR).as_posix()}/{new_filename}"
+                        "src": json_src_path
                     }
                 ],
                 "rating": "3"
@@ -329,11 +369,14 @@ def process_images(args):
             except Exception as e:
                 print(f"  Error removing source {img_path.name}: {e}")
         
+    # Sort sightings by date (descending: newest first)
+    sightings_data['sightings'].sort(key=lambda x: (parse_date(x.get('date', '')), x.get('key', '')), reverse=True)
+
     # Save JSONs
-    with open(sightings_file, 'w', encoding='utf-8') as f:
+    with open(SIGHTINGS_FILE, 'w', encoding='utf-8') as f:
         json.dump(sightings_data, f, indent=4)
         
-    with open(species_file, 'w', encoding='utf-8') as f:
+    with open(SPECIES_FILE, 'w', encoding='utf-8') as f:
         json.dump(species_data, f, indent=4)
         
     print(f"\nFinished! Processed {processed_count} images.")
@@ -358,52 +401,81 @@ def upload_minified_json(local_path, remote_path):
         print(f"  -> Failed to upload {remote_path}: {e}")
         return False
 
-def publish_data():
-    sightings_file = BASE_DIR / "data" / "insect-sightings.json"
-    species_file = BASE_DIR / "data" / "insect-species.json"
-    images_dir = BASE_DIR / "images"
-    os.makedirs(images_dir, exist_ok=True)
+def publish_data(args):
+    processed_dir = Path(args.dir).resolve()
+    images_dir = IMAGES_DIR
+    
+    # Calculate the relative staging prefix for JSON replacement
+    try:
+        rel_staging_prefix = processed_dir.relative_to(BASE_DIR).as_posix() + "/"
+    except ValueError:
+        rel_staging_prefix = processed_dir.name + "/"
 
-    with open(sightings_file, 'r', encoding='utf-8') as f:
+    # Calculate the relative final path (usually "images/")
+    rel_images_prefix = IMAGES_DIR.relative_to(BASE_DIR).as_posix() + "/"
+
+    if not SIGHTINGS_FILE.exists():
+        print(f"Error: {SIGHTINGS_FILE} not found.")
+        return
+
+    if not processed_dir.exists():
+        print(f"No staging directory found at {processed_dir}. Nothing to publish.")
+        return
+
+    with open(SIGHTINGS_FILE, 'r', encoding='utf-8') as f:
         sightings_data = json.load(f)
 
-    changed = False
-    files_to_upload = []
+    print(f"Scanning {processed_dir} for new images to finalize...")
+    
+    processed_images = list(processed_dir.glob("*.jpg")) + list(processed_dir.glob("*.jpeg")) + list(processed_dir.glob("*.png"))
+    
+    if not processed_images:
+        print(f"No images found in {processed_dir}.")
+    else:
+        upload_count = 0
+        finalized_filenames = set()
+        for local_proc_path in processed_images:
+            filename = local_proc_path.name
+            remote_path = f"{rel_images_prefix}{filename}"
+            target_final_path = images_dir / filename
+            
+            print(f"Processing staging file: {filename}")
+            
+            # 1. Upload to Firebase
+            if upload_to_firebase(local_proc_path, remote_path):
+                # 2. Move to final images/ directory
+                os.makedirs(images_dir, exist_ok=True)
+                shutil.move(local_proc_path, target_final_path)
+                print(f"  -> Finalized and moved to {target_final_path}")
+                finalized_filenames.add(filename)
+                upload_count += 1
+            else:
+                print(f"  -> Skipping move as upload failed.")
 
-    for sighting in sightings_data['sightings']:
-        for media in sighting.get('media', []):
-            src = media.get('src', '')
-            if src.startswith('dataset/processed/'):
-                local_proc_path = BASE_DIR / src
-                if local_proc_path.exists():
-                    filename = local_proc_path.name
-                    target_local_path = images_dir / filename
-                    new_src = f"images/{filename}"
-                    
-                    print(f"Finalizing {filename}...")
-                    # Move locally
-                    shutil.move(local_proc_path, target_local_path)
-                    # Update JSON
-                    media['src'] = new_src
-                    # Queue for upload
-                    files_to_upload.append((target_local_path, new_src))
-                    changed = True
-                else:
-                    print(f"Warning: Processed image not found at {src}")
+        if finalized_filenames:
+            print(f"\nUploaded and finalized {upload_count} images. Updating JSON paths...")
+            # 3. Update paths in JSON from staging to final images/
+            changed_json = False
+            for sighting in sightings_data.get('sightings', []):
+                for media in sighting.get('media', []):
+                    src = media.get('src', '')
+                    if src.startswith(rel_staging_prefix):
+                        fname = src[len(rel_staging_prefix):]
+                        if fname in finalized_filenames:
+                            media['src'] = f"{rel_images_prefix}{fname}"
+                            changed_json = True
+            
+            if changed_json:
+                with open(SIGHTINGS_FILE, 'w', encoding='utf-8') as f:
+                    json.dump(sightings_data, f, indent=4)
+                print(f"Updated {SIGHTINGS_FILE.name} with finalized paths.")
+        else:
+            print("\nNo images were finalized.")
 
-    if changed:
-        with open(sightings_file, 'w', encoding='utf-8') as f:
-            json.dump(sightings_data, f, indent=4)
-        print("Updated insect-sightings.json paths.")
-
-    # Upload all moved images
-    for local_path, remote_path in files_to_upload:
-        upload_to_firebase(local_path, remote_path)
-
-    # Final sync of JSONs
+    # Final sync of JSON databases to Firebase
     print("\nSyncing JSON databases to Firebase...")
-    upload_minified_json(sightings_file, "data/insect-sightings.json")
-    upload_minified_json(species_file, "data/insect-species.json")
+    upload_minified_json(SIGHTINGS_FILE, "data/insect-sightings.json")
+    upload_minified_json(SPECIES_FILE, "data/insect-species.json")
     
     print("\nPublish complete!")
 
@@ -421,16 +493,18 @@ def main():
     # Process command
     proc_parser = subparsers.add_parser("process", help="Process and identify insects")
     proc_parser.add_argument("--dir", required=True, help="Directory containing images")
-    proc_parser.add_argument("--place", required=True, help="Place string: 'Country, State, City'")
+    proc_parser.add_argument("--place", required=True, help="Place string: 'Country, State, City, Area'")
     proc_parser.add_argument("--model", required=True, help="Path to checkpoint model(s), comma-separated")
     proc_parser.add_argument("--class-details", help="Path to JSON file containing species names mapping")
     proc_parser.add_argument("--type", default="Butterfly", help="Insect type (e.g. Butterfly, Moth)")
     proc_parser.add_argument("--threshold", type=float, default=0.8, help="Softmax score threshold")
-    proc_parser.add_argument("--output-dir", help="Directory to move processed images (defaults to images/)")
-    proc_parser.add_argument("--remove-source", action="store_true", help="Remove cropped images after processing (even if skipped)")
+    proc_parser.add_argument("--output-dir", required=True, help="Directory to move processed images (staging area)")
+    proc_parser.add_argument("--remove-source", action="store_true", help="Remove source images after successful processing (skipped files are kept)")
+    proc_parser.add_argument("--date", help="Date to use if EXIF date is not found (format: DD-MM-YYYY)")
 
     # Publish command
-    subparsers.add_parser("publish", help="Finalize images and sync everything to Firebase")
+    pub_parser = subparsers.add_parser("publish", help="Finalize images and sync everything to Firebase")
+    pub_parser.add_argument("--dir", required=True, help="Directory containing staged images")
 
     args = parser.parse_args()
 
@@ -446,8 +520,8 @@ def main():
         print(f"Cropping and resizing {len(images)} images to {args.size}x{args.size}...")
         for img_path in images:
             print(f"  Processing {img_path.name}...")
-            square_crop_image(img_path, output_dir, target_size=args.size)
-            if args.remove_source:
+            out = square_crop_image(img_path, output_dir, target_size=args.size)
+            if out and args.remove_source:
                 try:
                     os.remove(img_path)
                     print(f"    Removed source: {img_path.name}")
@@ -457,7 +531,7 @@ def main():
     elif args.command == "process":
         process_images(args)
     elif args.command == "publish":
-        publish_data()
+        publish_data(args)
     else:
         parser.print_help()
 

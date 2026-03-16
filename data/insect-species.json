@@ -58,6 +58,15 @@
             "family": "Moths",
             "latin_name": "dysphania percota"
         },
+        "byasa-polyeuctes": {
+            "key": "byasa-polyeuctes",
+            "name": "Common Windmill Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "byasa polyeuctes"
+        },
         "chestnut-tiger-butterfly": {
             "key": "chestnut-tiger-butterfly",
             "name": "Chestnut Tiger Butterfly",
@@ -86,6 +95,15 @@
             "family": "Butterflies",
             "latin_name": "junonia iphita",
             "ebird_code": null
+        },
+        "cirrochroa-tyche": {
+            "key": "cirrochroa-tyche",
+            "name": "Common Yeoman Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "cirrochroa tyche"
         },
         "clouded-yellow-butterfly": {
             "key": "clouded-yellow-butterfly",
@@ -199,6 +217,15 @@
             "latin_name": null,
             "ebird_code": null
         },
+        "cupha-erymanthis": {
+            "key": "cupha-erymanthis",
+            "name": "Rustic Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "cupha erymanthis"
+        },
         "east-himalayan-straight-banded-treebrown-butterfly": {
             "key": "east-himalayan-straight-banded-treebrown-butterfly",
             "name": "East Himalayan Straight-banded Treebrown Butterfly",
@@ -209,6 +236,16 @@
             ],
             "family": "Butterflies",
             "latin_name": "lethe verma"
+        },
+        "elymnias-cottonis": {
+            "key": "elymnias-cottonis",
+            "name": "Andaman Common Palmfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "elymnias cottonis",
+            "ebird_code": null
         },
         "eopycna-repanda": {
             "key": "eopycna-repanda",
@@ -306,6 +343,15 @@
             "family": "Houseflies & Allies",
             "latin_name": null
         },
+        "hypolimnas-bolina": {
+            "key": "hypolimnas-bolina",
+            "name": "Great Eggfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "hypolimnas bolina"
+        },
         "indian-red-admiral-butterfly": {
             "key": "indian-red-admiral-butterfly",
             "name": "Indian Red Admiral Butterfly",
@@ -326,6 +372,24 @@
             ],
             "family": "Butterflies",
             "latin_name": "danaus melanippus"
+        },
+        "ixias-pyrene": {
+            "key": "ixias-pyrene",
+            "name": "Yellow Orange-tip Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "ixias pyrene"
+        },
+        "junonia-atlites": {
+            "key": "junonia-atlites",
+            "name": "Grey Pansy Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "junonia atlites"
         },
         "khasi-common-jester-butterfly": {
             "key": "khasi-common-jester-butterfly",
@@ -387,6 +451,24 @@
             "latin_name": "rathinda amor",
             "ebird_code": null
         },
+        "neptis-hylas": {
+            "key": "neptis-hylas",
+            "name": "Common Sailer Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "neptis hylas"
+        },
+        "neptis-soma": {
+            "key": "neptis-soma",
+            "name": "Creamy Sailer Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "neptis soma"
+        },
         "northern-lime-sallowtail-butterfly": {
             "key": "northern-lime-sallowtail-butterfly",
             "name": "Northern Lime Sallowtail Butterfly",
@@ -397,6 +479,15 @@
             "family": "Butterflies",
             "latin_name": "papilio demoleus"
         },
+        "pareronia-hippia": {
+            "key": "pareronia-hippia",
+            "name": "Indian Wanderer Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "pareronia hippia"
+        },
         "paris-peacock-butterfly": {
             "key": "paris-peacock-butterfly",
             "name": "Paris Peacock Butterfly",
@@ -405,6 +496,15 @@
             ],
             "family": "Butterflies",
             "latin_name": "papilio paris"
+        },
+        "phalanta-alcippe": {
+            "key": "phalanta-alcippe",
+            "name": "Small Leopard Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "phalanta alcippe"
         },
         "plain-tiger-butterfly": {
             "key": "plain-tiger-butterfly",
@@ -456,6 +556,24 @@
             "family": "Moths",
             "latin_name": "hippotion rosetta"
         },
+        "symphaedra-nais": {
+            "key": "symphaedra-nais",
+            "name": "Baronet Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "symphaedra nais"
+        },
+        "tagiades-japetus": {
+            "key": "tagiades-japetus",
+            "name": "Common Snow Flat Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "tagiades japetus"
+        },
         "tawny-coster-butterfly": {
             "key": "tawny-coster-butterfly",
             "name": "Tawny Coster Butterfly",
@@ -476,6 +594,15 @@
             "family": "Moths",
             "latin_name": "thalassodes quadraria",
             "ebird_code": null
+        },
+        "troides-minos": {
+            "key": "troides-minos",
+            "name": "Sahyadri Birdwing Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "troides minos"
         },
         "unidentified": {
             "key": "unidentified",
@@ -554,104 +681,50 @@
             "family": "Damselflies",
             "latin_name": "copera marginipes"
         },
-        "junonia-atlites": {
-            "key": "junonia-atlites",
-            "name": "Grey Pansy Butterfly",
+        "zizeeria-karsandra": {
+            "key": "zizeeria-karsandra",
+            "name": "Dark Grass Blue Butterfly",
             "tags": [
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "junonia atlites"
+            "latin_name": "zizeeria karsandra"
         },
-        "pareronia-hippia": {
-            "key": "pareronia-hippia",
-            "name": "Indian Wanderer Butterfly",
+        "bassarona-recta": {
+            "key": "bassarona-recta",
+            "name": "Redtail Marquis Butterfly",
             "tags": [
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "pareronia hippia"
+            "latin_name": "bassarona recta"
         },
-        "phalanta-alcippe": {
-            "key": "phalanta-alcippe",
-            "name": "Small Leopard Butterfly",
+        "zipaetis-saitis": {
+            "key": "zipaetis-saitis",
+            "name": "Banded Catseye Butterfly",
             "tags": [
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "phalanta alcippe"
+            "latin_name": "zipaetis saitis"
         },
-        "cirrochroa-tyche": {
-            "key": "cirrochroa-tyche",
-            "name": "Common Yeoman Butterfly",
+        "jamides-bochus": {
+            "key": "jamides-bochus",
+            "name": "Dark Cerulean Butterfly",
             "tags": [
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "cirrochroa tyche"
+            "latin_name": "jamides bochus"
         },
-        "cupha-erymanthis": {
-            "key": "cupha-erymanthis",
-            "name": "Rustic Butterfly",
+        "mycalesis-gotama": {
+            "key": "mycalesis-gotama",
+            "name": "Chinese Bushbrown Butterfly",
             "tags": [
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "cupha erymanthis"
-        },
-        "tagiades-japetus": {
-            "key": "tagiades-japetus",
-            "name": "Common Snow Flat Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "tagiades japetus"
-        },
-        "symphaedra-nais": {
-            "key": "symphaedra-nais",
-            "name": "Baronet Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "symphaedra nais"
-        },
-        "byasa-polyeuctes": {
-            "key": "byasa-polyeuctes",
-            "name": "Common Windmill Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "byasa polyeuctes"
-        },
-        "troides-minos": {
-            "key": "troides-minos",
-            "name": "Sahyadri Birdwing Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "troides minos"
-        },
-        "ixias-pyrene": {
-            "key": "ixias-pyrene",
-            "name": "Yellow Orange-tip Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "ixias pyrene"
-        },
-        "hypolimnas-bolina": {
-            "key": "hypolimnas-bolina",
-            "name": "Great Eggfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "hypolimnas bolina"
+            "latin_name": "mycalesis gotama"
         }
     }
 }

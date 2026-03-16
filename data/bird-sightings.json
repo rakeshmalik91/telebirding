@@ -140,9 +140,38 @@
                 },
                 {
                     "src": "images/black-naped-tern-1773416006.jpg"
+                },
+                {
+                    "src": "images/black-naped-tern-1773666580.jpg"
+                },
+                {
+                    "src": "images/black-naped-tern-1773666598.jpg"
                 }
             ],
             "rating": "5"
+        },
+        {
+            "key": "s1773664422",
+            "species": "greater-racket-tailed-drongo",
+            "date": "11-03-2026",
+            "place": "Vijay Nagar",
+            "city": "Great Nicobar",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": false,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/greater-racket-tailed-drongo-1773664482.jpg"
+                },
+                {
+                    "src": "images/greater-racket-tailed-drongo-1773664500.jpg"
+                }
+            ],
+            "rating": "3"
         },
         {
             "key": "s1773380579",

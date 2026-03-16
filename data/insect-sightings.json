@@ -1,6 +1,26 @@
 {
     "sightings": [
         {
+            "key": "s1773654115",
+            "species": "mycalesis-gotama",
+            "date": "09-03-2026",
+            "city": "Great Nicobar",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/mycalesis-gotama-1773053688.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Campbell Bay"
+        },
+        {
             "key": "s1773589121",
             "species": "hypolimnas-bolina",
             "date": "09-03-2026",
@@ -21,9 +41,9 @@
             "place": "Indira Point"
         },
         {
-            "key": "s1773589120",
-            "species": "ixias-pyrene",
-            "date": "26-02-2026",
+            "key": "s1773654114",
+            "species": "jamides-bochus",
+            "date": "08-03-2026",
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
@@ -34,7 +54,27 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/ixias-pyrene-1772100851.jpg"
+                    "src": "images/jamides-bochus-1772939760.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Campbell Bay"
+        },
+        {
+            "key": "s1773654113",
+            "species": "zipaetis-saitis",
+            "date": "08-03-2026",
+            "city": "Great Nicobar",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/zipaetis-saitis-1772930559.jpg"
                 }
             ],
             "rating": "3",
@@ -75,26 +115,6 @@
             "media": [
                 {
                     "src": "images/byasa-polyeuctes-1772854535.jpg"
-                }
-            ],
-            "rating": "3",
-            "place": "Campbell Bay"
-        },
-        {
-            "key": "s1773589117",
-            "species": "symphaedra-nais",
-            "date": "07-03-2026",
-            "city": "Great Nicobar",
-            "state": "Andaman & Nicobar Islands",
-            "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": true,
-            "time_of_day": "Day",
-            "weather": "Sunny",
-            "hidden": false,
-            "media": [
-                {
-                    "src": "images/symphaedra-nais-1772850678.jpg"
                 }
             ],
             "rating": "3",
@@ -161,12 +181,6 @@
                 },
                 {
                     "src": "images/cirrochroa-tyche-1772332779.jpg"
-                },
-                {
-                    "src": "images/cirrochroa-tyche-1772594670.jpg"
-                },
-                {
-                    "src": "images/cirrochroa-tyche-1772850698.jpg"
                 }
             ],
             "rating": "3",
@@ -187,6 +201,110 @@
             "media": [
                 {
                     "src": "images/phalanta-alcippe-1772329228.jpg"
+                },
+                {
+                    "src": "images/phalanta-alcippe-1773643303.jpg"
+                },
+                {
+                    "src": "images/phalanta-alcippe-1773643359.jpg"
+                },
+                {
+                    "src": "images/phalanta-alcippe-1773643375.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Chidiyatapu"
+        },
+        {
+            "key": "s1773643977",
+            "species": "bassarona-recta",
+            "date": "28-02-2026",
+            "city": "South Andaman",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/bassarona-recta-1772217000.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Chidiyatapu"
+        },
+        {
+            "key": "s1773641891",
+            "species": "elymnias-cottonis",
+            "date": "28-02-2026",
+            "city": "South Andaman",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/elymnias-cottonis-1772217000.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Chidiyatapu"
+        },
+        {
+            "key": "s1773641475",
+            "species": "zizeeria-karsandra",
+            "date": "28-02-2026",
+            "city": "South Andaman",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/zizeeria-karsandra-1773641403.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Chidiyatapu"
+        },
+        {
+            "key": "s1773641473",
+            "species": "neptis-hylas",
+            "date": "28-02-2026",
+            "city": "South Andaman",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/neptis-hylas-1773642649.jpg"
+                },
+                {
+                    "src": "images/neptis-hylas-1773642665.jpg"
+                },
+                {
+                    "src": "images/neptis-hylas-1773642695.jpg"
+                },
+                {
+                    "src": "images/neptis-hylas-1773642719.jpg"
+                },
+                {
+                    "src": "images/neptis-hylas-1773642734.jpg"
+                },
+                {
+                    "src": "images/neptis-hylas-1773642750.jpg"
                 }
             ],
             "rating": "3",
@@ -239,10 +357,58 @@
                 },
                 {
                     "src": "images/junonia-atlites-1772333545.jpg"
+                },
+                {
+                    "src": "images/junonia-atlites-1773026472.jpg"
                 }
             ],
             "rating": "3",
             "place": "Chidiyatapu"
+        },
+        {
+            "key": "s1773589120",
+            "species": "ixias-pyrene",
+            "date": "26-02-2026",
+            "city": "Great Nicobar",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/ixias-pyrene-1772100851.jpg"
+                },
+                {
+                    "src": "images/ixias-pyrene-1773642834.jpg"
+                },
+                {
+                    "src": "images/ixias-pyrene-1773642899.jpg"
+                }
+            ],
+            "rating": "3",
+            "place": "Campbell Bay"
+        },
+        {
+            "key": "s1769271234",
+            "species": "common-gull-butterfly",
+            "date": "27-12-2025",
+            "city": "Chinnar",
+            "state": "Kerala",
+            "country": "India",
+            "author": "Rakesh Malik",
+            "unconfirmed": false,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "hidden": false,
+            "media": [
+                {
+                    "src": "images/common-gull-butterfly-1769271254.jpg"
+                }
+            ],
+            "rating": "3"
         },
         {
             "key": "s1769233396",
@@ -319,25 +485,6 @@
             "media": [
                 {
                     "src": "images/common-sailer-butterfly-1769228263.jpg"
-                }
-            ],
-            "rating": "3"
-        },
-        {
-            "key": "s1769271234",
-            "species": "common-gull-butterfly",
-            "date": "27-12-2025",
-            "city": "Chinnar",
-            "state": "Kerala",
-            "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
-            "time_of_day": "Day",
-            "weather": "Sunny",
-            "hidden": false,
-            "media": [
-                {
-                    "src": "images/common-gull-butterfly-1769271254.jpg"
                 }
             ],
             "rating": "3"
