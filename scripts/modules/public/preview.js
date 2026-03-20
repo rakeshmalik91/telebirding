@@ -4,6 +4,16 @@ import Util from '../util.js';
 import { enableScroll, disableScroll } from '../ui-helpers.js';
 import { renderSightingDetails, renderSightingThumbnailsAndDescription, renderSightingTags } from './rendering.js';
 
+function buildExifInfoIcon(media) {
+    const exif = media.exif_data;
+    if (!exif || !exif.camera_model) return '';
+    let tooltipLines = [];
+    if (exif.camera_model) tooltipLines.push('📷 ' + exif.camera_model);
+    if (!tooltipLines.length) return '';
+    return '<div class="exif-info-icon" title="' + tooltipLines.join('\n') + '">ⓘ<div class="exif-tooltip">' + tooltipLines.join('<br>') + '</div></div>';
+}
+
+
 let slideshowIntervalId = null;
 let currentPreviewSightingKey = null;  // Track current sighting key
 
@@ -129,7 +139,7 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         $('body').append('<div class="' + wrapperClass + '"></div>');
         const wrapper = $('.preview-wrapper');
 
-        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + '</div>');
+        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + buildExifInfoIcon(media) + '</div>');
         wrapper.append('<div class="preview-image-desc"></div>');
 
         $('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png" title="Close"/></button>');
@@ -184,7 +194,7 @@ function updatePreviewMedia(sightingKey, imageSrc) {
     } else {
         mediaTag = '<img src="' + imageSrc + '" title="' + sighting.species.name + '" alt="' + sighting.species.name + '"></img>';
     }
-    previewImageDiv.html(mediaTag);
+    previewImageDiv.html(mediaTag + buildExifInfoIcon(media));
 
     // Update thumbnail selection
     $('.preview-image-desc .photos div').removeClass('selected');

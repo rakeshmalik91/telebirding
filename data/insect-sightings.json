@@ -14,7 +14,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/mycalesis-gotama-1773053688.jpg"
+                    "src": "images/mycalesis-gotama-1773053688.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -34,7 +37,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/hypolimnas-bolina-1773026577.jpg"
+                    "src": "images/hypolimnas-bolina-1773026577.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -54,7 +60,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/jamides-bochus-1772939760.jpg"
+                    "src": "images/jamides-bochus-1772939760.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -74,7 +83,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/zipaetis-saitis-1772930559.jpg"
+                    "src": "images/zipaetis-saitis-1772930559.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -94,7 +106,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/troides-minos-1772855040.jpg"
+                    "src": "images/troides-minos-1772855040.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -114,7 +129,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/byasa-polyeuctes-1772854535.jpg"
+                    "src": "images/byasa-polyeuctes-1772854535.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -134,7 +152,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/tagiades-japetus-1772422876.jpg"
+                    "src": "images/tagiades-japetus-1772422876.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -154,7 +175,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/cupha-erymanthis-1772332359.jpg"
+                    "src": "images/cupha-erymanthis-1772332359.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -174,13 +198,22 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/cirrochroa-tyche-1772332739.jpg"
+                    "src": "images/cirrochroa-tyche-1772332739.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/cirrochroa-tyche-1772331253.jpg"
+                    "src": "images/cirrochroa-tyche-1772331253.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/cirrochroa-tyche-1772332779.jpg"
+                    "src": "images/cirrochroa-tyche-1772332779.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -200,16 +233,28 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/phalanta-alcippe-1772329228.jpg"
+                    "src": "images/phalanta-alcippe-1772329228.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/phalanta-alcippe-1773643303.jpg"
+                    "src": "images/phalanta-alcippe-1773643303.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/phalanta-alcippe-1773643359.jpg"
+                    "src": "images/phalanta-alcippe-1773643359.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/phalanta-alcippe-1773643375.jpg"
+                    "src": "images/phalanta-alcippe-1773643375.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -229,7 +274,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/bassarona-recta-1772217000.jpg"
+                    "src": "images/bassarona-recta-1772217000.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -249,7 +297,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/elymnias-cottonis-1772217000.jpg"
+                    "src": "images/elymnias-cottonis-1772217000.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -269,7 +320,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/zizeeria-karsandra-1773641403.jpg"
+                    "src": "images/zizeeria-karsandra-1773641403.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -289,22 +343,40 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/neptis-hylas-1773642649.jpg"
+                    "src": "images/neptis-hylas-1773642649.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/neptis-hylas-1773642665.jpg"
+                    "src": "images/neptis-hylas-1773642665.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/neptis-hylas-1773642695.jpg"
+                    "src": "images/neptis-hylas-1773642695.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/neptis-hylas-1773642719.jpg"
+                    "src": "images/neptis-hylas-1773642719.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/neptis-hylas-1773642734.jpg"
+                    "src": "images/neptis-hylas-1773642734.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/neptis-hylas-1773642750.jpg"
+                    "src": "images/neptis-hylas-1773642750.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -324,10 +396,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/pareronia-hippia-1772244042.jpg"
+                    "src": "images/pareronia-hippia-1772244042.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/pareronia-hippia-1772253692.jpg"
+                    "src": "images/pareronia-hippia-1772253692.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -347,19 +425,34 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/junonia-atlites-1772338079.jpg"
+                    "src": "images/junonia-atlites-1772338079.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/junonia-atlites-1772333744.jpg"
+                    "src": "images/junonia-atlites-1772333744.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/junonia-atlites-1772253422.jpg"
+                    "src": "images/junonia-atlites-1772253422.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/junonia-atlites-1772333545.jpg"
+                    "src": "images/junonia-atlites-1772333545.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/junonia-atlites-1773026472.jpg"
+                    "src": "images/junonia-atlites-1773026472.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -379,13 +472,22 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/ixias-pyrene-1772100851.jpg"
+                    "src": "images/ixias-pyrene-1772100851.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/ixias-pyrene-1773642834.jpg"
+                    "src": "images/ixias-pyrene-1773642834.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/ixias-pyrene-1773642899.jpg"
+                    "src": "images/ixias-pyrene-1773642899.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -405,7 +507,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-gull-butterfly-1769271254.jpg"
+                    "src": "images/common-gull-butterfly-1769271254.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3"
@@ -424,10 +529,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-five-ring-butterfly-1769233488.jpg"
+                    "src": "images/common-five-ring-butterfly-1769233488.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/common-five-ring-butterfly-1769272637.jpg"
+                    "src": "images/common-five-ring-butterfly-1769272637.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3"
@@ -446,7 +557,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/chocolate-pansy-butterfly-1769238736.jpg"
+                    "src": "images/chocolate-pansy-butterfly-1769238736.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "4"
@@ -465,7 +579,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/grey-swallowtail-moth-1769229318.jpg"
+                    "src": "images/grey-swallowtail-moth-1769229318.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "4"
@@ -484,7 +601,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-sailer-butterfly-1769228263.jpg"
+                    "src": "images/common-sailer-butterfly-1769228263.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 7rmV + Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3"
@@ -500,10 +620,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/plain-tiger-butterfly-1745481285.jpg"
+                    "src": "images/plain-tiger-butterfly-1745481285.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/plain-tiger-butterfly-1745481294.jpg"
+                    "src": "images/plain-tiger-butterfly-1745481294.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "2",
@@ -519,7 +645,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/blue-tiger-moth-1737434508.jpg"
+                    "src": "images/blue-tiger-moth-1737434508.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -536,7 +665,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/heliocopris-1737434001.jpg"
+                    "src": "images/heliocopris-1737434001.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -553,13 +685,22 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-moth-1737552889.jpg"
+                    "src": "images/unidentified-moth-1737552889.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/unidentified-moth-1737553152.jpg"
+                    "src": "images/unidentified-moth-1737553152.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/unidentified-moth-1737552896.jpg"
+                    "src": "images/unidentified-moth-1737552896.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -575,7 +716,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-sailor-butterfly-1737457630.jpg"
+                    "src": "images/common-sailor-butterfly-1737457630.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -592,10 +736,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-1737447139.jpg"
+                    "src": "images/unidentified-1737447139.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/unidentified-1737447146.jpg"
+                    "src": "images/unidentified-1737447146.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "age": "Larva",
@@ -613,7 +763,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-1737446642.jpg"
+                    "src": "images/unidentified-1737446642.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "age": "Larva",
@@ -631,10 +784,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/yellow-bush-dart-1713701786.jpg"
+                    "src": "images/yellow-bush-dart-1713701786.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/yellow-bush-dart-1713701791.jpg"
+                    "src": "images/yellow-bush-dart-1713701791.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "gender": "F",
@@ -651,10 +810,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/housefly-1713016315.jpg"
+                    "src": "images/housefly-1713016315.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/housefly-1713018955.jpg"
+                    "src": "images/housefly-1713018955.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -670,10 +835,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-green-bottle-fly-1713016800.jpg"
+                    "src": "images/common-green-bottle-fly-1713016800.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/common-green-bottle-fly-1713701779.jpg"
+                    "src": "images/common-green-bottle-fly-1713701779.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -689,7 +860,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/lesser-housefly-1713017164.jpg"
+                    "src": "images/lesser-housefly-1713017164.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -705,10 +879,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-butterfly-1737552187.jpg"
+                    "src": "images/unidentified-butterfly-1737552187.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/unidentified-butterfly-1737552266.jpg"
+                    "src": "images/unidentified-butterfly-1737552266.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -724,7 +904,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/chestnut-tiger-butterfly-1713021083.jpg"
+                    "src": "images/chestnut-tiger-butterfly-1713021083.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -740,7 +923,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-beetle-1737552165.jpg"
+                    "src": "images/unidentified-beetle-1737552165.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -756,7 +942,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/vanessa-indica-butterfly--1713064169.jpg"
+                    "src": "images/vanessa-indica-butterfly--1713064169.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -772,7 +961,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/clouded-yellow-butterfly--1713063730.jpg"
+                    "src": "images/clouded-yellow-butterfly--1713063730.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -788,10 +980,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/himalayan-punchinello-butterfly-1737555738.jpg"
+                    "src": "images/himalayan-punchinello-butterfly-1737555738.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/himalayan-punchinello-butterfly-1713022296.jpg"
+                    "src": "images/himalayan-punchinello-butterfly-1713022296.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -807,7 +1005,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/kaempfer-cicada-1713020609.jpg"
+                    "src": "images/kaempfer-cicada-1713020609.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -824,10 +1025,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-moth-1737552782.jpg"
+                    "src": "images/unidentified-moth-1737552782.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 },
                 {
-                    "src": "images/apona-caschmirensis-1745672959.jpg"
+                    "src": "images/apona-caschmirensis-1745672959.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "2",
@@ -843,7 +1050,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-butterfly-1737552639.jpg"
+                    "src": "images/unidentified-butterfly-1737552639.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -859,7 +1069,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/stag-beetle-1713020185.jpg"
+                    "src": "images/stag-beetle-1713020185.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "gender": "F",
@@ -876,7 +1089,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/paris-peacock-butterfly-1713033861.jpg"
+                    "src": "images/paris-peacock-butterfly-1713033861.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "2",
@@ -892,7 +1108,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/malay-cruiser-butterfly--1713021349.jpg"
+                    "src": "images/malay-cruiser-butterfly--1713021349.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -909,7 +1128,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/himalayan-orange-oakleaf-butterfly--1713021170.jpg"
+                    "src": "images/himalayan-orange-oakleaf-butterfly--1713021170.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -926,7 +1148,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/sailor-butterfly-1751173518.jpg"
+                    "src": "images/sailor-butterfly-1751173518.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -942,7 +1167,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/paris-peacock-butterfly-1713021482.jpg"
+                    "src": "images/paris-peacock-butterfly-1713021482.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -959,7 +1187,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/moth-(thalassodes-quadraria)-1745672176.jpg"
+                    "src": "images/moth-(thalassodes-quadraria)-1745672176.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -975,7 +1206,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/golden-silk-orb-weaver-1713021704.jpg"
+                    "src": "images/golden-silk-orb-weaver-1713021704.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -992,7 +1226,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/indian-white-tiger-butterfly-1738039186.jpg"
+                    "src": "images/indian-white-tiger-butterfly-1738039186.jpg",
+                    "exif_data": {
+                        "camera_model": "Sony 6400+ Sony 200-600 G"
+                    }
                 }
             ],
             "rating": "3",
@@ -1008,7 +1245,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/vietnamese-red-spot-jezebel-butterfly-1738667807.jpg"
+                    "src": "images/vietnamese-red-spot-jezebel-butterfly-1738667807.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3"
@@ -1024,10 +1264,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-beetle-1738467794.jpg"
+                    "src": "images/unidentified-beetle-1738467794.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 },
                 {
-                    "src": "images/unidentified-beetle-1738467799.jpg"
+                    "src": "images/unidentified-beetle-1738467799.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3",
@@ -1044,7 +1290,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-1738467764.jpg"
+                    "src": "images/unidentified-1738467764.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "2",
@@ -1061,7 +1310,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-1738467619.jpg"
+                    "src": "images/unidentified-1738467619.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3",
@@ -1078,7 +1330,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-1738467494.jpg"
+                    "src": "images/unidentified-1738467494.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3",
@@ -1095,10 +1350,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/swinhoes-striated-hawkmoth-1738467480.jpg"
+                    "src": "images/swinhoes-striated-hawkmoth-1738467480.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 },
                 {
-                    "src": "images/swinhoes-striated-hawkmoth-1738467625.jpg"
+                    "src": "images/swinhoes-striated-hawkmoth-1738467625.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3"
@@ -1113,10 +1374,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/unidentified-beetle-1738467395.jpg"
+                    "src": "images/unidentified-beetle-1738467395.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 },
                 {
-                    "src": "images/unidentified-beetle-1738467718.jpg"
+                    "src": "images/unidentified-beetle-1738467718.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "place": "Tepantar Gram",
@@ -1133,7 +1400,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-jay-butterfly-1738464967.jpg"
+                    "src": "images/common-jay-butterfly-1738464967.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "2",
@@ -1149,7 +1419,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/southern-birdwing-butterfly-1738467102.jpg"
+                    "src": "images/southern-birdwing-butterfly-1738467102.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3"
@@ -1164,7 +1437,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/golden-silk-orb-weaver-1738465599.jpg"
+                    "src": "images/golden-silk-orb-weaver-1738465599.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3",
@@ -1181,7 +1457,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-crow-butterfly-1738484288.jpg"
+                    "src": "images/common-crow-butterfly-1738484288.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3"
@@ -1196,10 +1475,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/common-leopard-butterfly-1738485145.jpg"
+                    "src": "images/common-leopard-butterfly-1738485145.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 },
                 {
-                    "src": "images/common-leopard-butterfly-1738485154.jpg"
+                    "src": "images/common-leopard-butterfly-1738485154.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "1"
@@ -1214,10 +1499,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/northern-lime-sallowtail-butterfly-1738485042.jpg"
+                    "src": "images/northern-lime-sallowtail-butterfly-1738485042.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 },
                 {
-                    "src": "images/northern-lime-sallowtail-butterfly-1738485047.jpg"
+                    "src": "images/northern-lime-sallowtail-butterfly-1738485047.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "2"
@@ -1232,7 +1523,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/tawny-coaster-butterfly-1738484759.jpg"
+                    "src": "images/tawny-coaster-butterfly-1738484759.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "1"
@@ -1247,10 +1541,16 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/wandering-miolin-mantis-1738466626.jpg"
+                    "src": "images/wandering-miolin-mantis-1738466626.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 },
                 {
-                    "src": "images/wandering-miolin-mantis-1738466636.jpg"
+                    "src": "images/wandering-miolin-mantis-1738466636.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "3",
@@ -1269,7 +1569,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/monkey-puzzle-butterfly-1756538374.jpg"
+                    "src": "images/monkey-puzzle-butterfly-1756538374.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "1"
@@ -1284,7 +1587,10 @@
             "hidden": false,
             "media": [
                 {
-                    "src": "images/blue-moon-butterfly-1738466373.jpg"
+                    "src": "images/blue-moon-butterfly-1738466373.jpg",
+                    "exif_data": {
+                        "camera_model": "Nikon P900"
+                    }
                 }
             ],
             "rating": "1"

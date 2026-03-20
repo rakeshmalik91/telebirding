@@ -195,6 +195,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
                 row += "<img src='" + Util.getMedia(media.src) + "' title='" + media.src + "'/>";
             }
             row += "<input class='title-textbox' data-mediasrc='" + media.src + "' type='text' value='" + (media.title || "") + "' placeholder='Add title'></input>";
+            row += "<textarea class='camera-model-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:60px;width:80px;' placeholder='Sony 7rmV + Sony 200-600 G'>" + (media.exif_data ? (media.exif_data.camera_model || "") : "") + "</textarea>";
             row += "</div>";
         });
         row += "<button class='upload-button' title='Add media'>+</button>";
@@ -263,6 +264,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
         });
         sightingRow.find(".thumbnail .title-textbox").change(function () {
             updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
+        });
+        sightingRow.find(".thumbnail .camera-model-textbox").change(function () {
+            updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "exif_data.camera_model", $(this).val());
         });
         sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
         sightingRow.find(".move-upx5").click(() => moveSighting(sighting.key, -5));

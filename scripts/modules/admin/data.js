@@ -151,7 +151,12 @@ export function uploadMedia(sightingKey, files) {
                         const date = await getSightingDateFromExif(file);
                         if (date) sighting.date = date;
                     }
-                    sighting.media.push({ src: mediaSrc });
+                    sighting.media.push({ 
+                        src: mediaSrc,
+                        exif_data: { 
+                            "camera_model": "Sony 7rmV + Sony 200-600 G"
+                        }
+                    });
                     showLoader("saving", "Saving..."); // Bridge gap to sync
                     hideLoader("uploading-media");
                     syncSightingsData(0);
@@ -305,7 +310,13 @@ export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
         if (sighting.key != sightingKey) return;
         sighting.media.forEach(media => {
             if (media.src == mediaSrc) {
-                media[property] = value;
+                const keys = property.split('.');
+                let obj = media;
+                for (let i = 0; i < keys.length - 1; i++) {
+                    if (!obj[keys[i]]) obj[keys[i]] = {};
+                    obj = obj[keys[i]];
+                }
+                obj[keys[keys.length - 1]] = value;
             }
         });
     });

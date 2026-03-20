@@ -819,3 +819,42 @@ span.text-seperator {
 .box.active {
 	background-color: #ffffff;
 }
+
+/* ---- EXIF Info Icon on Preview Image ---- */
+.exif-info-icon {
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+	width: 28px;
+	height: 28px;
+	font-size: 22px;
+	color: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+	z-index: 10;
+	line-height: 28px;
+	text-align: center;
+	transition: color 0.2s;
+}
+
+.exif-info-icon:hover {
+	color: #ffffff;
+}
+
+.exif-tooltip {
+	display: none;
+	position: absolute;
+	bottom: 36px;
+	left: 0;
+	background: rgba(0, 0, 0, 0.85);
+	color: #e0e0e0;
+	font-size: 13px;
+	padding: 8px 14px;
+	border-radius: 6px;
+	white-space: nowrap;
+	pointer-events: none;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.exif-info-icon:hover .exif-tooltip {
+	display: block;
+}
