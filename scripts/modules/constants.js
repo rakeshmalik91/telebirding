@@ -144,13 +144,6 @@ export default class Constants {
 	static EBIRD_SPECIES_BASE_URL = "https://ebird.org/species/";
 
 	static DEFAULT_AUTHOR = "Rakesh Malik";
-	static AUTHOR_URL = {
-		"Rakesh Malik": "https://www.instagram.com/rakeshmalik_art",
-		"Ranjan Malik": "https://www.instagram.com/ranjan_033",
-		"Chinmaya Mohini": "https://www.instagram.com/ratdon",
-		"Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani",
-		"Shakti Vel": "https://www.instagram.com/andaman_boy"
-	};
 
 	static LIKE_ENABLED = true;
 

@@ -104,7 +104,7 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
 
     if (inPreviewPage) {
         let author = sighting.author || Constants.DEFAULT_AUTHOR;
-        sightingLabelDiv.append('<div class="sighting-desc">Photographed by <a href="' + (Constants.AUTHOR_URL[author] || '') + '" target="_blank">' + author + '</a></div>');
+        sightingLabelDiv.append('<div class="sighting-desc">Photographed by <a href="' + ((State.data.author && State.data.author[author]) || '') + '" target="_blank">' + author + '</a></div>');
     }
 
     sighting.rating = sighting.rating || 0;
@@ -143,7 +143,7 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
     if (!inPreviewPage && (sighting.author && sighting.author != Constants.DEFAULT_AUTHOR)) {
         let author = sighting.author || Constants.DEFAULT_AUTHOR;
         metaStatsDiv.append('<span class="text-seperator">|</span>');
-        metaStatsDiv.append('<span class="sighting-desc opacity-30pc">by <a ' + ti + ' href="' + (Constants.AUTHOR_URL[author] || '') + '" target="_blank">' + author + '</a></div>');
+        metaStatsDiv.append('<span class="sighting-desc opacity-30pc">by <a ' + ti + ' href="' + ((State.data.author && State.data.author[author]) || '') + '" target="_blank">' + author + '</a></div>');
     }
 }
 

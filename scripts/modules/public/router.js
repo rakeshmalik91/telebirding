@@ -249,7 +249,8 @@ export function showPage(page, params, isPopstate) {
         Util.getData("data/" + State.currentMode + "-families.json"),
         Util.getData("data/" + State.currentMode + "-likes.json"),
         Util.getData("data/places.json"),
-        Util.getData('data/stories.json')
+        Util.getData('data/stories.json'),
+        Util.getData('data/site-data.json')
     ];
     Util.readJSONFiles(files, function (json) {
         State.updateData(json);
