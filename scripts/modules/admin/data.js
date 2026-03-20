@@ -26,7 +26,8 @@ export function refreshData() {
         Util.getData("data/" + currentMode + "-species.json"),
         Util.getData("data/" + currentMode + "-families.json"),
         Util.getData("data/" + currentMode + "-likes.json"),
-        Util.getData("data/places.json")
+        Util.getData("data/places.json"),
+        Util.getData("data/site-data.json")
     ], function (json) {
         data = json;
         renderCallback();
@@ -151,10 +152,10 @@ export function uploadMedia(sightingKey, files) {
                         const date = await getSightingDateFromExif(file);
                         if (date) sighting.date = date;
                     }
-                    sighting.media.push({ 
+                    sighting.media.push({
                         src: mediaSrc,
-                        exif_data: { 
-                            "camera_model": "Sony 7rmV + Sony 200-600 G"
+                        exif_data: {
+                            "camera_model": Constants.DEFAULT_CAMERA_MODEL
                         }
                     });
                     showLoader("saving", "Saving..."); // Bridge gap to sync

@@ -144,6 +144,7 @@ export default class Constants {
 	static EBIRD_SPECIES_BASE_URL = "https://ebird.org/species/";
 
 	static DEFAULT_AUTHOR = "Rakesh Malik";
+	static DEFAULT_CAMERA_MODEL = "S7RV+200600";
 
 	static LIKE_ENABLED = true;
 

@@ -8,7 +8,13 @@ function buildExifInfoIcon(media) {
     const exif = media.exif_data;
     if (!exif || !exif.camera_model) return '';
     let tooltipLines = [];
-    if (exif.camera_model) tooltipLines.push('📷 ' + exif.camera_model);
+    if (exif.camera_model) {
+        let model = exif.camera_model.split('+').map(p => {
+            let part = p.trim();
+            return (State.data.camera_model && State.data.camera_model[part]) || part;
+        }).join(" + ");
+        tooltipLines.push('📷 ' + model);
+    }
     if (!tooltipLines.length) return '';
     return '<div class="exif-info-icon" title="' + tooltipLines.join('\n') + '">ⓘ<div class="exif-tooltip">' + tooltipLines.join('<br>') + '</div></div>';
 }

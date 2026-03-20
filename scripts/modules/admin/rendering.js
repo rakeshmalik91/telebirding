@@ -195,7 +195,29 @@ export function renderSightingsTable(OFFSET, ROWS) {
                 row += "<img src='" + Util.getMedia(media.src) + "' title='" + media.src + "'/>";
             }
             row += "<textarea class='title-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:40px;width:80px;' placeholder='Add title'>" + (media.title || "") + "</textarea>";
-            row += "<textarea class='camera-model-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:50px;width:80px;' placeholder='Sony 7rmV + Sony 200-600 G'>" + (media.exif_data ? (media.exif_data.camera_model || "") : "") + "</textarea>";
+            let cameraModelParts = (media.exif_data ? (media.exif_data.camera_model || "") : "").split('+');
+            let cam = cameraModelParts[0] || "";
+            let lens = cameraModelParts[1] || "";
+            
+            // Camera Select
+            row += "<select class='camera-model-select' data-mediasrc='" + media.src + "' data-part='0' style='font-size:0.8em;width:80px;' title='" + ((data.camera_model && data.camera_model[cam]) || "Select Camera") + "'>";
+            row += "<option value=''>- Cam -</option>";
+            if (data.camera_model) {
+                for (const [k, v] of Object.entries(data.camera_model)) {
+                    row += "<option value='" + k + "' " + (k == cam ? 'selected' : '') + " title='" + v + "'>" + k + "</option>";
+                }
+            }
+            row += "</select>";
+
+            // Lens Select
+            row += "<select class='camera-model-select' data-mediasrc='" + media.src + "' data-part='1' style='font-size:0.8em;width:80px;' title='" + ((data.camera_model && data.camera_model[lens]) || "Select Lens") + "'>";
+            row += "<option value=''>- Lens -</option>";
+            if (data.camera_model) {
+                for (const [k, v] of Object.entries(data.camera_model)) {
+                    row += "<option value='" + k + "' " + (k == lens ? 'selected' : '') + " title='" + v + "'>" + k + "</option>";
+                }
+            }
+            row += "</select>";
             row += "</div>";
         });
         row += "<button class='upload-button' title='Add media'>+</button>";
@@ -265,8 +287,28 @@ export function renderSightingsTable(OFFSET, ROWS) {
         sightingRow.find(".thumbnail .title-textbox").change(function () {
             updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
         });
-        sightingRow.find(".thumbnail .camera-model-textbox").change(function () {
-            updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "exif_data.camera_model", $(this).val());
+        sightingRow.find(".thumbnail .camera-model-select").change(function () {
+            const mediaSrc = $(this).attr("data-mediasrc");
+            const part = $(this).attr("data-part");
+            const siblingPart = part == "0" ? "1" : "0";
+            const siblingValue = sightingRow.find(`.camera-model-select[data-mediasrc='${mediaSrc}'][data-part='${siblingPart}']`).val();
+            
+            let combinedValue = "";
+            if (part == "0") {
+                combinedValue = $(this).val() + (siblingValue ? "+" + siblingValue : "");
+            } else {
+                combinedValue = (siblingValue ? siblingValue + "+" : "") + $(this).val();
+            }
+            // remove trailing/leading + if any
+            combinedValue = combinedValue.replace(/^\+/, "").replace(/\+$/, "");
+            
+            updateMediaProperty(sighting.key, mediaSrc, "exif_data.camera_model", combinedValue);
+            
+            // Update tooltips for both selects
+            const camVal = sightingRow.find(`.camera-model-select[data-mediasrc='${mediaSrc}'][data-part='0']`).val();
+            const lensVal = sightingRow.find(`.camera-model-select[data-mediasrc='${mediaSrc}'][data-part='1']`).val();
+            sightingRow.find(`.camera-model-select[data-mediasrc='${mediaSrc}'][data-part='0']`).attr("title", (data.camera_model && data.camera_model[camVal]) || "Select Camera");
+            sightingRow.find(`.camera-model-select[data-mediasrc='${mediaSrc}'][data-part='1']`).attr("title", (data.camera_model && data.camera_model[lensVal]) || "Select Lens");
         });
         sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
         sightingRow.find(".move-upx5").click(() => moveSighting(sighting.key, -5));
