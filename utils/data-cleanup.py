@@ -2,6 +2,17 @@ import json
 import os
 import re
 
+def remove_null_and_false(d):
+    if isinstance(d, dict):
+        cleaned = {}
+        for k, v in d.items():
+            if v is None or (isinstance(v, bool) and v is False):
+                continue
+            cleaned[k] = remove_null_and_false(v)
+        return cleaned
+    elif isinstance(d, list):
+        return [remove_null_and_false(v) for v in d]
+    return d
 # Define paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, '..', 'data', 'bird-species.json')
@@ -163,5 +174,32 @@ def clean_data():
     else:
         print("\nNo changes made.")
 
+def clean_unwanted_values(filepath):
+    if not os.path.exists(filepath):
+        print(f"File not found: {filepath}")
+        return
+        
+    with open(filepath, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        
+    old_data_str = json.dumps(data)
+    data = remove_null_and_false(data)
+    
+    if json.dumps(data) != old_data_str:
+        print(f"Removing null/false values in {os.path.basename(filepath)}...")
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4)    
+
 if __name__ == "__main__":
     clean_data()
+    
+    print("\n--- Running Null/False Cleanup on All Relevant Files ---")
+    files = [
+        'bird-species.json',
+        'insect-species.json',
+        'bird-sightings.json',
+        'insect-sightings.json'
+    ]
+    for filename in files:
+        filepath = os.path.join(BASE_DIR, '..', 'data', filename)
+        clean_unwanted_values(filepath)

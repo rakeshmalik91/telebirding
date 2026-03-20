@@ -8,8 +8,7 @@
                 "Moth"
             ],
             "family": "Moths",
-            "latin_name": "apona cascgmirensis",
-            "ebird_code": null
+            "latin_name": "apona cascgmirensis"
         },
         "assam-unbroken-sergeant-butterfly": {
             "key": "assam-unbroken-sergeant-butterfly",
@@ -93,8 +92,7 @@
                 "Pansy Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "junonia iphita",
-            "ebird_code": null
+            "latin_name": "junonia iphita"
         },
         "cirrochroa-tyche": {
             "key": "cirrochroa-tyche",
@@ -142,8 +140,7 @@
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "ypthima baldus",
-            "ebird_code": null
+            "latin_name": "ypthima baldus"
         },
         "common-green-bottle-fly": {
             "key": "common-green-bottle-fly",
@@ -153,8 +150,7 @@
                 "Bottle Fly",
                 "Blowfly"
             ],
-            "family": "Flies",
-            "latin_name": null
+            "family": "Flies"
         },
         "common-gull-butterfly": {
             "key": "common-gull-butterfly",
@@ -163,8 +159,7 @@
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "cepora nerissa",
-            "ebird_code": null
+            "latin_name": "cepora nerissa"
         },
         "common-housefly": {
             "key": "common-housefly",
@@ -173,8 +168,7 @@
                 "Housefly",
                 "Fly"
             ],
-            "family": "Houseflies & Allies",
-            "latin_name": null
+            "family": "Houseflies & Allies"
         },
         "common-jay-butterfly": {
             "key": "common-jay-butterfly",
@@ -182,8 +176,7 @@
             "tags": [
                 "Butterfly"
             ],
-            "family": "Butterflies",
-            "latin_name": null
+            "family": "Butterflies"
         },
         "common-leopard-butterfly": {
             "key": "common-leopard-butterfly",
@@ -192,8 +185,7 @@
                 "Butterfly",
                 "Leopard Butterfly"
             ],
-            "family": "Butterflies",
-            "latin_name": null
+            "family": "Butterflies"
         },
         "common-sailer-butterfly": {
             "key": "common-sailer-butterfly",
@@ -203,8 +195,7 @@
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "neptis hylas",
-            "ebird_code": null
+            "latin_name": "neptis hylas"
         },
         "cruiser-butterfly": {
             "key": "cruiser-butterfly",
@@ -213,9 +204,7 @@
                 "Butterfly",
                 "vindula spp."
             ],
-            "family": "Butterflies",
-            "latin_name": null,
-            "ebird_code": null
+            "family": "Butterflies"
         },
         "cupha-erymanthis": {
             "key": "cupha-erymanthis",
@@ -244,8 +233,7 @@
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "elymnias cottonis",
-            "ebird_code": null
+            "latin_name": "elymnias cottonis"
         },
         "eopycna-repanda": {
             "key": "eopycna-repanda",
@@ -254,8 +242,7 @@
                 "Cicada"
             ],
             "family": "Cicadas",
-            "latin_name": "eopycna repanda",
-            "ebird_code": null
+            "latin_name": "eopycna repanda"
         },
         "eupterote-undata": {
             "key": "eupterote-undata",
@@ -268,8 +255,7 @@
                 "Eupterote Undata"
             ],
             "family": "Moths",
-            "latin_name": "eupterote undata",
-            "ebird_code": null
+            "latin_name": "eupterote undata"
         },
         "golden-silk-orb-weaver": {
             "key": "golden-silk-orb-weaver",
@@ -281,8 +267,7 @@
                 "Spider",
                 "Arachnid"
             ],
-            "family": "Spiders",
-            "latin_name": null
+            "family": "Spiders"
         },
         "grey-swallowtail-moth": {
             "key": "grey-swallowtail-moth",
@@ -292,8 +277,7 @@
                 "Moth"
             ],
             "family": "Moths",
-            "latin_name": "micronia aculeata",
-            "ebird_code": null
+            "latin_name": "micronia aculeata"
         },
         "himalayan-dark-clouded-yellow-butterfly": {
             "key": "himalayan-dark-clouded-yellow-butterfly",
@@ -330,8 +314,7 @@
                 "Passalus Beetle",
                 "Beetle"
             ],
-            "family": "Beetles",
-            "latin_name": null
+            "family": "Beetles"
         },
         "housefly": {
             "key": "housefly",
@@ -340,8 +323,7 @@
                 "Fly",
                 "Housefly"
             ],
-            "family": "Houseflies & Allies",
-            "latin_name": null
+            "family": "Houseflies & Allies"
         },
         "hypolimnas-bolina": {
             "key": "hypolimnas-bolina",
@@ -409,8 +391,7 @@
                 "Housefly",
                 "Fly"
             ],
-            "family": "Houseflies & Allies",
-            "latin_name": null
+            "family": "Houseflies & Allies"
         },
         "long-horned-beetle": {
             "key": "long-horned-beetle",
@@ -419,8 +400,7 @@
                 "Beetle",
                 "celosterna scabrator"
             ],
-            "family": "Beetles",
-            "latin_name": null
+            "family": "Beetles"
         },
         "malay-cruiser-butterfly": {
             "key": "malay-cruiser-butterfly",
@@ -438,8 +418,7 @@
                 "Dung Beetle",
                 "Beetle"
             ],
-            "family": "Dung Beetles",
-            "latin_name": null
+            "family": "Dung Beetles"
         },
         "monkey-puzzle-butterfly": {
             "key": "monkey-puzzle-butterfly",
@@ -448,8 +427,7 @@
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "rathinda amor",
-            "ebird_code": null
+            "latin_name": "rathinda amor"
         },
         "neptis-hylas": {
             "key": "neptis-hylas",
@@ -523,8 +501,7 @@
                 "neptis"
             ],
             "family": "Butterflies",
-            "latin_name": "neptis spp",
-            "ebird_code": null
+            "latin_name": "neptis spp"
         },
         "southern-birdwing-butterfly": {
             "key": "southern-birdwing-butterfly",
@@ -542,8 +519,7 @@
                 "Beetle",
                 "Stag Beetle"
             ],
-            "family": "Beetles",
-            "latin_name": null
+            "family": "Beetles"
         },
         "swinhoes-striated-hawkmoth": {
             "key": "swinhoes-striated-hawkmoth",
@@ -592,8 +568,7 @@
                 "Moth"
             ],
             "family": "Moths",
-            "latin_name": "thalassodes quadraria",
-            "ebird_code": null
+            "latin_name": "thalassodes quadraria"
         },
         "troides-minos": {
             "key": "troides-minos",
@@ -610,8 +585,7 @@
             "tags": [
                 "Unidentified"
             ],
-            "family": "Unidentified",
-            "latin_name": null
+            "family": "Unidentified"
         },
         "unidentified-beetle": {
             "key": "unidentified-beetle",
@@ -619,8 +593,7 @@
             "tags": [
                 "Beetle"
             ],
-            "family": "Beetles",
-            "latin_name": null
+            "family": "Beetles"
         },
         "unidentified-butterfly": {
             "key": "unidentified-butterfly",
@@ -628,8 +601,7 @@
             "tags": [
                 "Butterfly"
             ],
-            "family": "Butterflies",
-            "latin_name": null
+            "family": "Butterflies"
         },
         "unidentified-grasshopper": {
             "key": "unidentified-grasshopper",
@@ -645,8 +617,7 @@
             "tags": [
                 "Moth"
             ],
-            "family": "Moths",
-            "latin_name": null
+            "family": "Moths"
         },
         "vietnamese-red-spot-jezebel-butterfly": {
             "key": "vietnamese-red-spot-jezebel-butterfly",
@@ -667,8 +638,7 @@
                 "gongylus gongylodes",
                 "Indian Rose Mantis"
             ],
-            "family": "Mantises",
-            "latin_name": null
+            "family": "Mantises"
         },
         "yellow-bush-dart": {
             "key": "yellow-bush-dart",

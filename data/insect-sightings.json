@@ -11,7 +11,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/mycalesis-gotama-1773053688.jpg",
@@ -34,7 +33,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/hypolimnas-bolina-1773026577.jpg",
@@ -57,7 +55,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/jamides-bochus-1772939760.jpg",
@@ -80,7 +77,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/zipaetis-saitis-1772930559.jpg",
@@ -103,7 +99,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/troides-minos-1772855040.jpg",
@@ -126,7 +121,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/byasa-polyeuctes-1772854535.jpg",
@@ -149,7 +143,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/tagiades-japetus-1772422876.jpg",
@@ -172,7 +165,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/cupha-erymanthis-1772332359.jpg",
@@ -195,7 +187,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/cirrochroa-tyche-1772332739.jpg",
@@ -230,7 +221,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/phalanta-alcippe-1772329228.jpg",
@@ -271,7 +261,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/bassarona-recta-1772217000.jpg",
@@ -294,7 +283,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/elymnias-cottonis-1772217000.jpg",
@@ -317,7 +305,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/zizeeria-karsandra-1773641403.jpg",
@@ -340,7 +327,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/neptis-hylas-1773642649.jpg",
@@ -393,7 +379,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/pareronia-hippia-1772244042.jpg",
@@ -422,7 +407,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/junonia-atlites-1772338079.jpg",
@@ -469,7 +453,6 @@
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/ixias-pyrene-1772100851.jpg",
@@ -501,10 +484,8 @@
             "state": "Kerala",
             "country": "India",
             "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-gull-butterfly-1769271254.jpg",
@@ -523,10 +504,8 @@
             "state": "Kerala",
             "country": "India",
             "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-five-ring-butterfly-1769233488.jpg",
@@ -551,10 +530,8 @@
             "state": "Kerala",
             "country": "India",
             "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/chocolate-pansy-butterfly-1769238736.jpg",
@@ -573,10 +550,8 @@
             "state": "Kerala",
             "country": "India",
             "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/grey-swallowtail-moth-1769229318.jpg",
@@ -595,10 +570,8 @@
             "state": "Kerala",
             "country": "India",
             "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-sailer-butterfly-1769228263.jpg",
@@ -617,7 +590,6 @@
             "state": "Madhya Pradesh",
             "country": "India",
             "time_of_day": "Day",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/plain-tiger-butterfly-1745481285.jpg",
@@ -642,7 +614,6 @@
             "city": "Koyna",
             "state": "Maharashtra",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/blue-tiger-moth-1737434508.jpg",
@@ -662,7 +633,6 @@
             "city": "Koyna",
             "state": "Maharashtra",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/heliocopris-1737434001.jpg",
@@ -682,7 +652,6 @@
             "city": "Howrah",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-moth-1737552889.jpg",
@@ -713,7 +682,6 @@
             "city": "Siliguri",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-sailor-butterfly-1737457630.jpg",
@@ -733,7 +701,6 @@
             "city": "Siliguri",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-1737447139.jpg",
@@ -760,7 +727,6 @@
             "city": "Latpanchar",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-1737446642.jpg",
@@ -781,7 +747,6 @@
             "city": "Howrah",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/yellow-bush-dart-1713701786.jpg",
@@ -807,7 +772,6 @@
             "city": "Howrah",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/housefly-1713016315.jpg",
@@ -832,7 +796,6 @@
             "city": "Howrah",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-green-bottle-fly-1713016800.jpg",
@@ -857,7 +820,6 @@
             "city": "Gurgaon",
             "state": "Haryana",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/lesser-housefly-1713017164.jpg",
@@ -876,7 +838,6 @@
             "city": "Mulkharka",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-butterfly-1737552187.jpg",
@@ -901,7 +862,6 @@
             "city": "Mulkharka",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/chestnut-tiger-butterfly-1713021083.jpg",
@@ -920,7 +880,6 @@
             "city": "Mulkharka",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-beetle-1737552165.jpg",
@@ -939,7 +898,6 @@
             "city": "Mulkharka",
             "state": "Sikkim",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/vanessa-indica-butterfly--1713064169.jpg",
@@ -958,7 +916,6 @@
             "city": "Mulkharka",
             "state": "Sikkim",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/clouded-yellow-butterfly--1713063730.jpg",
@@ -977,7 +934,6 @@
             "city": "Mulkharka",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/himalayan-punchinello-butterfly-1737555738.jpg",
@@ -1002,7 +958,6 @@
             "city": "Padamchen",
             "state": "Sikkim",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/kaempfer-cicada-1713020609.jpg",
@@ -1022,7 +977,6 @@
             "city": "Padamchen",
             "state": "Sikkim",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-moth-1737552782.jpg",
@@ -1047,7 +1001,6 @@
             "city": "Padamchen",
             "state": "Sikkim",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-butterfly-1737552639.jpg",
@@ -1066,7 +1019,6 @@
             "city": "Padamchen",
             "state": "Sikkim",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/stag-beetle-1713020185.jpg",
@@ -1086,7 +1038,6 @@
             "city": "Sonada",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/paris-peacock-butterfly-1713033861.jpg",
@@ -1105,7 +1056,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/malay-cruiser-butterfly--1713021349.jpg",
@@ -1125,7 +1075,6 @@
             "city": "Rongo",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/himalayan-orange-oakleaf-butterfly--1713021170.jpg",
@@ -1145,7 +1094,6 @@
             "state": "Uttarakhand",
             "country": "India",
             "time_of_day": "Day",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/sailor-butterfly-1751173518.jpg",
@@ -1164,7 +1112,6 @@
             "city": "Chafi",
             "state": "Uttarakhand",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/paris-peacock-butterfly-1713021482.jpg",
@@ -1184,7 +1131,6 @@
             "state": "Odisha",
             "country": "India",
             "time_of_day": "",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/moth-(thalassodes-quadraria)-1745672176.jpg",
@@ -1193,8 +1139,7 @@
                     }
                 }
             ],
-            "rating": "3",
-            "unconfirmed": false
+            "rating": "3"
         },
         {
             "key": "s1713021675",
@@ -1203,7 +1148,6 @@
             "city": "Thattekad",
             "state": "Kerala",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/golden-silk-orb-weaver-1713021704.jpg",
@@ -1223,7 +1167,6 @@
             "city": "Bhitarkanika",
             "state": "Odisha",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/indian-white-tiger-butterfly-1738039186.jpg",
@@ -1242,7 +1185,6 @@
             "city": "Jaldapara",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/vietnamese-red-spot-jezebel-butterfly-1738667807.jpg",
@@ -1261,7 +1203,6 @@
             "city": "Purulia",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-beetle-1738467794.jpg",
@@ -1287,7 +1228,6 @@
             "city": "Purulia",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-1738467764.jpg",
@@ -1307,7 +1247,6 @@
             "city": "Purulia",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-1738467619.jpg",
@@ -1327,7 +1266,6 @@
             "city": "Purulia",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-1738467494.jpg",
@@ -1347,7 +1285,6 @@
             "city": "Purulia",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/swinhoes-striated-hawkmoth-1738467480.jpg",
@@ -1371,7 +1308,6 @@
             "city": "Purulia",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/unidentified-beetle-1738467395.jpg",
@@ -1397,7 +1333,6 @@
             "city": "Kolkata",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-jay-butterfly-1738464967.jpg",
@@ -1416,7 +1351,6 @@
             "city": "Thattekad",
             "state": "Kerala",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/southern-birdwing-butterfly-1738467102.jpg",
@@ -1434,7 +1368,6 @@
             "city": "Thattekad",
             "state": "Kerala",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/golden-silk-orb-weaver-1738465599.jpg",
@@ -1454,7 +1387,6 @@
             "city": "Tada Falls",
             "state": "Andhra Pradesh",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-crow-butterfly-1738484288.jpg",
@@ -1472,7 +1404,6 @@
             "city": "Nagalapuram",
             "state": "Andhra Pradesh",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/common-leopard-butterfly-1738485145.jpg",
@@ -1496,7 +1427,6 @@
             "city": "Nagalapuram",
             "state": "Andhra Pradesh",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/northern-lime-sallowtail-butterfly-1738485042.jpg",
@@ -1520,7 +1450,6 @@
             "city": "Nagalapuram",
             "state": "Andhra Pradesh",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/tawny-coaster-butterfly-1738484759.jpg",
@@ -1538,7 +1467,6 @@
             "city": "Puducherry",
             "state": "Pondicherry",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/wandering-miolin-mantis-1738466626.jpg",
@@ -1566,7 +1494,6 @@
             "author": "Rakesh Malik",
             "time_of_day": "Day",
             "weather": "",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/monkey-puzzle-butterfly-1756538374.jpg",
@@ -1584,7 +1511,6 @@
             "city": "Howrah",
             "state": "West Bengal",
             "country": "India",
-            "hidden": false,
             "media": [
                 {
                     "src": "images/blue-moon-butterfly-1738466373.jpg",
