@@ -18,7 +18,8 @@ for mode in ["bird", "insect"]:
 			content = json.load(f)
 		with open(dst, 'w', encoding='utf-8') as f:
 			json.dump(content, f, indent=4, ensure_ascii=False)
-	data = json.load(open(dataDir + "/" + mode + "-sightings.json"))
+	with open(dataDir + "/" + mode + "-sightings.json", 'r', encoding='utf-8') as f:
+		data = json.load(f)
 	for sighting in data['sightings']:
 		for media in sighting['media']:
 			if 'type' not in media or media['type'] == 'image':

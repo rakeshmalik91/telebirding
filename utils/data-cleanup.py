@@ -2,16 +2,35 @@ import json
 import os
 import re
 
-def remove_null_and_false(d):
+def remove_unwanted_values(d):
+    """
+    Recursively remove null, false, empty list, empty string, and empty dictionary values from a dictionary or list.
+    """
     if isinstance(d, dict):
         cleaned = {}
         for k, v in d.items():
-            if v is None or (isinstance(v, bool) and v is False):
+            val = remove_unwanted_values(v)
+            # Check if val is one of the unwanted types: None, False, [], "", or {}
+            if (val is None or 
+                (isinstance(val, bool) and val is False) or 
+                (isinstance(val, list) and not val) or 
+                (isinstance(val, str) and not val) or 
+                (isinstance(val, dict) and not val)):
                 continue
-            cleaned[k] = remove_null_and_false(v)
+            cleaned[k] = val
         return cleaned
     elif isinstance(d, list):
-        return [remove_null_and_false(v) for v in d]
+        cleaned_list = []
+        for v in d:
+            val = remove_unwanted_values(v)
+            if (val is None or 
+                (isinstance(val, bool) and val is False) or 
+                (isinstance(val, list) and not val) or 
+                (isinstance(val, str) and not val) or 
+                (isinstance(val, dict) and not val)):
+                continue
+            cleaned_list.append(val)
+        return cleaned_list
     return d
 # Define paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -169,7 +188,7 @@ def clean_data():
     if modified_count > 0:
         print(f"\nUpdating data for {modified_count} birds...")
         with open(DATA_FILE, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)
+            json.dump(data, f, indent=4, ensure_ascii=False)
         print("Success: File saved.")
     else:
         print("\nNo changes made.")
@@ -183,17 +202,17 @@ def clean_unwanted_values(filepath):
         data = json.load(f)
         
     old_data_str = json.dumps(data)
-    data = remove_null_and_false(data)
+    data = remove_unwanted_values(data)
     
     if json.dumps(data) != old_data_str:
-        print(f"Removing null/false values in {os.path.basename(filepath)}...")
+        print(f"Removing unwanted values (null, [], \"\", {{}}, false) in {os.path.basename(filepath)}...")
         with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)    
+            json.dump(data, f, indent=4, ensure_ascii=False)    
 
 if __name__ == "__main__":
     clean_data()
     
-    print("\n--- Running Null/False Cleanup on All Relevant Files ---")
+    print("\n--- Running Unwanted Values Cleanup on All Relevant Files ---")
     files = [
         'bird-species.json',
         'insect-species.json',

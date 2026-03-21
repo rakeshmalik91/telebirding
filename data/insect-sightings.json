@@ -642,8 +642,7 @@
                 }
             ],
             "rating": "3",
-            "time_of_day": "Day",
-            "weather": ""
+            "time_of_day": "Day"
         },
         {
             "key": "s1737552852",
@@ -1130,7 +1129,6 @@
             "city": "Mangalajodi",
             "state": "Odisha",
             "country": "India",
-            "time_of_day": "",
             "media": [
                 {
                     "src": "images/moth-(thalassodes-quadraria)-1745672176.jpg",
@@ -1383,7 +1381,6 @@
             "key": "s1738484224",
             "species": "common-crow-butterfly",
             "date": "15-08-2018",
-            "place": "",
             "city": "Tada Falls",
             "state": "Andhra Pradesh",
             "country": "India",
@@ -1493,7 +1490,6 @@
             "country": "India",
             "author": "Rakesh Malik",
             "time_of_day": "Day",
-            "weather": "",
             "media": [
                 {
                     "src": "images/monkey-puzzle-butterfly-1756538374.jpg",

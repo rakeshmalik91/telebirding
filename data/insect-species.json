@@ -20,6 +20,15 @@
             "family": "Butterflies",
             "latin_name": "athyma pravara"
         },
+        "bassarona-recta": {
+            "key": "bassarona-recta",
+            "name": "Redtail Marquis Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "bassarona recta"
+        },
         "bird-grasshopper": {
             "key": "bird-grasshopper",
             "name": "Bird Grasshopper",
@@ -228,7 +237,7 @@
         },
         "elymnias-cottonis": {
             "key": "elymnias-cottonis",
-            "name": "Andaman Common Palmfly",
+            "name": "Andaman Common Palmfly Butterfly",
             "tags": [
                 "Butterfly"
             ],
@@ -364,6 +373,15 @@
             "family": "Butterflies",
             "latin_name": "ixias pyrene"
         },
+        "jamides-bochus": {
+            "key": "jamides-bochus",
+            "name": "Dark Cerulean Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "jamides bochus"
+        },
         "junonia-atlites": {
             "key": "junonia-atlites",
             "name": "Grey Pansy Butterfly",
@@ -428,6 +446,15 @@
             ],
             "family": "Butterflies",
             "latin_name": "rathinda amor"
+        },
+        "mycalesis-gotama": {
+            "key": "mycalesis-gotama",
+            "name": "Chinese Bushbrown Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "mycalesis gotama"
         },
         "neptis-hylas": {
             "key": "neptis-hylas",
@@ -651,24 +678,6 @@
             "family": "Damselflies",
             "latin_name": "copera marginipes"
         },
-        "zizeeria-karsandra": {
-            "key": "zizeeria-karsandra",
-            "name": "Dark Grass Blue Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "zizeeria karsandra"
-        },
-        "bassarona-recta": {
-            "key": "bassarona-recta",
-            "name": "Redtail Marquis Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "bassarona recta"
-        },
         "zipaetis-saitis": {
             "key": "zipaetis-saitis",
             "name": "Banded Catseye Butterfly",
@@ -678,23 +687,14 @@
             "family": "Butterflies",
             "latin_name": "zipaetis saitis"
         },
-        "jamides-bochus": {
-            "key": "jamides-bochus",
-            "name": "Dark Cerulean Butterfly",
+        "zizeeria-karsandra": {
+            "key": "zizeeria-karsandra",
+            "name": "Dark Grass Blue Butterfly",
             "tags": [
                 "Butterfly"
             ],
             "family": "Butterflies",
-            "latin_name": "jamides bochus"
-        },
-        "mycalesis-gotama": {
-            "key": "mycalesis-gotama",
-            "name": "Chinese Bushbrown Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "mycalesis gotama"
+            "latin_name": "zizeeria karsandra"
         }
     }
 }
