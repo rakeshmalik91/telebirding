@@ -102,10 +102,7 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
     let aYear = '<a' + ti + ' onclick="triggerFilter(\'date\', \'' + sighting.date.format(Constants.FILTER_YEAR_FORMAT) + '\')">' + dateSplit[2] + '</a>';
     sightingLabelDiv.append('<div class="sighting-desc">' + aDay + aMonth + aYear + '</div>');
 
-    if (inPreviewPage) {
-        let author = sighting.author || Constants.DEFAULT_AUTHOR;
-        sightingLabelDiv.append('<div class="sighting-desc">Photographed by <a href="' + ((State.data.author && State.data.author[author]) || '') + '" target="_blank">' + author + '</a></div>');
-    }
+
 
     sighting.rating = sighting.rating || 0;
     // var rating = [...Array(Number(sighting.rating)).keys().map(k => "★")].join("");			// Not working on iOS chrome/firefox

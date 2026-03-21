@@ -4,19 +4,28 @@ import Util from '../util.js';
 import { enableScroll, disableScroll } from '../ui-helpers.js';
 import { renderSightingDetails, renderSightingThumbnailsAndDescription, renderSightingTags } from './rendering.js';
 
-function buildExifInfoIcon(media) {
+function buildExifInfoIcon(media, author) {
     const exif = media.exif_data;
-    if (!exif || !exif.camera_model) return '';
     let tooltipLines = [];
-    if (exif.camera_model) {
+    if (exif && exif.camera_model) {
         let model = exif.camera_model.split('+').map(p => {
             let part = p.trim();
             return (State.data.camera_model && State.data.camera_model[part]) || part;
         }).join(" + ");
         tooltipLines.push('📷 ' + model);
     }
+    
+    if (author) {
+        let authorLink = (State.data.author && State.data.author[author]) || '';
+        if (authorLink) {
+            tooltipLines.push('👤 <a href="' + authorLink + '" target="_blank" style="color: #c0f2ff; text-decoration: none;">' + author + '</a>');
+        } else {
+            tooltipLines.push('👤 ' + author);
+        }
+    }
+
     if (!tooltipLines.length) return '';
-    return '<div class="exif-info-icon" title="' + tooltipLines.join('\n') + '">ⓘ<div class="exif-tooltip">' + tooltipLines.join('<br>') + '</div></div>';
+    return '<div class="exif-info-icon" title="' + tooltipLines.join('\n').replace(/<[^>]*>?/gm, '') + '">ⓘ<div class="exif-tooltip">' + tooltipLines.join('<br>') + '</div></div>';
 }
 
 
@@ -145,7 +154,7 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         $('body').append('<div class="' + wrapperClass + '"></div>');
         const wrapper = $('.preview-wrapper');
 
-        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + buildExifInfoIcon(media) + '</div>');
+        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + buildExifInfoIcon(media, sighting.author || Constants.DEFAULT_AUTHOR) + '</div>');
         wrapper.append('<div class="preview-image-desc"></div>');
 
         $('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png" title="Close"/></button>');
@@ -200,7 +209,7 @@ function updatePreviewMedia(sightingKey, imageSrc) {
     } else {
         mediaTag = '<img src="' + imageSrc + '" title="' + sighting.species.name + '" alt="' + sighting.species.name + '"></img>';
     }
-    previewImageDiv.html(mediaTag + buildExifInfoIcon(media));
+    previewImageDiv.html(mediaTag + buildExifInfoIcon(media, sighting.author || Constants.DEFAULT_AUTHOR));
 
     // Update thumbnail selection
     $('.preview-image-desc .photos div').removeClass('selected');

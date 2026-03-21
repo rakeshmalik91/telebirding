@@ -828,16 +828,23 @@ span.text-seperator {
 	width: 28px;
 	height: 28px;
 	font-size: 22px;
-	color: rgba(255, 255, 255, 0.5);
+	color: #ffffff;
 	cursor: pointer;
 	z-index: 10;
-	line-height: 28px;
-	text-align: center;
-	transition: color 0.2s;
+	line-height: normal;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s;
+	background: rgba(0, 0, 0, 0.4);
+	text-shadow: 0px 0px 4px rgba(0,0,0,1);
+	border-radius: 50%;
+	opacity: 0.7;
 }
 
 .exif-info-icon:hover {
-	color: #ffffff;
+	opacity: 1;
+	background: rgba(0, 0, 0, 0.7);
 }
 
 .exif-tooltip {
@@ -851,8 +858,9 @@ span.text-seperator {
 	padding: 8px 14px;
 	border-radius: 6px;
 	white-space: nowrap;
-	pointer-events: none;
+	/* pointer-events: none; */
 	box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+	text-align: left;
 }
 
 .exif-info-icon:hover .exif-tooltip {
