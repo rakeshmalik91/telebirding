@@ -186,6 +186,7 @@ export default class Util {
 	}
 
 	static getData(path) {
+		if (!path) return '';
 		if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) {
 			return path
 		} else if (FirebaseApi.FIREBASE_ENABLED) {

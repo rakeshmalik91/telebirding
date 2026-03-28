@@ -29,12 +29,14 @@ export function computeInternalDataFields() {
     });
     //add missing families
     let familyNames = State.data.families.map(f => f.name);
-    State.data.families.concat(State.data.sightings.filter(b => !familyNames.includes(b.species.family)).map(function (b) { return { name: b.family }; }));
+    const newFamilies = [...new Set(State.data.sightings.filter(b => b.species.family && !familyNames.includes(b.species.family)).map(b => b.species.family))];
+    State.data.families = State.data.families.concat(newFamilies.map(function (f) { return { name: f }; }));
     //fix missing family images or paths
     State.data.families.forEach(function (family) {
         family.imagesrc = ((((State.data.sightings.filter(b => b.species.family == family.name) || [])[0] || {}).media || []).filter(m => m.type !== 'video')[0] || {}).src;
-        family.count = State.data.sightings.filter(b => b.species.family == family).length;
+        family.count = State.data.sightings.filter(b => b.species.family == family.name).length;
     })
+    State.data.families.sort((a, b) => Util.compare(a.name, b.name));
 
     //places
     if (!Object.entries(State.data.countries)[0][1].count) {
