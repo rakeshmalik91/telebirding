@@ -52,8 +52,27 @@ The project is a static web app hosted on Firebase, using Vanilla JS, HTML, and 
    firebase serve --only hosting
    ```
    Access at `http://localhost:5000`
+   
+### Testing
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Run All Tests**:
+   ```bash
+   npm test
+   ```
+   *This uses **Vitest** with a **jsdom** environment to verify core utility functions and UI helpers.*
+
+3. **Generate Full Project Coverage**:
+   ```bash
+   npm run coverage
+   ```
+   *This generates a comprehensive report for all modules, including both **Public** and **Admin** features. Aim for 90%+ coverage on core application logic.*
+
 
 ### Deployment
+
 To deploy changes to the live site:
 ```bash
 firebase deploy

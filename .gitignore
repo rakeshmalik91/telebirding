@@ -30,3 +30,12 @@ telebirding-app/**/*.dex
 telebirding-app/**/local.properties
 
 dataset
+
+coverage/*
+!coverage/index.html
+!coverage/base.css
+
+tmp
+.tmp
+*.log
+test*.txt

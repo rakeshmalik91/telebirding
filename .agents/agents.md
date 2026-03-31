@@ -22,3 +22,4 @@ This file defines coding standards and rules for the Antigravity agent to follow
 - **Rule Enforcement**: Always refer to this file and `.cursorrules` before suggesting or implementing changes.
 - **Workflow Usage**: Check `.agents/workflows` for specific operational procedures before starting complex tasks.
 - **Project Structure**: Be mindful of the split between static files in the root and processing scripts in the `utils/` directory.
+- **Requirements Tooling**: Be aware that generating `requirements.txt` can sometimes cause the agent to freeze. If this occurs, try creating the file with minimal contents and then appending dependencies, or use `run_command` with `echo` as an alternative to `write_to_file`.
