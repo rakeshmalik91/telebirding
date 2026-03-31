@@ -420,11 +420,14 @@ export function deleteSpecies(key) {
 export function moveSighting(sightingKey, value) {
     let sighting = data.sightings.filter(b => b.key == sightingKey)[0];
     let index = data.sightings.map(b => b.key).indexOf(sightingKey);
-    if (value > 0 && index < data.sightings.length - value) { // move down
-        data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index + 1, index + value + 1), [sighting], data.sightings.slice(index + value + 1)].flat();
+    if (index === -1) return;
+    if (value > 0 && index < data.sightings.length - 1) { // move down
+        let newIndex = Math.min(index + value, data.sightings.length - 1);
+        data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index + 1, newIndex + 1), [sighting], data.sightings.slice(newIndex + 1)].flat();
         syncSightingsData(0);
-    } else if (value < 0 && index >= value) { // move up
-        data.sightings = [data.sightings.slice(0, index + value), [sighting], data.sightings.slice(index + value, index), data.sightings.slice(index + 1)].flat();
+    } else if (value < 0 && index > 0) { // move up
+        let newIndex = Math.max(index + value, 0);
+        data.sightings = [data.sightings.slice(0, newIndex), [sighting], data.sightings.slice(newIndex, index), data.sightings.slice(index + 1)].flat();
         syncSightingsData(0);
     }
 }
@@ -437,7 +440,7 @@ export function sortByDate() {
 export function sightingMatches(sighting, searchKey) {
     searchKey = searchKey.toLowerCase().trim();
     if (searchKey == "hidden") {
-        return sighting.hidden;
+        return !!sighting.hidden;
     } else if (searchKey == "unconfirmed") {
         return sighting.unconfirmed;
     } else if (searchKey.match(/^rating=/i)) {
@@ -455,6 +458,7 @@ export function sightingMatches(sighting, searchKey) {
         || (sighting.plumage && sighting.plumage.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0);
 }
+
 
 export function getCurrentMode() {
     return currentMode;

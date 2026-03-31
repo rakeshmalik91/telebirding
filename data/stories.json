@@ -1,6 +1,60 @@
 {
     "stories": [
         {
+            "title": "Andaman & Nicobar Islands",
+            "date": "February - March 2026",
+            "youtubeVideoId": "bqlvur3NTds",
+            "storyHtml": "<p>It was a 2.5 week trip to Andaman & Nicobar Islands, with <a href='https://www.instagram.com/andaman_birding_tours' target='_blank'>Andaman Birding Tours</a>.</p>",
+            "itineraryExpanded": false,
+            "itinerary": [
+                {
+                    "date": "25/02/2026",
+                    "activity": "Morning flight to Port Blair. Stay at Port Blair & birding in South Andaman."
+                },
+                {
+                    "date": "26/02 - 04/03/2026",
+                    "activity": "Stay at Port Blair & birding in South Andaman (Kalatang, Chidiyatapu, Ograbraj, Shippighat, Haddo Warf, Ferrargunj)."
+                },
+                {
+                    "date": "05/03/2026",
+                    "activity": "Board ship to Nicobar."
+                },
+                {
+                    "date": "06/03/2026",
+                    "activity": "Morning land at Kamorta for 30 min speed birding, mainly Pied Triller. Pelagics near Katchal, mostly terns. Reach Great Nicobar."
+                },
+                {
+                    "date": "07 - 11/03/2026",
+                    "activity": "Stay at Campbell Bay & birding at Great Nicobar (Campbell Bay, Gandhi Nagar, Vijay Nagar, Magarnallah, Galathea, Indira Point)."
+                },
+                {
+                    "date": "12/03/2026",
+                    "activity": "Board ship for Port Blair. Another 30 min speed birding at Kamorta."
+                },
+                {
+                    "date": "13/03/2026",
+                    "activity": "Arrive at Port Blair in morning. Stay at Port Blair & birding in South Andaman."
+                },
+                {
+                    "date": "14/03/2026",
+                    "activity": "Visit Limestone cave & mud volcano at Baratang."
+                },
+                {
+                    "date": "15/03/2026",
+                    "activity": "Flight to Kolkata."
+                }
+            ],
+            "sightings": [
+                {
+                    "text": "Andaman & Nicobar Sightings",
+                    "params": {
+                        "place": "Andaman & Nicobar Islands",
+                        "date": "2026"
+                    }
+                }
+            ]
+        },
+        {
             "title": "Nalsarovar & Little Rann of Kutch, Gujarat",
             "date": "August 2025, January 2026",
             "youtubeVideoId": "jxE1H7RRWlQ",

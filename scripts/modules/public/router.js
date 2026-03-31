@@ -141,6 +141,25 @@ export function retrieveStateFromUrlParams() {
 }
 
 
+export function updateStorySlug(slug) {
+    const urlParams = Util.getUrlParams();
+    if (urlParams.story === slug) return;
+
+    const state = { ...(history.state || {}) };
+    state.params = { ...(state.params || {}) };
+    state.params.story = slug;
+
+    const newUrl = getUrlFromState(state);
+    history.replaceState(state, '', newUrl);
+}
+
+window.addEventListener('story-in-view', (e) => {
+    if (State.currentPage === Constants.STORIES) {
+        updateStorySlug(e.detail.slug);
+    }
+});
+
+
 const UI_VIEWS = [
     '.home', '.home-page', '.home .menu', '.home .explore-menu', '.map-menu', '.about-page', '.stories',
     '.sightings-list', '.filter-panel', '.filter-panel .filter', '.filter-panel .sortby', '.filter-panel .stats'

@@ -4,6 +4,8 @@ import State from './state.js';
 import { initSightingCarousal } from './ui-helpers.js';
 import { getFilter } from './filters.js';
 
+let storyInViewObserver;
+
 export function getSightingPhotoTitle(sighting, image) {
     if (image.title) return image.title;
     let plumage = [];
@@ -422,6 +424,16 @@ export function renderStories(containerSelector = '.stories', limit = 0, targetS
 
     if (containerSelector === '.stories') {
         div.append('<h1>Stories</h1><hr class="heading-hr" />');
+        if (!storyInViewObserver) {
+            storyInViewObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const slug = entry.target.id;
+                        window.dispatchEvent(new CustomEvent('story-in-view', { detail: { slug } }));
+                    }
+                });
+            }, { threshold: 0.2 });
+        }
     }
 
     const isHomePage = containerSelector === '.home-stories';
@@ -507,7 +519,11 @@ export function renderStories(containerSelector = '.stories', limit = 0, targetS
 
         const end = renderedCount + countToRender;
         for (let i = renderedCount; i < end; i++) {
-            div.append(generateStoryHtml(stories[i], i));
+            const storyHtml = generateStoryHtml(stories[i], i);
+            const storyEl = $(storyHtml).appendTo(div);
+            if (storyInViewObserver && containerSelector === '.stories') {
+                storyInViewObserver.observe(storyEl[0]);
+            }
         }
         renderedCount = end;
 
