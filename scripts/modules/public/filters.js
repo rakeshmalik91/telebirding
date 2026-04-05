@@ -67,6 +67,18 @@ export function filterAndSortData(filter, params) {
         filteredSightings = filteredSightings.filter(b => (b.rating || 0) >= State.ratingFilter);
     }
 
+    //camera_model filter
+    if (filter.camera_model) {
+        filteredSightings = filteredSightings.filter(b => b.media && b.media.some(m => {
+            const rawModel = (m.camera_model || (m.exif_data && m.exif_data.camera_model) || '').toLowerCase();
+            if (rawModel.includes(filter.camera_model.toLowerCase())) return true;
+
+            // Check resolved names from mapping (e.g. S7RV -> Sony α7rmV)
+            const resolvedModel = Util.resolveCameraModel(rawModel, State.data.camera_model);
+            return resolvedModel.toLowerCase().includes(filter.camera_model.toLowerCase());
+        }));
+    }
+
     //sort
     switch (State.sort.by) {
         case 'name':
@@ -129,6 +141,7 @@ export function getFilters() {
         sighting: getFilter('sighting') || '',
         place: getFilter('place') || '',
         date: getFilter('date') || '',
+        camera_model: getFilter('camera_model') || '',
         newspecies: State.newSpeciesFilter,
         rating: State.ratingFilter
     };
@@ -138,14 +151,17 @@ export function setFilter(type, value) {
     if (type == 'rating') {
         State.updateRatingFilter(value || 0);
     } else {
-        $(".filter input[data-value='" + type + "']")[0].value = value ? value : null;
-        if (value) {
-            $(".filter input[data-value='" + type + "']").addClass("button-active");
-            $(".filter input[data-value='" + type + "'] + button").removeClass("hidden");
-            if (type == 'date') $(".filter input[data-value='" + type + "'] + button").addClass("button-active").html(value);
-        } else {
-            $(".filter input[data-value='" + type + "']").removeClass("button-active");
-            if (type == 'date') $(".filter input[data-value='" + type + "'] + button").addClass("hidden");
+        const input = $(".filter input[data-value='" + type + "']");
+        if (input.length) {
+            input[0].value = value ? value : null;
+            if (value) {
+                input.addClass("button-active");
+                input.next("button").removeClass("hidden");
+                if (type == 'date') input.next("button").addClass("button-active").html(value);
+            } else {
+                input.removeClass("button-active");
+                if (type == 'date') input.next("button").addClass("hidden");
+            }
         }
     }
 }
@@ -156,6 +172,7 @@ export function setFilters(filter) {
         setFilter('place', filter.place);
         setFilter('date', filter.date);
         setFilter('rating', filter.rating);
+        setFilter('camera_model', filter.camera_model);
     }
 }
 

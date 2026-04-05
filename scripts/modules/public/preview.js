@@ -8,10 +8,7 @@ function buildExifInfoIcon(media, author) {
     const exif = media.exif_data;
     let tooltipLines = [];
     if (exif && exif.camera_model) {
-        let model = exif.camera_model.split('+').map(p => {
-            let part = p.trim();
-            return (State.data.camera_model && State.data.camera_model[part]) || part;
-        }).join(" + ");
+        let model = Util.resolveCameraModel(exif.camera_model, State.data.camera_model);
         tooltipLines.push('📷 ' + model);
     }
     

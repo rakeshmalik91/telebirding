@@ -114,6 +114,7 @@ showPage(State.currentPage, {
 	sighting: params.sighting ? decodeURIComponent(params.sighting) : undefined,
 	place: params.place ? decodeURIComponent(params.place) : undefined,
 	date: params.date ? decodeURIComponent(params.date) : undefined,
+	camera_model: params.camera_model ? decodeURIComponent(params.camera_model) : undefined,
 	story: params.story ? decodeURIComponent(params.story) : undefined,
 	sort_by: params.sort_by ? decodeURIComponent(params.sort_by) : undefined,
 	sort_descending: params.sort_descending

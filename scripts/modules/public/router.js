@@ -86,6 +86,7 @@ export function getUrlFromState(state) {
     if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.sighting) url += "&sighting=" + encodeURIComponent(state.filter.sighting);
     if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.place) url += "&place=" + encodeURIComponent(state.filter.place);
     if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.date) url += "&date=" + encodeURIComponent(state.filter.date);
+    if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.camera_model) url += "&camera_model=" + encodeURIComponent(state.filter.camera_model);
     if (!(state.sort.by == 'date' && state.sort.descending)) {
         if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.sort && state.sort.by) url += "&sort_by=" + encodeURIComponent(state.sort.by);
         if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.sort && state.sort.descending) url += "&sort_descending=" + encodeURIComponent(state.sort.descending);
@@ -128,13 +129,17 @@ export function retrieveStateFromUrlParams() {
         State.updateRatingFilter(urlParams.rating || 0);
     }
 
-    if ([Constants.ARCHIVE, Constants.MAP].includes(urlParams.page)) {
+    if ([Constants.ARCHIVE, Constants.MAP].includes(State.currentPage)) {
         $(".filter").ready(function () {
             if (urlParams.sighting) $(".filter input[data-value='sighting']").addClass("button-active").val(Util.capitalize(decodeURIComponent(urlParams.sighting)).trim());
             if (urlParams.place) $(".filter input[data-value='place']").addClass("button-active").val(Util.capitalize(decodeURIComponent(urlParams.place)).trim());
             if (urlParams.date) {
                 $(".filter input[data-value='date']").val(Util.capitalize(decodeURIComponent(urlParams.date)).trim());
                 $(".filter input[data-value='date'] + button").removeClass("hidden").addClass("button-active").html(Util.capitalize(decodeURIComponent(urlParams.date)).trim());
+            }
+            if (urlParams.camera_model) {
+                // Ensure it's correctly assigned to the input if it's there, or just keep it in state
+                $(".filter input[data-value='camera_model']").addClass("button-active").val(decodeURIComponent(urlParams.camera_model).trim());
             }
         });
     }
@@ -248,8 +253,9 @@ export function showPage(page, params, isPopstate) {
         filter.place = params.place || filter.place || '';
         filter.date = params.date || filter.date || '';
         filter.sighting = params.sighting || filter.sighting || '';
-        filter.newspecies = params.newspecies;
-        filter.rating = params.rating;
+        filter.camera_model = params.camera_model || filter.camera_model || '';
+        filter.newspecies = params.newspecies || filter.newspecies;
+        filter.rating = params.rating || filter.rating;
     }
 
     if (!isPopstate) {

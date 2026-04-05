@@ -308,6 +308,19 @@ export default class Util {
 		}
 	}
 
+	/**
+	 * Resolve a raw camera-model code string (e.g. "S7RV+200600") into
+	 * human-readable names using the supplied mapping.
+	 * Returns the resolved string joined by " + ".
+	 */
+	static resolveCameraModel(rawModel, cameraModelMapping) {
+		if (!rawModel) return '';
+		return rawModel.split('+').map(p => {
+			const part = p.trim();
+			return (cameraModelMapping && (cameraModelMapping[part] || cameraModelMapping[part.toUpperCase()])) || part;
+		}).join(' + ');
+	}
+
 	static uuidv4() {
 		return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
 			(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
