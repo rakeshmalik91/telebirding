@@ -85,37 +85,37 @@ def upload_json_file(local_path: Path, remote_path: str):
         text = local_path.read_text(encoding='utf8')
         obj = json.loads(text)
     except Exception as e:
-        print(f"  -> Failed to parse JSON {local_path}: {e}")
+        print(f"-> Failed to parse JSON {local_path}: {e}")
         return False
     try:
         minified = json.dumps(obj, separators=(',', ':'), ensure_ascii=False)
         blob = bucket.blob(remote_path)
         # Upload as a text string and explicitly set content_type to avoid mismatches
-        print(f"Uploading (minified) {local_path} to {remote_path} ...")
+        print(f"from (minified) {local_path}", end=" ")
         # upload_from_string will overwrite existing object; pass content_type to match metadata
         blob.upload_from_string(minified, content_type='application/json; charset=utf-8')
         return True
     except Exception as e:
-        print(f"  -> Failed to upload {remote_path}: {e}")
+        print(f"-> Failed to upload {remote_path}: {e}")
         return False
 
 
 def upload_data_files():
     for p in DATA_FILES:
-        print("\nUploading (replace):", p)
+        print("Uploading (replace):", p, end=" ")
         local = ROOT / p
         if not local.exists():
-            print("  -> local file not found:", local)
+            print("-> local file not found:", local)
             continue
         ok = upload_json_file(local, p)
-        print("  -> uploaded." if ok else "  -> upload failed.")
+        print("-> uploaded." if ok else "-> upload failed.")
 
 
 def upload_featured_images():
     if not FEATURED_DIR.exists():
-        print("\nNo featured-images directory found at:", FEATURED_DIR)
+        print("No featured-images directory found at:", FEATURED_DIR)
         return
-    print("\nScanning featured-images for missing uploads...")
+    print("Scanning featured-images for missing uploads...")
     for p in sorted(FEATURED_DIR.rglob("*")):
         if not p.is_file():
             continue
@@ -123,13 +123,13 @@ def upload_featured_images():
             continue
         # Preserve the local directory structure when uploading (e.g. featured-images/subdir/img.jpg)
         remote_path = p.relative_to(ROOT).as_posix()
-        print("\nChecking:", remote_path)
+        print("Checking:", remote_path, end=" ")
         if remote_exists(remote_path):
-            print("  -> exists; skipping.")
+            print("-> exists; skipping.")
             continue
-        print("  -> missing remotely; uploading...")
+        print("-> missing remotely; uploading...", end=" ")
         ok = upload_via_client(p, remote_path)
-        print("  -> uploaded." if ok else "  -> upload failed.")
+        print("-> uploaded." if ok else "-> upload failed.")
 
 
 def _collect_referenced_featured_images_from_site_data_and_stories():
@@ -232,26 +232,26 @@ def cleanup_unused_featured_images():
     try:
         blobs = list(bucket.list_blobs(prefix="featured-images/"))
     except Exception as e:
-        print("\nFailed to list blobs from bucket:", e)
+        print("Failed to list blobs from bucket:", e)
         return
 
     # Ignore directory-marker objects (names ending with '/') — treat them as non-deletable markers
     markers = [b for b in blobs if b.name.endswith('/')]
     if markers:
-        print(f"\nNote: found {len(markers)} directory marker object(s) on remote; these will be skipped:")
+        print(f"Note: found {len(markers)} directory marker object(s) on remote; these will be skipped:")
         for m in markers:
-            print("  -", m.name)
+            print("-", m.name)
 
     remote_unused = [b for b in blobs if b.name not in referenced_rel and not b.name.endswith('/')]
 
     if not remote_unused:
-        print('\nNo unused featured-images found on remote.')
+        print('No unused featured-images found on remote.')
         return
 
-    print(f"\nFound {len(remote_unused)} unused featured image(s) on remote:")
+    print(f"Found {len(remote_unused)} unused featured image(s) on remote:")
     # Print the full list of remote paths first
     for b in sorted(remote_unused, key=lambda x: x.name):
-        print("  -", b.name)
+        print("-", b.name)
 
     # Now prompt per object for deletion
     for b in sorted(remote_unused, key=lambda x: x.name):
@@ -259,20 +259,20 @@ def cleanup_unused_featured_images():
         if ans in ('y', 'yes'):
             try:
                 b.delete()
-                print(f"  Deleted remote object {b.name}")
+                print(f"Deleted remote object {b.name}")
             except Exception as e:
-                print(f"  Failed to delete remote object {b.name}: {e}")
+                print(f"Failed to delete remote object {b.name}: {e}")
         else:
-            print(f"  Skipped {b.name}")
+            print(f"Skipped {b.name}")
 
     # Additionally inform about any local files that are unused (optional informational)
     if FEATURED_DIR.exists():
         local_files = [p.resolve() for p in FEATURED_DIR.rglob('*') if p.is_file() and p.suffix.lower() in IMAGE_EXTS]
         local_unused = [p for p in sorted(local_files) if p.relative_to(ROOT).as_posix() not in referenced_rel]
         if local_unused:
-            print(f"\nNote: {len(local_unused)} local featured-image(s) are not referenced in site-data.json (left untouched):")
+            print(f"Note: {len(local_unused)} local featured-image(s) are not referenced in site-data.json (left untouched):")
             for p in local_unused:
-                print("  -", p.relative_to(ROOT))
+                print("-", p.relative_to(ROOT))
 
 
 def main():
@@ -283,7 +283,7 @@ def main():
         upload_featured_images()
         cleanup_unused_featured_images()
     except RuntimeError as e:
-        print("\nError:", e)
+        print("Error:", e)
         print("Make sure `gcloud auth application-default login` or `GOOGLE_APPLICATION_CREDENTIALS` is configured and you have appropriate IAM permissions.")
         sys.exit(2)
 

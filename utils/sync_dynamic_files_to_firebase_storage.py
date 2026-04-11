@@ -61,12 +61,12 @@ def upload_minified_json(client, local_path, remote_path):
         blob = bucket.blob(remote_path)
         blob.content_type = 'application/json; charset=utf-8'
         
-        print(f"Uploading {remote_path}...")
+        print(f"Uploading {remote_path}", end=" ")
         blob.upload_from_string(minified, content_type='application/json; charset=utf-8')
-        print(f"  -> Success")
+        print(f"-> Success")
         return True
     except Exception as e:
-        print(f"  -> Failed to upload {remote_path}: {e}")
+        print(f"-> Failed to upload {remote_path}: {e}")
         return False
 
 def cleanup_remote_images(client):
@@ -98,7 +98,7 @@ def cleanup_remote_images(client):
                     if thumb:
                         referenced_images.add(thumb.lstrip('/'))
         except Exception as e:
-            print(f"  Error reading {f_path.name}: {e}")
+            print(f"Error reading {f_path.name}: {e}")
 
     print(f"Found {len(referenced_images)} referenced images in JSON files.")
 
@@ -124,8 +124,7 @@ def cleanup_remote_images(client):
 
     print(f"Found {len(orphaned_images)} unused images on remote:")
     for img in sorted(orphaned_images):
-        print(f"  - {img}")
-    print()
+        print(f"- {img}")
     
     # Confirm deletion if in interactive terminal
     if sys.stdin.isatty():
@@ -138,12 +137,12 @@ def cleanup_remote_images(client):
 
     # 4. Delete orphaned images
     for img_path in orphaned_images:
-        print(f"  Deleting {img_path}...")
+        print(f"Deleting {img_path}...")
         try:
             bucket.blob(img_path).delete()
-            print(f"    -> Deleted.")
+            print(f"-> Deleted.")
         except Exception as e:
-            print(f"    -> Failed to delete {img_path}: {e}")
+            print(f"-> Failed to delete {img_path}: {e}")
 
     print("Cleanup complete.")
 
@@ -178,12 +177,12 @@ def main():
         
         # Check bird group
         if any(f in changed_files for f in bird_files):
-            print("  -> Bird data change detected. Queueing all bird files.")
+            print("-> Bird data change detected. Queueing all bird files.")
             files_set.update(bird_files)
             
         # Check insect group
         if any(f in changed_files for f in insect_files):
-            print("  -> Insect data change detected. Queueing all insect files.")
+            print("-> Insect data change detected. Queueing all insect files.")
             files_set.update(insect_files)
             
         files_to_upload = sorted(list(files_set))
