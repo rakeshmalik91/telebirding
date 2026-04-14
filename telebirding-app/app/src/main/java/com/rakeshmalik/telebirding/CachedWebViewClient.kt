@@ -54,22 +54,21 @@ class CachedWebViewClient(private val siteCache: SiteCache) {
         val file = File(siteCache.liveDir, cleanPath)
         if (!file.exists() || !file.isFile) {
             Log.d(TAG, "Cache miss (hosting): $cleanPath")
+            
+            // Media files and JSON data files are hosted on Firebase Storage
+            val isFromFirebase = cleanPath.startsWith("images/") || 
+                                 cleanPath.startsWith("featured-images/") ||
+                                 cleanPath.startsWith("data/")
+            
+            val bytes = siteCache.lazyDownloadAndCache(cleanPath, isFirebase = isFromFirebase)
+            if (bytes != null) {
+                return createResponse(cleanPath, bytes)
+            }
             return null
         }
 
         Log.d(TAG, "Cache hit (hosting): $cleanPath")
-        val mimeType = siteCache.getMimeType(cleanPath)
-        return WebResourceResponse(
-            mimeType,
-            "UTF-8",
-            200,
-            "OK",
-            mapOf(
-                "Access-Control-Allow-Origin" to "*",
-                "Cache-Control" to "no-cache"
-            ),
-            ByteArrayInputStream(file.readBytes())
-        )
+        return createResponse(cleanPath, file.readBytes())
     }
 
     private fun serveFirebaseStorageFromCache(urlString: String): WebResourceResponse? {
@@ -83,21 +82,29 @@ class CachedWebViewClient(private val siteCache: SiteCache) {
         val file = File(siteCache.liveDir, relativePath)
         if (!file.exists() || !file.isFile) {
             Log.d(TAG, "Cache miss (Firebase): $relativePath")
+            val bytes = siteCache.lazyDownloadAndCache(relativePath, isFirebase = true)
+            if (bytes != null) {
+                return createResponse(relativePath, bytes)
+            }
             return null
         }
 
         Log.d(TAG, "Cache hit (Firebase): $relativePath")
-        val mimeType = siteCache.getMimeType(relativePath)
+        return createResponse(relativePath, file.readBytes())
+    }
+
+    private fun createResponse(path: String, bytes: ByteArray): WebResourceResponse {
+        val mimeType = siteCache.getMimeType(path)
         return WebResourceResponse(
             mimeType,
-            null,
+            if (mimeType.startsWith("text/")) "UTF-8" else null,
             200,
             "OK",
             mapOf(
                 "Access-Control-Allow-Origin" to "*",
                 "Cache-Control" to "no-cache"
             ),
-            ByteArrayInputStream(file.readBytes())
+            ByteArrayInputStream(bytes)
         )
     }
 }

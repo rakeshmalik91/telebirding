@@ -109,16 +109,23 @@ class SiteCache(private val context: Context) {
                 }
 
                 listener?.onUpdateProgress("Downloading app files...", 0, 0)
-                val shellResult = downloadShellFiles(isFirstRun)
+                
+                // 1. Download Data JSON files first as requested
+                val dataResult = downloadDataFiles(listener)
+                Log.i(TAG, "Data files download complete. Any changed: ${dataResult.anyChanged}")
+
+                // 2. Download Shell files
+                val shellResult = downloadShellFiles(isFirstRun, listener)
                 if (isFirstRun && !shellResult && !hasCachedSite) {
                     throw Exception("Failed to download shell files on first run")
                 }
 
-                if (isFirstRun && shellResult) {
+                // Promote Data and Shell to live immediately so the app can start using them
+                if (isFirstRun || dataResult.anyChanged || shellResult) {
                     commitShell()
                 }
 
-                val dataResult = downloadDataFiles()
+                // 3. Download Media files (images)
                 val mediaResult = downloadDeltaMedia(listener)
 
                 if (isFirstRun) {
@@ -155,18 +162,21 @@ class SiteCache(private val context: Context) {
         }
     }
 
-    private suspend fun downloadShellFiles(isFirstRun: Boolean): Boolean = coroutineScope {
+    private suspend fun downloadShellFiles(isFirstRun: Boolean, listener: UpdateListener? = null): Boolean = coroutineScope {
         var anyDownloaded = false
         val allFiles = SHELL_FILES + ICON_FILES
         val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
+        val downloadedCount = AtomicInteger(0)
         
+        listener?.onUpdateProgress("Downloading app internal files...", 0, allFiles.size)
+
         val deferreds = allFiles.map { relativePath ->
             async {
                 semaphore.withPermit {
                     val url = "$SITE_BASE_URL/$relativePath"
                     val stagingFile = File(stagingDir, relativePath)
                     val liveFile = File(liveDir, relativePath)
-                    try {
+                    val downloaded = try {
                         val bytes = downloadUrl(url)
                         if (bytes != null) {
                             if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
@@ -181,6 +191,12 @@ class SiteCache(private val context: Context) {
                         Log.w(TAG, "Minor file fail: $relativePath - ${e.message}")
                         false
                     }
+                    
+                    val current = downloadedCount.incrementAndGet()
+                    if (current % 10 == 0 || current == allFiles.size) {
+                        listener?.onUpdateProgress("Downloaded $current/${allFiles.size} app files...", current, allFiles.size)
+                    }
+                    downloaded
                 }
             }
         }
@@ -190,7 +206,7 @@ class SiteCache(private val context: Context) {
     }
 
     private fun commitShell() {
-        val shellDirs = listOf("css", "scripts", "lib", "icons", "fonts")
+        val shellDirs = listOf("css", "scripts", "lib", "icons", "fonts", "data")
         val shellFiles = listOf("index.html", "404.html", "privacy-policy.html")
         
         try {
@@ -217,10 +233,13 @@ class SiteCache(private val context: Context) {
 
     data class DataResult(val anyChanged: Boolean)
 
-    private suspend fun downloadDataFiles(): DataResult = coroutineScope {
+    private suspend fun downloadDataFiles(listener: UpdateListener?): DataResult = coroutineScope {
         var anyChanged = false
         val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
         
+        listener?.onUpdateProgress("Downloading data files...", 0, DATA_FILES.size)
+        val downloadedCount = AtomicInteger(0)
+
         val deferreds = DATA_FILES.map { dataPath ->
             async {
                 semaphore.withPermit {
@@ -232,6 +251,11 @@ class SiteCache(private val context: Context) {
                         true
                     } else false
                     atomicWrite(stagingFile, bytes)
+                    
+                    val current = downloadedCount.incrementAndGet()
+                    if (current % 2 == 0 || current == DATA_FILES.size) {
+                        listener?.onUpdateProgress("Downloaded $current/${DATA_FILES.size} data files...", current, DATA_FILES.size)
+                    }
                     changed
                 }
             }
@@ -373,6 +397,26 @@ class SiteCache(private val context: Context) {
     }
 
     private fun toFirebaseUrl(path: String) = FIREBASE_STORAGE_BASE + path.replace("/", "%2F") + "?alt=media"
+
+    /**
+     * Lazy download a file and save it to the live cache.
+     * This is used by the WebView interceptor to handle cache misses on demand.
+     */
+    fun lazyDownloadAndCache(relativePath: String, isFirebase: Boolean): ByteArray? {
+        val url = if (isFirebase) toFirebaseUrl(relativePath) else "$SITE_BASE_URL/$relativePath"
+        val file = File(liveDir, relativePath)
+        
+        val bytes = downloadUrl(url)
+        if (bytes != null) {
+            try {
+                atomicWrite(file, bytes)
+                Log.i(TAG, "Lazy load success: $relativePath (${bytes.size} bytes saved to live)")
+            } catch (e: Exception) {
+                Log.w(TAG, "Failed to save lazy loaded file $relativePath: ${e.message}")
+            }
+        }
+        return bytes
+    }
 
     private fun downloadUrl(urlString: String): ByteArray? {
         var connection: HttpURLConnection? = null
