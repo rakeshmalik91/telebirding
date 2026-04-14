@@ -41,8 +41,13 @@ class CachedWebViewClient(private val siteCache: SiteCache) {
         }
 
         if (host == FIREBASE_STORAGE_HOST && url.path?.startsWith(FIREBASE_STORAGE_PATH_PREFIX) == true) {
+            if (urlString.contains("featured-images%2F") || urlString.contains("featured-images/")) {
+                Log.d(TAG, "Blocking excluded Firebase resource: $urlString")
+                return null
+            }
             return serveFirebaseStorageFromCache(urlString)
         }
+
 
         return null
     }
@@ -56,8 +61,11 @@ class CachedWebViewClient(private val siteCache: SiteCache) {
             Log.d(TAG, "Cache miss (hosting): $cleanPath")
             
             // Media files and JSON data files are hosted on Firebase Storage
+            if (cleanPath.startsWith("featured-images/")) { // NOTE: skipped as not used in mobile version
+                Log.d(TAG, "Blocking excluded local resource: $cleanPath")
+                return null
+            }
             val isFromFirebase = cleanPath.startsWith("images/") || 
-                                 cleanPath.startsWith("featured-images/") ||
                                  cleanPath.startsWith("data/")
             
             val bytes = siteCache.lazyDownloadAndCache(cleanPath, isFirebase = isFromFirebase)

@@ -32,34 +32,12 @@ class SiteCache(private val context: Context) {
         // Number of simultaneous downloads allowed
         private const val MAX_PARALLEL_DOWNLOADS = 25
 
-        private val SHELL_FILES = listOf(
-            "index.html", "404.html", "privacy-policy.html",
-            "css/animations.css", "css/common.css", "css/home.css", "css/archive-page.css", "css/mobile.css", "css/toast.css",
-            "lib/js/jquery.min.js", "lib/js/moment.min.js", "lib/js/select2.min.js",
-            "scripts/main.js", "scripts/modules/constants.js", "scripts/modules/util.js", "scripts/modules/loader.js",
-            "scripts/modules/firebase-api.js", "scripts/modules/ebird-api.js", "scripts/modules/cropper.js",
-            "scripts/modules/ui-helpers.js", "scripts/modules/public/autocomplete.js", "scripts/modules/public/data-helpers.js",
-            "scripts/modules/public/filters.js", "scripts/modules/public/preview.js", "scripts/modules/public/rendering.js",
-            "scripts/modules/public/router.js", "scripts/modules/public/state.js", "scripts/modules/public/ui-helpers.js",
-            "fonts/Calibri.ttf"
-        )
+        private val SHELL_ENTRY_FILES = listOf("index.html", "404.html", "privacy-policy.html")
+        private val DATA_ENTRY_FILES = listOf("data/site-data.json", "data/stories.json", "data/places.json")
+        private val DATA_TYPES = listOf("sightings", "species", "families", "likes")
+        private val MODES = listOf("bird", "insect")
 
-        private val ICON_FILES = listOf(
-            "icons/Blog_Logo.png", "icons/about-icon.png", "icons/admin-icon.png", "icons/appicon.512x512.png",
-            "icons/appicon.png", "icons/archive-icon.png", "icons/background.jpg", "icons/bino-icon.png",
-            "icons/bird-icon.png", "icons/camera-icon-blue.png", "icons/camera-icon-yellow.png", "icons/close.png",
-            "icons/email-icon.png", "icons/favicon-16x16.png", "icons/favicon-48x48.png", "icons/favicon-64x64.png",
-            "icons/heart-hollow.png", "icons/heart.png", "icons/home-icon.png", "icons/insect-feed.png",
-            "icons/insect-id-app-icon.png", "icons/instagram-icon.png", "icons/loading.gif", "icons/map-icon.png",
-            "icons/pause.png", "icons/play.png", "icons/shuffle.png", "icons/telebirding-logo.png",
-            "icons/teleinsecta-logo.png", "icons/video-icon.png", "icons/weather-icons.png"
-        )
 
-        private val DATA_FILES = listOf(
-            "data/bird-sightings.json", "data/bird-species.json", "data/bird-families.json", "data/bird-likes.json",
-            "data/insect-sightings.json", "data/insect-species.json", "data/insect-families.json", "data/insect-likes.json",
-            "data/places.json", "data/stories.json", "data/site-data.json"
-        )
     }
 
     private val cacheBaseDir = File(context.filesDir, CACHE_DIR)
@@ -110,23 +88,29 @@ class SiteCache(private val context: Context) {
 
                 listener?.onUpdateProgress("Downloading app files...", 0, 0)
                 
-                // 1. Download Data JSON files first as requested
-                val dataResult = downloadDataFiles(listener)
+                // 3. Discover data and shell files dynamically
+                val dataFiles = discoverDataFiles()
+                val shellFiles = discoverShellFiles()
+
+                // 4. Download Data JSON files first as requested
+                val dataResult = downloadSpecifiedFiles(dataFiles, "data files", listener, isFirebase = true)
                 Log.i(TAG, "Data files download complete. Any changed: ${dataResult.anyChanged}")
 
-                // 2. Download Shell files
-                val shellResult = downloadShellFiles(isFirstRun, listener)
-                if (isFirstRun && !shellResult && !hasCachedSite) {
+                // 5. Download Shell and Icon files
+                val shellResult = downloadSpecifiedFiles(shellFiles, "app files", listener, isFirebase = false, isFirstRun)
+                if (isFirstRun && !shellResult.anyChanged && !hasCachedSite) {
                     throw Exception("Failed to download shell files on first run")
                 }
 
                 // Promote Data and Shell to live immediately so the app can start using them
-                if (isFirstRun || dataResult.anyChanged || shellResult) {
+                if (isFirstRun || dataResult.anyChanged || shellResult.anyChanged) {
                     commitShell()
                 }
 
-                // 3. Download Media files (images)
-                val mediaResult = downloadDeltaMedia(listener)
+
+                // 6. Download Media files (images)
+                val mediaResult = downloadDeltaMedia(dataFiles, listener)
+
 
                 if (isFirstRun) {
                     liveDir.deleteRecursively()
@@ -137,7 +121,8 @@ class SiteCache(private val context: Context) {
                     Log.i(TAG, "First run: site cache commit successful.")
                     listener?.onUpdateComplete(true)
                     return@withContext true
-                } else if (dataResult.anyChanged || shellResult || mediaResult) {
+                } else if (dataResult.anyChanged || shellResult.anyChanged || mediaResult) {
+
                     mergeStageIntoLive()
                     cleanupOrphanedMedia(liveDir)
                     Log.i(TAG, "Update applied successfully.")
@@ -162,67 +147,156 @@ class SiteCache(private val context: Context) {
         }
     }
 
-    private suspend fun downloadShellFiles(isFirstRun: Boolean, listener: UpdateListener? = null): Boolean = coroutineScope {
-        var anyDownloaded = false
-        val allFiles = SHELL_FILES + ICON_FILES
+    private fun discoverDataFiles(): List<String> {
+        val files = mutableSetOf<String>()
+        files.addAll(DATA_ENTRY_FILES)
+        MODES.forEach { mode ->
+            DATA_TYPES.forEach { Type ->
+                files.add("data/$mode-$Type.json")
+            }
+        }
+        return files.toList()
+    }
+
+    private fun discoverShellFiles(): List<String> {
+        val files = mutableSetOf<String>()
+        files.addAll(SHELL_ENTRY_FILES)
+        
+        // Add known folders for the early committer
+        // Actually we will crawl index.html to find actual files
+        val indexBytes = downloadUrl("$SITE_BASE_URL/index.html")
+        if (indexBytes != null) {
+            val html = String(indexBytes)
+            
+            // Extract CSS
+            val cssRegex = """href=["']([^"']+\.css)(?:\?.*)?["']""".toRegex()
+            cssRegex.findAll(html).forEach { files.add(it.groupValues[1]) }
+            
+            // Extract Scripts
+            val scriptRegex = """src=["']([^"']+\.js)(?:\?.*)?["']""".toRegex()
+            scriptRegex.findAll(html).forEach { files.add(it.groupValues[1]) }
+            
+            // Extract Icons from html
+            val iconRegex = """icons/[^"']+\.(?:png|jpg|jpeg|gif|ico|svg)""".toRegex()
+            iconRegex.findAll(html).forEach { files.add(it.value) }
+        }
+
+        // Parse main.js for imports
+        val mainJsBytes = downloadUrl("$SITE_BASE_URL/scripts/main.js")
+        if (mainJsBytes != null) {
+            parseJsImports("scripts/main.js", String(mainJsBytes), files)
+        }
+        
+        // Parse constants.js for icons
+        val constantsJsBytes = downloadUrl("$SITE_BASE_URL/scripts/modules/constants.js")
+        if (constantsJsBytes != null) {
+            val js = String(constantsJsBytes)
+            val iconRegex = """icons/[^"']+\.(?:png|jpg|jpeg|gif|ico|svg)""".toRegex()
+            iconRegex.findAll(js).forEach { files.add(it.value) }
+        }
+
+        // Add some fallbacks that might be missed by simple regex
+        files.add("fonts/Calibri.ttf")
+        files.add("icons/loading.gif")
+        
+        return files.filter { !it.startsWith("http") }.toList()
+    }
+
+    private fun parseJsImports(path: String, content: String, files: MutableSet<String>) {
+        val importRegex = """from\s+['"](.+\.js)['"]""".toRegex()
+        val dir = path.substringBeforeLast("/", "")
+        
+        importRegex.findAll(content).forEach { match ->
+            var relPath = match.groupValues[1]
+            val fullPath = if (relPath.startsWith("/")) {
+                relPath.trimStart('/')
+            } else if (relPath.startsWith("./")) {
+                if (dir.isEmpty()) relPath.substring(2) else "$dir/${relPath.substring(2)}"
+            } else if (relPath.startsWith("../")) {
+                val parentDir = dir.substringBeforeLast("/", "")
+                if (parentDir.isEmpty()) relPath.substring(3) else "$parentDir/${relPath.substring(3)}"
+            } else {
+                if (dir.isEmpty()) relPath else "$dir/$relPath"
+            }
+            
+            if (files.add(fullPath)) {
+                // For a deeper crawl, we could fetch and parse fullPath here,
+                // but for this app, one level is likely enough or we can add more entry points.
+                val subBytes = downloadUrl("$SITE_BASE_URL/$fullPath")
+                if (subBytes != null) {
+                    parseJsImports(fullPath, String(subBytes), files)
+                }
+            }
+        }
+    }
+
+
+    private suspend fun downloadSpecifiedFiles(
+        allFiles: List<String>, 
+        label: String,
+        listener: UpdateListener? = null,
+        isFirebase: Boolean = false,
+        isFirstRun: Boolean = false
+    ): DownloadResult = coroutineScope {
+        var anyChanged = false
         val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
         val downloadedCount = AtomicInteger(0)
         
-        listener?.onUpdateProgress("Downloading app internal files...", 0, allFiles.size)
+        listener?.onUpdateProgress("Downloading $label...", 0, allFiles.size)
 
         val deferreds = allFiles.map { relativePath ->
             async {
                 semaphore.withPermit {
-                    val url = "$SITE_BASE_URL/$relativePath"
+                    val url = if (isFirebase) toFirebaseUrl(relativePath) else "$SITE_BASE_URL/$relativePath"
                     val stagingFile = File(stagingDir, relativePath)
                     val liveFile = File(liveDir, relativePath)
-                    val downloaded = try {
+                    
+                    val changed = try {
                         val bytes = downloadUrl(url)
                         if (bytes != null) {
                             if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
                                 atomicWrite(stagingFile, bytes)
                                 true
-                            } else false
-                        } else if (isFirstRun) {
+                            } else {
+                                // Even if not changed, write to staging for promote logic
+                                atomicWrite(stagingFile, bytes)
+                                false
+                            }
+                        } else if (isFirstRun && !isFirebase) {
                             throw Exception("Required file missing: $relativePath")
                         } else false
                     } catch (e: Exception) {
-                        if (isFirstRun) throw e
-                        Log.w(TAG, "Minor file fail: $relativePath - ${e.message}")
+                        if (isFirstRun && !isFirebase) throw e
+                        Log.w(TAG, "File download fail: $relativePath - ${e.message}")
                         false
                     }
                     
                     val current = downloadedCount.incrementAndGet()
                     if (current % 10 == 0 || current == allFiles.size) {
-                        listener?.onUpdateProgress("Downloaded $current/${allFiles.size} app files...", current, allFiles.size)
+                        listener?.onUpdateProgress("Downloaded $current/${allFiles.size} $label...", current, allFiles.size)
                     }
-                    downloaded
+                    changed
                 }
             }
         }
         
-        deferreds.awaitAll().any { it }.also { anyDownloaded = it }
-        anyDownloaded
+        anyChanged = deferreds.awaitAll().any { it }
+        DownloadResult(anyChanged)
     }
 
+    data class DownloadResult(val anyChanged: Boolean)
+
     private fun commitShell() {
-        val shellDirs = listOf("css", "scripts", "lib", "icons", "fonts", "data")
-        val shellFiles = listOf("index.html", "404.html", "privacy-policy.html")
-        
         try {
-            shellFiles.forEach { name ->
-                val src = File(stagingDir, name)
-                if (src.exists()) {
-                    val dest = File(liveDir, name)
-                    dest.parentFile?.mkdirs()
-                    src.copyTo(dest, overwrite = true)
-                }
-            }
-            shellDirs.forEach { name ->
-                val src = File(stagingDir, name)
-                if (src.exists()) {
-                    val dest = File(liveDir, name)
-                    src.copyRecursively(dest, overwrite = true)
+            stagingDir.walkTopDown().forEach { src ->
+                if (src.isFile && src.extension != "tmp") {
+                    val relPath = src.relativeTo(stagingDir).path
+                    // Skip images for early commit (background download)
+                    if (!relPath.startsWith("images/") && !relPath.startsWith("featured-images/")) {
+                        val dest = File(liveDir, relPath)
+                        dest.parentFile?.mkdirs()
+                        src.copyTo(dest, overwrite = true)
+                    }
                 }
             }
             Log.i(TAG, "Shell files promoted to live.")
@@ -231,42 +305,11 @@ class SiteCache(private val context: Context) {
         }
     }
 
-    data class DataResult(val anyChanged: Boolean)
 
-    private suspend fun downloadDataFiles(listener: UpdateListener?): DataResult = coroutineScope {
-        var anyChanged = false
-        val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
-        
-        listener?.onUpdateProgress("Downloading data files...", 0, DATA_FILES.size)
-        val downloadedCount = AtomicInteger(0)
 
-        val deferreds = DATA_FILES.map { dataPath ->
-            async {
-                semaphore.withPermit {
-                    val url = toFirebaseUrl(dataPath)
-                    val stagingFile = File(stagingDir, dataPath)
-                    val liveFile = File(liveDir, dataPath)
-                    val bytes = downloadUrl(url) ?: throw Exception("Failed data: $dataPath")
-                    val changed = if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
-                        true
-                    } else false
-                    atomicWrite(stagingFile, bytes)
-                    
-                    val current = downloadedCount.incrementAndGet()
-                    if (current % 2 == 0 || current == DATA_FILES.size) {
-                        listener?.onUpdateProgress("Downloaded $current/${DATA_FILES.size} data files...", current, DATA_FILES.size)
-                    }
-                    changed
-                }
-            }
-        }
-        
-        anyChanged = deferreds.awaitAll().any { it }
-        DataResult(anyChanged)
-    }
+    private suspend fun downloadDeltaMedia(dataFiles: List<String>, listener: UpdateListener?): Boolean = coroutineScope {
+        val newMediaPaths = extractMediaPaths(stagingDir, dataFiles)
 
-    private suspend fun downloadDeltaMedia(listener: UpdateListener?): Boolean = coroutineScope {
-        val newMediaPaths = extractMediaPaths()
         val deltaPaths = newMediaPaths.filter { !File(liveDir, it).exists() && !File(stagingDir, it).exists() }
         if (deltaPaths.isEmpty()) return@coroutineScope false
 
@@ -296,10 +339,11 @@ class SiteCache(private val context: Context) {
         true
     }
 
-    private fun extractMediaPaths(sourceDir: File = stagingDir): Set<String> {
+    private fun extractMediaPaths(sourceDir: File = stagingDir, dataFiles: List<String>): Set<String> {
         val paths = mutableSetOf<String>()
         val mediaKeys = listOf("src", "image", "thumbnail", "static_map")
-        for (dataPath in DATA_FILES) {
+        for (dataPath in dataFiles) {
+
             val file = File(sourceDir, dataPath)
             if (!file.exists()) continue
             try {
@@ -335,7 +379,8 @@ class SiteCache(private val context: Context) {
     }
 
     private fun addMediaPath(paths: MutableSet<String>, path: String) {
-        if (path.isBlank() || path.startsWith("data:")) return
+        if (path.isBlank() || path.startsWith("data:") || path.contains("featured-images/")) return
+
         
         if (path.startsWith("http")) {
             // If it's a Firebase Storage URL for our bucket, extract the relative path
@@ -356,8 +401,9 @@ class SiteCache(private val context: Context) {
 
     private fun cleanupOrphanedMedia(baseDir: File) {
         Log.i(TAG, "Starting local media cleanup...")
-        val referencedPaths = extractMediaPaths(baseDir)
-        val dynamicDirs = listOf("images", "featured-images")
+        val referencedPaths = extractMediaPaths(baseDir, discoverDataFiles())
+        val dynamicDirs = listOf("images")
+
         
         dynamicDirs.forEach { dirName ->
             val dir = File(baseDir, dirName)
