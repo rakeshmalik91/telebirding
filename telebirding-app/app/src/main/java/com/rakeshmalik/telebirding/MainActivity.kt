@@ -538,11 +538,11 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                     }
                 }
             } else if (!forceHideHUD) {
-                // Background Indicator: Small spinner at the top right
+                // Background Indicator: Small spinner at the bottom right
                 Surface(
                     modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(top = 12.dp, end = 12.dp)
+                        .align(Alignment.BottomEnd)
+                        .padding(bottom = if (showButton) 80.dp else 16.dp, end = 16.dp)
                         .clickable { 
                             showUpdateOverlay = true
                             forceHideHUD = false 
