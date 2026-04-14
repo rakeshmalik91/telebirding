@@ -35,7 +35,7 @@ Access the bird database on the go:
 
 - `app/src/main/java/com/rakeshmalik/telebirding/`:
     - `MainActivity.kt`: Entry point and UI logic using Jetpack Compose.
-    - `SiteCache.kt`: Manages the local copy of the website, handling downloads and file versioning.
+    - `SiteCache.kt`: Manages the local copy of the website, handling downloads and file versioning. ([Read the detailed Cache & Sync Flow here](CACHE_FLOW.md))
     - `CachedWebViewClient.kt`: Intercepts WebView requests to serve content from the local cache.
 
 ## Getting Started

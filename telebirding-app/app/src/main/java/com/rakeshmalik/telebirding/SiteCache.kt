@@ -92,25 +92,35 @@ class SiteCache(private val context: Context) {
                 val dataFiles = discoverDataFiles()
                 val shellFiles = discoverShellFiles()
 
-                // 4. Download Data JSON files first as requested
-                val dataResult = downloadSpecifiedFiles(dataFiles, "data files", listener, isFirebase = true)
-                Log.i(TAG, "Data files download complete. Any changed: ${dataResult.anyChanged}")
+                // 1. Download HTML, CSS, JS
+                val shellResult = downloadSpecifiedFiles(shellFiles, "app files", listener, isFirebase = false)
+                Log.i(TAG, "Shell files download complete. Any changed: ${shellResult.anyChanged}, allSuccessful: ${shellResult.allSuccessful}")
 
-                // 5. Download Shell and Icon files
-                val shellResult = downloadSpecifiedFiles(shellFiles, "app files", listener, isFirebase = false, isFirstRun)
-                if (isFirstRun && !shellResult.anyChanged && !hasCachedSite) {
-                    throw Exception("Failed to download shell files on first run")
+                // 2. Download Data JSON files
+                val dataResult = downloadSpecifiedFiles(dataFiles, "data files", listener, isFirebase = true)
+                Log.i(TAG, "Data files download complete. Any changed: ${dataResult.anyChanged}, allSuccessful: ${dataResult.allSuccessful}")
+
+                val success = shellResult.allSuccessful && dataResult.allSuccessful
+                val anyChanged = shellResult.anyChanged || dataResult.anyChanged
+
+                if (!success) {
+                    if (isFirstRun) {
+                        throw Exception("Failed to download required initial files.")
+                    } else {
+                        Log.w(TAG, "Failed to download all core files cleanly, aborting update.")
+                        stagingDir.deleteRecursively()
+                        listener?.onUpdateComplete(false)
+                        return@withContext false
+                    }
                 }
 
                 // Promote Data and Shell to live immediately so the app can start using them
-                if (isFirstRun || dataResult.anyChanged || shellResult.anyChanged) {
+                if (isFirstRun || anyChanged) {
                     commitShell()
                 }
 
-
-                // 6. Download Media files (images)
+                // 3. Download Media files (images)
                 val mediaResult = downloadDeltaMedia(dataFiles, listener)
-
 
                 if (isFirstRun) {
                     liveDir.deleteRecursively()
@@ -121,8 +131,7 @@ class SiteCache(private val context: Context) {
                     Log.i(TAG, "First run: site cache commit successful.")
                     listener?.onUpdateComplete(true)
                     return@withContext true
-                } else if (dataResult.anyChanged || shellResult.anyChanged || mediaResult) {
-
+                } else if (anyChanged || mediaResult) {
                     mergeStageIntoLive()
                     cleanupOrphanedMedia(liveDir)
                     Log.i(TAG, "Update applied successfully.")
@@ -235,10 +244,8 @@ class SiteCache(private val context: Context) {
         allFiles: List<String>, 
         label: String,
         listener: UpdateListener? = null,
-        isFirebase: Boolean = false,
-        isFirstRun: Boolean = false
+        isFirebase: Boolean = false
     ): DownloadResult = coroutineScope {
-        var anyChanged = false
         val semaphore = Semaphore(MAX_PARALLEL_DOWNLOADS)
         val downloadedCount = AtomicInteger(0)
         
@@ -251,40 +258,42 @@ class SiteCache(private val context: Context) {
                     val stagingFile = File(stagingDir, relativePath)
                     val liveFile = File(liveDir, relativePath)
                     
-                    val changed = try {
+                    var changed = false
+                    var success = true
+                    try {
                         val bytes = downloadUrl(url)
                         if (bytes != null) {
                             if (!liveFile.exists() || !liveFile.readBytes().contentEquals(bytes)) {
                                 atomicWrite(stagingFile, bytes)
-                                true
+                                changed = true
                             } else {
                                 // Even if not changed, write to staging for promote logic
                                 atomicWrite(stagingFile, bytes)
-                                false
                             }
-                        } else if (isFirstRun && !isFirebase) {
-                            throw Exception("Required file missing: $relativePath")
-                        } else false
+                        } else {
+                            Log.w(TAG, "File missing on server: $relativePath")
+                        }
                     } catch (e: Exception) {
-                        if (isFirstRun && !isFirebase) throw e
                         Log.w(TAG, "File download fail: $relativePath - ${e.message}")
-                        false
+                        success = false
                     }
                     
                     val current = downloadedCount.incrementAndGet()
                     if (current % 10 == 0 || current == allFiles.size) {
                         listener?.onUpdateProgress("Downloaded $current/${allFiles.size} $label...", current, allFiles.size)
                     }
-                    changed
+                    Pair(changed, success)
                 }
             }
         }
         
-        anyChanged = deferreds.awaitAll().any { it }
-        DownloadResult(anyChanged)
+        val results = deferreds.awaitAll()
+        val anyChanged = results.any { it.first }
+        val allSuccessful = results.all { it.second }
+        DownloadResult(anyChanged, allSuccessful)
     }
 
-    data class DownloadResult(val anyChanged: Boolean)
+    data class DownloadResult(val anyChanged: Boolean, val allSuccessful: Boolean)
 
     private fun commitShell() {
         try {
@@ -324,19 +333,30 @@ class SiteCache(private val context: Context) {
                 semaphore.withPermit {
                     val url = toFirebaseUrl(mediaPath)
                     val stagingFile = File(stagingDir, mediaPath)
-                    val bytes = downloadUrl(url) ?: throw Exception("Failed media: $mediaPath")
-                    atomicWrite(stagingFile, bytes)
+                    var mediaDownloaded = false
+                    try {
+                        val bytes = downloadUrl(url)
+                        if (bytes != null) {
+                            atomicWrite(stagingFile, bytes)
+                            mediaDownloaded = true
+                        } else {
+                            Log.w(TAG, "Media missing on server: $mediaPath")
+                        }
+                    } catch (e: Exception) {
+                        Log.w(TAG, "Media download fail: $mediaPath - ${e.message}")
+                    }
                     
                     val current = downloadedCount.incrementAndGet()
                     if (current % 10 == 0 || current == deltaPaths.size) {
                         listener?.onUpdateProgress("Downloaded $current/${deltaPaths.size}...", current, deltaPaths.size)
                     }
+                    mediaDownloaded
                 }
             }
         }
         
-        deferreds.awaitAll()
-        true
+        val results = deferreds.awaitAll()
+        results.any { it }
     }
 
     private fun extractMediaPaths(sourceDir: File = stagingDir, dataFiles: List<String>): Set<String> {
@@ -466,13 +486,24 @@ class SiteCache(private val context: Context) {
 
     private fun downloadUrl(urlString: String): ByteArray? {
         var connection: HttpURLConnection? = null
-        return try {
+        try {
             val url = URL(urlString)
             connection = url.openConnection() as HttpURLConnection
             connection.connectTimeout = 15000
             connection.readTimeout = 30000
-            if (connection.responseCode == HttpURLConnection.HTTP_OK) connection.inputStream.readBytes() else null
-        } catch (e: Exception) { null } finally { connection?.disconnect() }
+            val code = connection.responseCode
+            return if (code == HttpURLConnection.HTTP_OK) {
+                connection.inputStream.readBytes()
+            } else if (code == HttpURLConnection.HTTP_NOT_FOUND || code == HttpURLConnection.HTTP_FORBIDDEN) {
+                null
+            } else {
+                throw Exception("HTTP $code")
+            }
+        } catch (e: Exception) { 
+            throw e 
+        } finally { 
+            connection?.disconnect() 
+        }
     }
 
     fun getMimeType(path: String): String = when {
