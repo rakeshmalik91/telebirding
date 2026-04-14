@@ -26,6 +26,8 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -134,7 +136,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     // Update progress state
     var isUpdating by remember { mutableStateOf(false) }
     var showUpdateOverlay by remember { mutableStateOf(false) }
-    var forceHideHUD by remember { mutableStateOf(false) }
+
     var isStartupUpdate by remember { mutableStateOf(false) }
     var isFirstLoadComplete by remember { mutableStateOf(false) }
     var updateMessage by remember { mutableStateOf("") }
@@ -175,8 +177,8 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             // If already updating in background (e.g. startup), just show the HUD
                             if (isUpdating) {
                                 showUpdateOverlay = true
-                                forceHideHUD = false 
                                 this@apply.isRefreshing = false
+
                                 return@setOnRefreshListener
                             }
 
@@ -188,8 +190,8 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                         isUpdating = true
                                         isStartupUpdate = false
                                         showUpdateOverlay = true
-                                        forceHideHUD = false 
                                         updateMessage = "Starting update..."
+
                                         updateProgress = 0f
                                     }
                                     override fun onUpdateProgress(message: String, current: Int, total: Int) {
@@ -204,13 +206,18 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                     override fun onUpdateComplete(hadUpdates: Boolean) {
                                         Log.i("MainActivity", "Pull-to-refresh: update complete (hadUpdates=$hadUpdates)")
                                         isUpdating = false
-                                        webView.post { webView.reload() }
+                                        // Only reload if the user is still watching the update HUD
+                                        if (showUpdateOverlay) {
+                                            webView.post { webView.reload() }
+                                        }
                                     }
                                     override fun onUpdateFailed(error: String) {
                                         Log.w("MainActivity", "Pull-to-refresh: update failed: $error")
                                         isUpdating = false
-                                        // Still reload — will serve from existing cache
-                                        webView.post { webView.reload() }
+                                        // Only reload if the user is still watching the update HUD
+                                        if (showUpdateOverlay) {
+                                            webView.post { webView.reload() }
+                                        }
                                     }
                                 })
                             }
@@ -406,8 +413,8 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                 // If we have a cache, let the user see the local content immediately.
                                 showUpdateOverlay = !siteCache.hasCachedSite
                                 
-                                forceHideHUD = false
                                 updateMessage = "Checking for updates..."
+
                                 updateProgress = 0f
                             }
                             override fun onUpdateProgress(message: String, current: Int, total: Int) {
@@ -422,8 +429,8 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             override fun onUpdateComplete(hadUpdates: Boolean) {
                                 Log.i("MainActivity", "Startup: update complete (hadUpdates=$hadUpdates)")
                                 isUpdating = false
-                                if (hadUpdates) {
-                                    // Silently reload to show updated content
+                                if (hadUpdates && showUpdateOverlay) {
+                                    // Only reload if user is waiting (e.g. first run)
                                     this@apply.post { reload() }
                                 }
                             }
@@ -468,8 +475,14 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.Black.copy(alpha = 0.5f)),
+                        .background(Color.Black.copy(alpha = 0.5f))
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                            onClick = {}
+                        ),
                     contentAlignment = Alignment.Center
+
                 ) {
                     Surface(
                         shape = RoundedCornerShape(16.dp),
@@ -523,7 +536,6 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             TextButton(
                                 onClick = { 
                                     showUpdateOverlay = false 
-                                    forceHideHUD = true
                                     // Also hide the native SwipeRefreshLayout spinner immediately
                                     swipeRefreshLayout?.isRefreshing = false
                                 }
@@ -537,16 +549,17 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                         }
                     }
                 }
-            } else if (!forceHideHUD) {
+            } else {
                 // Background Indicator: Small spinner at the bottom right
+
                 Surface(
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .padding(bottom = if (showButton) 80.dp else 16.dp, end = 16.dp)
                         .clickable { 
                             showUpdateOverlay = true
-                            forceHideHUD = false 
                         },
+
                     shape = RoundedCornerShape(20.dp),
                     color = Color(0xFF1F2B39).copy(alpha = 0.9f),
                     elevation = 4.dp
