@@ -409,7 +409,7 @@ describe('Public Rendering', () => {
         it('should render year list', () => {
             Rendering.renderYearList($('#test-container'));
             expect($('#test-container').html()).toContain('2023');
-            expect($('#test-container').html()).toContain('New species: 2 / Total sightings: 10');
+            expect($('#test-container').html()).toContain('Lifers: 2 / Total sightings: 10');
         });
     });
 

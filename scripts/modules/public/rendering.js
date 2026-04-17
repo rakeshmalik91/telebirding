@@ -52,7 +52,7 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
     }
 
     if (sighting.newSpecies && !inPreviewPage) {
-        sightingNameDiv.append('<span class="new-species" title="New Species"/>');
+        sightingNameDiv.append('<span class="new-species" title="Lifer"/>');
     }
 
     if (sighting.unconfirmed) {
@@ -354,7 +354,7 @@ export function renderYearList(container) {
         const sighting_count = State.data.years[year].sighting_count;
         const new_species_count = State.data.years[year].new_species_count;
         html += "<div class='date-item country'>";
-        html += "<button class='country' onclick='triggerFilter(\"date\", \"" + year + "\")'><span>" + year + "</span><span class='count'>New species: " + new_species_count + " / Total sightings: " + sighting_count + "</span></button>";
+        html += "<button class='country' onclick='triggerFilter(\"date\", \"" + year + "\")'><span>" + year + "</span><span class='count'>Lifers: " + new_species_count + " / Total sightings: " + sighting_count + "</span></button>";
         html += "</div>";
     });
     container.append(html);
