@@ -11,6 +11,9 @@ const IMAGE_SIZE = 1000;
 const SYNC_SCHEDULE_TIME = 60000;
 let syncRef;
 
+import { removeUnwantedValues, applySpeciesTags } from './data-cleanup.js';
+
+
 let renderCallback = () => { };
 
 export function setRenderCallback(callback) {
@@ -41,8 +44,18 @@ function refresh() {
 
 export function uploadJSONData(type, skipRefresh) {
     showLoader("saving", "Saving");
+
+    // --- Pre-upload cleanup (ported from data-cleanup.py) ---
+    // Apply species-specific tag rules when uploading species data
+    if (type === 'species' && data[type]) {
+        applySpeciesTags(data[type]);
+    }
+
     let fileData = {};
     fileData[type] = data[type];
+
+    // Remove unwanted values (null, false, [], "", {}) before upload
+    fileData = removeUnwantedValues(fileData) || {};
 
     fileData = JSON.stringify(fileData);
     if (fileData.length < 100) {

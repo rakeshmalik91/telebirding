@@ -395,7 +395,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "gender": "M"
         },
         {
             "key": "s1773126619",
@@ -844,13 +845,15 @@
                     "src": "images/olive-backed-sunbird-1772954846.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
-                    }
+                    },
+                    "title": "Male & Female"
                 },
                 {
                     "src": "images/olive-backed-sunbird-1773378618.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
-                    }
+                    },
+                    "title": "Male"
                 }
             ],
             "rating": "5"
