@@ -2,6 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import * as Rendering from '../../scripts/modules/public/rendering.js';
 import State from '../../scripts/modules/public/state.js';
 import Constants from '../../scripts/modules/constants.js';
+import Util from '../../scripts/modules/util.js';
+
 
 // Setup Mock for global window tools
 global.previewImage = vi.fn();
@@ -60,6 +62,7 @@ describe('Public Rendering', () => {
                     dateString: '2 Jan, 2023',
                     place: 'Lake', city: 'Pune', state: 'MH', country: 'IN', rating: 3,
                     gender: 'F', newSpecies: false,
+                    time_of_day: 'Night',
                     media: [{ src: 'img3.jpg', type: 'image' }]
                 }
             ],
@@ -81,6 +84,7 @@ describe('Public Rendering', () => {
         };
 
         State.currentMode = Constants.MODE_BIRD;
+        vi.spyOn(Util, 'getClientId').mockReturnValue('client-123');
         vi.clearAllMocks();
     });
 
@@ -233,6 +237,67 @@ describe('Public Rendering', () => {
             Rendering.renderSightingDetails(div, sighting, true);
             expect(div.html()).toContain('★');
             expect(div.html()).toContain('✰');
+        });
+
+        it('should cover all details rendering branches (place, city, likes, weather)', () => {
+            const div = $('#test-container');
+            
+            // Case 1: place is falsy, city is truthy, preview is false (checks city 25-char limit branch)
+            let sighting = {
+                ...State.data.filteredSightings[0],
+                place: '',
+                city: 'A Very Long City Name exceeding fifteen chars',
+                rating: 3,
+                time_of_day: 'Night',
+                weather: 'Rainy',
+                plumage: 'Breeding'
+            };
+            
+            // For likes: key has no likes (hollow heart, likes count 0)
+            sighting.key = 's2'; 
+            Rendering.renderSightingDetails(div, sighting, false);
+            expect(div.find('.place').length).toBe(0);
+            expect(div.find('.city').length).toBe(1);
+            expect(div.find('.heart.hollow').length).toBe(1);
+            
+            // Case 2: place is truthy, city is truthy, preview is false (checks city 15-char limit branch)
+            div.empty();
+            sighting.place = 'A Very Long Place Name exceeding twenty five chars';
+            sighting.key = 's3'; // sighting s3 has 2 likes
+            State.data.likes['s3'] = ['client-123', 'client-456'];
+            Rendering.renderSightingDetails(div, sighting, false);
+            expect(div.find('.place').length).toBe(1);
+            expect(div.find('.city').length).toBe(1);
+            expect(div.find('.likes').attr('title')).toBe('2 Likes');
+
+            // Case 2b: city is falsy (covers empty city branch)
+            div.empty();
+            sighting.city = '';
+            Rendering.renderSightingDetails(div, sighting, false);
+            expect(div.find('.city').length).toBe(0);
+
+            // Case 3: preview page is true, place/city are truthy, plumage is defined (covers line 68 preview tag)
+            div.empty();
+            sighting.city = 'A Very Long City Name exceeding fifteen chars';
+            Rendering.renderSightingDetails(div, sighting, true);
+            expect(div.find('.place').text()).toBe('A Very Long Place Name exceeding twenty five chars');
+            expect(div.find('.city').text()).toBe('A Very Long City Name exceeding fifteen chars');
+            expect(div.find('.tags').text()).toContain('Breeding');
+
+            // Case 4: weather checks - time_of_day is Day, weather is Sunny
+            div.empty();
+            sighting.time_of_day = 'Day';
+            sighting.weather = 'Sunny';
+            Rendering.renderSightingDetails(div, sighting, true);
+            expect(div.find('.weather').hasClass('sunny-day')).toBe(true);
+
+            // Case 5: weather checks - time_of_day is undefined, weather is Rain
+            div.empty();
+            sighting.time_of_day = '';
+            sighting.weather = 'Rainy';
+            Rendering.renderSightingDetails(div, sighting, true);
+            // should fallback to Day, so 'day'
+            expect(div.find('.weather').hasClass('day')).toBe(true);
         });
     });
 
@@ -542,6 +607,32 @@ describe('Public Rendering', () => {
             expect($('.home-stories').html()).toContain('collapsible hide');
         });
 
+        it('should handle undefined stories', () => {
+            State.data.stories = undefined;
+            Rendering.renderStories('.stories', 0);
+            expect($('.stories h1').text()).toContain('Stories');
+        });
+
+        it('should render legacy itineraryHtml on home page and stories page', () => {
+            State.data.stories = [
+                { title: 'Legacy Trip', date: 'Oct 2023', storyHtml: 'Content', itineraryHtml: '<div class="collapsible">Walk</div>', itineraryExpanded: true }
+            ];
+            Rendering.renderStories('.home-stories', 5);
+            expect($('.home-stories').html()).toContain('active');
+
+            Rendering.renderStories('.stories', 5);
+            expect($('.stories').html()).toContain('active');
+        });
+
+        it('should render legacy itineraryHtml collapsed on home page', () => {
+            State.data.stories = [
+                { title: 'Legacy Trip Collapsed', date: 'Oct 2023', storyHtml: 'Content', itineraryHtml: '<div class="collapsible">Walk</div>' }
+            ];
+            Rendering.renderStories('.home-stories', 5);
+            expect($('.home-stories').html()).toContain('collpasible-section-button');
+            expect($('.home-stories').html()).not.toContain('collpasible-section-button active');
+        });
+
         it('should dispatch story-in-view event when story is in view', () => {
             State.data.stories = [
                 { title: 'Test Story', date: 'Oct 2023', storyHtml: 'Content' }
@@ -661,7 +752,8 @@ describe('Public Rendering', () => {
                             'WB': {
                                 name: 'West Bengal', count: 15,
                                 cities: {
-                                    'Howrah': { count: 10, places: { 'Station': { count: 6 }, 'Market': { count: 5 } } }
+                                    'Howrah': { count: 10, places: { 'Station': { count: 6 }, 'Market': { count: 5 } } },
+                                    'Kolkata': { count: 5, places: {} }
                                 }
                             }
                         }
@@ -678,9 +770,91 @@ describe('Public Rendering', () => {
             expandBtn.trigger('click');
             vi.advanceTimersByTime(200);
 
+            // Mock is(':visible') to return true so collapse branch is triggered in JSDOM
+            const originalIs = $.fn.is;
+            $.fn.is = vi.fn(function (selector) {
+                if (selector === ':visible') return true;
+                return originalIs.apply(this, arguments);
+            });
+
             // Click to collapse
             expandBtn.trigger('click');
             vi.advanceTimersByTime(200);
+
+            $.fn.is = originalIs;
+        });
+    });
+
+    describe('renderSightingDetails - author branches', () => {
+        it('should cover all branches of author mapping in renderSightingDetails', () => {
+            const container = $('<div></div>');
+            const sighting = {
+                ...State.data.filteredSightings[0],
+                author: 'Alice'
+            };
+            
+            // Case 1: State.data.author is undefined
+            State.data.author = undefined;
+            Rendering.renderSightingDetails(container, sighting, false);
+            expect(container.html()).toContain('Alice');
+
+            // Case 2: State.data.author is defined, but 'Alice' is not in it
+            container.empty();
+            State.data.author = { Bob: 'http://bob.com' };
+            Rendering.renderSightingDetails(container, sighting, false);
+            expect(container.html()).toContain('Alice');
+
+            // Case 3: State.data.author is defined, and 'Alice' is in it
+            container.empty();
+            State.data.author = { Alice: 'http://alice.com' };
+            Rendering.renderSightingDetails(container, sighting, false);
+            expect(container.html()).toContain('href="http://alice.com"');
+        });
+
+        it('should cover unreachable author fallback branch in renderSightingDetails', () => {
+            const container = $('<div></div>');
+            let authorCalls = 0;
+            const sighting = {
+                ...State.data.filteredSightings[0],
+                get author() {
+                    authorCalls++;
+                    return authorCalls === 1 ? 'Guest Author' : '';
+                }
+            };
+
+            Rendering.renderSightingDetails(container, sighting, false);
+            expect(container.html()).toContain(Constants.DEFAULT_AUTHOR);
+        });
+    });
+
+    describe('renderLocationList - vertical line branches', () => {
+        it('should cover the vertical line branches for multiple states and cities', () => {
+            const container = $('<div></div>');
+            State.data.countries = {
+                'India': {
+                    name: 'India', count: 30,
+                    states: {
+                        'WB': {
+                            name: 'West Bengal', count: 15,
+                            cities: {
+                                'Howrah': { count: 10, places: { 'Station': { count: 6 } } },
+                                'Kolkata': { count: 5, places: {} }
+                            }
+                        },
+                        'MH': {
+                            name: 'Maharashtra', count: 15,
+                            cities: {
+                                'Pune': { count: 10, places: { 'Park': { count: 6 } } }
+                            }
+                        }
+                    }
+                }
+            };
+
+            Rendering.renderLocationList(container);
+            expect(container.html()).toContain('India');
+            expect(container.html()).toContain('West Bengal');
+            expect(container.html()).toContain('Maharashtra');
         });
     });
 });

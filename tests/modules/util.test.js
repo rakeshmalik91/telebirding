@@ -80,6 +80,10 @@ describe('Util.trimPlaceName', () => {
         expect(Util.trimPlaceName('Superlongsingletokenname', 10)).toBe('Superlongsingletokenname...');
     });
 
+    it('should not initial a word if it is on the block list', () => {
+        expect(Util.trimPlaceName('Sattal Zoo', 7)).toBe('S Zoo');
+    });
+
     it('should handle dot tokens (abbreviations) by appending directly', () => {
         expect(Util.trimPlaceName('Big N.P.', 5)).toBe('BN');
     });
@@ -221,6 +225,56 @@ describe('Util.isTouchDevice', () => {
         const result = Util.isTouchDevice();
         expect(typeof result).toBe('boolean');
     });
+
+    describe('branches', () => {
+        let originalWindowOntouchstart;
+        let originalMaxTouchPoints;
+        let originalMsMaxTouchPoints;
+
+        beforeEach(() => {
+            originalWindowOntouchstart = 'ontouchstart' in window ? window.ontouchstart : undefined;
+            originalMaxTouchPoints = navigator.maxTouchPoints;
+            originalMsMaxTouchPoints = navigator.msMaxTouchPoints;
+        });
+
+        afterEach(() => {
+            if (originalWindowOntouchstart !== undefined) {
+                window.ontouchstart = originalWindowOntouchstart;
+            } else {
+                delete window.ontouchstart;
+            }
+            Object.defineProperty(navigator, 'maxTouchPoints', { value: originalMaxTouchPoints, configurable: true });
+            Object.defineProperty(navigator, 'msMaxTouchPoints', { value: originalMsMaxTouchPoints, configurable: true });
+        });
+
+        it('should return true if ontouchstart is in window', () => {
+            window.ontouchstart = () => {};
+            Object.defineProperty(navigator, 'maxTouchPoints', { value: 0, configurable: true });
+            Object.defineProperty(navigator, 'msMaxTouchPoints', { value: 0, configurable: true });
+            expect(Util.isTouchDevice()).toBe(true);
+        });
+
+        it('should return true if navigator.maxTouchPoints > 0', () => {
+            delete window.ontouchstart;
+            Object.defineProperty(navigator, 'maxTouchPoints', { value: 1, configurable: true });
+            Object.defineProperty(navigator, 'msMaxTouchPoints', { value: 0, configurable: true });
+            expect(Util.isTouchDevice()).toBe(true);
+        });
+
+        it('should return true if navigator.msMaxTouchPoints > 0', () => {
+            delete window.ontouchstart;
+            Object.defineProperty(navigator, 'maxTouchPoints', { value: 0, configurable: true });
+            Object.defineProperty(navigator, 'msMaxTouchPoints', { value: 1, configurable: true });
+            expect(Util.isTouchDevice()).toBe(true);
+        });
+
+        it('should return false if all touch indicators are missing or zero', () => {
+            delete window.ontouchstart;
+            Object.defineProperty(navigator, 'maxTouchPoints', { value: 0, configurable: true });
+            Object.defineProperty(navigator, 'msMaxTouchPoints', { value: 0, configurable: true });
+            expect(Util.isTouchDevice()).toBe(false);
+        });
+    });
 });
 
 describe('Util.isMobileDevice', () => {
@@ -268,6 +322,11 @@ describe('Util.setCookie / getCookie / eraseCookie', () => {
         Util.setCookie('erasable', 'value', 1);
         Util.eraseCookie('erasable');
         expect(Util.getCookie('erasable')).toBeNull();
+    });
+
+    it('should fallback to empty string for falsy value in setCookie', () => {
+        Util.setCookie('falsyCookie', null);
+        expect(Util.getCookie('falsyCookie')).toBe('');
     });
 });
 
@@ -418,14 +477,39 @@ describe('Util.autoScroll', () => {
         const container = $('<div style="height:100px"></div>');
         $('body').append(container);
 
+        const spyHeight = vi.spyOn($.fn, 'height').mockReturnValue(100);
+        const spyOffset = vi.spyOn($.fn, 'offset').mockReturnValue({ top: 100 });
+        const animateSpy = vi.spyOn($.fn, 'animate');
+
         Util.autoScroll(container, 10);
 
-        // Trigger mousemove
-        const event = $.Event('mousemove', { pageY: 200 });
-        container.trigger(event);
+        // 1. val > 0.4 (pageY = 195 => val = 0.45)
+        container.trigger($.Event('mousemove', { pageY: 195 }));
+        expect(container.attr('data-scroll')).toContain('+=');
+
+        // Advance timers to trigger the interval calling animate
+        vi.advanceTimersByTime(110);
+        expect(animateSpy).toHaveBeenCalledWith({ scrollTop: expect.stringContaining('+=') }, 100, 'linear');
+        animateSpy.mockClear();
+
+        // 2. val < -0.4 (pageY = 105 => val = -0.45)
+        container.trigger($.Event('mousemove', { pageY: 105 }));
+        expect(container.attr('data-scroll')).toContain('+=');
+
+        // 3. |val| <= 0.4 (pageY = 150 => val = 0)
+        container.trigger($.Event('mousemove', { pageY: 150 }));
+        expect(container.attr('data-scroll')).toBeFalsy();
+
+        // 4. Trigger mouseleave
+        container.trigger('mouseleave');
+        expect(container.attr('data-scroll')).toBeFalsy();
 
         vi.advanceTimersByTime(200);
+        
         spy.mockRestore();
+        spyHeight.mockRestore();
+        spyOffset.mockRestore();
+        animateSpy.mockRestore();
         vi.useRealTimers();
     });
 });
@@ -462,9 +546,9 @@ describe('Util.resizeImage', () => {
                 _src: '',
                 set src(val) {
                     this._src = val;
-                    setTimeout(() => {
-                        if (this.onload) this.onload();
-                    }, 0);
+                    Promise.resolve().then(() => {
+                        if (img.onload) img.onload();
+                    });
                 },
                 get src() {
                     return this._src;
@@ -504,6 +588,180 @@ describe('Util.resizeImage', () => {
         expect(result).toBeInstanceOf(Blob);
         expect(mockCtx.fillText).toHaveBeenCalledWith('Copyright', 500 * 0.75, 500 * 0.95);
     });
+
+    it('should return original image blob if size is within bounds and square without watermark', async () => {
+        const originalImage = global.Image;
+        global.Image = vi.fn().mockImplementation(() => {
+            const img = {
+                onload: null,
+                _src: '',
+                set src(val) {
+                    this._src = val;
+                    Promise.resolve().then(() => {
+                        if (img.onload) img.onload();
+                    });
+                },
+                get src() { return this._src; },
+                width: 300,
+                height: 300
+            };
+            return img;
+        });
+
+        const file = new File(['pixels'], 'test.png', { type: 'image/png' });
+        const result = await Util.resizeImage(file, 500);
+        expect(result).toBeInstanceOf(Blob);
+        expect(mockCtx.drawImage).not.toHaveBeenCalled();
+
+        global.Image = originalImage;
+    });
+
+    it('should handle portrait images (height > width)', async () => {
+        const originalImage = global.Image;
+        global.Image = vi.fn().mockImplementation(() => {
+            const img = {
+                onload: null,
+                _src: '',
+                set src(val) {
+                    this._src = val;
+                    Promise.resolve().then(() => {
+                        if (img.onload) img.onload();
+                    });
+                },
+                get src() { return this._src; },
+                width: 400,
+                height: 800
+            };
+            return img;
+        });
+
+        const file = new File(['pixels'], 'test.png', { type: 'image/png' });
+        const result = await Util.resizeImage(file, 500);
+        expect(result).toBeInstanceOf(Blob);
+        expect(mockCtx.drawImage).toHaveBeenCalled();
+
+        global.Image = originalImage;
+    });
+
+    it('should handle non-base64 dataURI in dataURItoBlob', async () => {
+        const toDataURLSpy = vi.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockReturnValue('data:image/jpeg,unescaped_content');
+        const file = new File(['pixels'], 'test.png', { type: 'image/png' });
+        const result = await Util.resizeImage(file, 500);
+        expect(result).toBeInstanceOf(Blob);
+        toDataURLSpy.mockRestore();
+    });
 });
+
+describe('Util.autoScroll', () => {
+    let originalInterval;
+    let intervals;
+
+    beforeEach(() => {
+        intervals = [];
+        originalInterval = global.setInterval;
+        global.setInterval = vi.fn((fn, delay) => {
+            const id = originalInterval(fn, delay);
+            intervals.push({ id, fn });
+            return id;
+        });
+    });
+
+    afterEach(() => {
+        intervals.forEach(i => clearInterval(i.id));
+        global.setInterval = originalInterval;
+        vi.restoreAllMocks();
+    });
+
+    it('should do nothing if touch device is active', () => {
+        vi.spyOn(Util, 'isTouchDevice').mockReturnValue(true);
+        const container = { mousemove: vi.fn() };
+        Util.autoScroll(container, 10);
+        expect(container.mousemove).not.toHaveBeenCalled();
+    });
+
+    it('should register handlers and animate scrolling on interval when not touch device', () => {
+        vi.spyOn(Util, 'isTouchDevice').mockReturnValue(false);
+
+        let mousemoveHandler = null;
+        let hoverInHandler = null;
+        let hoverOutHandler = null;
+
+        const dataAttr = {};
+        const container = {
+            attr: vi.fn().mockImplementation((key, val) => {
+                if (val !== undefined) {
+                    dataAttr[key] = val;
+                    return container;
+                }
+                return dataAttr[key];
+            }),
+            animate: vi.fn(),
+            mousemove: vi.fn().mockImplementation(fn => {
+                mousemoveHandler = fn;
+                return container;
+            }),
+            hover: vi.fn().mockImplementation((inFn, outFn) => {
+                hoverInHandler = inFn;
+                hoverOutHandler = outFn;
+                return container;
+            }),
+            height: vi.fn().mockReturnValue(100),
+            offset: vi.fn().mockReturnValue({ top: 10 })
+        };
+
+        Util.autoScroll(container, 10);
+
+        expect(container.mousemove).toHaveBeenCalled();
+        expect(container.hover).toHaveBeenCalled();
+        expect(intervals).toHaveLength(1);
+
+        // Trigger mousemove with different positions
+        // val = (100 - 10)/100 - 0.5 = 0.4
+        mousemoveHandler({ pageY: 100 });
+        expect(dataAttr['data-scroll']).toBeNull();
+
+        // val > 0.4: val = (120 - 10)/100 - 0.5 = 0.6 => 10 * 0.2 = 2 => '+=2'
+        mousemoveHandler({ pageY: 120 });
+        expect(parseFloat(dataAttr['data-scroll'].replace('+=', ''))).toBeCloseTo(2);
+
+        // Trigger interval function to test if it animates scroll
+        const intervalFn = intervals[0].fn;
+        intervalFn();
+        expect(container.animate).toHaveBeenCalled();
+        const animateArg = container.animate.mock.calls[0][0].scrollTop;
+        expect(parseFloat(animateArg.replace('+=', ''))).toBeCloseTo(2);
+
+        // val < -0.4: val = (0 - 10)/100 - 0.5 = -0.6 => 10 * -0.2 = -2 => '+=-2'
+        mousemoveHandler({ pageY: 0 });
+        expect(parseFloat(dataAttr['data-scroll'].replace('+=', ''))).toBeCloseTo(-2);
+
+        // Trigger hover in
+        hoverInHandler();
+
+        // Trigger hover out
+        hoverOutHandler();
+        expect(dataAttr['data-scroll']).toBeNull();
+    });
+});
+
+describe('Util.resolveCameraModel', () => {
+    it('should return empty string for falsy rawModel', () => {
+        expect(Util.resolveCameraModel(null, {})).toBe('');
+    });
+
+    it('should return rawModel if mapping is missing or matching part not found', () => {
+        expect(Util.resolveCameraModel('Cam1', null)).toBe('Cam1');
+        expect(Util.resolveCameraModel('Cam1', {})).toBe('Cam1');
+    });
+
+    it('should resolve parts using mapping including case insensitivity', () => {
+        const mapping = {
+            'CAM1': 'Camera One',
+            'lens2': 'Lens Two'
+        };
+        expect(Util.resolveCameraModel('cam1 + lens2', mapping)).toBe('Camera One + Lens Two');
+    });
+});
+
 
 

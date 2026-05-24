@@ -58,5 +58,17 @@ describe('EbirdApi', () => {
             const data = await EbirdApi.fetchEbirdSciName('invalid');
             expect(data).toBeUndefined();
         });
+
+        it('should return undefined for empty code', async () => {
+            const data = await EbirdApi.fetchEbirdSciName('');
+            expect(data).toBeUndefined();
+            expect(fetch).not.toHaveBeenCalled();
+        });
+
+        it('should handle fetch errors', async () => {
+            fetch.mockRejectedValue(new Error('Network error'));
+            const data = await EbirdApi.fetchEbirdSciName('rockpi');
+            expect(data).toBeUndefined();
+        });
     });
 });

@@ -135,4 +135,15 @@ describe('Autocomplete Module', () => {
 
         expect(document.getElementById('myInputautocomplete-list')).toBeNull();
     });
+
+    it('should handle null input element gracefully', () => {
+        const instance = new Autocomplete(null, items, onSelectMock);
+        expect(instance).toBeInstanceOf(Autocomplete);
+        expect(instance.inp).toBeNull();
+    });
+
+    it('should handle null elements in addActive', () => {
+        const result = autocomplete.addActive(null);
+        expect(result).toBe(false);
+    });
 });

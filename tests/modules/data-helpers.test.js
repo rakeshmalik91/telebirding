@@ -68,7 +68,8 @@ describe('DataHelpers Module', () => {
                 'sp2': { key: 'sp2', tags: ['c'], family: 'Corvidae' }
             },
             families: [
-                { name: 'Columbidae' }
+                { name: 'Columbidae' },
+                { name: 'Corvidae' }
             ],
             countries: {
                 'US': { name: 'United States', count: 0, states: { 'NY': { name: 'New York' } } }
@@ -226,6 +227,50 @@ describe('DataHelpers Module', () => {
 
 
             consoleSpy.mockRestore();
+        });
+    });
+
+    describe('computeInternalDataFields - thumbnail', () => {
+        it('should handle media thumbnails', () => {
+            State.data.sightings[0].media[0].thumbnail = 'thumb1.jpg';
+            DataHelpers.computeInternalDataFields();
+            expect(State.data.sightings[0].media[0].thumbnail).toContain('thumb1.jpg');
+        });
+    });
+
+    describe('computeInternalDataFields - video family thumbnail', () => {
+        it('should handle case when first media is video', () => {
+            State.data.sightings[0].media = [{ src: 'vid1.mp4', type: 'video' }];
+            DataHelpers.computeInternalDataFields();
+            expect(State.data.families.find(f => f.name === 'Columbidae').imagesrc).toBeUndefined();
+        });
+    });
+
+    describe('computeInternalDataFields - oldest date comparison', () => {
+        it('should compare and find oldest date correctly when multiple sightings in a year', () => {
+            State.data.sightings = [
+                {
+                    key: 's1', species: 'sp1', date: '05-01-2023', hidden: false,
+                    media: [ { src: 'img1.jpg', type: 'image' } ], country: 'US', state: 'NY', city: 'New York', place: 'Central Park'
+                },
+                {
+                    key: 's3', species: 'sp1', date: '01-01-2023', hidden: false,
+                    media: [ { src: 'img1.jpg', type: 'image' } ], country: 'US', state: 'NY', city: 'New York', place: 'Central Park'
+                }
+            ];
+            DataHelpers.computeInternalDataFields();
+            expect(State.data.years['2023']).toBeDefined();
+        });
+    });
+
+    describe('like - fallbacks', () => {
+        it('should handle undefined likes wrapper and undefined likes[key]', () => {
+            State.data.likes = undefined;
+            DataHelpers.like('s1');
+            
+            const callArgs = State.updateData.mock.calls[0][0];
+            expect(callArgs.likes).toBeDefined();
+            expect(callArgs.likes['s1']).toContain('client123');
         });
     });
 });

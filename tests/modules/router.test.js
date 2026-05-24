@@ -176,6 +176,20 @@ describe('Router Module', () => {
             expect(url).toContain('&newspecies=true');
             expect(url).toContain('&rating=5');
         });
+
+        it('should return URL for ARCHIVE page with filters', () => {
+            const state = {
+                page: Constants.ARCHIVE,
+                filter: { sighting: 'Jay', place: 'Park', date: '2023', camera_model: 'Sony A1' },
+                sort: { by: 'date', descending: true }
+            };
+            const url = Router.getUrlFromState(state);
+            expect(url).toContain('page=feed');
+            expect(url).toContain('&sighting=Jay');
+            expect(url).toContain('&place=Park');
+            expect(url).toContain('&date=2023');
+            expect(url).toContain('&camera_model=Sony%20A1');
+        });
     });
 
     describe('updateStorySlug', () => {
@@ -197,6 +211,18 @@ describe('Router Module', () => {
             Router.updateStorySlug('same-slug');
             
             expect(replaceStateSpy).not.toHaveBeenCalled();
+        });
+
+        it('should handle falsy history.state in updateStorySlug', () => {
+            Object.defineProperty(Object.prototype, 'sort', {
+                value: { by: 'date', descending: true },
+                configurable: true
+            });
+            vi.spyOn(window.history, 'state', 'get').mockReturnValue(null);
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue({ story: 'old-slug' });
+            Router.updateStorySlug('new-slug');
+            expect(replaceStateSpy).toHaveBeenCalled();
+            delete Object.prototype.sort;
         });
     });
 
@@ -245,6 +271,68 @@ describe('Router Module', () => {
             expect(State.ratingFilter).toBe('4');
             expect(Filters.setSort).toHaveBeenCalledWith({ by: 'name', descending: true });
         });
+
+        it('should handle missing sort_by or unsupported page by setting default sort', () => {
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue({
+                page: Constants.HOME,
+                mode: Constants.MODE_BIRD
+            });
+
+            Router.retrieveStateFromUrlParams();
+
+            expect(Filters.setSort).toHaveBeenCalledWith({ by: 'date', descending: true });
+        });
+
+        it('should assign camera_model from urlParams to input if present', async () => {
+            // Add camera_model input to DOM
+            $('.filter').append('<input data-value="camera_model" />');
+
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue({
+                page: Constants.ARCHIVE,
+                camera_model: 'Sony%20A1'
+            });
+
+            Router.retrieveStateFromUrlParams();
+
+            // Wait for jQuery .ready() to process callbacks
+            await new Promise(resolve => setTimeout(resolve, 10));
+
+            expect($(".filter input[data-value='camera_model']").val()).toBe('Sony A1');
+            expect($(".filter input[data-value='camera_model']").hasClass('button-active')).toBe(true);
+        });
+
+        it('should handle false sort_descending correctly', async () => {
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue({
+                page: Constants.ARCHIVE,
+                sort_by: 'name',
+                sort_descending: ''
+            });
+
+            Router.retrieveStateFromUrlParams();
+
+            expect(Filters.setSort).toHaveBeenCalledWith({ by: 'name', descending: false });
+        });
+
+        it('should handle undefined page and mode in getUrlParams', () => {
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue({});
+            Router.retrieveStateFromUrlParams();
+            expect(State.currentPage).toBe(Constants.HOME);
+            expect(State.currentMode).toBe(Constants.MODE_BIRD);
+        });
+
+        it('should handle falsy rating in retrieveStateFromUrlParams via getter', () => {
+            let ratingCalls = 0;
+            const mockParams = {
+                page: Constants.ARCHIVE,
+                get rating() {
+                    ratingCalls++;
+                    return ratingCalls === 1 ? '4' : 0;
+                }
+            };
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue(mockParams);
+            Router.retrieveStateFromUrlParams();
+            expect(State.ratingFilter).toBe(0);
+        });
     });
 
     describe('showPage', () => {
@@ -264,11 +352,50 @@ describe('Router Module', () => {
         
         it('should handle HOME page load', async () => {
             vi.spyOn(Util, 'readJSONFiles').mockImplementation((files, callback) => callback({})); 
+            State.updateCurrentPage(Constants.ARCHIVE);
 
             Router.showPage(Constants.HOME, null, true); // PopState true means no history push
 
             expect(history.pushState).not.toHaveBeenCalled();
             expect(State.currentPage).toBe(Constants.HOME);
+        });
+
+        it('should handle EXPLORE_PAGE page load', async () => {
+            vi.spyOn(Util, 'readJSONFiles').mockImplementation((files, callback) => callback({})); 
+
+            Router.showPage(Constants.EXPLORE_PAGE, null, true);
+
+            expect(State.currentPage).toBe(Constants.EXPLORE_PAGE);
+        });
+
+        it('should handle MAP page load', async () => {
+            vi.spyOn(Util, 'readJSONFiles').mockImplementation((files, callback) => callback({})); 
+
+            Router.showPage(Constants.MAP, null, true);
+
+            expect(State.currentPage).toBe(Constants.MAP);
+        });
+
+        it('should handle EXPLORE_MENU page load', () => {
+            vi.spyOn(Util, 'readJSONFiles').mockImplementation((files, callback) => callback({})); 
+            Router.showPage(Constants.EXPLORE_MENU, null, true);
+            expect(State.currentPage).toBe(Constants.EXPLORE_MENU);
+        });
+
+        it('should handle MAP_MENU page load', () => {
+            vi.spyOn(Util, 'readJSONFiles').mockImplementation((files, callback) => callback({})); 
+            Router.showPage(Constants.MAP_MENU, null, true);
+            expect(State.currentPage).toBe(Constants.MAP_MENU);
+        });
+
+        it('should handle STORIES page load with and without params', () => {
+            vi.spyOn(Util, 'readJSONFiles').mockImplementation((files, callback) => callback({})); 
+            Router.showPage(Constants.STORIES, { story: 'my-story' }, true);
+            expect(State.currentPage).toBe(Constants.STORIES);
+
+            // Without params
+            Router.showPage(Constants.STORIES, null, true);
+            expect(State.currentPage).toBe(Constants.STORIES);
         });
     });
 });

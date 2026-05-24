@@ -93,12 +93,18 @@ describe('Cropper Module', () => {
         openCropper(file, vi.fn());
 
         const handler = addSpy.mock.calls.find(call => call[0] === 'keydown')[1];
-        handler({ key: 'Escape', keyCode: 27 });
+        
+        // Test non-Escape case (should do nothing, modal remains flex)
+        handler({ key: 'NotEscape', keyCode: 0 });
+        expect(document.getElementById('crop-modal').style.display).toBe('flex');
 
+        // Test Escape case via keyCode
+        handler({ key: 'NotEscape', keyCode: 27 });
         expect(document.getElementById('crop-modal').style.display).toBe('none');
     });
 
     it('should destroy previous cropper when opening new one', () => {
+        vi.useFakeTimers();
         const file1 = new File(['test1'], 'test1.jpg', { type: 'image/jpeg' });
         const file2 = new File(['test2'], 'test2.jpg', { type: 'image/jpeg' });
 
@@ -107,7 +113,6 @@ describe('Cropper Module', () => {
         const image = document.getElementById('crop-image');
         if (image.onload) {
             image.onload();
-            vi.useFakeTimers();
             vi.advanceTimersByTime(60);
         }
 
@@ -118,6 +123,7 @@ describe('Cropper Module', () => {
 
         openCropper(file2, vi.fn());
         expect(document.getElementById('crop-modal').style.display).toBe('flex');
+        vi.useRealTimers();
     });
 
     it('should blur active element when opening', () => {

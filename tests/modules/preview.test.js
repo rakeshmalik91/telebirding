@@ -3,6 +3,8 @@ import * as Preview from '../../scripts/modules/public/preview.js';
 import State from '../../scripts/modules/public/state.js';
 import * as UiHelpers from '../../scripts/modules/ui-helpers.js';
 import * as Rendering from '../../scripts/modules/public/rendering.js';
+import Constants from '../../scripts/modules/constants.js';
+
 
 vi.mock('../../scripts/modules/ui-helpers.js', () => ({
     enableScroll: vi.fn(),
@@ -28,6 +30,9 @@ describe('Preview Module', () => {
         State.IS_MOBILE_DEVICE = false;
 
         State.data = {
+            author: {
+                'John Doe': 'https://example.com/johndoe'
+            },
             sightings: [
                 {
                     key: 's1',
@@ -35,7 +40,8 @@ describe('Preview Module', () => {
                     author: 'John Doe',
                     media: [
                         { src: 'img1.jpg', type: 'image', exif_data: { camera_model: 'Sony A1' } },
-                        { src: 'vid1.mp4', type: 'video', mute: true }
+                        { src: 'vid1.mp4', type: 'video', mute: true },
+                        { src: 'vid2.mp4', type: 'video' }
                     ]
                 },
                 {
@@ -123,6 +129,24 @@ describe('Preview Module', () => {
             // Replaced instantly without timeout
             expect($('.preview-image').data('index')).toBe(1);
         });
+
+        it('should auto-resolve index when index is undefined', () => {
+            Preview.previewImage('s1', 'img1.jpg', undefined);
+            expect($('.preview-image').data('index')).toBe(0);
+        });
+
+        it('should update preview media when selecting another image of same sighting', () => {
+            State.data.sightings[0].media = [
+                { src: 'img1.jpg', type: 'image' },
+                { src: 'img2.jpg', type: 'image' }
+            ];
+
+            Preview.previewImage('s1', 'img1.jpg', 0);
+            expect($('.preview-image img').attr('src')).toBe('img1.jpg');
+
+            Preview.previewImage('s1', 'img2.jpg', 0);
+            expect($('.preview-image img').attr('src')).toBe('img2.jpg');
+        });
     });
 
     describe('removePreviewImage', () => {
@@ -185,6 +209,43 @@ describe('Preview Module', () => {
             // Still looking at s1
             expect($('.preview-image').data('index')).toBe(0);
         });
+
+        it('should handle video-only media and muted/unmuted settings on creation', () => {
+            // Test muted video creation
+            Preview.previewImage('s1', 'vid1.mp4', 0);
+            expect($('.preview-image video').length).toBe(1);
+            expect($('.preview-image video').attr('muted')).toBeDefined();
+
+            // Clear wrapper and test unmuted video creation
+            $('.preview-wrapper').remove();
+            Preview.previewImage('s1', 'vid2.mp4', 0);
+            expect($('.preview-image video').length).toBe(1);
+            expect($('.preview-image video').attr('muted')).toBeUndefined();
+        });
+
+        it('should handle index undefined and resolve auto-index', () => {
+            Preview.previewImage('s2', 'img2.jpg'); // index is undefined
+            expect($('.preview-image').data('index')).toBe(1); // s2 has index 1 in filteredSightings
+        });
+
+        it('should log error and return if sighting is not found', () => {
+            const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+            Preview.previewImage('nonexistent', 'img1.jpg', 0);
+            expect(errorSpy).toHaveBeenCalledWith('Sighting not found for key:', 'nonexistent');
+            errorSpy.mockRestore();
+        });
+
+        it('should log error and return in scrollPreviewImageSighting if filteredSightings is null', () => {
+            const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+            const origFiltered = State.data.filteredSightings;
+            State.data.filteredSightings = null;
+
+            Preview.scrollPreviewImageSighting(1);
+
+            expect(errorSpy).toHaveBeenCalledWith('filteredSightings is undefined');
+            errorSpy.mockRestore();
+            State.data.filteredSightings = origFiltered;
+        });
     });
 
     describe('scrollPreviewImage', () => {
@@ -241,7 +302,94 @@ describe('Preview Module', () => {
              
              expect($('.preview-image-desc .photos div').eq(1).hasClass('selected')).toBe(true);
              expect($('.preview-image-desc .photos div').eq(0).hasClass('selected')).toBe(false);
-        });
-    });
-});
+         });
 
+         it('should cover updatePreviewMedia branches (missing media, mute video, default author, no-onclick thumbnail)', () => {
+              // 1. Initial preview
+              Preview.previewImage('s1', 'img1.jpg', 0);
+
+              // Add thumbnails to DOM: one with onclick (containing 'vid1.mp4') and one without onclick
+              $('.preview-image-desc').html(`
+                  <div class="photos">
+                      <div onclick="previewImage('s1', 'vid1.mp4')"></div>
+                      <div></div>
+                  </div>
+              `);
+
+              // 2. Update to video with mute = true
+              Preview.previewImage('s1', 'vid1.mp4', 0);
+              expect($('.preview-image video').length).toBe(1);
+              expect($('.preview-image video').attr('muted')).toBeDefined();
+
+              // 3. Update to video with mute = false
+              Preview.previewImage('s1', 'vid2.mp4', 0);
+              expect($('.preview-image video').length).toBe(1);
+              expect($('.preview-image video').attr('muted')).toBeUndefined();
+
+              // 4. Update to nonexistent media
+              Preview.previewImage('s1', 'nonexistent.jpg', 0);
+              // should return early without modifying the DOM
+              expect($('.preview-image video').length).toBe(1);
+
+              // 5. Default author fallback
+              Preview.previewImage('s2', 'img2.jpg', 1);
+              expect($('.preview-wrapper').length).toBe(1);
+          });
+
+          it('should handle falsy filteredSightings in updateNavigationButtons', () => {
+              const orig = State.data.filteredSightings;
+              State.data.filteredSightings = null;
+
+              // Call previewImage with explicit index to avoid map crash
+              Preview.previewImage('s1', 'img1.jpg', 0);
+              
+              // Should not crash and should return early
+              expect($('.preview-wrapper').length).toBe(1);
+
+              State.data.filteredSightings = orig;
+          });
+
+          it('should return early in updatePreviewMedia if sighting is missing', () => {
+              Preview.previewImage('s1', 'img1.jpg', 0);
+              expect($('.preview-wrapper').length).toBe(1);
+
+              // Temporarily remove sightings
+              const orig = State.data.sightings;
+              State.data.sightings = [];
+
+              // Call again with same key to trigger updatePreviewMedia
+              Preview.previewImage('s1', 'img2.jpg', 0);
+
+              // Should return early and not update DOM to img2.jpg
+              expect($('.preview-image img').attr('src')).toBe('img1.jpg');
+
+              State.data.sightings = orig;
+          });
+
+          it('should fallback to default author in updatePreviewMedia when author is empty', () => {
+              Preview.previewImage('s1', 'img1.jpg', 0);
+              
+              // Set author to empty string
+              State.data.sightings[0].author = '';
+
+              // Update to another media in the sighting (vid1.mp4)
+              Preview.previewImage('s1', 'vid1.mp4', 0);
+
+              // Verify default author is rendered
+              expect($('.preview-image').html()).toContain(Constants.DEFAULT_AUTHOR);
+          });
+
+          it('should return empty string in buildExifInfoIcon when both author and camera model are missing', () => {
+              const origDefaultAuthor = Constants.DEFAULT_AUTHOR;
+              Constants.DEFAULT_AUTHOR = '';
+
+              // s2 has empty author and no exif_data
+              Preview.previewImage('s2', 'img2.jpg', 1);
+              
+              // The exif icon should not be rendered
+              expect($('.preview-image').html()).not.toContain('exif-info-icon');
+
+              Constants.DEFAULT_AUTHOR = origDefaultAuthor;
+          });
+     });
+});

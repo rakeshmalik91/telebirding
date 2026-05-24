@@ -51,15 +51,15 @@ export function removeUnwantedValues(d) {
 export function toSingular(word) {
     if (SINGULAR_EXCEPTIONS.has(word.toLowerCase())) return word;
 
+    const lower = word.toLowerCase();
+
     // Words ending in 'ies' -> 'y' (e.g. Canaries -> Canary)
-    if (word.endsWith('ies') && word.length > 3) {
-        if (word === word.toUpperCase()) return word.slice(0, -3) + 'Y';
-        if (word[0] === word[0].toUpperCase()) return word.slice(0, -3) + 'y';
-        return word.slice(0, -3) + 'y';
+    if (lower.endsWith('ies') && lower.length > 3) {
+        return word.slice(0, -3) + (word.endsWith('IES') ? 'Y' : 'y');
     }
 
     // Words ending in 's' (but not 'ss') -> remove 's'
-    if (word.endsWith('s') && !word.endsWith('ss')) {
+    if (lower.endsWith('s') && !lower.endsWith('ss')) {
         return word.slice(0, -1);
     }
 

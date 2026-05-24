@@ -197,10 +197,71 @@ describe('Filters Module', () => {
             expect(State.data.filteredSightings[1].rating).toBe(3);
         });
 
+        it('should sort by key attribute ascending', () => {
+            State.sort = { by: 'rating', descending: false };
+            Filters.filterAndSortData({});
+            expect(State.data.filteredSightings[0].rating).toBe(3);
+            expect(State.data.filteredSightings[1].rating).toBe(5);
+        });
+
+        it('should handle sightings with missing rating during rating filter', () => {
+            State.ratingFilter = 4;
+            State.data.sightings.push({
+                key: 's3',
+                species: { name: 'Crow', family: 'Corvidae' },
+                rating: undefined
+            });
+            Filters.filterAndSortData({});
+            expect(State.data.filteredSightings.map(s => s.key)).not.toContain('s3');
+            State.data.sightings.pop();
+        });
+
         it('should empty the right pane', () => {
             $('.right-pane').html('some content');
             Filters.filterAndSortData({});
             expect($('.right-pane').html()).toBe('');
+        });
+
+        it('should filter by camera_model using exact and mapped names', () => {
+            State.data.camera_model = {
+                's7rv': 'Sony a7R V',
+                '200600': 'Sony 200-600mm'
+            };
+
+            State.data.sightings = [
+                {
+                    key: 's1',
+                    species: { name: 'Rock Pigeon', family: 'Columbidae' },
+                    media: [
+                        { camera_model: 'Sony a7R V' }
+                    ]
+                },
+                {
+                    key: 's2',
+                    species: { name: 'Blue Jay', family: 'Corvidae' },
+                    media: [
+                        { exif_data: { camera_model: 's7rv' } }
+                    ]
+                },
+                {
+                    key: 's3',
+                    species: { name: 'Crow', family: 'Corvidae' },
+                    media: [
+                        { exif_data: {} }
+                    ]
+                }
+            ];
+
+            // Direct raw model match
+            Filters.filterAndSortData({ camera_model: 'Sony a7R V' });
+            expect(State.data.filteredSightings.map(s => s.key)).toContain('s1');
+            expect(State.data.filteredSightings.map(s => s.key)).not.toContain('s3');
+
+            // Resolution mapping match
+            Filters.filterAndSortData({ camera_model: 'Sony a7' });
+            expect(State.data.filteredSightings.map(s => s.key)).toContain('s1');
+            expect(State.data.filteredSightings.map(s => s.key)).toContain('s2');
+            expect(State.data.filteredSightings.map(s => s.key)).not.toContain('s3');
         });
     });
 
@@ -280,6 +341,14 @@ describe('Filters Module', () => {
             expect(f.sighting).toBe('Jay');
         });
 
+        it('should retrieve empty filter object when filters are not set', () => {
+            Filters.setFilter('place', null);
+            Filters.setFilter('sighting', null);
+            const f = Filters.getFilters();
+            expect(f.place).toBe('');
+            expect(f.sighting).toBe('');
+        });
+
         it('should handle date filter with button visibility', () => {
             Filters.setFilter('date', '2023');
             expect($(".filter input[data-value='date']").hasClass('button-active')).toBe(true);
@@ -296,12 +365,25 @@ describe('Filters Module', () => {
             expect(State.ratingFilter).toBe(4);
         });
 
+        it('should handle rating filter through setFilter with falsy value', () => {
+            Filters.setFilter('rating', null);
+            expect(State.ratingFilter).toBe(0);
+        });
+
         it('should use URL params as fallback for getFilter', () => {
             // Remove the filter inputs for a specific type to force URL fallback
             $(".filter input[data-value='sighting']").remove();
             // URL params won't have anything set in jsdom, so undefined expected
             const result = Filters.getFilter('sighting');
             expect(result).toBeUndefined();
+        });
+
+        it('should use URL params as fallback and decode if present', () => {
+            $(".filter input[data-value='sighting']").remove();
+            const spy = vi.spyOn(Util, 'getUrlParams').mockReturnValue({ sighting: 'Rock%20Pigeon' });
+            const result = Filters.getFilter('sighting');
+            expect(result).toBe('Rock Pigeon');
+            spy.mockRestore();
         });
     });
 
@@ -467,6 +549,12 @@ describe('Filters Module', () => {
             if (window.callbackCaptor.place) window.callbackCaptor.place('Park');
 
             expect(window.showPage).toHaveBeenCalled();
+        });
+
+        it('should update existing autocomplete instances if already initialized', () => {
+            Filters.initAutocomplete();
+            Filters.initAutocomplete();
+            expect(State.autocompleteInitialized).toBe(true);
         });
     });
 });

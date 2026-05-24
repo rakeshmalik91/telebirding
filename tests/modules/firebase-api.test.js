@@ -35,22 +35,23 @@ describe('FirebaseApi', () => {
         expect(firebase.initializeApp).toHaveBeenCalledWith(FirebaseApi.config);
     });
 
-    it('should activate app check when FIREBASE_APPCHECK_ENABLED is true', () => {
-        // Reset the private initialized flag by accessing getFirebase first
-        // Then enable appcheck and call again
-        const origValue = FirebaseApi.FIREBASE_APPCHECK_ENABLED;
-        FirebaseApi.FIREBASE_APPCHECK_ENABLED = true;
+    it('should activate app check when FIREBASE_APPCHECK_ENABLED is true', async () => {
+        vi.resetModules();
+        const { default: FreshFirebaseApi } = await import('../../scripts/modules/firebase-api.js');
+
+        const origValue = FreshFirebaseApi.FIREBASE_APPCHECK_ENABLED;
+        FreshFirebaseApi.FIREBASE_APPCHECK_ENABLED = true;
 
         // Mock appCheck
         const activateFn = vi.fn();
         firebase.appCheck = vi.fn(() => ({ activate: activateFn }));
         firebase.appCheck.ReCaptchaV3Provider = vi.fn();
 
-        // Force re-initialization by resetting internal state
-        // Since #firebaseInitialized is private, we need a fresh call
-        // The first call already initialized, so calling again returns cached firebase
-        // We can't easily reset the private field, but let's verify the mock is set up
-        FirebaseApi.FIREBASE_APPCHECK_ENABLED = origValue;
+        const fb = FreshFirebaseApi.getFirebase();
+        expect(fb).toBe(firebase);
+        expect(activateFn).toHaveBeenCalled();
+
+        FreshFirebaseApi.FIREBASE_APPCHECK_ENABLED = origValue;
     });
 
     it('should have moveFile method that chains Firebase operations', async () => {

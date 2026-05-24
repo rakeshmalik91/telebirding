@@ -104,4 +104,11 @@ describe('Loader', () => {
         showLoader('b');
         expect($('#page-loader').length).toBe(1);
     });
+
+    it('should handle hideLoader when loader was never shown', () => {
+        // Reset loader to clear any blockers
+        resetLoader();
+        hideLoader('nonexistent');
+        expect($.fn.fadeOut).not.toHaveBeenCalled();
+    });
 });

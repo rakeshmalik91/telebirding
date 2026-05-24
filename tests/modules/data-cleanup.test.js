@@ -162,11 +162,12 @@ describe('toSingular', () => {
     it('should convert -ies to -y', () => {
         expect(toSingular('Canaries')).toBe('Canary');
         expect(toSingular('Hobbies')).toBe('Hobby');
+        expect(toSingular('flies')).toBe('fly');
+        expect(toSingular('canaries')).toBe('canary');
     });
 
-    it('should not change all-uppercase words (endsWith checks are case-sensitive)', () => {
-        // Neither endsWith('ies') nor endsWith('s') match uppercase 'S' — same as Python
-        expect(toSingular('CANARIES')).toBe('CANARIES');
+    it('should change all-uppercase words correctly', () => {
+        expect(toSingular('CANARIES')).toBe('CANARY');
     });
 
     it('should convert title case -ies to -y', () => {

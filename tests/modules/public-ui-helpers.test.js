@@ -151,6 +151,27 @@ describe('Public UI Helpers', () => {
              expect($('#test-container .sighting-image').eq(2).css('order')).toBe("-1");
         });
 
+        it('should simulate forward swipe direction (diff < 0)', () => {
+             UiHelpers.initSightingCarousal($('#test-container .sighting-image-carousal')[0]);
+             const scrollEl = $('#test-container .sighting-image-scroll')[0];
+             
+             const mdown = new MouseEvent('mousedown', { button: 0, bubbles: true });
+             Object.defineProperty(mdown, 'pageX', { value: 150 });
+             scrollEl.dispatchEvent(mdown);
+
+             const mmove = new MouseEvent('mousemove', { bubbles: true });
+             Object.defineProperty(mmove, 'pageX', { value: 100 });
+             scrollEl.dispatchEvent(mmove);
+
+             const mup = new MouseEvent('mouseup', { bubbles: true });
+             Object.defineProperty(mup, 'pageX', { value: 100 });
+             scrollEl.dispatchEvent(mup);
+             
+             // Drag diff is -50 (100-150) -> abs > 30 -> rollSightingCarousal(1)
+             vi.runAllTimers();
+             expect($('#test-container .sighting-image').eq(0).css('order')).toBe("3");
+        });
+
         it('should trigger click on small swipe distance', () => {
              const container = $('#test-container .sighting-image-carousal')[0];
              UiHelpers.initSightingCarousal(container);
@@ -193,9 +214,50 @@ describe('Public UI Helpers', () => {
              vi.useRealTimers();
         });
 
+        it('should handle touch gestures and prevent click on drag', () => {
+             vi.useFakeTimers();
+             UiHelpers.initSightingCarousal($('#test-container .sighting-image-carousal')[0]);
+             const scrollEl = $('#test-container .sighting-image-scroll')[0];
+             
+             // TouchStart on BUTTON target (should return early)
+             const btn = $('<button></button>')[0];
+             const tstartBtn = new Event('touchstart', { bubbles: true });
+             Object.defineProperty(tstartBtn, 'target', { value: btn });
+             scrollEl.dispatchEvent(tstartBtn);
 
+             // TouchStart on normal element
+             const tstart = new Event('touchstart', { bubbles: true });
+             Object.defineProperty(tstart, 'changedTouches', { value: [{ screenX: 100 }] });
+             scrollEl.dispatchEvent(tstart);
 
+             // TouchMove with small movement (<= 5)
+             const tmoveSmall = new Event('touchmove', { bubbles: true });
+             Object.defineProperty(tmoveSmall, 'changedTouches', { value: [{ screenX: 104 }] });
+             scrollEl.dispatchEvent(tmoveSmall);
 
+             // TouchMove with large movement (> 5)
+             const tmoveLarge = new Event('touchmove', { bubbles: true });
+             Object.defineProperty(tmoveLarge, 'changedTouches', { value: [{ screenX: 150 }] });
+             scrollEl.dispatchEvent(tmoveLarge);
+
+             // TouchEnd
+             const tend = new Event('touchend', { bubbles: true });
+             Object.defineProperty(tend, 'changedTouches', { value: [{ screenX: 150 }] });
+             scrollEl.dispatchEvent(tend);
+
+             // Click prevention while dragged is true
+             const click = new MouseEvent('click', { bubbles: true, cancelable: true });
+             const preventDefaultSpy = vi.spyOn(click, 'preventDefault');
+             const stopPropagationSpy = vi.spyOn(click, 'stopPropagation');
+             scrollEl.dispatchEvent(click);
+
+             expect(preventDefaultSpy).toHaveBeenCalled();
+             expect(stopPropagationSpy).toHaveBeenCalled();
+
+             // Fast-forward timeout for resetting dragged
+             vi.runAllTimers();
+             vi.useRealTimers();
+        });
     });
 
 
@@ -230,6 +292,41 @@ describe('Public UI Helpers', () => {
             expect($.fn.fadeIn).toHaveBeenCalled();
             expect($('.home .featured .carousal-buttons button').eq(1).hasClass('active-carousal-button')).toBe(true);
         });
+
+        it('should handle complete images during initHomePageCarousal', () => {
+            Object.defineProperty(HTMLImageElement.prototype, 'complete', {
+                get: () => true,
+                configurable: true
+            });
+
+            UiHelpers.initHomePageCarousal();
+            
+            expect(Loader.hideLoader).toHaveBeenCalledWith('home-carousel');
+
+            delete HTMLImageElement.prototype.complete;
+        });
+
+        it('should handle zero featured images during initHomePageCarousal', () => {
+            Util.readJSONFile.mockImplementationOnce((url, cb) => cb({ featured: [] }));
+
+            UiHelpers.initHomePageCarousal();
+
+            expect(Loader.hideLoader).toHaveBeenCalledWith('home-carousel');
+        });
+
+        it('should return early in rollHomePageCarousal if same index', () => {
+            UiHelpers.initHomePageCarousal();
+            // Start slideshow to set initial index
+            UiHelpers.playHomePageCarousal();
+            
+            const currentIndex = UiHelpers._homePageCarousalIndex;
+            const activeCountBefore = $('.home .featured .carousal-buttons button.active-carousal-button').length;
+            
+            UiHelpers.rollHomePageCarousal(currentIndex);
+            
+            // Should return early and not change active classes/buttons
+            expect($('.home .featured .carousal-buttons button.active-carousal-button').length).toBe(activeCountBefore);
+        });
     });
 
     describe('Miscellaneous Helpers', () => {
@@ -259,17 +356,19 @@ describe('Public UI Helpers', () => {
              expect(postMessageMock).toHaveBeenCalled();
         });
 
-        it('copyStoryLink should copy to clipboard and show toast with full lifecycle', () => {
+        it('copyStoryLink should copy to clipboard and show toast with full lifecycle', async () => {
              vi.useFakeTimers();
              vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue();
 
              UiHelpers.copyStoryLink('slug-123');
 
              // After clipboard resolves, toast is appended
-             vi.advanceTimersByTime(0); // flush promise
+             await Promise.resolve();
+             await Promise.resolve();
+             await Promise.resolve();
+
              // Wait for show class
              vi.advanceTimersByTime(100);
-             const toast = $('body .toast');
              // Wait for hide
              vi.advanceTimersByTime(2000);
              // Wait for removal
@@ -326,6 +425,45 @@ describe('Public UI Helpers', () => {
             const container = $('<div></div>');
             UiHelpers.initSightingCarousal(container[0]);
             // Should not throw
+        });
+
+        it('should handle alternate mousedown targets and mouseleave on carousal', () => {
+             const container = $(`
+                 <div class="sighting-image-carousal">
+                     <div class="sighting-image-scroll">
+                         <div class="sighting-image" style="order:0">img1</div>
+                         <div class="sighting-image" style="order:1">img2</div>
+                     </div>
+                 </div>
+             `);
+             $('body').append(container);
+
+             UiHelpers.initSightingCarousal(container[0]);
+             const scrollEl = container.find('.sighting-image-scroll')[0];
+
+             // Case 1: mousedown on a BUTTON target
+             const btn = $('<button></button>')[0];
+             const mdownBtn = new MouseEvent('mousedown', { bubbles: true });
+             Object.defineProperty(mdownBtn, 'target', { value: btn });
+             scrollEl.dispatchEvent(mdownBtn);
+
+             // Case 2: mousedown with right click (button 2)
+             const mdownRight = new MouseEvent('mousedown', { button: 2, bubbles: true });
+             scrollEl.dispatchEvent(mdownRight);
+
+             // Case 3: mouseleave event
+             const mleave = new MouseEvent('mouseleave', { bubbles: true });
+             scrollEl.dispatchEvent(mleave);
+
+             // Case 4: mousemove when isDown is false
+             const mmoveNoDown = new MouseEvent('mousemove', { bubbles: true });
+             scrollEl.dispatchEvent(mmoveNoDown);
+
+             // Case 5: mouseup when isDown is false
+             const mupNoDown = new MouseEvent('mouseup', { bubbles: true });
+             scrollEl.dispatchEvent(mupNoDown);
+
+             container.remove();
         });
     });
 
@@ -387,6 +525,50 @@ describe('Public UI Helpers', () => {
             const container = $('<div class="sighting-image-carousal"></div>');
             UiHelpers.rollSightingCarousal(container[0], 1);
             // Should not crash
+        });
+
+        it('should fallback to 0 order when order style is not set', () => {
+             vi.useFakeTimers();
+             const container = $(`
+                 <div class="sighting-image-carousal">
+                     <div class="sighting-image-scroll" style="width:200px">
+                         <div class="sighting-image">img1</div>
+                         <div class="sighting-image">img2</div>
+                     </div>
+                 </div>
+             `);
+             $('body').append(container);
+
+             UiHelpers.rollSightingCarousal(container[0], 1);
+             vi.advanceTimersByTime(500);
+
+             // order fallback for last element (img2) is 0, so first item order becomes 0 + 1 = 1
+             expect(container.find('.sighting-image').eq(0).css('order')).toBe("1");
+
+             container.remove();
+             vi.useRealTimers();
+        });
+
+        it('should fallback to 0 firstOrder in rollSightingCarousal going backwards when order is not set', () => {
+             vi.useFakeTimers();
+             const container = $(`
+                 <div class="sighting-image-carousal">
+                     <div class="sighting-image-scroll" style="width:200px">
+                         <div class="sighting-image">img1</div>
+                         <div class="sighting-image">img2</div>
+                     </div>
+                 </div>
+             `);
+             $('body').append(container);
+
+             UiHelpers.rollSightingCarousal(container[0], -1);
+             vi.advanceTimersByTime(500);
+
+             // firstOrder fallback is 0, so last item order becomes 0 - 1 = -1
+             expect(container.find('.sighting-image').eq(1).css('order')).toBe("-1");
+
+             container.remove();
+             vi.useRealTimers();
         });
     });
 });
