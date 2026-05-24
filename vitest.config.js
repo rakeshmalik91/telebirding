@@ -13,7 +13,9 @@ export default defineConfig({
         'utils/**',
         'tests/**',
         'node_modules/**',
-        'dist/**'
+        'dist/**',
+        'scripts/main.js',
+        'scripts/admin.js'
       ]
     }
   },

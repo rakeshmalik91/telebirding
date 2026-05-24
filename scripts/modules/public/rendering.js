@@ -134,9 +134,9 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
     if (sighting.time_of_day || sighting.weather) {
         let weather = (((sighting.time_of_day == 'Day' && sighting.weather) ? (sighting.weather + ' ') : '') + (sighting.time_of_day || 'Day')).toLowerCase()
         metaStatsDiv.append('<span class="text-seperator">|</span>');
-        metaStatsDiv.append('<div class="sighting-desc weather ' + weather.replace(' ', '-') + '" title="Shot on ' + weather + '"></div>');
+        metaStatsDiv.append('<div class="sighting-desc weather ' + weather.replace(' ', '-') + '" title="Shot during ' + weather + '"></div>');
         if (inPreviewPage) {
-            metaStatsDiv.append('<span class="text-seperator">Shot on ' + weather + '</span>');
+            metaStatsDiv.append('<span class="text-seperator">Shot during ' + weather + '</span>');
         }
     }
     if (!inPreviewPage && (sighting.author && sighting.author != Constants.DEFAULT_AUTHOR)) {

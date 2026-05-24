@@ -249,7 +249,9 @@ td {
 	top: 0px;
 	left: 0px;
 	width: 100vw;
+	width: 100dvw;
 	height: 100vh;
+	height: 100dvh;
 	background-color: rgba(0, 0, 0, 0.7);
 	text-align: center;
 }
@@ -259,6 +261,7 @@ td {
 	display: inline-block;
 	position: fixed;
 	top: calc(100vh / 2);
+	top: calc(100dvh / 2);
 	font-size: 24px;
 }
 

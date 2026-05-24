@@ -182,7 +182,7 @@ describe('Public Rendering', () => {
             const div = $('#test-container');
             const sighting = State.data.filteredSightings[0];
             Rendering.renderSightingDetails(div, sighting, true);
-            expect(div.html()).toContain('Shot on');
+            expect(div.html()).toContain('Shot during');
         });
 
         it('should render non-default author on non-preview page', () => {
