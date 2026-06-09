@@ -1,0 +1,6 @@
+[build]
+  command = "rm -rf telebirding-app dataset videos images featured-images data utils .agents tests coverage .github .ipynb_checkpoints"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
