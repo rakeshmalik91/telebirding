@@ -3,9 +3,15 @@
 This file defines coding standards and rules for the Antigravity agent to follow in this project.
 
 ## General
+- **Do not execute any Git commands** (e.g., `git commit`, `git push`, `git stash`, etc.) unless explicitly instructed to do so by the user.
 - Ensure all code is compatible with the existing project structure (Vanilla JS + jQuery).
 - Maintain responsiveness for mobile and desktop views.
 - Keep functions small and modular.
+- **Frontend Verification**: Any frontend changes must be verified for workability on:
+  - Desktop browsers
+  - Android app (located in the [telebirding-app](file:///./telebirding-app/) folder)
+  - Mobile browsers
+  - Collapsible/split-screen browsers for iPad
 
 ## JavaScript
 - Use ES6+ syntax (const/let, arrow functions, modules).
