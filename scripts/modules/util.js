@@ -12,10 +12,44 @@ export default class Util {
 		let rawFile = new XMLHttpRequest();
 		rawFile.overrideMimeType("application/json");
 		rawFile.open("GET", file, true);
+
+		if (Constants.ADMIN_USE_ETAG) {
+			let cachedEtag = localStorage.getItem('etag_' + file);
+			if (cachedEtag) {
+				rawFile.setRequestHeader("If-None-Match", cachedEtag);
+			}
+		}
+
 		rawFile.onreadystatechange = function () {
-			if (rawFile.readyState === 4 && rawFile.status == "200") {
-				Util.FILE_CACHE[file] = rawFile.responseText;
-				callback(rawFile.responseText);
+			if (rawFile.readyState === 4) {
+				if (rawFile.status == "200") {
+					if (Constants.ADMIN_USE_ETAG) {
+						let headers = rawFile.getAllResponseHeaders().toLowerCase();
+						let newEtag = null;
+						if (headers.includes("etag:")) {
+							newEtag = rawFile.getResponseHeader("ETag");
+						}
+						
+						if (newEtag) {
+							try {
+								localStorage.setItem('etag_' + file, newEtag);
+								localStorage.setItem('data_' + file, rawFile.responseText);
+							} catch (e) {
+								console.warn("Could not cache to localStorage", e);
+							}
+						}
+					}
+					Util.FILE_CACHE[file] = rawFile.responseText;
+					callback(rawFile.responseText);
+				} else if (rawFile.status == "304" && Constants.ADMIN_USE_ETAG) {
+					let cachedData = localStorage.getItem('data_' + file);
+					if (cachedData) {
+						Util.FILE_CACHE[file] = cachedData;
+						callback(cachedData);
+					} else {
+						callback(null);
+					}
+				}
 			}
 		}
 		rawFile.send(null);

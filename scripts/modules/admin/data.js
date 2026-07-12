@@ -8,7 +8,7 @@ export const currentMode = Util.getUrlParams().mode || Constants.MODE_BIRD;
 export let lastUpdatedSpecies = (currentMode == Constants.MODE_INSECT) ? "unidentified" : 'rock-pigeon';
 
 const IMAGE_SIZE = 1000;
-const SYNC_SCHEDULE_TIME = 60000;
+const SYNC_SCHEDULE_TIME = 3000;
 let syncRef;
 
 import { removeUnwantedValues, applySpeciesTags } from './data-cleanup.js';
@@ -47,8 +47,20 @@ function refresh() {
     refreshData();
 }
 
+let isUploading = {};
+let pendingUpload = {};
+
 export function uploadJSONData(type, skipRefresh) {
-    showLoader("saving", "Saving");
+    if (isUploading[type]) {
+        pendingUpload[type] = skipRefresh;
+        return;
+    }
+    isUploading[type] = true;
+
+    $('.save').text('Saving...').attr('disabled', 'disabled');
+    $('#sync-spinner').css('display', 'flex');
+    $('#sync-spinner .sync-text').text('Saving...');
+    $('#sync-spinner-icon').show();
 
     // --- Pre-upload cleanup (ported from data-cleanup.py) ---
     // Apply species-specific tag rules when uploading species data
@@ -65,7 +77,14 @@ export function uploadJSONData(type, skipRefresh) {
     fileData = JSON.stringify(fileData);
     if (fileData.length < 100) {
         alert("Unknown error while uploading (file data too small) ...");
-        hideLoader("saving");
+        isUploading[type] = false;
+        $('.save').text('Error').removeAttr('disabled');
+        $('#sync-spinner .sync-text').text('Error');
+        $('#sync-spinner-icon').hide();
+        setTimeout(() => { 
+            if ($('.save').text() === 'Error') $('.save').text('Save'); 
+            if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
+        }, 2000);
         return;
     }
     fileData = [fileData];
@@ -74,11 +93,33 @@ export function uploadJSONData(type, skipRefresh) {
     const file = new File(fileData, type + ".json");
     firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
         console.log("uploaded data/" + currentMode + "-" + type + ".json");
-        if (!skipRefresh) refresh();
-        hideLoader("saving");
+        isUploading[type] = false;
+
+        if (pendingUpload[type] !== undefined) {
+            let nextSkip = pendingUpload[type];
+            delete pendingUpload[type];
+            uploadJSONData(type, nextSkip);
+            return;
+        }
+
+        if (!skipRefresh) renderCallback();
+        $('.save').text('Saved!');
+        $('#sync-spinner .sync-text').text('Saved!');
+        $('#sync-spinner-icon').hide();
+        setTimeout(() => { 
+            if ($('.save').text() === 'Saved!') $('.save').text('Save'); 
+            if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+        }, 2000);
     }).catch(e => {
+        isUploading[type] = false;
         alert(e.message);
-        hideLoader("saving");
+        $('.save').text('Error').removeAttr('disabled');
+        $('#sync-spinner .sync-text').text('Error');
+        $('#sync-spinner-icon').hide();
+        setTimeout(() => { 
+            if ($('.save').text() === 'Error') $('.save').text('Save'); 
+            if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
+        }, 2000);
     });
 }
 
@@ -179,7 +220,6 @@ export function uploadMedia(sightingKey, files) {
                             "camera_model": Constants.DEFAULT_CAMERA_MODEL
                         }
                     });
-                    showLoader("saving", "Saving..."); // Bridge gap to sync
                     hideLoader("uploading-media");
                     syncSightingsData(0);
                 }).catch(e => {
@@ -204,7 +244,6 @@ export function uploadMedia(sightingKey, files) {
                         });
                     }
                 });
-                showLoader("saving", "Saving..."); // Bridge gap to sync
                 hideLoader("uploading-media");
                 syncSightingsData(0);
             }).catch(e => {
@@ -227,13 +266,11 @@ export function deleteMedia(sightingKey, mediaSrc) {
             sighting.media = sighting.media.filter(m => m.src != mediaSrc);
         });
         firebase.storage().ref(mediaSrc).delete().then(() => {
-            showLoader("saving", "Saving..."); // Bridge gap to sync
             hideLoader("deleting-media");
             syncSightingsData(0);
         }, (error) => {
             hideLoader("deleting-media");
             if (error.code === 'storage/object-not-found') {
-                showLoader("saving", "Saving..."); // Bridge gap
                 syncSightingsData(0);
             } else {
                 alert(error.message);

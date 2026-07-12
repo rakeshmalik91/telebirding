@@ -1,4 +1,5 @@
 export default class Constants {
+	static ADMIN_USE_ETAG = true;
 	static MODE_BIRD = "bird";
 	static MODE_INSECT = "insect";
 	static DEFAULT_MODE = Constants.MODE_BIRD;
