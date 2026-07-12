@@ -7,7 +7,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -29,8 +28,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -51,7 +48,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -73,7 +69,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -95,7 +90,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -117,7 +111,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -139,7 +132,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -161,8 +153,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -183,8 +173,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -217,8 +205,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -257,8 +243,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -279,8 +263,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -301,8 +283,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -323,7 +303,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
             "unconfirmed": true,
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -375,8 +354,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -403,8 +380,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -449,8 +424,6 @@
             "city": "Great Nicobar",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "author": "Rakesh Malik",
-            "unconfirmed": false,
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -483,7 +456,6 @@
             "city": "Chinnar",
             "state": "Kerala",
             "country": "India",
-            "author": "Rakesh Malik",
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -503,7 +475,6 @@
             "city": "Chinnar",
             "state": "Kerala",
             "country": "India",
-            "author": "Rakesh Malik",
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -529,7 +500,6 @@
             "city": "Chinnar",
             "state": "Kerala",
             "country": "India",
-            "author": "Rakesh Malik",
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -549,7 +519,6 @@
             "city": "Chinnar",
             "state": "Kerala",
             "country": "India",
-            "author": "Rakesh Malik",
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -569,7 +538,6 @@
             "city": "Chinnar",
             "state": "Kerala",
             "country": "India",
-            "author": "Rakesh Malik",
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
@@ -1488,7 +1456,6 @@
             "city": "Howrah",
             "state": "West Bengal",
             "country": "India",
-            "author": "Rakesh Malik",
             "time_of_day": "Day",
             "media": [
                 {

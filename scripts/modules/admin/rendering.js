@@ -16,6 +16,18 @@ export function getValue(sighting, prop) {
     return sighting[prop] ? sighting[prop] : '';
 }
 
+export function validateUpdateSpeciesForm() {
+    const updateSpeciesForm = $("#update-species-form");
+    let name = updateSpeciesForm.find("select[data-field=name]").val();
+    let family = updateSpeciesForm.find("select[data-field=family]").val();
+    let tags = updateSpeciesForm.find("input[data-field=tags]").val();
+    if (name && name.trim() && family && family.trim() && tags && tags.trim()) {
+        updateSpeciesForm.find("button.submit").removeAttr("disabled");
+    } else {
+        updateSpeciesForm.find("button.submit").attr("disabled", "disabled");
+    }
+}
+
 export function fillUpdateSpeciesForm() {
     const updateSpeciesForm = $("#update-species-form");
     let nameVal = updateSpeciesForm.find("select[data-field=name]").val();
@@ -53,6 +65,8 @@ export function fillUpdateSpeciesForm() {
             updateSpeciesForm.find("input[data-field=tags]").val(nameVal.trim().split(/\s+/).slice(-1)[0]);
         }
     }
+    
+    validateUpdateSpeciesForm();
 }
 
 export function setupUpdateSpeciesForm() {
@@ -95,12 +109,10 @@ export function setupUpdateSpeciesForm() {
     updateSpeciesForm.find("button.delete").unbind("click").click(function () {
         let key = updateSpeciesForm.find("select[data-field=name]").val();
         if (!key || !data.species[key]) return;
-        let oldSpeciesCount = Object.keys(data.species).length;
-        deleteSpecies(key);
-        if (Object.keys(data.species).length < oldSpeciesCount) {
+        deleteSpecies(key, () => {
             updateSpeciesForm.find("select[data-field=name] option[value='" + key + "']").remove();
             updateSpeciesForm.find("select[data-field=name]").val('').trigger('change');
-        }
+        });
     });
 
     // Init searchable selects on species form dropdowns
@@ -108,6 +120,8 @@ export function setupUpdateSpeciesForm() {
     updateSpeciesForm.find("select[data-field=family]").attr("placeholder", "Select or type a family...");
     initSearchableSelect(updateSpeciesForm.find("select[data-field=name]")[0]);
     initSearchableSelect(updateSpeciesForm.find("select[data-field=family]")[0]);
+
+    updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags]").on("change input", validateUpdateSpeciesForm);
 
     updateSpeciesForm.find("select[data-field=name]").change(function () {
         let v = $(this).val();
@@ -154,6 +168,12 @@ export function setupUpdateSpeciesForm() {
                             // We can either simple append option or refresh the whole select
                             familySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
                             familySelect.val(s.familyComName).trigger('change');
+                            
+                            // Also update the add-family-form's name dropdown
+                            let addFamilySelect = $("#add-family-form select[data-field=name]");
+                            if (addFamilySelect.length > 0 && addFamilySelect.find("option[value='" + s.familyComName + "']").length === 0) {
+                                addFamilySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
+                            }
                         }
                     }
                 }
@@ -166,17 +186,24 @@ export function setupUpdateSpeciesForm() {
     });
 }
 
+function getTextDOM(field, value, width, placeholder) {
+    let html = `<div class='input-clear-wrapper ${value ? 'has-value' : ''}' style='width:${width}'>`;
+    html += `<input type='text' data-field='${field}' value='${value}' style='width:100%' placeholder='${placeholder}'></input>`;
+    html += `<span class='input-clear-btn' title='Clear'>✕</span>`;
+    html += `</div>`;
+    return html;
+}
 
 export function renderSightingsTable(OFFSET, ROWS) {
     const table = $("#sightings-table");
     table.html("");
     table.append("<tr>" +
-        "<th class='noborder'></th>" +
-        "<th style='width: 250px;'>Species</th>" +
+        "<th class='noborder' style='width: 60px;'></th>" +
+        "<th style='width: 280px;'>Species</th>" +
         "<th>Media</th>" +
-        "<th>Date & Place</th>" +
-        "<th>Properties</th>" +
-        "<th class='noborder'></th>" +
+        "<th style='width: 260px;'>Date & Place</th>" +
+        "<th style='width: 180px;'>Properties</th>" +
+        "<th class='noborder' style='width: 40px;'></th>" +
         "</tr>");
     const searchKey = $("input[name=filter-sighting]").val() || "";
     const filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
@@ -196,10 +223,10 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "</div></td>";
 
         row += "<td>"
-        row += getSelectDOM("species", data.species, getValue(sighting, 'species'), "350px");
+        row += getSelectDOM("species", data.species, getValue(sighting, 'species'), "280px", "data-no-clear='true'");
         row += "<br>";
-        row += "<textarea data-field='description' style='width:350px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
-        row += "<input type='text' data-field='author' value='" + getValue(sighting, 'author') + "' style='width:350px' placeholder='" + Constants.DEFAULT_AUTHOR + "'></input>";
+        row += "<textarea data-field='description' style='width:280px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
+        row += getTextDOM("author", getValue(sighting, 'author'), "280px", Constants.DEFAULT_AUTHOR);
         // Star rating widget
         let currentRating = parseInt(getValue(sighting, 'rating')) || 0;
         row += "<div class='star-rating' style='margin-top:4px;'>";
@@ -210,7 +237,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "<div style='margin-top:8px; display:flex; align-items:center;'><input class='unconfirmed-toggle' type='checkbox' data-field='unconfirmed' " + (sighting.unconfirmed ? "checked" : "") + " title='Unconfirmed'/> <span class='label'>Unconfirmed</span></div>";
         row += "</td>";
 
-        row += "<td><div class='media-container' data-sightingkey='" + sighting.key + "' style='width: calc(100vw - 970px); min-height: 50px; padding: 5px; border-radius: 4px; border: 1px dashed transparent;'>";
+        row += "<td><div class='media-container' data-sightingkey='" + sighting.key + "' style='width: 100%; min-width: 300px; min-height: 50px; padding: 5px; border-radius: 4px; border: 1px dashed transparent;'>";
         (sighting.media || []).forEach(function (media, i) {
             row += "<div class='thumbnail' draggable='true' data-mediasrc='" + media.src + "' data-sightingkey='" + sighting.key + "'>";
             let ext = media.src.split('.').pop().toLowerCase();
@@ -223,12 +250,12 @@ export function renderSightingsTable(OFFSET, ROWS) {
             } else {
                 row += "<img src='" + Util.getMedia(media.src) + "' title='" + media.src + "'/>";
             }
-            row += "<textarea class='title-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:40px;width:80px;' placeholder='Add title'>" + (media.title || "") + "</textarea>";
+            row += "<textarea class='title-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:68px;width:80px;resize:none;overflow:hidden;' placeholder='Add title'>" + (media.title || "") + "</textarea>";
             let cameraModelParts = (media.exif_data ? (media.exif_data.camera_model || "") : "").split('+').map(x => x.trim()).filter(x => x);
             let camCount = cameraModelParts.length;
 
             // Combined Camera & Lens Multiselect
-            row += "<div class='camera-select-wrapper' style='display:flex; justify-content: flex-start; margin-top:2px;'>";
+            row += "<div class='camera-select-wrapper' style='display:flex; justify-content: flex-start; align-items: center; gap: 4px; margin-top:2px;'>";
             row += "<select class='camera-model-select' data-icon-only='true' data-tags='true' data-mediasrc='" + media.src + "' multiple style='width:28px; font-size: 11px;' title='" + (media.exif_data?.camera_model || "Select Camera & Lens") + "'>";
             let foundParts = new Set();
             if (data.camera_model) {
@@ -258,17 +285,16 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "123px") + "<br>";
         row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "250px") + "<br>";
         row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "250px") + "<br>";
-        row += "<input type='text' data-field='city' value='" + getValue(sighting, 'city') + "' style='width:250px' placeholder='Add city'></input><br>";
-        row += "<input type='text' data-field='place' value='" + getValue(sighting, 'place') + "' style='width:250px' placeholder='Add place'></input>";
+        row += getTextDOM("city", getValue(sighting, 'city'), "250px", "Add city") + "<br>";
+        row += getTextDOM("place", getValue(sighting, 'place'), "250px", "Add place");
         row += "</td>";
 
-        row += "<td>";
+        row += "<td class='property-fields'>";
         row += getSelectDOM("gender", Constants.OPT_GENDER, getValue(sighting, 'gender'), "160px");
         row += getSelectDOM("age", Constants.OPT_AGE[currentMode], getValue(sighting, 'age'), "160px");
         row += getSelectDOM("plumage", Constants.OPT_PLUMAGE[currentMode], getValue(sighting, 'plumage'), "160px");
-        row += "<br>";
-        row += "<input type='text' data-field='variation' value='" + getValue(sighting, 'variation') + "' style='width:160px' placeholder='Add variation'></input>";
-        row += "<input type='text' data-field='subspecies' value='" + getValue(sighting, 'subspecies') + "' style='width:160px' placeholder='Add subspecies'></input>";
+        row += getTextDOM("variation", getValue(sighting, 'variation'), "160px", "Add variation");
+        row += getTextDOM("subspecies", getValue(sighting, 'subspecies'), "160px", "Add subspecies");
         row += "</td>";
 
         row += "<td class='noborder'>";
@@ -290,6 +316,8 @@ export function renderSightingsTable(OFFSET, ROWS) {
         sightingRow.find('.camera-model-select').each(function () {
             initSearchableSelect(this);
         });
+
+
 
         sightingRow.find('.drag-handle').on('mousedown', function () {
             sightingRow.attr('draggable', 'true');
@@ -497,6 +525,16 @@ export function updatePaginationControls(OFFSET, ROWS) {
     }
 }
 
+export function validateAddFamilyForm() {
+    const addFamilyForm = $("#add-family-form");
+    let name = addFamilyForm.find("select[data-field=name]").val();
+    if (name && name.trim()) {
+        addFamilyForm.find("button.submit").removeAttr("disabled");
+    } else {
+        addFamilyForm.find("button.submit").attr("disabled", "disabled");
+    }
+}
+
 // Helper to fill form based on selection
 export function fillAddFamilyForm() {
     const addFamilyForm = $("#add-family-form");
@@ -510,7 +548,6 @@ export function fillAddFamilyForm() {
         addFamilyForm.find("input[data-field=species-count]").val(count);
 
         addFamilyForm.find("button.submit").html("Update");
-        addFamilyForm.find("button.submit").removeAttr("disabled");
         addFamilyForm.find("button.delete").removeAttr("disabled");
     } else {
         addFamilyForm.find("input[data-field=sci-name]").val("");
@@ -518,11 +555,6 @@ export function fillAddFamilyForm() {
         addFamilyForm.find("input[data-field=species-count]").val("0");
         addFamilyForm.find("button.submit").html("Add");
         addFamilyForm.find("button.delete").attr("disabled", "disabled");
-        if (currentMode == Constants.MODE_BIRD) {
-            addFamilyForm.find("button.submit").attr("disabled", "disabled");
-        } else {
-            addFamilyForm.find("button.submit").removeAttr("disabled");
-        }
     }
 
     if (currentMode != Constants.MODE_BIRD) {
@@ -530,6 +562,8 @@ export function fillAddFamilyForm() {
     } else {
         addFamilyForm.find("input[data-field=ebird-code]").closest('tr').show();
     }
+    
+    validateAddFamilyForm();
 }
 
 export function setupAddFamilyForm() {
@@ -548,9 +582,36 @@ export function setupAddFamilyForm() {
     $famInput.val('');
     fillAddFamilyForm();
     $famInput.unbind("change").on("change", fillAddFamilyForm);
+    $famInput.on("change input", validateAddFamilyForm);
 
     $famInput.attr("placeholder", "Select or type a family...");
     initSearchableSelect($famInput[0]);
+
+    addFamilyForm.find("input[data-field=ebird-code]").unbind("change").change(function () {
+        let v = $(this).val();
+        if (!v || !v.trim()) return;
+
+        if (currentMode == Constants.MODE_BIRD) {
+            showLoader("ebird-family", "Fetching Family from eBird");
+            EbirdApi.fetchEbirdSciName(v).then(s => {
+                if (s) {
+                    let fName = s.category == 'family' ? s.comName : s.familyComName;
+                    let fSciName = s.category == 'family' ? s.sciName : s.familySciName;
+                    
+                    if (fName) {
+                        let nameInput = addFamilyForm.find("select[data-field=name]");
+                        if (nameInput.find("option[value='" + fName + "']").length == 0) {
+                            nameInput.append("<option value='" + fName + "'>" + fName + "</option>");
+                        }
+                        nameInput.val(fName).trigger('change');
+                    }
+                    if (fSciName) {
+                        addFamilyForm.find("input[data-field=sci-name]").val(fSciName).change();
+                    }
+                }
+            }).finally(() => hideLoader("ebird-family"));
+        }
+    });
 
     addFamilyForm.find("button.submit").unbind("click").click(function () {
         let name = $famInput.val();
@@ -581,12 +642,7 @@ export function setupAddFamilyForm() {
         let name = $famInput.val();
         if (!name) return;
 
-        let oldCount = data.families.length;
-        deleteFamily(name);
-
-        if (data.families.length < oldCount) {
-            // Deleted successfully
-
+        deleteFamily(name, () => {
             // Remove from species form dropdown
             let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
             speciesFamilySelect.find("option[value='" + name + "']").remove();
@@ -594,6 +650,24 @@ export function setupAddFamilyForm() {
             // Remove from select and reset
             $famInput.find("option[value='" + name + "']").remove();
             $famInput.val('').trigger('change');
-        }
+        });
     });
 }
+
+$(document).ready(function() {
+    $(document).on('click', '.input-clear-btn', function () {
+        let wrapper = $(this).closest('.input-clear-wrapper');
+        let input = wrapper.find('input');
+        input.val('').trigger('change');
+        wrapper.removeClass('has-value');
+    });
+
+    $(document).on('input change', '.input-clear-wrapper input', function () {
+        let wrapper = $(this).closest('.input-clear-wrapper');
+        if ($(this).val()) {
+            wrapper.addClass('has-value');
+        } else {
+            wrapper.removeClass('has-value');
+        }
+    });
+});

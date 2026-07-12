@@ -15,8 +15,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260712-1848">
-	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260712-1716">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260712-2200">
+	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260712-2124">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
 	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
@@ -38,7 +38,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" charset="UTF-8" src="scripts/admin.js?v=20260712-1716"></script>
+	<script type="module" src="scripts/admin.js?v=20260712-2119"></script>
 
 </head>
 
@@ -105,7 +105,10 @@
 					<option>25</option>
 					<option>50</option>
 				</select>
-				<input type="text" name="filter-sighting" placeholder="Filter" />
+				<div class='input-clear-wrapper' style="width: 200px;">
+					<input type="text" name="filter-sighting" placeholder="Filter" style="width: 100%;" />
+					<span class='input-clear-btn' title='Clear'>✕</span>
+				</div>
 			</div>
 			<table id="sightings-table"></table>
 			<div class='nav-bottom'>
@@ -131,29 +134,43 @@
 			<table id="update-species-form">
 				<tr>
 					<td>Name</td>
-					<td><select data-field='name' data-tags='true' style="width: 700px;" placeholder="Select or type a species..."></select></td>
+					<td><select data-field='name' data-tags='true' style="width: 100%; max-width: 700px;" placeholder="Select or type a species..."></select></td>
 				</tr>
 				<tr>
 					<td>Family</td>
-					<td><select data-field='family' style="width: 700px;" placeholder="Select or type a family..."></select></td>
+					<td><select data-field='family' style="width: 100%; max-width: 700px;" placeholder="Select or type a family..."></select></td>
 				</tr>
 				<tr>
 					<td>Tags</td>
-					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 700px;" /></td>
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
+							<input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td>Scientific Name</td>
-					<td><input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 700px;" />
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
+							<input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>eBird Code</td>
-					<td><input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 700px;" /></td>
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
+							<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td>Sighting Count</td>
 					<td><input type='text' data-field='sighting-count' placeholder="-"
-							style="width: 700px; text-align: left;" disabled /></td>
+							style="width: 100%; max-width: 700px; text-align: left;" disabled /></td>
 				</tr>
 				<tr>
 					<td class='noborder'>
@@ -172,23 +189,31 @@
 				<tr>
 					<td>Name</td>
 					<td>
-						<select data-field='name' data-tags='true' style="width: 500px;" placeholder="Select or type a family..."></select>
+						<select data-field='name' data-tags='true' style="width: 100%; max-width: 500px;" placeholder="Select or type a family..."></select>
 					</td>
 				</tr>
 				<tr>
 					<td>Scientific Name</td>
-					<td><input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 500px;" />
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 500px;">
+							<input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>eBird Code</td>
-					<td><input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 500px;" />
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 500px;">
+							<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>Species Count</td>
 					<td><input type='text' data-field='species-count' placeholder="-"
-							style="width: 500px; text-align: left;" disabled />
+							style="width: 100%; max-width: 500px; text-align: left;" disabled />
 					</td>
 				</tr>
 				<tr>

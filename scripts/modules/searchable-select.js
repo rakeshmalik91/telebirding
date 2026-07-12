@@ -28,9 +28,11 @@ export function initSearchableSelect(selectEl) {
     const isMultiple = $select.prop('multiple');
     const allowTags = $select.data('tags') === true || $select.data('tags') === 'true';
     const isIconOnly = $select.data('icon-only') === true || $select.data('icon-only') === 'true';
+    const noClear = $select.data('no-clear') === true || $select.data('no-clear') === 'true';
 
-    // Read width before hiding
+    // Read width and max-width before hiding
     const width = $select[0].style.width || $select.css('width') || '200px';
+    const maxWidth = $select[0].style.maxWidth || $select.css('max-width');
 
     // Hide native select
     $select.addClass(SEARCHABLE_CLASS);
@@ -38,10 +40,12 @@ export function initSearchableSelect(selectEl) {
     // Create wrapper
     const $wrapper = $('<div>').addClass(WRAPPER_CLASS);
     $wrapper.css('width', width);
+    if (maxWidth && maxWidth !== 'none') $wrapper.css('max-width', maxWidth);
 
     // Create display area
     const $display = $('<div>').addClass(DISPLAY_CLASS);
     $display.css('width', width);
+    if (maxWidth && maxWidth !== 'none') $display.css('max-width', maxWidth);
     if ($select.css('font-size')) {
         $display.css('font-size', $select.css('font-size'));
     }
@@ -50,6 +54,10 @@ export function initSearchableSelect(selectEl) {
     const $clearBtn = $('<span>').addClass(CLEAR_BTN_CLASS).html('&#x2715;').attr('title', 'Clear');
     $display.append($displayText, $clearBtn);
 
+    if (noClear) {
+        $display.addClass('no-clear');
+    }
+    
     // Create dropdown
     const $dropdown = $('<div>').addClass(DROPDOWN_CLASS);
     $dropdown.css('min-width', width);

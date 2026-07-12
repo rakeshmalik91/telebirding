@@ -88,11 +88,20 @@ textarea {
 
 .place-fields select,
 .place-fields input,
-.place-fields .ss-wrapper {
+.place-fields .ss-wrapper,
+.place-fields .input-clear-wrapper {
 	display: inline-block;
 	margin-bottom: 4px;
 	margin-right: 4px;
 	vertical-align: middle;
+}
+
+.property-fields select,
+.property-fields input,
+.property-fields .ss-wrapper,
+.property-fields .input-clear-wrapper {
+	display: block;
+	margin-bottom: 4px;
 }
 
 /* Custom checkbox/toggle styles */
@@ -185,10 +194,23 @@ button {
 	box-sizing: border-box;
 }
 
+.drag-handle {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
 .thumbnail {
 	height: 200px;
 	position: relative;
 	margin-bottom: 15px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
 }
 
 button.upload-button {
@@ -265,14 +287,16 @@ textarea {
 	margin-left: 30px;
 }
 
-.nav-top input {
+.nav-top input,
+.nav-top .input-clear-wrapper {
 	display: inline-block;
 }
 
 .nav-top input,
 .nav-top button,
 .nav-bottom button,
-.nav-top select {
+.nav-top select,
+.nav-top .input-clear-wrapper {
 	vertical-align: middle;
 }
 
@@ -354,7 +378,7 @@ textarea {
 
 table {
 	border-collapse: collapse;
-	width: auto;
+	width: 100%;
 }
 
 tr {
@@ -380,6 +404,10 @@ tr.drag-over-bottom td {
 
 .thumbnail.drag-over-right {
 	border-right: 2px solid #38bdf8 !important;
+}
+
+#sightings-table {
+	table-layout: fixed;
 }
 
 #sightings-table div[style*="100vw"] {
@@ -515,6 +543,7 @@ td {
 .camera-count {
 	color: #94a3b8;
 	font-size: 11px;
+	transform: translateY(3px);
 }
 
 .overlay {
@@ -580,7 +609,24 @@ select[data-field=species] {
 #login-page table {
 	border: none;
 }
+#login-page table {
+    width: auto;
+    margin-top: 20px;
+}
 
+#update-species-form {
+	width: 100%;
+	max-width: 850px;
+    table-layout: auto;
+}
+
+#add-family-form {
+	width: 100%;
+	max-width: 650px;
+    table-layout: auto;
+}
+
+#update-species-form input[type="text"],
 #login-page input[type=text],
 #login-page input[type=password] {
 	width: 400px;
@@ -631,8 +677,10 @@ select[data-field=species] {
 .admin-nav-tabs {
 	display: flex;
 	gap: 5px;
-	margin-bottom: 0;
+	margin-bottom: -1px;
 	padding-left: 20px;
+	position: relative;
+	z-index: 1;
 }
 
 .admin-nav-tab {
@@ -662,8 +710,7 @@ select[data-field=species] {
 	color: #38bdf8;
 	border-color: rgba(255, 255, 255, 0.05);
 	border-bottom: 1px solid #1e293b;
-	z-index: 1;
-	top: 1px;
+	z-index: 2;
 }
 
 .admin-tab-content {
@@ -928,4 +975,30 @@ select::-ms-expand {
 
 #custom-modal-confirm:hover {
     background-color: #2563eb;
+}/* Clear button for text fields */
+.input-clear-wrapper {
+    position: relative;
+    display: block;
+}
+.input-clear-wrapper input[type='text'] {
+    padding-right: 28px;
+}
+.input-clear-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+    padding: 0 4px;
+    cursor: pointer;
+    line-height: 1;
+    display: none;
+}
+.input-clear-btn:hover {
+    color: #ef4444;
+}
+.input-clear-wrapper input[type='text']:not(:placeholder-shown) + .input-clear-btn,
+.input-clear-wrapper.has-value .input-clear-btn {
+    display: block;
 }

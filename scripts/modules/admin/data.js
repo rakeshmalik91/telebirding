@@ -53,7 +53,11 @@ let pendingUpload = {};
 
 export function uploadJSONData(type, skipRefresh) {
     if (isUploading[type]) {
-        pendingUpload[type] = skipRefresh;
+        if (pendingUpload[type] !== undefined) {
+            pendingUpload[type] = pendingUpload[type] && skipRefresh;
+        } else {
+            pendingUpload[type] = skipRefresh;
+        }
         return;
     }
     isUploading[type] = true;
@@ -190,7 +194,9 @@ function getSightingDateFromExif(file) {
 }
 
 export function uploadMedia(sightingKey, files) {
-    showLoader("uploading-media", "Uploading Media");
+    $('#sync-spinner').css('display', 'flex');
+    $('#sync-spinner .sync-text').text('Uploading Media...');
+    $('#sync-spinner-icon').show();
 
     const sighting = data.sightings.find(s => s.key === sightingKey);
 
@@ -221,11 +227,10 @@ export function uploadMedia(sightingKey, files) {
                             "camera_model": Constants.DEFAULT_CAMERA_MODEL
                         }
                     });
-                    hideLoader("uploading-media");
                     syncSightingsData(0);
                 }).catch(e => {
                     customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
-                    hideLoader("uploading-media");
+                    if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
                 });
             });
         } else if (file.type.match(/video.*/)) {
@@ -245,11 +250,10 @@ export function uploadMedia(sightingKey, files) {
                         });
                     }
                 });
-                hideLoader("uploading-media");
                 syncSightingsData(0);
             }).catch(e => {
                 customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
-                hideLoader("uploading-media");
+                if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
             });
         }
     });
@@ -262,20 +266,22 @@ export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
     }
     
     const executeDelete = () => {
-        showLoader("deleting-media", "Deleting Media");
+        $('#sync-spinner').css('display', 'flex');
+        $('#sync-spinner .sync-text').text('Deleting Media...');
+        $('#sync-spinner-icon').show();
+
         data.sightings.forEach(function (sighting) {
             if (sighting.key != sightingKey) return;
             sighting.media = sighting.media.filter(m => m.src != mediaSrc);
         });
         firebase.storage().ref(mediaSrc).delete().then(() => {
-            hideLoader("deleting-media");
             syncSightingsData(0);
         }, (error) => {
-            hideLoader("deleting-media");
             if (error.code === 'storage/object-not-found') {
                 syncSightingsData(0);
             } else {
                 customAlert(error.message);
+                if ($('#sync-spinner .sync-text').text() === 'Deleting Media...') $('#sync-spinner').fadeOut(300);
             }
         })
     };
@@ -314,7 +320,7 @@ export function moveMediaToTarget(sourceSightingKey, targetSightingKey, draggedS
     }
     
     renderCallback();
-    syncSightingsData(0, true);
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function updateField(sightingKey, field, value) {
@@ -333,11 +339,14 @@ export function updateField(sightingKey, field, value) {
             sighting[field] = value;
         }
     });
-    syncSightingsData(SYNC_SCHEDULE_TIME);
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
-    showLoader("renaming-media", "Renaming Media...");
+    $('#sync-spinner').css('display', 'flex');
+    $('#sync-spinner .sync-text').text('Renaming Media...');
+    $('#sync-spinner-icon').show();
+
     const promises = [];
     const errors = [];
 
@@ -378,15 +387,15 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
 
     if (promises.length > 0) {
         Promise.all(promises).then(() => {
-            hideLoader("renaming-media");
             if (errors.length > 0) {
                 customAlert("Some files could not be renamed:\n" + errors.join("\n"));
+                if ($('#sync-spinner .sync-text').text() === 'Renaming Media...') $('#sync-spinner').fadeOut(300);
             }
-            syncSightingsData(0); // Force immediate sync to save new paths
+            syncSightingsData(0, true); // Force immediate sync to save new paths
             console.log("Renaming process completed.");
         });
     } else {
-        hideLoader("renaming-media");
+        if ($('#sync-spinner .sync-text').text() === 'Renaming Media...') $('#sync-spinner').fadeOut(300);
     }
 }
 
@@ -405,7 +414,7 @@ export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
             }
         });
     });
-    syncSightingsData(SYNC_SCHEDULE_TIME);
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function addSighting(filterSightingVal) {
@@ -417,14 +426,15 @@ export function addSighting(filterSightingVal) {
         "city": (data.sightings[0] || {}).city || "Howrah",
         "state": (data.sightings[0] || {}).state || "West Bengal",
         "country": (data.sightings[0] || {}).country || "India",
-        "author": (data.sightings[0] || {}).author || Constants.DEFAULT_AUTHOR,
+        "author": null,
         "unconfirmed": false,
         "time_of_day": "Day",
         "weather": (data.sightings[0] || {}).weather || null,
         "hidden": true,
         "media": []
     });
-    syncSightingsData(0);
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 
@@ -447,7 +457,8 @@ export function deleteSighting(sightingKey) {
             deleteMedia(sightingKey, media.src, true);
         });
         data.sightings = data.sightings.filter(b => b.key != sightingKey);
-        syncSightingsData(0);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
     });
 }
 
@@ -488,7 +499,7 @@ export function addFamily(name, ebirdCode, sciName) {
     }
 }
 
-export function deleteFamily(name) {
+export function deleteFamily(name, onSuccess) {
     if (!name) return;
     if (Object.values(data.species).some(s => s.family == name)) {
         customAlert("Cannot delete family '" + name + "' as it is used by one or more species.");
@@ -497,11 +508,12 @@ export function deleteFamily(name) {
     customConfirm("Are you sure you want to delete family '" + name + "'?", () => {
         data.families = data.families.filter(f => f.name != name);
         uploadJSONData("families", true);
+        if (onSuccess) onSuccess();
         customAlert("Family deleted successfully.");
     });
 }
 
-export function deleteSpecies(key) {
+export function deleteSpecies(key, onSuccess) {
     if (!key) return;
     if (data.sightings.some(s => s.species == key)) {
         customAlert("Cannot delete species '" + key + "' as it has sightings.");
@@ -510,6 +522,7 @@ export function deleteSpecies(key) {
     customConfirm("Are you sure you want to delete species '" + key + "'?", () => {
         delete data.species[key];
         uploadJSONData("species", true);
+        if (onSuccess) onSuccess();
         customAlert("Species deleted successfully.");
     });
 }
@@ -521,11 +534,13 @@ export function moveSighting(sightingKey, value) {
     if (value > 0 && index < data.sightings.length - 1) { // move down
         let newIndex = Math.min(index + value, data.sightings.length - 1);
         data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index + 1, newIndex + 1), [sighting], data.sightings.slice(newIndex + 1)].flat();
-        syncSightingsData(0);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
     } else if (value < 0 && index > 0) { // move up
         let newIndex = Math.max(index + value, 0);
         data.sightings = [data.sightings.slice(0, newIndex), [sighting], data.sightings.slice(newIndex, index), data.sightings.slice(index + 1)].flat();
-        syncSightingsData(0);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
     }
 }
 
@@ -545,12 +560,14 @@ export function moveSightingToTarget(draggedKey, targetKey, dropAfter) {
     } else {
         data.sightings.splice(newTargetIndex, 0, sighting);
     }
-    syncSightingsData(0);
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function sortByDate() {
     data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));
-    syncSightingsData(0);
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function sightingMatches(sighting, searchKey) {
