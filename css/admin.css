@@ -200,6 +200,7 @@ button {
 	-ms-user-select: none;
 	user-select: none;
 	-webkit-touch-callout: none;
+	-webkit-user-drag: element;
 }
 
 .thumbnail {
@@ -436,6 +437,19 @@ td {
 	height: 200px;
 	position: relative;
 	margin-bottom: 15px;
+}
+
+.thumbnail img,
+.thumbnail video {
+	max-width: 100%;
+	max-height: 100px;
+	border-radius: 4px;
+	margin-bottom: 5px;
+	pointer-events: none; /* Let touches fall through to the .thumbnail div for dragging */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
 }
 
 .thumbnail img {

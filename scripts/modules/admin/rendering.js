@@ -201,9 +201,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
         "<th class='noborder' style='width: 60px;'></th>" +
         "<th style='width: 280px;'>Species</th>" +
         "<th>Media</th>" +
-        "<th style='width: 260px;'>Date & Place</th>" +
-        "<th style='width: 180px;'>Properties</th>" +
-        "<th class='noborder' style='width: 40px;'></th>" +
+        "<th style='width: 230px;'>Date & Place</th>" +
+        "<th style='width: 130px;'>Properties</th>" +
+        "<th class='noborder' style='width: 30px;'></th>" +
         "</tr>");
     const searchKey = $("input[name=filter-sighting]").val() || "";
     const filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
@@ -280,25 +280,25 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "</div></td>";
 
         row += "<td class='place-fields'>";
-        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:250px'></input><br>";
-        row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "123px");
-        row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "123px") + "<br>";
-        row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "250px") + "<br>";
-        row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "250px") + "<br>";
-        row += getTextDOM("city", getValue(sighting, 'city'), "250px", "Add city") + "<br>";
-        row += getTextDOM("place", getValue(sighting, 'place'), "250px", "Add place");
+        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:220px'></input><br>";
+        row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "108px");
+        row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "108px") + "<br>";
+        row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "220px") + "<br>";
+        row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "220px") + "<br>";
+        row += getTextDOM("city", getValue(sighting, 'city'), "220px", "Add city") + "<br>";
+        row += getTextDOM("place", getValue(sighting, 'place'), "220px", "Add place");
         row += "</td>";
 
         row += "<td class='property-fields'>";
-        row += getSelectDOM("gender", Constants.OPT_GENDER, getValue(sighting, 'gender'), "160px");
-        row += getSelectDOM("age", Constants.OPT_AGE[currentMode], getValue(sighting, 'age'), "160px");
-        row += getSelectDOM("plumage", Constants.OPT_PLUMAGE[currentMode], getValue(sighting, 'plumage'), "160px");
-        row += getTextDOM("variation", getValue(sighting, 'variation'), "160px", "Add variation");
-        row += getTextDOM("subspecies", getValue(sighting, 'subspecies'), "160px", "Add subspecies");
+        row += getSelectDOM("gender", Constants.OPT_GENDER, getValue(sighting, 'gender'), "120px");
+        row += getSelectDOM("age", Constants.OPT_AGE[currentMode], getValue(sighting, 'age'), "120px");
+        row += getSelectDOM("plumage", Constants.OPT_PLUMAGE[currentMode], getValue(sighting, 'plumage'), "120px");
+        row += getTextDOM("variation", getValue(sighting, 'variation'), "120px", "Add variation");
+        row += getTextDOM("subspecies", getValue(sighting, 'subspecies'), "120px", "Add subspecies");
         row += "</td>";
 
         row += "<td class='noborder'>";
-        row += "<div class='drag-handle' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 10px 5px; text-align: center; user-select: none;'>⣿</div>";
+        row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 10px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
         row += "</td>";
 
         row += "</tr>";
@@ -319,21 +319,18 @@ export function renderSightingsTable(OFFSET, ROWS) {
 
 
 
-        sightingRow.find('.drag-handle').on('mousedown', function () {
-            sightingRow.attr('draggable', 'true');
-        }).on('mouseup mouseleave', function () {
-            sightingRow.attr('draggable', 'false');
-        });
+
 
         sightingRow.on('dragstart', function (e) {
             e.originalEvent.dataTransfer.effectAllowed = 'move';
             e.originalEvent.dataTransfer.setData('text/plain', sighting.key);
+            let rect = this.getBoundingClientRect();
+            e.originalEvent.dataTransfer.setDragImage(this, e.originalEvent.clientX - rect.left, e.originalEvent.clientY - rect.top);
             $(this).css('opacity', '0.5');
         });
         sightingRow.on('dragend', function (e) {
             $(this).css('opacity', '1');
             $("tr").removeClass('drag-over-top drag-over-bottom');
-            $(this).attr('draggable', 'false');
         });
         sightingRow.on('dragover', function (e) {
             e.preventDefault();
@@ -352,7 +349,6 @@ export function renderSightingsTable(OFFSET, ROWS) {
         sightingRow.on('drop', function (e) {
             e.preventDefault();
             $(this).removeClass('drag-over-top drag-over-bottom');
-            $(this).attr('draggable', 'false');
             let draggedKey = e.originalEvent.dataTransfer.getData('text/plain');
             let targetKey = sighting.key;
             if (draggedKey && draggedKey !== targetKey) {
