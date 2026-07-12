@@ -844,3 +844,88 @@ select::-ms-expand {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+#custom-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 20000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#custom-modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.custom-modal-content {
+    background: #1e1e1e;
+    color: #f0f0f0;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
+}
+
+#custom-modal-overlay.visible .custom-modal-content {
+    transform: scale(1);
+}
+
+#custom-modal-title {
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+#custom-modal-message {
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.custom-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.custom-modal-buttons button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+#custom-modal-cancel {
+    background-color: #444;
+    color: #fff;
+}
+
+#custom-modal-cancel:hover {
+    background-color: #555;
+}
+
+#custom-modal-confirm {
+    background-color: #3b82f6; /* or .submit green */
+    color: #fff;
+}
+
+#custom-modal-confirm:hover {
+    background-color: #2563eb;
+}

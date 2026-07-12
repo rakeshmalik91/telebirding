@@ -12,6 +12,7 @@ const SYNC_SCHEDULE_TIME = 3000;
 let syncRef;
 
 import { removeUnwantedValues, applySpeciesTags } from './data-cleanup.js';
+import { customAlert, customConfirm } from './ui.js';
 
 
 let renderCallback = () => { };
@@ -76,7 +77,7 @@ export function uploadJSONData(type, skipRefresh) {
 
     fileData = JSON.stringify(fileData);
     if (fileData.length < 100) {
-        alert("Unknown error while uploading (file data too small) ...");
+        customAlert("Unknown error while uploading (file data too small) ...");
         isUploading[type] = false;
         $('.save').text('Error').removeAttr('disabled');
         $('#sync-spinner .sync-text').text('Error');
@@ -112,7 +113,7 @@ export function uploadJSONData(type, skipRefresh) {
         }, 2000);
     }).catch(e => {
         isUploading[type] = false;
-        alert(e.message);
+        customAlert(e.message);
         $('.save').text('Error').removeAttr('disabled');
         $('#sync-spinner .sync-text').text('Error');
         $('#sync-spinner-icon').hide();
@@ -223,7 +224,7 @@ export function uploadMedia(sightingKey, files) {
                     hideLoader("uploading-media");
                     syncSightingsData(0);
                 }).catch(e => {
-                    alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                    customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
                     hideLoader("uploading-media");
                 });
             });
@@ -247,19 +248,20 @@ export function uploadMedia(sightingKey, files) {
                 hideLoader("uploading-media");
                 syncSightingsData(0);
             }).catch(e => {
-                alert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
                 hideLoader("uploading-media");
             });
         }
     });
 }
 
-export function deleteMedia(sightingKey, mediaSrc) {
+export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
     if (!mediaSrc.toLowerCase().endsWith(".jpg") && !mediaSrc.toLowerCase().endsWith(".mp4")) {
-        alert("Unsupported!!!");
+        customAlert("Unsupported!!!");
         return;
     }
-    if (confirm("You are about to delete this media.")) {
+    
+    const executeDelete = () => {
         showLoader("deleting-media", "Deleting Media");
         data.sightings.forEach(function (sighting) {
             if (sighting.key != sightingKey) return;
@@ -273,9 +275,15 @@ export function deleteMedia(sightingKey, mediaSrc) {
             if (error.code === 'storage/object-not-found') {
                 syncSightingsData(0);
             } else {
-                alert(error.message);
+                customAlert(error.message);
             }
         })
+    };
+
+    if (skipConfirm) {
+        executeDelete();
+    } else {
+        customConfirm("You are about to delete this media.", executeDelete);
     }
 }
 
@@ -372,7 +380,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
         Promise.all(promises).then(() => {
             hideLoader("renaming-media");
             if (errors.length > 0) {
-                alert("Some files could not be renamed:\n" + errors.join("\n"));
+                customAlert("Some files could not be renamed:\n" + errors.join("\n"));
             }
             syncSightingsData(0); // Force immediate sync to save new paths
             console.log("Renaming process completed.");
@@ -421,18 +429,31 @@ export function addSighting(filterSightingVal) {
 
 
 export function deleteSighting(sightingKey) {
-    if (confirm("You are about to delete this sighting.")) {
-        data.sightings.filter(b => b.key == sightingKey)[0].media.forEach(function (media) {
-            deleteMedia(sightingKey, media.src);
+    let sighting = data.sightings.find(b => b.key == sightingKey);
+    let numMedia = sighting.media ? sighting.media.length : 0;
+    
+    let message = "You are about to delete this sighting.";
+    if (numMedia > 0) {
+        message += `<br><br>This will also permanently delete the following ${numMedia} media file${numMedia > 1 ? 's' : ''}:<br><div style='display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; justify-content:center;'>`;
+        (sighting.media || []).forEach(m => {
+            let src = m.type === 'video' ? (m.thumbnail || m.src) : m.src;
+            message += `<img src='${Util.getMedia(src)}' style='max-height: 60px; max-width: 60px; border-radius: 4px; object-fit: cover;'>`;
+        });
+        message += `</div>`;
+    }
+
+    customConfirm(message, () => {
+        (sighting.media || []).forEach(function (media) {
+            deleteMedia(sightingKey, media.src, true);
         });
         data.sightings = data.sightings.filter(b => b.key != sightingKey);
         syncSightingsData(0);
-    }
+    });
 }
 
 export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
     if (!name || !tags || !family) {
-        alert("All fields are mandatory");
+        customAlert("All fields are mandatory");
     } else {
         name = name.replaceAll("’", "'");
         const newKey = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
@@ -453,7 +474,7 @@ export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
 
 export function addFamily(name, ebirdCode, sciName) {
     if (!name) {
-        alert("Name is mandatory");
+        customAlert("Name is mandatory");
     } else {
         data.families = data.families.filter(f => f.name != name);
         if (name.trim()) {
@@ -470,27 +491,27 @@ export function addFamily(name, ebirdCode, sciName) {
 export function deleteFamily(name) {
     if (!name) return;
     if (Object.values(data.species).some(s => s.family == name)) {
-        alert("Cannot delete family '" + name + "' as it is used by one or more species.");
+        customAlert("Cannot delete family '" + name + "' as it is used by one or more species.");
         return;
     }
-    if (confirm("Are you sure you want to delete family '" + name + "'?")) {
+    customConfirm("Are you sure you want to delete family '" + name + "'?", () => {
         data.families = data.families.filter(f => f.name != name);
         uploadJSONData("families", true);
-        alert("Family deleted successfully.");
-    }
+        customAlert("Family deleted successfully.");
+    });
 }
 
 export function deleteSpecies(key) {
     if (!key) return;
     if (data.sightings.some(s => s.species == key)) {
-        alert("Cannot delete species '" + key + "' as it has sightings.");
+        customAlert("Cannot delete species '" + key + "' as it has sightings.");
         return;
     }
-    if (confirm("Are you sure you want to delete species '" + key + "'?")) {
+    customConfirm("Are you sure you want to delete species '" + key + "'?", () => {
         delete data.species[key];
         uploadJSONData("species", true);
-        alert("Species deleted successfully.");
-    }
+        customAlert("Species deleted successfully.");
+    });
 }
 
 export function moveSighting(sightingKey, value) {

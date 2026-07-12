@@ -1,6 +1,7 @@
 import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
 import { showLoader, hideLoader } from '../loader.js';
+import { customAlert } from './ui.js';
 
 export function tryLogin(password) {
     showLoader("login", "Logging in");
@@ -12,7 +13,7 @@ export function tryLogin(password) {
         }
         hideLoader("login");
     }).catch(e => {
-        alert(e.message);
+        customAlert(e.message);
     });
 }
 
