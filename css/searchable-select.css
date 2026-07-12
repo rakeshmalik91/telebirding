@@ -1,0 +1,149 @@
+/* ==========================================
+ * Searchable Select Component Styles
+ * ==========================================
+ */
+
+/* Hide the native select when wrapped */
+select.searchable-select {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.ss-wrapper {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.ss-display {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 6px;
+	background-color: rgba(255, 255, 255, 0.05);
+	color: #f8fafc;
+	padding: 8px 12px;
+	cursor: pointer;
+	font-size: inherit;
+	font-family: inherit;
+	box-sizing: border-box;
+	transition: all 0.2s ease;
+}
+
+.ss-display-text {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	flex: 1;
+	min-width: 0;
+}
+
+.ss-clear-btn {
+	display: none;
+	color: #94a3b8;
+	font-size: 14px;
+	padding: 0 4px;
+	margin-left: 8px;
+	line-height: 1;
+}
+
+.ss-clear-btn:hover {
+	color: #ef4444;
+}
+
+.ss-display.has-value .ss-clear-btn {
+	display: block;
+}
+
+/* Dropdown arrow when empty or not clearable */
+.ss-display:not(.has-value) {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2394a3b8'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	padding-right: 28px;
+}
+
+.ss-display:hover {
+	border-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(255, 255, 255, 0.08);
+}
+
+.ss-dropdown {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	background-color: #1e293b;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 6px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+	margin-top: 4px;
+	max-height: 280px;
+	overflow: hidden;
+	display: none;
+	flex-direction: column;
+}
+
+.ss-dropdown.open {
+	display: flex;
+}
+
+.ss-search {
+	border: none !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+	border-radius: 6px 6px 0 0 !important;
+	background-color: rgba(255, 255, 255, 0.05) !important;
+	color: #f8fafc !important;
+	padding: 8px 12px !important;
+	font-size: 13px !important;
+	outline: none !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.ss-search::placeholder {
+	color: #64748b;
+}
+
+.ss-options {
+	overflow-y: auto;
+	max-height: 230px;
+	scrollbar-width: thin;
+	scrollbar-color: #475569 transparent;
+}
+
+.ss-option {
+	padding: 7px 12px;
+	color: #cbd5e1;
+	cursor: pointer;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 13px;
+	transition: background-color 0.1s ease;
+}
+
+.ss-option:hover {
+	background-color: rgba(56, 189, 248, 0.15);
+	color: #f8fafc;
+}
+
+.ss-option-selected {
+	background-color: rgba(56, 189, 248, 0.2);
+	color: #38bdf8;
+}
+.ss-display.icon-only {
+	background-image: none !important;
+	padding: 4px 6px !important;
+	border: none;
+	background-color: transparent;
+}
+.ss-display.icon-only:hover {
+	background-color: rgba(255, 255, 255, 0.08);
+}

@@ -14,11 +14,9 @@ const viewState = {
 	rows: 10
 };
 
-function switchMode() {
-	if (currentMode == Constants.MODE_BIRD) {
-		window.location.href = window.location.origin + "/admin?mode=" + Constants.MODE_INSECT;
-	} else {
-		window.location.href = window.location.origin + "/admin?mode=" + Constants.MODE_BIRD;
+function switchMode(targetMode) {
+	if (currentMode !== targetMode) {
+		window.location.href = window.location.origin + "/admin?mode=" + targetMode;
 	}
 }
 
@@ -39,9 +37,16 @@ $(document).ready(function () {
 
 	$('.site-logo').html('<img class="logo" src="' + Constants.MODE[currentMode].logo + '" alt="' + Constants.MODE[currentMode].title + '" title="' + Constants.MODE[currentMode].title + '" />');
 
-	$("button.mode").html("Mode: " + currentMode.toUpperCase());
-	$("button.mode").click(function () {
-		switchMode();
+	$(`.mode-tab[data-mode="${currentMode}"]`).addClass('active');
+	$(".mode-tab").click(function () {
+		switchMode($(this).attr("data-mode"));
+	});
+
+	$('.admin-nav-tab').click(function () {
+		$('.admin-nav-tab').removeClass('active');
+		$(this).addClass('active');
+		$('.admin-tab-content').removeClass('active').hide();
+		$('#' + $(this).data('tab')).addClass('active').show();
 	});
 });
 

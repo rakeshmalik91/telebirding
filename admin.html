@@ -10,16 +10,20 @@
 	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
 	<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260524">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260712-1811">
+	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260712-1716">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
 	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
 
 	<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
 
-	<link rel="stylesheet" charset="UTF-8" href="lib/css/select2.min.css">
-	<script type="text/javascript" charset="UTF-8" src="lib/js/select2.min.js"></script>
+
 
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" /> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script> -->
@@ -34,13 +38,12 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-
-	<script type="module" src="scripts/admin.js"></script>
+	<script type="module" charset="UTF-8" src="scripts/admin.js?v=20260712-1716"></script>
 
 </head>
 
 <body>
-	<div id="login-page">
+	<div id="login-page" class="admin-card login-card">
 		<a href="/" class='site-logo'></a>
 		<h1>Admin</h1>
 		<table>
@@ -63,21 +66,114 @@
 		</table>
 	</div>
 	<div class='data' style='display: none;'>
-		<a href="/" class='site-logo'></a>
-		<h1>Admin</h1>
-		<button class="logout">Log Out</button>
-		<button class="mode" title='Change Mode'>Switch Mode</button>
+		<div class="admin-header admin-card">
+			<a href="/" class='site-logo'></a>
+			<h1>Admin</h1>
+			<button class="logout">Log Out</button>
+			<div class="mode-tabs">
+				<button class="mode-tab" data-mode="bird">BIRD</button>
+				<button class="mode-tab" data-mode="insect">INSECT</button>
+			</div>
+		</div>
 
 		<br>
 
 
-		<br>
-		<div id="add-family-section" style="display:none;">
+		<div class="admin-nav-tabs">
+			<button class="admin-nav-tab active" data-tab="sightings-tab">Sightings</button>
+			<button class="admin-nav-tab" data-tab="species-tab">Species</button>
+			<button class="admin-nav-tab" data-tab="family-tab">Family</button>
+		</div>
+
+		<div id="sightings-tab" class="admin-tab-content active">
+			<div class="admin-card sightings-card">
+				<h2>Add/Modify Sightings</h2>
+			<div class='nav-top'>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+				<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+				<button class='backup' title='Backup Data'>Backup Data</button>
+				<button class='add-sighting' title='Add new sighting'>Add New</button>
+				<br>
+				<button class='first-page' title='First page'>&lt;&lt;</button>
+				<button class='previous' title='Previous page'>&lt;</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>&gt;</button>
+				<button class='last-page' title='Last page'>&gt;&gt;</button>
+				<span class='text'>Rows: </span>
+				<select name="page-size">
+					<option>10</option>
+					<option>25</option>
+					<option>50</option>
+				</select>
+				<input type="text" name="filter-sighting" placeholder="Filter" />
+			</div>
+			<table id="sightings-table"></table>
+			<div class='nav-bottom'>
+				<div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+					<span>Watermark: </span>
+					<input type="checkbox" name="watermark-on" checked>
+					<input type="text" name="watermark" value="© ${author}">
+					<input type="color" name="watermark-color" value="#ffffff">
+				</div>
+				<button class='first-page' title='First page'>&lt;&lt;</button>
+				<button class='previous' title='Previous page'>&lt;</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>&gt;</button>
+				<button class='last-page' title='Last page'>&gt;&gt;</button>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+			</div>
+			</div>
+		</div>
+		
+		<div id="species-tab" class="admin-tab-content">
+			<div class="admin-card">
+				<h2>Add/Modify Species</h2>
+			<table id="update-species-form">
+				<tr>
+					<td>Name</td>
+					<td><select data-field='name' data-tags='true' style="width: 700px;" placeholder="Select or type a species..."></select></td>
+				</tr>
+				<tr>
+					<td>Family</td>
+					<td><select data-field='family' style="width: 700px;" placeholder="Select or type a family..."></select></td>
+				</tr>
+				<tr>
+					<td>Tags</td>
+					<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 700px;" /></td>
+				</tr>
+				<tr>
+					<td>Scientific Name</td>
+					<td><input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 700px;" />
+					</td>
+				</tr>
+				<tr>
+					<td>eBird Code</td>
+					<td><input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 700px;" /></td>
+				</tr>
+				<tr>
+					<td>Sighting Count</td>
+					<td><input type='text' data-field='sighting-count' placeholder="-"
+							style="width: 700px; text-align: left;" disabled /></td>
+				</tr>
+				<tr>
+					<td class='noborder'>
+						<button class='submit'>Add</button>
+						<button class='delete' style='background-color: #d9534f;'>Delete</button>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+
+		<div id="family-tab" class="admin-tab-content">
+			<div id="add-family-section" class="admin-card" style="display:none;">
 			<h2>Add/Modify Family</h2>
 			<table id="add-family-form">
 				<tr>
 					<td>Name</td>
-					<td><select data-field='name' style="width: 500px;"></select></td>
+					<td>
+						<select data-field='name' data-tags='true' style="width: 500px;" placeholder="Select or type a family..."></select>
+					</td>
 				</tr>
 				<tr>
 					<td>Scientific Name</td>
@@ -102,84 +198,7 @@
 					</td>
 				</tr>
 			</table>
-			<br>
 		</div>
-
-		<h2>Add/Modify Species</h2>
-		<table id="update-species-form">
-			<tr>
-				<td>Key/ID</td>
-				<td><select data-field='key' style="width: 700px;" /></td>
-			</tr>
-			<tr>
-				<td>Name</td>
-				<td><input type='text' data-field='name' placeholder="Enter name" style="width: 700px;" /></td>
-			</tr>
-			<tr>
-				<td>Family</td>
-				<td><select data-field='family' style="width: 700px;" /></td>
-			</tr>
-			<tr>
-				<td>Tags</td>
-				<td><input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 700px;" /></td>
-			</tr>
-			<tr>
-				<td>Scientific Name</td>
-				<td><input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 700px;" />
-				</td>
-			</tr>
-			<tr>
-				<td>eBird Code</td>
-				<td><input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 700px;" /></td>
-			</tr>
-			<tr>
-				<td>Sighting Count</td>
-				<td><input type='text' data-field='sighting-count' placeholder="-"
-						style="width: 700px; text-align: left;" disabled /></td>
-			</tr>
-			<tr>
-				<td class='noborder'>
-					<button class='submit'>Add</button>
-					<button class='delete' style='background-color: #d9534f;'>Delete</button>
-				</td>
-			</tr>
-		</table>
-
-		<br>
-		<h2>Add/Modify Sightings</h2>
-		<div class='nav-top'>
-			<span>Watermark: </span>
-			<input type="checkbox" name="watermark-on" checked>
-			<input type="text" name="watermark" value="© ${author}">
-			<input type="color" name="watermark-color" value="#ffffff">
-			<br>
-			<br>
-			<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
-			<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
-			<button class='backup' title='Backup Data'>Backup Data</button>
-			<button class='add-sighting' title='Add new sighting'>Add New</button>
-			<br>
-			<button class='first-page' title='First page'>&lt;&lt;</button>
-			<button class='previous' title='Previous page'>&lt;</button>
-			<span class='page-number'></span>
-			<button class='next' title='Next page'>&gt;</button>
-			<button class='last-page' title='Last page'>&gt;&gt;</button>
-			<span class='text'>Rows: </span>
-			<select name="page-size">
-				<option>10</option>
-				<option>25</option>
-				<option>50</option>
-			</select>
-			<input type="text" name="filter-sighting" placeholder="Filter" />
-		</div>
-		<table id="sightings-table"></table>
-		<div class='nav-bottom'>
-			<button class='first-page' title='First page'>&lt;&lt;</button>
-			<button class='previous' title='Previous page'>&lt;</button>
-			<span class='page-number'></span>
-			<button class='next' title='Next page'>&gt;</button>
-			<button class='last-page' title='Last page'>&gt;&gt;</button>
-			<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
 		</div>
 	</div>
 

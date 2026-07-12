@@ -33,7 +33,12 @@ export function refreshData() {
         Util.getData("data/site-data.json")
     ], function (json) {
         data = json;
+        if (data.sightings) {
+            data.sightings.forEach(s => s.media = s.media || []);
+        }
+        const scrollY = window.scrollY;
         renderCallback();
+        window.scrollTo(0, scrollY);
         hideLoader("refresh");
     });
 }
@@ -108,11 +113,14 @@ export function backup() {
 }
 
 
-export function syncSightingsData(scheduleAfter) {
-    $('.save').removeAttr("disabled");
+export function syncSightingsData(scheduleAfter, skipRefresh = false) {
     clearTimeout(syncRef);
+    if (scheduleAfter > 0) {
+        // Delayed save - enable save button to show pending changes
+        $('.save').removeAttr("disabled");
+    }
     syncRef = setTimeout(function () {
-        uploadJSONData('sightings');
+        uploadJSONData('sightings', skipRefresh);
         syncRef = undefined;
         $('.save').attr("disabled", "disabled");
     }, scheduleAfter);
@@ -234,16 +242,34 @@ export function deleteMedia(sightingKey, mediaSrc) {
     }
 }
 
-export function moveMediaLeft(sightingKey, mediaSrc) {
-    data.sightings.forEach(function (sighting) {
-        if (sighting.key != sightingKey) return;
-        let index = sighting.media.map(m => m.src).indexOf(mediaSrc);
-        if (index > 0) {
-            sighting.media = [sighting.media.slice(0, index - 1), [sighting.media[index]], [sighting.media[index - 1]], sighting.media.slice(index + 1)].flat();
-            syncSightingsData(0);
-            return;
+export function moveMediaToTarget(sourceSightingKey, targetSightingKey, draggedSrc, targetSrc, dropAfter) {
+    let sourceSighting = data.sightings.find(s => s.key == sourceSightingKey);
+    let targetSighting = data.sightings.find(s => s.key == targetSightingKey);
+    
+    if (!sourceSighting || !targetSighting) return;
+    
+    let draggedIndex = sourceSighting.media.findIndex(m => m.src === draggedSrc);
+    if (draggedIndex === -1) return;
+    
+    let draggedItem = sourceSighting.media.splice(draggedIndex, 1)[0];
+    
+    if (!targetSrc) {
+        targetSighting.media.push(draggedItem);
+    } else {
+        let targetIndex = targetSighting.media.findIndex(m => m.src === targetSrc);
+        if (targetIndex !== -1) {
+            if (sourceSightingKey == targetSightingKey) {
+                targetIndex = targetSighting.media.findIndex(m => m.src === targetSrc);
+            }
+            let newIndex = dropAfter ? targetIndex + 1 : targetIndex;
+            targetSighting.media.splice(newIndex, 0, draggedItem);
+        } else {
+            targetSighting.media.push(draggedItem);
         }
-    });
+    }
+    
+    renderCallback();
+    syncSightingsData(0, true);
 }
 
 export function updateField(sightingKey, field, value) {
@@ -443,6 +469,25 @@ export function moveSighting(sightingKey, value) {
         data.sightings = [data.sightings.slice(0, newIndex), [sighting], data.sightings.slice(newIndex, index), data.sightings.slice(index + 1)].flat();
         syncSightingsData(0);
     }
+}
+
+export function moveSightingToTarget(draggedKey, targetKey, dropAfter) {
+    let index = data.sightings.map(b => b.key).indexOf(draggedKey);
+    let targetIndex = data.sightings.map(b => b.key).indexOf(targetKey);
+    if (index === -1 || targetIndex === -1) return;
+    if (index === targetIndex) return;
+
+    let sighting = data.sightings[index];
+    data.sightings.splice(index, 1);
+    
+    let newTargetIndex = data.sightings.map(b => b.key).indexOf(targetKey);
+    
+    if (dropAfter) {
+        data.sightings.splice(newTargetIndex + 1, 0, sighting);
+    } else {
+        data.sightings.splice(newTargetIndex, 0, sighting);
+    }
+    syncSightingsData(0);
 }
 
 export function sortByDate() {
