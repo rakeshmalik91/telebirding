@@ -8,7 +8,7 @@ import { setChips } from './chip-input.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
     deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
-    syncSightingsData
+    syncSightingsData, triggerRender
 } from './data.js';
 
 import { openCropper } from '../cropper.js';
@@ -247,7 +247,14 @@ export function renderSightingsTable(OFFSET, ROWS) {
             row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>🗑️</button>";
             row += "</div>";
             if (media.type == 'video') {
-                row += "<img src='" + Util.getMedia(media.thumbnail) + "' class='enlargeable-media' title='Click to enlarge'/>";
+                if (media.thumbnail && media.thumbnail.toLowerCase().endsWith('.jpg')) {
+                    row += "<div style='position: relative; display: block; margin-bottom: 5px; width: 80px; height: 80px;'>";
+                    row += "<img src='" + Util.getMedia(media.thumbnail) + "' class='enlargeable-media' title='Click to enlarge' style='margin-bottom: 0;'/>";
+                    row += "<div class='play-overlay' style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white; opacity: 0.8; pointer-events: none; text-shadow: 0px 0px 4px black;'>▶️</div>";
+                    row += "</div>";
+                } else {
+                    row += "<div class='video-placeholder enlargeable-media' title='Click to enlarge' style='width: 80px; height: 80px; background: #2b303b; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; margin-bottom: 5px; border-radius: 4px;'>📽️</div>";
+                }
             } else {
                 row += "<img src='" + Util.getMedia(media.src) + "' class='enlargeable-media' title='Click to enlarge'/>";
             }
@@ -273,6 +280,20 @@ export function renderSightingsTable(OFFSET, ROWS) {
             });
             row += "</select>";
             row += "<span class='camera-count'>" + (camCount > 0 ? camCount : "") + "</span>";
+
+            if (media.type == 'video') {
+                let availableImages = (sighting.media || []).filter(m => m.type !== 'video');
+                if (availableImages.length > 0) {
+                    row += "<select class='thumbnail-select' data-icon-only='true' data-display-icon='🖼️' data-mediasrc='" + media.src + "' title='Set Thumbnail' style='width:28px; font-size: 11px;'>";
+                    row += "<option value='' " + (!media.thumbnail ? 'selected' : '') + " data-icon=\"<span style='font-size:16px; margin-right:4px;'>❌</span>\">Clear Thumbnail</option>";
+                    availableImages.forEach((img, idx) => {
+                        let isSelected = media.thumbnail === img.src;
+                        let iconHtml = "<img src='" + Util.getMedia(img.src) + "' style='width: 30px; height: 30px; object-fit: cover; border-radius: 2px; margin-right:4px;' />";
+                        row += "<option value='" + img.src + "' " + (isSelected ? 'selected' : '') + " data-icon=\"" + iconHtml + "\">Image " + (idx + 1) + "</option>";
+                    });
+                    row += "</select>";
+                }
+            }
             row += "</div>";
             row += "</div>";
         });
@@ -318,6 +339,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
         initSearchableSelect(sightingRow.find("select[data-field=gender]")[0]);
 
         sightingRow.find('.camera-model-select').each(function () {
+            initSearchableSelect(this);
+        });
+        sightingRow.find('.thumbnail-select').each(function () {
             initSearchableSelect(this);
         });
 
@@ -477,6 +501,10 @@ export function renderSightingsTable(OFFSET, ROWS) {
         });
         sightingRow.find(".thumbnail .title-textbox").change(function () {
             updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
+        });
+        sightingRow.find(".thumbnail .thumbnail-select").change(function () {
+            updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "thumbnail", $(this).val());
+            triggerRender();
         });
         sightingRow.find(".thumbnail .camera-model-select").change(function () {
             const mediaSrc = $(this).attr("data-mediasrc");

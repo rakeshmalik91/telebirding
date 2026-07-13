@@ -69,6 +69,10 @@ export function setRenderCallback(callback) {
     renderCallback = callback;
 }
 
+export function triggerRender() {
+    renderCallback();
+}
+
 export function refreshData() {
     showLoader("refresh", "Loading Data...");
     Util.clearFileCache();
@@ -160,13 +164,15 @@ export function uploadJSONData(type, skipRefresh) {
         }
 
         if (!skipRefresh) renderCallback();
-        $('.save').text('Saved!');
-        $('#sync-spinner .sync-text').text('Saved!');
-        $('#sync-spinner-icon').hide();
-        setTimeout(() => { 
-            if ($('.save').text() === 'Saved!') $('.save').text('Save').removeAttr('disabled'); 
-            if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
-        }, 2000);
+        if (!hasUnsavedChanges()) {
+            $('.save').text('Saved!');
+            $('#sync-spinner .sync-text').text('Saved!');
+            $('#sync-spinner-icon').hide();
+            setTimeout(() => { 
+                if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
+                if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+            }, 2000);
+        }
         return;
     }
 
@@ -177,7 +183,6 @@ export function uploadJSONData(type, skipRefresh) {
         $('#sync-spinner .sync-text').text('Error');
         $('#sync-spinner-icon').hide();
         setTimeout(() => { 
-            if ($('.save').text() === 'Error') $('.save').text('Save'); 
             if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
         }, 2000);
         return;
@@ -199,13 +204,15 @@ export function uploadJSONData(type, skipRefresh) {
         }
 
         if (!skipRefresh) renderCallback();
-        $('.save').text('Saved!');
-        $('#sync-spinner .sync-text').text('Saved!');
-        $('#sync-spinner-icon').hide();
-        setTimeout(() => { 
-            if ($('.save').text() === 'Saved!') $('.save').text('Save').removeAttr('disabled'); 
-            if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
-        }, 2000);
+        if (!hasUnsavedChanges()) {
+            $('.save').text('Saved!');
+            $('#sync-spinner .sync-text').text('Saved!');
+            $('#sync-spinner-icon').hide();
+            setTimeout(() => { 
+                if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
+                if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+            }, 2000);
+        }
     };
 
     const doUpload = () => {
@@ -233,7 +240,6 @@ export function uploadJSONData(type, skipRefresh) {
             $('#sync-spinner .sync-text').text('Error');
             $('#sync-spinner-icon').hide();
             setTimeout(() => { 
-                if ($('.save').text() === 'Error') $('.save').text('Save').removeAttr('disabled'); 
                 if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
             }, 2000);
         });
@@ -256,7 +262,6 @@ export function uploadJSONData(type, skipRefresh) {
                 $('#sync-spinner .sync-text').text('Conflict');
                 $('#sync-spinner-icon').hide();
                 setTimeout(() => { 
-                    if ($('.save').text() === 'Conflict') $('.save').text('Save').removeAttr('disabled'); 
                     if ($('#sync-spinner .sync-text').text() === 'Conflict') $('#sync-spinner').fadeOut(300);
                 }, 3000);
             } else {
@@ -307,6 +312,7 @@ export function syncSightingsData(scheduleAfter, skipRefresh = false) {
     if (scheduleAfter > 0) {
         // Delayed save - enable save button to show pending changes
         $('.save').removeAttr("disabled");
+        if ($('.save').first().text() === 'Saved!') $('.save').text('Save');
     }
     syncRef = setTimeout(function () {
         uploadJSONData('sightings', skipRefresh);
@@ -365,13 +371,22 @@ export function uploadMedia(sightingKey, files) {
                         const date = await getSightingDateFromExif(file);
                         if (date) sighting.date = date;
                     }
+                    let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
+                    if (sighting.media && sighting.media.length > 0) {
+                        let lastMedia = sighting.media[sighting.media.length - 1];
+                        if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
+                            inheritedCamera = lastMedia.exif_data.camera_model;
+                        }
+                    }
+
                     sighting.media.push({
                         src: mediaSrc,
                         exif_data: {
-                            "camera_model": Constants.DEFAULT_CAMERA_MODEL
+                            "camera_model": inheritedCamera
                         }
                     });
                     commitSightingsChange();
+                    renderCallback();
                     syncSightingsData(0);
                 }).catch(e => {
                     customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
@@ -388,15 +403,27 @@ export function uploadMedia(sightingKey, files) {
                 snapshotSightings();
                 data.sightings.forEach(function (sighting) {
                     if (sighting.key == sightingKey) {
+                        let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
+                        if (sighting.media && sighting.media.length > 0) {
+                            let lastMedia = sighting.media[sighting.media.length - 1];
+                            if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
+                                inheritedCamera = lastMedia.exif_data.camera_model;
+                            }
+                        }
+
                         sighting.media.push({
                             src: mediaSrc,
                             type: 'video',
                             mute: true,
-                            thumbnail: data.sightings.find(s => s.key == sightingKey).media.find(m => m.type !== 'video')?.src || mediaSrc // Use first image as thumbnail if available
+                            thumbnail: data.sightings.find(s => s.key == sightingKey).media.find(m => m.type !== 'video')?.src || null, // Use first image as thumbnail if available, else null
+                            exif_data: {
+                                "camera_model": inheritedCamera
+                            }
                         });
                     }
                 });
                 commitSightingsChange();
+                renderCallback();
                 syncSightingsData(0);
             }).catch(e => {
                 customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
@@ -424,15 +451,17 @@ export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
             commitSightingsChange();
         });
         FirebaseApi.getFirebase().storage().ref(mediaSrc).delete().then(() => {
+            renderCallback();
             syncSightingsData(0);
         }, (error) => {
             if (error.code === 'storage/object-not-found') {
+                renderCallback();
                 syncSightingsData(0);
             } else {
                 customAlert(error.message);
                 if ($('#sync-spinner .sync-text').text() === 'Deleting Media...') $('#sync-spinner').fadeOut(300);
             }
-        })
+        });
     };
 
     if (skipConfirm) {

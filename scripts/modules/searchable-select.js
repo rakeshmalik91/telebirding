@@ -113,8 +113,9 @@ export function initSearchableSelect(selectEl) {
         }
 
         if (isIconOnly) {
+            const displayIcon = $select.attr('data-display-icon') || '📷';
             $display.addClass('icon-only');
-            $displayText.text('📷').css({
+            $displayText.text(displayIcon).css({
                 'text-align': 'center',
                 'font-size': '16px',
                 'flex': 'none',
