@@ -33,6 +33,7 @@ select.searchable-select {
 	font-family: inherit;
 	box-sizing: border-box;
 	transition: all 0.2s ease;
+	height: 36px;
 }
 
 .ss-display-text {
@@ -146,5 +147,6 @@ select.searchable-select {
 	background-color: transparent;
 }
 .ss-display.icon-only:hover {
-	background-color: rgba(255, 255, 255, 0.08);
+	background-color: transparent;
+	transform: scale(1.1);
 }

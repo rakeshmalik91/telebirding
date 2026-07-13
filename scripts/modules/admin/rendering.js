@@ -1,9 +1,10 @@
 import Constants from '../constants.js';
 import Util from '../util.js';
-import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js';
+import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js?v=20260713-0645';
 import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
-import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js';
+import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260713-0647';
+import { setChips } from './chip-input.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
     deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
@@ -37,13 +38,13 @@ export function fillUpdateSpeciesForm() {
     if (nameVal && data.species[nameVal]) {
         const key = nameVal;
         const species = data.species[key];
-        updateSpeciesForm.find("input[data-field=tags]").val(species.tags.join(", "));
+        setChips(updateSpeciesForm.find(".chip-input-container"), species.tags.join(", "));
         updateSpeciesForm.find("select[data-field=family]").val(species.family).trigger("change");
         updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected").trigger("change");
         updateSpeciesForm.find("input[data-field=latin-name]").val(species.latin_name);
         updateSpeciesForm.find("input[data-field=ebird-code]").val(species.ebird_code);
         let count = data.sightings.filter(s => s.species == key).length;
-        updateSpeciesForm.find("input[data-field=sighting-count]").val(count);
+        updateSpeciesForm.find("span[data-field=sighting-count]").text(count);
         updateSpeciesForm.find("button.submit").html("Update");
         if (count == 0) {
             updateSpeciesForm.find("button.delete").removeAttr("disabled");
@@ -52,17 +53,17 @@ export function fillUpdateSpeciesForm() {
         }
     } else {
         // New custom name
-        updateSpeciesForm.find("input[data-field=tags]").val('');
+        setChips(updateSpeciesForm.find(".chip-input-container"), '');
         updateSpeciesForm.find("select[data-field=family]").val('').trigger("change");
         updateSpeciesForm.find("input[data-field=latin-name]").val('');
         updateSpeciesForm.find("input[data-field=ebird-code]").val('');
-        updateSpeciesForm.find("input[data-field=sighting-count]").val('0');
+        updateSpeciesForm.find("span[data-field=sighting-count]").text('0');
         updateSpeciesForm.find("button.submit").html("Add");
         updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
 
         // Auto-fill tags if possible
-        if (nameVal && nameVal.trim()) {
-            updateSpeciesForm.find("input[data-field=tags]").val(nameVal.trim().split(/\s+/).slice(-1)[0]);
+        if (nameVal && nameVal.trim() && !updateSpeciesForm.find("input[data-field=tags]").val()) {
+            setChips(updateSpeciesForm.find(".chip-input-container"), nameVal.trim().split(/\s+/).slice(-1)[0]);
         }
     }
     
@@ -199,9 +200,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
     table.html("");
     table.append("<tr>" +
         "<th class='noborder' style='width: 60px;'></th>" +
-        "<th style='width: 280px;'>Species</th>" +
+        "<th style='width: 246px;'>Species</th>" +
         "<th>Media</th>" +
-        "<th style='width: 230px;'>Date & Place</th>" +
+        "<th style='width: 264px;'>Date & Place</th>" +
         "<th style='width: 130px;'>Properties</th>" +
         "<th class='noborder' style='width: 30px;'></th>" +
         "</tr>");
@@ -223,10 +224,10 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "</div></td>";
 
         row += "<td>"
-        row += getSelectDOM("species", data.species, getValue(sighting, 'species'), "280px", "data-no-clear='true'");
+        row += getSelectDOM("species", data.species, getValue(sighting, 'species'), "246px", "data-no-clear='true'");
         row += "<br>";
-        row += "<textarea data-field='description' style='width:280px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
-        row += getTextDOM("author", getValue(sighting, 'author'), "280px", Constants.DEFAULT_AUTHOR);
+        row += "<textarea data-field='description' style='width:246px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
+        row += getTextDOM("author", getValue(sighting, 'author'), "246px", Constants.DEFAULT_AUTHOR);
         // Star rating widget
         let currentRating = parseInt(getValue(sighting, 'rating')) || 0;
         row += "<div class='star-rating' style='margin-top:4px;'>";
@@ -239,16 +240,16 @@ export function renderSightingsTable(OFFSET, ROWS) {
 
         row += "<td><div class='media-container' data-sightingkey='" + sighting.key + "' style='width: 100%; min-width: 300px; min-height: 50px; padding: 5px; border-radius: 4px; border: 1px dashed transparent;'>";
         (sighting.media || []).forEach(function (media, i) {
-            row += "<div class='thumbnail' draggable='true' data-mediasrc='" + media.src + "' data-sightingkey='" + sighting.key + "'>";
+            row += "<div class='thumbnail' draggable='true' data-mediasrc='" + media.src + "' data-sightingkey='" + sighting.key + "' data-fullsrc='" + Util.getMedia(media.src) + "' data-mediatype='" + media.type + "'>";
             let ext = media.src.split('.').pop().toLowerCase();
             row += "<div class='media-header'>";
             row += "<span class='media-ext-badge'>." + ext + "</span>";
-            row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>-</button>";
+            row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>🗑️</button>";
             row += "</div>";
             if (media.type == 'video') {
-                row += "<img src='" + Util.getMedia(media.thumbnail) + "' title='" + media.src + "'/>";
+                row += "<img src='" + Util.getMedia(media.thumbnail) + "' class='enlargeable-media' title='Click to enlarge'/>";
             } else {
-                row += "<img src='" + Util.getMedia(media.src) + "' title='" + media.src + "'/>";
+                row += "<img src='" + Util.getMedia(media.src) + "' class='enlargeable-media' title='Click to enlarge'/>";
             }
             row += "<textarea class='title-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:68px;width:80px;resize:none;overflow:hidden;' placeholder='Add title'>" + (media.title || "") + "</textarea>";
             let cameraModelParts = (media.exif_data ? (media.exif_data.camera_model || "") : "").split('+').map(x => x.trim()).filter(x => x);
@@ -280,13 +281,13 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "</div></td>";
 
         row += "<td class='place-fields'>";
-        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:220px'></input><br>";
-        row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "108px");
-        row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "108px") + "<br>";
-        row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "220px") + "<br>";
-        row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "220px") + "<br>";
-        row += getTextDOM("city", getValue(sighting, 'city'), "220px", "Add city") + "<br>";
-        row += getTextDOM("place", getValue(sighting, 'place'), "220px", "Add place");
+        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:254px'></input><br>";
+        row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "125px");
+        row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "125px") + "<br>";
+        row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "254px", "data-no-clear='true'") + "<br>";
+        row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "254px", "data-no-clear='true'") + "<br>";
+        row += getTextDOM("city", getValue(sighting, 'city'), "254px", "Add city") + "<br>";
+        row += getTextDOM("place", getValue(sighting, 'place'), "254px", "Add place");
         row += "</td>";
 
         row += "<td class='property-fields'>";
@@ -312,6 +313,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
         initSearchableSelect(sightingRow.find("select[data-field=species]")[0]);
         initSearchableSelect(sightingRow.find("select[data-field=country]")[0]);
         initSearchableSelect(sightingRow.find("select[data-field=state]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=time_of_day]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=weather]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=gender]")[0]);
 
         sightingRow.find('.camera-model-select').each(function () {
             initSearchableSelect(this);
@@ -372,15 +376,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
                 uploadMedia(sighting.key, this.files);
             }
         });
-        sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").not(".hide-toggle").change(function () {
+        sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
             let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
             updateField(sighting.key, $(this).attr("data-field"), value);
-        });
-        // Hide/unhide toggle - save immediately
-        sightingRow.find(".hide-toggle").change(function () {
-            let value = $(this).is(":checked");
-            updateField(sighting.key, $(this).attr("data-field"), value);
-            syncSightingsData(0);
         });
         // Star rating click handler
         sightingRow.find(".star-btn").click(function () {
@@ -535,20 +533,25 @@ export function validateAddFamilyForm() {
 export function fillAddFamilyForm() {
     const addFamilyForm = $("#add-family-form");
     let name = addFamilyForm.find("select[data-field=name]").val();
-    let family = data.families.find(f => f.name == name);
+    let nameVal = addFamilyForm.find("select[data-field=name]").val();
+    let family = data.families.find(f => f.name == nameVal);
     if (family) {
         addFamilyForm.find("input[data-field=sci-name]").val(family.sci_name || "");
         addFamilyForm.find("input[data-field=ebird-code]").val(family.ebird_code || "");
 
-        let count = Object.values(data.species).filter(s => s.family == name).length;
-        addFamilyForm.find("input[data-field=species-count]").val(count);
+        let count = Object.values(data.species).filter(s => s.family == nameVal).length;
+        addFamilyForm.find("span[data-field=species-count]").text(count);
 
         addFamilyForm.find("button.submit").html("Update");
-        addFamilyForm.find("button.delete").removeAttr("disabled");
+        if (count == 0) {
+            addFamilyForm.find("button.delete").removeAttr("disabled");
+        } else {
+            addFamilyForm.find("button.delete").attr("disabled", "disabled");
+        }
     } else {
         addFamilyForm.find("input[data-field=sci-name]").val("");
-        addFamilyForm.find("input[data-field=ebird-code]").val("");
-        addFamilyForm.find("input[data-field=species-count]").val("0");
+        addFamilyForm.find("input[data-field=ebird-code]").val('');
+        addFamilyForm.find("span[data-field=species-count]").text("0");
         addFamilyForm.find("button.submit").html("Add");
         addFamilyForm.find("button.delete").attr("disabled", "disabled");
     }

@@ -22,7 +22,13 @@ export function getSelectOptionsDOM(field, options, value) {
     let dom = "";
     for (const [k, v] of Object.entries(options)) {
         let name = v instanceof Object ? v.name : v;
-        dom += "<option value='" + k + "' " + (k == value ? 'selected' : '') + ">" + name + "</option>";
+        let iconHtml = "";
+        if (field === 'time_of_day' && k && k !== '-') {
+            iconHtml = `<div class="sighting-desc weather ${k.toLowerCase()}"></div>`;
+        } else if (field === 'weather' && k && k !== '-') {
+            iconHtml = `<div class="sighting-desc weather ${k.toLowerCase().replace(' ', '-')}-day"></div>`;
+        }
+        dom += "<option value='" + k + "' " + (k == value ? 'selected' : '') + (iconHtml ? ` data-icon='${iconHtml}'` : '') + ">" + name + "</option>";
     }
     return dom;
 }

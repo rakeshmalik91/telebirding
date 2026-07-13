@@ -13,6 +13,7 @@ export function tryLogin(password) {
         }
         hideLoader("login");
     }).catch(e => {
+        hideLoader("login");
         customAlert(e.message);
     });
 }

@@ -2,10 +2,58 @@ import Constants from '../constants.js';
 import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
 import { showLoader, hideLoader } from '../loader.js';
+import { UndoRedoManager } from './history.js';
 
 export let data = {};
-export const currentMode = Util.getUrlParams().mode || Constants.MODE_BIRD;
+export let loadedEtags = {};
+export let currentMode = Util.getUrlParams().mode || Constants.MODE_BIRD;
+export function setCurrentMode(mode) {
+    currentMode = mode;
+}
 export let lastUpdatedSpecies = (currentMode == Constants.MODE_INSECT) ? "unidentified" : 'rock-pigeon';
+
+export const historyManager = new UndoRedoManager(50);
+historyManager.onChange = (canUndo, canRedo) => {
+    $('#undo-btn').prop('disabled', !canUndo);
+    $('#redo-btn').prop('disabled', !canRedo);
+};
+
+let isCommitPending = false;
+let preChangeSnapshot = null;
+export function snapshotSightings() {
+    if (!preChangeSnapshot && data.sightings) {
+        preChangeSnapshot = JSON.parse(JSON.stringify(data.sightings));
+    }
+}
+
+export function commitSightingsChange() {
+    if (!isCommitPending && preChangeSnapshot) {
+        isCommitPending = true;
+        queueMicrotask(() => {
+            if (preChangeSnapshot && data.sightings) {
+                historyManager.pushState(preChangeSnapshot, data.sightings);
+                preChangeSnapshot = null;
+            }
+            isCommitPending = false;
+        });
+    }
+}
+
+export function undoSighting() {
+    if (data.sightings) {
+        data.sightings = historyManager.undo(data.sightings);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
+
+export function redoSighting() {
+    if (data.sightings) {
+        data.sightings = historyManager.redo(data.sightings);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
 
 const IMAGE_SIZE = 1000;
 const SYNC_SCHEDULE_TIME = 3000;
@@ -25,6 +73,8 @@ export function refreshData() {
     showLoader("refresh", "Loading Data...");
     Util.clearFileCache();
     data = {};
+    historyManager.resetMemory();
+    preChangeSnapshot = null;
     Util.readJSONFiles([
         Util.getData("data/" + currentMode + "-sightings.json"),
         Util.getData("data/" + currentMode + "-species.json"),
@@ -34,6 +84,25 @@ export function refreshData() {
         Util.getData("data/site-data.json")
     ], function (json) {
         data = json;
+        for (let key in data) {
+            let fileData = {};
+            fileData[key] = data[key];
+            fileData = removeUnwantedValues(fileData) || {};
+            lastUploadedData[key] = JSON.stringify(fileData);
+            
+            if (Constants.ADMIN_USE_ETAG && ['sightings', 'species', 'families', 'likes'].includes(key)) {
+                FirebaseApi.getFirebase().storage().ref("data/" + currentMode + "-" + key + ".json").getMetadata().then(metadata => {
+                    loadedEtags[key] = metadata.generation;
+                    if (key === 'sightings') {
+                        historyManager.loadFromStorage(metadata.generation);
+                    }
+                }).catch(e => {
+                    if (key === 'sightings') historyManager.loadFromStorage(null);
+                });
+            } else if (!Constants.ADMIN_USE_ETAG && key === 'sightings') {
+                historyManager.loadFromStorage(null);
+            }
+        }
         if (data.sightings) {
             data.sightings.forEach(s => s.media = s.media || []);
         }
@@ -50,6 +119,7 @@ function refresh() {
 
 let isUploading = {};
 let pendingUpload = {};
+export let lastUploadedData = {};
 
 export function uploadJSONData(type, skipRefresh) {
     if (isUploading[type]) {
@@ -80,6 +150,26 @@ export function uploadJSONData(type, skipRefresh) {
     fileData = removeUnwantedValues(fileData) || {};
 
     fileData = JSON.stringify(fileData);
+
+    if (fileData === lastUploadedData[type]) {
+        console.log("No changes detected for " + type + ", skipping upload.");
+        isUploading[type] = false;
+        
+        if (pendingUpload[type] !== undefined) {
+            delete pendingUpload[type];
+        }
+
+        if (!skipRefresh) renderCallback();
+        $('.save').text('Saved!');
+        $('#sync-spinner .sync-text').text('Saved!');
+        $('#sync-spinner-icon').hide();
+        setTimeout(() => { 
+            if ($('.save').text() === 'Saved!') $('.save').text('Save').removeAttr('disabled'); 
+            if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+        }, 2000);
+        return;
+    }
+
     if (fileData.length < 100) {
         customAlert("Unknown error while uploading (file data too small) ...");
         isUploading[type] = false;
@@ -92,14 +182,15 @@ export function uploadJSONData(type, skipRefresh) {
         }, 2000);
         return;
     }
+    lastUploadedData[type] = fileData;
     fileData = [fileData];
 
 
     const file = new File(fileData, type + ".json");
-    firebase.storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then(() => {
-        console.log("uploaded data/" + currentMode + "-" + type + ".json");
-        isUploading[type] = false;
+    const fileUrl = Util.getData("data/" + currentMode + "-" + type + ".json");
 
+    const finishUpload = () => {
+        isUploading[type] = false;
         if (pendingUpload[type] !== undefined) {
             let nextSkip = pendingUpload[type];
             delete pendingUpload[type];
@@ -112,20 +203,72 @@ export function uploadJSONData(type, skipRefresh) {
         $('#sync-spinner .sync-text').text('Saved!');
         $('#sync-spinner-icon').hide();
         setTimeout(() => { 
-            if ($('.save').text() === 'Saved!') $('.save').text('Save'); 
+            if ($('.save').text() === 'Saved!') $('.save').text('Save').removeAttr('disabled'); 
             if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
         }, 2000);
-    }).catch(e => {
-        isUploading[type] = false;
-        customAlert(e.message);
-        $('.save').text('Error').removeAttr('disabled');
-        $('#sync-spinner .sync-text').text('Error');
-        $('#sync-spinner-icon').hide();
-        setTimeout(() => { 
-            if ($('.save').text() === 'Error') $('.save').text('Save'); 
-            if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
-        }, 2000);
-    });
+    };
+
+    const doUpload = () => {
+        FirebaseApi.getFirebase().storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then((snapshot) => {
+            console.log("uploaded data/" + currentMode + "-" + type + ".json");
+            
+            if (Constants.ADMIN_USE_ETAG) {
+                const newGen = snapshot.metadata.generation;
+                if (newGen) {
+                    loadedEtags[type] = newGen;
+                    if (type === 'sightings') {
+                        historyManager.etag = newGen;
+                        historyManager.saveToStorage();
+                    }
+                }
+            } else if (type === 'sightings') {
+                historyManager.etag = null;
+                historyManager.saveToStorage();
+            }
+            finishUpload();
+        }).catch(e => {
+            isUploading[type] = false;
+            customAlert(e.message);
+            $('.save').text('Error').removeAttr('disabled');
+            $('#sync-spinner .sync-text').text('Error');
+            $('#sync-spinner-icon').hide();
+            setTimeout(() => { 
+                if ($('.save').text() === 'Error') $('.save').text('Save').removeAttr('disabled'); 
+                if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
+            }, 2000);
+        });
+    };
+
+    if (Constants.ADMIN_USE_ETAG) {
+        const expectedGen = loadedEtags[type];
+        if (!expectedGen) {
+            doUpload();
+            return;
+        }
+
+        FirebaseApi.getFirebase().storage().ref("data/" + currentMode + "-" + type + ".json").getMetadata().then(metadata => {
+            const currentGen = metadata.generation;
+            if (currentGen && currentGen !== expectedGen) {
+                console.warn("Generation mismatch! Expected:", expectedGen, "Got:", currentGen);
+                isUploading[type] = false;
+                customAlert("Data was modified in another tab or device. Please refresh the page to get the latest changes before saving again.");
+                $('.save').text('Conflict').removeAttr('disabled');
+                $('#sync-spinner .sync-text').text('Conflict');
+                $('#sync-spinner-icon').hide();
+                setTimeout(() => { 
+                    if ($('.save').text() === 'Conflict') $('.save').text('Save').removeAttr('disabled'); 
+                    if ($('#sync-spinner .sync-text').text() === 'Conflict') $('#sync-spinner').fadeOut(300);
+                }, 3000);
+            } else {
+                doUpload();
+            }
+        }).catch(err => {
+            console.warn("Could not check metadata, proceeding with upload...", err);
+            doUpload();
+        });
+    } else {
+        doUpload();
+    }
 }
 
 export function backup() {
@@ -215,8 +358,9 @@ export function uploadMedia(sightingKey, files) {
             mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
             console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
             Util.resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
-                firebase.storage().ref(mediaSrc).put(resizedImage).then(async () => {
+                FirebaseApi.getFirebase().storage().ref(mediaSrc).put(resizedImage).then(async () => {
                     console.log("uploaded image " + mediaSrc);
+                    snapshotSightings();
                     if (sighting.media.length === 0) {
                         const date = await getSightingDateFromExif(file);
                         if (date) sighting.date = date;
@@ -227,6 +371,7 @@ export function uploadMedia(sightingKey, files) {
                             "camera_model": Constants.DEFAULT_CAMERA_MODEL
                         }
                     });
+                    commitSightingsChange();
                     syncSightingsData(0);
                 }).catch(e => {
                     customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
@@ -238,8 +383,9 @@ export function uploadMedia(sightingKey, files) {
             mediaSrc = 'videos/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".mp4";
             console.log("uploading video " + file.name + " for " + sightingKey + " as " + mediaSrc);
 
-            firebase.storage().ref(mediaSrc).put(file).then(() => {
+            FirebaseApi.getFirebase().storage().ref(mediaSrc).put(file).then(() => {
                 console.log("uploaded video " + mediaSrc);
+                snapshotSightings();
                 data.sightings.forEach(function (sighting) {
                     if (sighting.key == sightingKey) {
                         sighting.media.push({
@@ -250,6 +396,7 @@ export function uploadMedia(sightingKey, files) {
                         });
                     }
                 });
+                commitSightingsChange();
                 syncSightingsData(0);
             }).catch(e => {
                 customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
@@ -272,9 +419,11 @@ export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
 
         data.sightings.forEach(function (sighting) {
             if (sighting.key != sightingKey) return;
+            snapshotSightings();
             sighting.media = sighting.media.filter(m => m.src != mediaSrc);
+            commitSightingsChange();
         });
-        firebase.storage().ref(mediaSrc).delete().then(() => {
+        FirebaseApi.getFirebase().storage().ref(mediaSrc).delete().then(() => {
             syncSightingsData(0);
         }, (error) => {
             if (error.code === 'storage/object-not-found') {
@@ -302,6 +451,7 @@ export function moveMediaToTarget(sourceSightingKey, targetSightingKey, draggedS
     let draggedIndex = sourceSighting.media.findIndex(m => m.src === draggedSrc);
     if (draggedIndex === -1) return;
     
+    snapshotSightings();
     let draggedItem = sourceSighting.media.splice(draggedIndex, 1)[0];
     
     if (!targetSrc) {
@@ -319,11 +469,13 @@ export function moveMediaToTarget(sourceSightingKey, targetSightingKey, draggedS
         }
     }
     
+    commitSightingsChange();
     renderCallback();
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function updateField(sightingKey, field, value) {
+    snapshotSightings();
     data.sightings.forEach(function (sighting) {
         if (sighting.key != sightingKey) return;
 
@@ -339,6 +491,7 @@ export function updateField(sightingKey, field, value) {
             sighting[field] = value;
         }
     });
+    commitSightingsChange();
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
@@ -363,6 +516,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
             console.log(`Renaming ${media.src} to ${newSrc}`);
 
             const p = FirebaseApi.moveFile(media.src, newSrc).then(() => {
+                snapshotSightings();
                 media.src = newSrc;
                 if (media.type === 'video' && media.thumbnail && media.thumbnail.includes(oldSpeciesKey)) {
                     // Try to update thumbnail path if it was also renamed (though thumbnail is usually a separate image src, 
@@ -377,6 +531,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
                         media.thumbnail = media.thumbnail.replace(thumbFilename, newThumbFilename);
                     }
                 }
+                commitSightingsChange();
             }).catch(err => {
                 console.error("Failed to move " + media.src, err);
                 errors.push(`Failed to move ${media.src}: ${err.message}`);
@@ -400,6 +555,7 @@ function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
 }
 
 export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
+    snapshotSightings();
     data.sightings.forEach(function (sighting) {
         if (sighting.key != sightingKey) return;
         sighting.media.forEach(media => {
@@ -414,10 +570,12 @@ export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
             }
         });
     });
+    commitSightingsChange();
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function addSighting(filterSightingVal) {
+    snapshotSightings();
     data.sightings.unshift({
         "key": ("s" + Math.floor(Date.now() / 1000)),
         "species": lastUpdatedSpecies,
@@ -433,6 +591,7 @@ export function addSighting(filterSightingVal) {
         "hidden": true,
         "media": []
     });
+    commitSightingsChange();
     renderCallback();
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
@@ -453,10 +612,12 @@ export function deleteSighting(sightingKey) {
     }
 
     customConfirm(message, () => {
+        snapshotSightings();
         (sighting.media || []).forEach(function (media) {
             deleteMedia(sightingKey, media.src, true);
         });
         data.sightings = data.sightings.filter(b => b.key != sightingKey);
+        commitSightingsChange();
         renderCallback();
         syncSightingsData(SYNC_SCHEDULE_TIME, true);
     });
@@ -531,14 +692,18 @@ export function moveSighting(sightingKey, value) {
     let sighting = data.sightings.filter(b => b.key == sightingKey)[0];
     let index = data.sightings.map(b => b.key).indexOf(sightingKey);
     if (index === -1) return;
+    
+    snapshotSightings();
     if (value > 0 && index < data.sightings.length - 1) { // move down
         let newIndex = Math.min(index + value, data.sightings.length - 1);
         data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index + 1, newIndex + 1), [sighting], data.sightings.slice(newIndex + 1)].flat();
+        commitSightingsChange();
         renderCallback();
         syncSightingsData(SYNC_SCHEDULE_TIME, true);
     } else if (value < 0 && index > 0) { // move up
         let newIndex = Math.max(index + value, 0);
         data.sightings = [data.sightings.slice(0, newIndex), [sighting], data.sightings.slice(newIndex, index), data.sightings.slice(index + 1)].flat();
+        commitSightingsChange();
         renderCallback();
         syncSightingsData(SYNC_SCHEDULE_TIME, true);
     }
@@ -550,6 +715,7 @@ export function moveSightingToTarget(draggedKey, targetKey, dropAfter) {
     if (index === -1 || targetIndex === -1) return;
     if (index === targetIndex) return;
 
+    snapshotSightings();
     let sighting = data.sightings[index];
     data.sightings.splice(index, 1);
     
@@ -560,12 +726,15 @@ export function moveSightingToTarget(draggedKey, targetKey, dropAfter) {
     } else {
         data.sightings.splice(newTargetIndex, 0, sighting);
     }
+    commitSightingsChange();
     renderCallback();
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
 export function sortByDate() {
+    snapshotSightings();
     data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));
+    commitSightingsChange();
     renderCallback();
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
@@ -592,7 +761,21 @@ export function sightingMatches(sighting, searchKey) {
         || (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0);
 }
 
-
 export function getCurrentMode() {
     return currentMode;
 }
+
+export function hasUnsavedChanges() {
+    if (typeof syncRef !== 'undefined') return true;
+    if (Object.values(isUploading).some(v => v === true)) return true;
+    if (Object.values(pendingUpload).some(v => v !== undefined)) return true;
+    return false;
+}
+
+window.addEventListener('beforeunload', function (e) {
+    if (hasUnsavedChanges()) {
+        e.preventDefault();
+        e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+        return e.returnValue;
+    }
+});

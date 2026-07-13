@@ -78,6 +78,8 @@ export function initSearchableSelect(selectEl) {
         });
 
         let text = '';
+        let firstIconHtml = null;
+
         if (isMultiple) {
             let vals = $select.val();
             // If val() is empty or not fully initialized, manually check the options
@@ -91,9 +93,11 @@ export function initSearchableSelect(selectEl) {
             if (vals.length === 1) {
                 const opt = $select.find('option').filter(function () { return $(this).val() == vals[0]; });
                 text = opt.length ? opt.text() : vals[0];
+                if (opt.length && opt.attr('data-icon')) firstIconHtml = opt.attr('data-icon');
             } else if (vals.length > 1) {
                 const selectedTexts = vals.map(v => {
                     const opt = $select.find('option').filter(function () { return $(this).val() == v; });
+                    if (!firstIconHtml && opt.length && opt.attr('data-icon')) firstIconHtml = opt.attr('data-icon');
                     return opt.length ? opt.text() : v;
                 });
                 text = selectedTexts.join(', ');
@@ -101,6 +105,7 @@ export function initSearchableSelect(selectEl) {
         } else {
             const selectedOption = $select.find('option:selected');
             text = selectedOption.text() || '';
+            firstIconHtml = selectedOption.attr('data-icon');
             // For custom tags where option might not exist yet, read value directly if text is empty
             if (!text && allowTags && $select.val()) {
                 text = $select.val();
@@ -135,11 +140,24 @@ export function initSearchableSelect(selectEl) {
         if (!text && $select.attr('placeholder')) {
             $displayText.text($select.attr('placeholder')).css('color', '#64748b');
         } else {
-            $displayText.text(text).css('color', '');
+            if (firstIconHtml) {
+                $displayText.html(firstIconHtml + '<span style="font-size: 11px; margin-left: 2px;">' + text + '</span>').css('color', '');
+            } else {
+                $displayText.text(text).css('color', '');
+            }
         }
         $display.attr('title', text);
 
-        if (text) {
+        let hasRealValue = false;
+        if (isMultiple) {
+            let vals = $select.val() || [];
+            hasRealValue = vals.length > 0;
+        } else {
+            let val = $select.val();
+            hasRealValue = val !== '' && val !== null && val !== undefined;
+        }
+
+        if (hasRealValue) {
             $display.addClass('has-value');
         } else {
             $display.removeClass('has-value');
@@ -170,9 +188,15 @@ export function initSearchableSelect(selectEl) {
             }
 
             const $optDiv = $('<div>').addClass(OPTION_CLASS)
-                .text(text)
                 .attr('data-value', val)
                 .attr('title', text);
+            
+            const iconHtml = $opt.attr('data-icon');
+            if (iconHtml) {
+                $optDiv.html(iconHtml + '<span style="font-size: 11px; margin-left: 2px;">' + text + '</span>');
+            } else {
+                $optDiv.text(text);
+            }
 
             if ($opt.is(':selected')) {
                 $optDiv.addClass(OPTION_SELECTED_CLASS);
@@ -194,15 +218,55 @@ export function initSearchableSelect(selectEl) {
     }
 
     function openDropdown() {
-        $('.' + DROPDOWN_CLASS + '.open').removeClass('open');
-        $dropdown.addClass('open');
+        $(document).trigger('click.ss');
+        
         $search.val('');
         buildOptions('');
+
+        $dropdown.appendTo(document.body).css({ display: 'flex', visibility: 'hidden', width: '', minWidth: '' });
+        const dropdownHeight = $dropdown.outerHeight();
+        const dropdownWidth = $dropdown.outerWidth();
+        $dropdown.css({ display: '', visibility: '' });
+
+        const rect = $wrapper[0].getBoundingClientRect();
+        
+        let topPos = rect.bottom + 4;
+        if (topPos + dropdownHeight > window.innerHeight && rect.top - dropdownHeight - 4 > 0) {
+            topPos = rect.top - dropdownHeight - 4;
+        }
+
+        let leftPos = rect.left;
+        if (leftPos + dropdownWidth > window.innerWidth) {
+            leftPos = rect.right - dropdownWidth;
+            if (leftPos < 0) leftPos = 10;
+        }
+
+        $dropdown.css({
+            position: 'fixed',
+            top: topPos + 'px',
+            left: leftPos + 'px',
+            minWidth: rect.width + 'px',
+            margin: 0,
+            zIndex: 99999
+        });
+
+        $dropdown.addClass('open');
         setTimeout(() => $search.focus(), 10);
     }
 
     function closeDropdown() {
+        if (!$dropdown.hasClass('open')) return;
         $dropdown.removeClass('open');
+        $dropdown.css({
+            position: '',
+            top: '',
+            left: '',
+            width: '',
+            minWidth: '',
+            margin: '',
+            zIndex: ''
+        });
+        $wrapper.append($dropdown);
     }
 
     $display.on('click', function (e) {
@@ -292,10 +356,24 @@ export function initSearchableSelect(selectEl) {
     });
 
     updateDisplay();
+    return $select;
 }
 
 export function initSearchableSelects($container, selector) {
     $container.find(selector).each(function () {
         initSearchableSelect(this);
+    });
+}
+
+// Global listeners to close dropdowns when scrolling outside or resizing
+if (!window._ss_listeners_added) {
+    window._ss_listeners_added = true;
+    window.addEventListener('scroll', function(e) {
+        if ($(e.target).closest('.ss-dropdown').length) return;
+        $(document).trigger('click.ss');
+    }, true);
+
+    window.addEventListener('resize', function() {
+        $(document).trigger('click.ss');
     });
 }

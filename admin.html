@@ -15,14 +15,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260712-2221">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260713-0638">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260712-2124">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
 	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
 
 	<!-- Firebase Scripts -->
-	<script type="module" src="scripts/modules/admin/rendering.js?v=20260713-0633"></script>
+	<script type="module" src="scripts/modules/admin/rendering.js?v=20260713-0648"></script>
 
 	<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
 
@@ -41,7 +41,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20260712-2119"></script>
+	<script type="module" src="scripts/admin.js?v=20260713-0648"></script>
 
 </head>
 
@@ -93,6 +93,8 @@
 				<h2>Add/Modify Sightings</h2>
 			<div class='nav-top'>
 				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+				<button class='undo' id='undo-btn' title='Undo last action' disabled>Undo</button>
+				<button class='redo' id='redo-btn' title='Redo last action' disabled>Redo</button>
 				<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
 				<button class='backup' title='Backup Data'>Backup Data</button>
 				<button class='add-sighting' title='Add new sighting'>Add New</button>
@@ -117,7 +119,10 @@
 			<div class='nav-bottom'>
 				<div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
 					<span>Watermark: </span>
-					<input type="checkbox" name="watermark-on" checked>
+					<label class="toggle-switch">
+						<input type="checkbox" name="watermark-on" checked>
+						<span class="toggle-slider"></span>
+					</label>
 					<input type="text" name="watermark" value="© ${author}">
 					<input type="color" name="watermark-color" value="#ffffff">
 				</div>
@@ -146,11 +151,12 @@
 				<tr>
 					<td>Tags</td>
 					<td>
-						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
-							<input type='text' data-field='tags' placeholder="Tag1, Tag2, ..." style="width: 100%;" />
-							<span class='input-clear-btn' title='Clear'>✕</span>
-						</div>
-					</td>
+			<div class="chip-input-container" style="width: 100%; max-width: 700px;">
+				<div class="chips-wrapper"></div>
+				<input type='text' class="chip-input" placeholder="Add tag..." />
+				<input type='hidden' data-field='tags' />
+			</div>
+		</td>
 				</tr>
 				<tr>
 					<td>Scientific Name</td>
@@ -172,8 +178,9 @@
 				</tr>
 				<tr>
 					<td>Sighting Count</td>
-					<td><input type='text' data-field='sighting-count' placeholder="-"
-							style="width: 100%; max-width: 700px; text-align: left;" disabled /></td>
+					<td>
+						<span data-field='sighting-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
+					</td>
 				</tr>
 				<tr>
 					<td class='noborder'>
@@ -215,8 +222,8 @@
 				</tr>
 				<tr>
 					<td>Species Count</td>
-					<td><input type='text' data-field='species-count' placeholder="-"
-							style="width: 100%; max-width: 500px; text-align: left;" disabled />
+					<td>
+						<span data-field='species-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
 					</td>
 				</tr>
 				<tr>
@@ -262,6 +269,15 @@
 	<div id="sync-spinner" style="display: none;">
 		<div class="spinner-icon" id="sync-spinner-icon"></div>
 		<span class="sync-text">Saving...</span>
+	</div>
+
+	<div id="media-popup" style="display: none;">
+		<div class="media-popup-overlay"></div>
+		<div class="media-popup-content">
+			<button class="media-popup-close" title="Close">✕</button>
+			<img src="" id="media-popup-img" style="display:none;" />
+			<video src="" id="media-popup-video" controls autoplay loop style="display:none;"></video>
+		</div>
 	</div>
 
 	<div id="page-loader" aria-hidden="true" style="display:none">

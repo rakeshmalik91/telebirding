@@ -59,8 +59,8 @@ export default class Constants {
 
 	static OPT_GENDER = {
 		'': '-',
-		'M': "Male",
-		'F': 'Female'
+		'M': '♂ Male',
+		'F': '♀ Female'
 	};
 
 	static OPT_AGE = {

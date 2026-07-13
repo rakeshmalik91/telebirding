@@ -86,8 +86,15 @@ textarea {
 	font-size: 13px;
 }
 
+input[type=text],
+input[type=date],
+input[type=password],
+select {
+	height: 36px;
+}
+
 .place-fields select,
-.place-fields input,
+.place-fields input:not(.input-clear-wrapper input),
 .place-fields .ss-wrapper,
 .place-fields .input-clear-wrapper {
 	display: inline-block;
@@ -245,16 +252,16 @@ button:hover {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-button:disabled {
+button.delete {
+	background-color: #ef4444 !important;
+}
+
+button:disabled, button[disabled], button.delete:disabled {
 	background-color: #334155 !important;
 	color: #94a3b8 !important;
 	cursor: not-allowed !important;
 	transform: none !important;
 	box-shadow: none !important;
-}
-
-button.delete {
-	background-color: #ef4444 !important;
 }
 
 button.delete:hover {
@@ -489,13 +496,13 @@ td {
 
 .thumbnail button.delete-media {
 	background: none;
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	border: none;
 	box-shadow: none;
-	font-size: 14px;
+	font-size: 16px;
 	cursor: pointer;
 	position: static;
-	width: 20px;
-	height: 20px;
+	width: 24px;
+	height: 24px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -1015,4 +1022,175 @@ select::-ms-expand {
 .input-clear-wrapper input[type='text']:not(:placeholder-shown) + .input-clear-btn,
 .input-clear-wrapper.has-value .input-clear-btn {
     display: block;
+}
+
+/* Weather icons */
+.sighting-desc.weather { display: inline-block; height: 20px; width: 20px; background-image: url('../icons/weather-icons.png'); background-size: 100px 60px; background-repeat: no-repeat; vertical-align: middle; margin-right: 6px; opacity: 0.8; }
+.sighting-desc.weather.sunny-day { background-position: -0px -0px; }
+.sighting-desc.weather.cloudy-day { background-position: -20px -20px; }
+.sighting-desc.weather.rainy-day { background-position: -40px -20px; }
+.sighting-desc.weather.foggy-day { background-position: -60px -20px; }
+.sighting-desc.weather.snowy-day { background-position: -80px -20px; }
+.sighting-desc.weather.hazy-day { background-position: -60px -40px; }
+.sighting-desc.weather.stormy-day { background-position: -40px -40px; }
+.sighting-desc.weather.night { background-position: -20px -0px; }
+.sighting-desc.weather.dusk { background-position: -40px -0px; }
+.sighting-desc.weather.dawn { background-position: -60px -0px; }
+
+/* Chip Input */
+.chip-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    min-height: 36px;
+    box-sizing: border-box;
+    cursor: text;
+}
+.chip-input-container .chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.chip-input-container .chip {
+    background-color: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.chip-input-container .chip .chip-remove {
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+.chip-input-container .chip .chip-remove:hover {
+    color: white;
+}
+.chip-input-container .chip-input {
+    border: none !important;
+    background: transparent !important;
+    color: white !important;
+    outline: none !important;
+    flex: 1;
+    min-width: 60px;
+    padding: 0 4px !important;
+    font-size: 13px !important;
+    height: auto !important;
+}
+
+/* Fix form table label widths */
+#update-species-form,
+#add-family-form {
+    table-layout: fixed;
+    width: 100%;
+}
+#update-species-form td:first-child,
+#add-family-form td:first-child {
+    width: 150px;
+    min-width: 150px;
+    white-space: nowrap;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.toggle-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #475569;
+  transition: .2s;
+  border-radius: 20px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .2s;
+  border-radius: 50%;
+}
+input:checked + .toggle-slider {
+  background-color: #38bdf8;
+}
+input:checked + .toggle-slider:before {
+  transform: translateX(16px);
+}
+
+/* Media Popup */
+#media-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  cursor: pointer;
+}
+.media-popup-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-popup-content img, .media-popup-content video {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.media-popup-close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: transparent !important;
+  color: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+}
+.media-popup-close:hover {
+  transform: scale(1.1);
+  color: #ef4444;
 }

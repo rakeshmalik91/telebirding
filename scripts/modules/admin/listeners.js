@@ -1,11 +1,61 @@
 import {
-    data, syncSightingsData, addSighting, backup, sortByDate, sightingMatches
+    data, syncSightingsData, addSighting, backup, sortByDate, sightingMatches,
+    undoSighting, redoSighting
 } from './data.js';
+import { showLoader, hideLoader } from '../loader.js';
+import { customConfirm } from './ui.js';
+import { setupChipInputs } from './chip-input.js';
 
 export function setupDashboardListeners(render, viewState) {
+    const doRender = () => {
+        showLoader();
+        setTimeout(() => {
+            render();
+            hideLoader();
+        }, 10);
+    };
     $('.save').click(function () {
+        if ($(this).text() === 'Conflict') {
+            customConfirm("Data conflict detected. Would you like to refresh the page now to get the latest data?", () => {
+                location.reload();
+            });
+            return;
+        }
         syncSightingsData(0);
     });
+
+    // Initialize chip inputs
+    setupChipInputs();
+
+    // Media Popup logic
+    $('body').on('click', '.thumbnail', function(e) {
+        // Ignore clicks on interactive elements inside the thumbnail
+        if ($(e.target).closest('button, input, select, textarea, .camera-select-wrapper, .media-header').length) return;
+        
+        // Prevent click if we were dragging
+        if ($(this).closest('.thumbnail').hasClass('is-dragging')) return;
+        
+        let fullSrc = $(this).attr("data-fullsrc");
+        let mediaType = $(this).attr("data-mediatype");
+        
+        $("#media-popup-img, #media-popup-video").hide();
+        if (mediaType === 'video') {
+            $("#media-popup-video").attr("src", fullSrc).show();
+        } else {
+            $("#media-popup-img").attr("src", fullSrc).show();
+        }
+        $("#media-popup").fadeIn(200);
+    });
+
+    $('#media-popup .media-popup-overlay, #media-popup .media-popup-close').click(function() {
+        $("#media-popup").fadeOut(200, function() {
+            $("#media-popup-video").attr("src", ""); // Stop video playing
+            $("#media-popup-img").attr("src", "");
+        });
+    });
+
+    $('#undo-btn').click(undoSighting);
+    $('#redo-btn').click(redoSighting);
     $('.sort-by-date').click(sortByDate);
     $('.add-sighting').click(() => {
         viewState.offset = 0;
@@ -15,13 +65,13 @@ export function setupDashboardListeners(render, viewState) {
     $('button.first-page').click(function () {
         if (viewState.offset > 0) {
             viewState.offset = 0;
-            render();
+            doRender();
         }
     });
     $('button.previous').click(function () {
         if (viewState.offset > 0) {
             viewState.offset = Math.max(viewState.offset - viewState.rows, 0);
-            render();
+            doRender();
         }
     });
     $('button.next').click(function () {
@@ -29,7 +79,7 @@ export function setupDashboardListeners(render, viewState) {
         const length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
         if (viewState.offset + viewState.rows < length) {
             viewState.offset += viewState.rows;
-            render();
+            doRender();
         }
     });
     $('button.last-page').click(function () {
@@ -37,16 +87,16 @@ export function setupDashboardListeners(render, viewState) {
         const length = data.sightings.filter(b => sightingMatches(b, searchKey)).length;
         if (viewState.offset + viewState.rows < length) {
             viewState.offset = Math.floor(length / viewState.rows) * viewState.rows;
-            render();
+            doRender();
         }
     });
-    $('select[name=page-size]').click(function () {
+    $('select[name=page-size]').change(function () {
         viewState.rows = Number($("select[name=page-size]").val());
-        render();
+        doRender();
     });
     $("input[name=filter-sighting]").change(function () {
         viewState.offset = 0;
-        render();
+        doRender();
         $(this).blur();
     });
     $("input[name=filter-sighting]").focus(function () {

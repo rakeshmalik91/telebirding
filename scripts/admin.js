@@ -1,13 +1,14 @@
 // Import dependencies (jQuery and moment are loaded as regular scripts in HTML)
 import Constants from './modules/constants.js';
 import {
-	currentMode, refreshData, setRenderCallback
+	currentMode, setCurrentMode, refreshData, setRenderCallback, hasUnsavedChanges
 } from './modules/admin/data.js';
+import { customAlert } from './modules/admin/ui.js';
 import {
 	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm
 } from './modules/admin/rendering.js';
 import { setupAuthListeners } from './modules/admin/auth.js';
-import { setupDashboardListeners } from './modules/admin/listeners.js';
+import { setupDashboardListeners } from './modules/admin/listeners.js?v=20260713-0648';
 
 const viewState = {
 	offset: 0,
@@ -16,7 +17,19 @@ const viewState = {
 
 function switchMode(targetMode) {
 	if (currentMode !== targetMode) {
-		window.location.href = window.location.origin + "/admin?mode=" + targetMode;
+		if (hasUnsavedChanges()) {
+			customAlert("Please wait for your changes to finish saving before switching modes.");
+			return;
+		}
+
+		setCurrentMode(targetMode);
+		history.pushState(null, null, "?mode=" + targetMode);
+		
+		$('.mode-tab').removeClass('active');
+		$(`.mode-tab[data-mode="${targetMode}"]`).addClass('active');
+		$('.site-logo').html('<img class="logo" src="' + Constants.MODE[targetMode].logo + '" alt="' + Constants.MODE[targetMode].title + '" title="' + Constants.MODE[targetMode].title + '" />');
+		
+		refreshData();
 	}
 }
 
