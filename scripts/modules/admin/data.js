@@ -60,7 +60,7 @@ const SYNC_SCHEDULE_TIME = 3000;
 let syncRef;
 
 import { removeUnwantedValues, applySpeciesTags } from './data-cleanup.js';
-import { customAlert, customConfirm } from './ui.js';
+import { customAlert, customConfirm, showToast } from './ui.js';
 
 
 let renderCallback = () => { };
@@ -202,8 +202,6 @@ export function uploadJSONData(type, skipRefresh) {
             uploadJSONData(type, nextSkip);
             return;
         }
-
-        if (!skipRefresh) renderCallback();
         if (!hasUnsavedChanges()) {
             $('.save').text('Saved!');
             $('#sync-spinner .sync-text').text('Saved!');
@@ -315,8 +313,15 @@ export function syncSightingsData(scheduleAfter, skipRefresh = false) {
         if ($('.save').first().text() === 'Saved!') $('.save').text('Save');
     }
     syncRef = setTimeout(function () {
-        uploadJSONData('sightings', skipRefresh);
+        if ($('#auto-sort-btn').hasClass('active') && data && data.sightings) {
+            let originalKeys = data.sightings.map(s => s.key).join(',');
+            data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));
+            if (originalKeys !== data.sightings.map(s => s.key).join(',')) {
+                renderCallback();
+            }
+        }
         syncRef = undefined;
+        uploadJSONData('sightings', skipRefresh);
         $('.save').attr("disabled", "disabled");
     }, scheduleAfter);
 }
@@ -367,19 +372,26 @@ export function uploadMedia(sightingKey, files) {
                 FirebaseApi.getFirebase().storage().ref(mediaSrc).put(resizedImage).then(async () => {
                     console.log("uploaded image " + mediaSrc);
                     snapshotSightings();
-                    if (sighting.media.length === 0) {
+                    let currentSighting = data.sightings.find(s => s.key == sightingKey);
+                    if (!currentSighting) {
+                        customAlert("Media uploaded, but the sighting was deleted or is no longer available.");
+                        return;
+                    }
+                    if (!currentSighting.media) currentSighting.media = [];
+                    
+                    if (currentSighting.media.length === 0) {
                         const date = await getSightingDateFromExif(file);
-                        if (date) sighting.date = date;
+                        if (date) currentSighting.date = date;
                     }
                     let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
-                    if (sighting.media && sighting.media.length > 0) {
-                        let lastMedia = sighting.media[sighting.media.length - 1];
+                    if (currentSighting.media && currentSighting.media.length > 0) {
+                        let lastMedia = currentSighting.media[currentSighting.media.length - 1];
                         if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
                             inheritedCamera = lastMedia.exif_data.camera_model;
                         }
                     }
 
-                    sighting.media.push({
+                    currentSighting.media.push({
                         src: mediaSrc,
                         exif_data: {
                             "camera_model": inheritedCamera
@@ -387,7 +399,7 @@ export function uploadMedia(sightingKey, files) {
                     });
                     commitSightingsChange();
                     renderCallback();
-                    syncSightingsData(0);
+                    syncSightingsData(0, true);
                 }).catch(e => {
                     customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
                     if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
@@ -401,30 +413,34 @@ export function uploadMedia(sightingKey, files) {
             FirebaseApi.getFirebase().storage().ref(mediaSrc).put(file).then(() => {
                 console.log("uploaded video " + mediaSrc);
                 snapshotSightings();
-                data.sightings.forEach(function (sighting) {
-                    if (sighting.key == sightingKey) {
-                        let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
-                        if (sighting.media && sighting.media.length > 0) {
-                            let lastMedia = sighting.media[sighting.media.length - 1];
-                            if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
-                                inheritedCamera = lastMedia.exif_data.camera_model;
-                            }
-                        }
+                let currentSighting = data.sightings.find(s => s.key == sightingKey);
+                if (!currentSighting) {
+                    customAlert("Media uploaded, but the sighting was deleted or is no longer available.");
+                    return;
+                }
+                if (!currentSighting.media) currentSighting.media = [];
+                
+                let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
+                if (currentSighting.media && currentSighting.media.length > 0) {
+                    let lastMedia = currentSighting.media[currentSighting.media.length - 1];
+                    if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
+                        inheritedCamera = lastMedia.exif_data.camera_model;
+                    }
+                }
 
-                        sighting.media.push({
-                            src: mediaSrc,
-                            type: 'video',
-                            mute: true,
-                            thumbnail: data.sightings.find(s => s.key == sightingKey).media.find(m => m.type !== 'video')?.src || null, // Use first image as thumbnail if available, else null
-                            exif_data: {
-                                "camera_model": inheritedCamera
-                            }
-                        });
+                currentSighting.media.push({
+                    src: mediaSrc,
+                    type: 'video',
+                    mute: true,
+                    thumbnail: currentSighting.media.find(m => m.type !== 'video')?.src || null, // Use first image as thumbnail if available, else null
+                    exif_data: {
+                        "camera_model": inheritedCamera
                     }
                 });
+                
                 commitSightingsChange();
                 renderCallback();
-                syncSightingsData(0);
+                syncSightingsData(0, true);
             }).catch(e => {
                 customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
                 if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
@@ -670,6 +686,7 @@ export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
         data.species = Object.fromEntries(Object.entries(data.species).sort());
         uploadJSONData("species");
         lastUpdatedSpecies = newKey;
+        showToast(`Species '${name}' saved successfully.`, 'success');
     }
 }
 
@@ -686,6 +703,7 @@ export function addFamily(name, ebirdCode, sciName) {
         }
         data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
         uploadJSONData("families", true);
+        showToast(`Family '${name}' saved successfully.`, 'success');
     }
 }
 
@@ -699,7 +717,7 @@ export function deleteFamily(name, onSuccess) {
         data.families = data.families.filter(f => f.name != name);
         uploadJSONData("families", true);
         if (onSuccess) onSuccess();
-        customAlert("Family deleted successfully.");
+        showToast("Family deleted successfully.", 'success');
     });
 }
 
@@ -713,7 +731,7 @@ export function deleteSpecies(key, onSuccess) {
         delete data.species[key];
         uploadJSONData("species", true);
         if (onSuccess) onSuccess();
-        customAlert("Species deleted successfully.");
+        showToast("Species deleted successfully.", 'success');
     });
 }
 

@@ -57,6 +57,17 @@ export function setupDashboardListeners(render, viewState) {
     $('#undo-btn').click(undoSighting);
     $('#redo-btn').click(redoSighting);
     $('.sort-by-date').click(sortByDate);
+    
+    // Auto sort toggle
+    const savedAutoSort = localStorage.getItem('autoSortEnabled');
+    if (savedAutoSort === 'false') {
+        $('#auto-sort-btn').removeClass('active');
+    }
+    $('#auto-sort-btn').click(function() {
+        $(this).toggleClass('active');
+        localStorage.setItem('autoSortEnabled', $(this).hasClass('active'));
+    });
+
     $('.add-sighting').click(() => {
         viewState.offset = 0;
         addSighting();

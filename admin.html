@@ -15,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260714-0640">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260714-0658">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260712-2124">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
@@ -41,7 +41,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20260714-0640"></script>
+	<script type="module" src="scripts/admin.js?v=20260714-0658"></script>
 
 </head>
 
@@ -95,7 +95,11 @@
 				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
 				<button class='undo' id='undo-btn' title='Undo last action' disabled>Undo</button>
 				<button class='redo' id='redo-btn' title='Redo last action' disabled>Redo</button>
-				<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+				<div class="sort-group">
+					<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+					<button class='auto-sort-btn active' id='auto-sort-btn' title='Auto-sort when uploading media or saving'>Auto</button>
+				</div>
+				<button class='cleanup-media' title='Remove unreferenced media from storage'>Cleanup Media</button>
 				<button class='backup' title='Backup Data'>Backup Data</button>
 				<button class='add-sighting' title='Add new sighting'>Add New</button>
 				<br>

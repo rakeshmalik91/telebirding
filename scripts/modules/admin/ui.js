@@ -62,3 +62,35 @@ export function customConfirm(message, callback) {
         }
     });
 }
+
+export function showToast(message, type = 'info') {
+    if ($('#toast-container').length === 0) {
+        $('body').append('<div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; display: flex; flex-direction: column; gap: 10px;"></div>');
+    }
+    
+    const borderColor = type === 'success' ? '#10b981' : (type === 'error' ? '#ef4444' : '#38bdf8');
+    const bg = '#1e293b';
+    const fg = '#f8fafc';
+    
+    const $toast = $(`<div style="background: ${bg}; border-left: 4px solid ${borderColor}; color: ${fg}; padding: 12px 20px; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); font-size: 14px; opacity: 0; transform: translateX(100%); transition: all 0.3s ease;">${message}</div>`);
+    
+    $('#toast-container').append($toast);
+    
+    // trigger reflow
+    $toast[0].offsetHeight;
+    
+    $toast.css({
+        opacity: 1,
+        transform: 'translateX(0)'
+    });
+    
+    setTimeout(() => {
+        $toast.css({
+            opacity: 0,
+            transform: 'translateX(100%)'
+        });
+        setTimeout(() => {
+            $toast.remove();
+        }, 300);
+    }, 3000);
+}
