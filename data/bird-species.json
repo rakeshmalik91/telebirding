@@ -568,7 +568,9 @@
                 "Bird of Prey",
                 "Nocturnal",
                 "Owl",
-                "Raptor"
+                "Raptor",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Barn-Owls",
             "latin_name": "tyto javanica",
@@ -722,7 +724,9 @@
             "key": "black-bittern",
             "name": "Black Bittern",
             "tags": [
-                "Bittern"
+                "Bittern",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "botaurus flavicollis",
@@ -1775,7 +1779,9 @@
             "tags": [
                 "Egret",
                 "Heron",
-                "Cattle Egret"
+                "Cattle Egret",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "ardea ibis",
@@ -2012,7 +2018,9 @@
             "tags": [
                 "Bittern",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "ebird_code": "cinbit1",
@@ -2713,7 +2721,9 @@
             "name": "Eastern Cattle-Egret",
             "tags": [
                 "Egret",
-                "Cattle Egret"
+                "Cattle Egret",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "ardea coromanda",
@@ -2724,7 +2734,9 @@
             "name": "Eastern Yellow Wagtail",
             "tags": [
                 "Wagtail",
-                "Yellow Wagtail"
+                "Yellow Wagtail",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Wagtails and Pipits",
             "ebird_code": "eaywag",
@@ -2876,7 +2888,9 @@
                 "Eurasian Marsh-Harrier",
                 "Harrier",
                 "Marsh-Harrier",
-                "Raptor"
+                "Raptor",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "wemhar1",
@@ -3963,7 +3977,10 @@
             "name": "Gray Junglefowl",
             "tags": [
                 "Junglefowl",
-                "Fowl"
+                "Fowl",
+                "Raptor",
+                "Bird of Prey",
+                "Nocturnal"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "grejun2",
@@ -4499,7 +4516,10 @@
             "name": "Indian Peafowl",
             "tags": [
                 "Peacock",
-                "Peafowl"
+                "Peafowl",
+                "Raptor",
+                "Bird of Prey",
+                "Nocturnal"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "compea",
@@ -6598,7 +6618,10 @@
             "tags": [
                 "Junglefowl",
                 "Fowl",
-                "Chicken"
+                "Chicken",
+                "Raptor",
+                "Bird of Prey",
+                "Nocturnal"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "redjun",
@@ -6668,7 +6691,10 @@
             "name": "Red Spurfowl",
             "tags": [
                 "Spurfowl",
-                "Fowl"
+                "Fowl",
+                "Raptor",
+                "Bird of Prey",
+                "Nocturnal"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "redspu1",
@@ -8282,7 +8308,9 @@
             "key": "western-crowned-warbler",
             "name": "Western Crowned Warbler",
             "tags": [
-                "Warbler"
+                "Warbler",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "weclew1",
@@ -8293,7 +8321,9 @@
             "name": "Western Reef-Heron",
             "tags": [
                 "Heron",
-                "Reef-Heron"
+                "Reef-Heron",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "egretta gularis",
@@ -8303,7 +8333,9 @@
             "key": "western-tragopan",
             "name": "Western Tragopan",
             "tags": [
-                "Tragopan"
+                "Tragopan",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "latin_name": "tragopan melanocephalus",
@@ -8314,7 +8346,9 @@
             "name": "Western Yellow Wagtail",
             "tags": [
                 "Wagtail",
-                "Yellow Wagtail"
+                "Yellow Wagtail",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Wagtails and Pipits",
             "ebird_code": "eaywag1",
@@ -8864,7 +8898,9 @@
             "tags": [
                 "Bittern",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Seabird",
+                "Pelagic"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "ebird_code": "yelbit",

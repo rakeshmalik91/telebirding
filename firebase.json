@@ -36,5 +36,8 @@
         "destination": "/privacy-policy.html"
       }
     ]
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }

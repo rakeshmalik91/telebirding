@@ -95,28 +95,50 @@
 				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
 				<button class='undo' id='undo-btn' title='Undo last action' disabled>Undo</button>
 				<button class='redo' id='redo-btn' title='Redo last action' disabled>Redo</button>
-				<div class="sort-group">
-					<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
-					<button class='auto-sort-btn active' id='auto-sort-btn' title='Auto-sort when uploading media or saving'>Auto</button>
-				</div>
-				<button class='cleanup-media' title='Remove unreferenced media from storage'>Cleanup Media</button>
-				<button class='backup' title='Backup Data'>Backup Data</button>
 				<button class='add-sighting' title='Add new sighting'>Add New</button>
-				<br>
-				<button class='first-page' title='First page'>&lt;&lt;</button>
-				<button class='previous' title='Previous page'>&lt;</button>
-				<span class='page-number'></span>
-				<button class='next' title='Next page'>&gt;</button>
-				<button class='last-page' title='Last page'>&gt;&gt;</button>
-				<span class='text'>Rows: </span>
-				<select name="page-size">
-					<option>10</option>
-					<option>25</option>
-					<option>50</option>
-				</select>
-				<div class='input-clear-wrapper' style="width: 200px;">
-					<input type="text" name="filter-sighting" placeholder="Filter" style="width: 100%;" />
-					<span class='input-clear-btn' title='Clear'>✕</span>
+				<div class="right-actions" style="float: right; display: flex; align-items: center; gap: 5px;">
+					<div class="sort-group">
+						<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+						<button class='auto-sort-btn active' id='auto-sort-btn' title='Auto-sort when uploading media or saving'>Auto</button>
+					</div>
+					<button class='cleanup-media' title='Remove unreferenced media from storage'>Cleanup Media</button>
+					<div class="btn-group">
+						<button class='backup' title='Backup Data'>Backup</button>
+						<button class="restore-backup" title="Restore Data from Backup">Restore</button>
+					</div>
+				</div>
+				<br style="clear: both;">
+				<div class="pagination-container" style="display: flex; align-items: center; width: 100%; box-sizing: border-box; padding-right: 10px; margin-top: 10px; margin-bottom: 15px;">
+					
+					<!-- Left-aligned pagination -->
+					<div style="display: flex; align-items: center; gap: 10px; flex: 0 0 auto;">
+						<div style="display: flex; align-items: center; gap: 5px;">
+							<button class='first-page' title='First page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&lt;&lt;</button>
+							<button class='previous' title='Previous page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&lt;</button>
+						</div>
+						<span class='page-number' style="font-weight: 500; margin: 0 !important; letter-spacing: 0.5px; text-align: center; display: inline-block;"></span>
+						<div style="display: flex; align-items: center; gap: 5px;">
+							<button class='next' title='Next page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&gt;</button>
+							<button class='last-page' title='Last page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&gt;&gt;</button>
+						</div>
+					</div>
+					
+					<!-- Right side rows and filter -->
+					<div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex: 1;">
+						<div class='input-clear-wrapper' style="width: 200px;">
+							<input type="text" name="filter-sighting" placeholder="Filter" style="width: 100%; margin: 0 !important;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+						<div style="display: flex; align-items: center; gap: 8px;">
+							<span class='text' style="margin: 0;">Rows: </span>
+							<select name="page-size" style="margin: 0;">
+								<option value="10">10</option>
+								<option value="25">25</option>
+								<option value="100">100</option>
+								<option value="500">500</option>
+							</select>
+						</div>
+					</div>
 				</div>
 			</div>
 			<table id="sightings-table"></table>

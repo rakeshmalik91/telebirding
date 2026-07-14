@@ -2,7 +2,7 @@
  * Custom Modal System
  */
 
-function showModal(title, message, isConfirm, callback) {
+export function showModal(title, message, isConfirm, callback) {
     const $overlay = $('#custom-modal-overlay');
     const $title = $('#custom-modal-title');
     const $msg = $('#custom-modal-message');
@@ -43,7 +43,7 @@ function showModal(title, message, isConfirm, callback) {
     }, 10);
 }
 
-function closeModal() {
+export function closeModal() {
     const $overlay = $('#custom-modal-overlay');
     $overlay.removeClass('visible');
     setTimeout(() => {

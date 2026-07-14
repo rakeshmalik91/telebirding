@@ -201,7 +201,8 @@ button {
 	box-sizing: border-box;
 }
 
-.sort-group {
+.sort-group,
+.btn-group {
 	display: inline-flex;
 	align-items: stretch;
 	vertical-align: top;
@@ -213,13 +214,15 @@ button {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.sort-group button {
+.sort-group button,
+.btn-group button {
 	margin: 0;
 	border-radius: 0;
 	box-shadow: none;
 }
 
-.sort-group .sort-by-date {
+.sort-group .sort-by-date,
+.btn-group .backup {
 	border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 

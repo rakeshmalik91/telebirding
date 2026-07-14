@@ -73,7 +73,13 @@ The project is a static web app hosted on Firebase, using Vanilla JS, HTML, and 
 
 ### Deployment
 
-To deploy changes to the live site:
+Deployments are automated through **GitHub Actions**.
+
+- **Hosting & Storage Rules**: Pushing to the `dev` branch or creating a PR automatically triggers the deployment of both Hosting and `storage.rules`.
+- **Permissions Error**: If the GitHub Action fails with a `403 Permission denied` error on `firebasestorage.defaultBucket.get`, the Service Account lacks the required permissions.
+  - Fix this by granting the **Firebase Admin** role to the GitHub Actions Service Account in the [Google Cloud IAM Console](https://console.cloud.google.com/iam-admin/iam?project=telebirding-49623).
+
+To deploy manually (not recommended for rules):
 ```bash
 firebase deploy
 ```

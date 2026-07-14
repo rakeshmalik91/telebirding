@@ -10,6 +10,7 @@ import {
 import { setupAuthListeners } from './modules/admin/auth.js';
 import { setupDashboardListeners } from './modules/admin/listeners.js?v=20260713-0648';
 import { setupCleanupListeners } from './modules/admin/cleanup.js';
+import { setupRestoreListeners } from './modules/admin/restore.js';
 
 const viewState = {
 	offset: 0,
@@ -49,6 +50,7 @@ $(document).ready(function () {
 	setupDashboardListeners(render, viewState);
 	setupAuthListeners();
 	setupCleanupListeners();
+	setupRestoreListeners();
 
 	$('.site-logo').html('<img class="logo" src="' + Constants.MODE[currentMode].logo + '" alt="' + Constants.MODE[currentMode].title + '" title="' + Constants.MODE[currentMode].title + '" />');
 
