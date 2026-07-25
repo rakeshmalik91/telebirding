@@ -305,6 +305,23 @@ export function backup() {
 }
 
 
+export function isInputActive() {
+    const active = document.activeElement;
+    const isEditingInput = active && (
+        ['INPUT', 'SELECT', 'TEXTAREA'].includes(active.tagName) ||
+        active.isContentEditable ||
+        $(active).closest('.ss-wrapper, .ss-dropdown, .chip-input-container').length > 0
+    );
+    const isDropdownOpen = $('.ss-dropdown.open').length > 0;
+    return Boolean(isEditingInput || isDropdownOpen);
+}
+
+export function delayPendingSave() {
+    if (typeof syncRef !== 'undefined') {
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
+
 export function syncSightingsData(scheduleAfter, skipRefresh = false) {
     clearTimeout(syncRef);
     if (scheduleAfter > 0) {
@@ -313,6 +330,10 @@ export function syncSightingsData(scheduleAfter, skipRefresh = false) {
         if ($('.save').first().text() === 'Saved!') $('.save').text('Save');
     }
     syncRef = setTimeout(function () {
+        if (scheduleAfter > 0 && isInputActive()) {
+            syncSightingsData(SYNC_SCHEDULE_TIME, skipRefresh);
+            return;
+        }
         if ($('#auto-sort-btn').hasClass('active') && data && data.sightings) {
             let originalKeys = data.sightings.map(s => s.key).join(',');
             data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));

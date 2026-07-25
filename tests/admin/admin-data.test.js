@@ -393,6 +393,49 @@ describe('Admin Data Module', () => {
             vi.advanceTimersByTime(1100);
             expect($('.save').attr('disabled')).toBe('disabled');
         });
+
+        it('should detect active input and open dropdown in isInputActive', () => {
+            document.body.innerHTML = '<input id="test-input" type="text" />';
+            const input = document.getElementById('test-input');
+            input.focus();
+            expect(AdminData.isInputActive()).toBe(true);
+
+            document.body.innerHTML = '<div class="ss-dropdown open"></div>';
+            expect(AdminData.isInputActive()).toBe(true);
+
+            document.body.innerHTML = '<div>No input</div>';
+            expect(AdminData.isInputActive()).toBe(false);
+        });
+
+        it('should reschedule syncSightingsData if isInputActive is true when timer fires', () => {
+            document.body.innerHTML = '<button class="save" disabled></button><input id="test-input" type="text" />';
+            const input = document.getElementById('test-input');
+            input.focus();
+
+            AdminData.syncSightingsData(1000);
+            vi.advanceTimersByTime(1100);
+            // Save button should still be enabled (not disabled) because save was delayed/rescheduled
+            expect($('.save').attr('disabled')).toBeUndefined();
+
+            // Blurring input allows next scheduled sync to finish
+            input.blur();
+            vi.advanceTimersByTime(3100);
+            expect($('.save').attr('disabled')).toBe('disabled');
+        });
+
+        it('should delay pending save via delayPendingSave when save is scheduled', () => {
+            document.body.innerHTML = '<button class="save" disabled></button>';
+            AdminData.syncSightingsData(3000);
+            vi.advanceTimersByTime(2000);
+
+            // Interaction happens at t=2000ms -> delayPendingSave resets timer by another 3000ms
+            AdminData.delayPendingSave();
+            vi.advanceTimersByTime(1500); // Now t = 3500ms from start (would have expired without delay)
+            expect($('.save').attr('disabled')).toBeUndefined();
+
+            vi.advanceTimersByTime(1600); // Total 5100ms passed (3100ms since delayPendingSave)
+            expect($('.save').attr('disabled')).toBe('disabled');
+        });
     });
 
     describe('Boundary Checks & Search', () => {

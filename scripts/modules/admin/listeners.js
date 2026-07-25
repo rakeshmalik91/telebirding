@@ -1,6 +1,6 @@
 import {
     data, syncSightingsData, addSighting, backup, sortByDate, sightingMatches,
-    undoSighting, redoSighting
+    undoSighting, redoSighting, delayPendingSave
 } from './data.js';
 import { showLoader, hideLoader } from '../loader.js';
 import { customConfirm } from './ui.js';
@@ -22,6 +22,11 @@ export function setupDashboardListeners(render, viewState) {
             return;
         }
         syncSightingsData(0);
+    });
+
+    // Delay pending auto-save when user interacts with any input element or dropdown
+    $('body').on('input focusin keydown mousedown touchstart change', 'input, select, textarea, .ss-wrapper, .ss-dropdown, .chip-input-container, [contenteditable="true"]', function () {
+        delayPendingSave();
     });
 
     // Initialize chip inputs
