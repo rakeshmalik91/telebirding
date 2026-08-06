@@ -1,6 +1,64 @@
 {
     "sightings": [
         {
+            "key": "s1784952117",
+            "species": "scaly-breasted-munia",
+            "date": "25-07-2026",
+            "city": "Howrah",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/scaly-breasted-munia-1784952534.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1784952058",
+            "species": "white-throated-fantail",
+            "date": "25-07-2026",
+            "city": "Howrah",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/white-throated-fantail-1784952091.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1784897441",
+            "species": "purple-sunbird",
+            "date": "24-07-2026",
+            "city": "Howrah",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/purple-sunbird-1784897467.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "F"
+        },
+        {
             "key": "s1773417535",
             "species": "oriental-scops-owl",
             "date": "13-03-2026",
