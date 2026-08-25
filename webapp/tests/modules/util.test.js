@@ -96,8 +96,11 @@ describe('Util.getData', () => {
     });
 
     it('should return local path if Firebase is disabled', () => {
+        const origValue = window.FIREBASE_ENABLED;
+        window.FIREBASE_ENABLED = false;
         const path = 'images/birds/bird1.jpg';
-        expect(Util.getData(path)).toBe(path);
+        expect(Util.getData(path)).toBe('resources/' + path);
+        window.FIREBASE_ENABLED = origValue;
     });
 
     it('should return Firebase URL when Firebase is enabled', () => {

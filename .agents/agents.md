@@ -9,7 +9,7 @@ This file defines coding standards and rules for the Antigravity agent to follow
 - Keep functions small and modular.
 - **Frontend Verification**: Any frontend changes must be verified for workability on:
   - Desktop browsers
-  - Android app (located in the [telebirding-app](file:///./telebirding-app/) folder)
+  - Android app (located in the [telebirding-android-app](file:///./telebirding-android-app/) folder)
   - Mobile browsers
   - Collapsible/split-screen browsers for iPad
 
@@ -27,7 +27,7 @@ This file defines coding standards and rules for the Antigravity agent to follow
 ## Antigravity Specific
 - **Rule Enforcement**: Always refer to this file and `.cursorrules` before suggesting or implementing changes.
 - **Workflow Usage**: Check `.agents/workflows` for specific operational procedures before starting complex tasks.
-- **Project Structure**: Be mindful of the repository layout defined in the [project-structure skill](file:///d:/Projects/telebirding/.agents/skills/project-structure/SKILL.md)—specifically the split between root static web files, processing scripts in `utils/`, and the native Android app in `telebirding-app/`.
+- **Project Structure**: Be mindful of the repository layout defined in the [project-structure skill](file:///d:/Projects/telebirding/.agents/skills/project-structure/SKILL.md)—specifically the split between static web frontend in `webapp/`, processing scripts in `utils/`, data and media assets in `resources/`, and the native Android app in `telebirding-android-app/`.
 - **Requirements Tooling**: Be aware that generating `requirements.txt` can sometimes cause the agent to freeze. If this occurs, try creating the file with minimal contents and then appending dependencies, or use `run_command` with `echo` as an alternative to `write_to_file`.
-- **Android App**: The Android app is located under the `telebirding-app` folder and wraps the web application using local caching.
+- **Android App**: The Android app is located under the `telebirding-android-app` folder and wraps the web application using local caching.
 

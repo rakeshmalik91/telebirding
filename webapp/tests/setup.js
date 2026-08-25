@@ -8,8 +8,9 @@ global.$ = jQuery;
 // Mock Firebase storage
 const storageRef = {
     getDownloadURL: vi.fn(() => Promise.resolve('http://example.com/url')),
-    put: vi.fn(() => Promise.resolve()),
-    delete: vi.fn(() => Promise.resolve())
+    put: vi.fn(() => Promise.resolve({ metadata: { generation: '123' } })),
+    delete: vi.fn(() => Promise.resolve()),
+    getMetadata: vi.fn(() => Promise.resolve({ generation: '123' }))
 };
 
 global.firebase = {

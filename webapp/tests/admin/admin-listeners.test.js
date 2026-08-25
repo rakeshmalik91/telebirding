@@ -11,7 +11,10 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     addSighting: vi.fn(),
     backup: vi.fn(),
     sortByDate: vi.fn(),
-    sightingMatches: vi.fn(() => true)
+    sightingMatches: vi.fn(() => true),
+    undoSighting: vi.fn(),
+    redoSighting: vi.fn(),
+    delayPendingSave: vi.fn()
 }));
 
 describe('Admin Listeners Module', () => {
@@ -19,6 +22,7 @@ describe('Admin Listeners Module', () => {
     let viewState;
 
     beforeEach(() => {
+        vi.useFakeTimers();
         document.body.innerHTML = `
             <button class="save" disabled></button>
             <button class="sort-by-date"></button>
@@ -78,6 +82,7 @@ describe('Admin Listeners Module', () => {
         it('should set offset to 0 and render when offset > 0', () => {
             viewState.offset = 10;
             $('button.first-page').trigger('click');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(0);
             expect(renderFn).toHaveBeenCalled();
         });
@@ -85,6 +90,7 @@ describe('Admin Listeners Module', () => {
         it('should not render when already at offset 0', () => {
             viewState.offset = 0;
             $('button.first-page').trigger('click');
+            vi.runAllTimers();
             expect(renderFn).not.toHaveBeenCalled();
         });
     });
@@ -94,6 +100,7 @@ describe('Admin Listeners Module', () => {
             viewState.offset = 10;
             viewState.rows = 5;
             $('button.previous').trigger('click');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(5);
             expect(renderFn).toHaveBeenCalled();
         });
@@ -102,6 +109,7 @@ describe('Admin Listeners Module', () => {
             viewState.offset = 3;
             viewState.rows = 5;
             $('button.previous').trigger('click');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(0);
             expect(renderFn).toHaveBeenCalled();
         });
@@ -109,6 +117,7 @@ describe('Admin Listeners Module', () => {
         it('should not render when already at offset 0', () => {
             viewState.offset = 0;
             $('button.previous').trigger('click');
+            vi.runAllTimers();
             expect(renderFn).not.toHaveBeenCalled();
         });
     });
@@ -120,6 +129,7 @@ describe('Admin Listeners Module', () => {
             AdminData.sightingMatches.mockReturnValue(true);
 
             $('button.next').trigger('click');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(10);
             expect(renderFn).toHaveBeenCalled();
         });
@@ -130,6 +140,7 @@ describe('Admin Listeners Module', () => {
             AdminData.sightingMatches.mockReturnValue(true);
 
             $('button.next').trigger('click');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(20);
             expect(renderFn).not.toHaveBeenCalled();
         });
@@ -142,6 +153,7 @@ describe('Admin Listeners Module', () => {
             AdminData.sightingMatches.mockReturnValue(true);
 
             $('button.last-page').trigger('click');
+            vi.runAllTimers();
             // 30 sightings, 10 per page -> Math.floor(30/10) * 10 = 30
             expect(viewState.offset).toBe(30);
             expect(renderFn).toHaveBeenCalled();
@@ -153,6 +165,7 @@ describe('Admin Listeners Module', () => {
             AdminData.sightingMatches.mockReturnValue(true);
 
             $('button.last-page').trigger('click');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(20);
             expect(renderFn).not.toHaveBeenCalled();
         });
@@ -160,7 +173,8 @@ describe('Admin Listeners Module', () => {
 
     describe('page-size select', () => {
         it('should update rows from select value and render', () => {
-            $('select[name=page-size]').val('5').trigger('click');
+            $('select[name=page-size]').val('5').trigger('change');
+            vi.runAllTimers();
             expect(viewState.rows).toBe(5);
             expect(renderFn).toHaveBeenCalled();
         });
@@ -171,6 +185,7 @@ describe('Admin Listeners Module', () => {
             viewState.offset = 15;
             const input = $('input[name=filter-sighting]');
             input.val('pigeon').trigger('change');
+            vi.runAllTimers();
             expect(viewState.offset).toBe(0);
             expect(renderFn).toHaveBeenCalled();
         });

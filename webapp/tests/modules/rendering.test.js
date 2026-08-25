@@ -78,7 +78,7 @@ describe('Rendering Module', () => {
              expect(listHtml).not.toContain('EmptyFamily');
 
              // Check image and sci_name handling
-             expect(listHtml).toContain('<img class="fadein-50percent" src="columbidae.jpg" alt="Columbidae">');
+             expect(listHtml).toContain('<img class="fadein-50percent" src="resources/columbidae.jpg" alt="Columbidae">');
              expect(listHtml).toContain('<span class="sci-name">Columbidae</span>');
 
              // Check classes changed

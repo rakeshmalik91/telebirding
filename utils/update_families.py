@@ -3,8 +3,11 @@ import requests
 import time
 import os
 
-SPECIES_FILE = r'd:\Projects\telebirding\data\bird-species.json'
-FAMILIES_FILE = r'd:\Projects\telebirding\data\bird-families.json'
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+SPECIES_FILE = BASE_DIR / 'webapp' / 'resources' / 'data' / 'bird-species.json'
+FAMILIES_FILE = BASE_DIR / 'webapp' / 'resources' / 'data' / 'bird-families.json'
 
 def load_json(path):
     with open(path, 'r', encoding='utf-8') as f:

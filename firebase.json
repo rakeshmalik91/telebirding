@@ -1,26 +1,19 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "webapp",
     "ignore": [
       "firebase.json",
       "firebase-debug.log",
       ".firebase/**",
-      ".ipynb_checkpoints/**",
-      ".github/**",
-      ".git/**",
       ".DS_Store/**",
       "**/.*",
       "node_modules/**",
-      "**/*.bat",
-      "**/*.ipynb",
-      "**/*.ps1",
-      "**/*.sh",
-      "**/*.py",
-      "images/**",
-      "featured-images/**",
-      "videos/**",
-      "data/**",
-      "utils/**"
+      "package.json",
+      "package-lock.json",
+      "vitest.config.js",
+      "tests/**",
+      "coverage/**",
+      "resources/**"
     ],
     "rewrites": [
       {

@@ -11,9 +11,9 @@ This skill describes the caching and offline synchronization architecture for ag
 
 ## 🎯 Target Files & Components
 
-- **Cache Engine**: [`SiteCache.kt`](file:///d:/Projects/telebirding/telebirding-app/app/src/main/java/com/rakeshmalik/telebirding/SiteCache.kt)
-- **WebView Interceptor**: [`CachedWebViewClient.kt`](file:///d:/Projects/telebirding/telebirding-app/app/src/main/java/com/rakeshmalik/telebirding/CachedWebViewClient.kt)
-- **Main Activity**: [`MainActivity.kt`](file:///d:/Projects/telebirding/telebirding-app/app/src/main/java/com/rakeshmalik/telebirding/MainActivity.kt)
+- **Cache Engine**: [`SiteCache.kt`](file:///d:/Projects/telebirding/telebirding-android-app/app/src/main/java/com/rakeshmalik/telebirding/SiteCache.kt)
+- **WebView Interceptor**: [`CachedWebViewClient.kt`](file:///d:/Projects/telebirding/telebirding-android-app/app/src/main/java/com/rakeshmalik/telebirding/CachedWebViewClient.kt)
+- **Main Activity**: [`MainActivity.kt`](file:///d:/Projects/telebirding/telebirding-android-app/app/src/main/java/com/rakeshmalik/telebirding/MainActivity.kt)
 
 ---
 
@@ -49,3 +49,16 @@ During active browsing:
 1. `CachedWebViewClient.kt` intercepts all HTTP/HTTPS resource requests.
 2. If resource exists in `liveDir`, serve directly via `FileInputStream` (zero network latency).
 3. If resource is missing from `liveDir`, trigger `lazyDownloadAndCache` to stream network content, cache to `liveDir`, and return stream to `WebView`.
+
+---
+
+## 🌐 Web & Android Path Alignment
+
+Assets are resolved dynamically in JavaScript by [`webapp/scripts/modules/util.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/util.js) (`Util.getData(path)`):
+
+| Environment | Condition | Resolved Path Pattern | Storage Location |
+| :--- | :--- | :--- | :--- |
+| **Localhost Desktop** | `localhost:5000` / `127.0.0.1` | `resources/data/...`, `resources/images/...` | Local `webapp/resources/` directory |
+| **Android WebView** | `window.FIREBASE_ENABLED = false` & `!isLocalhost` | `data/...`, `images/...` (no `resources/` prefix) | Matches Android `siteCache.liveDir/data/` and `siteCache.liveDir/images/` |
+| **Production Web** | `FIREBASE_ENABLED = true` | `https://firebasestorage.googleapis.com/...` | Firebase Storage CDN |
+

@@ -10,7 +10,7 @@ export default defineConfig({
       include: ['scripts/**/*.js'],
       exclude: [
         'lib/**',
-        'utils/**',
+        '../utils/**',
         'tests/**',
         'node_modules/**',
         'dist/**',

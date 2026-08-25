@@ -34,7 +34,7 @@ export function getSelectOptionsDOM(field, options, value) {
 }
 
 export function getSelectDOM(field, options, value, width, extraAttrs = "") {
-    let dom = "<select data-field='" + field + "' style='width:" + width + "' " + extraAttrs + ">";
+    let dom = "<select data-field='" + field + "' style='width:" + width + "'" + (extraAttrs ? " " + extraAttrs : "") + ">";
     dom += getSelectOptionsDOM(field, options, value);
     dom += "</select>";
     return dom;

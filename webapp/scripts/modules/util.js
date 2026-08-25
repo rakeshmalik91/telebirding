@@ -24,9 +24,9 @@ export default class Util {
 			if (rawFile.readyState === 4) {
 				if (rawFile.status == "200") {
 					if (Constants.ADMIN_USE_ETAG) {
-						let headers = rawFile.getAllResponseHeaders().toLowerCase();
+						let headers = (typeof rawFile.getAllResponseHeaders === 'function' ? rawFile.getAllResponseHeaders() || '' : '').toLowerCase();
 						let newEtag = null;
-						if (headers.includes("etag:")) {
+						if (headers.includes("etag:") && typeof rawFile.getResponseHeader === 'function') {
 							newEtag = rawFile.getResponseHeader("ETag");
 						}
 						
@@ -219,14 +219,26 @@ export default class Util {
 		return Util.getData(path);
 	}
 
+	/**
+	 * Resolves data and media asset paths across different runtime environments:
+	 * - Production Web (FIREBASE_ENABLED): Uses canonical Firebase Storage URLs.
+	 * - Localhost Desktop (localhost:5000): Prepends "resources/" to serve from webapp/resources/.
+	 * - Android App (WebView with FIREBASE_ENABLED=false): Uses root-relative paths ("data/...", "images/...")
+	 *   to match the local SiteCache (site-cache/live/data/ and site-cache/live/images/).
+	 */
 	static getData(path) {
 		if (!path) return '';
 		if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) {
-			return path
-		} else if (FirebaseApi.FIREBASE_ENABLED) {
-			return "https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/" + path.replaceAll("/", "%2F") + "?alt=media";
-		} else {
 			return path;
+		} else if (FirebaseApi.FIREBASE_ENABLED) {
+			const cleanPath = path.startsWith("resources/") ? path.slice("resources/".length) : path;
+			return "https://firebasestorage.googleapis.com/v0/b/telebirding-49623.appspot.com/o/" + cleanPath.replaceAll("/", "%2F") + "?alt=media";
+		} else {
+			const isLocalhost = typeof window !== 'undefined' && window.location && window.location.origin && /localhost|:5000|127\.0\.0\.1/i.test(window.location.origin);
+			if (isLocalhost) {
+				return path.startsWith("resources/") ? path : "resources/" + path;
+			}
+			return path.startsWith("resources/") ? path.slice("resources/".length) : path;
 		}
 	}
 

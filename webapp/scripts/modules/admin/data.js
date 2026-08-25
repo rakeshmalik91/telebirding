@@ -218,7 +218,7 @@ export function uploadJSONData(type, skipRefresh) {
             console.log("uploaded data/" + currentMode + "-" + type + ".json");
             
             if (Constants.ADMIN_USE_ETAG) {
-                const newGen = snapshot.metadata.generation;
+                const newGen = snapshot && snapshot.metadata ? snapshot.metadata.generation : null;
                 if (newGen) {
                     loadedEtags[type] = newGen;
                     if (type === 'sightings') {

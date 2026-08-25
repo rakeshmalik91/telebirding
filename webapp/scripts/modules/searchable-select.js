@@ -21,7 +21,9 @@ const OPTION_CLASS = 'ss-option';
 const OPTION_SELECTED_CLASS = 'ss-option-selected';
 
 export function initSearchableSelect(selectEl) {
+    if (!selectEl) return;
     const $select = $(selectEl);
+    if (!$select.length || !$select[0]) return;
     if ($select.data('ss-initialized')) return;
     $select.data('ss-initialized', true);
 
@@ -31,8 +33,8 @@ export function initSearchableSelect(selectEl) {
     const noClear = $select.data('no-clear') === true || $select.data('no-clear') === 'true';
 
     // Read width and max-width before hiding
-    const width = $select[0].style.width || $select.css('width') || '200px';
-    const maxWidth = $select[0].style.maxWidth || $select.css('max-width');
+    const width = ($select[0].style && $select[0].style.width) || $select.css('width') || '200px';
+    const maxWidth = ($select[0].style && $select[0].style.maxWidth) || $select.css('max-width');
 
     // Hide native select
     $select.addClass(SEARCHABLE_CLASS);

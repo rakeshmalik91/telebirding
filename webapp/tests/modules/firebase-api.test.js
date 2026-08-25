@@ -9,15 +9,15 @@ describe('FirebaseApi', () => {
     });
 
     it('should determine if Firebase is enabled based on origin', () => {
-        // Mock localhost
+        // Localhost public
         global.window.location = { origin: 'http://localhost:5000', pathname: '/' };
         expect(FirebaseApi.FIREBASE_ENABLED).toBe(false);
 
-        // Mock production
+        // Production
         global.window.location = { origin: 'https://telebirding.com', pathname: '/' };
         expect(FirebaseApi.FIREBASE_ENABLED).toBe(true);
 
-        // Mock admin override
+        // Admin override
         global.window.location = { origin: 'http://localhost:5000', pathname: '/admin' };
         expect(FirebaseApi.FIREBASE_ENABLED).toBe(true);
     });

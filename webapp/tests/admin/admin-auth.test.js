@@ -17,6 +17,10 @@ vi.mock('../../scripts/modules/util.js', () => ({
     }
 }));
 
+vi.mock('../../scripts/modules/admin/ui.js', () => ({
+    customAlert: vi.fn((msg) => window.alert(msg))
+}));
+
 describe('Admin Auth Module', () => {
     let authMock;
 

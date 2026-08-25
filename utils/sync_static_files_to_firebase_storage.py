@@ -49,7 +49,8 @@ except Exception as e:
     raise
 
 DATA_FILES = ["data/site-data.json", "data/stories.json", "data/places.json"]
-FEATURED_DIR = ROOT / "featured-images"
+RESOURCES_DIR = ROOT / "webapp" / "resources"
+FEATURED_DIR = RESOURCES_DIR / "featured-images"
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".bmp", ".tif", ".tiff", ".ico", ".heic"}
 
 
@@ -103,7 +104,7 @@ def upload_json_file(local_path: Path, remote_path: str):
 def upload_data_files():
     for p in DATA_FILES:
         print("Uploading (replace):", p, end=" ")
-        local = ROOT / p
+        local = RESOURCES_DIR / p
         if not local.exists():
             print("-> local file not found:", local)
             continue
@@ -122,7 +123,7 @@ def upload_featured_images():
         if p.suffix.lower() not in IMAGE_EXTS:
             continue
         # Preserve the local directory structure when uploading (e.g. featured-images/subdir/img.jpg)
-        remote_path = p.relative_to(ROOT).as_posix()
+        remote_path = p.relative_to(RESOURCES_DIR).as_posix()
         print("Checking:", remote_path, end=" ")
         if remote_exists(remote_path):
             print("-> exists; skipping.")
@@ -133,11 +134,11 @@ def upload_featured_images():
 
 
 def _collect_referenced_featured_images_from_site_data_and_stories():
-    """Return set of Paths (absolute) for featured images referenced in data/site-data.json and data/stories.json"""
+    """Return set of Paths (absolute) for featured images referenced in resources/data/site-data.json and resources/data/stories.json"""
     refs = set()
 
     # 1. Check site-data.json (mostly for 'featured')
-    site_path = ROOT / "data" / "site-data.json"
+    site_path = RESOURCES_DIR / "data" / "site-data.json"
     if site_path.exists():
         try:
             obj = json.loads(site_path.read_text(encoding='utf8'))
@@ -147,12 +148,12 @@ def _collect_referenced_featured_images_from_site_data_and_stories():
                 if not src:
                     continue
                 if src.startswith('featured-images/'):
-                    refs.add((ROOT / src).resolve())
+                    refs.add((RESOURCES_DIR / src).resolve())
         except Exception as e:
             print("Failed to read/parse site-data.json:", e)
 
     # 2. Check stories.json (for 'stories')
-    stories_path = ROOT / "data" / "stories.json"
+    stories_path = RESOURCES_DIR / "data" / "stories.json"
     if stories_path.exists():
         try:
             obj = json.loads(stories_path.read_text(encoding='utf8'))
@@ -174,7 +175,7 @@ def _collect_referenced_featured_images_from_site_data_and_stories():
                     match = re.search(r'(featured-images/[^?#]+)', decoded)
                     if match:
                         rel_path = match.group(1)
-                        refs.add((ROOT / rel_path).resolve())
+                        refs.add((RESOURCES_DIR / rel_path).resolve())
         except Exception as e:
             print("Failed to read/parse stories.json:", e)
 
@@ -182,10 +183,10 @@ def _collect_referenced_featured_images_from_site_data_and_stories():
 
 
 def _collect_referenced_featured_images_from_html_files():
-    """Return set of Paths (absolute) for featured images referenced in all .html files in ROOT"""
+    """Return set of Paths (absolute) for featured images referenced in all .html files in ROOT and webapp/"""
     refs = set()
-    # check all .html files in the root folder only (avoid node_modules etc if any)
-    for html_file in ROOT.glob("*.html"):
+    html_files = list(ROOT.glob("*.html")) + list((ROOT / "webapp").glob("*.html"))
+    for html_file in html_files:
         content = None
         for enc in ['utf-16', 'utf-8', 'cp1252', 'latin-1']:
             try:
@@ -208,7 +209,7 @@ def _collect_referenced_featured_images_from_html_files():
             if '?' in decoded_path:
                 decoded_path = decoded_path.split('?')[0]
                 
-            abs_path = (ROOT / decoded_path).resolve()
+            abs_path = (RESOURCES_DIR / decoded_path).resolve()
             refs.add(abs_path)
     
     return refs
@@ -218,7 +219,7 @@ def cleanup_unused_featured_images():
     """Detect unused featured-images and prompt to delete the remote objects.
 
     Behavior:
-     - Builds the set of referenced featured image paths from `data/site-data.json`.
+     - Builds the set of referenced featured image paths from `resources/data/site-data.json`.
      - Lists all objects under `featured-images/` in the remote bucket and finds those NOT referenced.
      - Prompts per remote object and deletes it if you confirm.
 
@@ -226,7 +227,7 @@ def cleanup_unused_featured_images():
     """
     referenced = _collect_referenced_featured_images_from_site_data_and_stories()
     referenced.update(_collect_referenced_featured_images_from_html_files())
-    referenced_rel = set(p.relative_to(ROOT).as_posix() for p in referenced)
+    referenced_rel = set(p.relative_to(RESOURCES_DIR).as_posix() for p in referenced)
 
     # List blobs under featured-images/ prefix on the remote bucket
     try:
@@ -268,11 +269,11 @@ def cleanup_unused_featured_images():
     # Additionally inform about any local files that are unused (optional informational)
     if FEATURED_DIR.exists():
         local_files = [p.resolve() for p in FEATURED_DIR.rglob('*') if p.is_file() and p.suffix.lower() in IMAGE_EXTS]
-        local_unused = [p for p in sorted(local_files) if p.relative_to(ROOT).as_posix() not in referenced_rel]
+        local_unused = [p for p in sorted(local_files) if p.relative_to(RESOURCES_DIR).as_posix() not in referenced_rel]
         if local_unused:
             print(f"Note: {len(local_unused)} local featured-image(s) are not referenced in site-data.json (left untouched):")
             for p in local_unused:
-                print("-", p.relative_to(ROOT))
+                print("-", p.relative_to(RESOURCES_DIR))
 
 
 def main():

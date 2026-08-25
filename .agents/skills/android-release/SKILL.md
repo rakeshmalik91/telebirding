@@ -11,23 +11,23 @@ This skill provides step-by-step instructions for agents to bump version numbers
 
 ## 🎯 Target Files & Execution Commands
 
-- **Build Config**: [`telebirding-app/app/build.gradle.kts`](file:///d:/Projects/telebirding/telebirding-app/app/build.gradle.kts)
-- **Release Notes**: [`telebirding-app/app/release-notes.xml`](file:///d:/Projects/telebirding/telebirding-app/app/release-notes.xml)
-- **Working Directory**: `d:\Projects\telebirding\telebirding-app`
+- **Build Config**: [`telebirding-android-app/app/build.gradle.kts`](file:///d:/Projects/telebirding/telebirding-android-app/app/build.gradle.kts)
+- **Release Notes**: [`telebirding-android-app/app/release-notes.xml`](file:///d:/Projects/telebirding/telebirding-android-app/app/release-notes.xml)
+- **Working Directory**: `d:\Projects\telebirding\telebirding-android-app`
 
 ---
 
 ## 📋 Execution Steps
 
 ### 1. Update Version Numbers
-In [`build.gradle.kts`](file:///d:/Projects/telebirding/telebirding-app/app/build.gradle.kts#L9-L16):
+In [`build.gradle.kts`](file:///d:/Projects/telebirding/telebirding-android-app/app/build.gradle.kts#L9-L16):
 - Increment `versionCode` by 1 (e.g. `3` → `4`).
 - Update `versionName` semver string (e.g. `"1.0.3"` → `"1.0.4"`).
 - Ensure `compileSdk = 36` and `targetSdk = 36` (Android 16+ target API level).
 - Ensure `isMinifyEnabled = true`, `isShrinkResources = true`, and `ndk { debugSymbolLevel = "FULL" }` are set under `buildTypes.release` (generates `mapping.txt` deobfuscation and native debug symbols for Google Play Console).
 
 ### 2. Update Release Notes XML
-In [`release-notes.xml`](file:///d:/Projects/telebirding/telebirding-app/app/release-notes.xml):
+In [`release-notes.xml`](file:///d:/Projects/telebirding/telebirding-android-app/app/release-notes.xml):
 - Add the new version block at the top of `<en-US>`:
 ```xml
 <en-US>
@@ -39,7 +39,7 @@ In [`release-notes.xml`](file:///d:/Projects/telebirding/telebirding-app/app/rel
 ```
 
 ### 3. Execute Release Build
-Run from `telebirding-app/`:
+Run from `telebirding-android-app/`:
 ```cmd
 .\gradlew.bat assembleRelease
 ```

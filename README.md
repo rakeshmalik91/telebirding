@@ -1,7 +1,7 @@
 # Telebirding
 
 <div align="center">
-	<img src="icons/favicon-64x64.png" alt="Telebirding Logo" width="80"/>
+	<img src="webapp/icons/favicon-64x64.png" alt="Telebirding Logo" width="80"/>
 	<br/>
 	<b>Rakesh's Bird Watching & Photography Blog</b>
 </div>
@@ -54,12 +54,17 @@ The project is a static web app hosted on Firebase, using Vanilla JS, HTML, and 
    Access at `http://localhost:5000`
    
 ### Testing
-1. **Install Dependencies**:
+1. **Run All Tests (Web & Android)**:
+   From the repository root:
    ```bash
-   npm install
+   .\run_all_tests.bat
+   # or via PowerShell
+   .\run_all_tests.ps1
    ```
-2. **Run All Tests**:
+
+2. **Run Web Application Tests Directly**:
    ```bash
+   cd webapp
    npm test
    ```
    *This uses **Vitest** with a **jsdom** environment to verify core utility functions and UI helpers.*
@@ -87,11 +92,12 @@ firebase deploy
 ### Data Management
 Data and media are stored in **Firebase Storage**.
 
-**File Structure**:
-- `data/`: JSON files (`birds.json`, `species.json`, `places.json`, etc.)
-- `images/`: Bird photography (`*.jpg`)
-- `videos/`: Sighting videos (`*.mp4`)
-- `featured-images/`: Highlight thumbnails
+**Local Asset Structure (`webapp/resources/`)**:
+- `webapp/resources/data/`: JSON files (`birds.json`, `species.json`, `places.json`, etc.)
+- `webapp/resources/images/`: Bird photography (`*.jpg`)
+- `webapp/resources/videos/`: Sighting videos (`*.mp4`)
+- `webapp/resources/featured-images/`: Highlight thumbnails
+- `webapp/resources/dataset/`: Species ingestion staging pipeline
 
 **CORS Configuration**:
 To add a new domain for CORS access:

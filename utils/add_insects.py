@@ -13,9 +13,9 @@ from PIL import Image
 # We assume the user runs this from d:\Projects\telebirding
 BASE_DIR = Path(__file__).resolve().parents[1]
 INSECT_ID_DIR = BASE_DIR.parent / "insect-id"
-IMAGES_DIR = BASE_DIR / "images"
-SIGHTINGS_FILE = BASE_DIR / "data" / "insect-sightings.json"
-SPECIES_FILE = BASE_DIR / "data" / "insect-species.json"
+IMAGES_DIR = BASE_DIR / "webapp" / "resources" / "images"
+SIGHTINGS_FILE = BASE_DIR / "webapp" / "resources" / "data" / "insect-sightings.json"
+SPECIES_FILE = BASE_DIR / "webapp" / "resources" / "data" / "insect-species.json"
 
 if INSECT_ID_DIR.exists():
     sys.path.append(str(INSECT_ID_DIR))

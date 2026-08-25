@@ -41,7 +41,7 @@ def get_latin_name(sp_code):
 # -------------------------------------------------
 
 # read file
-file_path = "../data/bird-species.json"
+file_path = "../webapp/resources/data/bird-species.json"
 with open(file_path, "r", encoding="utf-8") as file:
     data = json.load(file)
 

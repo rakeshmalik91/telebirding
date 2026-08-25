@@ -306,7 +306,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "125px");
         row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "125px") + "<br>";
         row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "254px", "data-no-clear='true'") + "<br>";
-        row += getSelectDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state'), "254px", "data-no-clear='true'") + "<br>";
+        row += getSelectDOM("state", (data.countries[sighting.country] ? data.countries[sighting.country].states : {}), getValue(sighting, 'state'), "254px", "data-no-clear='true'") + "<br>";
         row += getTextDOM("city", getValue(sighting, 'city'), "254px", "Add city") + "<br>";
         row += getTextDOM("place", getValue(sighting, 'place'), "254px", "Add place");
         row += "</td>";

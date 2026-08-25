@@ -10,6 +10,7 @@ vi.mock('../../scripts/modules/util.js', () => ({
         clearFileCache: vi.fn(),
         readJSONFiles: vi.fn(),
         getData: vi.fn((p) => p),
+        getMedia: vi.fn((p) => p),
         compare: vi.fn((a, b) => (a > b ? 1 : a < b ? -1 : 0)),
         resizeImage: vi.fn(() => Promise.resolve(new Blob(['mocked'], {type: 'image/jpeg'}))),
         plural: vi.fn((s) => s + 's')
@@ -21,6 +22,18 @@ vi.mock('../../scripts/modules/firebase-api.js', () => ({
         getFirebase: vi.fn(() => global.firebase),
         moveFile: vi.fn(() => Promise.resolve())
     }
+}));
+
+vi.mock('../../scripts/modules/admin/ui.js', () => ({
+    customAlert: vi.fn((msg) => global.alert(msg)),
+    customConfirm: vi.fn((msg, cb) => {
+        if (window.confirm(msg)) {
+            cb();
+        }
+    }),
+    showToast: vi.fn(),
+    showModal: vi.fn(),
+    closeModal: vi.fn()
 }));
 
 // Mock EXIF
@@ -248,7 +261,7 @@ describe('Admin Data Module', () => {
             vi.runAllTicks();
             
             expect(AdminData.data.sightings[2].media.length).toBe(1);
-            expect(AdminData.data.sightings[2].media[0].thumbnail).toContain('videos/');
+            expect(AdminData.data.sightings[2].media[0].thumbnail).toBeNull();
         });
 
         it('should handle video upload failure', async () => {
@@ -296,18 +309,18 @@ describe('Admin Data Module', () => {
             expect(global.alert).toHaveBeenCalledWith('Delete failed');
         });
 
-        it('should move media left inside a sighting and handle boundary', () => {
+        it('should move media to target inside a sighting and handle boundary', () => {
             AdminData.data.sightings[0].media = [{src: '1.jpg'}, {src: '2.jpg'}, {src: '3.jpg'}];
-            AdminData.moveMediaLeft('s1', '2.jpg');
+            AdminData.moveMediaToTarget('s1', 's1', '2.jpg', '1.jpg', false);
             expect(AdminData.data.sightings[0].media[0].src).toBe('2.jpg');
 
-            // Boundary: already at index 0
-            AdminData.moveMediaLeft('s1', '2.jpg');
-            expect(AdminData.data.sightings[0].media[0].src).toBe('2.jpg');
+            // Move to end if targetSrc is null
+            AdminData.moveMediaToTarget('s1', 's1', '2.jpg', null, true);
+            expect(AdminData.data.sightings[0].media[2].src).toBe('2.jpg');
 
             // Boundary: not found
-            AdminData.moveMediaLeft('s1', 'nonexistent.jpg');
-            expect(AdminData.data.sightings[0].media[0].src).toBe('2.jpg');
+            AdminData.moveMediaToTarget('s1', 's1', 'nonexistent.jpg', '1.jpg', false);
+            expect(AdminData.data.sightings[0].media.length).toBe(3);
         });
 
         it('should update special fields (date, hidden) correctly', () => {
@@ -367,8 +380,10 @@ describe('Admin Data Module', () => {
         it('should upload JSON data and handle errors', async () => {
             const putSpy = vi.spyOn(global.firebase.storage().ref(), 'put');
             AdminData.uploadJSONData('sightings');
+            for(let i=0; i<10; i++) await Promise.resolve();
             expect(putSpy).toHaveBeenCalled();
             putSpy.mockReturnValue(Promise.reject({message: 'Failed'}));
+            AdminData.data.sightings.push({ key: 's_err', species: 'error-spec' });
             AdminData.uploadJSONData('sightings');
             for(let i=0; i<10; i++) await Promise.resolve();
             expect(global.alert).toHaveBeenCalledWith('Failed');

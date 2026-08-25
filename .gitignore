@@ -1,39 +1,51 @@
 images
 videos
 # featured-images
+resources/images
+resources/videos
+# resources/featured-images
+webapp/resources/images
+webapp/resources/videos
+# webapp/resources/featured-images
 
 firebase-debug*.log
 .firebase
 
 node_modules
-package.json
-package-lock.json
+# package.json
+# package-lock.json
 
 .ipynb_checkpoints
+*.pyc
 
 # Android App
-telebirding-app/local.properties
-telebirding-app/.gradle/
-telebirding-app/build/
-telebirding-app/app/build/
-telebirding-app/app/release/
-telebirding-app/.idea/
-telebirding-app/*.iml
-telebirding-app/app/*.iml
-telebirding-app/captures/
-telebirding-app/.externalNativeBuild/
-telebirding-app/.cxx/
-telebirding-app/**/*.apk
-telebirding-app/**/*.ap_
-telebirding-app/**/*.aab
-telebirding-app/**/*.dex
-telebirding-app/**/local.properties
+telebirding-android-app/local.properties
+telebirding-android-app/.gradle/
+telebirding-android-app/build/
+telebirding-android-app/app/build/
+telebirding-android-app/app/release/
+telebirding-android-app/.idea/
+telebirding-android-app/*.iml
+telebirding-android-app/app/*.iml
+telebirding-android-app/captures/
+telebirding-android-app/.externalNativeBuild/
+telebirding-android-app/.cxx/
+telebirding-android-app/**/*.apk
+telebirding-android-app/**/*.ap_
+telebirding-android-app/**/*.aab
+telebirding-android-app/**/*.dex
+telebirding-android-app/**/local.properties
 
 dataset
+resources/dataset
+webapp/resources/dataset
 
 coverage/*
 !coverage/index.html
 !coverage/base.css
+webapp/coverage/*
+!webapp/coverage/index.html
+!webapp/coverage/base.css
 
 tmp
 .tmp

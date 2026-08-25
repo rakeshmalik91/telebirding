@@ -14,7 +14,8 @@ except ImportError:
 
 BUCKET_NAME = "telebirding-49623.appspot.com"
 BASE_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = BASE_DIR / "data"
+RESOURCES_DIR = BASE_DIR / "webapp" / "resources"
+DATA_DIR = RESOURCES_DIR / "data"
 
 TARGET_FILES = [
     "data/bird-families.json",
@@ -36,11 +37,15 @@ def get_git_changed_files():
             if not line.strip():
                 continue
             # format is "XY filename" or "XY  filename"
-            # e.g. " M data/bird-species.json"
+            # e.g. " M webapp/resources/data/bird-species.json"
             parts = line.split(maxsplit=1)
             if len(parts) < 2:
                 continue
-            filename = parts[1]
+            filename = parts[1].strip('"')
+            if filename.startswith("webapp/resources/"):
+                filename = filename[len("webapp/resources/"):]
+            elif filename.startswith("resources/"):
+                filename = filename[len("resources/"):]
             changed_files.add(filename)
         return changed_files
     except subprocess.CalledProcessError:
@@ -192,7 +197,7 @@ def main():
     else:
         print(f"Uploading {len(files_to_upload)} files...")
         for rel_path in files_to_upload:
-            local_path = BASE_DIR / rel_path
+            local_path = RESOURCES_DIR / rel_path
             if local_path.exists():
                 upload_minified_json(client, local_path, rel_path)
             else:
