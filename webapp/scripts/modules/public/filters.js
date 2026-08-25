@@ -40,8 +40,8 @@ export function filterAndSortData(filter, params) {
         filteredSightings = filteredSightings.filter(b =>
             Util.tagMatchesSubstring(b.species.name, filter.sighting)
             || Util.tagMatches(b.species.name, filter.sighting)
-            || b.species.family.toLowerCase() == filter.sighting.toLowerCase()
-            || b.species.tags && b.species.tags.some(t => Util.tagMatches(t, filter.sighting))
+            || (b.species.family && (Util.tagMatches(b.species.family, filter.sighting) || Util.tagMatchesSubstring(b.species.family, filter.sighting)))
+            || (b.species.tags && b.species.tags.some(t => Util.tagMatches(t, filter.sighting) || Util.tagMatchesSubstring(t, filter.sighting)))
         );
     }
 

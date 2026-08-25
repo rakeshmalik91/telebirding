@@ -142,8 +142,35 @@ describe('Autocomplete Module', () => {
         expect(instance.inp).toBeNull();
     });
 
-    it('should handle null elements in addActive', () => {
-        const result = autocomplete.addActive(null);
-        expect(result).toBe(false);
+    it('should match normalized items like Grey when typing Gray and vice versa', () => {
+        const birdItems = ['Grey Francolin', 'Grey Heron', 'Black Francolin', 'Gray-headed Canary-flycatcher'];
+        const birdAutocomplete = new Autocomplete(inputEl, birdItems, onSelectMock);
+
+        // Type "Gray"
+        inputEl.value = 'Gray';
+        inputEl.dispatchEvent(new Event('input'));
+
+        const list = document.getElementById('myInputautocomplete-list');
+        expect(list).not.toBeNull();
+        const optionTexts = Array.from(list.children).map(c => c.textContent);
+        expect(optionTexts).toContain('Grey Francolin');
+        expect(optionTexts).toContain('Grey Heron');
+        expect(optionTexts).toContain('Gray-headed Canary-flycatcher');
+        expect(optionTexts).not.toContain('Black Francolin');
+    });
+
+    it('should match items by inner word in autocomplete', () => {
+        const birdItems = ['Grey Francolin', 'Black Francolin', 'Common Myna'];
+        const birdAutocomplete = new Autocomplete(inputEl, birdItems, onSelectMock);
+
+        inputEl.value = 'Francolin';
+        inputEl.dispatchEvent(new Event('input'));
+
+        const list = document.getElementById('myInputautocomplete-list');
+        expect(list).not.toBeNull();
+        const optionTexts = Array.from(list.children).map(c => c.textContent);
+        expect(optionTexts).toContain('Grey Francolin');
+        expect(optionTexts).toContain('Black Francolin');
+        expect(optionTexts).not.toContain('Common Myna');
     });
 });

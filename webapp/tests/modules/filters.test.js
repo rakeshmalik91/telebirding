@@ -109,6 +109,36 @@ describe('Filters Module', () => {
             expect(State.data.filteredSightings[0].species.name).toBe('Rock Pigeon');
         });
 
+        it('should filter sighting matching Grey when searching Gray and vice versa', () => {
+            State.data.sightings.push({
+                key: 's3',
+                species: { name: 'Grey Francolin', family: 'Phasianidae', tags: ['gamebird'] },
+                place: 'Farm',
+                city: 'Delhi',
+                state: 'DL',
+                country: 'IN',
+                dateString: '3 Jan 2023',
+                rating: 4,
+                newSpecies: false,
+                index: 3,
+            });
+
+            // Search "Gray" -> should match "Grey Francolin"
+            Filters.filterAndSortData({ sighting: 'Gray' });
+            expect(State.data.filteredSightings.length).toBe(1);
+            expect(State.data.filteredSightings[0].species.name).toBe('Grey Francolin');
+
+            // Search "Grey" -> should match "Grey Francolin"
+            Filters.filterAndSortData({ sighting: 'Grey' });
+            expect(State.data.filteredSightings.length).toBe(1);
+            expect(State.data.filteredSightings[0].species.name).toBe('Grey Francolin');
+
+            // Search "Gray Francolin" -> should match "Grey Francolin"
+            Filters.filterAndSortData({ sighting: 'Gray Francolin' });
+            expect(State.data.filteredSightings.length).toBe(1);
+            expect(State.data.filteredSightings[0].species.name).toBe('Grey Francolin');
+        });
+
         it('should filter by sighting tag', () => {
             Filters.filterAndSortData({ sighting: 'feral' });
             expect(State.data.filteredSightings.length).toBe(1);

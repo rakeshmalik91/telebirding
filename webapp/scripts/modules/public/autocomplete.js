@@ -1,3 +1,5 @@
+import Util from '../util.js';
+
 export class Autocomplete {
     constructor(inp, arr, onSelect) {
         this.inp = inp;
@@ -36,16 +38,29 @@ export class Autocomplete {
         a.setAttribute("class", "autocomplete-items");
         this.inp.parentNode.appendChild(a);
 
+        const normVal = Util.normalizeForTagMatch(val);
+
         for (i = 0; i < this.arr.length; i++) {
-            if (this.arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            const item = this.arr[i];
+            const normItem = Util.normalizeForTagMatch(item);
+
+            const isExactPrefix = item.substr(0, val.length).toUpperCase() === val.toUpperCase();
+            const isNormPrefix = normItem.startsWith(normVal);
+            const isNormWordMatch = normItem.includes(" " + normVal);
+
+            if (isExactPrefix || isNormPrefix || isNormWordMatch) {
                 b = document.createElement("DIV");
-                let strong = document.createElement("STRONG");
-                strong.textContent = this.arr[i].substr(0, val.length);
-                b.appendChild(strong);
-                b.appendChild(document.createTextNode(this.arr[i].substr(val.length)));
+                if (isExactPrefix) {
+                    let strong = document.createElement("STRONG");
+                    strong.textContent = item.substr(0, val.length);
+                    b.appendChild(strong);
+                    b.appendChild(document.createTextNode(item.substr(val.length)));
+                } else {
+                    b.appendChild(document.createTextNode(item));
+                }
                 let hiddenInput = document.createElement("INPUT");
                 hiddenInput.type = "hidden";
-                hiddenInput.value = this.arr[i];
+                hiddenInput.value = item;
                 b.appendChild(hiddenInput);
 
                 b.addEventListener("mousedown", (e) => {

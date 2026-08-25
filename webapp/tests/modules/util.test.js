@@ -44,6 +44,9 @@ describe('Util.plural', () => {
 describe('Util.tagMatches', () => {
     it('should match tags correctly with normalization', () => {
         expect(Util.tagMatches('gray-headed', 'grey headed')).toBe(true);
+        expect(Util.tagMatches('grey-headed', 'gray headed')).toBe(true);
+        expect(Util.tagMatches('Gray Francolin', 'Grey Francolin')).toBe(true);
+        expect(Util.tagMatches('Grey Francolin', 'Gray Francolin')).toBe(true);
         expect(Util.tagMatches('flycatcher', 'flycatchers')).toBe(true);
     });
 });
@@ -51,6 +54,10 @@ describe('Util.tagMatches', () => {
 describe('Util.tagMatchesSubstring', () => {
     it('should match substrings with word boundaries', () => {
         expect(Util.tagMatchesSubstring('grey-headed canary-flycatcher', 'grey headed')).toBeTruthy();
+        expect(Util.tagMatchesSubstring('grey-headed canary-flycatcher', 'gray headed')).toBeTruthy();
+        expect(Util.tagMatchesSubstring('gray-headed canary-flycatcher', 'grey headed')).toBeTruthy();
+        expect(Util.tagMatchesSubstring('Grey Francolin', 'gray')).toBeTruthy();
+        expect(Util.tagMatchesSubstring('Gray Francolin', 'grey')).toBeTruthy();
         expect(Util.tagMatchesSubstring('grey-headed canary-flycatcher', 'canary flycatcher')).toBeTruthy();
         expect(Util.tagMatchesSubstring('grey-headed canary-flycatcher', 'grey')).toBeTruthy();
         expect(Util.tagMatchesSubstring('grey-headed canary-flycatcher', 'head')).toBeFalsy();

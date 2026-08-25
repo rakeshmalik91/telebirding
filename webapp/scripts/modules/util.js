@@ -153,9 +153,11 @@ export default class Util {
 	}
 
 	static tagMatchesSubstring(tag, search) {
+		if (!tag || !search) return false;
 		tag = Util.normalizeForTagMatch(tag);
 		search = Util.normalizeForTagMatch(search);
-		return tag.match("\\b" + search + "\\b");
+		const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+		return Boolean(tag.match(new RegExp('\\b' + escapedSearch + '\\b', 'i')));
 	}
 
 	static trimPlaceName(name, threshold) {
