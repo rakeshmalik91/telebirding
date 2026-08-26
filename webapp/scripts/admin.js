@@ -8,7 +8,7 @@ import {
 	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm
 } from './modules/admin/rendering.js';
 import { setupAuthListeners } from './modules/admin/auth.js';
-import { setupDashboardListeners } from './modules/admin/listeners.js?v=20260713-0648';
+import { setupDashboardListeners } from './modules/admin/listeners.js?v=20260826-1226';
 import { setupCleanupListeners } from './modules/admin/cleanup.js';
 import { setupRestoreListeners } from './modules/admin/restore.js';
 

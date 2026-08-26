@@ -1067,29 +1067,53 @@ select::-ms-expand {
 }/* Clear button for text fields */
 .input-clear-wrapper {
     position: relative;
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
 }
 .input-clear-wrapper input[type='text'] {
-    padding-right: 28px;
+    padding-right: 36px !important;
 }
 .input-clear-btn {
     position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 36px !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 6px 6px 0 !important;
+    box-shadow: none !important;
     color: #94a3b8;
-    font-size: 14px;
-    padding: 0 4px;
+    font-size: 15px;
+    font-family: inherit;
+    display: none;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     line-height: 1;
-    display: none;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
 }
 .input-clear-btn:hover {
     color: #ef4444;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.input-clear-btn:active {
+    color: #ef4444;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: scale(0.9) !important;
 }
 .input-clear-wrapper input[type='text']:not(:placeholder-shown) + .input-clear-btn,
 .input-clear-wrapper.has-value .input-clear-btn {
-    display: block;
+    display: flex;
 }
 
 /* Weather icons */

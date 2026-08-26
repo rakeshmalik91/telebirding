@@ -29,6 +29,26 @@ export function setupDashboardListeners(render, viewState) {
         delayPendingSave();
     });
 
+    // Text input clear button handler - prevent input focus on touch/pointerdown
+    $('body').on('pointerdown mousedown touchstart', '.input-clear-btn', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+    $('body').on('click', '.input-clear-btn', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const $wrapper = $(this).closest('.input-clear-wrapper');
+        const $input = $wrapper.find('input');
+        $input.val('').trigger('input').trigger('change');
+        $wrapper.removeClass('has-value');
+    });
+
+    $('body').on('input', '.input-clear-wrapper input', function () {
+        const hasVal = Boolean($(this).val() && $(this).val().trim());
+        $(this).closest('.input-clear-wrapper').toggleClass('has-value', hasVal);
+    });
+
     // Initialize chip inputs
     setupChipInputs();
 

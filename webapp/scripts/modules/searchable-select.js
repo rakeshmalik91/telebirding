@@ -220,28 +220,27 @@ export function initSearchableSelect(selectEl) {
         }
     }
 
-    function openDropdown() {
-        $(document).trigger('click.ss');
+    function repositionDropdown() {
+        if (!$dropdown.hasClass('open')) return;
         
-        $search.val('');
-        buildOptions('');
-
-        $dropdown.appendTo(document.body).css({ display: 'flex', visibility: 'hidden', width: '', minWidth: '' });
-        const dropdownHeight = $dropdown.outerHeight();
-        const dropdownWidth = $dropdown.outerWidth();
-        $dropdown.css({ display: '', visibility: '' });
+        // If wrapper is no longer in the DOM or hidden, close
+        if (!$wrapper[0] || !$wrapper.is(':visible')) {
+            closeDropdown();
+            return;
+        }
 
         const rect = $wrapper[0].getBoundingClientRect();
-        
-        let topPos = rect.bottom + 4;
-        if (topPos + dropdownHeight > window.innerHeight && rect.top - dropdownHeight - 4 > 0) {
-            topPos = rect.top - dropdownHeight - 4;
-        }
+        if (rect.width === 0 && rect.height === 0) return;
+
+        const dropdownHeight = $dropdown.outerHeight() || 200;
+        const dropdownWidth = $dropdown.outerWidth() || 200;
+        const placement = $dropdown.data('placement') || 'below';
+
+        let topPos = placement === 'above' ? (rect.top - dropdownHeight - 4) : (rect.bottom + 4);
 
         let leftPos = rect.left;
         if (leftPos + dropdownWidth > window.innerWidth) {
-            leftPos = rect.right - dropdownWidth;
-            if (leftPos < 0) leftPos = 10;
+            leftPos = Math.max(10, rect.right - dropdownWidth);
         }
 
         $dropdown.css({
@@ -252,6 +251,25 @@ export function initSearchableSelect(selectEl) {
             margin: 0,
             zIndex: 99999
         });
+    }
+
+    function openDropdown() {
+        $(document).trigger('click.ss');
+        
+        $search.val('');
+        buildOptions('');
+
+        $dropdown.appendTo(document.body).css({ display: 'flex', visibility: 'hidden', width: '', minWidth: '' });
+        const dropdownHeight = $dropdown.outerHeight() || 200;
+        $dropdown.css({ display: '', visibility: '' });
+
+        const rect = $wrapper[0].getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        const openAbove = spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
+        $dropdown.data('placement', openAbove ? 'above' : 'below');
+
+        repositionDropdown();
 
         $dropdown.addClass('open');
         setTimeout(() => $search.focus(), 10);
@@ -284,7 +302,13 @@ export function initSearchableSelect(selectEl) {
         }
     });
 
+    $clearBtn.on('pointerdown mousedown touchstart', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
     $clearBtn.on('click', function (e) {
+        e.preventDefault();
         e.stopPropagation();
         if (isMultiple) {
             $select.val([]).trigger('change');
@@ -299,7 +323,7 @@ export function initSearchableSelect(selectEl) {
         buildOptions($(this).val());
     });
 
-    $search.on('click', function (e) {
+    $search.on('click touchstart pointerdown mousedown', function (e) {
         e.stopPropagation();
     });
 
@@ -335,11 +359,18 @@ export function initSearchableSelect(selectEl) {
         }
     });
 
-    $(document).on('click.ss', function () {
+    $(document).on('click.ss pointerdown.ss', function (e) {
+        if (e && e.target && ($(e.target).closest('.' + WRAPPER_CLASS).length || $(e.target).closest('.' + DROPDOWN_CLASS).length)) {
+            return;
+        }
         closeDropdown();
     });
 
-    $dropdown.on('click', function (e) {
+    $(document).on('reposition.ss', function () {
+        repositionDropdown();
+    });
+
+    $dropdown.on('click touchstart pointerdown mousedown', function (e) {
         e.stopPropagation();
     });
 
@@ -368,15 +399,25 @@ export function initSearchableSelects($container, selector) {
     });
 }
 
-// Global listeners to close dropdowns when scrolling outside or resizing
+// Global listeners to update dropdown positions without closing on scroll or resize
 if (!window._ss_listeners_added) {
     window._ss_listeners_added = true;
-    window.addEventListener('scroll', function(e) {
-        if ($(e.target).closest('.ss-dropdown').length) return;
-        $(document).trigger('click.ss');
+
+    window.addEventListener('scroll', function (e) {
+        if (e.target && $(e.target).closest('.ss-dropdown').length) return;
+        $(document).trigger('reposition.ss');
     }, true);
 
-    window.addEventListener('resize', function() {
-        $(document).trigger('click.ss');
+    window.addEventListener('resize', function () {
+        $(document).trigger('reposition.ss');
     });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', function () {
+            $(document).trigger('reposition.ss');
+        });
+        window.visualViewport.addEventListener('scroll', function () {
+            $(document).trigger('reposition.ss');
+        });
+    }
 }

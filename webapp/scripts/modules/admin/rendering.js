@@ -3,7 +3,7 @@ import Util from '../util.js';
 import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js?v=20260713-0645';
 import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
-import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260713-0647';
+import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260826-1226';
 import { setChips } from './chip-input.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
@@ -190,7 +190,7 @@ export function setupUpdateSpeciesForm() {
 function getTextDOM(field, value, width, placeholder) {
     let html = `<div class='input-clear-wrapper ${value ? 'has-value' : ''}' style='width:${width}'>`;
     html += `<input type='text' data-field='${field}' value='${value}' style='width:100%' placeholder='${placeholder}'></input>`;
-    html += `<span class='input-clear-btn' title='Clear'>✕</span>`;
+    html += `<button type='button' class='input-clear-btn' title='Clear' tabindex='-1'>✕</button>`;
     html += `</div>`;
     return html;
 }
