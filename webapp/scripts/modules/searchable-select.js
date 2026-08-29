@@ -232,16 +232,26 @@ export function initSearchableSelect(selectEl) {
         const rect = $wrapper[0].getBoundingClientRect();
         if (rect.width === 0 && rect.height === 0) return;
 
+        // If field scrolled completely out of viewport, close
+        if (rect.bottom < 0 || rect.top > window.innerHeight) {
+            closeDropdown();
+            return;
+        }
+
         const dropdownHeight = $dropdown.outerHeight() || 200;
         const dropdownWidth = $dropdown.outerWidth() || 200;
-        const placement = $dropdown.data('placement') || 'below';
 
-        let topPos = placement === 'above' ? (rect.top - dropdownHeight - 4) : (rect.bottom + 4);
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        const openAbove = spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
+
+        let topPos = openAbove ? (rect.top - dropdownHeight - 4) : (rect.bottom + 4);
 
         let leftPos = rect.left;
         if (leftPos + dropdownWidth > window.innerWidth) {
             leftPos = Math.max(10, rect.right - dropdownWidth);
         }
+        leftPos = Math.max(10, leftPos);
 
         $dropdown.css({
             position: 'fixed',
@@ -259,19 +269,10 @@ export function initSearchableSelect(selectEl) {
         $search.val('');
         buildOptions('');
 
-        $dropdown.appendTo(document.body).css({ display: 'flex', visibility: 'hidden', width: '', minWidth: '' });
-        const dropdownHeight = $dropdown.outerHeight() || 200;
-        $dropdown.css({ display: '', visibility: '' });
-
-        const rect = $wrapper[0].getBoundingClientRect();
-        const spaceBelow = window.innerHeight - rect.bottom;
-        const spaceAbove = rect.top;
-        const openAbove = spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
-        $dropdown.data('placement', openAbove ? 'above' : 'below');
-
+        $dropdown.appendTo(document.body);
+        $dropdown.addClass('open');
         repositionDropdown();
 
-        $dropdown.addClass('open');
         setTimeout(() => $search.focus(), 10);
     }
 
@@ -321,6 +322,7 @@ export function initSearchableSelect(selectEl) {
 
     $search.on('input', function () {
         buildOptions($(this).val());
+        repositionDropdown();
     });
 
     $search.on('click touchstart pointerdown mousedown', function (e) {

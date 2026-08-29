@@ -367,7 +367,7 @@ describe('Admin Data Module', () => {
         it('should backup all data files', async () => {
             const putSpy = vi.spyOn(global.firebase.storage().ref(), 'put');
             AdminData.backup();
-            expect(putSpy).toHaveBeenCalledTimes(4);
+            expect(putSpy).toHaveBeenCalledTimes(5);
         });
 
         it('should refresh data from storage', () => {

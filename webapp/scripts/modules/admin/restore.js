@@ -18,7 +18,11 @@ export function setupRestoreListeners() {
             const folderPromises = allFolders.map(prefix => {
                 return prefix.child(`${currentMode}-sightings.json`).getMetadata()
                     .then(() => prefix.name)
-                    .catch(() => null);
+                    .catch(() => {
+                        return prefix.child('places.json').getMetadata()
+                            .then(() => prefix.name)
+                            .catch(() => null);
+                    });
             });
 
             Promise.all(folderPromises).then(folderNames => {
@@ -26,7 +30,7 @@ export function setupRestoreListeners() {
                 const folders = folderNames.filter(name => name !== null).sort().reverse();
                 
                 if (folders.length === 0) {
-                    customAlert(`No backups found for ${currentMode.toUpperCase()} mode.`);
+                    customAlert(`No backups found.`);
                     return;
                 }
 
@@ -34,7 +38,7 @@ export function setupRestoreListeners() {
             <div id='backup-list-modal' style='display:flex; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;'>
                 <div style='background:#1e293b; border-radius:8px; padding:20px; width:450px; max-width:90%; color:#f8fafc; border:1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5);'>
                     <h3 style='margin-top:0; margin-bottom:15px; font-size:18px;'>Available Backups</h3>
-                    <div style='margin-bottom: 15px; font-size:14px;'>Select a backup to restore data for the <strong>${currentMode.toUpperCase()}</strong> mode.<br>
+                    <div style='margin-bottom: 15px; font-size:14px;'>Select a backup to restore data for the <strong>${currentMode.toUpperCase()}</strong> mode and <strong>places.json</strong>.<br>
                     <em style='font-size:0.9em;color:#f87171;'>Note: Restoring data will not restore any deleted media files (images/videos).</em></div>
                     <div id='backup-list' style='display:flex; flex-direction:column; gap:5px; max-height:300px; overflow-y:auto; padding:5px; margin-bottom:15px;'>`;
             
@@ -83,14 +87,17 @@ export function setupRestoreListeners() {
 function restoreBackup(dateString) {
     showLoader('restore', `Restoring backup from ${dateString}...`);
     
-    const filesToRestore = ["sightings", "species", "families", "likes"];
+    const filesToRestore = ["sightings", "species", "families", "likes", "places"];
     let promises = [];
     
     filesToRestore.forEach(file => {
-        const fileName = `${currentMode}-${file}.json`;
+        const fileName = (file === "places") ? "places.json" : `${currentMode}-${file}.json`;
         const p = FirebaseApi.getFirebase().storage().ref(`backup/${dateString}/${fileName}`).getDownloadURL()
             .then(url => fetch(url).then(r => r.json()))
             .then(json => {
+                if (file === "places") {
+                    return { file, data: json.countries || json };
+                }
                 return { file, data: json[file] || json };
             })
             .catch(err => {
@@ -106,7 +113,11 @@ function restoreBackup(dateString) {
 
         results.forEach(res => {
             if (res.data) {
-                data[res.file] = res.data;
+                if (res.file === "places") {
+                    data.countries = res.data;
+                } else {
+                    data[res.file] = res.data;
+                }
                 restoredCount++;
             }
         });
@@ -122,13 +133,17 @@ function restoreBackup(dateString) {
             
             // Upload all restored data to remote
             filesToRestore.forEach(file => {
-                if (data[file]) uploadJSONData(file, true);
+                if (file === "places") {
+                    if (data.countries) uploadJSONData('places', true);
+                } else if (data[file]) {
+                    uploadJSONData(file, true);
+                }
             });
             syncSightingsData(3000, true);
             
             showToast(`Successfully restored ${restoredCount} file(s) from backup.`, 'success');
         } else {
-            customAlert(`No matching ${currentMode} files found in that backup.`);
+            customAlert(`No matching files found in that backup.`);
         }
         hideLoader('restore');
     }).catch(err => {
@@ -154,8 +169,15 @@ function deleteBackup(dateString, $element) {
         });
         
         Promise.all(promises).then(() => {
-            // Check if folder is empty (if both modes are deleted)
+            // Check if any other mode files remain before deleting places.json
             storageRef.listAll().then(res => {
+                const otherMode = currentMode === 'bird' ? 'insect' : 'bird';
+                const hasOtherModeFiles = res.items && res.items.some(item => item.name.startsWith(otherMode));
+                
+                if (!hasOtherModeFiles) {
+                    storageRef.child("places.json").delete().catch(() => {});
+                }
+
                 $element.remove();
                 hideLoader('delete-backup');
                 showToast('Backup deleted successfully', 'success');

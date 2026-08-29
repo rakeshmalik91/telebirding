@@ -1,6 +1,25 @@
 {
     "sightings": [
         {
+            "key": "s1787725795",
+            "species": "common-baron-butterfly-",
+            "date": "26-08-2026",
+            "city": "Howrah",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Rainy",
+            "media": [
+                {
+                    "src": "images/common-baron-butterfly--1787725862.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1773654115",
             "species": "mycalesis-gotama",
             "date": "09-03-2026",

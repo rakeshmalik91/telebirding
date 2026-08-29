@@ -5,10 +5,10 @@ import {
 } from './modules/admin/data.js';
 import { customAlert } from './modules/admin/ui.js';
 import {
-	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm
+	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm, setupPlacesTab
 } from './modules/admin/rendering.js';
 import { setupAuthListeners } from './modules/admin/auth.js';
-import { setupDashboardListeners } from './modules/admin/listeners.js?v=20260826-1226';
+import { setupDashboardListeners } from './modules/admin/listeners.js';
 import { setupCleanupListeners } from './modules/admin/cleanup.js';
 import { setupRestoreListeners } from './modules/admin/restore.js';
 
@@ -36,9 +36,9 @@ function switchMode(targetMode) {
 }
 
 function render() {
-
 	setupUpdateSpeciesForm();
 	setupAddFamilyForm();
+	setupPlacesTab();
 	renderSightingsTable(viewState.offset, viewState.rows);
 	updatePaginationControls(viewState.offset, viewState.rows);
 }
@@ -64,6 +64,9 @@ $(document).ready(function () {
 		$(this).addClass('active');
 		$('.admin-tab-content').removeClass('active').hide();
 		$('#' + $(this).data('tab')).addClass('active').show();
+		if ($(this).data('tab') === 'places-tab') {
+			setupPlacesTab();
+		}
 	});
 });
 

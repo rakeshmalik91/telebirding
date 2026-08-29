@@ -23,7 +23,8 @@ TARGET_FILES = [
     "data/bird-sightings.json",
     "data/insect-families.json",
     "data/insect-species.json",
-    "data/insect-sightings.json"
+    "data/insect-sightings.json",
+    "data/places.json"
 ]
 
 def get_git_changed_files():

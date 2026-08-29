@@ -171,6 +171,13 @@ screen and (max-width: 900px) and (max-height: 500px) {
 		margin-right: 10px;
 	}
 
+	#species-map {
+		height: 40vh;
+		min-height: 250px;
+		margin: 10px 5px 15px 5px;
+		border-radius: 8px;
+	}
+
 
 
 	.stories {

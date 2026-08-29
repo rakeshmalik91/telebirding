@@ -3,13 +3,16 @@ import Util from '../util.js';
 import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js?v=20260713-0645';
 import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
-import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260826-1226';
+import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260829_1';
 import { setChips } from './chip-input.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
     deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
-    syncSightingsData, triggerRender
+    syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
+    uploadJSONData, getPlaceNode, getLocationGeo
 } from './data.js';
+import { geoService, lookupLocation, setGeoProvider } from '../geo-service.js';
+import { showToast, customAlert } from './ui.js';
 
 import { openCropper } from '../cropper.js';
 
@@ -81,12 +84,12 @@ export function setupUpdateSpeciesForm() {
 
     updateSpeciesForm.find("select[data-field=family], select[data-field=name]").html('');
     updateSpeciesForm.find("select[data-field=family]").append("<option value=''></option>");
-    data.families.forEach(function (family) {
+    (data.families || []).forEach(function (family) {
         updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
     });
 
     updateSpeciesForm.find("select[data-field=name]").append("<option value=''></option>");
-    Object.values(data.species).forEach(function (species, i) {
+    Object.values(data.species || {}).forEach(function (species, i) {
         const searchTerms = [species.key, ...(species.tags || [])].join(" ");
         updateSpeciesForm.find("select[data-field=name]").append("<option value='" + species.key + "' data-search-terms='" + searchTerms + "'>" + species.name + "</option>");
     });
@@ -308,7 +311,10 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "254px", "data-no-clear='true'") + "<br>";
         row += getSelectDOM("state", (data.countries[sighting.country] ? data.countries[sighting.country].states : {}), getValue(sighting, 'state'), "254px", "data-no-clear='true'") + "<br>";
         row += getTextDOM("city", getValue(sighting, 'city'), "254px", "Add city") + "<br>";
-        row += getTextDOM("place", getValue(sighting, 'place'), "254px", "Add place");
+        row += "<div style='display: flex; align-items: center; gap: 4px;'>";
+        row += getTextDOM("place", getValue(sighting, 'place'), "220px", "Add place");
+        row += "<button type='button' class='geocode-sighting-btn' data-sightingkey='" + sighting.key + "' title='Auto-fill coordinates for this place via Nominatim' style='padding: 4px 8px; font-size: 13px; cursor: pointer; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff;'>📍</button>";
+        row += "</div>";
         row += "</td>";
 
         row += "<td class='property-fields'>";
@@ -424,6 +430,35 @@ export function renderSightingsTable(OFFSET, ROWS) {
         sightingRow.find("select[data-field=country]").change(function () {
             const firstStateInCountry = Object.keys(data.countries[$(this).val()].states)[0];
             updateField(sighting.key, 'state', firstStateInCountry);
+        });
+        sightingRow.find(".geocode-sighting-btn").click(async function () {
+            const $btn = $(this);
+            const country = sightingRow.find("select[data-field=country]").val() || sighting.country;
+            const state = sightingRow.find("select[data-field=state]").val() || sighting.state;
+            const city = sightingRow.find("input[data-field=city]").val() || sighting.city;
+            const place = sightingRow.find("input[data-field=place]").val() || sighting.place;
+
+            if (!country || !state || (!city && !place)) {
+                customAlert("Please specify at least Country, State, and City/Place to geocode.");
+                return;
+            }
+
+            $btn.text("⏳").attr("disabled", "disabled");
+            try {
+                const res = await geocodeAndSaveLocation({ country, state, city, place });
+                if (res) {
+                    showToast(`📍 Geocoded ${place || city}: ${res.lat}, ${res.lng} (radius: ${res.radius}km) via ${res.provider}`, 'success');
+                    $btn.text("✅");
+                    setTimeout(() => $btn.text("📍").removeAttr("disabled"), 2500);
+                } else {
+                    customAlert(`Could not locate "${place || city}, ${state}, ${country}".`);
+                    $btn.text("📍").removeAttr("disabled");
+                }
+            } catch (err) {
+                console.error(err);
+                customAlert("Geocoding failed: " + err.message);
+                $btn.text("📍").removeAttr("disabled");
+            }
         });
         sightingRow.find("button.delete-media").click(function () {
             deleteMedia(sighting.key, $(this).attr("data-mediasrc"));
@@ -698,3 +733,712 @@ $(document).ready(function() {
         }
     });
 });
+
+/**
+ * Setup and initialize the Places & Geocoding tab
+ */
+export function setupPlacesTab() {
+    const $placesTab = $('#places-tab');
+    if (!$placesTab.length) return;
+
+    // Provider select
+    const $providerSelect = $('#geo-provider-select');
+    $providerSelect.val(geoService.getActiveProviderName());
+    $providerSelect.off('change').on('change', function () {
+        const newProvider = $(this).val();
+        setGeoProvider(newProvider);
+        $('#geo-provider-status').text(`Active provider: ${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)}`);
+        showToast(`Switched geocoding provider to ${newProvider}`, 'info');
+    });
+
+    // Populate Country, State, City, Place selectors
+    const $countrySelect = $('#place-lookup-country');
+    const $stateSelect = $('#place-lookup-state');
+    const $cityInput = $('#place-lookup-city');
+    const $cityList = $('#place-lookup-city-list');
+    const $placeInput = $('#place-lookup-place');
+    const $placeList = $('#place-lookup-place-list');
+    const $newStateCountrySelect = $('#new-state-country-select');
+    const $scanCountryFilter = $('#scan-country-filter');
+
+    function updateCurrentCoordsBanner() {
+        const country = $countrySelect.val();
+        const state = $stateSelect.val();
+        const city = $cityInput.val().trim();
+        const place = $placeInput.val().trim();
+
+        if (!country) {
+            $('#place-current-coords-box').hide();
+            $('#btn-batch-regeocode-sub').hide();
+            $('#btn-fetch-geo').text('🔍 Fetch Coordinates');
+            return;
+        }
+
+        const type = place ? 'place' : (city ? 'city' : (state ? 'state' : 'country'));
+        const name = place || city || state || country;
+
+        const node = getPlaceNode({ country, state, city, place });
+        if (node) {
+            if (node.lat && node.lng) {
+                $('#place-current-coords-box').show();
+                $('#place-current-coords-title').text(`Currently Saved (${type.toUpperCase()}): "${name}"`);
+                $('#place-current-coords-text').html(
+                    `📍 <strong>Lat:</strong> ${node.lat}, <strong>Lng:</strong> ${node.lng} &nbsp;|&nbsp; <strong>Radius:</strong> ${node.radius || '-'} km`
+                );
+                $('#btn-fetch-geo').text(`🔄 Re-Geocode ${type.charAt(0).toUpperCase() + type.slice(1)}`);
+            } else {
+                $('#place-current-coords-box').show();
+                $('#place-current-coords-title').text(`Status (${type.toUpperCase()}): "${name}"`);
+                $('#place-current-coords-text').html(`<span style="color: #f59e0b;">⚠️ In places.json, but coordinates are missing!</span>`);
+                $('#btn-fetch-geo').text(`🔍 Geocode ${type.charAt(0).toUpperCase() + type.slice(1)}`);
+            }
+        } else {
+            $('#place-current-coords-box').show();
+            $('#place-current-coords-title').text(`New Location: "${name}"`);
+            $('#place-current-coords-text').html(`<span style="color: #94a3b8;">ℹ️ Not saved in places.json yet</span>`);
+            $('#btn-fetch-geo').text(`🔍 Fetch & Save Coordinates`);
+        }
+
+        // Check for batch sub-location re-geocoding options
+        if (country && !state && !city && !place) {
+            const statesCount = Object.keys(data.countries[country]?.states || {}).length;
+            if (statesCount > 0) {
+                $('#btn-batch-regeocode-sub').show().text(`⚡ Re-Geocode All ${statesCount} States in ${country}`);
+            } else {
+                $('#btn-batch-regeocode-sub').hide();
+            }
+        } else if (country && state && !city && !place) {
+            const stateNode = data.countries[country]?.states?.[state];
+            let subCount = 0;
+            if (stateNode && stateNode.cities) {
+                Object.keys(stateNode.cities).forEach(c => {
+                    subCount++;
+                    subCount += Object.keys(stateNode.cities[c].places || {}).length;
+                });
+            }
+            if (subCount > 0) {
+                $('#btn-batch-regeocode-sub').show().text(`⚡ Re-Geocode All (${subCount}) Cities & Places in ${state}`);
+            } else {
+                $('#btn-batch-regeocode-sub').hide();
+            }
+        } else {
+            $('#btn-batch-regeocode-sub').hide();
+        }
+    }
+
+    function updateCityDatalist() {
+        const c = $countrySelect.val();
+        const s = $stateSelect.val();
+        let options = '';
+        if (c && s && data.countries?.[c]?.states?.[s]?.cities) {
+            Object.keys(data.countries[c].states[s].cities).sort().forEach(cityName => {
+                options += `<option value="${cityName}">`;
+            });
+        }
+        $cityList.html(options);
+    }
+
+    function updatePlaceDatalist() {
+        const c = $countrySelect.val();
+        const s = $stateSelect.val();
+        const city = $cityInput.val().trim();
+        let options = '';
+        if (c && s && city && data.countries?.[c]?.states?.[s]?.cities?.[city]?.places) {
+            Object.keys(data.countries[c].states[s].cities[city].places).sort().forEach(placeName => {
+                options += `<option value="${placeName}">`;
+            });
+        }
+        $placeList.html(options);
+    }
+
+    function refreshSelects() {
+        const countries = data.countries || {};
+        let countryOptions = '<option value="">-- Select Country --</option>';
+        Object.keys(countries).sort().forEach(c => {
+            countryOptions += `<option value="${c}">${c}</option>`;
+        });
+        $countrySelect.html(countryOptions);
+        $newStateCountrySelect.html(countryOptions);
+        $scanCountryFilter.html(countryOptions);
+
+        $countrySelect.off('change').on('change', function () {
+            const c = $(this).val();
+            let stateOptions = '<option value="">-- All / Country Level --</option>';
+            if (c && countries[c] && countries[c].states) {
+                Object.keys(countries[c].states).sort().forEach(s => {
+                    stateOptions += `<option value="${s}">${s}</option>`;
+                });
+            }
+            $stateSelect.html(stateOptions);
+            $cityInput.val('');
+            $placeInput.val('');
+            updateCityDatalist();
+            updatePlaceDatalist();
+            updateCurrentCoordsBanner();
+        });
+
+        $stateSelect.off('change').on('change', function () {
+            $cityInput.val('');
+            $placeInput.val('');
+            updateCityDatalist();
+            updatePlaceDatalist();
+            updateCurrentCoordsBanner();
+        });
+
+        $cityInput.off('input change').on('input change', function () {
+            updatePlaceDatalist();
+            updateCurrentCoordsBanner();
+        });
+
+        $placeInput.off('input change').on('input change', function () {
+            updateCurrentCoordsBanner();
+        });
+    }
+    refreshSelects();
+
+    // Add New Country
+    $('#btn-add-country').off('click').on('click', async function () {
+        const $btn = $(this);
+        const countryName = $('#new-country-name').val().trim();
+        const fetchStates = $('#chk-country-fetch-states').is(':checked');
+        const geocode = $('#chk-country-geocode').is(':checked');
+        const geocodeStates = $('#chk-country-geocode-states').is(':checked');
+        const $status = $('#add-country-status');
+
+        if (!countryName) {
+            customAlert('Please enter a Country name.');
+            return;
+        }
+
+        $btn.text('⏳ Adding...').attr('disabled', 'disabled');
+        $status.show().css({ background: 'rgba(56,189,248,0.1)', color: '#38bdf8' })
+               .text(`Adding "${countryName}"${fetchStates ? ' and fetching states...' : '...'}`);
+
+        try {
+            const res = await addNewCountry({
+                country: countryName,
+                fetchStates,
+                geocode,
+                geocodeStates,
+                onProgress: (current, total, name) => {
+                    $status.text(`Geocoding state [${current}/${total}] "${name}"...`);
+                }
+            });
+            let msg = `Added "${res.country}"!`;
+            if (res.geocoded) msg += ' Country coordinates saved.';
+            if (res.statesCount > 0) msg += ` Populated ${res.statesCount} states/provinces.`;
+
+            $status.css({ background: 'rgba(34,197,94,0.1)', color: '#22c55e' }).text(msg);
+            showToast(`Added country "${res.country}" with ${res.statesCount} states!`, 'success');
+            $('#new-country-name').val('');
+            refreshSelects();
+            $countrySelect.val(res.country).trigger('change');
+            $newStateCountrySelect.val(res.country);
+        } catch (err) {
+            console.error(err);
+            $status.css({ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }).text(err.message);
+            customAlert(err.message);
+        } finally {
+            $btn.text('➕ Add Country').removeAttr('disabled');
+        }
+    });
+
+    // Add New State
+    $('#btn-add-state').off('click').on('click', async function () {
+        const $btn = $(this);
+        const country = $newStateCountrySelect.val();
+        const stateName = $('#new-state-name').val().trim();
+        const geocode = $('#chk-state-geocode').is(':checked');
+        const $status = $('#add-state-status');
+
+        if (!country) {
+            customAlert('Please select an existing Country.');
+            return;
+        }
+        if (!stateName) {
+            customAlert('Please enter a State / Province name.');
+            return;
+        }
+
+        $btn.text('⏳ Adding...').attr('disabled', 'disabled');
+        $status.show().css({ background: 'rgba(168,85,247,0.1)', color: '#c084fc' })
+               .text(`Adding "${stateName}" under ${country}...`);
+
+        try {
+            const res = await addNewState({ country, state: stateName, geocode });
+            let msg = `Added state "${res.state}" under ${res.country}!`;
+            if (res.geocoded) msg += ' Coordinates saved.';
+
+            $status.css({ background: 'rgba(34,197,94,0.1)', color: '#22c55e' }).text(msg);
+            showToast(`Added state "${res.state}"!`, 'success');
+            $('#new-state-name').val('');
+            refreshSelects();
+            $countrySelect.val(country).trigger('change');
+            $stateSelect.val(res.state);
+        } catch (err) {
+            console.error(err);
+            $status.css({ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }).text(err.message);
+            customAlert(err.message);
+        } finally {
+            $btn.text('➕ Add State').removeAttr('disabled');
+        }
+    });
+
+    let currentLookupResult = null;
+
+    // Fetch / Re-geocode selected location
+    $('#btn-fetch-geo').off('click').on('click', async function () {
+        const country = $countrySelect.val();
+        const state = $stateSelect.val();
+        const city = $cityInput.val().trim();
+        const place = $placeInput.val().trim();
+
+        if (!country) {
+            customAlert('Please select at least a Country.');
+            return;
+        }
+
+        const $btn = $(this);
+        const originalText = $btn.text();
+        $btn.text('⏳ Geocoding...').attr('disabled', 'disabled');
+        $('#geo-lookup-result').hide();
+
+        try {
+            const type = place ? 'place' : (city ? 'city' : (state ? 'state' : 'country'));
+            const result = await lookupLocation({
+                place,
+                city,
+                state,
+                country,
+                type
+            });
+
+            if (result) {
+                currentLookupResult = { ...result, country, state, city, place, type };
+                const oldNode = getPlaceNode({ country, state, city, place });
+                let diffText = `<strong>${result.displayName}</strong> (via ${result.provider})`;
+                if (oldNode && oldNode.lat && oldNode.lng) {
+                    diffText += ` &nbsp;|&nbsp; <span style="color: #94a3b8;">Previous: ${oldNode.lat}, ${oldNode.lng} (${oldNode.radius}km)</span>`;
+                }
+                $('#geo-res-name').html(diffText);
+                $('#geo-res-lat-input').val(result.lat);
+                $('#geo-res-lng-input').val(result.lng);
+                $('#geo-res-radius-input').val(result.radius);
+                $('#geo-lookup-result').show();
+                showToast(`Coordinates found via ${result.provider}!`, 'success');
+            } else {
+                const targetName = place || city || state || country;
+                customAlert(`No coordinates found for "${targetName}".`);
+            }
+        } catch (err) {
+            console.error(err);
+            customAlert('Lookup error: ' + err.message);
+        } finally {
+            $btn.text(originalText).removeAttr('disabled');
+        }
+    });
+
+    // Save Re-geocoded Coordinates to Places
+    $('#btn-save-geo-result').off('click').on('click', function () {
+        if (!currentLookupResult) return;
+        const lat = parseFloat($('#geo-res-lat-input').val());
+        const lng = parseFloat($('#geo-res-lng-input').val());
+        const radius = parseFloat($('#geo-res-radius-input').val());
+
+        if (isNaN(lat) || isNaN(lng)) {
+            customAlert('Please provide valid numerical coordinates.');
+            return;
+        }
+
+        savePlaceGeo({
+            country: currentLookupResult.country,
+            state: currentLookupResult.state || null,
+            city: currentLookupResult.city || null,
+            place: currentLookupResult.place || null,
+            lat,
+            lng,
+            radius
+        });
+        const label = currentLookupResult.place || currentLookupResult.city || currentLookupResult.state || currentLookupResult.country;
+        showToast(`Saved "${label}" to places.json!`, 'success');
+        $('#geo-lookup-result').hide();
+        updateCurrentCoordsBanner();
+    });
+
+    // Batch Re-Geocode Sub-Locations (States of Country or Cities/Places of State)
+    $('#btn-batch-regeocode-sub').off('click').on('click', async function () {
+        const country = $countrySelect.val();
+        const state = $stateSelect.val();
+        const $btn = $(this);
+        const $progress = $('#sub-regeocode-progress');
+        const $statusText = $('#sub-regeocode-status-text');
+
+        let subList = [];
+        let scopeName = '';
+
+        if (country && !state) {
+            scopeName = `all states in ${country}`;
+            const states = data.countries[country]?.states || {};
+            Object.keys(states).forEach(s => {
+                subList.push({ country, state: s, city: '', place: '', type: 'state', displayName: s });
+            });
+        } else if (country && state) {
+            scopeName = `all cities and places in ${state}`;
+            const stateNode = data.countries[country]?.states?.[state];
+            if (stateNode && stateNode.cities) {
+                Object.keys(stateNode.cities).forEach(cityName => {
+                    subList.push({ country, state, city: cityName, place: '', type: 'city', displayName: cityName });
+                    const cityNode = stateNode.cities[cityName];
+                    if (cityNode && cityNode.places) {
+                        Object.keys(cityNode.places).forEach(placeName => {
+                            subList.push({ country, state, city: cityName, place: placeName, type: 'place', displayName: placeName });
+                        });
+                    }
+                });
+            }
+        }
+
+        if (subList.length === 0) return;
+
+        $btn.attr('disabled', 'disabled');
+        $progress.show();
+
+        let successCount = 0;
+        for (let i = 0; i < subList.length; i++) {
+            const item = subList[i];
+            $statusText.text(`Re-geocoding [${i + 1}/${subList.length}] (${item.type}) "${item.displayName}"...`);
+
+            try {
+                const res = await lookupLocation({
+                    country: item.country,
+                    state: item.state,
+                    city: item.city,
+                    place: item.place,
+                    type: item.type
+                });
+                if (res) {
+                    savePlaceGeo({
+                        country: item.country,
+                        state: item.state || null,
+                        city: item.city || null,
+                        place: item.place || null,
+                        lat: res.lat,
+                        lng: res.lng,
+                        radius: res.radius,
+                        skipUpload: true
+                    });
+                    successCount++;
+                }
+            } catch (e) {
+                console.error(`Failed to geocode ${item.displayName}:`, e);
+            }
+        }
+
+        if (successCount > 0) {
+            try {
+                uploadJSONData('places', true);
+            } catch (err) {
+                console.error('Failed to sync places.json:', err);
+            }
+        }
+
+        $statusText.html(`<span style="color: #22c55e;">Done! Re-geocoded and saved ${successCount} location(s) for ${scopeName}.</span>`);
+        $btn.removeAttr('disabled');
+        showToast(`Successfully re-geocoded ${successCount} location(s)!`, 'success');
+        updateCurrentCoordsBanner();
+    });
+
+    // Scan Mode Switcher (missing / all / country)
+    $('#scan-mode-select').off('change').on('change', function () {
+        const mode = $(this).val();
+        if (mode === 'country') {
+            $('#scan-country-filter').show();
+        } else {
+            $('#scan-country-filter').hide();
+        }
+    });
+
+    // Scan / Re-Geocode Scanner
+    $('#btn-scan-missing-places').off('click').on('click', function () {
+        const mode = $('#scan-mode-select').val() || 'missing';
+        const selectedCountry = $('#scan-country-filter').val();
+        const countries = data.countries || {};
+        const sightings = data.sightings || [];
+        const scanMap = new Map();
+
+        // Helper to check if item matches scan mode
+        function shouldInclude(item, isMissing) {
+            if (mode === 'missing') return isMissing;
+            if (mode === 'country') return item.country === selectedCountry;
+            return true; // 'all'
+        }
+
+        // 1. Scan places.json
+        Object.keys(countries).forEach(country => {
+            if (mode === 'country' && selectedCountry && country !== selectedCountry) return;
+            const countryObj = countries[country];
+            if (!countryObj) return;
+
+            const isCountryMissing = !countryObj.lat || !countryObj.lng;
+            const countryItem = {
+                type: 'country',
+                country,
+                state: '',
+                city: '',
+                place: '',
+                displayName: country,
+                parentContext: '-',
+                lat: countryObj.lat,
+                lng: countryObj.lng,
+                radius: countryObj.radius
+            };
+            if (shouldInclude(countryItem, isCountryMissing)) {
+                scanMap.set(`country|${country}`, countryItem);
+            }
+
+            const states = countryObj.states || {};
+            Object.keys(states).forEach(state => {
+                const stateObj = states[state];
+                if (!stateObj) return;
+
+                const isStateMissing = !stateObj.lat || !stateObj.lng;
+                const stateItem = {
+                    type: 'state',
+                    country,
+                    state,
+                    city: '',
+                    place: '',
+                    displayName: state,
+                    parentContext: country,
+                    lat: stateObj.lat,
+                    lng: stateObj.lng,
+                    radius: stateObj.radius
+                };
+                if (shouldInclude(stateItem, isStateMissing)) {
+                    scanMap.set(`state|${country}|${state}`, stateItem);
+                }
+
+                const cities = stateObj.cities || {};
+                Object.keys(cities).forEach(city => {
+                    const cityObj = cities[city];
+                    if (!cityObj) return;
+
+                    const isCityMissing = !cityObj.lat || !cityObj.lng;
+                    const cityItem = {
+                        type: 'city',
+                        country,
+                        state,
+                        city,
+                        place: '',
+                        displayName: city,
+                        parentContext: `${state}, ${country}`,
+                        lat: cityObj.lat,
+                        lng: cityObj.lng,
+                        radius: cityObj.radius
+                    };
+                    if (shouldInclude(cityItem, isCityMissing)) {
+                        scanMap.set(`city|${country}|${state}|${city}`, cityItem);
+                    }
+
+                    const places = cityObj.places || {};
+                    Object.keys(places).forEach(place => {
+                        const placeObj = places[place];
+                        if (!placeObj) return;
+
+                        const isPlaceMissing = !placeObj.lat || !placeObj.lng;
+                        const placeItem = {
+                            type: 'place',
+                            country,
+                            state,
+                            city,
+                            place,
+                            displayName: place,
+                            parentContext: `${city}, ${state}, ${country}`,
+                            lat: placeObj.lat,
+                            lng: placeObj.lng,
+                            radius: placeObj.radius
+                        };
+                        if (shouldInclude(placeItem, isPlaceMissing)) {
+                            scanMap.set(`place|${country}|${state}|${city}|${place}`, placeItem);
+                        }
+                    });
+                });
+            });
+        });
+
+        // 2. Also scan sightings if looking for missing
+        if (mode === 'missing') {
+            sightings.forEach(s => {
+                const country = s.country && s.country.trim();
+                const state = s.state && s.state.trim();
+                const city = s.city && s.city.trim();
+                const place = s.place && s.place.trim();
+
+                if (country && (!countries[country] || !countries[country].lat || !countries[country].lng)) {
+                    const key = `country|${country}`;
+                    if (!scanMap.has(key)) {
+                        scanMap.set(key, { type: 'country', country, state: '', city: '', place: '', displayName: country, parentContext: '-' });
+                    }
+                }
+                if (country && state) {
+                    const stateObj = countries[country]?.states?.[state];
+                    if (!stateObj || !stateObj.lat || !stateObj.lng) {
+                        const key = `state|${country}|${state}`;
+                        if (!scanMap.has(key)) {
+                            scanMap.set(key, { type: 'state', country, state, city: '', place: '', displayName: state, parentContext: country });
+                        }
+                    }
+                }
+                if (country && state && city) {
+                    const cityObj = countries[country]?.states?.[state]?.cities?.[city];
+                    if (!cityObj || !cityObj.lat || !cityObj.lng) {
+                        const key = `city|${country}|${state}|${city}`;
+                        if (!scanMap.has(key)) {
+                            scanMap.set(key, { type: 'city', country, state, city, place: '', displayName: city, parentContext: `${state}, ${country}` });
+                        }
+                    }
+                }
+                if (country && state && city && place) {
+                    const placeObj = countries[country]?.states?.[state]?.cities?.[city]?.places?.[place];
+                    if (!placeObj || !placeObj.lat || !placeObj.lng) {
+                        const key = `place|${country}|${state}|${city}|${place}`;
+                        if (!scanMap.has(key)) {
+                            scanMap.set(key, { type: 'place', country, state, city, place, displayName: place, parentContext: `${city}, ${state}, ${country}` });
+                        }
+                    }
+                }
+            });
+        }
+
+        const scanList = Array.from(scanMap.values());
+        $('#missing-places-summary').show();
+        const actionLabel = mode === 'missing' ? 'missing coordinates' : 'matching';
+        $('#missing-places-count').text(`Found ${scanList.length} ${actionLabel} location(s).`);
+
+        if (scanList.length === 0) {
+            $('#btn-autofill-missing').hide();
+            $('#missing-places-list').html('<div style="color: #22c55e; padding: 6px 0;">No locations matched the criteria.</div>');
+            return;
+        }
+
+        $('#btn-autofill-missing').show().text(mode === 'missing' ? `⚡ Auto-Fill All (${scanList.length})` : `⚡ Re-Geocode All (${scanList.length})`);
+        let html = '<table style="width: 100%; border-collapse: collapse;">';
+        html += '<tr style="color: #94a3b8; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);"><th style="padding: 6px 4px;">Level</th><th style="padding: 6px 4px;">Name</th><th style="padding: 6px 4px;">Coordinates</th><th style="padding: 6px 4px;">Action</th></tr>';
+        scanList.forEach((m, idx) => {
+            const badgeColor = m.type === 'country' ? '#ef4444' : (m.type === 'state' ? '#a855f7' : (m.type === 'city' ? '#38bdf8' : '#22c55e'));
+            const coordsText = (m.lat && m.lng) ? `${m.lat}, ${m.lng} (${m.radius || '-'}km)` : '<span style="color: #f87171;">Missing</span>';
+            html += `<tr id="scan-row-${idx}" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 4px;"><span style="background: ${badgeColor}22; color: ${badgeColor}; border: 1px solid ${badgeColor}44; padding: 2px 6px; border-radius: 4px; font-size: 11px; text-transform: uppercase; font-weight: 600;">${m.type}</span></td>
+                <td style="padding: 4px; color: #fff; font-weight: 500;">${m.displayName} <span style="font-size: 11px; color: #64748b;">(${m.parentContext})</span></td>
+                <td style="padding: 4px; font-family: monospace; font-size: 11px; color: #94a3b8;" class="row-coords">${coordsText}</td>
+                <td style="padding: 4px;">
+                    <button class="btn-regeocode-single" data-idx="${idx}" style="padding: 2px 8px; font-size: 11px; background: #0284c7; color: white;">🔄 Re-Geocode</button>
+                </td>
+            </tr>`;
+        });
+        html += '</table>';
+        $('#missing-places-list').html(html);
+
+        // Single row re-geocode
+        $('.btn-regeocode-single').off('click').on('click', async function () {
+            const idx = parseInt($(this).data('idx'));
+            const item = scanList[idx];
+            const $row = $(`#scan-row-${idx}`);
+            const $btn = $(this);
+
+            $btn.text('⏳').attr('disabled', 'disabled');
+            try {
+                const res = await lookupLocation({
+                    country: item.country,
+                    state: item.state,
+                    city: item.city,
+                    place: item.place,
+                    type: item.type
+                });
+                if (res) {
+                    savePlaceGeo({
+                        country: item.country,
+                        state: item.state || null,
+                        city: item.city || null,
+                        place: item.place || null,
+                        lat: res.lat,
+                        lng: res.lng,
+                        radius: res.radius
+                    });
+                    $row.find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
+                    $btn.text('✔ Done').css({ background: '#22c55e' });
+                    showToast(`Re-geocoded "${item.displayName}"!`, 'success');
+                    updateCurrentCoordsBanner();
+                } else {
+                    $btn.text('❌ Not found').css({ background: '#ef4444' });
+                }
+            } catch (err) {
+                console.error(err);
+                $btn.text('❌ Error').css({ background: '#ef4444' });
+            }
+        });
+
+        // Batch Re-geocode / Auto-fill
+        $('#btn-autofill-missing').off('click').on('click', async function () {
+            const $autofillBtn = $(this);
+            $autofillBtn.attr('disabled', 'disabled');
+            $('#autofill-progress').show();
+
+            let successCount = 0;
+            let failCount = 0;
+
+            for (let i = 0; i < scanList.length; i++) {
+                const item = scanList[i];
+                $('#autofill-status-text').text(`Geocoding [${i + 1}/${scanList.length}] (${item.type}) "${item.displayName}" via ${geoService.getActiveProviderName()}...`);
+
+                try {
+                    const res = await lookupLocation({
+                        place: item.place,
+                        city: item.city,
+                        state: item.state,
+                        country: item.country,
+                        type: item.type
+                    });
+
+                    if (res) {
+                        savePlaceGeo({
+                            country: item.country,
+                            state: item.state || null,
+                            city: item.city || null,
+                            place: item.place || null,
+                            lat: res.lat,
+                            lng: res.lng,
+                            radius: res.radius,
+                            skipUpload: true
+                        });
+                        $(`#scan-row-${i}`).find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
+                        successCount++;
+                    } else {
+                        failCount++;
+                    }
+                } catch (e) {
+                    console.error(e);
+                    failCount++;
+                }
+            }
+
+            if (successCount > 0) {
+                try {
+                    uploadJSONData('places', true);
+                    refreshSelects();
+                } catch (err) {
+                    console.error('Failed to upload places.json after autofill:', err);
+                }
+            }
+
+            $('#autofill-status-text').html(
+                `<span style="color: #22c55e;">Completed: ${successCount} geocoded and saved to places.json.</span>` +
+                (failCount > 0 ? ` <span style="color: #ef4444;">(${failCount} could not be located)</span>` : '')
+            );
+            $autofillBtn.removeAttr('disabled');
+            showToast(`Re-geocoded and saved ${successCount} location(s) to places.json!`, 'success');
+            updateCurrentCoordsBanner();
+        });
+    });
+}
+

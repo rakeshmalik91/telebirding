@@ -3,6 +3,7 @@ import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
 import { showLoader, hideLoader } from '../loader.js';
 import { UndoRedoManager } from './history.js';
+import { lookupLocation, geoService, fetchStatesForCountry } from '../geo-service.js';
 
 export let data = {};
 export let loadedEtags = {};
@@ -148,7 +149,11 @@ export function uploadJSONData(type, skipRefresh) {
     }
 
     let fileData = {};
-    fileData[type] = data[type];
+    if (type === 'places') {
+        fileData = { countries: data.countries };
+    } else {
+        fileData[type] = data[type];
+    }
 
     // Remove unwanted values (null, false, [], "", {}) before upload
     fileData = removeUnwantedValues(fileData) || {};
@@ -190,9 +195,9 @@ export function uploadJSONData(type, skipRefresh) {
     lastUploadedData[type] = fileData;
     fileData = [fileData];
 
-
-    const file = new File(fileData, type + ".json");
-    const fileUrl = Util.getData("data/" + currentMode + "-" + type + ".json");
+    const fileName = (type === 'places') ? "places.json" : (currentMode + "-" + type + ".json");
+    const file = new File(fileData, fileName);
+    const storagePath = (type === 'places') ? "data/places.json" : ("data/" + currentMode + "-" + type + ".json");
 
     const finishUpload = () => {
         isUploading[type] = false;
@@ -214,8 +219,8 @@ export function uploadJSONData(type, skipRefresh) {
     };
 
     const doUpload = () => {
-        FirebaseApi.getFirebase().storage().ref("data/" + currentMode + "-" + type + ".json").put(file).then((snapshot) => {
-            console.log("uploaded data/" + currentMode + "-" + type + ".json");
+        FirebaseApi.getFirebase().storage().ref(storagePath).put(file).then((snapshot) => {
+            console.log("uploaded " + storagePath);
             
             if (Constants.ADMIN_USE_ETAG) {
                 const newGen = snapshot && snapshot.metadata ? snapshot.metadata.generation : null;
@@ -279,11 +284,17 @@ export function backup() {
     console.log("Backing up...");
     let backedUp = 0;
     const date = moment(Date.now()).format(Constants.BACKUP_DATE_FORMAT);
-    const filesToBackup = ["species", "families", "sightings", "likes"];
+    const filesToBackup = ["species", "families", "sightings", "likes", "places"];
     for (const file of filesToBackup) {
         let fileData = {};
-        fileData[file] = data[file];
-        const fileName = currentMode + "-" + file + ".json";
+        let fileName = "";
+        if (file === "places") {
+            fileData = { countries: data.countries || {} };
+            fileName = "places.json";
+        } else {
+            fileData[file] = data[file];
+            fileName = currentMode + "-" + file + ".json";
+        }
         FirebaseApi.getFirebase().storage()
             .ref("backup/" + date + "/" + fileName)
             .put(new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName))
@@ -292,14 +303,14 @@ export function backup() {
                     refresh();
                     console.log("Backup completed");
                     hideLoader("backup");
+                    showToast(`Backup created successfully for ${date}!`, "success");
                 }
             }).catch(e => {
-                console.error("Backup failed", e);
-                // Should we abort or wait for others? 
-                // Simple fix: if one fails, maybe decrement target or handle error.
-                // For now, let's just log. If all fail, loader might stick.
-                // But this loop logic is brittle anyway. Keeping changes minimal.
-                if (++backedUp == filesToBackup.length) hideLoader("backup");
+                console.error("Backup failed for " + fileName, e);
+                if (++backedUp == filesToBackup.length) {
+                    hideLoader("backup");
+                    showToast("Backup encountered an error: " + e.message, "error");
+                }
             });
     }
 }
@@ -847,3 +858,274 @@ window.addEventListener('beforeunload', function (e) {
         return e.returnValue;
     }
 });
+
+/**
+ * Save coordinates for a country, state, city, or place in data.countries and sync to Firebase
+ */
+export function savePlaceGeo({ country, state, city, place, lat, lng, radius, skipUpload = false }) {
+    if (!country) return false;
+
+    data.countries = data.countries || {};
+    if (!data.countries[country]) {
+        data.countries[country] = { name: country, states: {} };
+    }
+    const countryObj = data.countries[country];
+
+    // 1. Country level
+    if (!state) {
+        countryObj.lat = parseFloat(lat);
+        countryObj.lng = parseFloat(lng);
+        countryObj.radius = Math.min(Math.max(Math.round(radius || 1000), 50), 2000);
+        if (!skipUpload) uploadJSONData('places', true);
+        return true;
+    }
+
+    // 2. State level
+    countryObj.states = countryObj.states || {};
+    if (!countryObj.states[state]) {
+        countryObj.states[state] = { name: state, cities: {} };
+    }
+    const stateObj = countryObj.states[state];
+
+    if (!city) {
+        stateObj.lat = parseFloat(lat);
+        stateObj.lng = parseFloat(lng);
+        stateObj.radius = Math.min(Math.max(Math.round(radius || 150), 25), 200);
+        if (!skipUpload) uploadJSONData('places', true);
+        return true;
+    }
+
+    // 3. City level
+    stateObj.cities = stateObj.cities || {};
+    if (!stateObj.cities[city]) {
+        stateObj.cities[city] = { name: city, places: {} };
+    }
+    const cityObj = stateObj.cities[city];
+
+    if (!place || !place.trim()) {
+        cityObj.lat = parseFloat(lat);
+        cityObj.lng = parseFloat(lng);
+        cityObj.radius = Math.min(Math.max(Math.round(radius || 20), 5), 40);
+        if (!skipUpload) uploadJSONData('places', true);
+        return true;
+    }
+
+    // 4. Place level
+    cityObj.places = cityObj.places || {};
+    cityObj.places[place] = {
+        name: place,
+        lat: parseFloat(lat),
+        lng: parseFloat(lng),
+        radius: Math.min(Math.max(Math.round(radius || 5), 1), 20)
+    };
+
+    if (!skipUpload) uploadJSONData('places', true);
+    return true;
+}
+
+/**
+ * Check if a location already has coordinates in data.countries
+ */
+export function getLocationGeo({ country, state, city, place }) {
+    if (!data.countries || !data.countries[country]) return null;
+    const countryObj = data.countries[country];
+
+    if (!state) {
+        return (countryObj.lat && countryObj.lng) ? countryObj : null;
+    }
+
+    if (!countryObj.states || !countryObj.states[state]) return null;
+    const stateObj = countryObj.states[state];
+
+    if (!city) {
+        return (stateObj.lat && stateObj.lng) ? stateObj : null;
+    }
+
+    if (!stateObj.cities || !stateObj.cities[city]) return null;
+    const cityObj = stateObj.cities[city];
+
+    if (place && place.trim()) {
+        if (cityObj.places && cityObj.places[place] && cityObj.places[place].lat) {
+            return cityObj.places[place];
+        }
+        return null;
+    }
+
+    return (cityObj.lat && cityObj.lng) ? cityObj : null;
+}
+
+/**
+ * Retrieve the node in data.countries hierarchy regardless of whether coordinates are populated
+ */
+export function getPlaceNode({ country, state, city, place }) {
+    if (!data.countries || !country || !data.countries[country]) return null;
+    const countryObj = data.countries[country];
+    if (!state) return countryObj;
+
+    if (!countryObj.states || !countryObj.states[state]) return null;
+    const stateObj = countryObj.states[state];
+    if (!city) return stateObj;
+
+    if (!stateObj.cities || !stateObj.cities[city]) return null;
+    const cityObj = stateObj.cities[city];
+    if (!place || !place.trim()) return cityObj;
+
+    if (cityObj.places && cityObj.places[place]) {
+        return cityObj.places[place];
+    }
+    return null;
+}
+
+/**
+ * Lookup coordinates for a location via swappable GeoService and save into places
+ */
+export async function geocodeAndSaveLocation({ country, state, city, place }) {
+    let type = 'place';
+    if (place && place.trim()) {
+        type = 'place';
+    } else if (city && city.trim()) {
+        type = 'city';
+    } else if (state && state.trim()) {
+        type = 'state';
+    } else if (country && country.trim()) {
+        type = 'country';
+    } else {
+        return null;
+    }
+
+    const result = await lookupLocation({ place, city, state, country, type });
+    if (!result) return null;
+
+    savePlaceGeo({
+        country,
+        state: state || null,
+        city: city || null,
+        place: place || null,
+        lat: result.lat,
+        lng: result.lng,
+        radius: result.radius
+    });
+
+    return result;
+}
+
+/**
+ * Add a new Country to data.countries with optional automated state fetching and geocoding
+ */
+export async function addNewCountry({ country, fetchStates = true, geocode = true, geocodeStates = false, onProgress = null }) {
+    if (!country || !country.trim()) throw new Error('Country name is required.');
+    const countryName = country.trim();
+
+    data.countries = data.countries || {};
+    if (data.countries[countryName]) {
+        throw new Error(`Country "${countryName}" already exists.`);
+    }
+
+    data.countries[countryName] = {
+        name: countryName,
+        states: {}
+    };
+
+    let geocoded = false;
+    let statesCount = 0;
+
+    // 1. Geocode country
+    if (geocode) {
+        try {
+            const geo = await lookupLocation({ country: countryName, type: 'country' });
+            if (geo) {
+                data.countries[countryName].lat = geo.lat;
+                data.countries[countryName].lng = geo.lng;
+                data.countries[countryName].radius = geo.radius || 1000;
+                geocoded = true;
+            }
+        } catch (e) {
+            console.warn('[addNewCountry] Could not geocode country:', e);
+        }
+    }
+
+    // 2. Fetch states
+    if (fetchStates) {
+        try {
+            const states = await fetchStatesForCountry(countryName);
+            if (Array.isArray(states) && states.length > 0) {
+                for (let i = 0; i < states.length; i++) {
+                    const stateName = states[i];
+                    const cleanName = typeof stateName === 'string' ? stateName.trim() : stateName?.name?.trim();
+                    if (cleanName && !data.countries[countryName].states[cleanName]) {
+                        data.countries[countryName].states[cleanName] = {
+                            name: cleanName,
+                            cities: {}
+                        };
+                        statesCount++;
+
+                        if (geocodeStates) {
+                            if (typeof onProgress === 'function') onProgress(i + 1, states.length, cleanName);
+                            try {
+                                const sGeo = await lookupLocation({ country: countryName, state: cleanName, type: 'state' });
+                                if (sGeo) {
+                                    data.countries[countryName].states[cleanName].lat = sGeo.lat;
+                                    data.countries[countryName].states[cleanName].lng = sGeo.lng;
+                                    data.countries[countryName].states[cleanName].radius = sGeo.radius || 150;
+                                }
+                            } catch (e) {
+                                console.warn(`[addNewCountry] Could not geocode state "${cleanName}":`, e);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('[addNewCountry] Could not fetch states for country:', e);
+        }
+    }
+
+    uploadJSONData('places', true);
+    return { country: countryName, geocoded, statesCount };
+}
+
+/**
+ * Add a new State under an existing country in data.countries
+ */
+export async function addNewState({ country, state, geocode = true }) {
+    if (!country || !country.trim()) throw new Error('Country is required.');
+    if (!state || !state.trim()) throw new Error('State name is required.');
+    const countryName = country.trim();
+    const stateName = state.trim();
+
+    data.countries = data.countries || {};
+    if (!data.countries[countryName]) {
+        data.countries[countryName] = { name: countryName, states: {} };
+    }
+    data.countries[countryName].states = data.countries[countryName].states || {};
+
+    if (data.countries[countryName].states[stateName]) {
+        throw new Error(`State "${stateName}" already exists in ${countryName}.`);
+    }
+
+    const stateObj = {
+        name: stateName,
+        cities: {}
+    };
+
+    let geocoded = false;
+    if (geocode) {
+        try {
+            const geo = await lookupLocation({ country: countryName, state: stateName, type: 'state' });
+            if (geo) {
+                stateObj.lat = geo.lat;
+                stateObj.lng = geo.lng;
+                stateObj.radius = geo.radius || 150;
+                geocoded = true;
+            }
+        } catch (e) {
+            console.warn('[addNewState] Could not geocode state:', e);
+        }
+    }
+
+    data.countries[countryName].states[stateName] = stateObj;
+    uploadJSONData('places', true);
+    return { country: countryName, state: stateName, geocoded };
+}
+
+

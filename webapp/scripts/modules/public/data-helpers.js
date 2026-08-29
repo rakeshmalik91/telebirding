@@ -39,6 +39,10 @@ export function computeInternalDataFields() {
     State.data.families.sort((a, b) => Util.compare(a.name, b.name));
 
     //places
+    // Preserve raw geo data (lat/lng/radius) from places.json before overwriting with counts
+    if (!State.data.placesGeo) {
+        State.data.placesGeo = { countries: JSON.parse(JSON.stringify(State.data.countries)) };
+    }
     if (!Object.entries(State.data.countries)[0][1].count) {
         let countries = {}
         Object.keys(State.data.countries).sort().forEach(function (countryCode) {

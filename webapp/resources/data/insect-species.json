@@ -14,8 +14,8 @@
             "key": "assam-unbroken-sergeant-butterfly",
             "name": "Assam Unbroken Sergeant Butterfly",
             "tags": [
-                "Sergeant Butterfly",
-                "Butterfly"
+                "Butterfly",
+                "Sergeant Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "athyma pravara"
@@ -41,9 +41,9 @@
             "key": "black-marsh-dart",
             "name": "Black Marsh Dart",
             "tags": [
+                "Damselfly",
                 "Dart",
-                "Marsh Dart",
-                "Damselfly"
+                "Marsh Dart"
             ],
             "family": "Damselflies",
             "latin_name": "onychargia atrocyana"
@@ -125,13 +125,22 @@
             "key": "cocoa-tussock-moth",
             "name": "Cocoa Tussock Moth",
             "tags": [
-                "Moth",
                 "Caterpiller",
-                "Tussock Moth",
-                "Tussock Caterpiller"
+                "Moth",
+                "Tussock Caterpiller",
+                "Tussock Moth"
             ],
             "family": "Moths",
             "latin_name": "orgyia postica"
+        },
+        "common-baron-butterfly-": {
+            "key": "common-baron-butterfly-",
+            "name": "Common Baron Butterfly ",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "euthalia aconthea"
         },
         "common-crow-butterfly": {
             "key": "common-crow-butterfly",
@@ -155,9 +164,9 @@
             "key": "common-green-bottle-fly",
             "name": "Common Green Bottle Fly",
             "tags": [
-                "Fly",
+                "Blowfly",
                 "Bottle Fly",
-                "Blowfly"
+                "Fly"
             ],
             "family": "Flies"
         },
@@ -165,7 +174,9 @@
             "key": "common-gull-butterfly",
             "name": "Common Gull Butterfly",
             "tags": [
-                "Butterfly"
+                "Butterfly",
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Butterflies",
             "latin_name": "cepora nerissa"
@@ -174,8 +185,8 @@
             "key": "common-housefly",
             "name": "Common Housefly",
             "tags": [
-                "Housefly",
-                "Fly"
+                "Fly",
+                "Housefly"
             ],
             "family": "Houseflies & Allies"
         },
@@ -200,8 +211,8 @@
             "key": "common-sailer-butterfly",
             "name": "Common Sailer Butterfly",
             "tags": [
-                "Sailer Butterfly",
-                "Butterfly"
+                "Butterfly",
+                "Sailer Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "neptis hylas"
@@ -228,9 +239,9 @@
             "key": "east-himalayan-straight-banded-treebrown-butterfly",
             "name": "East Himalayan Straight-banded Treebrown Butterfly",
             "tags": [
-                "Treebrown Butterfly",
                 "Butterfly",
-                "Straight-banded Treebrown Butterfly"
+                "Straight-banded Treebrown Butterfly",
+                "Treebrown Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "lethe verma"
@@ -257,11 +268,11 @@
             "key": "eupterote-undata",
             "name": "Monkey Moth",
             "tags": [
-                "Moth",
-                "Monkey Moth",
-                "Eupterote Moth",
                 "Eupterote",
-                "Eupterote Undata"
+                "Eupterote Moth",
+                "Eupterote Undata",
+                "Monkey Moth",
+                "Moth"
             ],
             "family": "Moths",
             "latin_name": "eupterote undata"
@@ -270,11 +281,10 @@
             "key": "golden-silk-orb-weaver",
             "name": "Golden Orb-Weaver Spider",
             "tags": [
-                "Orb-Weaver",
-                "Spider",
+                "Arachnid",
                 "Golden Silk Orb-Weaver",
-                "Spider",
-                "Arachnid"
+                "Orb-Weaver",
+                "Spider"
             ],
             "family": "Spiders"
         },
@@ -282,8 +292,8 @@
             "key": "grey-swallowtail-moth",
             "name": "Grey Swallowtail Moth",
             "tags": [
-                "Swallowtail Moth",
-                "Moth"
+                "Moth",
+                "Swallowtail Moth"
             ],
             "family": "Moths",
             "latin_name": "micronia aculeata"
@@ -292,8 +302,8 @@
             "key": "himalayan-dark-clouded-yellow-butterfly",
             "name": "Himalayan Dark Clouded Yellow Butterfly",
             "tags": [
-                "Clouded Yellow Butterfly",
-                "Butterfly"
+                "Butterfly",
+                "Clouded Yellow Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "colias fieldii"
@@ -320,8 +330,8 @@
             "key": "horned-passalus-beetle",
             "name": "Horned Passalus Beetle",
             "tags": [
-                "Passalus Beetle",
-                "Beetle"
+                "Beetle",
+                "Passalus Beetle"
             ],
             "family": "Beetles"
         },
@@ -358,8 +368,8 @@
             "key": "indian-white-tiger-butterfly",
             "name": "Indian White Tiger Butterfly",
             "tags": [
-                "White Tiger Butterfly",
-                "Butterfly"
+                "Butterfly",
+                "White Tiger Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "danaus melanippus"
@@ -396,8 +406,8 @@
             "name": "Khasi Common Jester Butterfly",
             "tags": [
                 "Butterfly",
-                "Jester Butterfly",
-                "Common Jester Butterfly"
+                "Common Jester Butterfly",
+                "Jester Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "symbrenthia lilaea"
@@ -406,8 +416,8 @@
             "key": "lesser-housefly",
             "name": "Lesser Housefly",
             "tags": [
-                "Housefly",
-                "Fly"
+                "Fly",
+                "Housefly"
             ],
             "family": "Houseflies & Allies"
         },
@@ -433,8 +443,8 @@
             "key": "molossus-dung-beetle",
             "name": "Molossus Dung Beetle",
             "tags": [
-                "Dung Beetle",
-                "Beetle"
+                "Beetle",
+                "Dung Beetle"
             ],
             "family": "Dung Beetles"
         },
@@ -525,7 +535,7 @@
             "name": "Sailer Butterfly",
             "tags": [
                 "Butterfly",
-                "neptis"
+                "nepti"
             ],
             "family": "Butterflies",
             "latin_name": "neptis spp"
@@ -552,8 +562,11 @@
             "key": "swinhoes-striated-hawkmoth",
             "name": "Swinhoe's Striated Hawkmoth",
             "tags": [
+                "Accipiter",
+                "Bird of Prey",
                 "Hawkmoth",
                 "Moth",
+                "Raptor",
                 "hippotion rosetta"
             ],
             "family": "Moths",
@@ -650,8 +663,8 @@
             "key": "vietnamese-red-spot-jezebel-butterfly",
             "name": "Vietnamese Red-spot Jezebel Butterfly",
             "tags": [
-                "Jezebel Butterfly",
-                "Butterfly"
+                "Butterfly",
+                "Jezebel Butterfly"
             ],
             "family": "Butterflies",
             "latin_name": "delias descombesi"
@@ -660,10 +673,10 @@
             "key": "wandering-miolin-mantis",
             "name": "Wandering Violin Mantis",
             "tags": [
-                "Ornate Mantis",
-                "Mantis",
-                "gongylus gongylodes",
-                "Indian Rose Mantis"
+                "Indian Rose Manti",
+                "Manti",
+                "Ornate Manti",
+                "gongylus gongylode"
             ],
             "family": "Mantises"
         },

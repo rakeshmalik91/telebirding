@@ -3,6 +3,7 @@ import Util from '../util.js';
 import State from './state.js';
 import { initSightingCarousal } from './ui-helpers.js';
 import { getFilter } from './filters.js';
+import { initSpeciesMap } from './species-map.js?v=20260830_2';
 
 let storyInViewObserver;
 
@@ -342,7 +343,11 @@ export function renderMapMenu() {
     $('.map-menu').show();
     if ($('.map-menu').html() == '') {
         $('.map-menu').append("<h1>Species Observed by Location</h1>");
+        $('.map-menu').append("<div id='species-map'></div>");
         renderLocationList($('.map-menu'));
+        if (State.data.countries && State.data.placesGeo) {
+            initSpeciesMap(State.data.countries, State.data.placesGeo);
+        }
     }
 }
 
