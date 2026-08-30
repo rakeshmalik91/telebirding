@@ -1227,6 +1227,160 @@ export function getGeoBoundaryCoverage() {
 }
 
 /**
+ * Calculate real-time geocode coordinate coverage statistics across all hierarchy levels in data.countries and data.sightings
+ */
+export function getGeocodeCoverage() {
+    const countries = data.countries || {};
+    const sightings = data.sightings || [];
+
+    const stats = {
+        countries: { total: 0, geocoded: 0, missing: [] },
+        states: { total: 0, geocoded: 0, missing: [] },
+        cities: { total: 0, geocoded: 0, missing: [] },
+        places: { total: 0, geocoded: 0, missing: [] },
+        total: { total: 0, geocoded: 0 },
+        missingList: []
+    };
+
+    const seenKeys = new Set();
+
+    // 1. Scan places.json
+    Object.keys(countries).forEach(country => {
+        const countryObj = countries[country];
+        if (!countryObj) return;
+
+        stats.countries.total++;
+        stats.total.total++;
+        const isCountryGeocoded = countryObj.lat != null && countryObj.lng != null && !isNaN(countryObj.lat) && !isNaN(countryObj.lng);
+        if (isCountryGeocoded) {
+            stats.countries.geocoded++;
+            stats.total.geocoded++;
+        } else {
+            stats.countries.missing.push(country);
+            stats.missingList.push({
+                type: 'country', country, state: '', city: '', place: '',
+                displayName: country, parentContext: '-'
+            });
+        }
+        seenKeys.add(`country|${country}`);
+
+        const states = countryObj.states || {};
+        Object.keys(states).forEach(state => {
+            const stateObj = states[state];
+            if (!stateObj) return;
+
+            stats.states.total++;
+            stats.total.total++;
+            const isStateGeocoded = stateObj.lat != null && stateObj.lng != null && !isNaN(stateObj.lat) && !isNaN(stateObj.lng);
+            if (isStateGeocoded) {
+                stats.states.geocoded++;
+                stats.total.geocoded++;
+            } else {
+                stats.states.missing.push(`${country}/${state}`);
+                stats.missingList.push({
+                    type: 'state', country, state, city: '', place: '',
+                    displayName: state, parentContext: country
+                });
+            }
+            seenKeys.add(`state|${country}|${state}`);
+
+            const cities = stateObj.cities || {};
+            Object.keys(cities).forEach(city => {
+                const cityObj = cities[city];
+                if (!cityObj) return;
+
+                stats.cities.total++;
+                stats.total.total++;
+                const isCityGeocoded = cityObj.lat != null && cityObj.lng != null && !isNaN(cityObj.lat) && !isNaN(cityObj.lng);
+                if (isCityGeocoded) {
+                    stats.cities.geocoded++;
+                    stats.total.geocoded++;
+                } else {
+                    stats.cities.missing.push(`${city}, ${state}`);
+                    stats.missingList.push({
+                        type: 'city', country, state, city, place: '',
+                        displayName: city, parentContext: `${state}, ${country}`
+                    });
+                }
+                seenKeys.add(`city|${country}|${state}|${city}`);
+
+                const places = cityObj.places || {};
+                Object.keys(places).forEach(place => {
+                    const placeObj = places[place];
+                    if (!placeObj) return;
+
+                    stats.places.total++;
+                    stats.total.total++;
+                    const isPlaceGeocoded = placeObj.lat != null && placeObj.lng != null && !isNaN(placeObj.lat) && !isNaN(placeObj.lng);
+                    if (isPlaceGeocoded) {
+                        stats.places.geocoded++;
+                        stats.total.geocoded++;
+                    } else {
+                        stats.places.missing.push(`${place}, ${city}`);
+                        stats.missingList.push({
+                            type: 'place', country, state, city, place,
+                            displayName: place, parentContext: `${city}, ${state}, ${country}`
+                        });
+                    }
+                    seenKeys.add(`place|${country}|${state}|${city}|${place}`);
+                });
+            });
+        });
+    });
+
+    // 2. Scan sightings for unmapped / un-geocoded locations
+    sightings.forEach(s => {
+        const country = s.country && s.country.trim();
+        const state = s.state && s.state.trim();
+        const city = s.city && s.city.trim();
+        const place = s.place && s.place.trim();
+
+        if (country) {
+            const key = `country|${country}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.countries.total++;
+                stats.total.total++;
+                stats.countries.missing.push(country);
+                stats.missingList.push({ type: 'country', country, state: '', city: '', place: '', displayName: country, parentContext: '-' });
+            }
+        }
+        if (country && state) {
+            const key = `state|${country}|${state}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.states.total++;
+                stats.total.total++;
+                stats.states.missing.push(`${country}/${state}`);
+                stats.missingList.push({ type: 'state', country, state, city: '', place: '', displayName: state, parentContext: country });
+            }
+        }
+        if (country && state && city) {
+            const key = `city|${country}|${state}|${city}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.cities.total++;
+                stats.total.total++;
+                stats.cities.missing.push(`${city}, ${state}`);
+                stats.missingList.push({ type: 'city', country, state, city, place: '', displayName: city, parentContext: `${state}, ${country}` });
+            }
+        }
+        if (country && state && city && place) {
+            const key = `place|${country}|${state}|${city}|${place}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.places.total++;
+                stats.total.total++;
+                stats.places.missing.push(`${place}, ${city}`);
+                stats.missingList.push({ type: 'place', country, state, city, place, displayName: place, parentContext: `${city}, ${state}, ${country}` });
+            }
+        }
+    });
+
+    return stats;
+}
+
+/**
  * Check if a boundary polygon exists in memory for the given country and optional state
  */
 export function getGeoBoundary({ country, state = null }) {
@@ -1250,8 +1404,18 @@ function simplifyCoordinates(coords, precision = 2) {
     return coords.map(c => simplifyCoordinates(c, precision));
 }
 
+let activeBoundaryProvider = 'nominatim';
+
+export function getBoundaryProvider() {
+    return activeBoundaryProvider;
+}
+
+export function setBoundaryProvider(name) {
+    activeBoundaryProvider = name;
+}
+
 /**
- * Fetch a GeoJSON boundary polygon on-demand from OpenStreetMap Nominatim
+ * Fetch a GeoJSON boundary polygon on-demand using the active boundary provider (OpenStreetMap Nominatim)
  */
 export async function fetchBoundaryFromOSM({ country, state = null }) {
     if (!country) throw new Error('Country is required.');

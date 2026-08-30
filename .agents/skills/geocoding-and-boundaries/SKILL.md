@@ -12,25 +12,25 @@ This skill describes the architecture, workflows, and operational procedures for
 ## 🎯 Target Files & Components
 
 ### 1. Webapp Public Map
-- [`webapp/scripts/modules/public/species-map.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/public/species-map.js): Leaflet map rendering country & state polygon shapes, city/place circles, zoom thresholds, and click navigation.
+- [`webapp/scripts/modules/public/species-map.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/public/species-map.js): Leaflet map rendering country & state polygon shapes, city/place circles, zoom thresholds, continuous world wrapping (`worldCopyJump: true`, `WORLD_OFFSETS = [-2, -1, 0, 1, 2]`), strict vertical bounds, and click navigation. Selectively loads only countries present in sightings.
 - [`webapp/scripts/modules/public/rendering.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/public/rendering.js): Invokes `initSpeciesMap` with computed counts and raw places geo data.
-- [`webapp/css/home.css`](file:///d:/Projects/telebirding/webapp/css/home.css): Styling for `#species-map`, tooltips, and map controls.
+- [`webapp/css/home.css`](file:///d:/Projects/telebirding/webapp/css/home.css): Styling for `#species-map` (dark ocean background `#232227` matching Esri Dark Gray tiles to eliminate white gaps), tooltips, and map controls.
 
 ### 2. Admin Geocoding & Boundaries
-- [`webapp/scripts/modules/admin/data.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/admin/data.js): Hierarchy navigation (`getPlaceNode`), coordinate persistence (`savePlaceGeo`), boundary management (`getGeoBoundaryCoverage`, `fetchBoundaryFromOSM`, `saveGeoBoundary`, `uploadGeoBoundaries`), and cloud uploads.
-- [`webapp/scripts/modules/admin/rendering.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/admin/rendering.js): Admin UI handlers for `#places-tab` (Add Location, Inspect & Re-Geocode, Batch Scanner, and Geo Boundaries Management).
+- [`webapp/scripts/modules/admin/data.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/admin/data.js): Hierarchy navigation (`getPlaceNode`), coordinate persistence (`savePlaceGeo`), boundary management (`getCountryGeoJSON`, `uploadGeoBoundary`, `uploadGeoBoundaries`), cloud uploads, and minified per-country backup.
+- [`webapp/scripts/modules/admin/rendering.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/admin/rendering.js): Admin UI handlers for `#places-tab` (Add Location, Inspect & Re-Geocode, Batch Scanner, and Geo Boundaries Management card).
+- [`webapp/scripts/modules/admin/restore.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/admin/restore.js): Backup restoration and deletion including `backup/${date}/geo/${country}.json`.
 - [`webapp/scripts/modules/geo-service.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/geo-service.js): Swappable geocoding provider engine (Nominatim and Photon) with request throttling, bounding box radius estimation, and safety caps.
-- [`webapp/admin.html`](file:///d:/Projects/telebirding/webapp/admin.html): Markup for places grid and geo boundary management card.
+- [`webapp/admin.html`](file:///d:/Projects/telebirding/webapp/admin.html): Markup for places grid, configurable Geocoding & Geo Boundary provider bar at the top, and geo boundary management card.
 
 ### 3. Build & Maintenance Utilities
-- [`utils/build-geo-boundaries.js`](file:///d:/Projects/telebirding/utils/build-geo-boundaries.js): CLI build script that downloads Natural Earth 110m (countries) and 10m (states), simplifies geometries via Douglas-Peucker, and generates optimized JSON files.
-- [`utils/sync_dynamic_files_to_firebase_storage.py`](file:///d:/Projects/telebirding/utils/sync_dynamic_files_to_firebase_storage.py): Synchronizes `places.json`, `geo-countries.json`, and `geo-states.json` to Firebase Storage.
-- [`utils/backup.py`](file:///d:/Projects/telebirding/utils/backup.py): Downloads cloud backups of location and boundary datasets.
+- [`utils/sync_dynamic_files_to_firebase_storage.py`](file:///d:/Projects/telebirding/utils/sync_dynamic_files_to_firebase_storage.py): Dynamically discovers and synchronizes `places.json` and all `data/geo/*.json` files to Firebase Storage.
+- [`utils/backup.py`](file:///d:/Projects/telebirding/utils/backup.py): Downloads cloud backups of location data and all `data/geo/{country}.json` datasets into `webapp/resources/data/geo/`. Automatically cleans up legacy monolithic boundary files.
+- [`storage.rules`](file:///d:/Projects/telebirding/storage.rules): Security rules allowing up to 15 MB writes under `/data/geo/{fileName}` and `/backup/{allPaths=**}` for large composite boundary files.
 
 ### 4. Data Assets
 - [`webapp/resources/data/places.json`](file:///d:/Projects/telebirding/webapp/resources/data/places.json): Source of truth for 4-level location hierarchy (`countries -> states -> cities -> places`) with `lat`, `lng`, `radius`.
-- [`webapp/resources/data/geo-countries.json`](file:///d:/Projects/telebirding/webapp/resources/data/geo-countries.json): Lightweight GeoJSON FeatureCollection of country polygon boundaries (~22 KB).
-- [`webapp/resources/data/geo-states.json`](file:///d:/Projects/telebirding/webapp/resources/data/geo-states.json): Lightweight GeoJSON FeatureCollection of state/province polygon boundaries (~280 KB).
+- [`webapp/resources/data/geo/${country}.json`](file:///d:/Projects/telebirding/webapp/resources/data/geo): Modular per-country GeoJSON files containing both country polygon boundary and state boundaries.
 
 ---
 
@@ -74,7 +74,53 @@ This skill describes the architecture, workflows, and operational procedures for
 }
 ```
 
-### 2. Radius Limits & Caps
+### 2. Modular GeoJSON Schema (`data/geo/${country}.json`)
+Instead of monolithic global boundary files, each country has a dedicated file in `data/geo/`:
+```json
+{
+  "country": {
+    "type": "Feature",
+    "properties": {
+      "name": "India"
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [...]
+    }
+  },
+  "states": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "West Bengal",
+          "country": "India"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [...]
+        }
+      }
+    ]
+  }
+}
+```
+
+### 3. Public Map Selective Loading & Wrapping
+1. **Selective Country Fetching**:
+   - `loadBoundaries(countriesData)` queries only countries with sightings (`count > 0` or in `State.data.sightings`).
+   - Unused country JSONs are never fetched over the network.
+2. **Continuous Wrapping**:
+   - `worldCopyJump: true` enabled on Leaflet map instance.
+   - Vector features (country polygons, state polygons, city/place circles) are rendered across `WORLD_OFFSETS = [-2, -1, 0, 1, 2]`. Coordinates shifted via `shiftFeatureLng(feature, offset * 360)`.
+   - Initial `fitBounds` strictly uses `_isPrimaryWorld` (offset 0) to frame the initial view without zooming out.
+3. **No White Gaps**:
+   - `#species-map` and Leaflet container/panes are styled with `background-color: #232227 !important;` (the exact ocean tile color of Esri Dark Gray canvas `rgb(35, 34, 39)`).
+   - `minZoom: 1` prevents zooming out to a thin ribbon.
+   - `maxBounds: [[-85.051129, -Infinity], [85.051129, Infinity]]` with `maxBoundsViscosity: 1.0` prevents panning vertically beyond the poles into empty void.
+
+### 4. Radius Limits & Caps
 To prevent island chains or sparse administrative regions from generating massive circles:
 - **`GEO_RADIUS_CAPS`** in `geo-service.js`: Caps bounding box calculation during geocoding (place: 10 km, city: 25 km, state: 150 km, country: 600 km).
 - **`UI_RADIUS_LIMITS`** in `species-map.js`: Enforces strict visual rendering bounds on Leaflet circles:
@@ -83,11 +129,18 @@ To prevent island chains or sparse administrative regions from generating massiv
   - State: 35 km min, 200 km max
   - Country: 60 km min, 800 km max
 
-### 3. Layer Separation & Zoom Behavior
-- **Zoom < 4 (Overview)**: Displays country polygon boundary outlines (warm orange).
-- **Zoom &ge; 4 (Detail)**: Automatically hides country shapes and displays:
+### 5. Layer Separation, Panes & Zoom Behavior
+- **Map Panes Hierarchy (Strict Z-Indexing)**:
+  To prevent overlapping circles from blocking interaction:
+  - `statePane` (`z-index: 380`): State boundary polygons.
+  - `cityPane` (`z-index: 420`): City circles.
+  - `placePane` (`z-index: 450`): Place circles (rendered strictly above city circles so places are always clickable when overlapping).
+- **Zoom < 4 (Overview)**: Displays filled country polygon shapes (warm orange).
+- **Zoom &ge; 4 (Detail)**:
+  - Automatically hides country shapes (since country boundary datasets are coarse compared to states, preventing mismatched borders).
   - State boundary polygons (teal/cyan, dashed border, behind).
-  - City & Place circles (bright green, solid border, on top).
+  - City circles (`cityPane`, warm lime green `rgb(135, 215, 50)`).
+  - Place circles (`placePane`, bright emerald green `rgb(65, 215, 95)`, on top, always clickable).
 - **State Zoom Threshold (`zoom >= 7`)**: Clicking a state polygon flies to its bounds at zoom < 7; once at zoom &ge; 7, clicking navigates directly to the sightings feed filtered for that state.
 
 ---
@@ -106,63 +159,42 @@ To prevent island chains or sparse administrative regions from generating massiv
 3. Check **Geo Boundaries Management** card:
    - Check if the country has a polygon boundary.
    - If missing, select it in the boundary inspector and click `🌐 Fetch Boundary from OSM`, then `💾 Save Boundary to Memory`.
-   - Click `☁️ Sync to Firebase Storage` to publish changes.
-
-#### Via Offline Build Script (Bulk / Complete Data Rebuild)
-1. If adding many locations or updating administrative definitions, run the build script:
-   ```bash
-   npm run build:geo
-   # OR
-   node utils/build-geo-boundaries.js
-   ```
-2. The script downloads Natural Earth 110m and 10m datasets, resolves name mismatches via `COUNTRY_NAME_MAP` and `STATE_NAME_MAP`, simplifies geometries to 2 decimal places, and writes `geo-countries.json` and `geo-states.json`.
-3. Synchronize to Firebase Storage:
-   ```bash
-   python utils/sync_dynamic_files_to_firebase_storage.py
-   ```
+   - Click `☁️ Upload Boundary to Storage` to publish `data/geo/${country}.json`.
 
 ---
 
-### Workflow 2: Re-Geocoding Existing Locations
-When coordinates or radius are inaccurate:
-1. Go to Admin &rarr; **Inspect & Re-Geocode**.
-2. Select Country &rarr; State &rarr; City &rarr; Place.
-3. Observe live coordinates banner.
-4. Click `🔄 Re-Geocode Selected` (or edit Lat/Lng/Radius numbers manually in the result box).
-5. Click `💾 Save to Places`.
-
-To re-geocode all sub-locations in bulk:
-- Click `⚡ Re-Geocode All States in [Country]` or `⚡ Re-Geocode All Cities & Places in [State]`.
-- Requests run sequentially with safety throttling (1s per request) to comply with OSM usage policies.
+### Workflow 2: Re-Geocoding Existing Locations & Real-Time Coverage
+1. **Real-Time Geocode Coverage Status**:
+   - The Admin Places tab displays a live **Geocode Coverage Status** banner with real-time counts and percentages for Countries, States, Cities, and Places.
+   - Any missing locations across `places.json` and sightings are detected automatically without clicking a scan button.
+   - Clicking `⚡ Auto-Fill Missing Coordinates` will sequentially geocode and persist missing coordinates to `places.json`.
+2. **Single Location Geocode / Inspection**:
+   - Select Country &rarr; State &rarr; City &rarr; Place.
+   - Observe live coordinates banner.
+   - Click `🔄 Re-Geocode Selected` (or edit Lat/Lng/Radius numbers manually in the result box).
+   - Click `💾 Save to Places`.
+3. **Bulk Re-Geocoding Existing Locations**:
+   - In the **Force Re-Geocode Existing Locations** section, choose `All Locations` or `Specific Country` and click `⚡ Re-Geocode` to scan and batch re-geocode.
+   - Alternatively, click `⚡ Re-Geocode All States in [Country]` or `⚡ Re-Geocode All Cities & Places in [State]`.
+   - Requests run sequentially with safety throttling to comply with OSM usage policies.
 
 ---
 
-### Workflow 3: Resolving Name Mismatches in Boundary Generation
-Natural Earth sometimes uses alternate or historical spellings (e.g. `Lao PDR` vs `Laos`, `Puducherry` vs `Pondicherry`).
-To map new names:
-1. Open [`utils/build-geo-boundaries.js`](file:///d:/Projects/telebirding/utils/build-geo-boundaries.js).
-2. For country mismatches, add to `COUNTRY_NAME_MAP`:
-   ```javascript
-   const COUNTRY_NAME_MAP = {
-       'MyCountry': 'NaturalEarthCountryName',
-   };
-   ```
-3. For state mismatches, add to `STATE_NAME_MAP`:
-   ```javascript
-   const STATE_NAME_MAP = {
-       'Country/PlacesStateName': 'NaturalEarthStateName',
-   };
-   ```
-4. Re-run `npm run build:geo`.
+### Workflow 3: Backup and Restore
+1. **Admin Backup**:
+   - Clicking `Backup` in Admin data tab backs up `places.json` and every country boundary into `backup/${date}/geo/${country}.json` as minified JSON.
+2. **Admin Restore**:
+   - Restoring a backup pulls `backup/${date}/geo/*.json`, restores in-memory structures, and uploads back to `data/geo/${country}.json`.
+3. **Local CLI Backup**:
+   - Run `python utils/backup.py` to download all data and per-country geo boundaries into `webapp/resources/data/geo/`.
 
 ---
 
 ## ⚠️ Important Rules & Gotchas
 
-1. **Keep GeoJSON Payloads Small**:
-   - Raw global Admin-1 files are ~38 MB+. Never serve raw 10m GeoJSON directly in client browsers.
-   - Always filter to repository locations and simplify coordinates to 2 decimal places (`simplifyCoords(coords, 2)`).
-   - Target bundle size: `geo-countries.json` < 30 KB, `geo-states.json` < 300 KB.
+1. **Storage Rules Limit (15 MB)**:
+   - Country files with detailed multi-polygons (e.g. `Russia.json`) can be large. Ensure `storage.rules` allows up to 15 MB writes under `/data/geo/` and `/backup/`.
+   - When serializing GeoJSON in backup scripts/modules, do not use whitespace indentation (`JSON.stringify(data)`) to keep payloads compact.
 
 2. **OSM Nominatim Rate Limits**:
    - Public Nominatim allows max 1 request/second.
@@ -174,4 +206,4 @@ To map new names:
    - Resolves canonical Firebase Storage URLs in production (`FIREBASE_ENABLED`), localhost prepended paths (`resources/data/...`), and Android local offline cache paths.
 
 4. **Cache Invalidation**:
-   - When modifying `species-map.js`, `rendering.js`, `admin.js`, or `admin/rendering.js`, bump the query version string (`?v=YYYYMMDD_N`) in `webapp/index.html` and `webapp/admin.html`.
+   - When modifying `species-map.js`, `home.css`, `rendering.js`, `admin.js`, or `admin/rendering.js`, bump the query version string (`?v=YYYYMMDD_N`) in `webapp/index.html` and `webapp/admin.html`.

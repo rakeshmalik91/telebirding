@@ -696,6 +696,29 @@
 	margin: 10px 20px 20px 20px;
 	overflow: hidden;
 	z-index: 0;
+	background-color: #232227 !important;
+}
+
+#species-map.leaflet-container,
+#species-map .leaflet-tile-pane,
+#species-map .leaflet-tile-container,
+#species-map .leaflet-map-pane {
+	background-color: #232227 !important;
+}
+
+#species-map .leaflet-overlay-pane,
+#species-map .leaflet-statePane-pane,
+#species-map .leaflet-cityPane-pane,
+#species-map .leaflet-placePane-pane {
+	background-color: transparent !important;
+}
+
+.species-circle-place {
+	cursor: pointer;
+}
+
+.species-circle-city {
+	cursor: pointer;
 }
 
 #species-map .leaflet-control-zoom a {

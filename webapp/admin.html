@@ -38,7 +38,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20260830_3"></script>
+	<script type="module" src="scripts/admin.js?v=20260830_5"></script>
 
 </head>
 
@@ -263,13 +263,23 @@
 		<div id="places-tab" class="admin-tab-content">
 			<div class="admin-card">
 				<h2>Places &amp; Geocoding</h2>
-				<div class="places-provider-bar" style="margin-bottom: 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-					<span style="font-weight: 600;">Geocoding Provider:</span>
-					<select id="geo-provider-select" style="padding: 6px 12px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2);">
-						<option value="nominatim" selected>Nominatim (OpenStreetMap) - Default</option>
-						<option value="photon">Photon (Komoot)</option>
-					</select>
-					<span id="geo-provider-status" style="font-size: 12px; color: #94a3b8;">Active provider: Nominatim</span>
+				<div class="places-provider-bar" style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+						<span style="font-weight: 600; font-size: 13px;">📍 Geocoding Provider:</span>
+						<select id="geo-provider-select" style="padding: 6px 12px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
+							<option value="nominatim" selected>Nominatim (OpenStreetMap) - Default</option>
+							<option value="photon">Photon (Komoot)</option>
+						</select>
+						<span id="geo-provider-status" style="font-size: 12px; color: #94a3b8;">Active: Nominatim</span>
+					</div>
+					<div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1);"></div>
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+						<span style="font-weight: 600; font-size: 13px;">🗺️ Geo Boundary Provider:</span>
+						<select id="boundary-provider-select" style="padding: 6px 12px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
+							<option value="nominatim" selected>Nominatim (OpenStreetMap) - Default</option>
+						</select>
+						<span id="boundary-provider-status" style="font-size: 12px; color: #94a3b8;">Active: Nominatim</span>
+					</div>
 				</div>
 
 				<div class="places-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
@@ -380,28 +390,60 @@
 						</div>
 					</div>
 
-					<!-- Batch Scan & Fill / Re-geocode -->
+					<!-- Geocode Coverage & Batch Tools -->
 					<div class="place-batch-section" style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-						<h3 style="margin-top: 0;">Scan &amp; Batch Re-Geocode</h3>
-						<p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 10px;">
-							Scan locations across places.json and sightings. Choose to find missing coordinates or force re-geocode existing ones.
+						<h3 style="margin-top: 0; display: flex; align-items: center; justify-content: space-between;">
+							<span>📍 Geocode Coverage &amp; Batch Tools</span>
+						</h3>
+						<p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 12px;">
+							Real-time coordinate coverage across places.json and sightings. Missing locations are automatically detected.
 						</p>
-						<div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center;">
-							<select id="scan-mode-select" style="padding: 6px 10px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
-								<option value="missing" selected>Missing Coordinates Only</option>
-								<option value="all">All Existing Locations (Re-Geocode)</option>
-								<option value="country">Specific Country (Re-Geocode)</option>
-							</select>
-							<select id="scan-country-filter" style="display: none; padding: 6px 10px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;"></select>
-							<button id="btn-scan-missing-places" style="padding: 6px 14px;">🔎 Scan Locations</button>
+
+						<!-- Coverage Stats Box (Realtime) -->
+						<div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 14px;">
+							<div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 8px;">Geocode Coverage Status</div>
+							<div style="display: flex; gap: 14px; flex-wrap: wrap;">
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Countries:</span>
+									<strong id="geocode-stat-countries" style="font-size: 14px; color: #38bdf8; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">States:</span>
+									<strong id="geocode-stat-states" style="font-size: 14px; color: #22c55e; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Cities:</span>
+									<strong id="geocode-stat-cities" style="font-size: 14px; color: #a78bfa; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Places:</span>
+									<strong id="geocode-stat-places" style="font-size: 14px; color: #f59e0b; margin-left: 4px;">-</strong>
+								</div>
+							</div>
+							<div id="geocode-missing-alert" style="display: none; margin-top: 8px; font-size: 12px; color: #f59e0b; line-height: 1.4;"></div>
 						</div>
-						<div id="missing-places-summary" style="display: none;">
-							<div style="margin-bottom: 10px; font-weight: 500;" id="missing-places-count"></div>
-							<button id="btn-autofill-missing" style="background-color: #3b82f6; color: #fff; padding: 8px 16px; margin-bottom: 10px; display: none;">⚡ Auto-Fill / Re-Geocode All</button>
-							<div id="autofill-progress" style="display: none; margin-top: 10px;">
+
+						<!-- Missing Locations / Autofill -->
+						<div id="missing-places-summary">
+							<div style="margin-bottom: 8px; font-size: 13px;" id="missing-places-count"></div>
+							<button id="btn-autofill-missing" style="background-color: #3b82f6; color: #fff; padding: 8px 16px; margin-bottom: 8px; display: none;">⚡ Auto-Fill Missing Coordinates</button>
+							<div id="autofill-progress" style="display: none; margin-top: 8px;">
 								<div id="autofill-status-text" style="font-size: 12px; color: #38bdf8;"></div>
 							</div>
-							<div id="missing-places-list" style="max-height: 240px; overflow-y: auto; margin-top: 10px; font-size: 12px;"></div>
+							<div id="missing-places-list" style="max-height: 200px; overflow-y: auto; font-size: 12px;"></div>
+						</div>
+
+						<!-- Force Re-Geocode Existing Locations -->
+						<div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; margin-top: 12px;">
+							<div style="font-size: 12px; font-weight: 600; color: #94a3b8; margin-bottom: 8px;">Force Re-Geocode Existing Locations</div>
+							<div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+								<select id="scan-mode-select" style="padding: 6px 10px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
+									<option value="all">All Locations (Re-Geocode)</option>
+									<option value="country">Specific Country (Re-Geocode)</option>
+								</select>
+								<select id="scan-country-filter" style="display: none; padding: 6px 10px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;"></select>
+								<button id="btn-scan-missing-places" style="padding: 6px 14px; background-color: #7c3aed; color: #fff;">⚡ Re-Geocode</button>
+							</div>
 						</div>
 					</div>
 

@@ -10,7 +10,8 @@ import {
     deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
     syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
     uploadJSONData, getPlaceNode, getLocationGeo,
-    ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary
+    ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary,
+    getGeocodeCoverage, getBoundaryProvider, setBoundaryProvider
 } from './data.js';
 import { geoService, lookupLocation, setGeoProvider } from '../geo-service.js';
 import { showToast, customAlert } from './ui.js';
@@ -748,9 +749,21 @@ export function setupPlacesTab() {
     $providerSelect.off('change').on('change', function () {
         const newProvider = $(this).val();
         setGeoProvider(newProvider);
-        $('#geo-provider-status').text(`Active provider: ${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)}`);
+        $('#geo-provider-status').text(`Active: ${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)}`);
         showToast(`Switched geocoding provider to ${newProvider}`, 'info');
     });
+
+    // Geo boundary provider select
+    const $boundaryProviderSelect = $('#boundary-provider-select');
+    if ($boundaryProviderSelect.length) {
+        $boundaryProviderSelect.val(getBoundaryProvider());
+        $boundaryProviderSelect.off('change').on('change', function () {
+            const newProvider = $(this).val();
+            setBoundaryProvider(newProvider);
+            $('#boundary-provider-status').text(`Active: ${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)}`);
+            showToast(`Geo boundary provider set to ${newProvider}`, 'info');
+        });
+    }
 
     // Populate Country, State, City, Place selectors
     const $countrySelect = $('#place-lookup-country');
@@ -1026,6 +1039,118 @@ export function setupPlacesTab() {
         }
     });
 
+    // ==========================================
+    // Geocode Coverage & Batch Scanner Logic
+    // ==========================================
+    let currentScanList = [];
+
+    function renderScanTable(items, isMissingMode) {
+        currentScanList = items;
+        if (items.length === 0) {
+            $('#btn-autofill-missing').hide();
+            $('#missing-places-list').empty();
+            if (isMissingMode) {
+                $('#missing-places-count').html('<span style="color: #22c55e; font-weight: 500;">✓ All locations have valid coordinates and radius!</span>');
+            } else {
+                $('#missing-places-count').html('<span style="color: #94a3b8;">No matching locations found.</span>');
+            }
+            return;
+        }
+
+        const btnText = isMissingMode ? `⚡ Auto-Fill Missing Coordinates (${items.length})` : `⚡ Re-Geocode All (${items.length})`;
+        $('#btn-autofill-missing').show().text(btnText);
+        $('#missing-places-count').html(isMissingMode
+            ? `<span style="color: #f59e0b; font-weight: 600;">Found ${items.length} location(s) missing coordinates:</span>`
+            : `<span style="color: #c084fc; font-weight: 600;">Found ${items.length} matching location(s) for re-geocode:</span>`
+        );
+
+        let html = '<table style="width: 100%; border-collapse: collapse;">';
+        html += '<tr style="color: #94a3b8; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);"><th style="padding: 6px 4px;">Level</th><th style="padding: 6px 4px;">Name</th><th style="padding: 6px 4px;">Coordinates</th><th style="padding: 6px 4px;">Action</th></tr>';
+        items.forEach((m, idx) => {
+            const badgeColor = m.type === 'country' ? '#ef4444' : (m.type === 'state' ? '#a855f7' : (m.type === 'city' ? '#38bdf8' : '#22c55e'));
+            const coordsText = (m.lat && m.lng) ? `${m.lat}, ${m.lng} (${m.radius || '-'}km)` : '<span style="color: #f87171;">Missing</span>';
+            html += `<tr id="scan-row-${idx}" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 4px;"><span style="background: ${badgeColor}22; color: ${badgeColor}; border: 1px solid ${badgeColor}44; padding: 2px 6px; border-radius: 4px; font-size: 11px; text-transform: uppercase; font-weight: 600;">${m.type}</span></td>
+                <td style="padding: 4px; color: #fff; font-weight: 500;">${m.displayName} <span style="font-size: 11px; color: #64748b;">(${m.parentContext})</span></td>
+                <td style="padding: 4px; font-family: monospace; font-size: 11px; color: #94a3b8;" class="row-coords">${coordsText}</td>
+                <td style="padding: 4px;">
+                    <button class="btn-regeocode-single" data-idx="${idx}" style="padding: 2px 8px; font-size: 11px; background: #0284c7; color: white;">🔄 Re-Geocode</button>
+                </td>
+            </tr>`;
+        });
+        html += '</table>';
+        $('#missing-places-list').html(html);
+
+        // Single row re-geocode
+        $('.btn-regeocode-single').off('click').on('click', async function () {
+            const idx = parseInt($(this).data('idx'), 10);
+            const item = currentScanList[idx];
+            const $row = $(`#scan-row-${idx}`);
+            const $btn = $(this);
+
+            $btn.text('⏳').attr('disabled', 'disabled');
+            try {
+                const res = await lookupLocation({
+                    country: item.country,
+                    state: item.state,
+                    city: item.city,
+                    place: item.place,
+                    type: item.type
+                });
+                if (res) {
+                    savePlaceGeo({
+                        country: item.country,
+                        state: item.state || null,
+                        city: item.city || null,
+                        place: item.place || null,
+                        lat: res.lat,
+                        lng: res.lng,
+                        radius: res.radius
+                    });
+                    $row.find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
+                    $btn.text('✔ Done').css({ background: '#22c55e' });
+                    showToast(`Re-geocoded "${item.displayName}"!`, 'success');
+                    updateCurrentCoordsBanner();
+                    updateGeocodeCoverageUI();
+                } else {
+                    $btn.text('❌ Not found').css({ background: '#ef4444' });
+                }
+            } catch (err) {
+                console.error(err);
+                $btn.text('❌ Error').css({ background: '#ef4444' });
+            }
+        });
+    }
+
+    function updateGeocodeCoverageUI() {
+        const coverage = getGeocodeCoverage();
+
+        const countryPct = coverage.countries.total > 0 ? Math.round((coverage.countries.geocoded / coverage.countries.total) * 100) : 100;
+        const statePct = coverage.states.total > 0 ? Math.round((coverage.states.geocoded / coverage.states.total) * 100) : 100;
+        const cityPct = coverage.cities.total > 0 ? Math.round((coverage.cities.geocoded / coverage.cities.total) * 100) : 100;
+        const placePct = coverage.places.total > 0 ? Math.round((coverage.places.geocoded / coverage.places.total) * 100) : 100;
+
+        $('#geocode-stat-countries').text(`${coverage.countries.geocoded} / ${coverage.countries.total} (${countryPct}%)`)
+            .css('color', countryPct === 100 ? '#22c55e' : '#38bdf8');
+        $('#geocode-stat-states').text(`${coverage.states.geocoded} / ${coverage.states.total} (${statePct}%)`)
+            .css('color', statePct === 100 ? '#22c55e' : '#38bdf8');
+        $('#geocode-stat-cities').text(`${coverage.cities.geocoded} / ${coverage.cities.total} (${cityPct}%)`)
+            .css('color', cityPct === 100 ? '#22c55e' : '#a78bfa');
+        $('#geocode-stat-places').text(`${coverage.places.geocoded} / ${coverage.places.total} (${placePct}%)`)
+            .css('color', placePct === 100 ? '#22c55e' : '#f59e0b');
+
+        if (coverage.missingList.length === 0) {
+            $('#geocode-missing-alert').hide();
+        } else {
+            $('#geocode-missing-alert').show().html(
+                `⚠️ <strong>Missing coordinates (${coverage.missingList.length}):</strong> ${coverage.missingList.slice(0, 4).map(m => m.displayName).join(', ')}${coverage.missingList.length > 4 ? '...' : ''}`
+            );
+        }
+
+        // Always render real-time missing locations list without needing scan button
+        renderScanTable(coverage.missingList, true);
+    }
+
     function refreshSelects() {
         const countries = data.countries || {};
         let countryOptions = '<option value="">-- Select Country --</option>';
@@ -1071,6 +1196,7 @@ export function setupPlacesTab() {
 
         refreshBoundarySelects();
         updateBoundaryCoverageUI();
+        updateGeocodeCoverageUI();
     }
     refreshSelects();
 
@@ -1241,6 +1367,7 @@ export function setupPlacesTab() {
         showToast(`Saved "${label}" to places.json!`, 'success');
         $('#geo-lookup-result').hide();
         updateCurrentCoordsBanner();
+        updateGeocodeCoverageUI();
     });
 
     // Batch Re-Geocode Sub-Locations (States of Country or Cities/Places of State)
@@ -1326,7 +1453,7 @@ export function setupPlacesTab() {
         updateCurrentCoordsBanner();
     });
 
-    // Scan Mode Switcher (missing / all / country)
+    // Scan Mode Switcher (all / country for force re-geocode)
     $('#scan-mode-select').off('change').on('change', function () {
         const mode = $(this).val();
         if (mode === 'country') {
@@ -1336,203 +1463,87 @@ export function setupPlacesTab() {
         }
     });
 
-    // Scan / Re-Geocode Scanner
+    // Force Re-Geocode Scanner (for existing locations)
     $('#btn-scan-missing-places').off('click').on('click', function () {
-        const mode = $('#scan-mode-select').val() || 'missing';
+        const mode = $('#scan-mode-select').val() || 'all';
         const selectedCountry = $('#scan-country-filter').val();
         const countries = data.countries || {};
-        const sightings = data.sightings || [];
         const scanMap = new Map();
 
-        // Helper to check if item matches scan mode
-        function shouldInclude(item, isMissing) {
-            if (mode === 'missing') return isMissing;
-            if (mode === 'country') return item.country === selectedCountry;
-            return true; // 'all'
-        }
-
-        // 1. Scan places.json
         Object.keys(countries).forEach(country => {
             if (mode === 'country' && selectedCountry && country !== selectedCountry) return;
             const countryObj = countries[country];
             if (!countryObj) return;
 
-            const isCountryMissing = !countryObj.lat || !countryObj.lng;
-            const countryItem = {
-                type: 'country',
-                country,
-                state: '',
-                city: '',
-                place: '',
-                displayName: country,
-                parentContext: '-',
-                lat: countryObj.lat,
-                lng: countryObj.lng,
-                radius: countryObj.radius
-            };
-            if (shouldInclude(countryItem, isCountryMissing)) {
-                scanMap.set(`country|${country}`, countryItem);
-            }
+            scanMap.set(`country|${country}`, {
+                type: 'country', country, state: '', city: '', place: '',
+                displayName: country, parentContext: '-',
+                lat: countryObj.lat, lng: countryObj.lng, radius: countryObj.radius
+            });
 
             const states = countryObj.states || {};
             Object.keys(states).forEach(state => {
                 const stateObj = states[state];
                 if (!stateObj) return;
 
-                const isStateMissing = !stateObj.lat || !stateObj.lng;
-                const stateItem = {
-                    type: 'state',
-                    country,
-                    state,
-                    city: '',
-                    place: '',
-                    displayName: state,
-                    parentContext: country,
-                    lat: stateObj.lat,
-                    lng: stateObj.lng,
-                    radius: stateObj.radius
-                };
-                if (shouldInclude(stateItem, isStateMissing)) {
-                    scanMap.set(`state|${country}|${state}`, stateItem);
-                }
+                scanMap.set(`state|${country}|${state}`, {
+                    type: 'state', country, state, city: '', place: '',
+                    displayName: state, parentContext: country,
+                    lat: stateObj.lat, lng: stateObj.lng, radius: stateObj.radius
+                });
 
                 const cities = stateObj.cities || {};
                 Object.keys(cities).forEach(city => {
                     const cityObj = cities[city];
                     if (!cityObj) return;
 
-                    const isCityMissing = !cityObj.lat || !cityObj.lng;
-                    const cityItem = {
-                        type: 'city',
-                        country,
-                        state,
-                        city,
-                        place: '',
-                        displayName: city,
-                        parentContext: `${state}, ${country}`,
-                        lat: cityObj.lat,
-                        lng: cityObj.lng,
-                        radius: cityObj.radius
-                    };
-                    if (shouldInclude(cityItem, isCityMissing)) {
-                        scanMap.set(`city|${country}|${state}|${city}`, cityItem);
-                    }
+                    scanMap.set(`city|${country}|${state}|${city}`, {
+                        type: 'city', country, state, city, place: '',
+                        displayName: city, parentContext: `${state}, ${country}`,
+                        lat: cityObj.lat, lng: cityObj.lng, radius: cityObj.radius
+                    });
 
                     const places = cityObj.places || {};
                     Object.keys(places).forEach(place => {
                         const placeObj = places[place];
                         if (!placeObj) return;
 
-                        const isPlaceMissing = !placeObj.lat || !placeObj.lng;
-                        const placeItem = {
-                            type: 'place',
-                            country,
-                            state,
-                            city,
-                            place,
-                            displayName: place,
-                            parentContext: `${city}, ${state}, ${country}`,
-                            lat: placeObj.lat,
-                            lng: placeObj.lng,
-                            radius: placeObj.radius
-                        };
-                        if (shouldInclude(placeItem, isPlaceMissing)) {
-                            scanMap.set(`place|${country}|${state}|${city}|${place}`, placeItem);
-                        }
+                        scanMap.set(`place|${country}|${state}|${city}|${place}`, {
+                            type: 'place', country, state, city, place,
+                            displayName: place, parentContext: `${city}, ${state}, ${country}`,
+                            lat: placeObj.lat, lng: placeObj.lng, radius: placeObj.radius
+                        });
                     });
                 });
             });
         });
 
-        // 2. Also scan sightings if looking for missing
-        if (mode === 'missing') {
-            sightings.forEach(s => {
-                const country = s.country && s.country.trim();
-                const state = s.state && s.state.trim();
-                const city = s.city && s.city.trim();
-                const place = s.place && s.place.trim();
-
-                if (country && (!countries[country] || !countries[country].lat || !countries[country].lng)) {
-                    const key = `country|${country}`;
-                    if (!scanMap.has(key)) {
-                        scanMap.set(key, { type: 'country', country, state: '', city: '', place: '', displayName: country, parentContext: '-' });
-                    }
-                }
-                if (country && state) {
-                    const stateObj = countries[country]?.states?.[state];
-                    if (!stateObj || !stateObj.lat || !stateObj.lng) {
-                        const key = `state|${country}|${state}`;
-                        if (!scanMap.has(key)) {
-                            scanMap.set(key, { type: 'state', country, state, city: '', place: '', displayName: state, parentContext: country });
-                        }
-                    }
-                }
-                if (country && state && city) {
-                    const cityObj = countries[country]?.states?.[state]?.cities?.[city];
-                    if (!cityObj || !cityObj.lat || !cityObj.lng) {
-                        const key = `city|${country}|${state}|${city}`;
-                        if (!scanMap.has(key)) {
-                            scanMap.set(key, { type: 'city', country, state, city, place: '', displayName: city, parentContext: `${state}, ${country}` });
-                        }
-                    }
-                }
-                if (country && state && city && place) {
-                    const placeObj = countries[country]?.states?.[state]?.cities?.[city]?.places?.[place];
-                    if (!placeObj || !placeObj.lat || !placeObj.lng) {
-                        const key = `place|${country}|${state}|${city}|${place}`;
-                        if (!scanMap.has(key)) {
-                            scanMap.set(key, { type: 'place', country, state, city, place, displayName: place, parentContext: `${city}, ${state}, ${country}` });
-                        }
-                    }
-                }
-            });
-        }
-
         const scanList = Array.from(scanMap.values());
-        $('#missing-places-summary').show();
-        const actionLabel = mode === 'missing' ? 'missing coordinates' : 'matching';
-        $('#missing-places-count').text(`Found ${scanList.length} ${actionLabel} location(s).`);
+        renderScanTable(scanList, false);
+    });
 
-        if (scanList.length === 0) {
-            $('#btn-autofill-missing').hide();
-            $('#missing-places-list').html('<div style="color: #22c55e; padding: 6px 0;">No locations matched the criteria.</div>');
-            return;
-        }
+    // Batch Re-geocode / Auto-fill for active list
+    $('#btn-autofill-missing').off('click').on('click', async function () {
+        const $autofillBtn = $(this);
+        $autofillBtn.attr('disabled', 'disabled');
+        $('#autofill-progress').show();
 
-        $('#btn-autofill-missing').show().text(mode === 'missing' ? `⚡ Auto-Fill All (${scanList.length})` : `⚡ Re-Geocode All (${scanList.length})`);
-        let html = '<table style="width: 100%; border-collapse: collapse;">';
-        html += '<tr style="color: #94a3b8; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);"><th style="padding: 6px 4px;">Level</th><th style="padding: 6px 4px;">Name</th><th style="padding: 6px 4px;">Coordinates</th><th style="padding: 6px 4px;">Action</th></tr>';
-        scanList.forEach((m, idx) => {
-            const badgeColor = m.type === 'country' ? '#ef4444' : (m.type === 'state' ? '#a855f7' : (m.type === 'city' ? '#38bdf8' : '#22c55e'));
-            const coordsText = (m.lat && m.lng) ? `${m.lat}, ${m.lng} (${m.radius || '-'}km)` : '<span style="color: #f87171;">Missing</span>';
-            html += `<tr id="scan-row-${idx}" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 4px;"><span style="background: ${badgeColor}22; color: ${badgeColor}; border: 1px solid ${badgeColor}44; padding: 2px 6px; border-radius: 4px; font-size: 11px; text-transform: uppercase; font-weight: 600;">${m.type}</span></td>
-                <td style="padding: 4px; color: #fff; font-weight: 500;">${m.displayName} <span style="font-size: 11px; color: #64748b;">(${m.parentContext})</span></td>
-                <td style="padding: 4px; font-family: monospace; font-size: 11px; color: #94a3b8;" class="row-coords">${coordsText}</td>
-                <td style="padding: 4px;">
-                    <button class="btn-regeocode-single" data-idx="${idx}" style="padding: 2px 8px; font-size: 11px; background: #0284c7; color: white;">🔄 Re-Geocode</button>
-                </td>
-            </tr>`;
-        });
-        html += '</table>';
-        $('#missing-places-list').html(html);
+        let successCount = 0;
+        let failCount = 0;
 
-        // Single row re-geocode
-        $('.btn-regeocode-single').off('click').on('click', async function () {
-            const idx = parseInt($(this).data('idx'));
-            const item = scanList[idx];
-            const $row = $(`#scan-row-${idx}`);
-            const $btn = $(this);
+        for (let i = 0; i < currentScanList.length; i++) {
+            const item = currentScanList[i];
+            $('#autofill-status-text').text(`Geocoding [${i + 1}/${currentScanList.length}] (${item.type}) "${item.displayName}" via ${geoService.getActiveProviderName()}...`);
 
-            $btn.text('⏳').attr('disabled', 'disabled');
             try {
                 const res = await lookupLocation({
-                    country: item.country,
-                    state: item.state,
-                    city: item.city,
                     place: item.place,
+                    city: item.city,
+                    state: item.state,
+                    country: item.country,
                     type: item.type
                 });
+
                 if (res) {
                     savePlaceGeo({
                         country: item.country,
@@ -1541,82 +1552,37 @@ export function setupPlacesTab() {
                         place: item.place || null,
                         lat: res.lat,
                         lng: res.lng,
-                        radius: res.radius
+                        radius: res.radius,
+                        skipUpload: true
                     });
-                    $row.find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
-                    $btn.text('✔ Done').css({ background: '#22c55e' });
-                    showToast(`Re-geocoded "${item.displayName}"!`, 'success');
-                    updateCurrentCoordsBanner();
+                    $(`#scan-row-${i}`).find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
+                    successCount++;
                 } else {
-                    $btn.text('❌ Not found').css({ background: '#ef4444' });
-                }
-            } catch (err) {
-                console.error(err);
-                $btn.text('❌ Error').css({ background: '#ef4444' });
-            }
-        });
-
-        // Batch Re-geocode / Auto-fill
-        $('#btn-autofill-missing').off('click').on('click', async function () {
-            const $autofillBtn = $(this);
-            $autofillBtn.attr('disabled', 'disabled');
-            $('#autofill-progress').show();
-
-            let successCount = 0;
-            let failCount = 0;
-
-            for (let i = 0; i < scanList.length; i++) {
-                const item = scanList[i];
-                $('#autofill-status-text').text(`Geocoding [${i + 1}/${scanList.length}] (${item.type}) "${item.displayName}" via ${geoService.getActiveProviderName()}...`);
-
-                try {
-                    const res = await lookupLocation({
-                        place: item.place,
-                        city: item.city,
-                        state: item.state,
-                        country: item.country,
-                        type: item.type
-                    });
-
-                    if (res) {
-                        savePlaceGeo({
-                            country: item.country,
-                            state: item.state || null,
-                            city: item.city || null,
-                            place: item.place || null,
-                            lat: res.lat,
-                            lng: res.lng,
-                            radius: res.radius,
-                            skipUpload: true
-                        });
-                        $(`#scan-row-${i}`).find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
-                        successCount++;
-                    } else {
-                        failCount++;
-                    }
-                } catch (e) {
-                    console.error(e);
                     failCount++;
                 }
+            } catch (e) {
+                console.error(e);
+                failCount++;
             }
+        }
 
-            if (successCount > 0) {
-                try {
-                    uploadJSONData('places', true);
-                    refreshSelects();
-                } catch (err) {
-                    console.error('Failed to upload places.json after autofill:', err);
-                }
+        if (successCount > 0) {
+            try {
+                uploadJSONData('places', true);
+                refreshSelects();
+            } catch (err) {
+                console.error('Failed to upload places.json after autofill:', err);
             }
+        }
 
-            $('#autofill-status-text').html(
-                `<span style="color: #22c55e;">Completed: ${successCount} geocoded and saved to places.json.</span>` +
-                (failCount > 0 ? ` <span style="color: #ef4444;">(${failCount} could not be located)</span>` : '')
-            );
-            $autofillBtn.removeAttr('disabled');
-            showToast(`Re-geocoded and saved ${successCount} location(s) to places.json!`, 'success');
-            updateCurrentCoordsBanner();
-        });
+        $('#autofill-status-text').html(
+            `<span style="color: #22c55e;">Completed: ${successCount} geocoded and saved to places.json.</span>` +
+            (failCount > 0 ? ` <span style="color: #ef4444;">(${failCount} could not be located)</span>` : '')
+        );
+        $autofillBtn.removeAttr('disabled');
+        showToast(`Saved ${successCount} location(s) to places.json!`, 'success');
+        updateCurrentCoordsBanner();
+        updateGeocodeCoverageUI();
     });
 
 }

@@ -342,4 +342,36 @@ describe('Admin Places Geocoding Integration', () => {
         expect(updated.lng).toBe(88.5678);
         expect(updated.radius).toBe(120);
     });
+
+    it('getGeocodeCoverage should calculate real-time coverage statistics', () => {
+        // India is geocoded, West Bengal is geocoded, Howrah is geocoded, Bally from sightings has no coords in places.json
+        const coverage = AdminData.getGeocodeCoverage();
+
+        expect(coverage.countries.total).toBe(1);
+        expect(coverage.countries.geocoded).toBe(1);
+        expect(coverage.states.total).toBe(1);
+        expect(coverage.states.geocoded).toBe(1);
+        expect(coverage.cities.total).toBe(1);
+        expect(coverage.cities.geocoded).toBe(1);
+
+        // Bally is in sightings but missing from places.json
+        expect(coverage.places.missing).toContain('Bally, Howrah');
+        expect(coverage.missingList.some(m => m.place === 'Bally')).toBe(true);
+
+        // Now save Bally coordinates
+        AdminData.savePlaceGeo({
+            country: 'India',
+            state: 'West Bengal',
+            city: 'Howrah',
+            place: 'Bally',
+            lat: 22.65,
+            lng: 88.34,
+            radius: 5
+        });
+
+        // Check coverage again in real time
+        const updatedCoverage = AdminData.getGeocodeCoverage();
+        expect(updatedCoverage.places.geocoded).toBe(1);
+        expect(updatedCoverage.missingList.length).toBe(0);
+    });
 });

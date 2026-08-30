@@ -97,6 +97,11 @@ describe('Admin Geo Boundaries Management', () => {
                 </select>
                 <div id="geo-provider-status"></div>
 
+                <select id="boundary-provider-select">
+                    <option value="nominatim">Nominatim</option>
+                </select>
+                <div id="boundary-provider-status"></div>
+
                 <select id="place-lookup-country"></select>
                 <select id="place-lookup-state"></select>
                 <input type="text" id="place-lookup-city" />
@@ -282,6 +287,17 @@ describe('Admin Geo Boundaries Management', () => {
             // Select Singapore (missing boundary)
             $('#boundary-inspect-country').val('Singapore').trigger('change');
             expect($('#boundary-status-text').text()).toContain('No Boundary Polygon');
+        });
+
+        it('configures boundary provider at the top of Places tab', () => {
+            setupPlacesTab();
+
+            expect(AdminData.getBoundaryProvider()).toBe('nominatim');
+            expect($('#boundary-provider-select').val()).toBe('nominatim');
+
+            // Change provider
+            $('#boundary-provider-select').val('nominatim').trigger('change');
+            expect($('#boundary-provider-status').text()).toContain('Active: Nominatim');
         });
     });
 

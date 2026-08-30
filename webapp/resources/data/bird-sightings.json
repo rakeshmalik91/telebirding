@@ -1,17 +1,6 @@
 {
     "sightings": [
         {
-            "key": "s1788076198",
-            "species": "rock-pigeon",
-            "date": "25-07-2026",
-            "city": "Howrah",
-            "state": "West Bengal",
-            "country": "India",
-            "time_of_day": "Day",
-            "weather": "Cloudy",
-            "hidden": true
-        },
-        {
             "key": "s1784952117",
             "species": "scaly-breasted-munia",
             "date": "25-07-2026",
