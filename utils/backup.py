@@ -23,8 +23,8 @@ for mode in ["bird", "insect"]:
 			json.dump(content, f, indent=4, ensure_ascii=False)
 	with open(resourcesDir / dataDir / f"{mode}-sightings.json", 'r', encoding='utf-8') as f:
 		data = json.load(f)
-	for sighting in data['sightings']:
-		for media in sighting['media']:
+	for sighting in data.get('sightings', []):
+		for media in sighting.get('media', []):
 			media_rel = media.get('src') if ('type' not in media or media['type'] == 'image') else media.get('thumbnail')
 			if media_rel:
 				src = firestoragePath + media_rel.replace('/', '%2F') + "?alt=media"
@@ -35,18 +35,51 @@ for mode in ["bird", "insect"]:
 					urllib.request.urlretrieve(src, str(dst_path))
 
 # Download places.json
-src = firestoragePath + dataDir + "%2Fplaces.json?alt=media"
-dst_path = resourcesDir / dataDir / "places.json"
-print(f"Downloading {dst_path.relative_to(ROOT)} ...")
-dst_path.parent.mkdir(parents=True, exist_ok=True)
+places_src = firestoragePath + dataDir + "%2Fplaces.json?alt=media"
+places_dst = resourcesDir / dataDir / "places.json"
+print(f"Downloading {places_dst.relative_to(ROOT)} ...")
+places_dst.parent.mkdir(parents=True, exist_ok=True)
+countries = set()
 try:
-	urllib.request.urlretrieve(src, str(dst_path))
-	with open(dst_path, 'r', encoding='utf-8') as f:
-		content = json.load(f)
-	with open(dst_path, 'w', encoding='utf-8') as f:
-		json.dump(content, f, indent=4, ensure_ascii=False)
+	urllib.request.urlretrieve(places_src, str(places_dst))
+	with open(places_dst, 'r', encoding='utf-8') as f:
+		places_content = json.load(f)
+	with open(places_dst, 'w', encoding='utf-8') as f:
+		json.dump(places_content, f, indent=4, ensure_ascii=False)
+	countries.update(places_content.get('countries', {}).keys())
 except Exception as e:
 	print(f"Error downloading places.json: {e}")
+
+# Also discover any locally known geo countries
+geo_dir = resourcesDir / dataDir / "geo"
+geo_dir.mkdir(parents=True, exist_ok=True)
+if geo_dir.exists():
+	for f in geo_dir.glob("*.json"):
+		countries.add(f.stem)
+
+# Download geo/{country}.json for all countries
+for country in sorted(countries):
+	geo_src = firestoragePath + "data%2Fgeo%2F" + urllib.parse.quote(country) + ".json?alt=media"
+	dst_path = geo_dir / f"{country}.json"
+	print(f"Downloading {dst_path.relative_to(ROOT)} ...")
+	try:
+		urllib.request.urlretrieve(geo_src, str(dst_path))
+		with open(dst_path, 'r', encoding='utf-8') as f:
+			content = json.load(f)
+		with open(dst_path, 'w', encoding='utf-8') as f:
+			json.dump(content, f, indent=4, ensure_ascii=False)
+	except Exception as e:
+		print(f"Notice: Could not download remote geo/{country}.json: {e}")
+
+# Clean up obsolete monolithic geo files if they exist locally
+for legacy_file in ["geo-countries.json", "geo-states.json"]:
+	legacy_path = resourcesDir / dataDir / legacy_file
+	if legacy_path.exists():
+		try:
+			legacy_path.unlink()
+			print(f"Removed legacy {legacy_file}")
+		except Exception:
+			pass
 
 
 

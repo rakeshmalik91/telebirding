@@ -30,4 +30,9 @@ This file defines coding standards and rules for the Antigravity agent to follow
 - **Project Structure**: Be mindful of the repository layout defined in the [project-structure skill](file:///d:/Projects/telebirding/.agents/skills/project-structure/SKILL.md)—specifically the split between static web frontend in `webapp/`, processing scripts in `utils/`, data and media assets in `resources/`, and the native Android app in `telebirding-android-app/`.
 - **Requirements Tooling**: Be aware that generating `requirements.txt` can sometimes cause the agent to freeze. If this occurs, try creating the file with minimal contents and then appending dependencies, or use `run_command` with `echo` as an alternative to `write_to_file`.
 - **Android App**: The Android app is located under the `telebirding-android-app` folder and wraps the web application using local caching.
+- **Browser Automation & Walkthroughs**:
+  - **Do NOT use browser automation** to create walkthrough documents or capture screenshots for them.
+  - Only use browser automation for testing if strictly necessary for complex changes that cannot be validated via automated tests.
+
+
 

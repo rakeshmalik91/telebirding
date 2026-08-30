@@ -49,5 +49,8 @@ webapp/coverage/*
 
 tmp
 .tmp
-*.log
 test*.txt
+
+# Build caches
+.cache
+utils/.cache

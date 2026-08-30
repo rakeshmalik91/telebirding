@@ -1398,9 +1398,9 @@
                         },
                         "Howrah": {
                             "name": "Howrah",
-                            "lat": 22.59,
-                            "lng": 88.26,
-                            "radius": 10,
+                            "lat": 22.5736,
+                            "lng": 88.3251,
+                            "radius": 9,
                             "places": {
                                 "AJC Bose Botanical Garden": {
                                     "name": "AJC Bose Botanical Garden",
@@ -3846,6 +3846,512 @@
             },
             "lat": 36.5748,
             "lng": 139.2394,
+            "radius": 1500
+        },
+        "Russia": {
+            "name": "Russia",
+            "states": {
+                "Altai Krai": {
+                    "name": "Altai Krai",
+                    "lat": 52.6932,
+                    "lng": 82.6931,
+                    "radius": 200
+                },
+                "Altai Republic": {
+                    "name": "Altai Republic",
+                    "lat": 50.7114,
+                    "lng": 86.8572,
+                    "radius": 200
+                },
+                "Amur Oblast": {
+                    "name": "Amur Oblast",
+                    "lat": 52.8032,
+                    "lng": 128.4373,
+                    "radius": 200
+                },
+                "Arkhangelsk": {
+                    "name": "Arkhangelsk",
+                    "lat": 64.541,
+                    "lng": 40.5287,
+                    "radius": 30
+                },
+                "Astrakhan Oblast": {
+                    "name": "Astrakhan Oblast",
+                    "lat": 47.1878,
+                    "lng": 47.6089,
+                    "radius": 200
+                },
+                "Belgorod Oblast": {
+                    "name": "Belgorod Oblast",
+                    "lat": 50.708,
+                    "lng": 37.5838,
+                    "radius": 190
+                },
+                "Bryansk Oblast": {
+                    "name": "Bryansk Oblast",
+                    "lat": 52.8873,
+                    "lng": 33.4159,
+                    "radius": 192
+                },
+                "Chechen Republic": {
+                    "name": "Chechen Republic",
+                    "lat": 43.4,
+                    "lng": 45.7,
+                    "radius": 129
+                },
+                "Chelyabinsk Oblast": {
+                    "name": "Chelyabinsk Oblast",
+                    "lat": 54.4224,
+                    "lng": 61.1866,
+                    "radius": 200
+                },
+                "Chukotka Autonomous Okrug": {
+                    "name": "Chukotka Autonomous Okrug",
+                    "lat": 66.0006,
+                    "lng": 169.4901,
+                    "radius": 200
+                },
+                "Chuvash Republic": {
+                    "name": "Chuvash Republic",
+                    "lat": 55.426,
+                    "lng": 47.0849,
+                    "radius": 130
+                },
+                "Irkutsk": {
+                    "name": "Irkutsk",
+                    "lat": 52.2891,
+                    "lng": 104.2798,
+                    "radius": 25
+                },
+                "Ivanovo Oblast": {
+                    "name": "Ivanovo Oblast",
+                    "lat": 56.9167,
+                    "lng": 41.4352,
+                    "radius": 154
+                },
+                "Jewish Autonomous Oblast": {
+                    "name": "Jewish Autonomous Oblast",
+                    "lat": 48.5602,
+                    "lng": 132.2776,
+                    "radius": 200
+                },
+                "Kabardino-Balkar Republic": {
+                    "name": "Kabardino-Balkar Republic",
+                    "lat": 43.4428,
+                    "lng": 43.4205,
+                    "radius": 106
+                },
+                "Kaliningrad": {
+                    "name": "Kaliningrad",
+                    "lat": 54.7101,
+                    "lng": 20.5106,
+                    "radius": 25
+                },
+                "Kaluga Oblast": {
+                    "name": "Kaluga Oblast",
+                    "lat": 54.4383,
+                    "lng": 35.5273,
+                    "radius": 188
+                },
+                "Kamchatka Krai": {
+                    "name": "Kamchatka Krai",
+                    "lat": 57.1915,
+                    "lng": 160.0384,
+                    "radius": 200
+                },
+                "Karachay-Cherkess Republic": {
+                    "name": "Karachay-Cherkess Republic",
+                    "lat": 43.7368,
+                    "lng": 41.7268,
+                    "radius": 119
+                },
+                "Kemerovo Oblast": {
+                    "name": "Kemerovo Oblast",
+                    "lat": 54.5336,
+                    "lng": 87.3429,
+                    "radius": 200
+                },
+                "Khabarovsk Krai": {
+                    "name": "Khabarovsk Krai",
+                    "lat": 51.6313,
+                    "lng": 136.1215,
+                    "radius": 200
+                },
+                "Khanty-Mansi Autonomous Okrug": {
+                    "name": "Khanty-Mansi Autonomous Okrug",
+                    "lat": 61.8793,
+                    "lng": 68.6418,
+                    "radius": 200
+                },
+                "Kirov Oblast": {
+                    "name": "Kirov Oblast",
+                    "lat": 58.5631,
+                    "lng": 50.1825,
+                    "radius": 200
+                },
+                "Komi Republic": {
+                    "name": "Komi Republic",
+                    "lat": 63.9881,
+                    "lng": 54.3326,
+                    "radius": 200
+                },
+                "Kostroma Oblast": {
+                    "name": "Kostroma Oblast",
+                    "lat": 58.4248,
+                    "lng": 44.2533,
+                    "radius": 200
+                },
+                "Krasnodar Krai": {
+                    "name": "Krasnodar Krai",
+                    "lat": 45.7682,
+                    "lng": 39.0258,
+                    "radius": 200
+                },
+                "Krasnoyarsk Krai": {
+                    "name": "Krasnoyarsk Krai",
+                    "lat": 63.3234,
+                    "lng": 97.098,
+                    "radius": 200
+                },
+                "Kurgan Oblast": {
+                    "name": "Kurgan Oblast",
+                    "lat": 55.852,
+                    "lng": 63.7723,
+                    "radius": 200
+                },
+                "Kursk Oblast": {
+                    "name": "Kursk Oblast",
+                    "lat": 51.6568,
+                    "lng": 36.4853,
+                    "radius": 187
+                },
+                "Leningrad Oblast": {
+                    "name": "Leningrad Oblast",
+                    "lat": 60.1853,
+                    "lng": 32.3925,
+                    "radius": 200
+                },
+                "Lipetsk Oblast": {
+                    "name": "Lipetsk Oblast",
+                    "lat": 52.6935,
+                    "lng": 39.1123,
+                    "radius": 148
+                },
+                "Magadan Oblast": {
+                    "name": "Magadan Oblast",
+                    "lat": 63.5515,
+                    "lng": 154.0147,
+                    "radius": 200
+                },
+                "Mari El Republic": {
+                    "name": "Mari El Republic",
+                    "lat": 56.5768,
+                    "lng": 47.8818,
+                    "radius": 166
+                },
+                "Moscow": {
+                    "name": "Moscow",
+                    "lat": 55.6256,
+                    "lng": 37.6064,
+                    "radius": 74
+                },
+                "Moscow Oblast": {
+                    "name": "Moscow Oblast",
+                    "lat": 55.5043,
+                    "lng": 38.0354,
+                    "radius": 200
+                },
+                "Murmansk Oblast": {
+                    "name": "Murmansk Oblast",
+                    "lat": 68,
+                    "lng": 33.9999,
+                    "radius": 200
+                },
+                "Nenets Autonomous Okrug": {
+                    "name": "Nenets Autonomous Okrug",
+                    "lat": 67.6783,
+                    "lng": 57.0627,
+                    "radius": 200
+                },
+                "Nizhny Novgorod Oblast": {
+                    "name": "Nizhny Novgorod Oblast",
+                    "lat": 55.4718,
+                    "lng": 44.0912,
+                    "radius": 200
+                },
+                "Novgorod Oblast": {
+                    "name": "Novgorod Oblast",
+                    "lat": 58.2844,
+                    "lng": 32.517,
+                    "radius": 200
+                },
+                "Novosibirsk": {
+                    "name": "Novosibirsk",
+                    "lat": 54.9678,
+                    "lng": 82.9516,
+                    "radius": 29
+                },
+                "Omsk Oblast": {
+                    "name": "Omsk Oblast",
+                    "lat": 56.0935,
+                    "lng": 73.51,
+                    "radius": 200
+                },
+                "Orenburg Oblast": {
+                    "name": "Orenburg Oblast",
+                    "lat": 52.0269,
+                    "lng": 54.7277,
+                    "radius": 200
+                },
+                "Oryol Oblast": {
+                    "name": "Oryol Oblast",
+                    "lat": 52.8393,
+                    "lng": 36.4252,
+                    "radius": 150
+                },
+                "Penza Oblast": {
+                    "name": "Penza Oblast",
+                    "lat": 53.1655,
+                    "lng": 44.7879,
+                    "radius": 200
+                },
+                "Perm Krai": {
+                    "name": "Perm Krai",
+                    "lat": 58.5952,
+                    "lng": 56.316,
+                    "radius": 200
+                },
+                "Primorsky Krai": {
+                    "name": "Primorsky Krai",
+                    "lat": 45.0819,
+                    "lng": 134.7266,
+                    "radius": 200
+                },
+                "Pskov Oblast": {
+                    "name": "Pskov Oblast",
+                    "lat": 57.5359,
+                    "lng": 28.8587,
+                    "radius": 200
+                },
+                "Republic of Adygea": {
+                    "name": "Republic of Adygea",
+                    "lat": 44.6939,
+                    "lng": 40.152,
+                    "radius": 156
+                },
+                "Republic of Bashkortostan": {
+                    "name": "Republic of Bashkortostan",
+                    "lat": 54.4748,
+                    "lng": 55.9785,
+                    "radius": 200
+                },
+                "Republic of Buryatia": {
+                    "name": "Republic of Buryatia",
+                    "lat": 52.7182,
+                    "lng": 109.4921,
+                    "radius": 200
+                },
+                "Republic of Dagestan": {
+                    "name": "Republic of Dagestan",
+                    "lat": 43,
+                    "lng": 47,
+                    "radius": 200
+                },
+                "Republic of Ingushetia": {
+                    "name": "Republic of Ingushetia",
+                    "lat": 43.1655,
+                    "lng": 44.9797,
+                    "radius": 74
+                },
+                "Republic of Kalmykia": {
+                    "name": "Republic of Kalmykia",
+                    "lat": 46.9017,
+                    "lng": 45.2492,
+                    "radius": 200
+                },
+                "Republic of Karelia": {
+                    "name": "Republic of Karelia",
+                    "lat": 62.6194,
+                    "lng": 33.492,
+                    "radius": 200
+                },
+                "Republic of Khakassia": {
+                    "name": "Republic of Khakassia",
+                    "lat": 53.4399,
+                    "lng": 90.0664,
+                    "radius": 200
+                },
+                "Republic of Mordovia": {
+                    "name": "Republic of Mordovia",
+                    "lat": 54.442,
+                    "lng": 44.4661,
+                    "radius": 175
+                },
+                "Republic of North Ossetia-Alania": {
+                    "name": "Republic of North Ossetia-Alania",
+                    "lat": 42.9921,
+                    "lng": 44.2636,
+                    "radius": 117
+                },
+                "Republic of Tatarstan": {
+                    "name": "Republic of Tatarstan",
+                    "lat": 55.4482,
+                    "lng": 50.4764,
+                    "radius": 200
+                },
+                "Rostov Oblast": {
+                    "name": "Rostov Oblast",
+                    "lat": 47.6222,
+                    "lng": 40.7958,
+                    "radius": 200
+                },
+                "Ryazan Oblast": {
+                    "name": "Ryazan Oblast",
+                    "lat": 54.4227,
+                    "lng": 40.5705,
+                    "radius": 186
+                },
+                "Saint Petersburg": {
+                    "name": "Saint Petersburg",
+                    "lat": 59.9607,
+                    "lng": 30.1587,
+                    "radius": 55
+                },
+                "Sakha Republic": {
+                    "name": "Sakha Republic",
+                    "lat": 66.9416,
+                    "lng": 129.6424,
+                    "radius": 200
+                },
+                "Sakhalin": {
+                    "name": "Sakhalin",
+                    "lat": 50.1595,
+                    "lng": 143.0264,
+                    "radius": 200
+                },
+                "Samara Oblast": {
+                    "name": "Samara Oblast",
+                    "lat": 52.6768,
+                    "lng": 50.5874,
+                    "radius": 200
+                },
+                "Saratov Oblast": {
+                    "name": "Saratov Oblast",
+                    "lat": 51.6521,
+                    "lng": 46.8632,
+                    "radius": 200
+                },
+                "Sevastopol": {
+                    "name": "Sevastopol",
+                    "lat": 55.7545,
+                    "lng": 37.6157,
+                    "radius": 25
+                },
+                "Smolensk Oblast": {
+                    "name": "Smolensk Oblast",
+                    "lat": 55.0343,
+                    "lng": 33.0192,
+                    "radius": 200
+                },
+                "Stavropol Krai": {
+                    "name": "Stavropol Krai",
+                    "lat": 44.8633,
+                    "lng": 43.4407,
+                    "radius": 200
+                },
+                "Sverdlovsk": {
+                    "name": "Sverdlovsk",
+                    "lat": 56.8382,
+                    "lng": 60.6008,
+                    "radius": 45
+                },
+                "Tambov Oblast": {
+                    "name": "Tambov Oblast",
+                    "lat": 52.902,
+                    "lng": 41.3579,
+                    "radius": 195
+                },
+                "Tomsk Oblast": {
+                    "name": "Tomsk Oblast",
+                    "lat": 58.6124,
+                    "lng": 82.0475,
+                    "radius": 200
+                },
+                "Tula Oblast": {
+                    "name": "Tula Oblast",
+                    "lat": 53.9571,
+                    "lng": 37.3691,
+                    "radius": 154
+                },
+                "Tuva Republic": {
+                    "name": "Tuva Republic",
+                    "lat": 51.4017,
+                    "lng": 93.8583,
+                    "radius": 200
+                },
+                "Tver Oblast": {
+                    "name": "Tver Oblast",
+                    "lat": 57.1134,
+                    "lng": 35.1744,
+                    "radius": 200
+                },
+                "Tyumen Oblast": {
+                    "name": "Tyumen Oblast",
+                    "lat": 58.8206,
+                    "lng": 70.3659,
+                    "radius": 200
+                },
+                "Udmurt Republic": {
+                    "name": "Udmurt Republic",
+                    "lat": 57.1961,
+                    "lng": 52.696,
+                    "radius": 184
+                },
+                "Ulyanovsk Oblast": {
+                    "name": "Ulyanovsk Oblast",
+                    "lat": 54.1463,
+                    "lng": 47.2325,
+                    "radius": 200
+                },
+                "Vladimir Oblast": {
+                    "name": "Vladimir Oblast",
+                    "lat": 56.0503,
+                    "lng": 40.6562,
+                    "radius": 183
+                },
+                "Vologda Oblast": {
+                    "name": "Vologda Oblast",
+                    "lat": 60.0391,
+                    "lng": 43.1215,
+                    "radius": 200
+                },
+                "Voronezh Oblast": {
+                    "name": "Voronezh Oblast",
+                    "lat": 50.98,
+                    "lng": 40.1507,
+                    "radius": 200
+                },
+                "Yamalo-Nenets Autonomous Okrug": {
+                    "name": "Yamalo-Nenets Autonomous Okrug",
+                    "lat": 67.1472,
+                    "lng": 74.3415,
+                    "radius": 200
+                },
+                "Yaroslavl Oblast": {
+                    "name": "Yaroslavl Oblast",
+                    "lat": 57.7782,
+                    "lng": 39.0021,
+                    "radius": 191
+                },
+                "Zabaykalsky Krai": {
+                    "name": "Zabaykalsky Krai",
+                    "lat": 52.2485,
+                    "lng": 115.9563,
+                    "radius": 200
+                }
+            },
+            "lat": 64.6863,
+            "lng": 97.7453,
             "radius": 1500
         }
     }

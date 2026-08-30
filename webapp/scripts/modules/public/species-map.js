@@ -1,9 +1,14 @@
 import State from './state.js';
+import Util from '../util.js';
 
 let speciesMap = null;
 let countryLayer = null;
-let detailLayer = null;      // state + city + place circles combined in one layer group
+let detailLayer = null;      // state + city + place combined in one layer group
 let initialView = null;       // {center, zoom} for reset button
+
+// GeoJSON boundary data (loaded once)
+let geoCountries = null;
+let geoStates = null;
 
 /**
  * Fixed color per level:
@@ -37,41 +42,49 @@ const UI_RADIUS_LIMITS = {
 // Zoom threshold at which clicking a state navigates to sightings instead of zooming in
 const STATE_ZOOM_THRESHOLD = 7;
 
-// Zoom threshold at which the map transitions from country circles to state+city+place details
+// Zoom threshold at which the map transitions from country shapes to state+city+place details
 const DETAIL_ZOOM_THRESHOLD = 4;
 
 /**
- * Create a styled Leaflet circle for a location
+ * Build tooltip HTML for a location
  */
-function createCircle(lat, lng, radiusKm, count, name, maxCount, level) {
+function buildTooltipHtml(name, count, hintText) {
+    return `<div class="species-map-tooltip">
+        <strong>${name}</strong>
+        <span class="count">${count} species</span>
+        <span class="hint">${hintText} &rarr;</span>
+    </div>`;
+}
+
+/**
+ * Create a styled GeoJSON polygon for a country or state
+ */
+function createGeoShape(geoJsonFeature, count, name, maxCount, level) {
     const color = LEVEL_COLORS[level] || LEVEL_COLORS.place;
     const countOpacity = getOpacityForCount(count, maxCount);
 
-    // Apply strict UI min/max boundaries so distorted data never renders oversized circles
-    const limits = UI_RADIUS_LIMITS[level] || { min: 8000, max: 30000 };
-    const rawMeters = (radiusKm || 5) * 1000;
-    const radiusMeters = Math.min(Math.max(rawMeters, limits.min), limits.max);
-
-    // State circles are always faded/dotted
     const isState = (level === 'state');
-
-    const fillOpacity = isState ? countOpacity * 0.18 : countOpacity * 0.5;
+    const fillOpacity = isState ? countOpacity * 0.18 : countOpacity * 0.35;
     const strokeOpacity = isState ? countOpacity * 0.5 : countOpacity * 0.9;
 
-    const circle = L.circle([lat, lng], {
-        radius: radiusMeters,
-        fillColor: color,
-        fillOpacity: fillOpacity,
-        color: color,
-        weight: isState ? 1.5 : 2,
-        opacity: strokeOpacity,
-        dashArray: isState ? '6, 5' : null,
-        className: 'species-circle species-circle-' + level
+    const layer = L.geoJSON(geoJsonFeature, {
+        style: {
+            fillColor: color,
+            fillOpacity: fillOpacity,
+            color: color,
+            weight: isState ? 1 : 1.5,
+            opacity: strokeOpacity,
+            dashArray: isState ? '6, 5' : null,
+            className: 'species-shape species-shape-' + level
+        }
     });
 
     // Store base opacities for hover restore
-    circle._baseFillOpacity = fillOpacity;
-    circle._baseStrokeOpacity = strokeOpacity;
+    layer._baseFillOpacity = fillOpacity;
+    layer._baseStrokeOpacity = strokeOpacity;
+    layer._shapeName = name;
+    layer._shapeCount = count;
+    layer._shapeLevel = level;
 
     const hintText = (level === 'country')
         ? 'Click to explore'
@@ -79,42 +92,34 @@ function createCircle(lat, lng, radiusKm, count, name, maxCount, level) {
             ? 'Click to zoom in'
             : 'Click to view sightings';
 
-    // Tooltip with sticky tracking
-    circle.bindTooltip(
-        `<div class="species-map-tooltip">
-            <strong>${name}</strong>
-            <span class="count">${count} species</span>
-            <span class="hint">${hintText} &rarr;</span>
-        </div>`,
-        {
-            direction: 'top',
-            sticky: true,
-            offset: [0, -12],
-            opacity: 0.95,
-            className: 'species-map-tooltip-container'
-        }
-    );
+    // Tooltip bound to the layer group
+    layer.bindTooltip(buildTooltipHtml(name, count, hintText), {
+        direction: 'top',
+        sticky: true,
+        offset: [0, -12],
+        opacity: 0.95,
+        className: 'species-map-tooltip-container'
+    });
 
     // Click behavior
-    circle.on('click', function (e) {
+    layer.on('click', function (e) {
         L.DomEvent.stopPropagation(e);
+        const bounds = this.getBounds();
+        const center = bounds.getCenter();
+
         if (level === 'country') {
-            speciesMap.flyTo([lat, lng], 5, { duration: 0.8 });
+            speciesMap.flyTo(center, 5, { duration: 0.8 });
         } else if (level === 'state') {
             const currentZoom = speciesMap ? speciesMap.getZoom() : 0;
             if (currentZoom < STATE_ZOOM_THRESHOLD) {
-                // Initial click: zoom into this state
-                const stateBounds = this.getBounds();
-                const targetZoom = Math.max(speciesMap.getBoundsZoom(stateBounds.pad(0.15)), STATE_ZOOM_THRESHOLD);
-                speciesMap.flyTo([lat, lng], targetZoom, { duration: 0.8 });
+                const targetZoom = Math.max(speciesMap.getBoundsZoom(bounds.pad(0.15)), STATE_ZOOM_THRESHOLD);
+                speciesMap.flyTo(center, targetZoom, { duration: 0.8 });
             } else {
-                // Already at state zoom level or deeper -> go to sighting page
                 if (typeof window.triggerFilter === 'function') {
                     window.triggerFilter('place', name);
                 }
             }
         } else {
-            // City / Place -> filter sightings feed
             if (typeof window.triggerFilter === 'function') {
                 window.triggerFilter('place', name);
             }
@@ -122,24 +127,72 @@ function createCircle(lat, lng, radiusKm, count, name, maxCount, level) {
     });
 
     // Hover effect
-    circle.on('mouseover', function () {
-        this.setStyle({ fillOpacity: Math.min(fillOpacity + 0.25, 0.85), weight: isState ? 2 : 3 });
+    layer.on('mouseover', function () {
+        this.setStyle({ fillOpacity: Math.min(fillOpacity + 0.2, 0.75), weight: isState ? 1.5 : 2.5 });
         if (!isState) {
             this.bringToFront();
         } else if (speciesMap) {
             const isZoomed = speciesMap.getZoom() >= STATE_ZOOM_THRESHOLD;
             const hint = isZoomed ? 'Click to view sightings' : 'Click to zoom in';
-            this.setTooltipContent(
-                `<div class="species-map-tooltip">
-                    <strong>${name}</strong>
-                    <span class="count">${count} species</span>
-                    <span class="hint">${hint} &rarr;</span>
-                </div>`
-            );
+            this.setTooltipContent(buildTooltipHtml(name, count, hint));
         }
     });
+    layer.on('mouseout', function () {
+        this.setStyle({ fillOpacity: fillOpacity, weight: isState ? 1 : 1.5 });
+    });
+
+    return layer;
+}
+
+/**
+ * Create a styled Leaflet circle for a city/place location
+ */
+function createCircle(lat, lng, radiusKm, count, name, maxCount, level) {
+    const color = LEVEL_COLORS[level] || LEVEL_COLORS.place;
+    const countOpacity = getOpacityForCount(count, maxCount);
+
+    const limits = UI_RADIUS_LIMITS[level] || { min: 8000, max: 30000 };
+    const rawMeters = (radiusKm || 5) * 1000;
+    const radiusMeters = Math.min(Math.max(rawMeters, limits.min), limits.max);
+
+    const fillOpacity = countOpacity * 0.5;
+    const strokeOpacity = countOpacity * 0.9;
+
+    const circle = L.circle([lat, lng], {
+        radius: radiusMeters,
+        fillColor: color,
+        fillOpacity: fillOpacity,
+        color: color,
+        weight: 2,
+        opacity: strokeOpacity,
+        className: 'species-circle species-circle-' + level
+    });
+
+    circle._baseFillOpacity = fillOpacity;
+    circle._baseStrokeOpacity = strokeOpacity;
+
+    circle.bindTooltip(buildTooltipHtml(name, count, 'Click to view sightings'), {
+        direction: 'top',
+        sticky: true,
+        offset: [0, -12],
+        opacity: 0.95,
+        className: 'species-map-tooltip-container'
+    });
+
+    // Click → filter sightings
+    circle.on('click', function (e) {
+        L.DomEvent.stopPropagation(e);
+        if (typeof window.triggerFilter === 'function') {
+            window.triggerFilter('place', name);
+        }
+    });
+
+    circle.on('mouseover', function () {
+        this.setStyle({ fillOpacity: Math.min(fillOpacity + 0.25, 0.85), weight: 3 });
+        this.bringToFront();
+    });
     circle.on('mouseout', function () {
-        this.setStyle({ fillOpacity: fillOpacity, weight: isState ? 1.5 : 2 });
+        this.setStyle({ fillOpacity: fillOpacity, weight: 2 });
     });
 
     return circle;
@@ -172,14 +225,27 @@ function getMaxCount(countriesData, level) {
 }
 
 /**
- * Build circle layers from the merged data.
- * Level 1 (countryLayer): Country circles only
- * Level 2 (detailLayer): State circles (faded/dotted, added first so they sit behind)
- *                         + City & Place circles (prominent, added after so they sit on top)
+ * Build layers from the merged data.
+ * Level 1 (countryLayer): Country GeoJSON polygon shapes
+ * Level 2 (detailLayer): State GeoJSON polygon shapes (faded/dotted, behind)
+ *                         + City & Place circles (prominent, on top)
  */
-function buildLayers(countriesData, placesGeo) {
-    countryLayer = L.layerGroup();
-    detailLayer = L.layerGroup();
+function buildLayers(countriesData, placesGeo, detailOnly = false) {
+    if (speciesMap) {
+        if (countryLayer && speciesMap.hasLayer(countryLayer)) {
+            speciesMap.removeLayer(countryLayer);
+        }
+        if (detailLayer && speciesMap.hasLayer(detailLayer)) {
+            speciesMap.removeLayer(detailLayer);
+        }
+    }
+
+    if (!detailOnly) {
+        countryLayer = L.layerGroup();
+        detailLayer = L.layerGroup();
+    } else {
+        detailLayer = L.layerGroup();
+    }
 
     const maxCountryCount = getMaxCount(countriesData, 'country');
     const maxStateCount = getMaxCount(countriesData, 'state');
@@ -187,8 +253,23 @@ function buildLayers(countriesData, placesGeo) {
 
     const countriesGeo = placesGeo.countries || {};
 
+    // Build lookup for GeoJSON boundaries by name
+    const countryBoundaries = {};
+    if (geoCountries && geoCountries.features) {
+        geoCountries.features.forEach(f => {
+            countryBoundaries[f.properties.name] = f;
+        });
+    }
+    const stateBoundaries = {};
+    if (geoStates && geoStates.features) {
+        geoStates.features.forEach(f => {
+            const key = `${f.properties.country}/${f.properties.name}`;
+            stateBoundaries[key] = f;
+        });
+    }
+
     // Temporary arrays to control z-order within detailLayer
-    const stateCircles = [];
+    const stateShapes = [];
     const cityCircles = [];
     const placeCircles = [];
 
@@ -198,27 +279,75 @@ function buildLayers(countriesData, placesGeo) {
 
         if (!country.count || country.count <= 0 || !countryGeo || !countryGeo.lat) return;
 
-        // Country circle (Level 1)
-        const countryCircle = createCircle(
-            countryGeo.lat, countryGeo.lng, countryGeo.radius,
-            country.count, country.name, maxCountryCount, 'country'
-        );
-        countryLayer.addLayer(countryCircle);
+        // Country shape (Level 1) - use GeoJSON polygon if available, fallback to circle
+        if (!detailOnly) {
+            const countryBoundary = countryBoundaries[countryKey];
+            if (countryBoundary) {
+                const shape = createGeoShape(
+                    countryBoundary, country.count, country.name, maxCountryCount, 'country'
+                );
+                countryLayer.addLayer(shape);
+            } else {
+                // Fallback: circle for countries without boundary data (e.g., Singapore)
+                const limits = UI_RADIUS_LIMITS.country;
+                const rawMeters = (countryGeo.radius || 5) * 1000;
+                const radiusMeters = Math.min(Math.max(rawMeters, limits.min), limits.max);
+                const countOpacity = getOpacityForCount(country.count, maxCountryCount);
 
-        // States (Level 2 - faded background)
+                const circle = L.circle([countryGeo.lat, countryGeo.lng], {
+                    radius: radiusMeters,
+                    fillColor: LEVEL_COLORS.country,
+                    fillOpacity: countOpacity * 0.35,
+                    color: LEVEL_COLORS.country,
+                    weight: 1.5,
+                    opacity: countOpacity * 0.9,
+                    className: 'species-circle species-circle-country'
+                });
+                circle.bindTooltip(buildTooltipHtml(country.name, country.count, 'Click to explore'), {
+                    direction: 'top', sticky: true, offset: [0, -12],
+                    opacity: 0.95, className: 'species-map-tooltip-container'
+                });
+                circle.on('click', function (e) {
+                    L.DomEvent.stopPropagation(e);
+                    speciesMap.flyTo([countryGeo.lat, countryGeo.lng], 5, { duration: 0.8 });
+                });
+                circle.on('mouseover', function () {
+                    this.setStyle({ fillOpacity: Math.min(countOpacity * 0.35 + 0.2, 0.75), weight: 2.5 });
+                    this.bringToFront();
+                });
+                circle.on('mouseout', function () {
+                    this.setStyle({ fillOpacity: countOpacity * 0.35, weight: 1.5 });
+                });
+                countryLayer.addLayer(circle);
+            }
+        }
+
+        // States (Level 2)
         Object.keys(country.states || {}).forEach(stateKey => {
             const state = country.states[stateKey];
             const stateGeo = (countryGeo.states || {})[stateKey];
 
             if (!state.count || state.count <= 0 || !stateGeo || !stateGeo.lat) return;
 
-            const stateCircle = createCircle(
-                stateGeo.lat, stateGeo.lng, stateGeo.radius,
-                state.count, state.name, maxStateCount, 'state'
-            );
-            stateCircles.push(stateCircle);
+            // Use GeoJSON shape if available, fallback to circle
+            const boundaryKey = `${countryKey}/${stateKey}`;
+            const stateBoundary = stateBoundaries[boundaryKey];
 
-            // Cities and Places (Level 2 - prominent foreground)
+            if (stateBoundary) {
+                const shape = createGeoShape(
+                    stateBoundary, state.count, state.name, maxStateCount, 'state'
+                );
+                stateShapes.push(shape);
+            } else {
+                // Fallback: circle for states without boundary data
+                const stateCircle = createCircle(
+                    stateGeo.lat, stateGeo.lng, stateGeo.radius,
+                    state.count, state.name, maxStateCount, 'state'
+                );
+                stateShapes.push(stateCircle);
+            }
+
+            // Cities and Places (always circles)
             Object.keys(state.cities || {}).forEach(cityKey => {
                 const city = state.cities[cityKey];
                 const cityGeo = (stateGeo.cities || {})[cityKey];
@@ -249,15 +378,15 @@ function buildLayers(countriesData, placesGeo) {
     });
 
     // Z-order: states (behind) → cities → places (on top, always clickable)
-    stateCircles.forEach(c => detailLayer.addLayer(c));
+    stateShapes.forEach(c => detailLayer.addLayer(c));
     cityCircles.forEach(c => detailLayer.addLayer(c));
     placeCircles.forEach(c => detailLayer.addLayer(c));
 }
 
 /**
  * Update visible layers based on current zoom level
- * Level 1 (zoom < DETAIL_ZOOM_THRESHOLD): Country circles only
- * Level 2 (zoom >= DETAIL_ZOOM_THRESHOLD): State (faded/dotted) + City & Place (prominent)
+ * Level 1 (zoom < DETAIL_ZOOM_THRESHOLD): Country shapes only
+ * Level 2 (zoom >= DETAIL_ZOOM_THRESHOLD): State shapes (faded/dotted) + City & Place circles (prominent)
  */
 function updateVisibleLayers() {
     if (!speciesMap) return;
@@ -387,13 +516,45 @@ function addMapControls(map) {
 }
 
 /**
+ * Load GeoJSON boundary files for all used countries
+ */
+async function loadBoundaries(countriesData) {
+    const countries = countriesData || {};
+    const countryNames = Object.keys(countries);
+
+    geoCountries = { type: 'FeatureCollection', features: [] };
+    geoStates = { type: 'FeatureCollection', features: [] };
+
+    await Promise.all(countryNames.map(async (country) => {
+        const path = Util.getData(`data/geo/${country}.json`);
+        try {
+            const res = await fetch(path);
+            if (res.ok) {
+                const file = await res.json();
+                if (file.country) {
+                    geoCountries.features.push(file.country);
+                }
+                if (file.states && file.states.features) {
+                    geoStates.features.push(...file.states.features);
+                }
+            }
+        } catch (e) {
+            console.warn(`[SpeciesMap] Could not load geo/${country}.json:`, e);
+        }
+    }));
+}
+
+/**
  * Initialize the species map
  * @param {Object} countriesData - State.data.countries (with computed counts)
  * @param {Object} placesGeo - Raw places.json data (with lat/lng/radius)
  */
-export function initSpeciesMap(countriesData, placesGeo) {
+export async function initSpeciesMap(countriesData, placesGeo) {
     const container = document.getElementById('species-map');
     if (!container) return;
+
+    // Load GeoJSON boundaries
+    await loadBoundaries(countriesData);
 
     // Destroy existing map if any
     if (speciesMap) {
@@ -429,20 +590,33 @@ export function initSpeciesMap(countriesData, placesGeo) {
         prefix: false
     }).addTo(speciesMap);
 
-    // Build all circle layers
+    // Build all layers (shapes for countries/states, circles for cities/places)
     buildLayers(countriesData, placesGeo);
+
+    if (!speciesMap.hasLayer(countryLayer)) speciesMap.addLayer(countryLayer);
 
     // Fit bounds to country layer points
     const allBounds = [];
     countryLayer.eachLayer(layer => {
-        if (layer.getLatLng) allBounds.push(layer.getLatLng());
+        if (layer.getBounds) {
+            try {
+                const b = layer.getBounds();
+                allBounds.push(b.getSouthWest());
+                allBounds.push(b.getNorthEast());
+            } catch (e) {
+                if (layer.getLatLng) allBounds.push(layer.getLatLng());
+            }
+        } else if (layer.getLatLng) {
+            allBounds.push(layer.getLatLng());
+        }
     });
 
     if (allBounds.length > 0) {
-        if (allBounds.length === 1) {
-            speciesMap.setView(allBounds[0], 4);
+        const bounds = L.latLngBounds(allBounds);
+        if (bounds.isValid()) {
+            speciesMap.fitBounds(bounds.pad(0.12), { maxZoom: 5 });
         } else {
-            speciesMap.fitBounds(L.latLngBounds(allBounds).pad(0.12), { maxZoom: 5 });
+            speciesMap.setView([22.5, 78.9], 4);
         }
     } else {
         speciesMap.setView([22.5, 78.9], 4);

@@ -38,7 +38,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20260830_1"></script>
+	<script type="module" src="scripts/admin.js?v=20260830_3"></script>
 
 </head>
 
@@ -402,6 +402,64 @@
 								<div id="autofill-status-text" style="font-size: 12px; color: #38bdf8;"></div>
 							</div>
 							<div id="missing-places-list" style="max-height: 240px; overflow-y: auto; margin-top: 10px; font-size: 12px;"></div>
+						</div>
+					</div>
+
+					<!-- Geo Boundaries Management -->
+					<div class="geo-boundary-section" style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+						<h3 style="margin-top: 0; display: flex; align-items: center; justify-content: space-between;">
+							<span>🗺️ Geo Boundaries Management</span>
+						</h3>
+						<p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 12px;">
+							Manage polygon boundary outlines for countries and states rendered on the Bird Map.
+						</p>
+
+						<!-- Coverage Stats Box -->
+						<div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 14px;">
+							<div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 8px;">Boundary Coverage Status</div>
+							<div style="display: flex; gap: 16px; flex-wrap: wrap;">
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Countries:</span>
+									<strong id="boundary-stat-countries" style="font-size: 14px; color: #38bdf8; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">States:</span>
+									<strong id="boundary-stat-states" style="font-size: 14px; color: #22c55e; margin-left: 4px;">-</strong>
+								</div>
+							</div>
+							<div id="boundary-missing-alert" style="display: none; margin-top: 8px; font-size: 12px; color: #f59e0b; line-height: 1.4;"></div>
+						</div>
+
+						<!-- Boundary Inspector / Selector -->
+						<table style="width: 100%; margin-bottom: 12px;">
+							<tr>
+								<td style="width: 80px; font-size: 13px;">Country</td>
+								<td><select id="boundary-inspect-country" style="width: 100%;"></select></td>
+							</tr>
+							<tr>
+								<td style="font-size: 13px;">State</td>
+								<td>
+									<select id="boundary-inspect-state" style="width: 100%;">
+										<option value="">(Country-level Boundary)</option>
+									</select>
+								</td>
+							</tr>
+						</table>
+
+						<!-- Live Boundary Status Box -->
+						<div id="boundary-status-box" style="padding: 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 12px; margin-bottom: 12px;">
+							<div id="boundary-status-text" style="color: #94a3b8;">Select a location above to inspect its boundary.</div>
+						</div>
+
+						<!-- Action buttons -->
+						<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+							<button id="btn-update-boundary" style="padding: 7px 14px; background-color: #0284c7; color: white; font-size: 12px;">🔄 Update Boundary</button>
+							<button id="btn-update-all-states" style="padding: 7px 14px; background-color: #7c3aed; color: white; font-size: 12px;">🔄 Update All States</button>
+						</div>
+
+						<!-- Offline build info footnote -->
+						<div style="font-size: 11px; color: #64748b; line-height: 1.4; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
+							💡 <em>Full Natural Earth rebuild:</em> Run <code>npm run build:geo</code> in terminal to refresh all countries (110m) &amp; states (10m).
 						</div>
 					</div>
 				</div>

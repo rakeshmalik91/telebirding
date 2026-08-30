@@ -106,12 +106,38 @@ function restoreBackup(dateString) {
             });
         promises.push(p);
     });
+
+    // Also fetch any geo boundary files from backup/${dateString}/geo
+    const geoRef = FirebaseApi.getFirebase().storage().ref(`backup/${dateString}/geo`);
+    const geoPromise = geoRef.listAll()
+        .then(res => {
+            if (!res.items || res.items.length === 0) return [];
+            return Promise.all(res.items.map(item => {
+                return item.getDownloadURL()
+                    .then(url => fetch(url).then(r => r.json()))
+                    .then(geoJson => {
+                        const country = item.name.replace(/\.json$/, '');
+                        return { country, geoJson };
+                    })
+                    .catch(err => {
+                        console.warn(`Could not fetch geo backup for ${item.name}`, err);
+                        return null;
+                    });
+            }));
+        })
+        .catch(err => {
+            console.warn(`No geo folder in backup/${dateString}`, err);
+            return [];
+        });
     
-    Promise.all(promises).then(results => {
+    Promise.all([...promises, geoPromise]).then(results => {
+        const fileResults = results.slice(0, filesToRestore.length);
+        const geoResults = results[filesToRestore.length] || [];
+
         let restoredCount = 0;
         let preChangeSightings = data.sightings ? JSON.parse(JSON.stringify(data.sightings)) : [];
 
-        results.forEach(res => {
+        fileResults.forEach(res => {
             if (res.data) {
                 if (res.file === "places") {
                     data.countries = res.data;
@@ -122,7 +148,38 @@ function restoreBackup(dateString) {
             }
         });
 
-        if (restoredCount > 0) {
+        // Restore geo boundaries
+        let restoredGeoCount = 0;
+        data.geoCountries = data.geoCountries || { type: 'FeatureCollection', features: [] };
+        data.geoStates = data.geoStates || { type: 'FeatureCollection', features: [] };
+
+        const geoUploadPromises = [];
+        geoResults.forEach(item => {
+            if (item && item.geoJson) {
+                const { country, geoJson } = item;
+                if (geoJson.country) {
+                    const cIdx = data.geoCountries.features.findIndex(f => f.properties?.name === country);
+                    if (cIdx >= 0) {
+                        data.geoCountries.features[cIdx] = geoJson.country;
+                    } else {
+                        data.geoCountries.features.push(geoJson.country);
+                    }
+                }
+                if (geoJson.states && Array.isArray(geoJson.states.features)) {
+                    data.geoStates.features = data.geoStates.features.filter(f => f.properties?.country !== country);
+                    data.geoStates.features.push(...geoJson.states.features);
+                }
+                
+                // Write restored geo file back to data/geo/${country}.json
+                const fileBlob = new File([JSON.stringify(geoJson)], `${country}.json`);
+                geoUploadPromises.push(
+                    FirebaseApi.getFirebase().storage().ref(`data/geo/${country}.json`).put(fileBlob)
+                );
+                restoredGeoCount++;
+            }
+        });
+
+        if (restoredCount > 0 || restoredGeoCount > 0) {
             // Push undo state for sightings
             if (data.sightings) {
                 historyManager.pushState(preChangeSightings, data.sightings);
@@ -140,8 +197,15 @@ function restoreBackup(dateString) {
                 }
             });
             syncSightingsData(3000, true);
+
+            Promise.all(geoUploadPromises).catch(err => {
+                console.warn("Could not write all restored geo files to storage:", err);
+            });
             
-            showToast(`Successfully restored ${restoredCount} file(s) from backup.`, 'success');
+            const msg = restoredGeoCount > 0
+                ? `Successfully restored ${restoredCount} data file(s) and ${restoredGeoCount} geo boundary file(s) from backup.`
+                : `Successfully restored ${restoredCount} file(s) from backup.`;
+            showToast(msg, 'success');
         } else {
             customAlert(`No matching files found in that backup.`);
         }
@@ -169,13 +233,16 @@ function deleteBackup(dateString, $element) {
         });
         
         Promise.all(promises).then(() => {
-            // Check if any other mode files remain before deleting places.json
+            // Check if any other mode files remain before deleting places.json and geo files
             storageRef.listAll().then(res => {
                 const otherMode = currentMode === 'bird' ? 'insect' : 'bird';
                 const hasOtherModeFiles = res.items && res.items.some(item => item.name.startsWith(otherMode));
                 
                 if (!hasOtherModeFiles) {
                     storageRef.child("places.json").delete().catch(() => {});
+                    storageRef.child("geo").listAll().then(geoRes => {
+                        geoRes.items.forEach(item => item.delete().catch(() => {}));
+                    }).catch(() => {});
                 }
 
                 $element.remove();

@@ -9,7 +9,8 @@ import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
     deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
     syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
-    uploadJSONData, getPlaceNode, getLocationGeo
+    uploadJSONData, getPlaceNode, getLocationGeo,
+    ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary
 } from './data.js';
 import { geoService, lookupLocation, setGeoProvider } from '../geo-service.js';
 import { showToast, customAlert } from './ui.js';
@@ -851,6 +852,180 @@ export function setupPlacesTab() {
         $placeList.html(options);
     }
 
+    // ==========================================
+    // Geo Boundaries Management Logic
+    // ==========================================
+    const $boundaryCountrySelect = $('#boundary-inspect-country');
+    const $boundaryStateSelect = $('#boundary-inspect-state');
+    const $boundaryStatusBox = $('#boundary-status-box');
+    const $boundaryStatusText = $('#boundary-status-text');
+
+    async function updateBoundaryCoverageUI() {
+        await ensureGeoBoundariesLoaded();
+        const coverage = getGeoBoundaryCoverage();
+
+        const countryPct = coverage.countries.total > 0 ? Math.round((coverage.countries.covered / coverage.countries.total) * 100) : 0;
+        const statePct = coverage.states.total > 0 ? Math.round((coverage.states.covered / coverage.states.total) * 100) : 0;
+
+        $('#boundary-stat-countries').text(`${coverage.countries.covered} / ${coverage.countries.total} (${countryPct}%)`);
+        $('#boundary-stat-states').text(`${coverage.states.covered} / ${coverage.states.total} (${statePct}%)`);
+
+        if (coverage.countries.missing.length > 0) {
+            $('#boundary-missing-alert').show().html(
+                `⚠️ <strong>Missing country polygons (${coverage.countries.missing.length}):</strong> ${coverage.countries.missing.join(', ')} (falls back to circle on map)`
+            );
+        } else if (coverage.states.missing.length > 0) {
+            $('#boundary-missing-alert').show().html(
+                `⚠️ <strong>Missing state polygons (${coverage.states.missing.length}):</strong> ${coverage.states.missing.slice(0, 6).join(', ')}${coverage.states.missing.length > 6 ? '...' : ''}`
+            );
+        } else {
+            $('#boundary-missing-alert').hide();
+        }
+    }
+
+    function refreshBoundarySelects() {
+        const countries = data.countries || {};
+        let options = '<option value="">-- Select Country --</option>';
+        Object.keys(countries).sort().forEach(c => {
+            options += `<option value="${c}">${c}</option>`;
+        });
+        $boundaryCountrySelect.html(options);
+
+        $boundaryCountrySelect.off('change').on('change', function () {
+            const c = $(this).val();
+            let stateOptions = '<option value="">(Country-level Boundary)</option>';
+            if (c && countries[c] && countries[c].states) {
+                Object.keys(countries[c].states).sort().forEach(s => {
+                    stateOptions += `<option value="${s}">${s}</option>`;
+                });
+            }
+            $boundaryStateSelect.html(stateOptions);
+            updateBoundaryStatus();
+        });
+
+        $boundaryStateSelect.off('change').on('change', function () {
+            updateBoundaryStatus();
+        });
+    }
+
+    function updateBoundaryStatus() {
+        const country = $boundaryCountrySelect.val();
+        const state = $boundaryStateSelect.val();
+
+        if (!country) {
+            $boundaryStatusText.html('<span style="color: #94a3b8;">Select a location above to inspect its boundary.</span>');
+            return;
+        }
+
+        const targetLabel = state ? `${state}, ${country}` : country;
+        const level = state ? 'state' : 'country';
+        const boundary = getGeoBoundary({ country, state });
+
+        if (boundary) {
+            const geom = boundary.geometry || {};
+            let count = 0;
+            if (geom.type === 'Polygon') {
+                geom.coordinates?.forEach(r => count += r.length);
+            } else if (geom.type === 'MultiPolygon') {
+                geom.coordinates?.forEach(p => p.forEach(r => count += r.length));
+            }
+            $boundaryStatusText.html(
+                `<div style="color: #22c55e; font-weight: 600; margin-bottom: 4px;">✅ Boundary Polygon Present (${level.toUpperCase()})</div>` +
+                `<div><strong>Name:</strong> ${targetLabel} &nbsp;|&nbsp; <strong>Geometry:</strong> ${geom.type || 'Polygon'} (${count} points)</div>`
+            );
+        } else {
+            $boundaryStatusText.html(
+                `<div style="color: #f59e0b; font-weight: 600; margin-bottom: 4px;">⚠️ No Boundary Polygon (${level.toUpperCase()})</div>` +
+                `<div>"${targetLabel}" currently falls back to a circular hotspot on the map. Click <strong>"Update Boundary"</strong> below to fetch its polygon outline.</div>`
+            );
+        }
+    }
+
+    // Update boundary button: fetch from OSM if missing, save to memory, sync to Firebase, refresh stats
+    $('#btn-update-boundary').off('click').on('click', async function () {
+        const country = $boundaryCountrySelect.val();
+        const state = $boundaryStateSelect.val();
+        if (!country) {
+            customAlert('Please select a country first.');
+            return;
+        }
+        const targetLabel = state ? `${state}, ${country}` : country;
+        const level = state ? 'state' : 'country';
+        const $btn = $(this);
+        $btn.attr('disabled', 'disabled').text('Updating...');
+
+        try {
+            let boundary = getGeoBoundary({ country, state });
+            if (!boundary) {
+                $boundaryStatusText.html(`<span style="color: #38bdf8;">🌐 Querying OpenStreetMap Nominatim for "${targetLabel}" polygon...</span>`);
+                const feature = await fetchBoundaryFromOSM({ country, state });
+                saveGeoBoundary({ level, country, state, feature });
+                showToast(`Boundary for "${targetLabel}" fetched and saved to memory.`, 'success');
+            } else {
+                showToast(`Boundary for "${targetLabel}" already in memory.`, 'info');
+            }
+            updateBoundaryStatus();
+            updateBoundaryCoverageUI();
+        } catch (err) {
+            console.error('Update boundary failed:', err);
+            $boundaryStatusText.html(`<span style="color: #ef4444;">Error: ${err.message}</span>`);
+            showToast(`Update failed: ${err.message}`, 'error');
+        } finally {
+            setTimeout(() => { $btn.removeAttr('disabled').text('🔄 Update Boundary'); }, 1500);
+        }
+    });
+
+    // Update all states for selected country
+    $('#btn-update-all-states').off('click').on('click', async function () {
+        const country = $boundaryCountrySelect.val();
+        if (!country) {
+            customAlert('Please select a country first.');
+            return;
+        }
+        const $btn = $(this);
+        $btn.attr('disabled', 'disabled').text('Updating...');
+
+        try {
+            const countries = data.countries || {};
+            const states = countries[country]?.states || {};
+            const stateNames = Object.keys(states);
+            if (stateNames.length === 0) {
+                showToast(`No states found for ${country}.`, 'info');
+                return;
+            }
+
+            let fetched = 0;
+            let skipped = 0;
+            const CHUNK_SIZE = 10;
+            let processed = 0;
+            for (const stateName of stateNames) {
+                const boundary = getGeoBoundary({ country, state: stateName });
+                if (!boundary) {
+                    $boundaryStatusText.html(`<span style="color: #38bdf8;">🌐 Fetching ${stateName}, ${country}...</span>`);
+                    const feature = await fetchBoundaryFromOSM({ country, state: stateName });
+                    saveGeoBoundary({ level: 'state', country, state: stateName, feature });
+                    fetched++;
+                    await new Promise(r => setTimeout(r, 1000));
+                } else {
+                    skipped++;
+                }
+                processed++;
+                if (processed % CHUNK_SIZE === 0 || processed === stateNames.length) {
+                    updateBoundaryCoverageUI();
+                }
+            }
+
+            updateBoundaryStatus();
+            showToast(`Updated ${country}: ${fetched} state(s) fetched, ${skipped} already present.`, 'success');
+        } catch (err) {
+            console.error('Update all states failed:', err);
+            $boundaryStatusText.html(`<span style="color: #ef4444;">Error: ${err.message}</span>`);
+            showToast(`Update all states failed: ${err.message}`, 'error');
+        } finally {
+            setTimeout(() => { $btn.removeAttr('disabled').text('🔄 Update All States'); }, 1500);
+        }
+    });
+
     function refreshSelects() {
         const countries = data.countries || {};
         let countryOptions = '<option value="">-- Select Country --</option>';
@@ -893,6 +1068,9 @@ export function setupPlacesTab() {
         $placeInput.off('input change').on('input change', function () {
             updateCurrentCoordsBanner();
         });
+
+        refreshBoundarySelects();
+        updateBoundaryCoverageUI();
     }
     refreshSelects();
 
@@ -1440,5 +1618,6 @@ export function setupPlacesTab() {
             updateCurrentCoordsBanner();
         });
     });
+
 }
 

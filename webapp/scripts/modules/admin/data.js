@@ -127,164 +127,186 @@ let pendingUpload = {};
 export let lastUploadedData = {};
 
 export function uploadJSONData(type, skipRefresh) {
-    if (isUploading[type]) {
-        if (pendingUpload[type] !== undefined) {
-            pendingUpload[type] = pendingUpload[type] && skipRefresh;
-        } else {
-            pendingUpload[type] = skipRefresh;
-        }
-        return;
-    }
-    isUploading[type] = true;
-
-    $('.save').text('Saving...').attr('disabled', 'disabled');
-    $('#sync-spinner').css('display', 'flex');
-    $('#sync-spinner .sync-text').text('Saving...');
-    $('#sync-spinner-icon').show();
-
-    // --- Pre-upload cleanup (ported from data-cleanup.py) ---
-    // Apply species-specific tag rules when uploading species data
-    if (type === 'species' && data[type]) {
-        applySpeciesTags(data[type]);
-    }
-
-    let fileData = {};
-    if (type === 'places') {
-        fileData = { countries: data.countries };
-    } else {
-        fileData[type] = data[type];
-    }
-
-    // Remove unwanted values (null, false, [], "", {}) before upload
-    fileData = removeUnwantedValues(fileData) || {};
-
-    fileData = JSON.stringify(fileData);
-
-    if (fileData === lastUploadedData[type]) {
-        console.log("No changes detected for " + type + ", skipping upload.");
-        isUploading[type] = false;
-        
-        if (pendingUpload[type] !== undefined) {
-            delete pendingUpload[type];
-        }
-
-        if (!skipRefresh) renderCallback();
-        if (!hasUnsavedChanges()) {
-            $('.save').text('Saved!');
-            $('#sync-spinner .sync-text').text('Saved!');
-            $('#sync-spinner-icon').hide();
-            setTimeout(() => { 
-                if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
-                if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
-            }, 2000);
-        }
-        return;
-    }
-
-    if (fileData.length < 100) {
-        customAlert("Unknown error while uploading (file data too small) ...");
-        isUploading[type] = false;
-        $('.save').text('Error').removeAttr('disabled');
-        $('#sync-spinner .sync-text').text('Error');
-        $('#sync-spinner-icon').hide();
-        setTimeout(() => { 
-            if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
-        }, 2000);
-        return;
-    }
-    lastUploadedData[type] = fileData;
-    fileData = [fileData];
-
-    const fileName = (type === 'places') ? "places.json" : (currentMode + "-" + type + ".json");
-    const file = new File(fileData, fileName);
-    const storagePath = (type === 'places') ? "data/places.json" : ("data/" + currentMode + "-" + type + ".json");
-
-    const finishUpload = () => {
-        isUploading[type] = false;
-        if (pendingUpload[type] !== undefined) {
-            let nextSkip = pendingUpload[type];
-            delete pendingUpload[type];
-            uploadJSONData(type, nextSkip);
+    return new Promise((resolve, reject) => {
+        if (isUploading[type]) {
+            if (pendingUpload[type] !== undefined) {
+                pendingUpload[type] = pendingUpload[type] && skipRefresh;
+            } else {
+                pendingUpload[type] = skipRefresh;
+            }
+            resolve();
             return;
         }
-        if (!hasUnsavedChanges()) {
-            $('.save').text('Saved!');
-            $('#sync-spinner .sync-text').text('Saved!');
-            $('#sync-spinner-icon').hide();
-            setTimeout(() => { 
-                if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
-                if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
-            }, 2000);
-        }
-    };
+        isUploading[type] = true;
 
-    const doUpload = () => {
-        FirebaseApi.getFirebase().storage().ref(storagePath).put(file).then((snapshot) => {
-            console.log("uploaded " + storagePath);
-            
-            if (Constants.ADMIN_USE_ETAG) {
-                const newGen = snapshot && snapshot.metadata ? snapshot.metadata.generation : null;
-                if (newGen) {
-                    loadedEtags[type] = newGen;
-                    if (type === 'sightings') {
-                        historyManager.etag = newGen;
-                        historyManager.saveToStorage();
-                    }
-                }
-            } else if (type === 'sightings') {
-                historyManager.etag = null;
-                historyManager.saveToStorage();
-            }
-            finishUpload();
-        }).catch(e => {
+        const storagePath = (type === 'places') ? "data/places.json"
+            : (type.startsWith('geo/')) ? `data/${type}.json`
+            : ("data/" + currentMode + "-" + type + ".json");
+
+        $('.save').text('Saving...').attr('disabled', 'disabled');
+        $('#sync-spinner').css('display', 'flex');
+        $('#sync-spinner .sync-text').text('Saving...');
+        $('#sync-spinner-icon').show();
+
+        // --- Pre-upload cleanup (ported from data-cleanup.py) ---
+        // Apply species-specific tag rules when uploading species data
+        if (type === 'species' && data[type]) {
+            applySpeciesTags(data[type]);
+        }
+
+        let fileData = {};
+        if (type === 'places') {
+            fileData = { countries: data.countries };
+        } else if (type.startsWith('geo/')) {
+            const country = type.slice(4);
+            fileData = getCountryGeoJSON(country);
+        } else {
+            fileData[type] = data[type];
+        }
+
+        // Remove unwanted values (null, false, [], "", {}) before upload (preserve GeoJSON intact)
+        if (!type.startsWith('geo/')) {
+            fileData = removeUnwantedValues(fileData) || {};
+        }
+
+        fileData = JSON.stringify(fileData);
+
+        if (fileData === lastUploadedData[type]) {
+            console.log("No changes detected for " + type + ", skipping upload.");
             isUploading[type] = false;
-            customAlert(e.message);
+
+            if (pendingUpload[type] !== undefined) {
+                delete pendingUpload[type];
+            }
+
+            if (!skipRefresh) renderCallback();
+            if (!hasUnsavedChanges()) {
+                $('.save').text('Saved!');
+                $('#sync-spinner .sync-text').text('Saved!');
+                $('#sync-spinner-icon').hide();
+                setTimeout(() => { 
+                    if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
+                    if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+                }, 2000);
+            }
+            resolve();
+            return;
+        }
+
+        if (fileData.length < 100) {
+            customAlert("Unknown error while uploading (file data too small) ...");
+            isUploading[type] = false;
             $('.save').text('Error').removeAttr('disabled');
             $('#sync-spinner .sync-text').text('Error');
             $('#sync-spinner-icon').hide();
             setTimeout(() => { 
                 if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
             }, 2000);
-        });
-    };
-
-    if (Constants.ADMIN_USE_ETAG) {
-        const expectedGen = loadedEtags[type];
-        if (!expectedGen) {
-            doUpload();
+            resolve({ success: false });
             return;
         }
+        lastUploadedData[type] = fileData;
+        fileData = [fileData];
 
-        FirebaseApi.getFirebase().storage().ref("data/" + currentMode + "-" + type + ".json").getMetadata().then(metadata => {
-            const currentGen = metadata.generation;
-            if (currentGen && currentGen !== expectedGen) {
-                console.warn("Generation mismatch! Expected:", expectedGen, "Got:", currentGen);
-                isUploading[type] = false;
-                customAlert("Data was modified in another tab or device. Please refresh the page to get the latest changes before saving again.");
-                $('.save').text('Conflict').removeAttr('disabled');
-                $('#sync-spinner .sync-text').text('Conflict');
+        const fileName = (type === 'places') ? "places.json"
+            : (type.startsWith('geo/')) ? `${type.slice(4)}.json`
+            : (currentMode + "-" + type + ".json");
+        const file = new File(fileData, fileName);
+
+        const finishUpload = () => {
+            isUploading[type] = false;
+            if (pendingUpload[type] !== undefined) {
+                let nextSkip = pendingUpload[type];
+                delete pendingUpload[type];
+                uploadJSONData(type, nextSkip);
+                return;
+            }
+            if (!hasUnsavedChanges()) {
+                $('.save').text('Saved!');
+                $('#sync-spinner .sync-text').text('Saved!');
                 $('#sync-spinner-icon').hide();
                 setTimeout(() => { 
-                    if ($('#sync-spinner .sync-text').text() === 'Conflict') $('#sync-spinner').fadeOut(300);
-                }, 3000);
-            } else {
-                doUpload();
+                    if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
+                    if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+                }, 2000);
             }
-        }).catch(err => {
-            console.warn("Could not check metadata, proceeding with upload...", err);
+            resolve({ success: true });
+        };
+
+        const doUpload = () => {
+            FirebaseApi.getFirebase().storage().ref(storagePath).put(file).then((snapshot) => {
+                console.log("uploaded " + storagePath);
+                
+                if (Constants.ADMIN_USE_ETAG) {
+                    const newGen = snapshot && snapshot.metadata ? snapshot.metadata.generation : null;
+                    if (newGen) {
+                        loadedEtags[type] = newGen;
+                        if (type === 'sightings') {
+                            historyManager.etag = newGen;
+                            historyManager.saveToStorage();
+                        }
+                    }
+                } else if (type === 'sightings') {
+                    historyManager.etag = null;
+                    historyManager.saveToStorage();
+                }
+                finishUpload();
+            }).catch(e => {
+                isUploading[type] = false;
+                customAlert(e.message);
+                $('.save').text('Error').removeAttr('disabled');
+                $('#sync-spinner .sync-text').text('Error');
+                $('#sync-spinner-icon').hide();
+                setTimeout(() => { 
+                    if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
+                }, 2000);
+                resolve({ success: false });
+            });
+        };
+
+        if (Constants.ADMIN_USE_ETAG) {
+            const expectedGen = loadedEtags[type];
+            if (!expectedGen) {
+                doUpload();
+                return;
+            }
+
+            FirebaseApi.getFirebase().storage().ref(storagePath).getMetadata().then(metadata => {
+                const currentGen = metadata.generation;
+                if (currentGen && currentGen !== expectedGen) {
+                    console.warn("Generation mismatch! Expected:", expectedGen, "Got:", currentGen);
+                    isUploading[type] = false;
+                    customAlert("Data was modified in another tab or device. Please refresh the page to get the latest changes before saving again.");
+                    $('.save').text('Conflict').removeAttr('disabled');
+                    $('#sync-spinner .sync-text').text('Conflict');
+                    $('#sync-spinner-icon').hide();
+                    setTimeout(() => { 
+                        if ($('#sync-spinner .sync-text').text() === 'Conflict') $('#sync-spinner').fadeOut(300);
+                    }, 3000);
+                    resolve({ success: false });
+                } else {
+                    doUpload();
+                }
+            }).catch(err => {
+                console.warn("Could not check metadata, proceeding with upload...", err);
+                doUpload();
+            });
+        } else {
             doUpload();
-        });
-    } else {
-        doUpload();
-    }
+        }
+    });
 }
 
-export function backup() {
+export async function backup() {
     showLoader("backup", "Backing up...");
     console.log("Backing up...");
-    let backedUp = 0;
     const date = moment(Date.now()).format(Constants.BACKUP_DATE_FORMAT);
     const filesToBackup = ["species", "families", "sightings", "likes", "places"];
+    
+    const uploadTasks = [];
+    const storage = FirebaseApi.getFirebase().storage();
+
+    // Start base files backup synchronously immediately
     for (const file of filesToBackup) {
         let fileData = {};
         let fileName = "";
@@ -295,23 +317,44 @@ export function backup() {
             fileData[file] = data[file];
             fileName = currentMode + "-" + file + ".json";
         }
-        FirebaseApi.getFirebase().storage()
-            .ref("backup/" + date + "/" + fileName)
-            .put(new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName))
-            .then(() => {
-                if (++backedUp == filesToBackup.length) {
-                    refresh();
-                    console.log("Backup completed");
-                    hideLoader("backup");
-                    showToast(`Backup created successfully for ${date}!`, "success");
-                }
-            }).catch(e => {
-                console.error("Backup failed for " + fileName, e);
-                if (++backedUp == filesToBackup.length) {
-                    hideLoader("backup");
-                    showToast("Backup encountered an error: " + e.message, "error");
-                }
-            });
+        const fileBlob = new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName);
+        uploadTasks.push(
+            storage.ref("backup/" + date + "/" + fileName).put(fileBlob)
+        );
+    }
+
+    // Now asynchronously ensure geo boundaries and back them up
+    const geoPromise = (async () => {
+        try {
+            await ensureGeoBoundariesLoaded();
+        } catch (err) {
+            console.warn("Could not ensure all geo boundaries loaded before backup:", err);
+        }
+        const countries = Object.keys(data.countries || {});
+        const geoUploads = [];
+        for (const country of countries) {
+            const geoPayload = getCountryGeoJSON(country);
+            if (geoPayload.country || (geoPayload.states && Array.isArray(geoPayload.states.features) && geoPayload.states.features.length > 0)) {
+                const fileName = `${country}.json`;
+                const fileBlob = new File([JSON.stringify(geoPayload)], fileName);
+                geoUploads.push(
+                    storage.ref(`backup/${date}/geo/${fileName}`).put(fileBlob)
+                );
+            }
+        }
+        return Promise.all(geoUploads);
+    })();
+
+    try {
+        await Promise.all([...uploadTasks, geoPromise]);
+        refresh();
+        console.log("Backup completed");
+        hideLoader("backup");
+        showToast(`Backup created successfully for ${date}!`, "success");
+    } catch (e) {
+        console.error("Backup failed", e);
+        hideLoader("backup");
+        showToast("Backup encountered an error: " + e.message, "error");
     }
 }
 
@@ -333,14 +376,13 @@ export function delayPendingSave() {
     }
 }
 
-export function syncSightingsData(scheduleAfter, skipRefresh = false) {
+export async function syncSightingsData(scheduleAfter, skipRefresh = false) {
     clearTimeout(syncRef);
     if (scheduleAfter > 0) {
-        // Delayed save - enable save button to show pending changes
         $('.save').removeAttr("disabled");
         if ($('.save').first().text() === 'Saved!') $('.save').text('Save');
     }
-    syncRef = setTimeout(function () {
+    syncRef = setTimeout(async function () {
         if (scheduleAfter > 0 && isInputActive()) {
             syncSightingsData(SYNC_SCHEDULE_TIME, skipRefresh);
             return;
@@ -353,7 +395,11 @@ export function syncSightingsData(scheduleAfter, skipRefresh = false) {
             }
         }
         syncRef = undefined;
-        uploadJSONData('sightings', skipRefresh);
+        try {
+            await uploadJSONData('sightings', skipRefresh);
+        } catch (e) {
+            console.error('Failed to sync sightings:', e);
+        }
         $('.save').attr("disabled", "disabled");
     }, scheduleAfter);
 }
@@ -1127,5 +1173,265 @@ export async function addNewState({ country, state, geocode = true }) {
     uploadJSONData('places', true);
     return { country: countryName, state: stateName, geocoded };
 }
+
+/**
+ * Calculate boundary coverage statistics for all countries and states in data.countries
+ */
+export function getGeoBoundaryCoverage() {
+    const countries = data.countries || {};
+    const geoCountriesFeatures = data.geoCountries?.features || [];
+    const geoStatesFeatures = data.geoStates?.features || [];
+
+    const countryFeatureNames = new Set(geoCountriesFeatures.map(f => f.properties?.name));
+    const stateFeatureKeys = new Set(geoStatesFeatures.map(f => `${f.properties?.country}/${f.properties?.name}`));
+
+    const totalCountries = Object.keys(countries);
+    const coveredCountries = [];
+    const missingCountries = [];
+
+    const totalStates = [];
+    const coveredStates = [];
+    const missingStates = [];
+
+    totalCountries.forEach(countryName => {
+        if (countryFeatureNames.has(countryName)) {
+            coveredCountries.push(countryName);
+        } else {
+            missingCountries.push(countryName);
+        }
+
+        const states = countries[countryName]?.states || {};
+        Object.keys(states).forEach(stateName => {
+            const key = `${countryName}/${stateName}`;
+            totalStates.push(key);
+            if (stateFeatureKeys.has(key)) {
+                coveredStates.push(key);
+            } else {
+                missingStates.push(key);
+            }
+        });
+    });
+
+    return {
+        countries: {
+            total: totalCountries.length,
+            covered: coveredCountries.length,
+            missing: missingCountries
+        },
+        states: {
+            total: totalStates.length,
+            covered: coveredStates.length,
+            missing: missingStates
+        }
+    };
+}
+
+/**
+ * Check if a boundary polygon exists in memory for the given country and optional state
+ */
+export function getGeoBoundary({ country, state = null }) {
+    if (!country) return null;
+    if (state && state.trim()) {
+        const features = data.geoStates?.features || [];
+        return features.find(f => f.properties?.country === country && f.properties?.name === state.trim()) || null;
+    } else {
+        const features = data.geoCountries?.features || [];
+        return features.find(f => f.properties?.name === country) || null;
+    }
+}
+
+/**
+ * Helper to simplify coordinate precision
+ */
+function simplifyCoordinates(coords, precision = 2) {
+    if (typeof coords[0] === 'number') {
+        return coords.map(c => parseFloat(c.toFixed(precision)));
+    }
+    return coords.map(c => simplifyCoordinates(c, precision));
+}
+
+/**
+ * Fetch a GeoJSON boundary polygon on-demand from OpenStreetMap Nominatim
+ */
+export async function fetchBoundaryFromOSM({ country, state = null }) {
+    if (!country) throw new Error('Country is required.');
+    const query = state && state.trim() ? `${state.trim()}, ${country}` : country;
+
+    // Use Nominatim search with polygon_geojson=1 and polygon_threshold=0.005 for clean web polygons
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=jsonv2&polygon_geojson=1&polygon_threshold=0.005`;
+
+    const res = await fetch(url, {
+        headers: { 'Accept': 'application/json' }
+    });
+
+    if (!res.ok) {
+        throw new Error(`Nominatim query failed (HTTP ${res.status})`);
+    }
+
+    const results = await res.json();
+    if (!Array.isArray(results) || results.length === 0) {
+        throw new Error(`No OSM results found for "${query}"`);
+    }
+
+    // Find first result with a polygon or multipolygon
+    const candidate = results.find(r => r.geojson && (r.geojson.type === 'Polygon' || r.geojson.type === 'MultiPolygon'));
+    if (!candidate) {
+        throw new Error(`OSM returned results for "${query}", but no polygon boundary geometry was available.`);
+    }
+
+    const simplifiedGeometry = {
+        type: candidate.geojson.type,
+        coordinates: simplifyCoordinates(candidate.geojson.coordinates, 2)
+    };
+
+    // Calculate vertex count for information display
+    let vertexCount = 0;
+    if (simplifiedGeometry.type === 'Polygon') {
+        simplifiedGeometry.coordinates.forEach(ring => vertexCount += ring.length);
+    } else if (simplifiedGeometry.type === 'MultiPolygon') {
+        simplifiedGeometry.coordinates.forEach(poly => poly.forEach(ring => vertexCount += ring.length));
+    }
+
+    const feature = {
+        type: 'Feature',
+        properties: {
+            name: state && state.trim() ? state.trim() : country,
+            ...(state && state.trim() ? { country } : {})
+        },
+        geometry: simplifiedGeometry,
+        _osmInfo: {
+            displayName: candidate.display_name,
+            osmType: candidate.osm_type,
+            osmId: candidate.osm_id,
+            vertexCount
+        }
+    };
+
+    return feature;
+}
+
+/**
+ * Save a GeoJSON boundary feature into memory (geoCountries or geoStates)
+ */
+export function saveGeoBoundary({ level, country, state = null, feature }) {
+    if (!feature || !feature.geometry) throw new Error('Invalid GeoJSON feature.');
+
+    if (level === 'country') {
+        data.geoCountries = data.geoCountries || { type: 'FeatureCollection', features: [] };
+        const idx = data.geoCountries.features.findIndex(f => f.properties?.name === country);
+        const cleanFeature = {
+            type: 'Feature',
+            properties: { name: country },
+            geometry: feature.geometry
+        };
+        if (idx >= 0) {
+            data.geoCountries.features[idx] = cleanFeature;
+        } else {
+            data.geoCountries.features.push(cleanFeature);
+        }
+        return cleanFeature;
+    } else if (level === 'state') {
+        if (!state) throw new Error('State name required.');
+        data.geoStates = data.geoStates || { type: 'FeatureCollection', features: [] };
+        const idx = data.geoStates.features.findIndex(f => f.properties?.country === country && f.properties?.name === state);
+        const cleanFeature = {
+            type: 'Feature',
+            properties: { name: state, country },
+            geometry: feature.geometry
+        };
+        if (idx >= 0) {
+            data.geoStates.features[idx] = cleanFeature;
+        } else {
+            data.geoStates.features.push(cleanFeature);
+        }
+        return cleanFeature;
+    }
+    throw new Error(`Invalid boundary level: ${level}`);
+}
+
+/**
+ * Assemble per-country GeoJSON payload matching data/geo/${country}.json
+ */
+export function getCountryGeoJSON(country) {
+    const countryFeature = data.geoCountries?.features?.find(f => f.properties?.name === country) || null;
+    const stateFeatures = (data.geoStates?.features || []).filter(f => f.properties?.country === country);
+    return {
+        country: countryFeature,
+        states: {
+            type: 'FeatureCollection',
+            features: stateFeatures
+        }
+    };
+}
+
+/**
+ * Upload a single country's boundary file to data/geo/{country}.json
+ */
+export function uploadGeoBoundary(country) {
+    const payload = getCountryGeoJSON(country);
+    const fileName = `${country}.json`;
+    const file = new File([JSON.stringify(payload)], fileName);
+    return FirebaseApi.getFirebase().storage().ref(`data/geo/${country}.json`).put(file);
+}
+
+/**
+ * Upload all country boundary files to data/geo/*.json
+ */
+export async function uploadGeoBoundaries() {
+    await ensureGeoBoundariesLoaded();
+    const countries = Object.keys(data.countries || {});
+    const uploadPromises = countries.map(country => uploadGeoBoundary(country));
+    await Promise.all(uploadPromises);
+    return { success: true, count: countries.length };
+}
+
+/**
+ * Load per-country geo boundary files from Firebase Storage into memory
+ */
+export async function ensureGeoBoundariesLoaded() {
+    const countries = data.countries || {};
+    const countryNames = Object.keys(countries);
+
+    if (!data.geoCountries) {
+        data.geoCountries = { type: 'FeatureCollection', features: [] };
+    }
+    if (!data.geoStates) {
+        data.geoStates = { type: 'FeatureCollection', features: [] };
+    }
+
+    const loadCountryFile = async (country) => {
+        const path = Util.getData(`data/geo/${country}.json`);
+        try {
+            const res = await fetch(path);
+            if (res.ok) {
+                const file = await res.json();
+                if (file.country) {
+                    const idx = data.geoCountries.features.findIndex(f => f.properties?.name === country);
+                    if (idx >= 0) {
+                        data.geoCountries.features[idx] = file.country;
+                    } else {
+                        data.geoCountries.features.push(file.country);
+                    }
+                }
+                if (file.states && file.states.features) {
+                    const existingKeys = new Set(data.geoStates.features.map(f => `${f.properties?.country}/${f.properties?.name}`));
+                    for (const feature of file.states.features) {
+                        const key = `${feature.properties?.country}/${feature.properties?.name}`;
+                        if (!existingKeys.has(key)) {
+                            data.geoStates.features.push(feature);
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn(`[ensureGeoBoundariesLoaded] Could not load geo/${country}.json:`, e);
+        }
+    };
+
+    await Promise.all(countryNames.map(loadCountryFile));
+
+    return { geoCountries: data.geoCountries, geoStates: data.geoStates };
+}
+
 
 

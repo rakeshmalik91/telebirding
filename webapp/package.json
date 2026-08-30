@@ -3,7 +3,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "build:geo": "node ../utils/build-geo-boundaries.js"
   },
   "dependencies": {
     "firebase": "^11.4.0",

@@ -17,15 +17,21 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 RESOURCES_DIR = BASE_DIR / "webapp" / "resources"
 DATA_DIR = RESOURCES_DIR / "data"
 
-TARGET_FILES = [
-    "data/bird-families.json",
-    "data/bird-species.json",
-    "data/bird-sightings.json",
-    "data/insect-families.json",
-    "data/insect-species.json",
-    "data/insect-sightings.json",
-    "data/places.json"
-]
+def get_target_files():
+    files = [
+        "data/bird-families.json",
+        "data/bird-species.json",
+        "data/bird-sightings.json",
+        "data/insect-families.json",
+        "data/insect-species.json",
+        "data/insect-sightings.json",
+        "data/places.json"
+    ]
+    geo_dir = DATA_DIR / "geo"
+    if geo_dir.exists():
+        for p in sorted(geo_dir.glob("*.json")):
+            files.append(f"data/geo/{p.name}")
+    return files
 
 def get_git_changed_files():
     """Returns a set of files changed in git (relative to repo root)."""
@@ -168,16 +174,18 @@ def main():
 
     files_to_upload = []
     
+    target_files = get_target_files()
     if args.force:
         print("Force mode enabled: Uploading all target files.")
-        files_to_upload = TARGET_FILES
+        files_to_upload = target_files
     else:
         changed_files = get_git_changed_files()
         print("Checking git status for changes...")
         
         # Define groups
-        bird_files = [f for f in TARGET_FILES if "bird-" in f]
-        insect_files = [f for f in TARGET_FILES if "insect-" in f]
+        bird_files = [f for f in target_files if "bird-" in f]
+        insect_files = [f for f in target_files if "insect-" in f]
+        geo_files = [f for f in target_files if f.startswith("data/geo/") or f == "data/places.json"]
         
         files_set = set()
         
@@ -190,6 +198,12 @@ def main():
         if any(f in changed_files for f in insect_files):
             print("-> Insect data change detected. Queueing all insect files.")
             files_set.update(insect_files)
+
+        # Check places / geo group
+        changed_geo = [f for f in geo_files if f in changed_files]
+        if changed_geo:
+            print(f"-> Places/Geo data change detected ({len(changed_geo)} files). Queueing changed files.")
+            files_set.update(changed_geo)
             
         files_to_upload = sorted(list(files_set))
     
