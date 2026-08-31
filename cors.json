@@ -1,0 +1,29 @@
+[
+  {
+    "origin": [
+      "http://localhost:5000",
+      "http://192.168.29.83:5000",
+      "https://telebirding-49623.web.app",
+      "https://telebirding-49623.firebaseapp.com",
+      "https://telebirding.info",
+      "https://www.telebirding.info",
+      "https://telebirding.netlify.app",
+      "*"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Authorization",
+      "Content-Length",
+      "User-Agent",
+      "x-goog-resumable"
+    ],
+    "method": [
+      "GET",
+      "HEAD",
+      "PUT",
+      "POST",
+      "DELETE"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]

@@ -1,0 +1,219 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+	<title>Telebirding</title>
+
+	<meta name="title" content="Telebirding">
+	<meta name="author" content="Rakesh Malik">
+	<meta name="description" content="Rakesh's Bird Catalog">
+	<meta name="keywords"
+		content="bhimtal, bhitarkanika, bird, bird blog, bird details, bird gallery, bird list, bird log, bird lover, bird photo, bird photography, bird sanctuary, bird sighting, bird watching, bird watching gallery, birder, birder blog, birding, birding blog, birds, birdwatching, birdwatching blog, blog, gajoldoba, gallery, ladakh, latpanchar, leh, malik, mangalaodi, ornithologist, ornithology, pangong, rakesh, rakesh malik, sattal, sighting, telebirding, telebirding.wordpress.com, thattekad, tso kar, wordpress, india, indian, indian bird, birds of india, indian subcontinent, birds of indian subcontinent, tal chhapar, rajasthan, chhapar">
+
+	<link rel="icon" type="image/png" href="icons/favicon-48x48.png">
+	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
+
+	<meta name="application-name" content="Telebirding">
+	<meta name="apple-mobile-web-app-title" content="Telebirding">
+	<!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="msapplication-tooltip" content="Telebirding - Rakesh's Bird Catalog">
+	<meta name="msapplication-TileImage" content="icons/favicon-64x64.png">
+	<meta property="al:ios:app_name" content="Telebirding">
+	<meta property="al:android:app_name" content="Telebirding">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Telebirding">
+	<meta property="og:site_name" content="Telebirding">
+	<meta property="og:url" content="https://telebirding.info">
+	<meta property="og:description" content="Telebirding - Rakesh's Bird Catalog">
+	<meta name="twitter:title" content="Telebirding">
+	<meta name="twitter:description" content="Rakesh's Bird Catalog">
+
+	<link rel="canonical" href="https://telebirding.info">
+	<link rel="next" href="https://telebirding.info/?page=feed">
+
+	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
+	<link rel="stylesheet" charset="UTF-8" href="css/common.css?v=20260524">
+	<link rel="stylesheet" charset="UTF-8" href="css/home.css?v=20260831_1">
+	<link rel="stylesheet" charset="UTF-8" href="css/archive-page.css?v=20260524">
+	<link rel="stylesheet" charset="UTF-8" href="css/mobile.css?v=20260829">
+	<link rel="stylesheet" charset="UTF-8" href="css/toast.css?v=20260318">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
+
+	<!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
+
+	<script type="module" src="scripts/main.js?v=20260831_1"></script>
+</head>
+
+<body>
+	<div style="display:none;">bhimtal, bhitarkanika, bird, bird blog, bird details, bird gallery, bird list, bird log,
+		bird lover, bird photo, bird photography, bird sanctuary, bird sighting, bird watching, bird watching gallery,
+		birder, birder blog, birding, birding blog, birds, birdwatching, birdwatching blog, blog, gajoldoba, gallery,
+		ladakh, latpanchar, leh, malik, mangalaodi, ornithologist, ornithology, pangong, rakesh, rakesh malik, sattal,
+		sighting, telebirding, telebirding.wordpress.com, thattekad, tso kar, wordpress, india, indian, indian bird,
+		birds of india, indian subcontinent, birds of indian subcontinent</div>
+
+	<div class="site-header">
+		<a class="site-logo" onclick="showPage('home')"><img /></a>
+		<div class="page-name"><span class='active'>Home<span></div>
+		<div class="filter-panel fadein" style="display:none;">
+			<div class="stats">
+				<div class="box newspeciesfilter cursorpointer" onclick="toggleNewSpeciesFilter()"
+					title="Filter only lifers (new observed species) / Clear filter">
+					<div class="label new-species-count count"></div>
+					<div class="label">Lifers:</div>
+				</div>
+				<div class="box cursorpointer active" onclick="resetRatingFilter()" title="Clear filter">
+					<div class="label rating count"></div>
+					<div class="label">Image Grade:</div>
+				</div>
+				<div class="box ">
+					<div class="label species-count count"></div>
+					<div class="label">Species:</div>
+				</div>
+				<div class="box">
+					<div class="label sightings-count count"></div>
+					<div class="label">Sightings:</div>
+				</div>
+			</div>
+			<div class="filter">
+				<div class="component right-pane-button-container">
+					<button type="button" class="right-pane-button" onclick="toggleRightPane()" tabindex="9"
+						title="Index"></button>
+				</div>
+				<div class="component">
+					<input type="text" data-value="place" onchange="filterOnChange('place')" tabindex="6"
+						placeholder="Filter by Location" />
+					<button type="button" class="button-clear"
+						onmousedown="clearFilter('place'); event.preventDefault();" tabindex="7"
+						title="Clear Place Filter"></button>
+				</div>
+				<div class="component">
+					<input type="text" data-value="sighting" onchange="filterOnChange('sighting')" tabindex="4"
+						placeholder="Filter by Name" />
+					<button type="button" class="button-clear"
+						onmousedown="clearFilter('sighting'); event.preventDefault();" tabindex="5"
+						title="Clear Bird Name Filter"></button>
+				</div>
+				<div class="component">
+					<input type="text" class="hidden" data-value="date" />
+					<button type="button" class="hidden date-filter" onclick="clearFilter('date')" tabindex="8"
+						title="Clear Date Filter"></button>
+				</div>
+			</div>
+			<div class="sortby">
+				<!-- <div class="component"><button type="button" data-value="family" tabindex="3"  onclick="sortByOnChange('family')" title="Sort by Bird Family">Family</button></div> -->
+				<!-- <div class="component"><button type="button" data-value="shuffle" tabindex="0"  onclick="sortByOnChange('shuffle')" title="Shuffle"><img class="icon" src="icons/shuffle.png"/></button></div> -->
+				<div class="component"><button type="button" data-value="name" tabindex="2"
+						onclick="sortByOnChange('name')" title="Sort by Name">Name<span class="order"></span></button>
+				</div>
+				<div class="component"><button type="button" data-value="date" tabindex="1"
+						onclick="sortByOnChange('date')" class="button-active" title="Sort by Date">Date<span
+							class="order"></span></button></div>
+				<!--<div class="label">Sort by:</div>-->
+			</div>
+		</div>
+	</div>
+	<div class="home">
+		<div class="featured" onclick="showPage('home')">
+			<div class="images"></div>
+			<div class="carousal-buttons"></div>
+		</div>
+		<div class="menu">
+			<button type="button" onclick="setMode('bird'); showPage('feed')"><img class="icon"
+					src="icons/archive-icon.png" /> Birds Feed</button>
+			<!-- <button type="button" onclick="showPage('stories')"><img class="icon" src="icons/video-icon.png"/> Birding Trips</button> -->
+			<button type="button" class='seq2' onclick="setMode('bird'); showPage('explore_menu')"><img class="icon"
+					src="icons/bino-icon.png" /> Explore Birds</button>
+			<button type="button" class='seq3' onclick="setMode('bird'); showPage('map_menu')"><img class="icon"
+					src="icons/map-icon.png" /> Bird Map</button>
+			<button type="button" class='seq4' onclick="showPage('stories')"><img class="icon"
+					src="icons/video-icon.png" /> Stories</button>
+			<button type="button" class='seq4' onclick="showPage('about')"><img class="icon"
+					src="icons/about-icon.png" /> About Telebirding</button>
+			<button type="button" class='seq3 highlight' onclick="setMode('insect'); showPage('feed')"><img class="icon"
+					src="icons/insect-feed.png" /> Insects Feed</button>
+			<a href="https://github.com/rakeshmalik91/insect-id/blob/main/README.md" target="_blank"><button
+					type="button" class='seq4'><img class="icon" src="icons/insect-id-app-icon.png" /> Insect ID AI
+					Android App</button></a>
+			<button type="button" class="highlight" style="display:none;" id="admin-button"><img class="icon"
+					src="icons/admin-icon.png" /> Admin</button>
+		</div>
+		<div class="explore-menu" style="display:none;">
+			<h1>Sightgings by Category</h1>
+			<!-- <div><p><b>Note:</b> Sightings are categorized based on genus/family or group of similar species in a genus/family.</p></div> -->
+			<div class="list"></div>
+		</div>
+		<div class="about-page" style="display:none;">
+			<h1>About Telebirding</h1>
+			<br>
+			<span>
+				Welcome to Telebirding!
+				<br><br>
+				My name is Rakesh. This blog contains a catalogue of birds I have encountered during my trips across
+				India. Most of the photos here are shot with Sony Alpha
+				<a href="https://www.sony.co.in/interchangeable-lens-cameras/products/ilce-6400"
+					target="_blank">A6400</a> /
+				<a href="https://www.sony.co.in/interchangeable-lens-cameras/products/ilce-7rm5"
+					target="_blank">7RmV</a> +
+				<a href="https://www.sony.co.in/electronics/camera-lenses/sel200600g" target="_blank">200-600mm G
+					Lens</a> or
+				<a href="https://www.nikonusa.com/en/nikon-products/product-archive/compact-digital-cameras/coolpix-p900.html"
+					target="_blank">Nikon Coolpix P900</a>.
+				<br><br>
+				Identifications are mostly made visually using <a href="https://ebird.org/home"
+					target="_blank">eBird</a> or
+				<a href="https://merlin.allaboutbirds.org/" target="_blank">Merlin</a> data. Feel free to reach out for
+				any discrepencies.
+				<br><br>
+				Feel free to contact in the following for any enquiries.
+			</span>
+			<br>
+			<span class="social-icon" title="E-Mail: rakeshmalik91@gmail.com">
+				<a href="mailto:rakeshmalik91@gmail.com?subject=About Telebirding" target="_blank"><img
+						src="icons/email-icon.png"></img></a>
+			</span>
+			<span class="social-icon" title="Instagram: @rakeshmalik_art">
+				<a href="https://www.instagram.com/rakeshmalik_art" target="_blank"><img
+						src="icons/instagram-icon.png"></img></a>
+			</span>
+			<!-- <span class="social-icon" title="LinkedIn: @rakesh-malik-120bb140">
+					<a href="https://www.linkedin.com/in/rakesh-malik-120bb140" target="_blank"><img src="icons/linkedin-icon.png"></img></a>
+				</span> -->
+		</div>
+		<div class="home-page">
+			<div class='text centeralign'>
+				<p class='text centeralign'>Welcome to Telebirding.</p>
+				<p class='text centeralign'>Check our feed for latest bird sightings in the menu above.</p>
+			</div>
+			<hr />
+
+			<div class="home-stories"></div>
+
+			<div class="show-more" onclick="showPage('stories')"><a>Show more stories...</a></div>
+		</div>
+
+	</div>
+	<div class="sightings-list" style="display:none;"></div>
+	<div class="stories" style="display:none;"></div>
+	<div class="map-menu" style="display:none;"></div>
+	<div class="right-pane slide-in" style="display:none;"></div>
+	<div class="overlay fadein" style="display:none;" onclick="removePreviewImage()"></div>
+	<div class="overlay-on-body fadein" style="display:none;"></div>
+</body>
+
+</html>

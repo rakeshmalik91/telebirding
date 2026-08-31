@@ -1,0 +1,893 @@
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import * as AdminRendering from '../../scripts/modules/admin/rendering.js';
+import * as AdminData from '../../scripts/modules/admin/data.js';
+import Constants from '../../scripts/modules/constants.js';
+
+let mockCurrentMode = 'bird';
+vi.mock('../../scripts/modules/admin/data.js', () => ({
+    data: {
+        sightings: [],
+        species: {},
+        families: [],
+        camera_model: {},
+        countries: {}
+    },
+    get currentMode() { return mockCurrentMode; },
+    set currentMode(val) { mockCurrentMode = val; },
+    uploadMedia: vi.fn(),
+    deleteMedia: vi.fn(),
+    moveMediaLeft: vi.fn(),
+    updateField: vi.fn(),
+    updateMediaProperty: vi.fn(),
+    deleteSighting: vi.fn(),
+    moveSighting: vi.fn(),
+    sightingMatches: vi.fn(() => true), // default true for rendering
+    addFamily: vi.fn(),
+    saveSpecies: vi.fn(),
+    deleteFamily: vi.fn(),
+    deleteSpecies: vi.fn()
+}));
+
+vi.mock('../../scripts/modules/ui-helpers.js', () => ({
+    getSelectDOM: vi.fn((name, options, selected, width) => `<select data-field="${name}"></select>`),
+    getSelectOptionsDOM: vi.fn(() => '')
+}));
+
+vi.mock('../../scripts/modules/cropper.js', () => ({
+    openCropper: vi.fn((file, callback) => callback(file))
+}));
+
+vi.mock('../../scripts/modules/ebird-api.js', () => ({
+    default: {
+        fetchEbirdCode: vi.fn().mockResolvedValue('rocpig'),
+        fetchEbirdSciName: vi.fn().mockResolvedValue({
+            sciName: 'Columba livia',
+            familyComName: 'Columbidae',
+            familyCode: 'columb1',
+            familySciName: 'Columbidae'
+        })
+    }
+}));
+
+function buildBaseDOM() {
+    return `
+        <table id="sightings-table"></table>
+        <input name="filter-sighting" value="" />
+        <div class="page-number"></div>
+        <button class="first-page"></button>
+        <button class="previous"></button>
+        <button class="last-page"></button>
+        <button class="next"></button>
+
+        <div id="update-species-form">
+            <table>
+                <tr><td><select data-field="key"><option value="s1" selected>s1</option></select></td></tr>
+                <tr><td><select data-field="family"><option value="Columbidae">Columbidae</option></select></td></tr>
+                <tr><td><select data-field="name"><option value="s1">Rock Pigeon</option></select></td></tr>
+                <tr><td>
+                    <div class="chip-input-container">
+                        <div class="chips-wrapper"></div>
+                        <input type="text" class="chip-input" />
+                        <input type="hidden" data-field="tags" value="" />
+                    </div>
+                </td></tr>
+                <tr><td><input data-field="latin-name" value="" /></td></tr>
+                <tr><td><input data-field="ebird-code" value="" /></td></tr>
+                <tr><td><span data-field="sighting-count">-</span></td></tr>
+                <tr><td><button class="submit"></button></td></tr>
+                <tr><td><button class="delete"></button></td></tr>
+            </table>
+        </div>
+
+        <div id="add-family-section" style="display:none">
+            <div id="add-family-form">
+                <table>
+                    <tr><td><select data-field="name"><option value="Columbidae" selected>Columbidae</option></select></td></tr>
+                    <tr><td><input data-field="sci-name" value="" /></td></tr>
+                    <tr><td><input data-field="ebird-code" value="" /></td></tr>
+                    <tr><td><span data-field="species-count">-</span></td></tr>
+                    <tr><td><button class="submit"></button></td></tr>
+                    <tr><td><button class="delete"></button></td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function setupDefaultData() {
+    AdminData.data.species = {
+        's1': { key: 's1', name: 'Rock Pigeon', tags: ['common'], family: 'Columbidae', latin_name: 'columba livia', ebird_code: 'rocpig' },
+        's2': { key: 's2', name: 'House Sparrow', tags: ['urban'], family: 'Passeridae', latin_name: 'passer domesticus', ebird_code: 'houspa' }
+    };
+    AdminData.data.families = [
+        { name: 'Columbidae', sci_name: 'Columbidae', ebird_code: 'columb1' },
+        { name: 'Passeridae', sci_name: 'Passeridae', ebird_code: 'passer1' }
+    ];
+    AdminData.data.sightings = [
+        {
+            key: 'sight1', species: 's1', place: 'Central Park',
+            media: [
+                { src: 'images/s1-123.jpg', title: 'Pretty', exif_data: { camera_model: 'S7RV+200600' } },
+                { src: 'videos/s1-456.mp4', type: 'video', thumbnail: 'images/s1-456.jpg' }
+            ],
+            date: '01-01-2023', country: 'US', state: 'NY',
+            city: 'New York', hidden: false, unconfirmed: true,
+            rating: 4, gender: 'M', age: '', plumage: '',
+            time_of_day: 'Day', weather: 'Sunny',
+            author: 'Tester', description: 'Nice bird', variation: '', subspecies: ''
+        },
+        {
+            key: 'sight2', species: 's2', place: 'Times Square',
+            media: [], date: '02-01-2023', country: 'US', state: 'NY',
+            city: 'New York', hidden: true, rating: 2
+        }
+    ];
+    AdminData.data.countries = {
+        'US': { states: { 'NY': 'New York', 'CA': 'California' } }
+    };
+    AdminData.data.camera_model = { 'S7RV': 'Sony a7R V', '200600': 'Sony 200-600mm' };
+}
+
+describe('Admin Rendering - Readonly Operations', () => {
+
+    beforeEach(() => {
+        mockCurrentMode = 'bird';
+        document.body.innerHTML = buildBaseDOM();
+        setupDefaultData();
+
+        // Mock select2 to prevent TypeError
+        $.fn.select2 = vi.fn(function() { return this; });
+
+        vi.clearAllMocks();
+    });
+
+    // ========================
+    // getValue
+    // ========================
+    describe('getValue', () => {
+        it('should return the property if it exists', () => {
+            expect(AdminRendering.getValue({ place: 'Central Park' }, 'place')).toBe('Central Park');
+        });
+
+        it('should return empty string if the property does not exist', () => {
+            expect(AdminRendering.getValue({ place: 'Central Park' }, 'description')).toBe('');
+        });
+
+        it('should return empty string for falsy values', () => {
+            expect(AdminRendering.getValue({ rating: 0 }, 'rating')).toBe('');
+            expect(AdminRendering.getValue({ hidden: false }, 'hidden')).toBe('');
+            expect(AdminRendering.getValue({ val: null }, 'val')).toBe('');
+        });
+
+        it('should return truthy values as-is', () => {
+            expect(AdminRendering.getValue({ rating: 5 }, 'rating')).toBe(5);
+            expect(AdminRendering.getValue({ hidden: true }, 'hidden')).toBe(true);
+        });
+    });
+
+    // ========================
+    // updatePaginationControls
+    // ========================
+    describe('updatePaginationControls', () => {
+        it('should display pagination text and disable buttons at the beginning', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.updatePaginationControls(0, 5);
+
+            expect($('.page-number').html()).toBe('0 - 2 of 2');
+            expect($('button.first-page').attr('disabled')).toBe('disabled');
+            expect($('button.previous').attr('disabled')).toBe('disabled');
+            expect($('button.last-page').attr('disabled')).toBe('disabled');
+            expect($('button.next').attr('disabled')).toBe('disabled');
+        });
+
+        it('should enable first/previous when offset > 0', () => {
+            for (let i = 3; i <= 12; i++) {
+                AdminData.data.sightings.push({ key: 's' + i, species: 's1', media: [], date: '01-01-2023', country: 'US', state: 'NY' });
+            }
+            AdminData.sightingMatches.mockReturnValue(true);
+
+            AdminRendering.updatePaginationControls(5, 5);
+            expect($('.page-number').html()).toBe('5 - 10 of 12');
+            expect($('button.first-page').attr('disabled')).toBeUndefined();
+            expect($('button.previous').attr('disabled')).toBeUndefined();
+        });
+
+        it('should enable next/last when not at the end', () => {
+            for (let i = 3; i <= 12; i++) {
+                AdminData.data.sightings.push({ key: 's' + i, species: 's1', media: [], date: '01-01-2023', country: 'US', state: 'NY' });
+            }
+            AdminData.sightingMatches.mockReturnValue(true);
+
+            AdminRendering.updatePaginationControls(0, 5);
+            expect($('button.next').attr('disabled')).toBeUndefined();
+            expect($('button.last-page').attr('disabled')).toBeUndefined();
+        });
+
+        it('should disable next/last at the end', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.updatePaginationControls(0, 10);
+            expect($('button.next').attr('disabled')).toBe('disabled');
+            expect($('button.last-page').attr('disabled')).toBe('disabled');
+        });
+
+        it('should respect filter-sighting search field', () => {
+            $('input[name=filter-sighting]').val('pigeon');
+            AdminData.sightingMatches.mockImplementation((s, key) =>
+                key === 'pigeon' && s.species === 's1'
+            );
+
+            AdminRendering.updatePaginationControls(0, 5);
+            expect($('.page-number').html()).toBe('0 - 1 of 1');
+        });
+    });
+
+    // ========================
+    // fillUpdateSpeciesForm
+    // ========================
+    describe('fillUpdateSpeciesForm', () => {
+        it('should fill form with species data when key is selected', () => {
+            AdminRendering.fillUpdateSpeciesForm();
+
+            expect($('#update-species-form input[data-field="tags"]').val()).toBe('common');
+            expect($('#update-species-form select[data-field="family"]').val()).toBe('Columbidae');
+            expect($('#update-species-form input[data-field="latin-name"]').val()).toBe('columba livia');
+            expect($('#update-species-form input[data-field="ebird-code"]').val()).toBe('rocpig');
+            expect($('#update-species-form span[data-field="sighting-count"]').text()).toBe('1');
+            expect($('#update-species-form button.submit').html()).toBe('Update');
+        });
+
+        it('should disable delete button when species has sightings', () => {
+            AdminRendering.fillUpdateSpeciesForm();
+            expect($('#update-species-form button.delete').attr('disabled')).toBe('disabled');
+        });
+
+        it('should enable delete button when species has 0 sightings', () => {
+            AdminData.data.sightings = []; // No sightings
+            AdminRendering.fillUpdateSpeciesForm();
+            expect($('#update-species-form button.delete').attr('disabled')).toBeUndefined();
+        });
+
+        it('should reset form when no species key is selected', () => {
+            $('#update-species-form select[data-field="name"]').val('');
+            AdminRendering.fillUpdateSpeciesForm();
+
+            expect($('#update-species-form input[data-field="tags"]').val()).toBe('');
+            expect($('#update-species-form input[data-field="latin-name"]').val()).toBe('');
+            expect($('#update-species-form input[data-field="ebird-code"]').val()).toBe('');
+            expect($('#update-species-form span[data-field="sighting-count"]').text()).toBe('0');
+            expect($('#update-species-form button.submit').html()).toBe('Add');
+            expect($('#update-species-form button.delete').attr('disabled')).toBe('disabled');
+        });
+    });
+
+    // ========================
+    // fillAddFamilyForm
+    // ========================
+    describe('fillAddFamilyForm', () => {
+        it('should fill form with family data when family is selected', () => {
+            AdminRendering.fillAddFamilyForm();
+
+            expect($('#add-family-form input[data-field="sci-name"]').val()).toBe('Columbidae');
+            expect($('#add-family-form input[data-field="ebird-code"]').val()).toBe('columb1');
+            expect($('#add-family-form span[data-field="species-count"]').text()).toBe('1');
+            expect($('#add-family-form button.submit').html()).toBe('Update');
+            expect($('#add-family-form button.delete').attr('disabled')).toBe('disabled'); // has 1 species
+        });
+
+        it('should handle family with missing sci_name and ebird_code', () => {
+            AdminData.data.families.push({ name: 'MissingFieldsFamily' });
+            $('#add-family-form select[data-field="name"]').append('<option value="MissingFieldsFamily">MissingFieldsFamily</option>').val('MissingFieldsFamily');
+            AdminRendering.fillAddFamilyForm();
+
+            expect($('#add-family-form input[data-field="sci-name"]').val()).toBe('');
+            expect($('#add-family-form input[data-field="ebird-code"]').val()).toBe('');
+
+            // Clean up
+            AdminData.data.families = AdminData.data.families.filter(f => f.name !== 'MissingFieldsFamily');
+        });
+
+        it('should enable submit and delete buttons for existing family with 0 species', () => {
+            AdminData.data.species = {};
+            AdminRendering.fillAddFamilyForm();
+            expect($('#add-family-form button.submit').attr('disabled')).toBeUndefined();
+            expect($('#add-family-form button.delete').attr('disabled')).toBeUndefined();
+        });
+
+        it('should reset form when no family selected', () => {
+            $('#add-family-form select[data-field="name"]').val('');
+            AdminRendering.fillAddFamilyForm();
+
+            expect($('#add-family-form input[data-field="sci-name"]').val()).toBe('');
+            expect($('#add-family-form input[data-field="ebird-code"]').val()).toBe('');
+            expect($('#add-family-form span[data-field="species-count"]').text()).toBe('0');
+            expect($('#add-family-form button.submit').html()).toBe('Add');
+            expect($('#add-family-form button.delete').attr('disabled')).toBe('disabled');
+        });
+
+        it('should show ebird-code tr in bird mode and hide in insect mode, and cover insect mode name change', async () => {
+            // Bird mode - should show
+            mockCurrentMode = 'bird';
+            AdminRendering.fillAddFamilyForm();
+            expect($('#add-family-form input[data-field="ebird-code"]').closest('tr').css('display')).not.toBe('none');
+
+            // Insect mode - should hide, requires dynamic import to bind new currentMode
+            mockCurrentMode = 'insect';
+            const { fillAddFamilyForm, setupUpdateSpeciesForm } = await import('../../scripts/modules/admin/rendering.js?mode=insect');
+            document.body.innerHTML = buildBaseDOM();
+            setupDefaultData();
+            
+            // Set select value to something that does not exist in data.families to hit the else branch
+            $('#add-family-form select[data-field="name"]').append('<option value="NonExistentFamily">NonExistentFamily</option>').val('NonExistentFamily');
+            
+            fillAddFamilyForm();
+            expect($('#add-family-form input[data-field="ebird-code"]').closest('tr').css('display')).toBe('none');
+            expect($('#add-family-form button.submit').attr('disabled')).toBeUndefined();
+
+            // Setup update species form in insect mode
+            AdminData.data.families.push({ name: 'Pigeons' });
+            setupUpdateSpeciesForm();
+
+            // Trigger name change
+            const nameSelect = $('#update-species-form select[data-field="name"]');
+            nameSelect.append('<option value="Green Pigeon">Green Pigeon</option>');
+            nameSelect.val('Green Pigeon').trigger('change');
+            expect($('#update-species-form select[data-field="family"]').val()).toBe('Pigeons');
+        });
+    });
+
+    // ========================
+    // renderSightingsTable — expanded
+    // ========================
+    describe('renderSightingsTable', () => {
+        it('should trigger state select updates when country is changed', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const countrySelect = $('#sightings-table select[data-field="country"]').first();
+            expect(countrySelect.length).toBeGreaterThan(0);
+            
+            // Populate the select with a valid value to avoid undefined lookup in data.countries
+            countrySelect.append('<option value="US">US</option>').val('US');
+
+            countrySelect.trigger('change');
+            expect(AdminData.updateField).toHaveBeenCalledWith('sight1', 'state', 'NY');
+        });
+
+        it('should render header row plus sighting rows', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            // 1 header + 2 sighting rows
+            expect($('#sightings-table tr').length).toBe(3);
+        });
+
+        it('should render sighting keys', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            expect($('#sightings-table').html()).toContain('sight1');
+            expect($('#sightings-table').html()).toContain('sight2');
+        });
+
+        it('should render media thumbnails for images', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('.jpg');
+            expect(html).toContain('thumbnail');
+        });
+
+        it('should render video media with .mp4 label and video thumbnail', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('.mp4');
+        });
+
+        it('should render camera/lens selects with camera_model data', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('camera-model-select');
+            expect(html).toContain('S7RV');
+            expect(html).toContain('200600');
+        });
+
+        it('should render title textbox for media', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('title-textbox');
+            expect(html).toContain('Pretty');
+        });
+
+        it('should render description textarea', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('Nice bird');
+        });
+
+        it('should render unconfirmed checkbox checked when sighting is unconfirmed', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('unconfirmed-toggle');
+        });
+
+        it('should render hide checkbox unchecked when sighting is visible', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            const html = $('#sightings-table').html();
+            expect(html).toContain('hide-toggle');
+        });
+
+        it('should render upload button for each sighting', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            expect($('#sight1 .upload-button').length).toBe(1);
+            expect($('#sight2 .upload-button').length).toBe(1);
+        });
+
+        it('should apply pagination (offset/rows)', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 1);
+
+            // Only 1 sighting row + header
+            expect($('#sightings-table tr').length).toBe(2);
+            expect($('#sightings-table').html()).toContain('sight1');
+            expect($('#sightings-table').html()).not.toContain('sight2');
+        });
+
+        it('should skip sightings that do not match filter', () => {
+            AdminData.sightingMatches.mockImplementation((s) => s.key === 'sight1');
+            AdminRendering.renderSightingsTable(0, 10);
+
+            expect($('#sightings-table tr').length).toBe(2); // header + sight1
+            expect($('#sightings-table').html()).toContain('sight1');
+            expect($('#sightings-table').html()).not.toContain('sight2');
+        });
+
+        it('should render author field', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+            expect($('#sightings-table').html()).toContain('Tester');
+        });
+
+        it('should render delete-sighting button', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            expect($('#sight1 .delete-sighting').length).toBe(1);
+        });
+
+        it('should render delete-media button for each media', () => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            expect($('#sight1 .delete-media').length).toBe(2); // 2 media items
+        });
+
+        it('should handle empty camera_model data', () => {
+            AdminData.data.camera_model = null;
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            // Should still render without errors
+            expect($('#sightings-table tr').length).toBe(3);
+        });
+
+        it('should handle exif_data without camera_model or with empty exif_data', () => {
+            // Add a third media item with empty exif_data dynamically to the first sighting
+            const sighting = AdminData.data.sightings[0];
+            sighting.media.push({ src: 'images/s1-789.jpg', title: 'Nice', exif_data: {} });
+
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+
+            // Verify it renders successfully (now should be 3 delete buttons since we added one)
+            expect($('#sight1 .delete-media').length).toBe(3);
+
+            // Clean up
+            sighting.media.pop();
+        });
+    });
+
+    // ========================
+    // setupUpdateSpeciesForm
+    // ========================
+    describe('setupUpdateSpeciesForm', () => {
+        it('should populate name and family selects from data', () => {
+            AdminRendering.setupUpdateSpeciesForm();
+
+            const nameOptions = $('#update-species-form select[data-field="name"] option');
+            const familyOptions = $('#update-species-form select[data-field="family"] option');
+
+            // name: 1 blank option + 2 species
+            expect(nameOptions.length).toBe(3);
+            // family: 1 blank + 2 families
+            expect(familyOptions.length).toBe(3);
+        });
+
+        it('should show ebird-code field in bird mode', () => {
+            AdminRendering.setupUpdateSpeciesForm();
+            expect($('#update-species-form input[data-field="ebird-code"]').closest('tr').css('display')).not.toBe('none');
+        });
+
+        it('should bind change event on name select', () => {
+            AdminRendering.setupUpdateSpeciesForm();
+
+            // Change name to s2
+            $('#update-species-form select[data-field="name"]').val('s2').trigger('change');
+            expect($('#update-species-form select[data-field="family"]').val()).toBe('Passeridae');
+        });
+
+        it('should lowercase latin name on change', () => {
+            AdminRendering.setupUpdateSpeciesForm();
+
+            $('#update-species-form input[data-field="latin-name"]').val('Columba Livia').trigger('change');
+            expect($('#update-species-form input[data-field="latin-name"]').val()).toBe('columba livia');
+        });
+
+        it('should trim latin name on change', () => {
+            AdminRendering.setupUpdateSpeciesForm();
+
+            $('#update-species-form input[data-field="latin-name"]').val('  passer domesticus  ').trigger('change');
+            expect($('#update-species-form input[data-field="latin-name"]').val()).toBe('passer domesticus');
+        });
+
+        it('should call saveSpecies when update-species-form submit button is clicked', () => {
+            AdminData.saveSpecies.mockClear();
+            AdminRendering.setupUpdateSpeciesForm();
+
+            $('#update-species-form select[data-field="name"]').val('s1');
+            $('#update-species-form input[data-field="tags"]').val('tag1');
+            $('#update-species-form select[data-field="family"]').val('Columbidae');
+            $('#update-species-form input[data-field="latin-name"]').val('new latin name');
+            $('#update-species-form input[data-field="ebird-code"]').val('newcode');
+
+            $('#update-species-form button.submit').trigger('click');
+
+            expect(AdminData.saveSpecies).toHaveBeenCalledWith('s1', 'Rock Pigeon', 'tag1', 'Columbidae', 'new latin name', 'newcode');
+        });
+
+        it('should call deleteSpecies and update UI when update-species-form delete button is clicked', () => {
+            AdminData.deleteSpecies.mockClear();
+            AdminRendering.setupUpdateSpeciesForm();
+
+            // Set up deleteSpecies mock to actually delete from data.species and invoke callback
+            AdminData.deleteSpecies.mockImplementation((key, cb) => {
+                delete AdminData.data.species[key];
+                if (cb) cb();
+            });
+
+            $('#update-species-form select[data-field="name"]').val('s1');
+            $('#update-species-form button.delete').trigger('click');
+
+            expect(AdminData.deleteSpecies).toHaveBeenCalledWith('s1', expect.any(Function));
+            expect($('#update-species-form select[data-field="name"] option[value="s1"]').length).toBe(0);
+        });
+
+        it('should not call deleteSpecies when delete button is clicked but no key selected', () => {
+            AdminData.deleteSpecies.mockClear();
+            AdminRendering.setupUpdateSpeciesForm();
+
+            $('#update-species-form select[data-field="name"]').val('');
+            $('#update-species-form button.delete').trigger('click');
+
+            expect(AdminData.deleteSpecies).not.toHaveBeenCalled();
+        });
+    });
+
+    // ========================
+    // setupAddFamilyForm
+    // ========================
+    describe('setupAddFamilyForm', () => {
+        it('should show add-family-section', () => {
+            AdminRendering.setupAddFamilyForm();
+            expect($('#add-family-section').css('display')).not.toBe('none');
+        });
+
+        it('should populate family select with families', () => {
+            AdminRendering.setupAddFamilyForm();
+
+            const options = $('#add-family-form select[data-field="name"] option');
+            // Empty placeholder option + 2 families
+            expect(options.length).toBe(3);
+            expect(options.eq(0).text()).toBe('');
+            expect(options.eq(1).text()).toBe('Columbidae');
+            expect(options.eq(2).text()).toBe('Passeridae');
+        });
+
+        it('should bind change event and call fillAddFamilyForm', () => {
+            AdminRendering.setupAddFamilyForm();
+
+            // Trigger change to Passeridae
+            $('#add-family-form select[data-field="name"]').val('Passeridae').trigger('change');
+            expect($('#add-family-form input[data-field="sci-name"]').val()).toBe('Passeridae');
+        });
+
+        it('should call addFamily on submit click', () => {
+            AdminRendering.setupAddFamilyForm();
+            AdminData.addFamily.mockClear();
+
+            $('#add-family-form select[data-field="name"]').val('Columbidae');
+            $('#add-family-form button.submit').trigger('click');
+            expect(AdminData.addFamily).toHaveBeenCalledWith('Columbidae', expect.any(String), expect.any(String));
+        });
+
+        it('should not call addFamily when name is empty', () => {
+            AdminRendering.setupAddFamilyForm();
+            AdminData.addFamily.mockClear();
+
+            $('#add-family-form select[data-field="name"]').val('');
+            $('#add-family-form button.submit').trigger('click');
+            expect(AdminData.addFamily).not.toHaveBeenCalled();
+        });
+
+        it('should add a new option to both family selects when submitting new family', () => {
+            AdminRendering.setupAddFamilyForm();
+
+            // Manually add a new option to simulate typing a new family name
+            $('#add-family-form select[data-field="name"]').append('<option value="NewBirds">NewBirds</option>');
+            $('#add-family-form select[data-field="name"]').val('NewBirds');
+            $('#add-family-form button.submit').trigger('click');
+
+            expect(AdminData.addFamily).toHaveBeenCalledWith('NewBirds', expect.any(String), expect.any(String));
+        });
+
+        it('should add option to select if name is new', () => {
+            AdminRendering.setupAddFamilyForm();
+            const nameSelect = $('#add-family-form select[data-field="name"]');
+            nameSelect.find('option[value="BrandNewFamily"]').remove();
+            
+            const originalVal = $.fn.val;
+            const spyVal = vi.spyOn($.fn, 'val').mockImplementation(function(val) {
+                if (arguments.length === 0 && this.attr('data-field') === 'name') {
+                    return 'BrandNewFamily';
+                }
+                return originalVal.apply(this, arguments);
+            });
+
+            $('#add-family-form button.submit').trigger('click');
+            
+            expect(nameSelect.find('option[value="BrandNewFamily"]').length).toBe(1);
+            spyVal.mockRestore();
+        });
+
+        it('should handle delete click', () => {
+            AdminRendering.setupAddFamilyForm();
+            AdminData.deleteFamily.mockClear();
+
+            // Select a family and click delete
+            $('#add-family-form select[data-field="name"]').val('Columbidae');
+
+            // Mock deleteFamily to actually remove from data.families and invoke callback
+            AdminData.deleteFamily.mockImplementation((name, cb) => {
+                AdminData.data.families = AdminData.data.families.filter(f => f.name !== name);
+                if (cb) cb();
+            });
+
+            $('#add-family-form button.delete').trigger('click');
+
+            expect(AdminData.deleteFamily).toHaveBeenCalledWith('Columbidae', expect.any(Function));
+            // After successful delete, the option should be removed
+            expect($('#add-family-form select[data-field="name"] option[value="Columbidae"]').length).toBe(0);
+        });
+
+        it('should not call deleteFamily when name is empty', () => {
+            AdminRendering.setupAddFamilyForm();
+            AdminData.deleteFamily.mockClear();
+
+            $('#add-family-form select[data-field="name"]').val('');
+            $('#add-family-form button.delete').trigger('click');
+            expect(AdminData.deleteFamily).not.toHaveBeenCalled();
+        });
+
+        it('should not remove option if delete did not reduce count', () => {
+            AdminRendering.setupAddFamilyForm();
+            AdminData.deleteFamily.mockClear();
+
+            // deleteFamily doesn't actually remove (e.g., confirm was cancelled)
+            AdminData.deleteFamily.mockImplementation(() => {});
+
+            $('#add-family-form select[data-field="name"]').val('Columbidae');
+            $('#add-family-form button.delete').trigger('click');
+
+            // Option should still be there
+            expect($('#add-family-form select[data-field="name"] option[value="Columbidae"]').length).toBe(1);
+        });
+    });
+
+    // ========================
+    // Sightings Table Event Handlers (readonly read of interactions)
+    // ========================
+    describe('renderSightingsTable event handlers', () => {
+        beforeEach(() => {
+            AdminData.sightingMatches.mockReturnValue(true);
+            AdminRendering.renderSightingsTable(0, 10);
+        });
+
+        it('should call deleteSighting when delete button is clicked', () => {
+            AdminData.deleteSighting.mockClear();
+            $('#sight1 .delete-sighting').trigger('click');
+            expect(AdminData.deleteSighting).toHaveBeenCalledWith('sight1');
+        });
+
+        it('should call deleteMedia for delete-media button', () => {
+            AdminData.deleteMedia.mockClear();
+            $('#sight1 .delete-media').first().trigger('click');
+            expect(AdminData.deleteMedia).toHaveBeenCalledWith('sight1', 'images/s1-123.jpg');
+        });
+
+        it('should call updateField when a field input changes', () => {
+            AdminData.updateField.mockClear();
+            $('#sight1 input[data-field="city"]').val('Brooklyn').trigger('change');
+            expect(AdminData.updateField).toHaveBeenCalledWith('sight1', 'city', 'Brooklyn');
+        });
+
+        it('should call updateField for description textarea', () => {
+            AdminData.updateField.mockClear();
+            $('#sight1 textarea[data-field="description"]').val('Updated desc').trigger('change');
+            expect(AdminData.updateField).toHaveBeenCalledWith('sight1', 'description', 'Updated desc');
+        });
+
+        it('should call updateMediaProperty for title textbox change', () => {
+            AdminData.updateMediaProperty.mockClear();
+            $('#sight1 .title-textbox').first().val('New Title').trigger('change');
+            expect(AdminData.updateMediaProperty).toHaveBeenCalledWith('sight1', 'images/s1-123.jpg', 'title', 'New Title');
+        });
+
+        it('should call updateMediaProperty for camera-model select change', () => {
+            AdminData.updateMediaProperty.mockClear();
+            const camSelect = $('#sight1 .camera-model-select').first();
+            camSelect.val(['200600', 'S7RV']).trigger('change');
+            expect(AdminData.updateMediaProperty).toHaveBeenCalledWith(
+                'sight1', 'images/s1-123.jpg', 'exif_data.camera_model', '200600+S7RV'
+            );
+        });
+
+        it('should call updateField with boolean when checkbox changes', () => {
+            AdminData.updateField.mockClear();
+            const checkbox = $('#sight1 input[type="checkbox"]').first();
+            checkbox.prop('checked', true).trigger('change');
+            expect(AdminData.updateField).toHaveBeenCalledWith('sight1', checkbox.attr('data-field'), true);
+        });
+
+        it('should trigger upload input when upload-button is clicked', () => {
+            const clickSpy = vi.fn();
+            $('#sight1 .upload').on('click', clickSpy);
+            $('#sight1 .upload-button').trigger('click');
+            expect(clickSpy).toHaveBeenCalled();
+        });
+
+        it('should handle image file upload and call openCropper and uploadMedia', async () => {
+            const cropper = await import('../../scripts/modules/cropper.js');
+            AdminData.uploadMedia.mockClear();
+            cropper.openCropper.mockClear();
+
+            const fileInput = $('#sight1 .upload').first();
+            const file = new File(['dummy content'], 'test.jpg', { type: 'image/jpeg' });
+            
+            Object.defineProperty(fileInput[0], 'files', {
+                value: [file],
+                writable: true
+            });
+
+            fileInput.trigger('change');
+
+            expect(cropper.openCropper).toHaveBeenCalledWith(file, expect.any(Function));
+            expect(AdminData.uploadMedia).toHaveBeenCalledWith('sight1', [file]);
+        });
+
+        it('should handle non-image file upload and call uploadMedia directly', () => {
+            AdminData.uploadMedia.mockClear();
+
+            const fileInput = $('#sight1 .upload').first();
+            const file = new File(['dummy content'], 'test.mp4', { type: 'video/mp4' });
+            
+            Object.defineProperty(fileInput[0], 'files', {
+                value: [file],
+                writable: true
+            });
+
+            fileInput.trigger('change');
+
+            expect(AdminData.uploadMedia).toHaveBeenCalledWith('sight1', [file]);
+        });
+    });
+
+    describe('setupUpdateSpeciesForm event handlers (eBird API integration)', () => {
+        it('should fetch ebird code when name changes in bird mode', async () => {
+            const EbirdApi = (await import('../../scripts/modules/ebird-api.js')).default;
+            EbirdApi.fetchEbirdCode.mockResolvedValue('rocpig');
+
+            AdminRendering.setupUpdateSpeciesForm();
+            const nameSelect = $('#update-species-form select[data-field="name"]');
+            nameSelect.append('<option value="New Pigeon">New Pigeon</option>');
+            nameSelect.val('New Pigeon').trigger('change');
+
+            // Wait for promises to resolve
+            await new Promise(resolve => setTimeout(resolve, 10));
+
+            expect(EbirdApi.fetchEbirdCode).toHaveBeenCalledWith('New Pigeon');
+            expect($('#update-species-form input[data-field="ebird-code"]').val()).toBe('rocpig');
+        });
+
+        it('should handle empty name input and return early', async () => {
+            const EbirdApi = (await import('../../scripts/modules/ebird-api.js')).default;
+            EbirdApi.fetchEbirdCode.mockClear();
+
+            AdminRendering.setupUpdateSpeciesForm();
+            const nameSelect = $('#update-species-form select[data-field="name"]');
+            nameSelect.val('').trigger('change');
+
+            await new Promise(resolve => setTimeout(resolve, 10));
+            expect(EbirdApi.fetchEbirdCode).not.toHaveBeenCalled();
+        });
+
+        it('should fetch scientific name and select existing family when ebird code changes', async () => {
+            const EbirdApi = (await import('../../scripts/modules/ebird-api.js')).default;
+            EbirdApi.fetchEbirdSciName.mockResolvedValue({
+                sciName: 'Columba livia',
+                familyComName: 'Columbidae',
+                familyCode: 'columb1',
+                familySciName: 'Columbidae'
+            });
+
+            AdminRendering.setupUpdateSpeciesForm();
+            const ebirdInput = $('#update-species-form input[data-field="ebird-code"]');
+            
+            // Set up matching option in family select
+            const familySelect = $('#update-species-form select[data-field="family"]');
+            familySelect.append('<option value="Columbidae">Columbidae</option>');
+
+            ebirdInput.val('rocpig').trigger('change');
+
+            await new Promise(resolve => setTimeout(resolve, 10));
+
+            expect(EbirdApi.fetchEbirdSciName).toHaveBeenCalledWith('rocpig');
+            expect($('#update-species-form input[data-field="latin-name"]').val()).toBe('columba livia');
+            expect(familySelect.val()).toBe('Columbidae');
+        });
+
+        it('should handle empty ebird code and return early', async () => {
+            const EbirdApi = (await import('../../scripts/modules/ebird-api.js')).default;
+            EbirdApi.fetchEbirdSciName.mockClear();
+
+            AdminRendering.setupUpdateSpeciesForm();
+            const ebirdInput = $('#update-species-form input[data-field="ebird-code"]');
+            ebirdInput.val('').trigger('change');
+
+            await new Promise(resolve => setTimeout(resolve, 10));
+            expect(EbirdApi.fetchEbirdSciName).not.toHaveBeenCalled();
+        });
+
+        it('should fetch scientific name and add new family when ebird code changes and family does not exist', async () => {
+            const EbirdApi = (await import('../../scripts/modules/ebird-api.js')).default;
+            EbirdApi.fetchEbirdSciName.mockResolvedValue({
+                sciName: 'Columba livia',
+                familyComName: 'NewFamily',
+                familyCode: 'newfam',
+                familySciName: 'NewFamilySci'
+            });
+
+            AdminRendering.setupUpdateSpeciesForm();
+            const ebirdInput = $('#update-species-form input[data-field="ebird-code"]');
+            ebirdInput.val('rocpig').trigger('change');
+
+            await new Promise(resolve => setTimeout(resolve, 10));
+
+            expect(AdminData.addFamily).toHaveBeenCalledWith('NewFamily', 'newfam', 'NewFamilySci');
+            expect($('#update-species-form select[data-field="family"] option[value="NewFamily"]').length).toBeGreaterThan(0);
+        });
+    });
+});

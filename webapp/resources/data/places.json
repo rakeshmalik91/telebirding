@@ -1,0 +1,4358 @@
+{
+    "countries": {
+        "India": {
+            "name": "India",
+            "lat": 22.3511,
+            "lng": 78.6677,
+            "radius": 1500,
+            "states": {
+                "Andaman & Nicobar Islands": {
+                    "name": "Andaman & Nicobar Islands",
+                    "lat": 11.6644,
+                    "lng": 92.7402,
+                    "radius": 25,
+                    "cities": {
+                        "South Andaman": {
+                            "name": "South Andaman",
+                            "lat": 11.6,
+                            "lng": 92.73,
+                            "radius": 30,
+                            "places": {
+                                "Chidiya Tapu": {
+                                    "name": "Chidiya Tapu",
+                                    "lat": 11.5,
+                                    "lng": 92.71,
+                                    "radius": 3
+                                },
+                                "Ferrargunj": {
+                                    "name": "Ferrargunj",
+                                    "lat": 11.8718,
+                                    "lng": 92.6986,
+                                    "radius": 5
+                                },
+                                "Ograbraj": {
+                                    "name": "Ograbraj",
+                                    "lat": 11.64,
+                                    "lng": 92.68,
+                                    "radius": 3
+                                },
+                                "Port Blair": {
+                                    "name": "Port Blair",
+                                    "lat": 11.62,
+                                    "lng": 92.73,
+                                    "radius": 5
+                                },
+                                "Sippighat": {
+                                    "name": "Sippighat",
+                                    "lat": 11.62,
+                                    "lng": 92.68,
+                                    "radius": 3
+                                },
+                                "Wandoor": {
+                                    "name": "Wandoor",
+                                    "lat": 11.58,
+                                    "lng": 92.62,
+                                    "radius": 3
+                                },
+                                "Haddo Warf": {
+                                    "name": "Haddo Warf",
+                                    "lat": 10.7057,
+                                    "lng": 92.4875,
+                                    "radius": 5
+                                },
+                                "Kalatang": {
+                                    "name": "Kalatang",
+                                    "lat": 10.7057,
+                                    "lng": 92.4875,
+                                    "radius": 5
+                                },
+                                "Chidiyatapu": {
+                                    "name": "Chidiyatapu",
+                                    "lat": 10.7057,
+                                    "lng": 92.4875,
+                                    "radius": 5
+                                },
+                                "Garacharma Wetlands": {
+                                    "name": "Garacharma Wetlands",
+                                    "lat": 10.7057,
+                                    "lng": 92.4875,
+                                    "radius": 5
+                                },
+                                "Munda Pahad": {
+                                    "name": "Munda Pahad",
+                                    "lat": 10.7057,
+                                    "lng": 92.4875,
+                                    "radius": 5
+                                },
+                                "Chidiyatapu Biological Park": {
+                                    "name": "Chidiyatapu Biological Park",
+                                    "lat": 10.7057,
+                                    "lng": 92.4875,
+                                    "radius": 5
+                                }
+                            }
+                        },
+                        "Havelock Island": {
+                            "name": "Havelock Island",
+                            "lat": 12.02,
+                            "lng": 92.98,
+                            "radius": 8
+                        },
+                        "Baratang": {
+                            "name": "Baratang",
+                            "lat": 12.07,
+                            "lng": 92.76,
+                            "radius": 10
+                        },
+                        "Neil Island": {
+                            "name": "Neil Island",
+                            "lat": 11.83,
+                            "lng": 93.05,
+                            "radius": 5
+                        },
+                        "Great Nicobar": {
+                            "name": "Great Nicobar",
+                            "places": {
+                                "Vijay Nagar": {
+                                    "name": "Vijay Nagar",
+                                    "lat": 6.9195,
+                                    "lng": 93.9075,
+                                    "radius": 3
+                                },
+                                "Magarnallah": {
+                                    "name": "Magarnallah",
+                                    "lat": 7,
+                                    "lng": 93.8111,
+                                    "radius": 5
+                                },
+                                "Joginder Nagar": {
+                                    "name": "Joginder Nagar",
+                                    "lat": 6.9616,
+                                    "lng": 93.9222,
+                                    "radius": 3
+                                },
+                                "Campbell Bay": {
+                                    "name": "Campbell Bay",
+                                    "lat": 7.0088,
+                                    "lng": 93.9328,
+                                    "radius": 3
+                                },
+                                "Galathea": {
+                                    "name": "Galathea",
+                                    "lat": 6.915,
+                                    "lng": 93.8353,
+                                    "radius": 11
+                                },
+                                "Indira Point": {
+                                    "name": "Indira Point",
+                                    "lat": 6.7564,
+                                    "lng": 93.8277,
+                                    "radius": 1
+                                },
+                                "Great Nicobar Biosphere Reserve": {
+                                    "name": "Great Nicobar Biosphere Reserve",
+                                    "lat": 7.0324,
+                                    "lng": 93.7808,
+                                    "radius": 5
+                                }
+                            },
+                            "lat": 7,
+                            "lng": 93.8111,
+                            "radius": 25
+                        },
+                        "Central Nicobar": {
+                            "name": "Central Nicobar",
+                            "places": {
+                                "Katchal Island": {
+                                    "name": "Katchal Island",
+                                    "lat": 11.6698,
+                                    "lng": 92.7397,
+                                    "radius": 1
+                                },
+                                "Kamorta Island": {
+                                    "name": "Kamorta Island",
+                                    "lat": 11.6698,
+                                    "lng": 92.7397,
+                                    "radius": 1
+                                }
+                            },
+                            "lat": 11.6698,
+                            "lng": 92.7397,
+                            "radius": 1
+                        }
+                    }
+                },
+                "Andhra Pradesh": {
+                    "name": "Andhra Pradesh",
+                    "lat": 15.9241,
+                    "lng": 80.1864,
+                    "radius": 200
+                },
+                "Arunachal Pradesh": {
+                    "name": "Arunachal Pradesh",
+                    "lat": 28.0938,
+                    "lng": 94.5921,
+                    "radius": 200
+                },
+                "Assam": {
+                    "name": "Assam",
+                    "lat": 26.4074,
+                    "lng": 93.2551,
+                    "radius": 200,
+                    "cities": {
+                        "Kaziranga ": {
+                            "name": "Kaziranga ",
+                            "lat": 26.58,
+                            "lng": 93.17,
+                            "radius": 25,
+                            "places": {
+                                "Kaziranga National Park": {
+                                    "name": "Kaziranga National Park",
+                                    "lat": 26.58,
+                                    "lng": 93.17,
+                                    "radius": 20
+                                }
+                            }
+                        },
+                        "Kaziranga": {
+                            "name": "Kaziranga",
+                            "places": {
+                                "Kaziranga National Park": {
+                                    "name": "Kaziranga National Park",
+                                    "lat": 26.5864,
+                                    "lng": 93.4021,
+                                    "radius": 1
+                                }
+                            },
+                            "lat": 26.5893,
+                            "lng": 93.4085,
+                            "radius": 3
+                        }
+                    }
+                },
+                "Chhattisgarh": {
+                    "name": "Chhattisgarh",
+                    "lat": 21.6637,
+                    "lng": 81.8406,
+                    "radius": 200
+                },
+                "Goa": {
+                    "name": "Goa",
+                    "lat": 15.3005,
+                    "lng": 74.0855,
+                    "radius": 75
+                },
+                "Gujarat": {
+                    "name": "Gujarat",
+                    "lat": 22.385,
+                    "lng": 71.7453,
+                    "radius": 200,
+                    "cities": {
+                        "Bajana Wildass Sanctuary": {
+                            "name": "Bajana Wildass Sanctuary",
+                            "lat": 23.27,
+                            "lng": 71.55,
+                            "radius": 15
+                        },
+                        "Little Rann of Kutch": {
+                            "name": "Little Rann of Kutch",
+                            "lat": 23.4,
+                            "lng": 71.6,
+                            "radius": 40
+                        },
+                        "Nalsarovar": {
+                            "name": "Nalsarovar",
+                            "lat": 22.78,
+                            "lng": 72.02,
+                            "radius": 10
+                        }
+                    }
+                },
+                "Haryana": {
+                    "name": "Haryana",
+                    "lat": 29,
+                    "lng": 76,
+                    "radius": 200,
+                    "cities": {
+                        "Gurugram": {
+                            "name": "Gurugram",
+                            "lat": 28.46,
+                            "lng": 77.03,
+                            "radius": 15,
+                            "places": {
+                                "Basai Wetlands": {
+                                    "name": "Basai Wetlands",
+                                    "lat": 28.43,
+                                    "lng": 76.94,
+                                    "radius": 2
+                                },
+                                "Bhondsi Nature Park": {
+                                    "name": "Bhondsi Nature Park",
+                                    "lat": 28.33,
+                                    "lng": 77.05,
+                                    "radius": 2
+                                },
+                                "Chandu-Budhera Canal Area": {
+                                    "name": "Chandu-Budhera Canal Area",
+                                    "lat": 28.44,
+                                    "lng": 76.97,
+                                    "radius": 2
+                                },
+                                "Sultanpur National Park": {
+                                    "name": "Sultanpur National Park",
+                                    "lat": 28.47,
+                                    "lng": 76.89,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Sohna": {
+                            "name": "Sohna",
+                            "lat": 28.25,
+                            "lng": 77.07,
+                            "radius": 8
+                        }
+                    }
+                },
+                "Himachal Pradesh": {
+                    "name": "Himachal Pradesh",
+                    "lat": 31.9292,
+                    "lng": 77.1828,
+                    "radius": 200,
+                    "cities": {
+                        "Bhimtal": {
+                            "name": "Bhimtal",
+                            "lat": 29.35,
+                            "lng": 79.56,
+                            "radius": 5
+                        },
+                        "Dalhousie": {
+                            "name": "Dalhousie",
+                            "lat": 32.54,
+                            "lng": 75.97,
+                            "radius": 8
+                        },
+                        "Darcha": {
+                            "name": "Darcha",
+                            "lat": 32.67,
+                            "lng": 77,
+                            "radius": 5
+                        },
+                        "Dharamshala": {
+                            "name": "Dharamshala",
+                            "lat": 32.22,
+                            "lng": 76.32,
+                            "radius": 8
+                        },
+                        "Manali": {
+                            "name": "Manali",
+                            "lat": 32.24,
+                            "lng": 77.19,
+                            "radius": 8
+                        },
+                        "Mcleodganj": {
+                            "name": "Mcleodganj",
+                            "lat": 32.24,
+                            "lng": 76.32,
+                            "radius": 3
+                        },
+                        "Tirthan Valley": {
+                            "name": "Tirthan Valley",
+                            "lat": 31.63,
+                            "lng": 77.45,
+                            "radius": 10,
+                            "places": {
+                                "Banjar": {
+                                    "name": "Banjar",
+                                    "lat": 31.64,
+                                    "lng": 77.34,
+                                    "radius": 3
+                                },
+                                "Tindar": {
+                                    "name": "Tindar",
+                                    "lat": 31.6,
+                                    "lng": 77.45,
+                                    "radius": 3
+                                }
+                            }
+                        }
+                    }
+                },
+                "Jammu & Kashmir": {
+                    "name": "Jammu & Kashmir",
+                    "lat": 33.6649,
+                    "lng": 75.163,
+                    "radius": 200,
+                    "cities": {
+                        "Dal Lake": {
+                            "name": "Dal Lake",
+                            "lat": 34.13,
+                            "lng": 74.84,
+                            "radius": 5
+                        }
+                    }
+                },
+                "Jharkhand": {
+                    "name": "Jharkhand",
+                    "lat": 23.456,
+                    "lng": 85.2557,
+                    "radius": 200
+                },
+                "Karnataka": {
+                    "name": "Karnataka",
+                    "lat": 14.9562,
+                    "lng": 75.7897,
+                    "radius": 200,
+                    "cities": {
+                        "Ranganathittu Bird Sanctuary": {
+                            "name": "Ranganathittu Bird Sanctuary",
+                            "lat": 12.42,
+                            "lng": 76.66,
+                            "radius": 3
+                        }
+                    }
+                },
+                "Kerala": {
+                    "name": "Kerala",
+                    "lat": 10.3529,
+                    "lng": 76.512,
+                    "radius": 200,
+                    "cities": {
+                        "Chinnar": {
+                            "name": "Chinnar",
+                            "lat": 10.3,
+                            "lng": 77.18,
+                            "radius": 10
+                        },
+                        "Kovalam": {
+                            "name": "Kovalam",
+                            "lat": 8.4,
+                            "lng": 76.98,
+                            "radius": 3
+                        },
+                        "Munnar": {
+                            "name": "Munnar",
+                            "lat": 10.09,
+                            "lng": 77.06,
+                            "radius": 10,
+                            "places": {
+                                "Eravikulam National Park": {
+                                    "name": "Eravikulam National Park",
+                                    "lat": 10.18,
+                                    "lng": 77.06,
+                                    "radius": 8
+                                }
+                            }
+                        },
+                        "Periyar": {
+                            "name": "Periyar",
+                            "lat": 9.47,
+                            "lng": 77.17,
+                            "radius": 12
+                        },
+                        "Thattekad": {
+                            "name": "Thattekad",
+                            "lat": 10.12,
+                            "lng": 76.72,
+                            "radius": 5
+                        },
+                        "Thattekad Bird Sanctuary": {
+                            "name": "Thattekad Bird Sanctuary",
+                            "lat": 10.12,
+                            "lng": 76.72,
+                            "radius": 5,
+                            "places": {
+                                "Salim Ali Bird Trail": {
+                                    "name": "Salim Ali Bird Trail",
+                                    "lat": 10.12,
+                                    "lng": 76.73,
+                                    "radius": 2
+                                },
+                                "Urulanthanni": {
+                                    "name": "Urulanthanni",
+                                    "lat": 10.13,
+                                    "lng": 76.71,
+                                    "radius": 2
+                                },
+                                "Urulathanni": {
+                                    "name": "Urulathanni",
+                                    "lat": 10.13,
+                                    "lng": 76.71,
+                                    "radius": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "Ladakh": {
+                    "name": "Ladakh",
+                    "lat": 33.9456,
+                    "lng": 77.6569,
+                    "radius": 200,
+                    "cities": {
+                        "Agham Village": {
+                            "name": "Agham Village",
+                            "lat": 34.8,
+                            "lng": 77.1,
+                            "radius": 3
+                        },
+                        "Chang La": {
+                            "name": "Chang La",
+                            "lat": 34.08,
+                            "lng": 77.78,
+                            "radius": 5
+                        },
+                        "Chisumle": {
+                            "name": "Chisumle",
+                            "lat": 33.3,
+                            "lng": 78.32,
+                            "radius": 3
+                        },
+                        "Debring Plains": {
+                            "name": "Debring Plains",
+                            "lat": 33.16,
+                            "lng": 77.7,
+                            "radius": 5
+                        },
+                        "Hanle": {
+                            "name": "Hanle",
+                            "lat": 32.78,
+                            "lng": 78.98,
+                            "radius": 5
+                        },
+                        "Karzok": {
+                            "name": "Karzok",
+                            "lat": 32.98,
+                            "lng": 78.28,
+                            "radius": 5,
+                            "places": {
+                                "Tso Moriri": {
+                                    "name": "Tso Moriri",
+                                    "lat": 32.92,
+                                    "lng": 78.32,
+                                    "radius": 8
+                                }
+                            }
+                        },
+                        "Lachulung La": {
+                            "name": "Lachulung La",
+                            "lat": 32.58,
+                            "lng": 77.3,
+                            "radius": 5
+                        },
+                        "Leh": {
+                            "name": "Leh",
+                            "lat": 34.17,
+                            "lng": 77.58,
+                            "radius": 8,
+                            "places": {
+                                "Shey Palace Pond": {
+                                    "name": "Shey Palace Pond",
+                                    "lat": 34.07,
+                                    "lng": 77.63,
+                                    "radius": 2
+                                },
+                                "Sindhu Ghat": {
+                                    "name": "Sindhu Ghat",
+                                    "lat": 34.16,
+                                    "lng": 77.59,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Merak": {
+                            "name": "Merak",
+                            "lat": 33.8,
+                            "lng": 78.62,
+                            "radius": 3
+                        },
+                        "Nyoma": {
+                            "name": "Nyoma",
+                            "lat": 33.29,
+                            "lng": 78.65,
+                            "radius": 3
+                        },
+                        "Pangong Tso": {
+                            "name": "Pangong Tso",
+                            "lat": 33.76,
+                            "lng": 78.66,
+                            "radius": 12,
+                            "places": {
+                                "Merak": {
+                                    "name": "Merak",
+                                    "lat": 33.8,
+                                    "lng": 78.62,
+                                    "radius": 3
+                                },
+                                "Spangmik": {
+                                    "name": "Spangmik",
+                                    "lat": 33.77,
+                                    "lng": 78.59,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Saga La": {
+                            "name": "Saga La",
+                            "lat": 33.82,
+                            "lng": 77.72,
+                            "radius": 3
+                        },
+                        "Sumdo": {
+                            "name": "Sumdo",
+                            "lat": 33.07,
+                            "lng": 77.98,
+                            "radius": 3
+                        },
+                        "Taglang La": {
+                            "name": "Taglang La",
+                            "lat": 33.51,
+                            "lng": 77.48,
+                            "radius": 5
+                        },
+                        "Tangtse": {
+                            "name": "Tangtse",
+                            "lat": 34.02,
+                            "lng": 78.18,
+                            "radius": 3
+                        },
+                        "Tso Kar": {
+                            "name": "Tso Kar",
+                            "lat": 33.32,
+                            "lng": 77.97,
+                            "radius": 8,
+                            "places": {
+                                "Thukje": {
+                                    "name": "Thukje",
+                                    "lat": 33.25,
+                                    "lng": 77.97,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Warilla Pass": {
+                            "name": "Warilla Pass",
+                            "lat": 33.95,
+                            "lng": 77.78,
+                            "radius": 3
+                        }
+                    }
+                },
+                "Lakshadweep Islands": {
+                    "name": "Lakshadweep Islands",
+                    "lat": 10.8666,
+                    "lng": 72.1944,
+                    "radius": 25,
+                    "cities": {
+                        "Kavaratti": {
+                            "name": "Kavaratti",
+                            "lat": 10.57,
+                            "lng": 72.64,
+                            "radius": 3
+                        }
+                    }
+                },
+                "Madhya Pradesh": {
+                    "name": "Madhya Pradesh",
+                    "lat": 23.8143,
+                    "lng": 77.5341,
+                    "radius": 200,
+                    "cities": {
+                        "Hinauta": {
+                            "name": "Hinauta",
+                            "lat": 25.07,
+                            "lng": 80.35,
+                            "radius": 5,
+                            "places": {
+                                "Panna Tiger Reserve": {
+                                    "name": "Panna Tiger Reserve",
+                                    "lat": 24.72,
+                                    "lng": 80.47,
+                                    "radius": 15
+                                }
+                            }
+                        },
+                        "Madla": {
+                            "name": "Madla",
+                            "lat": 24.53,
+                            "lng": 80.22,
+                            "radius": 5,
+                            "places": {
+                                "Ken River": {
+                                    "name": "Ken River",
+                                    "lat": 24.52,
+                                    "lng": 80.18,
+                                    "radius": 5
+                                },
+                                "Panna Tiger Reserve": {
+                                    "name": "Panna Tiger Reserve",
+                                    "lat": 24.72,
+                                    "lng": 80.47,
+                                    "radius": 15
+                                }
+                            }
+                        }
+                    }
+                },
+                "Maharashtra": {
+                    "name": "Maharashtra",
+                    "lat": 19.567,
+                    "lng": 76.4165,
+                    "radius": 200,
+                    "cities": {
+                        "Bhigwan": {
+                            "name": "Bhigwan",
+                            "lat": 18.3,
+                            "lng": 74.76,
+                            "radius": 5
+                        },
+                        "Koyna": {
+                            "name": "Koyna",
+                            "lat": 17.4,
+                            "lng": 73.75,
+                            "radius": 10
+                        },
+                        "Lonavala": {
+                            "name": "Lonavala",
+                            "lat": 18.75,
+                            "lng": 73.41,
+                            "radius": 5
+                        },
+                        "Tahmini": {
+                            "name": "Tahmini",
+                            "lat": 18.48,
+                            "lng": 73.43,
+                            "radius": 5
+                        }
+                    }
+                },
+                "Meghalaya": {
+                    "name": "Meghalaya",
+                    "lat": 25.5379,
+                    "lng": 91.2999,
+                    "radius": 164
+                },
+                "Mizoram": {
+                    "name": "Mizoram",
+                    "lat": 23.2146,
+                    "lng": 92.8688,
+                    "radius": 158
+                },
+                "Manipur": {
+                    "name": "Manipur",
+                    "lat": 24.7209,
+                    "lng": 93.9229,
+                    "radius": 144
+                },
+                "Nagaland": {
+                    "name": "Nagaland",
+                    "lat": 26.1631,
+                    "lng": 94.5885,
+                    "radius": 166
+                },
+                "Odisha": {
+                    "name": "Odisha",
+                    "lat": 20.5431,
+                    "lng": 84.6897,
+                    "radius": 200,
+                    "cities": {
+                        "Howrah": {
+                            "name": "Howrah",
+                            "lat": 19.89,
+                            "lng": 85.76,
+                            "radius": 10,
+                            "places": {
+                                "Mangalajodi Wetlands": {
+                                    "name": "Mangalajodi Wetlands",
+                                    "lat": 19.89,
+                                    "lng": 85.43,
+                                    "radius": 5
+                                }
+                            }
+                        }
+                    }
+                },
+                "Pondicherry": {
+                    "name": "Pondicherry",
+                    "lat": 10.9156,
+                    "lng": 79.8069,
+                    "radius": 200
+                },
+                "Punjab": {
+                    "name": "Punjab",
+                    "lat": 30.9293,
+                    "lng": 75.5005,
+                    "radius": 200
+                },
+                "Rajasthan": {
+                    "name": "Rajasthan",
+                    "lat": 26.8106,
+                    "lng": 73.7685,
+                    "radius": 200,
+                    "cities": {
+                        "Bharatpur": {
+                            "name": "Bharatpur",
+                            "lat": 27.22,
+                            "lng": 77.49,
+                            "radius": 8,
+                            "places": {
+                                "Keoladeo National Park": {
+                                    "name": "Keoladeo National Park",
+                                    "lat": 27.17,
+                                    "lng": 77.52,
+                                    "radius": 5
+                                }
+                            }
+                        },
+                        "Bikaner": {
+                            "name": "Bikaner",
+                            "lat": 28.02,
+                            "lng": 73.31,
+                            "radius": 12,
+                            "places": {
+                                "Jorbeer Conservation Reserve": {
+                                    "name": "Jorbeer Conservation Reserve",
+                                    "lat": 27.97,
+                                    "lng": 73.38,
+                                    "radius": 5
+                                }
+                            }
+                        },
+                        "Khichan": {
+                            "name": "Khichan",
+                            "lat": 27.03,
+                            "lng": 72.39,
+                            "radius": 3
+                        },
+                        "Sambhar": {
+                            "name": "Sambhar",
+                            "lat": 26.92,
+                            "lng": 75.19,
+                            "radius": 10,
+                            "places": {
+                                "Devyani Salt Lake": {
+                                    "name": "Devyani Salt Lake",
+                                    "lat": 26.93,
+                                    "lng": 75.17,
+                                    "radius": 3
+                                },
+                                "Shakambari Jheel": {
+                                    "name": "Shakambari Jheel",
+                                    "lat": 26.9,
+                                    "lng": 75.2,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Sonkhaliya": {
+                            "name": "Sonkhaliya",
+                            "lat": 25.83,
+                            "lng": 73.82,
+                            "radius": 5
+                        },
+                        "Sujangarh": {
+                            "name": "Sujangarh",
+                            "lat": 27.7,
+                            "lng": 74.46,
+                            "radius": 5
+                        },
+                        "Tal Chhapar": {
+                            "name": "Tal Chhapar",
+                            "lat": 27.8,
+                            "lng": 74.44,
+                            "radius": 5,
+                            "places": {
+                                "Blackbuck Sanctuary": {
+                                    "name": "Blackbuck Sanctuary",
+                                    "lat": 27.8,
+                                    "lng": 74.43,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Tijara": {
+                            "name": "Tijara",
+                            "lat": 27.93,
+                            "lng": 76.85,
+                            "radius": 5
+                        }
+                    }
+                },
+                "Sikkim": {
+                    "name": "Sikkim",
+                    "lat": 27.6016,
+                    "lng": 88.455,
+                    "radius": 74,
+                    "cities": {
+                        "Aritar": {
+                            "name": "Aritar",
+                            "lat": 27.18,
+                            "lng": 88.67,
+                            "radius": 3
+                        },
+                        "Gangtok": {
+                            "name": "Gangtok",
+                            "lat": 27.34,
+                            "lng": 88.61,
+                            "radius": 5
+                        },
+                        "Lachen": {
+                            "name": "Lachen",
+                            "lat": 27.73,
+                            "lng": 88.56,
+                            "radius": 5,
+                            "places": {
+                                "Gurudongmar Lake": {
+                                    "name": "Gurudongmar Lake",
+                                    "lat": 27.98,
+                                    "lng": 88.7,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Lachung": {
+                            "name": "Lachung",
+                            "lat": 27.69,
+                            "lng": 88.75,
+                            "radius": 5,
+                            "places": {
+                                "Yumthang": {
+                                    "name": "Yumthang",
+                                    "lat": 27.79,
+                                    "lng": 88.7,
+                                    "radius": 5
+                                },
+                                "Zero Point": {
+                                    "name": "Zero Point",
+                                    "lat": 27.85,
+                                    "lng": 88.73,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Lingtam": {
+                            "name": "Lingtam",
+                            "lat": 27.22,
+                            "lng": 88.63,
+                            "radius": 3
+                        },
+                        "Lingthem": {
+                            "name": "Lingthem",
+                            "lat": 27.48,
+                            "lng": 88.5,
+                            "radius": 3
+                        },
+                        "Lungthung": {
+                            "name": "Lungthung",
+                            "lat": 27.29,
+                            "lng": 88.72,
+                            "radius": 3
+                        },
+                        "Mangan": {
+                            "name": "Mangan",
+                            "lat": 27.51,
+                            "lng": 88.53,
+                            "radius": 3
+                        },
+                        "Nimachen": {
+                            "name": "Nimachen",
+                            "lat": 27.32,
+                            "lng": 88.68,
+                            "radius": 3,
+                            "places": {
+                                "Que Khola Falls": {
+                                    "name": "Que Khola Falls",
+                                    "lat": 27.33,
+                                    "lng": 88.69,
+                                    "radius": 1
+                                }
+                            }
+                        },
+                        "Padamchen": {
+                            "name": "Padamchen",
+                            "lat": 27.21,
+                            "lng": 88.66,
+                            "radius": 3
+                        },
+                        "Singhik": {
+                            "name": "Singhik",
+                            "lat": 27.51,
+                            "lng": 88.55,
+                            "radius": 3
+                        },
+                        "Tingvong": {
+                            "name": "Tingvong",
+                            "lat": 27.53,
+                            "lng": 88.55,
+                            "radius": 3
+                        },
+                        "Yumthang": {
+                            "name": "Yumthang",
+                            "lat": 27.79,
+                            "lng": 88.7,
+                            "radius": 5,
+                            "places": {
+                                "Lachung": {
+                                    "name": "Lachung",
+                                    "lat": 27.69,
+                                    "lng": 88.75,
+                                    "radius": 5
+                                }
+                            }
+                        },
+                        "Zuluk": {
+                            "name": "Zuluk",
+                            "lat": 27.25,
+                            "lng": 88.78,
+                            "radius": 3,
+                            "places": {
+                                "Thambi View Point": {
+                                    "name": "Thambi View Point",
+                                    "lat": 27.25,
+                                    "lng": 88.8,
+                                    "radius": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "Tamil Nadu": {
+                    "name": "Tamil Nadu",
+                    "lat": 11.3324,
+                    "lng": 78.6099,
+                    "radius": 200,
+                    "cities": {
+                        "Chengalpattu": {
+                            "name": "Chengalpattu",
+                            "lat": 12.69,
+                            "lng": 79.98,
+                            "radius": 8,
+                            "places": {
+                                "Gingee Fort": {
+                                    "name": "Gingee Fort",
+                                    "lat": 12.25,
+                                    "lng": 79.42,
+                                    "radius": 2
+                                },
+                                "Kolavai Lake": {
+                                    "name": "Kolavai Lake",
+                                    "lat": 12.69,
+                                    "lng": 80.02,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Chennai": {
+                            "name": "Chennai",
+                            "lat": 13.08,
+                            "lng": 80.27,
+                            "radius": 12,
+                            "places": {
+                                "Guduvancheri": {
+                                    "name": "Guduvancheri",
+                                    "lat": 12.85,
+                                    "lng": 80.06,
+                                    "radius": 3
+                                },
+                                "Kattankulathur": {
+                                    "name": "Kattankulathur",
+                                    "lat": 12.82,
+                                    "lng": 80.02,
+                                    "radius": 2
+                                },
+                                "Pallikaranai Marsh": {
+                                    "name": "Pallikaranai Marsh",
+                                    "lat": 12.94,
+                                    "lng": 80.21,
+                                    "radius": 3
+                                },
+                                "Vedanthangal Bird Sanctuary": {
+                                    "name": "Vedanthangal Bird Sanctuary",
+                                    "lat": 12.55,
+                                    "lng": 79.85,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Ramesharam": {
+                            "name": "Ramesharam",
+                            "lat": 9.29,
+                            "lng": 79.31,
+                            "radius": 5
+                        }
+                    }
+                },
+                "Telengana": {
+                    "name": "Telengana",
+                    "lat": 17.3291,
+                    "lng": 78.5822,
+                    "radius": 25
+                },
+                "Tripura": {
+                    "name": "Tripura",
+                    "lat": 23.7751,
+                    "lng": 91.7025,
+                    "radius": 113
+                },
+                "Uttarakhand": {
+                    "name": "Uttarakhand",
+                    "lat": 30.0417,
+                    "lng": 79.0897,
+                    "radius": 200,
+                    "cities": {
+                        "Bhimtal": {
+                            "name": "Bhimtal",
+                            "lat": 29.35,
+                            "lng": 79.56,
+                            "radius": 5
+                        },
+                        "Chafi": {
+                            "name": "Chafi",
+                            "lat": 29.6,
+                            "lng": 79.58,
+                            "radius": 3
+                        },
+                        "Chopta": {
+                            "name": "Chopta",
+                            "lat": 30.44,
+                            "lng": 79.21,
+                            "radius": 5,
+                            "places": {
+                                "Tungnath Trail": {
+                                    "name": "Tungnath Trail",
+                                    "lat": 30.49,
+                                    "lng": 79.22,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Devprayag": {
+                            "name": "Devprayag",
+                            "lat": 30.15,
+                            "lng": 78.6,
+                            "radius": 3
+                        },
+                        "Kaladungi": {
+                            "name": "Kaladungi",
+                            "lat": 29.29,
+                            "lng": 79.35,
+                            "radius": 3
+                        },
+                        "Kathgodam": {
+                            "name": "Kathgodam",
+                            "lat": 29.27,
+                            "lng": 79.52,
+                            "radius": 5,
+                            "places": {
+                                "Ranibagh": {
+                                    "name": "Ranibagh",
+                                    "lat": 29.28,
+                                    "lng": 79.5,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Mandal": {
+                            "name": "Mandal",
+                            "lat": 30.47,
+                            "lng": 79.28,
+                            "radius": 3
+                        },
+                        "Manila": {
+                            "name": "Manila",
+                            "lat": 30.37,
+                            "lng": 79.2,
+                            "radius": 3
+                        },
+                        "Mukteshwar": {
+                            "name": "Mukteshwar",
+                            "lat": 29.47,
+                            "lng": 79.65,
+                            "radius": 3
+                        },
+                        "Nainital": {
+                            "name": "Nainital",
+                            "lat": 29.38,
+                            "lng": 79.46,
+                            "radius": 5
+                        },
+                        "Pangot": {
+                            "name": "Pangot",
+                            "lat": 29.42,
+                            "lng": 79.43,
+                            "radius": 3
+                        },
+                        "Ramnagar": {
+                            "name": "Ramnagar",
+                            "lat": 29.39,
+                            "lng": 79.13,
+                            "radius": 8,
+                            "places": {
+                                "Garjiya": {
+                                    "name": "Garjiya",
+                                    "lat": 29.45,
+                                    "lng": 79.12,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Ranikhet": {
+                            "name": "Ranikhet",
+                            "lat": 29.64,
+                            "lng": 79.43,
+                            "radius": 5
+                        },
+                        "Sattal": {
+                            "name": "Sattal",
+                            "lat": 29.35,
+                            "lng": 79.52,
+                            "radius": 3
+                        },
+                        "Shyamkhet": {
+                            "name": "Shyamkhet",
+                            "lat": 29.44,
+                            "lng": 79.54,
+                            "radius": 3
+                        }
+                    }
+                },
+                "Uttar Pradesh": {
+                    "name": "Uttar Pradesh",
+                    "lat": 27.1303,
+                    "lng": 80.8597,
+                    "radius": 200,
+                    "cities": {
+                        "Agra": {
+                            "name": "Agra",
+                            "lat": 27.18,
+                            "lng": 78.02,
+                            "radius": 10,
+                            "places": {
+                                "Soor Sarovar Bird Sanctuary": {
+                                    "name": "Soor Sarovar Bird Sanctuary",
+                                    "lat": 27.16,
+                                    "lng": 77.99,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Firozabad": {
+                            "name": "Firozabad",
+                            "lat": 27.15,
+                            "lng": 78.39,
+                            "radius": 8,
+                            "places": {
+                                "Rapdi Eco Tourism": {
+                                    "name": "Rapdi Eco Tourism",
+                                    "lat": 27.12,
+                                    "lng": 78.42,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Mathura": {
+                            "name": "Mathura",
+                            "lat": 27.49,
+                            "lng": 77.67,
+                            "radius": 8,
+                            "places": {
+                                "Ganjoli": {
+                                    "name": "Ganjoli",
+                                    "lat": 27.45,
+                                    "lng": 77.65,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Pinahat": {
+                            "name": "Pinahat",
+                            "lat": 26.87,
+                            "lng": 78.37,
+                            "radius": 5,
+                            "places": {
+                                "Chambal river": {
+                                    "name": "Chambal river",
+                                    "lat": 26.85,
+                                    "lng": 78.4,
+                                    "radius": 5
+                                }
+                            }
+                        }
+                    }
+                },
+                "West Bengal": {
+                    "name": "West Bengal",
+                    "lat": 22.9965,
+                    "lng": 87.6856,
+                    "radius": 200,
+                    "cities": {
+                        "Bagora": {
+                            "name": "Bagora",
+                            "lat": 26.95,
+                            "lng": 88.7,
+                            "radius": 3
+                        },
+                        "Bankura": {
+                            "name": "Bankura",
+                            "lat": 23.23,
+                            "lng": 87.07,
+                            "radius": 10,
+                            "places": {
+                                "Shuilibona": {
+                                    "name": "Shuilibona",
+                                    "lat": 23.2,
+                                    "lng": 86.95,
+                                    "radius": 3
+                                },
+                                "Sutan": {
+                                    "name": "Sutan",
+                                    "lat": 23.2,
+                                    "lng": 87.02,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Burdwan": {
+                            "name": "Burdwan",
+                            "lat": 23.24,
+                            "lng": 87.86,
+                            "radius": 8,
+                            "places": {
+                                "Purbasthali": {
+                                    "name": "Purbasthali",
+                                    "lat": 23.5,
+                                    "lng": 88.34,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Darjeeling": {
+                            "name": "Darjeeling",
+                            "lat": 27.04,
+                            "lng": 88.26,
+                            "radius": 10,
+                            "places": {
+                                "Chattakpur": {
+                                    "name": "Chattakpur",
+                                    "lat": 26.95,
+                                    "lng": 88.25,
+                                    "radius": 2
+                                },
+                                "Munsong": {
+                                    "name": "Munsong",
+                                    "lat": 27.05,
+                                    "lng": 88.4,
+                                    "radius": 2
+                                },
+                                "Rock Garden": {
+                                    "name": "Rock Garden",
+                                    "lat": 27.05,
+                                    "lng": 88.27,
+                                    "radius": 1
+                                },
+                                "Rongtong": {
+                                    "name": "Rongtong",
+                                    "lat": 27,
+                                    "lng": 88.3,
+                                    "radius": 2
+                                },
+                                "Shibkhola": {
+                                    "name": "Shibkhola",
+                                    "lat": 26.99,
+                                    "lng": 88.23,
+                                    "radius": 2
+                                },
+                                "Sonada": {
+                                    "name": "Sonada",
+                                    "lat": 26.95,
+                                    "lng": 88.28,
+                                    "radius": 2
+                                },
+                                "Tiger Hill": {
+                                    "name": "Tiger Hill",
+                                    "lat": 26.98,
+                                    "lng": 88.28,
+                                    "radius": 1
+                                }
+                            }
+                        },
+                        "Gorubathan": {
+                            "name": "Gorubathan",
+                            "lat": 26.93,
+                            "lng": 88.65,
+                            "radius": 5
+                        },
+                        "Hooghly": {
+                            "name": "Hooghly",
+                            "lat": 22.91,
+                            "lng": 88.39,
+                            "radius": 10,
+                            "places": {
+                                "Dashghara": {
+                                    "name": "Dashghara",
+                                    "lat": 22.92,
+                                    "lng": 88.4,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Howrah": {
+                            "name": "Howrah",
+                            "lat": 22.5736,
+                            "lng": 88.3251,
+                            "radius": 9,
+                            "places": {
+                                "AJC Bose Botanical Garden": {
+                                    "name": "AJC Bose Botanical Garden",
+                                    "lat": 22.56,
+                                    "lng": 88.29,
+                                    "radius": 1
+                                },
+                                "Nabanna": {
+                                    "name": "Nabanna",
+                                    "lat": 22.54,
+                                    "lng": 88.3,
+                                    "radius": 2
+                                },
+                                "Santragachhi": {
+                                    "name": "Santragachhi",
+                                    "lat": 22.58,
+                                    "lng": 88.24,
+                                    "radius": 3
+                                },
+                                "Santragachhi Jheel": {
+                                    "name": "Santragachhi Jheel",
+                                    "lat": 22.58,
+                                    "lng": 88.24,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Jalpaiguri": {
+                            "name": "Jalpaiguri",
+                            "lat": 26.52,
+                            "lng": 88.73,
+                            "radius": 12,
+                            "places": {
+                                "Gajoldoba": {
+                                    "name": "Gajoldoba",
+                                    "lat": 26.75,
+                                    "lng": 88.73,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Kalimpong": {
+                            "name": "Kalimpong",
+                            "lat": 27.07,
+                            "lng": 88.47,
+                            "radius": 8,
+                            "places": {
+                                "Lava": {
+                                    "name": "Lava",
+                                    "lat": 27.08,
+                                    "lng": 88.67,
+                                    "radius": 3
+                                },
+                                "Rongo": {
+                                    "name": "Rongo",
+                                    "lat": 27.05,
+                                    "lng": 88.45,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Kolakham": {
+                            "name": "Kolakham",
+                            "lat": 27.12,
+                            "lng": 88.73,
+                            "radius": 3
+                        },
+                        "Kolkata": {
+                            "name": "Kolkata",
+                            "lat": 22.57,
+                            "lng": 88.36,
+                            "radius": 12,
+                            "places": {
+                                "Chintamani Kar Bird Sanctuary": {
+                                    "name": "Chintamani Kar Bird Sanctuary",
+                                    "lat": 22.43,
+                                    "lng": 88.39,
+                                    "radius": 2
+                                },
+                                "Rabindra Sarobar": {
+                                    "name": "Rabindra Sarobar",
+                                    "lat": 22.51,
+                                    "lng": 88.37,
+                                    "radius": 1
+                                },
+                                "Rajarhat": {
+                                    "name": "Rajarhat",
+                                    "lat": 22.64,
+                                    "lng": 88.45,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Latpanchar": {
+                            "name": "Latpanchar",
+                            "lat": 26.98,
+                            "lng": 88.48,
+                            "radius": 5,
+                            "places": {
+                                "Mahananda Wildlife Sanctuary": {
+                                    "name": "Mahananda Wildlife Sanctuary",
+                                    "lat": 26.86,
+                                    "lng": 88.38,
+                                    "radius": 5
+                                },
+                                "Mana Hills": {
+                                    "name": "Mana Hills",
+                                    "lat": 26.97,
+                                    "lng": 88.5,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Lava": {
+                            "name": "Lava",
+                            "lat": 27.08,
+                            "lng": 88.67,
+                            "radius": 5,
+                            "places": {
+                                "Doorkhola": {
+                                    "name": "Doorkhola",
+                                    "lat": 27.1,
+                                    "lng": 88.68,
+                                    "radius": 2
+                                },
+                                "Kagyu Thekchen Ling Monastery": {
+                                    "name": "Kagyu Thekchen Ling Monastery",
+                                    "lat": 27.08,
+                                    "lng": 88.66,
+                                    "radius": 1
+                                },
+                                "Neora Valley National Park": {
+                                    "name": "Neora Valley National Park",
+                                    "lat": 27.1,
+                                    "lng": 88.73,
+                                    "radius": 8
+                                }
+                            }
+                        },
+                        "Mulkharka": {
+                            "name": "Mulkharka",
+                            "lat": 27.12,
+                            "lng": 88.72,
+                            "radius": 3,
+                            "places": {
+                                "Neora Valley National Park": {
+                                    "name": "Neora Valley National Park",
+                                    "lat": 27.1,
+                                    "lng": 88.73,
+                                    "radius": 8
+                                }
+                            }
+                        },
+                        "Purulia": {
+                            "name": "Purulia",
+                            "lat": 23.33,
+                            "lng": 86.37,
+                            "radius": 10
+                        },
+                        "Siliguri": {
+                            "name": "Siliguri",
+                            "lat": 26.71,
+                            "lng": 88.43,
+                            "radius": 10,
+                            "places": {
+                                "Bengal Safari": {
+                                    "name": "Bengal Safari",
+                                    "lat": 26.74,
+                                    "lng": 88.39,
+                                    "radius": 3
+                                }
+                            }
+                        },
+                        "Sittong": {
+                            "name": "Sittong",
+                            "lat": 26.88,
+                            "lng": 88.42,
+                            "radius": 3,
+                            "places": {
+                                "Sittong III": {
+                                    "name": "Sittong III",
+                                    "lat": 26.87,
+                                    "lng": 88.43,
+                                    "radius": 2
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Nepal": {
+            "name": "Nepal",
+            "lat": 28.39,
+            "lng": 84.12,
+            "radius": 300,
+            "states": {
+                "Koshi Province": {
+                    "name": "Koshi Province",
+                    "lat": 26.98,
+                    "lng": 87.17,
+                    "radius": 100
+                },
+                "Madhesh Province": {
+                    "name": "Madhesh Province",
+                    "lat": 26.73,
+                    "lng": 85.93,
+                    "radius": 80
+                },
+                "Bagmati Province": {
+                    "name": "Bagmati Province",
+                    "lat": 27.72,
+                    "lng": 85.32,
+                    "radius": 90
+                },
+                "Gandaki Province": {
+                    "name": "Gandaki Province",
+                    "lat": 28.37,
+                    "lng": 84.43,
+                    "radius": 90
+                },
+                "Lumbini Province": {
+                    "name": "Lumbini Province",
+                    "lat": 27.8,
+                    "lng": 83,
+                    "radius": 90
+                },
+                "Karnali Province": {
+                    "name": "Karnali Province",
+                    "lat": 29.2,
+                    "lng": 82.18,
+                    "radius": 100
+                },
+                "Sudurpashchim Province": {
+                    "name": "Sudurpashchim Province",
+                    "lat": 29.3,
+                    "lng": 80.77,
+                    "radius": 90
+                }
+            }
+        },
+        "Bhutan": {
+            "name": "Bhutan",
+            "lat": 27.51,
+            "lng": 90.43,
+            "radius": 150,
+            "states": {
+                "Bumthang": {
+                    "name": "Bumthang",
+                    "lat": 27.55,
+                    "lng": 90.73,
+                    "radius": 30
+                },
+                "Chukha": {
+                    "name": "Chukha",
+                    "lat": 27.08,
+                    "lng": 89.55,
+                    "radius": 25
+                },
+                "Dagana": {
+                    "name": "Dagana",
+                    "lat": 27.07,
+                    "lng": 89.88,
+                    "radius": 25
+                },
+                "Gasa": {
+                    "name": "Gasa",
+                    "lat": 27.9,
+                    "lng": 89.72,
+                    "radius": 35
+                },
+                "Haa": {
+                    "name": "Haa",
+                    "lat": 27.39,
+                    "lng": 89.28,
+                    "radius": 25
+                },
+                "Lhuntse": {
+                    "name": "Lhuntse",
+                    "lat": 27.67,
+                    "lng": 91.18,
+                    "radius": 25
+                },
+                "Mongar": {
+                    "name": "Mongar",
+                    "lat": 27.27,
+                    "lng": 91.24,
+                    "radius": 25
+                },
+                "Paro": {
+                    "name": "Paro",
+                    "lat": 27.43,
+                    "lng": 89.42,
+                    "radius": 25
+                },
+                "Pemagatshel": {
+                    "name": "Pemagatshel",
+                    "lat": 27.04,
+                    "lng": 91.4,
+                    "radius": 20
+                },
+                "Punakha": {
+                    "name": "Punakha",
+                    "lat": 27.59,
+                    "lng": 89.88,
+                    "radius": 25
+                },
+                "Samdrup Jongkhar": {
+                    "name": "Samdrup Jongkhar",
+                    "lat": 26.8,
+                    "lng": 91.51,
+                    "radius": 25
+                },
+                "Samtse": {
+                    "name": "Samtse",
+                    "lat": 26.98,
+                    "lng": 89.1,
+                    "radius": 25
+                },
+                "Sarpang": {
+                    "name": "Sarpang",
+                    "lat": 26.86,
+                    "lng": 90.27,
+                    "radius": 25
+                },
+                "Thimphu": {
+                    "name": "Thimphu",
+                    "lat": 27.47,
+                    "lng": 89.64,
+                    "radius": 30
+                },
+                "Trashigang": {
+                    "name": "Trashigang",
+                    "lat": 27.33,
+                    "lng": 91.55,
+                    "radius": 30
+                },
+                "Trashiyangtse": {
+                    "name": "Trashiyangtse",
+                    "lat": 27.61,
+                    "lng": 91.5,
+                    "radius": 20
+                },
+                "Trongsa": {
+                    "name": "Trongsa",
+                    "lat": 27.5,
+                    "lng": 90.51,
+                    "radius": 25
+                },
+                "Tsirang": {
+                    "name": "Tsirang",
+                    "lat": 27.02,
+                    "lng": 90.12,
+                    "radius": 20
+                },
+                "Wangdue Phodrang": {
+                    "name": "Wangdue Phodrang",
+                    "lat": 27.49,
+                    "lng": 89.9,
+                    "radius": 35
+                },
+                "Zhemgang": {
+                    "name": "Zhemgang",
+                    "lat": 27.22,
+                    "lng": 90.66,
+                    "radius": 25
+                }
+            }
+        },
+        "Sri Lanka": {
+            "name": "Sri Lanka",
+            "lat": 7.87,
+            "lng": 80.77,
+            "radius": 200,
+            "states": {
+                "Central Province": {
+                    "name": "Central Province",
+                    "lat": 7.3,
+                    "lng": 80.63,
+                    "radius": 40
+                },
+                "Eastern Province": {
+                    "name": "Eastern Province",
+                    "lat": 7.76,
+                    "lng": 81.48,
+                    "radius": 50
+                },
+                "Northern Province": {
+                    "name": "Northern Province",
+                    "lat": 9.44,
+                    "lng": 80.17,
+                    "radius": 50
+                },
+                "North Central Province": {
+                    "name": "North Central Province",
+                    "lat": 8.33,
+                    "lng": 80.42,
+                    "radius": 55
+                },
+                "North Western Province": {
+                    "name": "North Western Province",
+                    "lat": 7.76,
+                    "lng": 79.89,
+                    "radius": 45
+                },
+                "Sabaragamuwa Province": {
+                    "name": "Sabaragamuwa Province",
+                    "lat": 6.73,
+                    "lng": 80.4,
+                    "radius": 35
+                },
+                "Southern Province": {
+                    "name": "Southern Province",
+                    "lat": 6.24,
+                    "lng": 80.65,
+                    "radius": 40
+                },
+                "Uva Province": {
+                    "name": "Uva Province",
+                    "lat": 6.84,
+                    "lng": 81.06,
+                    "radius": 40
+                },
+                "Western Province": {
+                    "name": "Western Province",
+                    "lat": 6.93,
+                    "lng": 80.04,
+                    "radius": 30
+                }
+            }
+        },
+        "Iceland": {
+            "name": "Iceland",
+            "lat": 64.96,
+            "lng": -19.02,
+            "radius": 350,
+            "states": {
+                "Capital Region": {
+                    "name": "Capital Region",
+                    "lat": 64.13,
+                    "lng": -21.9,
+                    "radius": 30,
+                    "cities": {
+                        "Reykjavík": {
+                            "name": "Reykjavík",
+                            "lat": 64.1466,
+                            "lng": -21.9426,
+                            "radius": 10
+                        }
+                    }
+                },
+                "Southern Peninsula": {
+                    "name": "Southern Peninsula",
+                    "lat": 63.95,
+                    "lng": -22.45,
+                    "radius": 40,
+                    "cities": {
+                        "Keflavík": {
+                            "name": "Keflavík",
+                            "lat": 64.0016,
+                            "lng": -22.5606,
+                            "radius": 8
+                        }
+                    }
+                },
+                "Western Region": {
+                    "name": "Western Region",
+                    "lat": 64.8,
+                    "lng": -21.8,
+                    "radius": 80,
+                    "cities": {
+                        "Snæfellsnes": {
+                            "name": "Snæfellsnes",
+                            "lat": 64.869,
+                            "lng": -23.238,
+                            "radius": 35,
+                            "places": {
+                                "Arnarstapi": {
+                                    "name": "Arnarstapi",
+                                    "lat": 64.7694,
+                                    "lng": -23.6264,
+                                    "radius": 3
+                                },
+                                "Ytri Tunga Beach": {
+                                    "name": "Ytri Tunga Beach",
+                                    "lat": 64.8031,
+                                    "lng": -23.0808,
+                                    "radius": 2
+                                },
+                                "Hofgarðar": {
+                                    "name": "Hofgarðar",
+                                    "lat": 64.8461,
+                                    "lng": -23.6186,
+                                    "radius": 3
+                                },
+                                "Bjarnarfoss": {
+                                    "name": "Bjarnarfoss",
+                                    "lat": 64.8494,
+                                    "lng": -23.4042,
+                                    "radius": 2
+                                },
+                                "Ólafsvík": {
+                                    "name": "Ólafsvík",
+                                    "lat": 64.8944,
+                                    "lng": -23.7083,
+                                    "radius": 3
+                                },
+                                "Grundarfjörður": {
+                                    "name": "Grundarfjörður",
+                                    "lat": 64.9247,
+                                    "lng": -23.2597,
+                                    "radius": 3
+                                },
+                                "Snæfellsbær": {
+                                    "name": "Snæfellsbær",
+                                    "lat": 64.85,
+                                    "lng": -23.5,
+                                    "radius": 15
+                                }
+                            }
+                        }
+                    }
+                },
+                "Westfjords": {
+                    "name": "Westfjords",
+                    "lat": 65.75,
+                    "lng": -22.1,
+                    "radius": 70
+                },
+                "Northwestern Region": {
+                    "name": "Northwestern Region",
+                    "lat": 65.75,
+                    "lng": -19.5,
+                    "radius": 80
+                },
+                "Northeastern Region": {
+                    "name": "Northeastern Region",
+                    "lat": 65.68,
+                    "lng": -18.09,
+                    "radius": 80
+                },
+                "Eastern Region": {
+                    "name": "Eastern Region",
+                    "lat": 65.26,
+                    "lng": -14.4,
+                    "radius": 80
+                },
+                "Southern Region": {
+                    "name": "Southern Region",
+                    "lat": 63.8,
+                    "lng": -19,
+                    "radius": 100,
+                    "cities": {
+                        "Höfn": {
+                            "name": "Höfn",
+                            "lat": 64.2539,
+                            "lng": -15.2082,
+                            "radius": 6
+                        },
+                        "Jökulsárlón": {
+                            "name": "Jökulsárlón",
+                            "lat": 64.0784,
+                            "lng": -16.2306,
+                            "radius": 5,
+                            "places": {
+                                "Glacier Lagoon": {
+                                    "name": "Glacier Lagoon",
+                                    "lat": 64.0784,
+                                    "lng": -16.2306,
+                                    "radius": 4
+                                }
+                            }
+                        },
+                        "Skeiðará": {
+                            "name": "Skeiðará",
+                            "lat": 63.9833,
+                            "lng": -17.2,
+                            "radius": 8
+                        },
+                        "Kirkjubæjarklaustur": {
+                            "name": "Kirkjubæjarklaustur",
+                            "lat": 63.7917,
+                            "lng": -18.05,
+                            "radius": 5
+                        },
+                        "Skógar": {
+                            "name": "Skógar",
+                            "lat": 63.525,
+                            "lng": -19.51,
+                            "radius": 4,
+                            "places": {
+                                "Skógafoss": {
+                                    "name": "Skógafoss",
+                                    "lat": 63.532,
+                                    "lng": -19.5113,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Vík í Mýrdal": {
+                            "name": "Vík í Mýrdal",
+                            "lat": 63.4186,
+                            "lng": -19.006,
+                            "radius": 5,
+                            "places": {
+                                "Reynisfjara Beach": {
+                                    "name": "Reynisfjara Beach",
+                                    "lat": 63.4044,
+                                    "lng": -19.0447,
+                                    "radius": 2
+                                }
+                            }
+                        },
+                        "Snæfellsnes": {
+                            "name": "Snæfellsnes",
+                            "lat": 64.869,
+                            "lng": -23.238,
+                            "radius": 35,
+                            "places": {
+                                "Ólafsvík": {
+                                    "name": "Ólafsvík",
+                                    "lat": 64.8944,
+                                    "lng": -23.7083,
+                                    "radius": 3
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Norway": {
+            "name": "Norway",
+            "lat": 60.47,
+            "lng": 8.47,
+            "radius": 500,
+            "states": {
+                "Viken": {
+                    "name": "Viken",
+                    "lat": 59.74,
+                    "lng": 10.21,
+                    "radius": 80
+                },
+                "Oslo": {
+                    "name": "Oslo",
+                    "lat": 59.91,
+                    "lng": 10.75,
+                    "radius": 15
+                },
+                "Innlandet": {
+                    "name": "Innlandet",
+                    "lat": 61.19,
+                    "lng": 10.47,
+                    "radius": 120
+                },
+                "Vestfold og Telemark": {
+                    "name": "Vestfold og Telemark",
+                    "lat": 59.27,
+                    "lng": 9.09,
+                    "radius": 70
+                },
+                "Agder": {
+                    "name": "Agder",
+                    "lat": 58.34,
+                    "lng": 7.47,
+                    "radius": 60
+                },
+                "Rogaland": {
+                    "name": "Rogaland",
+                    "lat": 59.15,
+                    "lng": 6.01,
+                    "radius": 50
+                },
+                "Vestland": {
+                    "name": "Vestland",
+                    "lat": 60.73,
+                    "lng": 5.73,
+                    "radius": 80
+                },
+                "Møre og Romsdal": {
+                    "name": "Møre og Romsdal",
+                    "lat": 62.47,
+                    "lng": 7.36,
+                    "radius": 80
+                },
+                "Trøndelag": {
+                    "name": "Trøndelag",
+                    "lat": 63.54,
+                    "lng": 10.91,
+                    "radius": 100
+                },
+                "Nordland": {
+                    "name": "Nordland",
+                    "lat": 66.73,
+                    "lng": 14.51,
+                    "radius": 130
+                },
+                "Troms og Finnmark": {
+                    "name": "Troms og Finnmark",
+                    "lat": 69.65,
+                    "lng": 19.22,
+                    "radius": 150
+                }
+            }
+        },
+        "Greenland": {
+            "name": "Greenland",
+            "lat": 71.71,
+            "lng": -42.6,
+            "radius": 800,
+            "states": {
+                "Avannaata": {
+                    "name": "Avannaata",
+                    "lat": 77.47,
+                    "lng": -69.23,
+                    "radius": 200
+                },
+                "Qeqertalik": {
+                    "name": "Qeqertalik",
+                    "lat": 68.71,
+                    "lng": -52.86,
+                    "radius": 150
+                },
+                "Qeqqata": {
+                    "name": "Qeqqata",
+                    "lat": 66.93,
+                    "lng": -50.68,
+                    "radius": 120
+                },
+                "Sermersooq": {
+                    "name": "Sermersooq",
+                    "lat": 63.75,
+                    "lng": -41.57,
+                    "radius": 200
+                },
+                "Kujalleq": {
+                    "name": "Kujalleq",
+                    "lat": 60.72,
+                    "lng": -45.97,
+                    "radius": 100
+                }
+            }
+        },
+        "Finland": {
+            "name": "Finland",
+            "lat": 61.92,
+            "lng": 25.75,
+            "radius": 450,
+            "states": {
+                "Uusimaa": {
+                    "name": "Uusimaa",
+                    "lat": 60.29,
+                    "lng": 25.04,
+                    "radius": 50
+                },
+                "Southwest Finland": {
+                    "name": "Southwest Finland",
+                    "lat": 60.45,
+                    "lng": 22.27,
+                    "radius": 60
+                },
+                "Satakunta": {
+                    "name": "Satakunta",
+                    "lat": 61.49,
+                    "lng": 22.02,
+                    "radius": 50
+                },
+                "Kanta-Häme": {
+                    "name": "Kanta-Häme",
+                    "lat": 60.99,
+                    "lng": 24.46,
+                    "radius": 40
+                },
+                "Pirkanmaa": {
+                    "name": "Pirkanmaa",
+                    "lat": 61.5,
+                    "lng": 23.79,
+                    "radius": 50
+                },
+                "Päijät-Häme": {
+                    "name": "Päijät-Häme",
+                    "lat": 61.06,
+                    "lng": 25.66,
+                    "radius": 40
+                },
+                "Kymenlaakso": {
+                    "name": "Kymenlaakso",
+                    "lat": 60.78,
+                    "lng": 26.94,
+                    "radius": 35
+                },
+                "South Karelia": {
+                    "name": "South Karelia",
+                    "lat": 61.06,
+                    "lng": 28.19,
+                    "radius": 40
+                },
+                "Etelä-Savo": {
+                    "name": "Etelä-Savo",
+                    "lat": 61.69,
+                    "lng": 27.27,
+                    "radius": 50
+                },
+                "Pohjois-Savo": {
+                    "name": "Pohjois-Savo",
+                    "lat": 62.89,
+                    "lng": 27.68,
+                    "radius": 70
+                },
+                "North Karelia": {
+                    "name": "North Karelia",
+                    "lat": 62.8,
+                    "lng": 29.99,
+                    "radius": 60
+                },
+                "Central Finland": {
+                    "name": "Central Finland",
+                    "lat": 62.24,
+                    "lng": 25.75,
+                    "radius": 60
+                },
+                "South Ostrobothnia": {
+                    "name": "South Ostrobothnia",
+                    "lat": 62.79,
+                    "lng": 23.76,
+                    "radius": 55
+                },
+                "Ostrobothnia": {
+                    "name": "Ostrobothnia",
+                    "lat": 63.1,
+                    "lng": 21.62,
+                    "radius": 45
+                },
+                "Central Ostrobothnia": {
+                    "name": "Central Ostrobothnia",
+                    "lat": 63.84,
+                    "lng": 23.13,
+                    "radius": 35
+                },
+                "North Ostrobothnia": {
+                    "name": "North Ostrobothnia",
+                    "lat": 65.01,
+                    "lng": 25.47,
+                    "radius": 100
+                },
+                "Kainuu": {
+                    "name": "Kainuu",
+                    "lat": 64.23,
+                    "lng": 28.25,
+                    "radius": 70
+                },
+                "Lapland": {
+                    "name": "Lapland",
+                    "lat": 67.92,
+                    "lng": 26.51,
+                    "radius": 150
+                },
+                "Åland": {
+                    "name": "Åland",
+                    "lat": 60.12,
+                    "lng": 19.93,
+                    "radius": 25
+                }
+            }
+        },
+        "Australia": {
+            "name": "Australia",
+            "lat": -25.27,
+            "lng": 133.78,
+            "radius": 1500,
+            "states": {
+                "New South Wales": {
+                    "name": "New South Wales",
+                    "lat": -32,
+                    "lng": 147,
+                    "radius": 150
+                },
+                "Victoria": {
+                    "name": "Victoria",
+                    "lat": -36.85,
+                    "lng": 144.28,
+                    "radius": 180
+                },
+                "Queensland": {
+                    "name": "Queensland",
+                    "lat": -22.58,
+                    "lng": 144.96,
+                    "radius": 150
+                },
+                "Western Australia": {
+                    "name": "Western Australia",
+                    "lat": -25.04,
+                    "lng": 121.63,
+                    "radius": 150
+                },
+                "South Australia": {
+                    "name": "South Australia",
+                    "lat": -30,
+                    "lng": 136.21,
+                    "radius": 150
+                },
+                "Tasmania": {
+                    "name": "Tasmania",
+                    "lat": -42.04,
+                    "lng": 146.32,
+                    "radius": 120
+                },
+                "Australian Capital Territory": {
+                    "name": "Australian Capital Territory",
+                    "lat": -35.47,
+                    "lng": 149.01,
+                    "radius": 20
+                },
+                "Northern Territory": {
+                    "name": "Northern Territory",
+                    "lat": -19.49,
+                    "lng": 132.55,
+                    "radius": 150
+                }
+            }
+        },
+        "New Zealand": {
+            "name": "New Zealand",
+            "lat": -40.9,
+            "lng": 174.89,
+            "radius": 500,
+            "states": {
+                "Northland": {
+                    "name": "Northland",
+                    "lat": -35.37,
+                    "lng": 174.33,
+                    "radius": 60
+                },
+                "Auckland": {
+                    "name": "Auckland",
+                    "lat": -36.85,
+                    "lng": 174.76,
+                    "radius": 40
+                },
+                "Waikato": {
+                    "name": "Waikato",
+                    "lat": -37.79,
+                    "lng": 175.28,
+                    "radius": 60
+                },
+                "Bay of Plenty": {
+                    "name": "Bay of Plenty",
+                    "lat": -37.69,
+                    "lng": 176.17,
+                    "radius": 50
+                },
+                "Gisborne": {
+                    "name": "Gisborne",
+                    "lat": -38.66,
+                    "lng": 177.98,
+                    "radius": 40
+                },
+                "Hawke's Bay": {
+                    "name": "Hawke's Bay",
+                    "lat": -39.49,
+                    "lng": 176.91,
+                    "radius": 50
+                },
+                "Taranaki": {
+                    "name": "Taranaki",
+                    "lat": -39.05,
+                    "lng": 174.08,
+                    "radius": 40
+                },
+                "Manawatu-Wanganui": {
+                    "name": "Manawatu-Wanganui",
+                    "lat": -39.93,
+                    "lng": 175.62,
+                    "radius": 50
+                },
+                "Wellington": {
+                    "name": "Wellington",
+                    "lat": -41.29,
+                    "lng": 174.78,
+                    "radius": 30
+                },
+                "Tasman": {
+                    "name": "Tasman",
+                    "lat": -41.27,
+                    "lng": 172.86,
+                    "radius": 40
+                },
+                "Nelson": {
+                    "name": "Nelson",
+                    "lat": -41.27,
+                    "lng": 173.28,
+                    "radius": 15
+                },
+                "Marlborough": {
+                    "name": "Marlborough",
+                    "lat": -41.51,
+                    "lng": 173.96,
+                    "radius": 50
+                },
+                "West Coast": {
+                    "name": "West Coast",
+                    "lat": -42.45,
+                    "lng": 171.21,
+                    "radius": 60
+                },
+                "Canterbury": {
+                    "name": "Canterbury",
+                    "lat": -43.53,
+                    "lng": 172.14,
+                    "radius": 80
+                },
+                "Otago": {
+                    "name": "Otago",
+                    "lat": -45.03,
+                    "lng": 169.83,
+                    "radius": 70
+                },
+                "Southland": {
+                    "name": "Southland",
+                    "lat": -46.1,
+                    "lng": 168.35,
+                    "radius": 60
+                }
+            }
+        },
+        "Papua New Guinea": {
+            "name": "Papua New Guinea",
+            "lat": -6.31,
+            "lng": 147.18,
+            "radius": 400,
+            "states": {
+                "Central": {
+                    "name": "Central",
+                    "lat": -8.23,
+                    "lng": 147.11,
+                    "radius": 70
+                },
+                "Chimbu": {
+                    "name": "Chimbu",
+                    "lat": -6.02,
+                    "lng": 144.97,
+                    "radius": 30
+                },
+                "East New Britain": {
+                    "name": "East New Britain",
+                    "lat": -5.17,
+                    "lng": 151.86,
+                    "radius": 50
+                },
+                "East Sepik": {
+                    "name": "East Sepik",
+                    "lat": -4.04,
+                    "lng": 142.89,
+                    "radius": 80
+                },
+                "Eastern Highlands": {
+                    "name": "Eastern Highlands",
+                    "lat": -6.39,
+                    "lng": 145.73,
+                    "radius": 40
+                },
+                "Enga": {
+                    "name": "Enga",
+                    "lat": -5.41,
+                    "lng": 143.51,
+                    "radius": 40
+                },
+                "Gulf": {
+                    "name": "Gulf",
+                    "lat": -7.23,
+                    "lng": 145.37,
+                    "radius": 80
+                },
+                "Hela": {
+                    "name": "Hela",
+                    "lat": -5.95,
+                    "lng": 142.88,
+                    "radius": 35
+                },
+                "Jiwaka": {
+                    "name": "Jiwaka",
+                    "lat": -5.63,
+                    "lng": 144.36,
+                    "radius": 25
+                },
+                "Madang": {
+                    "name": "Madang",
+                    "lat": -5.22,
+                    "lng": 145.79,
+                    "radius": 50
+                },
+                "Manus": {
+                    "name": "Manus",
+                    "lat": -2.09,
+                    "lng": 147.04,
+                    "radius": 40
+                },
+                "Milne Bay": {
+                    "name": "Milne Bay",
+                    "lat": -9.65,
+                    "lng": 150.46,
+                    "radius": 60
+                },
+                "Morobe": {
+                    "name": "Morobe",
+                    "lat": -6.74,
+                    "lng": 147,
+                    "radius": 60
+                },
+                "New Ireland": {
+                    "name": "New Ireland",
+                    "lat": -3.33,
+                    "lng": 152.02,
+                    "radius": 50
+                },
+                "Northern": {
+                    "name": "Northern",
+                    "lat": -8.89,
+                    "lng": 148.19,
+                    "radius": 50
+                },
+                "Southern Highlands": {
+                    "name": "Southern Highlands",
+                    "lat": -6.13,
+                    "lng": 143.86,
+                    "radius": 50
+                },
+                "West New Britain": {
+                    "name": "West New Britain",
+                    "lat": -5.83,
+                    "lng": 150.07,
+                    "radius": 50
+                },
+                "West Sepik": {
+                    "name": "West Sepik",
+                    "lat": -3.9,
+                    "lng": 141.3,
+                    "radius": 60
+                },
+                "Western": {
+                    "name": "Western",
+                    "lat": -7.5,
+                    "lng": 141.52,
+                    "radius": 80
+                },
+                "Western Highlands": {
+                    "name": "Western Highlands",
+                    "lat": -5.86,
+                    "lng": 144.22,
+                    "radius": 35
+                },
+                "National Capital District": {
+                    "name": "National Capital District",
+                    "lat": -9.44,
+                    "lng": 147.18,
+                    "radius": 10
+                },
+                "Autonomous Region of Bougainville": {
+                    "name": "Autonomous Region of Bougainville",
+                    "lat": -6.23,
+                    "lng": 155.24,
+                    "radius": 40
+                }
+            }
+        },
+        "Pakistan": {
+            "name": "Pakistan",
+            "lat": 30.38,
+            "lng": 69.35,
+            "radius": 500,
+            "states": {
+                "Punjab": {
+                    "name": "Punjab",
+                    "lat": 31.15,
+                    "lng": 75.35,
+                    "radius": 130
+                },
+                "Sindh": {
+                    "name": "Sindh",
+                    "lat": 26.22,
+                    "lng": 68.37,
+                    "radius": 200
+                },
+                "Khyber Pakhtunkhwa": {
+                    "name": "Khyber Pakhtunkhwa",
+                    "lat": 34.95,
+                    "lng": 71.91,
+                    "radius": 130
+                },
+                "Balochistan": {
+                    "name": "Balochistan",
+                    "lat": 28.49,
+                    "lng": 65.6,
+                    "radius": 150
+                },
+                "Gilgit-Baltistan": {
+                    "name": "Gilgit-Baltistan",
+                    "lat": 35.8,
+                    "lng": 75,
+                    "radius": 100
+                },
+                "Azad Jammu and Kashmir": {
+                    "name": "Azad Jammu and Kashmir",
+                    "lat": 33.93,
+                    "lng": 73.95,
+                    "radius": 60
+                },
+                "Islamabad Capital Territory": {
+                    "name": "Islamabad Capital Territory",
+                    "lat": 33.69,
+                    "lng": 73.04,
+                    "radius": 15
+                }
+            }
+        },
+        "Thailand": {
+            "name": "Thailand",
+            "lat": 15.87,
+            "lng": 100.99,
+            "radius": 400,
+            "states": {
+                "Bangkok": {
+                    "name": "Bangkok",
+                    "lat": 13.76,
+                    "lng": 100.5,
+                    "radius": 25
+                },
+                "Central Thailand": {
+                    "name": "Central Thailand",
+                    "lat": 15.11,
+                    "lng": 100.92,
+                    "radius": 120
+                },
+                "Eastern Thailand": {
+                    "name": "Eastern Thailand",
+                    "lat": 13.45,
+                    "lng": 101.79,
+                    "radius": 100
+                },
+                "Northern Thailand": {
+                    "name": "Northern Thailand",
+                    "lat": 18.79,
+                    "lng": 98.98,
+                    "radius": 150
+                },
+                "Northeastern Thailand": {
+                    "name": "Northeastern Thailand",
+                    "lat": 15.87,
+                    "lng": 102.83,
+                    "radius": 150
+                },
+                "Southern Thailand": {
+                    "name": "Southern Thailand",
+                    "lat": 9.21,
+                    "lng": 99.32,
+                    "radius": 200
+                }
+            }
+        },
+        "Indonesia": {
+            "name": "Indonesia",
+            "lat": -0.79,
+            "lng": 113.92,
+            "radius": 800,
+            "states": {
+                "Aceh": {
+                    "name": "Aceh",
+                    "lat": 4.7,
+                    "lng": 96.75,
+                    "radius": 100
+                },
+                "Bali": {
+                    "name": "Bali",
+                    "lat": -8.41,
+                    "lng": 115.19,
+                    "radius": 30
+                },
+                "Banten": {
+                    "name": "Banten",
+                    "lat": -6.44,
+                    "lng": 106.15,
+                    "radius": 40
+                },
+                "Bengkulu": {
+                    "name": "Bengkulu",
+                    "lat": -3.8,
+                    "lng": 102.26,
+                    "radius": 50
+                },
+                "Central Java": {
+                    "name": "Central Java",
+                    "lat": -7.15,
+                    "lng": 110.14,
+                    "radius": 80
+                },
+                "Central Kalimantan": {
+                    "name": "Central Kalimantan",
+                    "lat": -1.68,
+                    "lng": 113.38,
+                    "radius": 150
+                },
+                "Central Sulawesi": {
+                    "name": "Central Sulawesi",
+                    "lat": -1.43,
+                    "lng": 121.45,
+                    "radius": 100
+                },
+                "East Java": {
+                    "name": "East Java",
+                    "lat": -7.54,
+                    "lng": 112.24,
+                    "radius": 80
+                },
+                "East Kalimantan": {
+                    "name": "East Kalimantan",
+                    "lat": 1.69,
+                    "lng": 116.42,
+                    "radius": 120
+                },
+                "East Nusa Tenggara": {
+                    "name": "East Nusa Tenggara",
+                    "lat": -8.66,
+                    "lng": 121.08,
+                    "radius": 100
+                },
+                "Gorontalo": {
+                    "name": "Gorontalo",
+                    "lat": 0.54,
+                    "lng": 122.45,
+                    "radius": 30
+                },
+                "Jakarta": {
+                    "name": "Jakarta",
+                    "lat": -6.21,
+                    "lng": 106.85,
+                    "radius": 15
+                },
+                "Jambi": {
+                    "name": "Jambi",
+                    "lat": -1.61,
+                    "lng": 103.61,
+                    "radius": 60
+                },
+                "Lampung": {
+                    "name": "Lampung",
+                    "lat": -4.56,
+                    "lng": 105.41,
+                    "radius": 50
+                },
+                "Maluku": {
+                    "name": "Maluku",
+                    "lat": -3.24,
+                    "lng": 130.14,
+                    "radius": 80
+                },
+                "North Kalimantan": {
+                    "name": "North Kalimantan",
+                    "lat": 3.07,
+                    "lng": 116.34,
+                    "radius": 80
+                },
+                "North Maluku": {
+                    "name": "North Maluku",
+                    "lat": 1.57,
+                    "lng": 127.81,
+                    "radius": 70
+                },
+                "North Sulawesi": {
+                    "name": "North Sulawesi",
+                    "lat": 0.62,
+                    "lng": 123.97,
+                    "radius": 40
+                },
+                "North Sumatra": {
+                    "name": "North Sumatra",
+                    "lat": 2.12,
+                    "lng": 99.55,
+                    "radius": 100
+                },
+                "Papua": {
+                    "name": "Papua",
+                    "lat": -4.27,
+                    "lng": 138.08,
+                    "radius": 200
+                },
+                "Riau": {
+                    "name": "Riau",
+                    "lat": 0.29,
+                    "lng": 101.71,
+                    "radius": 70
+                },
+                "Riau Islands": {
+                    "name": "Riau Islands",
+                    "lat": 0.92,
+                    "lng": 104.46,
+                    "radius": 40
+                },
+                "Southeast Sulawesi": {
+                    "name": "Southeast Sulawesi",
+                    "lat": -3.55,
+                    "lng": 121.72,
+                    "radius": 60
+                },
+                "South Kalimantan": {
+                    "name": "South Kalimantan",
+                    "lat": -3.09,
+                    "lng": 115.28,
+                    "radius": 60
+                },
+                "South Sulawesi": {
+                    "name": "South Sulawesi",
+                    "lat": -3.67,
+                    "lng": 119.97,
+                    "radius": 70
+                },
+                "South Sumatra": {
+                    "name": "South Sumatra",
+                    "lat": -3.32,
+                    "lng": 104.91,
+                    "radius": 80
+                },
+                "West Java": {
+                    "name": "West Java",
+                    "lat": -6.92,
+                    "lng": 107.6,
+                    "radius": 70
+                },
+                "West Kalimantan": {
+                    "name": "West Kalimantan",
+                    "lat": 0.05,
+                    "lng": 109.33,
+                    "radius": 100
+                },
+                "West Nusa Tenggara": {
+                    "name": "West Nusa Tenggara",
+                    "lat": -8.65,
+                    "lng": 117.36,
+                    "radius": 50
+                },
+                "West Papua": {
+                    "name": "West Papua",
+                    "lat": -1.38,
+                    "lng": 132.92,
+                    "radius": 120
+                },
+                "West Sulawesi": {
+                    "name": "West Sulawesi",
+                    "lat": -2.84,
+                    "lng": 119.23,
+                    "radius": 40
+                },
+                "West Sumatra": {
+                    "name": "West Sumatra",
+                    "lat": -0.74,
+                    "lng": 100.8,
+                    "radius": 60
+                },
+                "Yogyakarta": {
+                    "name": "Yogyakarta",
+                    "lat": -7.8,
+                    "lng": 110.36,
+                    "radius": 15
+                }
+            }
+        },
+        "Laos": {
+            "name": "Laos",
+            "lat": 19.86,
+            "lng": 102.5,
+            "radius": 300,
+            "states": {
+                "Attapeu": {
+                    "name": "Attapeu",
+                    "lat": 14.81,
+                    "lng": 107,
+                    "radius": 40
+                },
+                "Bokeo": {
+                    "name": "Bokeo",
+                    "lat": 20.29,
+                    "lng": 100.74,
+                    "radius": 30
+                },
+                "Bolikhamsai": {
+                    "name": "Bolikhamsai",
+                    "lat": 18.38,
+                    "lng": 104.57,
+                    "radius": 50
+                },
+                "Champasak": {
+                    "name": "Champasak",
+                    "lat": 14.81,
+                    "lng": 105.87,
+                    "radius": 50
+                },
+                "Houaphanh": {
+                    "name": "Houaphanh",
+                    "lat": 20.33,
+                    "lng": 104.07,
+                    "radius": 50
+                },
+                "Khammouane": {
+                    "name": "Khammouane",
+                    "lat": 17.63,
+                    "lng": 105.2,
+                    "radius": 50
+                },
+                "Luang Namtha": {
+                    "name": "Luang Namtha",
+                    "lat": 21,
+                    "lng": 101.4,
+                    "radius": 40
+                },
+                "Luang Prabang": {
+                    "name": "Luang Prabang",
+                    "lat": 19.89,
+                    "lng": 102.13,
+                    "radius": 50
+                },
+                "Oudomxay": {
+                    "name": "Oudomxay",
+                    "lat": 20.69,
+                    "lng": 101.99,
+                    "radius": 40
+                },
+                "Phongsaly": {
+                    "name": "Phongsaly",
+                    "lat": 21.59,
+                    "lng": 102.1,
+                    "radius": 40
+                },
+                "Salavan": {
+                    "name": "Salavan",
+                    "lat": 15.72,
+                    "lng": 106.42,
+                    "radius": 40
+                },
+                "Savannakhet": {
+                    "name": "Savannakhet",
+                    "lat": 16.55,
+                    "lng": 104.75,
+                    "radius": 60
+                },
+                "Sekong": {
+                    "name": "Sekong",
+                    "lat": 15.35,
+                    "lng": 106.73,
+                    "radius": 30
+                },
+                "Vientiane": {
+                    "name": "Vientiane",
+                    "lat": 18.57,
+                    "lng": 102.63,
+                    "radius": 50
+                },
+                "Vientiane Prefecture": {
+                    "name": "Vientiane Prefecture",
+                    "lat": 17.97,
+                    "lng": 102.63,
+                    "radius": 20
+                },
+                "Xaignabouli": {
+                    "name": "Xaignabouli",
+                    "lat": 19.26,
+                    "lng": 101.75,
+                    "radius": 40
+                },
+                "Xekong": {
+                    "name": "Xekong",
+                    "lat": 15.35,
+                    "lng": 106.73,
+                    "radius": 30
+                },
+                "Xieng Khouang": {
+                    "name": "Xieng Khouang",
+                    "lat": 19.34,
+                    "lng": 103.73,
+                    "radius": 40
+                }
+            }
+        },
+        "Cambodia": {
+            "name": "Cambodia",
+            "lat": 12.57,
+            "lng": 104.99,
+            "radius": 250,
+            "states": {
+                "Banteay Meanchey": {
+                    "name": "Banteay Meanchey",
+                    "lat": 13.75,
+                    "lng": 102.98,
+                    "radius": 40
+                },
+                "Battambang": {
+                    "name": "Battambang",
+                    "lat": 13.1,
+                    "lng": 103.2,
+                    "radius": 50
+                },
+                "Kampong Cham": {
+                    "name": "Kampong Cham",
+                    "lat": 12,
+                    "lng": 105.45,
+                    "radius": 40
+                },
+                "Kampong Chhnang": {
+                    "name": "Kampong Chhnang",
+                    "lat": 12.25,
+                    "lng": 104.67,
+                    "radius": 30
+                },
+                "Kampong Speu": {
+                    "name": "Kampong Speu",
+                    "lat": 11.45,
+                    "lng": 104.52,
+                    "radius": 35
+                },
+                "Kampong Thom": {
+                    "name": "Kampong Thom",
+                    "lat": 12.71,
+                    "lng": 104.89,
+                    "radius": 50
+                },
+                "Kampot": {
+                    "name": "Kampot",
+                    "lat": 10.61,
+                    "lng": 104.18,
+                    "radius": 30
+                },
+                "Kandal": {
+                    "name": "Kandal",
+                    "lat": 11.22,
+                    "lng": 104.95,
+                    "radius": 25
+                },
+                "Kep": {
+                    "name": "Kep",
+                    "lat": 10.49,
+                    "lng": 104.32,
+                    "radius": 10
+                },
+                "Koh Kong": {
+                    "name": "Koh Kong",
+                    "lat": 11.6,
+                    "lng": 103.36,
+                    "radius": 50
+                },
+                "Kratié": {
+                    "name": "Kratié",
+                    "lat": 12.49,
+                    "lng": 106.02,
+                    "radius": 50
+                },
+                "Mondulkiri": {
+                    "name": "Mondulkiri",
+                    "lat": 12.45,
+                    "lng": 107.19,
+                    "radius": 60
+                },
+                "Phnom Penh": {
+                    "name": "Phnom Penh",
+                    "lat": 11.56,
+                    "lng": 104.93,
+                    "radius": 15
+                },
+                "Preah Vihear": {
+                    "name": "Preah Vihear",
+                    "lat": 13.8,
+                    "lng": 104.98,
+                    "radius": 60
+                },
+                "Prey Veng": {
+                    "name": "Prey Veng",
+                    "lat": 11.49,
+                    "lng": 105.32,
+                    "radius": 30
+                },
+                "Pursat": {
+                    "name": "Pursat",
+                    "lat": 12.53,
+                    "lng": 103.92,
+                    "radius": 45
+                },
+                "Ratanakiri": {
+                    "name": "Ratanakiri",
+                    "lat": 13.73,
+                    "lng": 107.1,
+                    "radius": 50
+                },
+                "Siem Reap": {
+                    "name": "Siem Reap",
+                    "lat": 13.36,
+                    "lng": 103.86,
+                    "radius": 50
+                },
+                "Preah Sihanouk": {
+                    "name": "Preah Sihanouk",
+                    "lat": 10.63,
+                    "lng": 103.52,
+                    "radius": 30
+                },
+                "Stung Treng": {
+                    "name": "Stung Treng",
+                    "lat": 13.53,
+                    "lng": 105.97,
+                    "radius": 45
+                },
+                "Svay Rieng": {
+                    "name": "Svay Rieng",
+                    "lat": 11.09,
+                    "lng": 105.8,
+                    "radius": 25
+                },
+                "Takeo": {
+                    "name": "Takeo",
+                    "lat": 10.99,
+                    "lng": 104.78,
+                    "radius": 30
+                },
+                "Oddar Meanchey": {
+                    "name": "Oddar Meanchey",
+                    "lat": 14.18,
+                    "lng": 103.72,
+                    "radius": 40
+                },
+                "Pailin": {
+                    "name": "Pailin",
+                    "lat": 12.85,
+                    "lng": 102.61,
+                    "radius": 15
+                },
+                "Tbong Khmum": {
+                    "name": "Tbong Khmum",
+                    "lat": 12.06,
+                    "lng": 105.85,
+                    "radius": 30
+                }
+            }
+        },
+        "Vietnam": {
+            "name": "Vietnam",
+            "lat": 14.06,
+            "lng": 108.28,
+            "radius": 450,
+            "states": {
+                "An Giang": {
+                    "name": "An Giang",
+                    "lat": 10.52,
+                    "lng": 105.13,
+                    "radius": 30
+                },
+                "Bà Rịa–Vũng Tàu": {
+                    "name": "Bà Rịa–Vũng Tàu",
+                    "lat": 10.4,
+                    "lng": 107.13,
+                    "radius": 25
+                },
+                "Bắc Giang": {
+                    "name": "Bắc Giang",
+                    "lat": 21.27,
+                    "lng": 106.2,
+                    "radius": 30
+                },
+                "Bắc Kạn": {
+                    "name": "Bắc Kạn",
+                    "lat": 22.13,
+                    "lng": 105.83,
+                    "radius": 30
+                },
+                "Bạc Liêu": {
+                    "name": "Bạc Liêu",
+                    "lat": 9.29,
+                    "lng": 105.72,
+                    "radius": 20
+                },
+                "Bắc Ninh": {
+                    "name": "Bắc Ninh",
+                    "lat": 21.19,
+                    "lng": 106.07,
+                    "radius": 15
+                },
+                "Bến Tre": {
+                    "name": "Bến Tre",
+                    "lat": 10.24,
+                    "lng": 106.38,
+                    "radius": 20
+                },
+                "Bình Dương": {
+                    "name": "Bình Dương",
+                    "lat": 11.17,
+                    "lng": 106.65,
+                    "radius": 20
+                },
+                "Bình Định": {
+                    "name": "Bình Định",
+                    "lat": 14.17,
+                    "lng": 109,
+                    "radius": 35
+                },
+                "Bình Phước": {
+                    "name": "Bình Phước",
+                    "lat": 11.75,
+                    "lng": 106.73,
+                    "radius": 30
+                },
+                "Bình Thuận": {
+                    "name": "Bình Thuận",
+                    "lat": 11.09,
+                    "lng": 108.09,
+                    "radius": 35
+                },
+                "Cà Mau": {
+                    "name": "Cà Mau",
+                    "lat": 9.18,
+                    "lng": 105.15,
+                    "radius": 25
+                },
+                "Cần Thơ": {
+                    "name": "Cần Thơ",
+                    "lat": 10.03,
+                    "lng": 105.77,
+                    "radius": 10
+                },
+                "Cao Bằng": {
+                    "name": "Cao Bằng",
+                    "lat": 22.67,
+                    "lng": 106.26,
+                    "radius": 35
+                },
+                "Đà Nẵng": {
+                    "name": "Đà Nẵng",
+                    "lat": 16.05,
+                    "lng": 108.22,
+                    "radius": 15
+                },
+                "Đắk Lắk": {
+                    "name": "Đắk Lắk",
+                    "lat": 12.71,
+                    "lng": 108.24,
+                    "radius": 50
+                },
+                "Đắk Nông": {
+                    "name": "Đắk Nông",
+                    "lat": 12.26,
+                    "lng": 107.61,
+                    "radius": 30
+                },
+                "Điện Biên": {
+                    "name": "Điện Biên",
+                    "lat": 21.8,
+                    "lng": 103.02,
+                    "radius": 40
+                },
+                "Đồng Nai": {
+                    "name": "Đồng Nai",
+                    "lat": 11.07,
+                    "lng": 107.17,
+                    "radius": 30
+                },
+                "Đồng Tháp": {
+                    "name": "Đồng Tháp",
+                    "lat": 10.49,
+                    "lng": 105.69,
+                    "radius": 25
+                },
+                "Gia Lai": {
+                    "name": "Gia Lai",
+                    "lat": 13.81,
+                    "lng": 108.11,
+                    "radius": 50
+                },
+                "Hà Giang": {
+                    "name": "Hà Giang",
+                    "lat": 22.82,
+                    "lng": 104.98,
+                    "radius": 40
+                },
+                "Hà Nam": {
+                    "name": "Hà Nam",
+                    "lat": 20.58,
+                    "lng": 105.92,
+                    "radius": 15
+                },
+                "Hà Nội": {
+                    "name": "Hà Nội",
+                    "lat": 21.03,
+                    "lng": 105.85,
+                    "radius": 20
+                },
+                "Hà Tĩnh": {
+                    "name": "Hà Tĩnh",
+                    "lat": 18.34,
+                    "lng": 105.91,
+                    "radius": 30
+                },
+                "Hải Dương": {
+                    "name": "Hải Dương",
+                    "lat": 20.94,
+                    "lng": 106.31,
+                    "radius": 15
+                },
+                "Hải Phòng": {
+                    "name": "Hải Phòng",
+                    "lat": 20.84,
+                    "lng": 106.69,
+                    "radius": 15
+                },
+                "Hậu Giang": {
+                    "name": "Hậu Giang",
+                    "lat": 9.76,
+                    "lng": 105.64,
+                    "radius": 15
+                },
+                "Hòa Bình": {
+                    "name": "Hòa Bình",
+                    "lat": 20.82,
+                    "lng": 105.34,
+                    "radius": 30
+                },
+                "Hưng Yên": {
+                    "name": "Hưng Yên",
+                    "lat": 20.65,
+                    "lng": 106.05,
+                    "radius": 12
+                },
+                "Khánh Hòa": {
+                    "name": "Khánh Hòa",
+                    "lat": 12.26,
+                    "lng": 109.05,
+                    "radius": 30
+                },
+                "Kiên Giang": {
+                    "name": "Kiên Giang",
+                    "lat": 9.82,
+                    "lng": 105.13,
+                    "radius": 35
+                },
+                "Kon Tum": {
+                    "name": "Kon Tum",
+                    "lat": 14.35,
+                    "lng": 108,
+                    "radius": 40
+                },
+                "Lai Châu": {
+                    "name": "Lai Châu",
+                    "lat": 22.39,
+                    "lng": 103.46,
+                    "radius": 40
+                },
+                "Lâm Đồng": {
+                    "name": "Lâm Đồng",
+                    "lat": 11.94,
+                    "lng": 108.44,
+                    "radius": 40
+                },
+                "Lạng Sơn": {
+                    "name": "Lạng Sơn",
+                    "lat": 21.85,
+                    "lng": 106.76,
+                    "radius": 30
+                },
+                "Lào Cai": {
+                    "name": "Lào Cai",
+                    "lat": 22.49,
+                    "lng": 103.97,
+                    "radius": 35
+                },
+                "Long An": {
+                    "name": "Long An",
+                    "lat": 10.54,
+                    "lng": 106.41,
+                    "radius": 20
+                },
+                "Nam Định": {
+                    "name": "Nam Định",
+                    "lat": 20.42,
+                    "lng": 106.17,
+                    "radius": 15
+                },
+                "Nghệ An": {
+                    "name": "Nghệ An",
+                    "lat": 19.23,
+                    "lng": 105,
+                    "radius": 50
+                },
+                "Ninh Bình": {
+                    "name": "Ninh Bình",
+                    "lat": 20.25,
+                    "lng": 105.97,
+                    "radius": 15
+                },
+                "Ninh Thuận": {
+                    "name": "Ninh Thuận",
+                    "lat": 11.57,
+                    "lng": 108.99,
+                    "radius": 25
+                },
+                "Phú Thọ": {
+                    "name": "Phú Thọ",
+                    "lat": 21.27,
+                    "lng": 105.2,
+                    "radius": 25
+                },
+                "Phú Yên": {
+                    "name": "Phú Yên",
+                    "lat": 13.09,
+                    "lng": 109.09,
+                    "radius": 25
+                },
+                "Quảng Bình": {
+                    "name": "Quảng Bình",
+                    "lat": 17.47,
+                    "lng": 106.6,
+                    "radius": 35
+                },
+                "Quảng Nam": {
+                    "name": "Quảng Nam",
+                    "lat": 15.54,
+                    "lng": 107.96,
+                    "radius": 40
+                },
+                "Quảng Ngãi": {
+                    "name": "Quảng Ngãi",
+                    "lat": 15.12,
+                    "lng": 108.8,
+                    "radius": 25
+                },
+                "Quảng Ninh": {
+                    "name": "Quảng Ninh",
+                    "lat": 21.01,
+                    "lng": 107.29,
+                    "radius": 35
+                },
+                "Quảng Trị": {
+                    "name": "Quảng Trị",
+                    "lat": 16.74,
+                    "lng": 107.19,
+                    "radius": 25
+                },
+                "Sóc Trăng": {
+                    "name": "Sóc Trăng",
+                    "lat": 9.6,
+                    "lng": 105.97,
+                    "radius": 20
+                },
+                "Sơn La": {
+                    "name": "Sơn La",
+                    "lat": 21.33,
+                    "lng": 103.9,
+                    "radius": 50
+                },
+                "Tây Ninh": {
+                    "name": "Tây Ninh",
+                    "lat": 11.31,
+                    "lng": 106.1,
+                    "radius": 20
+                },
+                "Thái Bình": {
+                    "name": "Thái Bình",
+                    "lat": 20.45,
+                    "lng": 106.34,
+                    "radius": 15
+                },
+                "Thái Nguyên": {
+                    "name": "Thái Nguyên",
+                    "lat": 21.59,
+                    "lng": 105.85,
+                    "radius": 25
+                },
+                "Thanh Hóa": {
+                    "name": "Thanh Hóa",
+                    "lat": 19.81,
+                    "lng": 105.78,
+                    "radius": 40
+                },
+                "Thừa Thiên–Huế": {
+                    "name": "Thừa Thiên–Huế",
+                    "lat": 16.47,
+                    "lng": 107.6,
+                    "radius": 25
+                },
+                "Tiền Giang": {
+                    "name": "Tiền Giang",
+                    "lat": 10.35,
+                    "lng": 106.36,
+                    "radius": 15
+                },
+                "TP. Hồ Chí Minh": {
+                    "name": "TP. Hồ Chí Minh",
+                    "lat": 10.82,
+                    "lng": 106.63,
+                    "radius": 15
+                },
+                "Trà Vinh": {
+                    "name": "Trà Vinh",
+                    "lat": 9.81,
+                    "lng": 106.34,
+                    "radius": 15
+                },
+                "Tuyên Quang": {
+                    "name": "Tuyên Quang",
+                    "lat": 22.12,
+                    "lng": 105.22,
+                    "radius": 30
+                },
+                "Vĩnh Long": {
+                    "name": "Vĩnh Long",
+                    "lat": 10.25,
+                    "lng": 105.97,
+                    "radius": 12
+                },
+                "Vĩnh Phúc": {
+                    "name": "Vĩnh Phúc",
+                    "lat": 21.31,
+                    "lng": 105.6,
+                    "radius": 15
+                },
+                "Yên Bái": {
+                    "name": "Yên Bái",
+                    "lat": 21.72,
+                    "lng": 104.87,
+                    "radius": 35
+                }
+            }
+        },
+        "Singapore": {
+            "name": "Singapore",
+            "lat": 1.35,
+            "lng": 103.82,
+            "radius": 20,
+            "states": {
+                "Central Region": {
+                    "name": "Central Region",
+                    "lat": 1.3,
+                    "lng": 103.85,
+                    "radius": 8
+                },
+                "East Region": {
+                    "name": "East Region",
+                    "lat": 1.35,
+                    "lng": 103.94,
+                    "radius": 6
+                },
+                "North Region": {
+                    "name": "North Region",
+                    "lat": 1.41,
+                    "lng": 103.82,
+                    "radius": 7
+                },
+                "North-East Region": {
+                    "name": "North-East Region",
+                    "lat": 1.39,
+                    "lng": 103.9,
+                    "radius": 6
+                },
+                "West Region": {
+                    "name": "West Region",
+                    "lat": 1.35,
+                    "lng": 103.74,
+                    "radius": 7
+                }
+            }
+        },
+        "Japan": {
+            "name": "Japan",
+            "states": {
+                "Aichi Prefecture": {
+                    "name": "Aichi Prefecture",
+                    "lat": 34.9992,
+                    "lng": 137.2546,
+                    "radius": 96
+                },
+                "Akita Prefecture": {
+                    "name": "Akita Prefecture",
+                    "lat": 39.6899,
+                    "lng": 140.3426,
+                    "radius": 125
+                },
+                "Aomori Prefecture": {
+                    "name": "Aomori Prefecture",
+                    "lat": 40.8869,
+                    "lng": 140.5901,
+                    "radius": 139
+                },
+                "Chiba Prefecture": {
+                    "name": "Chiba Prefecture",
+                    "lat": 35.5494,
+                    "lng": 140.2647,
+                    "radius": 130
+                },
+                "Ehime Prefecture": {
+                    "name": "Ehime Prefecture",
+                    "lat": 33.6014,
+                    "lng": 132.8185,
+                    "radius": 126
+                },
+                "Fukui Prefecture": {
+                    "name": "Fukui Prefecture",
+                    "lat": 35.9264,
+                    "lng": 136.6068,
+                    "radius": 123
+                },
+                "Fukuoka Prefecture": {
+                    "name": "Fukuoka Prefecture",
+                    "lat": 33.6251,
+                    "lng": 130.618,
+                    "radius": 136
+                },
+                "Fukushima Prefecture": {
+                    "name": "Fukushima Prefecture",
+                    "lat": 37.3663,
+                    "lng": 140.2512,
+                    "radius": 126
+                },
+                "Gifu Prefecture": {
+                    "name": "Gifu Prefecture",
+                    "lat": 35.7867,
+                    "lng": 137.0461,
+                    "radius": 102
+                },
+                "Gunma Prefecture": {
+                    "name": "Gunma Prefecture",
+                    "lat": 36.522,
+                    "lng": 139.0335,
+                    "radius": 83
+                },
+                "Hiroshima Prefecture": {
+                    "name": "Hiroshima Prefecture",
+                    "lat": 34.5667,
+                    "lng": 132.7536,
+                    "radius": 92
+                },
+                "Hokkaidō Prefecture": {
+                    "name": "Hokkaidō Prefecture",
+                    "lat": 43.452,
+                    "lng": 142.8198,
+                    "radius": 150
+                },
+                "Hyōgo Prefecture": {
+                    "name": "Hyōgo Prefecture",
+                    "lat": 34.9149,
+                    "lng": 134.8607,
+                    "radius": 120
+                },
+                "Ibaraki Prefecture": {
+                    "name": "Ibaraki Prefecture",
+                    "lat": 36.287,
+                    "lng": 140.4703,
+                    "radius": 101
+                },
+                "Ishikawa Prefecture": {
+                    "name": "Ishikawa Prefecture",
+                    "lat": 36.9891,
+                    "lng": 136.8163,
+                    "radius": 157
+                },
+                "Iwate Prefecture": {
+                    "name": "Iwate Prefecture",
+                    "lat": 39.5714,
+                    "lng": 141.4254,
+                    "radius": 134
+                },
+                "Kagawa Prefecture": {
+                    "name": "Kagawa Prefecture",
+                    "lat": 34.248,
+                    "lng": 134.0587,
+                    "radius": 77
+                },
+                "Kagoshima Prefecture": {
+                    "name": "Kagoshima Prefecture",
+                    "lat": 31.5216,
+                    "lng": 130.5474,
+                    "radius": 150
+                },
+                "Kanagawa Prefecture": {
+                    "name": "Kanagawa Prefecture",
+                    "lat": 35.4343,
+                    "lng": 139.3748,
+                    "radius": 69
+                },
+                "Kumamoto Prefecture": {
+                    "name": "Kumamoto Prefecture",
+                    "lat": 32.645,
+                    "lng": 130.6341,
+                    "radius": 142
+                },
+                "Kyōto Prefecture": {
+                    "name": "Kyōto Prefecture",
+                    "lat": 35.2426,
+                    "lng": 135.4546,
+                    "radius": 115
+                },
+                "Mie Prefecture": {
+                    "name": "Mie Prefecture",
+                    "lat": 34.734,
+                    "lng": 136.5154,
+                    "radius": 145
+                },
+                "Miyagi Prefecture": {
+                    "name": "Miyagi Prefecture",
+                    "lat": 38.388,
+                    "lng": 140.9761,
+                    "radius": 116
+                },
+                "Miyazaki Prefecture": {
+                    "name": "Miyazaki Prefecture",
+                    "lat": 32.0977,
+                    "lng": 131.2945,
+                    "radius": 128
+                },
+                "Nagano Prefecture": {
+                    "name": "Nagano Prefecture",
+                    "lat": 36.1144,
+                    "lng": 138.0319,
+                    "radius": 120
+                },
+                "Nagasaki Prefecture": {
+                    "name": "Nagasaki Prefecture",
+                    "lat": 33.1155,
+                    "lng": 129.7874,
+                    "radius": 150
+                },
+                "Nara Prefecture": {
+                    "name": "Nara Prefecture",
+                    "lat": 34.2963,
+                    "lng": 135.8817,
+                    "radius": 63
+                },
+                "Niigata Prefecture": {
+                    "name": "Niigata Prefecture",
+                    "lat": 37.6452,
+                    "lng": 138.7669,
+                    "radius": 176
+                },
+                "Ōita Prefecture": {
+                    "name": "Ōita Prefecture",
+                    "lat": 33.182,
+                    "lng": 131.427,
+                    "radius": 119
+                },
+                "Okayama Prefecture": {
+                    "name": "Okayama Prefecture",
+                    "lat": 34.8581,
+                    "lng": 133.7759,
+                    "radius": 89
+                },
+                "Okinawa Prefecture": {
+                    "name": "Okinawa Prefecture",
+                    "lat": 26.5708,
+                    "lng": 128.0256,
+                    "radius": 150
+                },
+                "Ōsaka Prefecture": {
+                    "name": "Ōsaka Prefecture",
+                    "lat": 34.6199,
+                    "lng": 135.4904,
+                    "radius": 64
+                },
+                "Saga Prefecture": {
+                    "name": "Saga Prefecture",
+                    "lat": 33.2185,
+                    "lng": 130.1297,
+                    "radius": 71
+                },
+                "Saitama Prefecture": {
+                    "name": "Saitama Prefecture",
+                    "lat": 35.9754,
+                    "lng": 139.416,
+                    "radius": 72
+                },
+                "Shiga Prefecture": {
+                    "name": "Shiga Prefecture",
+                    "lat": 35.2472,
+                    "lng": 136.1094,
+                    "radius": 60
+                },
+                "Shimane Prefecture": {
+                    "name": "Shimane Prefecture",
+                    "lat": 34.9418,
+                    "lng": 132.5374,
+                    "radius": 150
+                },
+                "Shizuoka Prefecture": {
+                    "name": "Shizuoka Prefecture",
+                    "lat": 34.9332,
+                    "lng": 138.0955,
+                    "radius": 144
+                },
+                "Tochigi Prefecture": {
+                    "name": "Tochigi Prefecture",
+                    "lat": 36.6782,
+                    "lng": 139.8097,
+                    "radius": 69
+                },
+                "Tokushima Prefecture": {
+                    "name": "Tokushima Prefecture",
+                    "lat": 33.9196,
+                    "lng": 134.251,
+                    "radius": 94
+                },
+                "Tokyo": {
+                    "name": "Tokyo",
+                    "lat": 35.6769,
+                    "lng": 139.7639,
+                    "radius": 150
+                },
+                "Tottori Prefecture": {
+                    "name": "Tottori Prefecture",
+                    "lat": 35.3555,
+                    "lng": 133.8679,
+                    "radius": 83
+                },
+                "Toyama Prefecture": {
+                    "name": "Toyama Prefecture",
+                    "lat": 36.6468,
+                    "lng": 137.2184,
+                    "radius": 83
+                },
+                "Wakayama Prefecture": {
+                    "name": "Wakayama Prefecture",
+                    "lat": 33.807,
+                    "lng": 135.5931,
+                    "radius": 94
+                },
+                "Yamagata Prefecture": {
+                    "name": "Yamagata Prefecture",
+                    "lat": 38.4747,
+                    "lng": 140.0832,
+                    "radius": 149
+                },
+                "Yamaguchi Prefecture": {
+                    "name": "Yamaguchi Prefecture",
+                    "lat": 34.238,
+                    "lng": 131.5874,
+                    "radius": 143
+                },
+                "Yamanashi Prefecture": {
+                    "name": "Yamanashi Prefecture",
+                    "lat": 35.6399,
+                    "lng": 138.638,
+                    "radius": 69
+                }
+            },
+            "lat": 36.5748,
+            "lng": 139.2394,
+            "radius": 1500
+        },
+        "Russia": {
+            "name": "Russia",
+            "states": {
+                "Altai Krai": {
+                    "name": "Altai Krai",
+                    "lat": 52.6932,
+                    "lng": 82.6931,
+                    "radius": 200
+                },
+                "Altai Republic": {
+                    "name": "Altai Republic",
+                    "lat": 50.7114,
+                    "lng": 86.8572,
+                    "radius": 200
+                },
+                "Amur Oblast": {
+                    "name": "Amur Oblast",
+                    "lat": 52.8032,
+                    "lng": 128.4373,
+                    "radius": 200
+                },
+                "Arkhangelsk": {
+                    "name": "Arkhangelsk",
+                    "lat": 64.541,
+                    "lng": 40.5287,
+                    "radius": 30
+                },
+                "Astrakhan Oblast": {
+                    "name": "Astrakhan Oblast",
+                    "lat": 47.1878,
+                    "lng": 47.6089,
+                    "radius": 200
+                },
+                "Belgorod Oblast": {
+                    "name": "Belgorod Oblast",
+                    "lat": 50.708,
+                    "lng": 37.5838,
+                    "radius": 190
+                },
+                "Bryansk Oblast": {
+                    "name": "Bryansk Oblast",
+                    "lat": 52.8873,
+                    "lng": 33.4159,
+                    "radius": 192
+                },
+                "Chechen Republic": {
+                    "name": "Chechen Republic",
+                    "lat": 43.4,
+                    "lng": 45.7,
+                    "radius": 129
+                },
+                "Chelyabinsk Oblast": {
+                    "name": "Chelyabinsk Oblast",
+                    "lat": 54.4224,
+                    "lng": 61.1866,
+                    "radius": 200
+                },
+                "Chukotka Autonomous Okrug": {
+                    "name": "Chukotka Autonomous Okrug",
+                    "lat": 66.0006,
+                    "lng": 169.4901,
+                    "radius": 200
+                },
+                "Chuvash Republic": {
+                    "name": "Chuvash Republic",
+                    "lat": 55.426,
+                    "lng": 47.0849,
+                    "radius": 130
+                },
+                "Irkutsk": {
+                    "name": "Irkutsk",
+                    "lat": 52.2891,
+                    "lng": 104.2798,
+                    "radius": 25
+                },
+                "Ivanovo Oblast": {
+                    "name": "Ivanovo Oblast",
+                    "lat": 56.9167,
+                    "lng": 41.4352,
+                    "radius": 154
+                },
+                "Jewish Autonomous Oblast": {
+                    "name": "Jewish Autonomous Oblast",
+                    "lat": 48.5602,
+                    "lng": 132.2776,
+                    "radius": 200
+                },
+                "Kabardino-Balkar Republic": {
+                    "name": "Kabardino-Balkar Republic",
+                    "lat": 43.4428,
+                    "lng": 43.4205,
+                    "radius": 106
+                },
+                "Kaliningrad": {
+                    "name": "Kaliningrad",
+                    "lat": 54.7101,
+                    "lng": 20.5106,
+                    "radius": 25
+                },
+                "Kaluga Oblast": {
+                    "name": "Kaluga Oblast",
+                    "lat": 54.4383,
+                    "lng": 35.5273,
+                    "radius": 188
+                },
+                "Kamchatka Krai": {
+                    "name": "Kamchatka Krai",
+                    "lat": 57.1915,
+                    "lng": 160.0384,
+                    "radius": 200
+                },
+                "Karachay-Cherkess Republic": {
+                    "name": "Karachay-Cherkess Republic",
+                    "lat": 43.7368,
+                    "lng": 41.7268,
+                    "radius": 119
+                },
+                "Kemerovo Oblast": {
+                    "name": "Kemerovo Oblast",
+                    "lat": 54.5336,
+                    "lng": 87.3429,
+                    "radius": 200
+                },
+                "Khabarovsk Krai": {
+                    "name": "Khabarovsk Krai",
+                    "lat": 51.6313,
+                    "lng": 136.1215,
+                    "radius": 200
+                },
+                "Khanty-Mansi Autonomous Okrug": {
+                    "name": "Khanty-Mansi Autonomous Okrug",
+                    "lat": 61.8793,
+                    "lng": 68.6418,
+                    "radius": 200
+                },
+                "Kirov Oblast": {
+                    "name": "Kirov Oblast",
+                    "lat": 58.5631,
+                    "lng": 50.1825,
+                    "radius": 200
+                },
+                "Komi Republic": {
+                    "name": "Komi Republic",
+                    "lat": 63.9881,
+                    "lng": 54.3326,
+                    "radius": 200
+                },
+                "Kostroma Oblast": {
+                    "name": "Kostroma Oblast",
+                    "lat": 58.4248,
+                    "lng": 44.2533,
+                    "radius": 200
+                },
+                "Krasnodar Krai": {
+                    "name": "Krasnodar Krai",
+                    "lat": 45.7682,
+                    "lng": 39.0258,
+                    "radius": 200
+                },
+                "Krasnoyarsk Krai": {
+                    "name": "Krasnoyarsk Krai",
+                    "lat": 63.3234,
+                    "lng": 97.098,
+                    "radius": 200
+                },
+                "Kurgan Oblast": {
+                    "name": "Kurgan Oblast",
+                    "lat": 55.852,
+                    "lng": 63.7723,
+                    "radius": 200
+                },
+                "Kursk Oblast": {
+                    "name": "Kursk Oblast",
+                    "lat": 51.6568,
+                    "lng": 36.4853,
+                    "radius": 187
+                },
+                "Leningrad Oblast": {
+                    "name": "Leningrad Oblast",
+                    "lat": 60.1853,
+                    "lng": 32.3925,
+                    "radius": 200
+                },
+                "Lipetsk Oblast": {
+                    "name": "Lipetsk Oblast",
+                    "lat": 52.6935,
+                    "lng": 39.1123,
+                    "radius": 148
+                },
+                "Magadan Oblast": {
+                    "name": "Magadan Oblast",
+                    "lat": 63.5515,
+                    "lng": 154.0147,
+                    "radius": 200
+                },
+                "Mari El Republic": {
+                    "name": "Mari El Republic",
+                    "lat": 56.5768,
+                    "lng": 47.8818,
+                    "radius": 166
+                },
+                "Moscow": {
+                    "name": "Moscow",
+                    "lat": 55.6256,
+                    "lng": 37.6064,
+                    "radius": 74
+                },
+                "Moscow Oblast": {
+                    "name": "Moscow Oblast",
+                    "lat": 55.5043,
+                    "lng": 38.0354,
+                    "radius": 200
+                },
+                "Murmansk Oblast": {
+                    "name": "Murmansk Oblast",
+                    "lat": 68,
+                    "lng": 33.9999,
+                    "radius": 200
+                },
+                "Nenets Autonomous Okrug": {
+                    "name": "Nenets Autonomous Okrug",
+                    "lat": 67.6783,
+                    "lng": 57.0627,
+                    "radius": 200
+                },
+                "Nizhny Novgorod Oblast": {
+                    "name": "Nizhny Novgorod Oblast",
+                    "lat": 55.4718,
+                    "lng": 44.0912,
+                    "radius": 200
+                },
+                "Novgorod Oblast": {
+                    "name": "Novgorod Oblast",
+                    "lat": 58.2844,
+                    "lng": 32.517,
+                    "radius": 200
+                },
+                "Novosibirsk": {
+                    "name": "Novosibirsk",
+                    "lat": 54.9678,
+                    "lng": 82.9516,
+                    "radius": 29
+                },
+                "Omsk Oblast": {
+                    "name": "Omsk Oblast",
+                    "lat": 56.0935,
+                    "lng": 73.51,
+                    "radius": 200
+                },
+                "Orenburg Oblast": {
+                    "name": "Orenburg Oblast",
+                    "lat": 52.0269,
+                    "lng": 54.7277,
+                    "radius": 200
+                },
+                "Oryol Oblast": {
+                    "name": "Oryol Oblast",
+                    "lat": 52.8393,
+                    "lng": 36.4252,
+                    "radius": 150
+                },
+                "Penza Oblast": {
+                    "name": "Penza Oblast",
+                    "lat": 53.1655,
+                    "lng": 44.7879,
+                    "radius": 200
+                },
+                "Perm Krai": {
+                    "name": "Perm Krai",
+                    "lat": 58.5952,
+                    "lng": 56.316,
+                    "radius": 200
+                },
+                "Primorsky Krai": {
+                    "name": "Primorsky Krai",
+                    "lat": 45.0819,
+                    "lng": 134.7266,
+                    "radius": 200
+                },
+                "Pskov Oblast": {
+                    "name": "Pskov Oblast",
+                    "lat": 57.5359,
+                    "lng": 28.8587,
+                    "radius": 200
+                },
+                "Republic of Adygea": {
+                    "name": "Republic of Adygea",
+                    "lat": 44.6939,
+                    "lng": 40.152,
+                    "radius": 156
+                },
+                "Republic of Bashkortostan": {
+                    "name": "Republic of Bashkortostan",
+                    "lat": 54.4748,
+                    "lng": 55.9785,
+                    "radius": 200
+                },
+                "Republic of Buryatia": {
+                    "name": "Republic of Buryatia",
+                    "lat": 52.7182,
+                    "lng": 109.4921,
+                    "radius": 200
+                },
+                "Republic of Dagestan": {
+                    "name": "Republic of Dagestan",
+                    "lat": 43,
+                    "lng": 47,
+                    "radius": 200
+                },
+                "Republic of Ingushetia": {
+                    "name": "Republic of Ingushetia",
+                    "lat": 43.1655,
+                    "lng": 44.9797,
+                    "radius": 74
+                },
+                "Republic of Kalmykia": {
+                    "name": "Republic of Kalmykia",
+                    "lat": 46.9017,
+                    "lng": 45.2492,
+                    "radius": 200
+                },
+                "Republic of Karelia": {
+                    "name": "Republic of Karelia",
+                    "lat": 62.6194,
+                    "lng": 33.492,
+                    "radius": 200
+                },
+                "Republic of Khakassia": {
+                    "name": "Republic of Khakassia",
+                    "lat": 53.4399,
+                    "lng": 90.0664,
+                    "radius": 200
+                },
+                "Republic of Mordovia": {
+                    "name": "Republic of Mordovia",
+                    "lat": 54.442,
+                    "lng": 44.4661,
+                    "radius": 175
+                },
+                "Republic of North Ossetia-Alania": {
+                    "name": "Republic of North Ossetia-Alania",
+                    "lat": 42.9921,
+                    "lng": 44.2636,
+                    "radius": 117
+                },
+                "Republic of Tatarstan": {
+                    "name": "Republic of Tatarstan",
+                    "lat": 55.4482,
+                    "lng": 50.4764,
+                    "radius": 200
+                },
+                "Rostov Oblast": {
+                    "name": "Rostov Oblast",
+                    "lat": 47.6222,
+                    "lng": 40.7958,
+                    "radius": 200
+                },
+                "Ryazan Oblast": {
+                    "name": "Ryazan Oblast",
+                    "lat": 54.4227,
+                    "lng": 40.5705,
+                    "radius": 186
+                },
+                "Saint Petersburg": {
+                    "name": "Saint Petersburg",
+                    "lat": 59.9607,
+                    "lng": 30.1587,
+                    "radius": 55
+                },
+                "Sakha Republic": {
+                    "name": "Sakha Republic",
+                    "lat": 66.9416,
+                    "lng": 129.6424,
+                    "radius": 200
+                },
+                "Sakhalin": {
+                    "name": "Sakhalin",
+                    "lat": 50.1595,
+                    "lng": 143.0264,
+                    "radius": 200
+                },
+                "Samara Oblast": {
+                    "name": "Samara Oblast",
+                    "lat": 52.6768,
+                    "lng": 50.5874,
+                    "radius": 200
+                },
+                "Saratov Oblast": {
+                    "name": "Saratov Oblast",
+                    "lat": 51.6521,
+                    "lng": 46.8632,
+                    "radius": 200
+                },
+                "Sevastopol": {
+                    "name": "Sevastopol",
+                    "lat": 55.7545,
+                    "lng": 37.6157,
+                    "radius": 25
+                },
+                "Smolensk Oblast": {
+                    "name": "Smolensk Oblast",
+                    "lat": 55.0343,
+                    "lng": 33.0192,
+                    "radius": 200
+                },
+                "Stavropol Krai": {
+                    "name": "Stavropol Krai",
+                    "lat": 44.8633,
+                    "lng": 43.4407,
+                    "radius": 200
+                },
+                "Sverdlovsk": {
+                    "name": "Sverdlovsk",
+                    "lat": 56.8382,
+                    "lng": 60.6008,
+                    "radius": 45
+                },
+                "Tambov Oblast": {
+                    "name": "Tambov Oblast",
+                    "lat": 52.902,
+                    "lng": 41.3579,
+                    "radius": 195
+                },
+                "Tomsk Oblast": {
+                    "name": "Tomsk Oblast",
+                    "lat": 58.6124,
+                    "lng": 82.0475,
+                    "radius": 200
+                },
+                "Tula Oblast": {
+                    "name": "Tula Oblast",
+                    "lat": 53.9571,
+                    "lng": 37.3691,
+                    "radius": 154
+                },
+                "Tuva Republic": {
+                    "name": "Tuva Republic",
+                    "lat": 51.4017,
+                    "lng": 93.8583,
+                    "radius": 200
+                },
+                "Tver Oblast": {
+                    "name": "Tver Oblast",
+                    "lat": 57.1134,
+                    "lng": 35.1744,
+                    "radius": 200
+                },
+                "Tyumen Oblast": {
+                    "name": "Tyumen Oblast",
+                    "lat": 58.8206,
+                    "lng": 70.3659,
+                    "radius": 200
+                },
+                "Udmurt Republic": {
+                    "name": "Udmurt Republic",
+                    "lat": 57.1961,
+                    "lng": 52.696,
+                    "radius": 184
+                },
+                "Ulyanovsk Oblast": {
+                    "name": "Ulyanovsk Oblast",
+                    "lat": 54.1463,
+                    "lng": 47.2325,
+                    "radius": 200
+                },
+                "Vladimir Oblast": {
+                    "name": "Vladimir Oblast",
+                    "lat": 56.0503,
+                    "lng": 40.6562,
+                    "radius": 183
+                },
+                "Vologda Oblast": {
+                    "name": "Vologda Oblast",
+                    "lat": 60.0391,
+                    "lng": 43.1215,
+                    "radius": 200
+                },
+                "Voronezh Oblast": {
+                    "name": "Voronezh Oblast",
+                    "lat": 50.98,
+                    "lng": 40.1507,
+                    "radius": 200
+                },
+                "Yamalo-Nenets Autonomous Okrug": {
+                    "name": "Yamalo-Nenets Autonomous Okrug",
+                    "lat": 67.1472,
+                    "lng": 74.3415,
+                    "radius": 200
+                },
+                "Yaroslavl Oblast": {
+                    "name": "Yaroslavl Oblast",
+                    "lat": 57.7782,
+                    "lng": 39.0021,
+                    "radius": 191
+                },
+                "Zabaykalsky Krai": {
+                    "name": "Zabaykalsky Krai",
+                    "lat": 52.2485,
+                    "lng": 115.9563,
+                    "radius": 200
+                }
+            },
+            "lat": 64.6863,
+            "lng": 97.7453,
+            "radius": 1500
+        }
+    }
+}

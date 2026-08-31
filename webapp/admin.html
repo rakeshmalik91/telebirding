@@ -1,0 +1,568 @@
+<html>
+
+<head>
+	<title>Telebirding Admin</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+	<link rel="icon" type="image/png" href="icons/favicon-admin-48x48.png">
+	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260829_1">
+	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260829_1">
+	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
+
+	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
+
+	<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
+
+
+
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" /> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script> -->
+	<link rel="stylesheet" href="lib/css/cropper.min.css" />
+	<script src="lib/js/cropper.min.js"></script>
+
+	<!-- <script src="https://cdn.jsdelivr.net/npm/exif-js"></script> -->
+	<script src="lib/js/exif.js"></script>
+
+	<!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
+	<script type="module" src="scripts/admin.js?v=20260830_5"></script>
+
+</head>
+
+<body>
+	<div id="login-page" class="admin-card login-card">
+		<a href="/" class='site-logo'></a>
+		<h1>Admin</h1>
+		<table>
+			<tr>
+				<td><span>Email:</span></td>
+				<td><input type="text" name="email" value="rakeshmalik91@gmail.com" disabled /></td>
+			</tr>
+			<tr>
+				<td><span>Password:</span></td>
+				<td><input type="password" name="password" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="checkbox" name="rememberme" />Remember me</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button>Log in</button></td>
+			</tr>
+		</table>
+	</div>
+	<div class='data' style='display: none;'>
+		<div class="admin-header admin-card">
+			<a href="/" class='site-logo'></a>
+			<h1>Admin</h1>
+			<button class="logout">Log Out</button>
+			<div class="mode-tabs">
+				<button class="mode-tab" data-mode="bird">BIRD</button>
+				<button class="mode-tab" data-mode="insect">INSECT</button>
+			</div>
+		</div>
+
+		<br>
+
+
+		<div class="admin-nav-tabs">
+			<button class="admin-nav-tab active" data-tab="sightings-tab">Sightings</button>
+			<button class="admin-nav-tab" data-tab="species-tab">Species</button>
+			<button class="admin-nav-tab" data-tab="family-tab">Family</button>
+			<button class="admin-nav-tab" data-tab="places-tab">Places</button>
+		</div>
+
+		<div id="sightings-tab" class="admin-tab-content active">
+			<div class="admin-card sightings-card">
+				<h2>Add/Modify Sightings</h2>
+			<div class='nav-top'>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+				<button class='undo' id='undo-btn' title='Undo last action' disabled>Undo</button>
+				<button class='redo' id='redo-btn' title='Redo last action' disabled>Redo</button>
+				<button class='add-sighting' title='Add new sighting'>Add New</button>
+				<div class="right-actions" style="float: right; display: flex; align-items: center; gap: 5px;">
+					<div class="sort-group">
+						<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
+						<button class='auto-sort-btn active' id='auto-sort-btn' title='Auto-sort when uploading media or saving'>Auto</button>
+					</div>
+					<button class='cleanup-media' title='Remove unreferenced media from storage'>Cleanup Media</button>
+					<div class="btn-group">
+						<button class='backup' title='Backup Data'>Backup</button>
+						<button class="restore-backup" title="Restore Data from Backup">Restore</button>
+					</div>
+				</div>
+				<br style="clear: both;">
+				<div class="pagination-container" style="display: flex; align-items: center; width: 100%; box-sizing: border-box; padding-right: 10px; margin-top: 10px; margin-bottom: 15px;">
+					
+					<!-- Left-aligned pagination -->
+					<div style="display: flex; align-items: center; gap: 10px; flex: 0 0 auto;">
+						<div style="display: flex; align-items: center; gap: 5px;">
+							<button class='first-page' title='First page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&lt;&lt;</button>
+							<button class='previous' title='Previous page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&lt;</button>
+						</div>
+						<span class='page-number' style="font-weight: 500; margin: 0 !important; letter-spacing: 0.5px; text-align: center; display: inline-block;"></span>
+						<div style="display: flex; align-items: center; gap: 5px;">
+							<button class='next' title='Next page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&gt;</button>
+							<button class='last-page' title='Last page' style="margin: 0 !important; width: 40px; padding: 8px 0; text-align: center;">&gt;&gt;</button>
+						</div>
+					</div>
+					
+					<!-- Right side rows and filter -->
+					<div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex: 1;">
+						<div class='input-clear-wrapper' style="width: 200px;">
+							<input type="text" name="filter-sighting" placeholder="Filter" style="width: 100%; margin: 0 !important;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+						<div style="display: flex; align-items: center; gap: 8px;">
+							<span class='text' style="margin: 0;">Rows: </span>
+							<select name="page-size" style="margin: 0;">
+								<option value="10">10</option>
+								<option value="25">25</option>
+								<option value="100">100</option>
+								<option value="500">500</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<table id="sightings-table"></table>
+			<div class='nav-bottom'>
+				<div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+					<span>Watermark: </span>
+					<label class="toggle-switch">
+						<input type="checkbox" name="watermark-on" checked>
+						<span class="toggle-slider"></span>
+					</label>
+					<input type="text" name="watermark" value="© ${author}">
+					<input type="color" name="watermark-color" value="#ffffff">
+				</div>
+				<button class='first-page' title='First page'>&lt;&lt;</button>
+				<button class='previous' title='Previous page'>&lt;</button>
+				<span class='page-number'></span>
+				<button class='next' title='Next page'>&gt;</button>
+				<button class='last-page' title='Last page'>&gt;&gt;</button>
+				<button class='save' title='Save Now (Changes are auto-saved)' disabled>Save</button>
+			</div>
+			</div>
+		</div>
+		
+		<div id="species-tab" class="admin-tab-content">
+			<div class="admin-card">
+				<h2>Add/Modify Species</h2>
+			<table id="update-species-form">
+				<tr>
+					<td>Name</td>
+					<td><select data-field='name' data-tags='true' style="width: 100%; max-width: 700px;" placeholder="Select or type a species..."></select></td>
+				</tr>
+				<tr>
+					<td>Family</td>
+					<td><select data-field='family' style="width: 100%; max-width: 700px;" placeholder="Select or type a family..."></select></td>
+				</tr>
+				<tr>
+					<td>Tags</td>
+					<td>
+			<div class="chip-input-container" style="width: 100%; max-width: 700px;">
+				<div class="chips-wrapper"></div>
+				<input type='text' class="chip-input" placeholder="Add tag..." />
+				<input type='hidden' data-field='tags' />
+			</div>
+		</td>
+				</tr>
+				<tr>
+					<td>Scientific Name</td>
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
+							<input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>eBird Code</td>
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
+							<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Sighting Count</td>
+					<td>
+						<span data-field='sighting-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
+					</td>
+				</tr>
+				<tr>
+					<td class='noborder'>
+						<button class='submit'>Add</button>
+						<button class='delete' style='background-color: #d9534f;'>Delete</button>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+
+		<div id="family-tab" class="admin-tab-content">
+			<div id="add-family-section" class="admin-card" style="display:none;">
+			<h2>Add/Modify Family</h2>
+			<table id="add-family-form">
+				<tr>
+					<td>Name</td>
+					<td>
+						<select data-field='name' data-tags='true' style="width: 100%; max-width: 500px;" placeholder="Select or type a family..."></select>
+					</td>
+				</tr>
+				<tr>
+					<td>Scientific Name</td>
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 500px;">
+							<input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>eBird Code</td>
+					<td>
+						<div class='input-clear-wrapper' style="width: 100%; max-width: 500px;">
+							<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
+							<span class='input-clear-btn' title='Clear'>✕</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Species Count</td>
+					<td>
+						<span data-field='species-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
+					</td>
+				</tr>
+				<tr>
+					<td class='noborder'>
+						<button class='submit'>Add</button>
+						<button class='delete' style='background-color: #d9534f;'>Delete</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+
+		<div id="places-tab" class="admin-tab-content">
+			<div class="admin-card">
+				<h2>Places &amp; Geocoding</h2>
+				<div class="places-provider-bar" style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+						<span style="font-weight: 600; font-size: 13px;">📍 Geocoding Provider:</span>
+						<select id="geo-provider-select" style="padding: 6px 12px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
+							<option value="nominatim" selected>Nominatim (OpenStreetMap) - Default</option>
+							<option value="photon">Photon (Komoot)</option>
+						</select>
+						<span id="geo-provider-status" style="font-size: 12px; color: #94a3b8;">Active: Nominatim</span>
+					</div>
+					<div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1);"></div>
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+						<span style="font-weight: 600; font-size: 13px;">🗺️ Geo Boundary Provider:</span>
+						<select id="boundary-provider-select" style="padding: 6px 12px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
+							<option value="nominatim" selected>Nominatim (OpenStreetMap) - Default</option>
+						</select>
+						<span id="boundary-provider-status" style="font-size: 12px; color: #94a3b8;">Active: Nominatim</span>
+					</div>
+				</div>
+
+				<div class="places-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+					<!-- Add Country / State card -->
+					<div class="place-add-section" style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+						<h3 style="margin-top: 0; display: flex; align-items: center; gap: 8px;">
+							<span>🌐</span> Add Country / State
+						</h3>
+						
+						<!-- Sub-section: Add Country -->
+						<div style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+							<h4 style="margin: 0 0 10px 0; color: #38bdf8; font-size: 14px;">Add New Country</h4>
+							<div style="display: flex; gap: 8px; margin-bottom: 8px;">
+								<input type="text" id="new-country-name" placeholder="Country Name (e.g. Nepal, Japan)" style="flex: 1;" />
+								<button id="btn-add-country" style="background-color: #0284c7; color: white; padding: 8px 14px; white-space: nowrap;">➕ Add Country</button>
+							</div>
+							<div style="font-size: 12px; color: #94a3b8; display: flex; flex-direction: column; gap: 4px;">
+								<label style="cursor: pointer; display: flex; align-items: center; gap: 6px;">
+									<input type="checkbox" id="chk-country-fetch-states" checked />
+									<span>Automatically fetch all states/provinces</span>
+								</label>
+								<label style="cursor: pointer; display: flex; align-items: center; gap: 6px;">
+									<input type="checkbox" id="chk-country-geocode" checked />
+									<span>Geocode country coordinates immediately</span>
+								</label>
+								<label style="cursor: pointer; display: flex; align-items: center; gap: 6px;">
+									<input type="checkbox" id="chk-country-geocode-states" />
+									<span>Also geocode all fetched states (runs sequentially)</span>
+								</label>
+							</div>
+							<div id="add-country-status" style="display: none; margin-top: 8px; font-size: 12px; padding: 6px 10px; border-radius: 4px;"></div>
+						</div>
+
+						<!-- Sub-section: Add State -->
+						<div>
+							<h4 style="margin: 0 0 10px 0; color: #a855f7; font-size: 14px;">Add New State</h4>
+							<div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+								<select id="new-state-country-select" style="width: 100%;"></select>
+								<div style="display: flex; gap: 8px;">
+									<input type="text" id="new-state-name" placeholder="State / Province Name (e.g. Bagmati)" style="flex: 1;" />
+									<button id="btn-add-state" style="background-color: #9333ea; color: white; padding: 8px 14px; white-space: nowrap;">➕ Add State</button>
+								</div>
+							</div>
+							<div style="font-size: 12px; color: #94a3b8;">
+								<label style="cursor: pointer; display: flex; align-items: center; gap: 6px;">
+									<input type="checkbox" id="chk-state-geocode" checked />
+									<span>Geocode state coordinates immediately</span>
+								</label>
+							</div>
+							<div id="add-state-status" style="display: none; margin-top: 8px; font-size: 12px; padding: 6px 10px; border-radius: 4px;"></div>
+						</div>
+					</div>
+
+					<!-- Inspect / Re-Geocode card -->
+					<div class="place-lookup-section" style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+						<h3 style="margin-top: 0; display: flex; align-items: center; justify-content: space-between;">
+							<span>🔍 Inspect &amp; Re-Geocode</span>
+						</h3>
+						<table style="width: 100%;">
+							<tr>
+								<td style="width: 80px;">Country</td>
+								<td><select id="place-lookup-country" style="width: 100%;"></select></td>
+							</tr>
+							<tr>
+								<td>State</td>
+								<td><select id="place-lookup-state" style="width: 100%;"></select></td>
+							</tr>
+							<tr>
+								<td>City</td>
+								<td>
+									<input type="text" id="place-lookup-city" list="place-lookup-city-list" placeholder="Select or type City (e.g. Howrah)" style="width: 100%;" />
+									<datalist id="place-lookup-city-list"></datalist>
+								</td>
+							</tr>
+							<tr>
+								<td>Place</td>
+								<td>
+									<input type="text" id="place-lookup-place" list="place-lookup-place-list" placeholder="Select or type Place (e.g. Bally)" style="width: 100%;" />
+									<datalist id="place-lookup-place-list"></datalist>
+								</td>
+							</tr>
+						</table>
+
+						<!-- Live banner showing currently saved coordinates for the selected level -->
+						<div id="place-current-coords-box" style="display: none; margin-top: 12px; padding: 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 12px;">
+							<div style="font-weight: 600; color: #94a3b8; margin-bottom: 4px;" id="place-current-coords-title">Currently Saved Coordinates</div>
+							<div id="place-current-coords-text" style="color: #f1f5f9; font-family: monospace;"></div>
+						</div>
+
+						<div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+							<button id="btn-fetch-geo" style="padding: 8px 16px; background-color: #0284c7; color: white;">🔄 Re-Geocode Selected</button>
+							<button id="btn-batch-regeocode-sub" style="padding: 8px 14px; background-color: #7c3aed; color: white; display: none;"></button>
+						</div>
+
+						<div id="sub-regeocode-progress" style="display: none; margin-top: 10px; padding: 8px; background: rgba(124,58,237,0.1); border-radius: 6px;">
+							<div id="sub-regeocode-status-text" style="font-size: 12px; color: #c084fc;"></div>
+						</div>
+
+						<!-- Re-geocode result preview with direct coordinate editing -->
+						<div id="geo-lookup-result" style="display: none; margin-top: 15px; padding: 12px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 6px;">
+							<div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;" id="geo-res-name"></div>
+							<div style="display: flex; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; align-items: center;">
+								<div><strong style="color: #60a5fa;">Lat:</strong> <input type="number" step="0.0001" id="geo-res-lat-input" style="width: 85px; padding: 3px 6px; font-size: 12px; border-radius: 4px;" /></div>
+								<div><strong style="color: #60a5fa;">Lng:</strong> <input type="number" step="0.0001" id="geo-res-lng-input" style="width: 85px; padding: 3px 6px; font-size: 12px; border-radius: 4px;" /></div>
+								<div><strong style="color: #60a5fa;">Radius:</strong> <input type="number" step="1" id="geo-res-radius-input" style="width: 65px; padding: 3px 6px; font-size: 12px; border-radius: 4px;" /> km</div>
+							</div>
+							<button id="btn-save-geo-result" style="background-color: #22c55e; color: #fff; padding: 6px 14px;">💾 Save to Places</button>
+						</div>
+					</div>
+
+					<!-- Geocode Coverage & Batch Tools -->
+					<div class="place-batch-section" style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+						<h3 style="margin-top: 0; display: flex; align-items: center; justify-content: space-between;">
+							<span>📍 Geocode Coverage &amp; Batch Tools</span>
+						</h3>
+						<p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 12px;">
+							Real-time coordinate coverage across places.json and sightings. Missing locations are automatically detected.
+						</p>
+
+						<!-- Coverage Stats Box (Realtime) -->
+						<div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 14px;">
+							<div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 8px;">Geocode Coverage Status</div>
+							<div style="display: flex; gap: 14px; flex-wrap: wrap;">
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Countries:</span>
+									<strong id="geocode-stat-countries" style="font-size: 14px; color: #38bdf8; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">States:</span>
+									<strong id="geocode-stat-states" style="font-size: 14px; color: #22c55e; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Cities:</span>
+									<strong id="geocode-stat-cities" style="font-size: 14px; color: #a78bfa; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Places:</span>
+									<strong id="geocode-stat-places" style="font-size: 14px; color: #f59e0b; margin-left: 4px;">-</strong>
+								</div>
+							</div>
+							<div id="geocode-missing-alert" style="display: none; margin-top: 8px; font-size: 12px; color: #f59e0b; line-height: 1.4;"></div>
+						</div>
+
+						<!-- Missing Locations / Autofill -->
+						<div id="missing-places-summary">
+							<div style="margin-bottom: 8px; font-size: 13px;" id="missing-places-count"></div>
+							<button id="btn-autofill-missing" style="background-color: #3b82f6; color: #fff; padding: 8px 16px; margin-bottom: 8px; display: none;">⚡ Auto-Fill Missing Coordinates</button>
+							<div id="autofill-progress" style="display: none; margin-top: 8px;">
+								<div id="autofill-status-text" style="font-size: 12px; color: #38bdf8;"></div>
+							</div>
+							<div id="missing-places-list" style="max-height: 200px; overflow-y: auto; font-size: 12px;"></div>
+						</div>
+
+						<!-- Force Re-Geocode Existing Locations -->
+						<div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; margin-top: 12px;">
+							<div style="font-size: 12px; font-weight: 600; color: #94a3b8; margin-bottom: 8px;">Force Re-Geocode Existing Locations</div>
+							<div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+								<select id="scan-mode-select" style="padding: 6px 10px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;">
+									<option value="all">All Locations (Re-Geocode)</option>
+									<option value="country">Specific Country (Re-Geocode)</option>
+								</select>
+								<select id="scan-country-filter" style="display: none; padding: 6px 10px; border-radius: 6px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 13px;"></select>
+								<button id="btn-scan-missing-places" style="padding: 6px 14px; background-color: #7c3aed; color: #fff;">⚡ Re-Geocode</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Geo Boundaries Management -->
+					<div class="geo-boundary-section" style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+						<h3 style="margin-top: 0; display: flex; align-items: center; justify-content: space-between;">
+							<span>🗺️ Geo Boundaries Management</span>
+						</h3>
+						<p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 12px;">
+							Manage polygon boundary outlines for countries and states rendered on the Bird Map.
+						</p>
+
+						<!-- Coverage Stats Box -->
+						<div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 14px;">
+							<div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 8px;">Boundary Coverage Status</div>
+							<div style="display: flex; gap: 16px; flex-wrap: wrap;">
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">Countries:</span>
+									<strong id="boundary-stat-countries" style="font-size: 14px; color: #38bdf8; margin-left: 4px;">-</strong>
+								</div>
+								<div>
+									<span style="font-size: 12px; color: #94a3b8;">States:</span>
+									<strong id="boundary-stat-states" style="font-size: 14px; color: #22c55e; margin-left: 4px;">-</strong>
+								</div>
+							</div>
+							<div id="boundary-missing-alert" style="display: none; margin-top: 8px; font-size: 12px; color: #f59e0b; line-height: 1.4;"></div>
+						</div>
+
+						<!-- Boundary Inspector / Selector -->
+						<table style="width: 100%; margin-bottom: 12px;">
+							<tr>
+								<td style="width: 80px; font-size: 13px;">Country</td>
+								<td><select id="boundary-inspect-country" style="width: 100%;"></select></td>
+							</tr>
+							<tr>
+								<td style="font-size: 13px;">State</td>
+								<td>
+									<select id="boundary-inspect-state" style="width: 100%;">
+										<option value="">(Country-level Boundary)</option>
+									</select>
+								</td>
+							</tr>
+						</table>
+
+						<!-- Live Boundary Status Box -->
+						<div id="boundary-status-box" style="padding: 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 12px; margin-bottom: 12px;">
+							<div id="boundary-status-text" style="color: #94a3b8;">Select a location above to inspect its boundary.</div>
+						</div>
+
+						<!-- Action buttons -->
+						<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+							<button id="btn-update-boundary" style="padding: 7px 14px; background-color: #0284c7; color: white; font-size: 12px;">🔄 Update Boundary</button>
+							<button id="btn-update-all-states" style="padding: 7px 14px; background-color: #7c3aed; color: white; font-size: 12px;">🔄 Update All States</button>
+						</div>
+
+						<!-- Offline build info footnote -->
+						<div style="font-size: 11px; color: #64748b; line-height: 1.4; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
+							💡 <em>Full Natural Earth rebuild:</em> Run <code>npm run build:geo</code> in terminal to refresh all countries (110m) &amp; states (10m).
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="crop-modal"
+		style="display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10001; justify-content: center; align-items: center;">
+		<div id="crop-center-wrapper"
+			style="width: 100%; height: 100%; max-width: 800px; max-height: 80vh; display: flex; flex-direction: column; background: transparent; padding: 20px;">
+			<div id="crop-image-container"
+				style="flex: 1; position: relative; overflow: hidden; background: #000; width: 100%;">
+				<img id="crop-image" style="display: block; max-width: 100%;">
+			</div>
+			<div id="crop-button-bar"
+				style="height: 60px; background: white; display: flex; justify-content: space-around; align-items: center; width: 100%; flex-shrink: 0;">
+				<button id="crop-cancel" style="padding: 10px 20px;">Cancel</button>
+				<button id="crop-confirm" style="padding: 10px 20px;">Crop & Upload</button>
+				<button id="crop-skip" style="padding: 10px 20px;">Skip Crop & Upload</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="custom-modal-overlay">
+		<div class="custom-modal-content">
+			<h3 id="custom-modal-title"></h3>
+			<p id="custom-modal-message"></p>
+			<div class="custom-modal-buttons">
+				<button id="custom-modal-cancel">Cancel</button>
+				<button id="custom-modal-confirm" class="submit">OK</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="sync-spinner" style="display: none;">
+		<div class="spinner-icon" id="sync-spinner-icon"></div>
+		<span class="sync-text">Saving...</span>
+	</div>
+
+	<div id="media-popup" style="display: none;">
+		<div class="media-popup-overlay"></div>
+		<div class="media-popup-content">
+			<button class="media-popup-close" title="Close">✕</button>
+			<img src="" id="media-popup-img" style="display:none;" />
+			<video src="" id="media-popup-video" controls autoplay loop style="display:none;"></video>
+		</div>
+	</div>
+
+	<div id="page-loader" aria-hidden="true" style="display:none">
+		<div class="page-loader-overlay"></div>
+		<div class="loader-content">
+			<div class="loader-binoculars">
+				<div class="barrel"></div>
+				<div class="connector"></div>
+				<div class="barrel"></div>
+			</div>
+			<div class="loader-text"></div>
+		</div>
+	</div>
+</body>
+
+</html>
