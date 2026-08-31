@@ -3,7 +3,7 @@ import Util from '../util.js';
 import State from './state.js';
 import { initSightingCarousal } from './ui-helpers.js';
 import { getFilter } from './filters.js';
-import { initSpeciesMap } from './species-map.js?v=20260830_7';
+import { initSpeciesMap } from './species-map.js?v=20260831_1';
 
 let storyInViewObserver;
 

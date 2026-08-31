@@ -699,18 +699,26 @@
 	background-color: #232227 !important;
 }
 
-#species-map.leaflet-container,
-#species-map .leaflet-tile-pane,
-#species-map .leaflet-tile-container,
-#species-map .leaflet-map-pane {
+#species-map.leaflet-container {
 	background-color: #232227 !important;
 }
 
+#species-map .leaflet-pane,
+#species-map .leaflet-tile-pane,
+#species-map .leaflet-tile-container,
+#species-map .leaflet-map-pane,
+#species-map .leaflet-layer,
 #species-map .leaflet-overlay-pane,
 #species-map .leaflet-statePane-pane,
 #species-map .leaflet-cityPane-pane,
 #species-map .leaflet-placePane-pane {
 	background-color: transparent !important;
+}
+
+#species-map img.leaflet-tile {
+	max-width: none !important;
+	max-height: none !important;
+	visibility: inherit !important;
 }
 
 .species-circle-place {

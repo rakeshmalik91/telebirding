@@ -12,7 +12,7 @@ This skill describes the architecture, workflows, and operational procedures for
 ## 🎯 Target Files & Components
 
 ### 1. Webapp Public Map
-- [`webapp/scripts/modules/public/species-map.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/public/species-map.js): Leaflet map rendering country & state polygon shapes, city/place circles, zoom thresholds, continuous world wrapping (`worldCopyJump: true`, `WORLD_OFFSETS = [-2, -1, 0, 1, 2]`), strict vertical bounds, and click navigation. Selectively loads only countries present in sightings.
+- [`webapp/scripts/modules/public/species-map.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/public/species-map.js): Leaflet map rendering country & state polygon shapes, city/place circles, zoom thresholds, clean world bounding (`maxBounds: [[-85, -180], [85, 180]]`, `minZoom: 2`), orientation/resize handling, and click navigation. Selectively loads only countries present in sightings.
 - [`webapp/scripts/modules/public/rendering.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/public/rendering.js): Invokes `initSpeciesMap` with computed counts and raw places geo data.
 - [`webapp/css/home.css`](file:///d:/Projects/telebirding/webapp/css/home.css): Styling for `#species-map` (dark ocean background `#232227` matching Esri Dark Gray tiles to eliminate white gaps), tooltips, and map controls.
 
@@ -107,18 +107,18 @@ Instead of monolithic global boundary files, each country has a dedicated file i
 }
 ```
 
-### 3. Public Map Selective Loading & Wrapping
+### 3. Public Map Selective Loading & Bounding
 1. **Selective Country Fetching**:
    - `loadBoundaries(countriesData)` queries only countries with sightings (`count > 0` or in `State.data.sightings`).
    - Unused country JSONs are never fetched over the network.
-2. **Continuous Wrapping**:
-   - `worldCopyJump: true` enabled on Leaflet map instance.
-   - Vector features (country polygons, state polygons, city/place circles) are rendered across `WORLD_OFFSETS = [-2, -1, 0, 1, 2]`. Coordinates shifted via `shiftFeatureLng(feature, offset * 360)`.
-   - Initial `fitBounds` strictly uses `_isPrimaryWorld` (offset 0) to frame the initial view without zooming out.
-3. **No White Gaps**:
+2. **Clean World Bounding & Min Zoom**:
+   - Vector features (country polygons, state polygons, city/place circles) are rendered cleanly in primary world coordinates.
+   - `minZoom: 2` ensures the world is at least 1024px wide, preventing the map from collapsing into a narrow 512px ribbon on tablets/wide viewports.
+   - `maxBounds: [[-85, -180], [85, 180]]` with `maxBoundsViscosity: 1.0` confines panning strictly to the valid Earth coordinate system, preventing dragging into empty voids or tile servers returning blank images.
+3. **No White Gaps & Container Invalidation**:
    - `#species-map` and Leaflet container/panes are styled with `background-color: #232227 !important;` (the exact ocean tile color of Esri Dark Gray canvas `rgb(35, 34, 39)`).
-   - `minZoom: 1` prevents zooming out to a thin ribbon.
-   - `maxBounds: [[-85.051129, -Infinity], [85.051129, Infinity]]` with `maxBoundsViscosity: 1.0` prevents panning vertically beyond the poles into empty void.
+   - Window resize and device orientation changes automatically trigger `speciesMap.invalidateSize()`.
+   - Post-initialization invalidation timeouts (100ms and 300ms) ensure Leaflet resizes to the container after sidebar CSS transitions settle.
 
 ### 4. Radius Limits & Caps
 To prevent island chains or sparse administrative regions from generating massive circles:

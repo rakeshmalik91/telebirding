@@ -157,7 +157,7 @@ describe('Species Map Module', () => {
         expect(fetchedUrls.some(u => u.includes('Russia.json'))).toBe(false);
     });
 
-    it('should initialize map with continuous wrapping and vertical bounds to prevent white gaps', async () => {
+    it('should initialize map with clean world bounds and minZoom 2 to prevent glitches and gaps', async () => {
         State.data = {
             sightings: [{ country: 'India', species: { key: 'sp1' } }]
         };
@@ -173,14 +173,13 @@ describe('Species Map Module', () => {
         await SpeciesMap.initSpeciesMap(countriesData, placesGeo);
 
         expect(global.L.map).toHaveBeenCalledWith('species-map', expect.objectContaining({
-            worldCopyJump: true,
-            minZoom: 1,
-            maxBounds: [[-85.051129, -Infinity], [85.051129, Infinity]],
+            minZoom: 2,
+            maxBounds: [[-85, -180], [85, 180]],
             maxBoundsViscosity: 1.0
         }));
     });
 
-    it('should wrap vector layers across multiple world copies', async () => {
+    it('should render vector layers cleanly in primary world coordinates without duplicates', async () => {
         State.data = {
             sightings: [{ country: 'India', species: { key: 'sp1' } }]
         };
@@ -223,19 +222,14 @@ describe('Species Map Module', () => {
 
         await SpeciesMap.initSpeciesMap(countriesData, placesGeo);
 
-        // Since WORLD_OFFSETS is [-2, -1, 0, 1, 2], there are 5 copies per country/state/city/place
+        // Vector layers rendered cleanly once in primary world
         const geoJsonCalls = global.L.geoJSON.mock.calls;
-        // Country India is loaded from mockFetch, so 5 copies are created for India country shape
         const indiaCountryShapes = geoJsonCalls.filter(call => call[0].properties && call[0].properties.name === 'India');
-        expect(indiaCountryShapes.length).toBe(5);
+        expect(indiaCountryShapes.length).toBe(1);
 
-        // Check longitude shifts across world offsets: 78, 78+360, 78-360, 78+720, 78-720
-        const firstCoordLngs = indiaCountryShapes.map(call => call[0].geometry.coordinates[0][0][0]);
-        expect(firstCoordLngs).toContain(78);
-        expect(firstCoordLngs).toContain(78 + 360);
-        expect(firstCoordLngs).toContain(78 - 360);
-        expect(firstCoordLngs).toContain(78 + 720);
-        expect(firstCoordLngs).toContain(78 - 720);
+        // Verify primary coordinates are unshifted
+        const firstCoordLng = indiaCountryShapes[0][0].geometry.coordinates[0][0][0];
+        expect(firstCoordLng).toBe(78);
     });
 
     it('should assign place circles to placePane and city circles to cityPane so places are always above cities and clickable', async () => {
@@ -286,8 +280,8 @@ describe('Species Map Module', () => {
         const cityCalls = circleCalls.filter(call => call[1]?.pane === 'cityPane');
         const placeCalls = circleCalls.filter(call => call[1]?.pane === 'placePane');
 
-        expect(cityCalls.length).toBe(5); // 5 world copies
-        expect(placeCalls.length).toBe(5); // 5 world copies
+        expect(cityCalls.length).toBe(1); // 1 primary world copy
+        expect(placeCalls.length).toBe(1); // 1 primary world copy
 
         // Verify pane z-indexes
         const cityZIndex = parseInt(mockMapInstance._panes['cityPane'].style.zIndex, 10);
