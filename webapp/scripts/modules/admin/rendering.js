@@ -3,7 +3,7 @@ import Util from '../util.js';
 import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js?v=20260713-0645';
 import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
-import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260829_1';
+import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260923_4';
 import { setChips } from './chip-input.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
@@ -307,7 +307,10 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "</div></td>";
 
         row += "<td class='place-fields'>";
-        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:254px'></input><br>";
+        row += "<div class='date-input-wrapper' style='display: flex; align-items: center; gap: 4px; margin-bottom: 4px;'>";
+        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:220px'></input>";
+        row += "<button type='button' class='today-date-btn' data-sightingkey='" + sighting.key + "' title='Set to today' style='width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: transparent; border: none; box-shadow: none; color: #94a3b8; font-size: 16px; cursor: pointer;'>🕐</button>";
+        row += "</div>";
         row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "125px");
         row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "125px") + "<br>";
         row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "254px", "data-no-clear='true'") + "<br>";
@@ -315,7 +318,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += getTextDOM("city", getValue(sighting, 'city'), "254px", "Add city") + "<br>";
         row += "<div style='display: flex; align-items: center; gap: 4px;'>";
         row += getTextDOM("place", getValue(sighting, 'place'), "220px", "Add place");
-        row += "<button type='button' class='geocode-sighting-btn' data-sightingkey='" + sighting.key + "' title='Auto-fill coordinates for this place via Nominatim' style='padding: 4px 8px; font-size: 13px; cursor: pointer; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff;'>📍</button>";
+        row += "<button type='button' class='geocode-sighting-btn' data-sightingkey='" + sighting.key + "' title='Auto-fill coordinates for this place via Nominatim' style='height: 36px; padding: 0 12px; font-size: 13px; cursor: pointer; border-radius: 4px; background: transparent; border: none; box-shadow: none; color: #38bdf8; display: flex; align-items: center; justify-content: center;'>📍</button>";
         row += "</div>";
         row += "</td>";
 
@@ -411,6 +414,12 @@ export function renderSightingsTable(OFFSET, ROWS) {
         sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
             let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
             updateField(sighting.key, $(this).attr("data-field"), value);
+        });
+        // Today button click handler
+        sightingRow.find(".today-date-btn").click(function () {
+            const today = moment().format('YYYY-MM-DD');
+            const $dateInput = sightingRow.find("input[data-field=date]");
+            $dateInput.val(today).trigger('change');
         });
         // Star rating click handler
         sightingRow.find(".star-btn").click(function () {

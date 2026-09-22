@@ -229,8 +229,18 @@ export function initSearchableSelect(selectEl) {
             return;
         }
 
+        // Don't reposition while search input is focused (keyboard open on iOS)
+        // This prevents the dropdown from jumping and pushing the input off-screen
+        if (document.activeElement === $search[0]) {
+            return;
+        }
+
         const rect = $wrapper[0].getBoundingClientRect();
-        if (rect.width === 0 && rect.height === 0) return;
+        if (rect.width === 0 && rect.height === 0) {
+            // Wrapper not laid out yet (e.g., hidden tab), retry next frame
+            requestAnimationFrame(() => repositionDropdown());
+            return;
+        }
 
         // If field scrolled completely out of viewport, close
         if (rect.bottom < 0 || rect.top > window.innerHeight) {
@@ -270,10 +280,56 @@ export function initSearchableSelect(selectEl) {
         buildOptions('');
 
         $dropdown.appendTo(document.body);
+        
+        // Position BEFORE showing to avoid flash at wrong position (especially on iPad in hidden tabs)
+        positionDropdownInitially();
+        
         $dropdown.addClass('open');
-        repositionDropdown();
 
         setTimeout(() => $search.focus(), 10);
+    }
+
+    function positionDropdownInitially() {
+        // If wrapper is no longer in the DOM or hidden, close
+        if (!$wrapper[0] || !$wrapper.is(':visible')) {
+            return;
+        }
+
+        const rect = $wrapper[0].getBoundingClientRect();
+        
+        // On iPad/iOS, visualViewport may be more accurate than window.innerHeight/Width
+        const viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+        const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        
+        // Wrapper not laid out yet (e.g., hidden tab), retry with setTimeout + rAF
+        if (rect.width === 0 && rect.height === 0) {
+            setTimeout(() => requestAnimationFrame(() => positionDropdownInitially()), 50);
+            return;
+        }
+
+        const dropdownHeight = $dropdown.outerHeight() || 200;
+        const dropdownWidth = $dropdown.outerWidth() || 200;
+
+        const spaceBelow = viewportHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        const openAbove = spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
+
+        let topPos = openAbove ? (rect.top - dropdownHeight - 4) : (rect.bottom + 4);
+
+        let leftPos = rect.left;
+        if (leftPos + dropdownWidth > viewportWidth) {
+            leftPos = Math.max(10, rect.right - dropdownWidth);
+        }
+        leftPos = Math.max(10, leftPos);
+
+        $dropdown.css({
+            position: 'fixed',
+            top: topPos + 'px',
+            left: leftPos + 'px',
+            minWidth: rect.width + 'px',
+            margin: 0,
+            zIndex: 99999
+        });
     }
 
     function closeDropdown() {
@@ -303,12 +359,12 @@ export function initSearchableSelect(selectEl) {
         }
     });
 
-    $clearBtn.on('pointerdown mousedown touchstart', function (e) {
+    $clearBtn.on('pointerdown mousedown', function (e) {
         e.preventDefault();
         e.stopPropagation();
     });
 
-    $clearBtn.on('click', function (e) {
+    $clearBtn.on('click touchend', function (e) {
         e.preventDefault();
         e.stopPropagation();
         if (isMultiple) {

@@ -1,6 +1,31 @@
 {
     "sightings": [
         {
+            "key": "s1789990405",
+            "species": "common-tailorbird",
+            "date": "21-09-2026",
+            "city": "Howrah",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-tailorbird-1789990452.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/common-tailorbird-1790137990.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1784952117",
             "species": "scaly-breasted-munia",
             "date": "25-07-2026",
