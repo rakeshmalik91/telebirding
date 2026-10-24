@@ -1,0 +1,24 @@
+[
+  {
+    "origin": [
+      "https://telebirding.info",
+      "https://telebirding.netlify.app",
+      "https://telebirding-49623.web.app"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Authorization",
+      "Content-Length",
+      "User-Agent",
+      "x-goog-resumable"
+    ],
+    "method": [
+      "GET",
+      "HEAD",
+      "PUT",
+      "POST",
+      "DELETE"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]
