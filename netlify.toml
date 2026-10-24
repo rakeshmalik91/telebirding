@@ -1,0 +1,16 @@
+[build]
+  command = "rm -rf webapp/resources webapp/tests webapp/coverage webapp/node_modules webapp/package.json webapp/package-lock.json webapp/vitest.config.js"
+  publish = "webapp"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy.html"
+  status = 200
