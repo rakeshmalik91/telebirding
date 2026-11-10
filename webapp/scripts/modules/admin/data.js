@@ -747,13 +747,14 @@ export function deleteSighting(sightingKey) {
 }
 
 export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
-    if (!name || !tags || !family) {
-        customAlert("All fields are mandatory");
+    const previousSpecies = key ? data.species[key] : null;
+    family = family || previousSpecies?.family || '';
+    if (!name || !tags || (!family && !previousSpecies)) {
+        customAlert("Name, tags and family are required for a new species.");
     } else {
         name = name.replaceAll("’", "'");
         const newKey = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
         tags = tags.replaceAll("’", "'");
-        const previousSpecies = key ? data.species[key] : null;
         const updatedTags = tags.split(/\s*,\s*/ig).filter(Boolean);
         if (previousSpecies && previousSpecies.name && previousSpecies.name !== name && !updatedTags.includes(previousSpecies.name)) {
             updatedTags.push(previousSpecies.name);
@@ -767,7 +768,7 @@ export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
             ebird_code: (ebird_code || null)
         };
         data.species = Object.fromEntries(Object.entries(data.species).sort());
-        uploadJSONData("species");
+        uploadJSONData("species", true).then(() => triggerRender());
         lastUpdatedSpecies = newKey;
         showToast(`Species '${name}' saved successfully.`, 'success');
     }
