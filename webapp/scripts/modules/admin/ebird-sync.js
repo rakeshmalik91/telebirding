@@ -4,6 +4,8 @@ import EbirdApi from '../ebird-api.js';
 
 const API_URL = 'https://api.ebird.org/v2/ref/taxonomy/ebird';
 const BATCH_SIZE = 25;
+const TAXONOMY_CACHE_KEY = 'telebirding-ebird-taxonomy-history-v1';
+const TAXONOMY_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 let proposedChanges = [];
 let proposedWarnings = [];
 let selectionState = new Map();
@@ -35,8 +37,10 @@ export function hasTaxonomyCodeConflict(localSpecies, ebirdSpecies, taxonomyByCo
     const codeConflict = Boolean(localNameCode && localNameCode !== ebirdSpecies?.speciesCode);
     const scientificNameDiffers =
         normalizeTaxonName(localSpecies?.latin_name || localSpecies?.sci_name) !== normalizeTaxonName(ebirdSpecies?.sciName);
-    const identityUnverified = !localNameCode && scientificNameDiffers;
-    return { conflict: codeConflict || identityUnverified, localNameTaxon, localNameCode, scientificNameDiffers };
+    // Absence of the old common name from the current taxonomy is not itself a
+    // conflict. The stored code has already been resolved directly; only block
+    // when the local common name positively resolves to a different code.
+    return { conflict: codeConflict, localNameTaxon, localNameCode, scientificNameDiffers };
 }
 
 function ebirdSpeciesLink(code, label = 'View on eBird') {
@@ -51,7 +55,10 @@ function escapeHtml(value) {
     }[ch]));
 }
 
-async function fetchTaxonomy() {
+async function fetchTaxonomy(cache) {
+    if (cache.currentTaxonomy.length && Date.now() - cache.currentFetchedAt < TAXONOMY_CACHE_TTL_MS) {
+        return cache.currentTaxonomy;
+    }
     const url = new URL(API_URL);
     url.searchParams.set('cat', 'species');
     url.searchParams.set('fmt', 'json');
@@ -64,7 +71,93 @@ async function fetchTaxonomy() {
     if (!response.ok) throw new Error(`eBird returned HTTP ${response.status}`);
     const records = await response.json();
     if (!Array.isArray(records)) throw new Error('eBird returned an unexpected taxonomy response.');
+    // Keep only the fields used by the sync UI and identity checks to keep the
+    // persistent browser cache small enough for localStorage quotas.
+    cache.currentTaxonomy = records.map(item => ({
+        speciesCode: item.speciesCode,
+        comName: item.comName,
+        sciName: item.sciName,
+        familyComName: item.familyComName,
+        familySciName: item.familySciName,
+        familyCode: item.familyCode,
+        reportAs: item.reportAs,
+        category: item.category
+    }));
+    cache.currentFetchedAt = Date.now();
+    writeHistoricalCache(cache);
+    return cache.currentTaxonomy;
+}
+
+function readHistoricalCache() {
+    try {
+        const parsed = JSON.parse(localStorage.getItem(TAXONOMY_CACHE_KEY) || '{}');
+        return {
+            versionsFetchedAt: Number(parsed.versionsFetchedAt) || 0,
+            versions: Array.isArray(parsed.versions) ? parsed.versions : [],
+            currentFetchedAt: Number(parsed.currentFetchedAt) || 0,
+            currentTaxonomy: Array.isArray(parsed.currentTaxonomy) ? parsed.currentTaxonomy : [],
+            records: parsed.records && typeof parsed.records === 'object' ? parsed.records : {},
+            misses: parsed.misses && typeof parsed.misses === 'object' ? parsed.misses : {}
+        };
+    } catch {
+        return { versionsFetchedAt: 0, versions: [], currentFetchedAt: 0, currentTaxonomy: [], records: {}, misses: {} };
+    }
+}
+
+function writeHistoricalCache(cache) {
+    try {
+        localStorage.setItem(TAXONOMY_CACHE_KEY, JSON.stringify(cache));
+    } catch (error) {
+        console.warn('Could not persist eBird taxonomy cache; this scan will still continue.', error);
+    }
+}
+
+async function fetchTaxonomyVersions(cache) {
+    if (cache.versions.length && Date.now() - cache.versionsFetchedAt < TAXONOMY_CACHE_TTL_MS) {
+        return cache.versions;
+    }
+    const url = new URL('https://api.ebird.org/v2/ref/taxonomy/versions');
+    url.searchParams.set('key', EbirdApi.apiKey);
+    const response = await fetch(url.toString());
+    if (!response.ok) throw new Error(`eBird taxonomy versions returned HTTP ${response.status}`);
+    const versions = await response.json();
+    if (!Array.isArray(versions)) throw new Error('eBird returned an unexpected taxonomy versions response.');
+    cache.versions = versions
+        .map(item => String(item.authorityVer ?? item.version ?? '').trim())
+        .filter(Boolean)
+        .sort((a, b) => Number(b) - Number(a));
+    cache.versionsFetchedAt = Date.now();
+    writeHistoricalCache(cache);
+    return cache.versions;
+}
+
+async function fetchTaxonomyForCodes(codes, version) {
+    const url = new URL(API_URL);
+    url.searchParams.set('cat', 'species');
+    url.searchParams.set('fmt', 'json');
+    url.searchParams.set('locale', 'en');
+    url.searchParams.set('key', EbirdApi.apiKey);
+    url.searchParams.set('species', codes.join(','));
+    if (version) url.searchParams.set('version', version);
+    const response = await fetch(url.toString());
+    if (!response.ok) throw new Error(`eBird taxonomy ${version || 'current'} returned HTTP ${response.status}`);
+    const records = await response.json();
+    if (!Array.isArray(records)) throw new Error(`eBird returned an unexpected taxonomy response for ${version || 'current'}.`);
     return records;
+}
+
+export function resolveCurrentTaxonFromHistory(historicalRecord, currentTaxonomy) {
+    if (!historicalRecord) return null;
+    const currentByCode = new Map(currentTaxonomy.map(item => [item.speciesCode, item]));
+    if (historicalRecord.reportAs && currentByCode.has(historicalRecord.reportAs)) {
+        return currentByCode.get(historicalRecord.reportAs);
+    }
+    const historicalScientificName = normalizeTaxonName(historicalRecord.sciName);
+    if (!historicalScientificName) return null;
+    const matches = currentTaxonomy.filter(item =>
+        normalizeTaxonName(item.sciName) === historicalScientificName
+    );
+    return matches.length === 1 ? matches[0] : null;
 }
 
 function renderChanges() {
@@ -75,7 +168,7 @@ function renderChanges() {
         return;
     }
     const warnings = proposedWarnings.length
-        ? `<section class=\"ebird-sync-warnings\" style=\"margin:10px 0;padding:10px;border:1px solid #d99b35;border-radius:6px;\"><strong>Needs review — not selectable</strong><p>These records need review because the existing local name does not resolve to the same eBird species code, or its scientific identity conflicts.</p>${proposedWarnings.map(warning => `<div style=\"padding:8px 0;border-top:1px solid var(--border-color,#ddd);\"><strong>${escapeHtml(warning.title)}</strong><div>${escapeHtml(warning.message)}</div><div style="margin-top:4px;">${warning.localEbirdCode ? `Local-name match: ${ebirdSpeciesLink(warning.localEbirdCode, `eBird ${warning.localEbirdCode}`)}` : ''}${warning.localEbirdCode && warning.ebirdCode ? ' · ' : ''}${warning.ebirdCode ? `Stored-code listing: ${ebirdSpeciesLink(warning.ebirdCode, `eBird ${warning.ebirdCode}`)}` : ''}</div></div>`).join('')}</section>`
+        ? `<section class=\"ebird-sync-warnings\" style=\"margin:10px 0;padding:10px;border:1px solid #d99b35;border-radius:6px;\"><strong>Needs review — not selectable</strong><p>These records need review because the local name resolves to a different eBird species code. Records with no conflicting local-name match are checked by their stored code and proposed for update.</p>${proposedWarnings.map(warning => `<div style=\"padding:8px 0;border-top:1px solid var(--border-color,#ddd);\"><strong>${escapeHtml(warning.title)}</strong><div>${escapeHtml(warning.message)}</div><div style="margin-top:4px;">${warning.localEbirdCode ? `Local-name match: ${ebirdSpeciesLink(warning.localEbirdCode, `eBird ${warning.localEbirdCode}`)}` : ''}${warning.localEbirdCode && warning.ebirdCode ? ' · ' : ''}${warning.ebirdCode ? `Stored-code listing: ${ebirdSpeciesLink(warning.ebirdCode, `eBird ${warning.ebirdCode}${warning.taxonomyVersion && warning.taxonomyVersion !== 'current' ? ` · v${warning.taxonomyVersion}` : ''}`)}` : ''}</div></div>`).join('')}</section>`
         : '';
     if (!proposedChanges.length) {
         $results.html(`${warnings}<p>No safe changes found.</p>`);
@@ -83,10 +176,12 @@ function renderChanges() {
         return;
     }
     const rows = proposedChanges.map((change, index) => {
-        const details = change.details.map(line => `<div>${escapeHtml(line)}</div>`).join('');
-        return `<label class="ebird-sync-change" style="display:flex;gap:10px;align-items:flex-start;padding:10px;border-bottom:1px solid var(--border-color,#ddd);">
-            <input type="checkbox" class="ebird-sync-checkbox" data-index="${index}" ${selectionState.get(change.id) !== false ? 'checked' : ''}>
-            <span><strong>${escapeHtml(change.title)}</strong>${details}${change.ebirdCode ? `<div style="margin-top:4px;">${ebirdSpeciesLink(change.ebirdCode, `Verify on eBird (${change.ebirdCode})`)}</div>` : ''}</span>
+        const details = change.details.map(line => escapeHtml(line)).join(' · ');
+        return `<label class="ebird-sync-change" style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:4px 9px;align-items:center;white-space:nowrap;overflow-x:auto;padding:7px 10px;border-bottom:1px solid var(--border-color,#ddd);">
+            <input type="checkbox" class="ebird-sync-checkbox" data-index="${index}" ${selectionState.get(change.id) !== false ? 'checked' : ''} style="margin:0;flex:0 0 auto;">
+            <strong style="display:inline;">${escapeHtml(change.title)}</strong>
+            <span style="display:inline;">${details}</span>
+            ${change.ebirdCode ? `<span style="display:inline;">${ebirdSpeciesLink(change.ebirdCode, `eBird (${change.ebirdCode}${change.taxonomyVersion && change.taxonomyVersion !== 'current' ? ` · v${change.taxonomyVersion}` : ''})`)}</span>` : ''}
         </label>`;
     }).join('');
     $results.html(`${warnings}<div style="margin:10px 0;"><strong>${proposedChanges.length} proposed change(s)</strong></div>${rows}`);
@@ -121,11 +216,93 @@ export function setupEbirdSync() {
         }
         const changesByKey = new Map();
         const familyByName = new Map((data.families || []).map(f => [f.name, f]));
+        let historyCache = readHistoricalCache();
+        let ebirdApiRequests = 0;
         try {
-            $('#ebird-sync-progress').text('Fetching the current eBird species taxonomy…');
-            const taxonomy = await fetchTaxonomy();
-            const byCode = new Map(taxonomy.map(item => [item.speciesCode, item]));
+            const currentTaxonomyWasCached = historyCache.currentTaxonomy.length &&
+                Date.now() - historyCache.currentFetchedAt < TAXONOMY_CACHE_TTL_MS;
+            $('#ebird-sync-progress').text(currentTaxonomyWasCached
+                ? 'Loading cached current eBird taxonomy…'
+                : 'Fetching the current eBird species taxonomy…');
+            const taxonomy = await fetchTaxonomy(historyCache);
+            if (!currentTaxonomyWasCached) ebirdApiRequests += 1;
+            const byCode = new Map(taxonomy.map(item => [item.speciesCode, { ...item, taxonomyVersion: 'current' }]));
             const byCommonName = new Map(taxonomy.map(item => [normalizeTaxonName(item.comName), item]));
+            const unresolvedCodes = codes.filter(code => !byCode.has(code));
+            if (unresolvedCodes.length) {
+                $('#ebird-sync-progress').text(`Checking ${unresolvedCodes.length} legacy code(s) against cached and historical eBird taxonomies…`);
+                const unresolved = new Set(unresolvedCodes);
+                for (const code of [...unresolved]) {
+                    const cachedRecord = historyCache.records[code];
+                    if (cachedRecord) {
+                        const currentTarget = resolveCurrentTaxonFromHistory(cachedRecord, taxonomy);
+                        if (currentTarget) {
+                            byCode.set(code, {
+                                ...currentTarget,
+                                taxonomyVersion: cachedRecord.taxonomyVersion,
+                                historicalSpeciesCode: code,
+                                historicalScientificName: cachedRecord.sciName,
+                                historicalCommonName: cachedRecord.comName
+                            });
+                            unresolved.delete(code);
+                        }
+                    }
+                }
+
+                const versionsWereCached = historyCache.versions.length &&
+                    Date.now() - historyCache.versionsFetchedAt < TAXONOMY_CACHE_TTL_MS;
+                const versions = await fetchTaxonomyVersions(historyCache);
+                if (!versionsWereCached) ebirdApiRequests += 1;
+                let historicalRequests = 0;
+                for (const version of versions) {
+                    if (!unresolved.size) break;
+                    const pendingCodes = [...unresolved].filter(code => !historyCache.misses[`${version}:${code}`]);
+                    if (!pendingCodes.length) continue;
+
+                    for (let offset = 0; offset < pendingCodes.length; offset += 100) {
+                        const codeBatch = pendingCodes.slice(offset, offset + 100);
+                        $('#ebird-sync-progress').text(`Historical taxonomy ${version}: checking ${codeBatch.length} code(s) (${unresolved.size} still unresolved)…`);
+                        const historicalRecords = await fetchTaxonomyForCodes(codeBatch, version);
+                        historicalRequests += 1;
+                        ebirdApiRequests += 1;
+                        const returnedCodes = new Set(historicalRecords.map(record => record.speciesCode));
+
+                        for (const code of codeBatch) {
+                            // Mark every queried code/version as checked, whether it
+                            // returned a record or not. Returned records are cached
+                            // separately and may still need an older-version crosswalk.
+                            historyCache.misses[`${version}:${code}`] = true;
+                        }
+                        for (const record of historicalRecords) {
+                            if (!unresolved.has(record.speciesCode)) continue;
+                            const enriched = { ...record, taxonomyVersion: version };
+                            if (!historyCache.records[record.speciesCode]) {
+                                historyCache.records[record.speciesCode] = enriched;
+                            }
+                            const currentTarget = resolveCurrentTaxonFromHistory(enriched, taxonomy);
+                            if (currentTarget) {
+                                // Prefer a historical record that has a verified
+                                // current-taxonomy crosswalk over an older unlinked one.
+                                historyCache.records[record.speciesCode] = enriched;
+                                byCode.set(record.speciesCode, {
+                                    ...currentTarget,
+                                    taxonomyVersion: version,
+                                    historicalSpeciesCode: record.speciesCode,
+                                    historicalScientificName: record.sciName,
+                                    historicalCommonName: record.comName
+                                });
+                                if (!byCommonName.has(normalizeTaxonName(record.comName))) {
+                                    byCommonName.set(normalizeTaxonName(record.comName), currentTarget);
+                                }
+                                unresolved.delete(record.speciesCode);
+                            }
+                        }
+                        writeHistoricalCache(historyCache);
+                    }
+                }
+                $('#ebird-sync-progress').text(`Historical lookup complete: ${unresolvedCodes.length - unresolved.size}/${unresolvedCodes.length} legacy code(s) resolved; ${historicalRequests} historical API request(s) this scan.`);
+                writeHistoricalCache(historyCache);
+            }
             const totalBatches = Math.ceil(codes.length / BATCH_SIZE);
             for (let start = 0; start < codes.length; start += BATCH_SIZE) {
                 const batch = codes.slice(start, start + BATCH_SIZE);
@@ -133,20 +310,25 @@ export function setupEbirdSync() {
                 $('#ebird-sync-progress').text(`Comparing eBird taxonomy: batch ${batchNumber} of ${totalBatches} (${Math.min(start + batch.length, codes.length)} of ${codes.length} species codes checked)…`);
 
                 for (const code of batch) {
-                    const item = byCode.get(code);
-                    if (!item) {
+                    const resolvedItem = byCode.get(code);
+                    if (!resolvedItem) {
                         for (const key of codeToKeys[code] || []) {
                             const local = species[key];
+                            const historicalRecord = historyCache?.records?.[code];
                             proposedWarnings.push({
                                 id: `missing:${key}:${code}`,
                                 title: local.name || key,
                                 ebirdCode: code,
-                                message: `Stored eBird code ${code} was not found in the current eBird taxonomy. No changes will be proposed.`
+                                taxonomyVersion: historicalRecord?.taxonomyVersion,
+                                message: historicalRecord
+                                    ? `Found historical eBird taxon ${historicalRecord.comName} (${historicalRecord.sciName}) in taxonomy ${historicalRecord.taxonomyVersion}, but it cannot be mapped unambiguously to one current eBird species. No automatic change is proposed.`
+                                    : `Stored code ${code} was not found in any available eBird taxonomy version. No changes can be suggested safely.`
                             });
                         }
                         continue;
                     }
 
+                    const item = resolvedItem;
                     const verifiedKeys = [];
                     for (const key of codeToKeys[code] || []) {
                         const local = species[key];
@@ -163,6 +345,7 @@ export function setupEbirdSync() {
                                 title: local.name || key,
                                 ebirdCode: code,
                                 localEbirdCode: localNameCode,
+                                taxonomyVersion: item.taxonomyVersion || 'current',
                                 message: `Stored eBird code ${code} resolves to ${item.comName} (${item.sciName}); local name “${local.name || ''}”${local.latin_name || local.sci_name ? ` has scientific name “${local.latin_name || local.sci_name}”` : ''}${localNameCode ? ` and independently resolves to code ${localNameCode} (${localNameTaxon.comName}, ${localNameTaxon.sciName})` : ', but its identity could not be confirmed from the current eBird taxonomy'}. No changes will be proposed for this record.`
                             });
                             continue;
@@ -171,6 +354,9 @@ export function setupEbirdSync() {
                         verifiedKeys.push(key);
                         const details = [];
                         const updates = {};
+                        if (item.historicalSpeciesCode) {
+                            details.push(`Historical eBird code: ${item.historicalSpeciesCode} (taxonomy ${item.taxonomyVersion}) → current code ${item.speciesCode}`);
+                        }
                         if (item.comName && local.name !== item.comName) {
                             details.push(`Species name: “${local.name || ''}” → “${item.comName}”`);
                             updates.name = item.comName;
@@ -184,7 +370,7 @@ export function setupEbirdSync() {
                             updates.family = item.familyComName;
                         }
                         if (details.length) changesByKey.set(`species:${key}`, {
-                            id: `species:${key}`, type: 'species', key, updates, title: local.name || key, details, ebirdCode: code
+                            id: `species:${key}`, type: 'species', key, updates, title: local.name || key, details, ebirdCode: item.speciesCode || code, taxonomyVersion: item.taxonomyVersion || 'current', historicalSpeciesCode: item.historicalSpeciesCode || null
                         });
                     }
 
@@ -198,7 +384,7 @@ export function setupEbirdSync() {
                             if (existing.sci_name !== updates.sci_name) details.push(`Scientific name: “${existing.sci_name || ''}” → “${updates.sci_name || ''}”`);
                         }
                         if (details.length) changesByKey.set(`family:${item.familyComName}`, {
-                            id: `family:${item.familyComName}`, type: 'family', name: item.familyComName, updates, title: `Family: ${item.familyComName}`, details, ebirdCode: code
+                            id: `family:${item.familyComName}`, type: 'family', name: item.familyComName, updates, title: `Family: ${item.familyComName}`, details, ebirdCode: item.speciesCode || code, taxonomyVersion: item.taxonomyVersion || 'current', historicalSpeciesCode: item.historicalSpeciesCode || null
                         });
                     }
                 }
@@ -209,7 +395,7 @@ export function setupEbirdSync() {
             }
             proposedChanges = [...changesByKey.values()];
             renderChanges();
-            $('#ebird-sync-progress').text(`Scan complete. ${proposedChanges.length} proposed change(s); ${proposedWarnings.length} record(s) need identity review across ${codes.length} local species codes.`);
+            $('#ebird-sync-progress').text(`Scan complete. ${proposedChanges.length} proposed change(s); ${proposedWarnings.length} record(s) need identity review across ${codes.length} local species codes. eBird API requests this scan: ${ebirdApiRequests} (current taxonomy, historical results and version list are cached for 24 hours or longer).`);
         } catch (error) {
             $('#ebird-sync-progress').text(`Sync scan failed: ${error.message}`);
         } finally {
