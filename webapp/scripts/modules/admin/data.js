@@ -404,28 +404,93 @@ export async function syncSightingsData(scheduleAfter, skipRefresh = false) {
     }, scheduleAfter);
 }
 
-function getSightingDateFromExif(file) {
-    return new Promise((resolve) => {
-        EXIF.getData(file, function () {
-            const dateOriginal = EXIF.getTag(this, "DateTimeOriginal") ||
-                EXIF.getTag(this, "DateTimeDigitized") ||
-                EXIF.getTag(this, "DateTime");
-            if (dateOriginal) {
-                console.log("dateOriginal:", dateOriginal);
-                const parts = dateOriginal.split(' ')[0].split(':');
-                if (parts.length === 3) {
-                    const date = `${parts[2]}-${parts[1]}-${parts[0]}`;
-                    console.log("Extracted date from EXIF:", date);
-                    resolve(date);
-                    return;
+export async function getSightingDateFromExif(file) {
+    if (!file || typeof file.arrayBuffer !== 'function') return null;
+
+    try {
+        const buffer = await file.arrayBuffer();
+        const view = new DataView(buffer);
+        if (view.byteLength < 4 || view.getUint16(0) !== 0xFFD8) return null;
+
+        // Walk JPEG segments and read the TIFF directory in the EXIF APP1 block.
+        // This also handles files that contain only TIFF DateTime (tag 306),
+        // as in JPEGs exported by some photo editors.
+        let offset = 2;
+        while (offset + 4 <= view.byteLength) {
+            if (view.getUint8(offset) !== 0xFF) break;
+            const marker = view.getUint8(offset + 1);
+            if (marker === 0xDA || marker === 0xD9) break;
+            const segmentLength = view.getUint16(offset + 2);
+            if (segmentLength < 2 || offset + 2 + segmentLength > view.byteLength) break;
+
+            const segmentStart = offset + 4;
+            const isExif = marker === 0xE1 && segmentLength >= 8 &&
+                view.getUint8(segmentStart) === 0x45 &&
+                view.getUint8(segmentStart + 1) === 0x78 &&
+                view.getUint8(segmentStart + 2) === 0x69 &&
+                view.getUint8(segmentStart + 3) === 0x66 &&
+                view.getUint8(segmentStart + 4) === 0 &&
+                view.getUint8(segmentStart + 5) === 0;
+
+            if (isExif) {
+                const tiffStart = segmentStart + 6;
+                const byteOrder = view.getUint16(tiffStart);
+                const littleEndian = byteOrder === 0x4949;
+                if (!littleEndian && byteOrder !== 0x4D4D) return null;
+                if (view.getUint16(tiffStart + 2, littleEndian) !== 42) return null;
+
+                const readDirectory = (relativeOffset) => {
+                    const directory = tiffStart + relativeOffset;
+                    if (directory < tiffStart || directory + 2 > view.byteLength) return {};
+                    const count = view.getUint16(directory, littleEndian);
+                    const tags = {};
+                    for (let i = 0; i < count; i++) {
+                        const entry = directory + 2 + i * 12;
+                        if (entry + 12 > view.byteLength) break;
+                        const tag = view.getUint16(entry, littleEndian);
+                        const type = view.getUint16(entry + 2, littleEndian);
+                        const valueCount = view.getUint32(entry + 4, littleEndian);
+                        if (type !== 2 || valueCount < 1) {
+                            if (tag === 0x8769 && type === 4) tags.exifOffset = view.getUint32(entry + 8, littleEndian);
+                            continue;
+                        }
+                        const valueOffset = valueCount <= 4
+                            ? entry + 8
+                            : tiffStart + view.getUint32(entry + 8, littleEndian);
+                        if (valueOffset < tiffStart || valueOffset + valueCount > view.byteLength) continue;
+                        let value = '';
+                        for (let j = 0; j < valueCount && view.getUint8(valueOffset + j) !== 0; j++) {
+                            value += String.fromCharCode(view.getUint8(valueOffset + j));
+                        }
+                        tags[tag] = value;
+                    }
+                    return tags;
+                };
+
+                const ifd0Offset = view.getUint32(tiffStart + 4, littleEndian);
+                const ifd0 = readDirectory(ifd0Offset);
+                let rawDate = ifd0[0x0132]; // DateTime (IFD0)
+                if (ifd0.exifOffset) {
+                    const exifIfd = readDirectory(ifd0.exifOffset);
+                    rawDate = exifIfd[0x9003] || exifIfd[0x9004] || rawDate;
                 }
+                const match = String(rawDate || '').match(/^(\d{4}):(\d{2}):(\d{2})/);
+                if (!match) return null;
+                const [, year, month, day] = match;
+                const parsed = new Date(Number(year), Number(month) - 1, Number(day));
+                const valid = parsed.getFullYear() === Number(year) &&
+                    parsed.getMonth() === Number(month) - 1 && parsed.getDate() === Number(day);
+                return valid ? `${day}-${month}-${year}` : null;
             }
-            resolve(null);
-        });
-    });
+            offset += 2 + segmentLength;
+        }
+    } catch (error) {
+        console.warn('Could not read photo date from EXIF:', error);
+    }
+    return null;
 }
 
-export function uploadMedia(sightingKey, files) {
+export function uploadMedia(sightingKey, files, photoDate = null) {
     $('#sync-spinner').css('display', 'flex');
     $('#sync-spinner .sync-text').text('Uploading Media...');
     $('#sync-spinner-icon').show();
@@ -457,8 +522,11 @@ export function uploadMedia(sightingKey, files) {
                     }
                     if (!currentSighting.media) currentSighting.media = [];
                     
+                    // Only populate a genuinely empty sighting date. The date is
+                    // read from the original file before cropping when available,
+                    // because canvas-based cropping commonly strips EXIF metadata.
                     if (currentSighting.media.length === 0) {
-                        const date = await getSightingDateFromExif(file);
+                        const date = photoDate || await getSightingDateFromExif(file);
                         if (date) currentSighting.date = date;
                     }
                     let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
@@ -747,28 +815,22 @@ export function deleteSighting(sightingKey) {
 }
 
 export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
-    const previousSpecies = key ? data.species[key] : null;
-    family = family || previousSpecies?.family || '';
-    if (!name || !tags || (!family && !previousSpecies)) {
-        customAlert("Name, tags and family are required for a new species.");
+    if (!name || !tags || !family) {
+        customAlert("All fields are mandatory");
     } else {
         name = name.replaceAll("’", "'");
         const newKey = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
         tags = tags.replaceAll("’", "'");
-        const updatedTags = tags.split(/\s*,\s*/ig).filter(Boolean);
-        if (previousSpecies && previousSpecies.name && previousSpecies.name !== name && !updatedTags.includes(previousSpecies.name)) {
-            updatedTags.push(previousSpecies.name);
-        }
         data.species[newKey] = {
             key: newKey,
             name: name,
-            tags: updatedTags,
+            tags: tags.split(/\s*,\s*/ig),
             family: family,
             latin_name: (latin_name ? latin_name.toLowerCase().trim() : null),
             ebird_code: (ebird_code || null)
         };
         data.species = Object.fromEntries(Object.entries(data.species).sort());
-        uploadJSONData("species", true).then(() => triggerRender());
+        uploadJSONData("species");
         lastUpdatedSpecies = newKey;
         showToast(`Species '${name}' saved successfully.`, 'success');
     }
@@ -786,38 +848,9 @@ export function addFamily(name, ebirdCode, sciName) {
             data.families.push(fam);
         }
         data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
-        uploadJSONData("families", true).then(() => triggerRender());
+        uploadJSONData("families", true);
         showToast(`Family '${name}' saved successfully.`, 'success');
     }
-}
-
-
-export function renameFamily(oldName, newName, ebirdCode, sciName) {
-    oldName = (oldName || '').trim();
-    newName = (newName || '').trim();
-    if (!oldName || !newName) {
-        customAlert("Family name is mandatory");
-        return false;
-    }
-    if (oldName !== newName && data.families.some(f => f.name.toLowerCase() === newName.toLowerCase())) {
-        customAlert(`A family named '${newName}' already exists.`);
-        return false;
-    }
-    const family = data.families.find(f => f.name === oldName);
-    if (!family) return false;
-    family.name = newName;
-    if (ebirdCode) family.ebird_code = ebirdCode; else delete family.ebird_code;
-    if (sciName) family.sci_name = sciName; else delete family.sci_name;
-    Object.values(data.species || {}).forEach(species => {
-        if (species.family === oldName) species.family = newName;
-    });
-    data.families.sort((a, b) => a.name.localeCompare(b.name));
-    Promise.all([
-        uploadJSONData("families", true),
-        uploadJSONData("species", true)
-    ]).then(() => triggerRender());
-    showToast(`Family renamed to '${newName}'.`, 'success');
-    return true;
 }
 
 export function deleteFamily(name, onSuccess) {

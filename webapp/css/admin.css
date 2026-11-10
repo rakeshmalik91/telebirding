@@ -411,6 +411,24 @@ textarea {
 .move-upx5,
 .move-downx5 {
 	margin-left: 5px;
+	margin-right: 0;
+	margin-top: 0;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	color: #94a3b8;
+	font-size: 12px;
+	line-height: 20px;
+	border-radius: 4px;
+}
+
+.move-up:hover,
+.move-down:hover,
+.move-upx5:hover,
+.move-downx5:hover {
+	background: rgba(56, 189, 248, 0.15);
+	color: #38bdf8;
+	box-shadow: none;
 }
 
 .submit {

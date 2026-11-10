@@ -6,8 +6,8 @@ import EbirdApi from '../ebird-api.js';
 import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260923_4';
 import { setChips } from './chip-input.js';
 import {
-    data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
-    deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies, renameFamily,
+    data, currentMode, uploadMedia, getSightingDateFromExif, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
+    deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
     syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
     uploadJSONData, getPlaceNode, getLocationGeo,
     ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary,
@@ -27,13 +27,7 @@ export function validateUpdateSpeciesForm() {
     let name = updateSpeciesForm.find("select[data-field=name]").val();
     let family = updateSpeciesForm.find("select[data-field=family]").val();
     let tags = updateSpeciesForm.find("input[data-field=tags]").val();
-    const displayName = updateSpeciesForm.find("input[data-field=display-name]").val();
-    const existingSpecies = name && data.species[name];
-    const validDisplayName = !existingSpecies || (displayName && displayName.trim());
-    // Existing records may have a legacy/missing family option. Allow editing
-    // their name and metadata without forcing an unrelated family reassignment.
-    const validFamily = (family && family.trim()) || (existingSpecies && data.species[name].family);
-    if (name && name.trim() && validDisplayName && validFamily && tags && tags.trim()) {
+    if (name && name.trim() && family && family.trim() && tags && tags.trim()) {
         updateSpeciesForm.find("button.submit").removeAttr("disabled");
     } else {
         updateSpeciesForm.find("button.submit").attr("disabled", "disabled");
@@ -49,17 +43,9 @@ export function fillUpdateSpeciesForm() {
     if (nameVal && data.species[nameVal]) {
         const key = nameVal;
         const species = data.species[key];
-        updateSpeciesForm.find(".species-display-name-row").show();
-        updateSpeciesForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val(species.name || "");
-        setChips(updateSpeciesForm.find(".chip-input-container"), (species.tags || []).join(", "));
-        const familySelect = updateSpeciesForm.find("select[data-field=family]");
-        if (species.family && familySelect.find("option").filter(function () { return this.value === species.family; }).length === 0) {
-            familySelect.append($("<option>", {
-                value: species.family,
-                text: `${species.family} (current value; not in family list)`
-            }));
-        }
-        familySelect.val(species.family || "").trigger("change");
+        setChips(updateSpeciesForm.find(".chip-input-container"), species.tags.join(", "));
+        updateSpeciesForm.find("select[data-field=family]").val(species.family).trigger("change");
+        updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected").trigger("change");
         updateSpeciesForm.find("input[data-field=latin-name]").val(species.latin_name);
         updateSpeciesForm.find("input[data-field=ebird-code]").val(species.ebird_code);
         let count = data.sightings.filter(s => s.species == key).length;
@@ -71,8 +57,6 @@ export function fillUpdateSpeciesForm() {
             updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
         }
     } else {
-        updateSpeciesForm.find(".species-display-name-row").hide();
-        updateSpeciesForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val("");
         // New custom name
         setChips(updateSpeciesForm.find(".chip-input-container"), '');
         updateSpeciesForm.find("select[data-field=family]").val('').trigger("change");
@@ -100,18 +84,16 @@ export function setupUpdateSpeciesForm() {
         updateSpeciesForm.find("input[data-field=ebird-code]").closest('tr').show();
     }
 
-    const familySelect = updateSpeciesForm.find("select[data-field=family]").empty();
-    const speciesSelect = updateSpeciesForm.find("select[data-field=name]").empty();
-    familySelect.append(new Option("", ""));
-    (data.families || []).forEach(family => {
-        familySelect.append(new Option(family.name, family.name));
+    updateSpeciesForm.find("select[data-field=family], select[data-field=name]").html('');
+    updateSpeciesForm.find("select[data-field=family]").append("<option value=''></option>");
+    (data.families || []).forEach(function (family) {
+        updateSpeciesForm.find("select[data-field=family]").append("<option value='" + family.name + "'>" + family.name + "</option>");
     });
 
-    speciesSelect.append(new Option("", ""));
-    Object.values(data.species || {}).forEach(species => {
-        const option = new Option(species.name, species.key);
-        option.dataset.searchTerms = [species.key, ...(species.tags || [])].join(" ");
-        speciesSelect.append(option);
+    updateSpeciesForm.find("select[data-field=name]").append("<option value=''></option>");
+    Object.values(data.species || {}).forEach(function (species, i) {
+        const searchTerms = [species.key, ...(species.tags || [])].join(" ");
+        updateSpeciesForm.find("select[data-field=name]").append("<option value='" + species.key + "' data-search-terms='" + searchTerms + "'>" + species.name + "</option>");
     });
 
     fillUpdateSpeciesForm();
@@ -125,11 +107,8 @@ export function setupUpdateSpeciesForm() {
             key = nameVal;
             name = data.species[nameVal].name;
         }
-        if (key) name = updateSpeciesForm.find("input[data-field=display-name]").val().trim();
-        const selectedFamily = updateSpeciesForm.find("select[data-field=family]").val();
-        const family = selectedFamily || (key && data.species[key] ? data.species[key].family : "");
         saveSpecies(key, name,
-            updateSpeciesForm.find("input[data-field=tags]").val(), family,
+            updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val(),
             updateSpeciesForm.find("input[data-field=latin-name]").val(), updateSpeciesForm.find("input[data-field=ebird-code]").val());
     });
 
@@ -148,7 +127,7 @@ export function setupUpdateSpeciesForm() {
     initSearchableSelect(updateSpeciesForm.find("select[data-field=name]")[0]);
     initSearchableSelect(updateSpeciesForm.find("select[data-field=family]")[0]);
 
-    updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags], input[data-field=display-name]").off("change.speciesValidation input.speciesValidation").on("change.speciesValidation input.speciesValidation", validateUpdateSpeciesForm);
+    updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags]").on("change input", validateUpdateSpeciesForm);
 
     updateSpeciesForm.find("select[data-field=name]").change(function () {
         let v = $(this).val();
@@ -241,10 +220,13 @@ export function renderSightingsTable(OFFSET, ROWS) {
     // Let's do table rows first.
 
     filteredSightings.slice(OFFSET, OFFSET + ROWS).forEach(function (sighting, i) {
+        const filteredIndex = OFFSET + i;
+        const isFirstSighting = filteredIndex === 0;
+        const isLastSighting = filteredIndex === filteredSightings.length - 1;
         let row = "<tr id='" + sighting.key + "' class='draggable-sighting'>";
 
         row += "<td class='noborder' style='vertical-align: middle;'>"
-        row += "<div style='display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px;'>"
+        row += "<div style='display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px;'>"
         row += "<button class='delete-sighting' title='Delete sighting'>🗑️</button>";
         row += "<input class='hide-toggle' type='checkbox' data-field='hidden' " + (sighting.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
         row += "</div></td>";
@@ -351,16 +333,12 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += getTextDOM("subspecies", getValue(sighting, 'subspecies'), "120px", "Add subspecies");
         row += "</td>";
 
-        row += "<td class='noborder'>";
-        row += "<div style='display:flex;flex-direction:column;align-items:center;gap:4px;'>";
-        const sightingIndex = data.sightings.findIndex(item => item.key === sighting.key);
-        const isFirstSighting = sightingIndex <= 0;
-        const isLastSighting = sightingIndex === data.sightings.length - 1;
-        row += "<button type='button' class='move-sighting-page move-sighting-prev' data-key='" + sighting.key + "' title='Move up one row' " + (isFirstSighting ? "disabled" : "") + " style='padding:3px 7px;'>↑</button>";
-        row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 4px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
-        row += "<button type='button' class='move-sighting-page move-sighting-next' data-key='" + sighting.key + "' title='Move down one row' " + (isLastSighting ? "disabled" : "") + " style='padding:3px 7px;'>↓</button>";
-        row += "</div>";
-        row += "</td>";
+        row += "<td class='noborder sighting-move-controls' style='vertical-align: middle; min-width: 48px; padding: 4px 2px;'>";
+        row += "<div style='display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;'>";
+        row += "<button type='button' class='move-up' title='Move sighting up one row' aria-label='Move sighting up' " + (isFirstSighting ? "disabled style='border: none; outline: none; box-shadow: none; opacity: 0.35;'" : "") + ">▲</button>";
+        row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; line-height: 30px; cursor: grab; color: #64748b; padding: 2px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
+        row += "<button type='button' class='move-down' title='Move sighting down one row' aria-label='Move sighting down' " + (isLastSighting ? "disabled style='border: none; outline: none; box-shadow: none; opacity: 0.35;'" : "") + ">▼</button>";
+        row += "</div></td>";
 
         row += "</tr>";
 
@@ -430,13 +408,22 @@ export function renderSightingsTable(OFFSET, ROWS) {
             sightingRow.find(".upload").click();
         });
         sightingRow.find(".upload").change(function () {
-            if (this.files[0] && this.files[0].type.match(/image.*/)) {
-                openCropper(this.files[0], (croppedFile) => {
-                    uploadMedia(sighting.key, [croppedFile]);
+            const selectedFiles = this.files;
+            if (selectedFiles[0] && selectedFiles[0].type.match(/image.*/)) {
+                const originalFile = selectedFiles[0];
+                // Read EXIF before the cropper converts the image to canvas output.
+                const shouldReadPhotoDate = !sighting.media || sighting.media.length === 0;
+                const photoDatePromise = shouldReadPhotoDate
+                    ? getSightingDateFromExif(originalFile)
+                    : Promise.resolve(null);
+
+                openCropper(originalFile, async (croppedFile) => {
+                    const photoDate = await photoDatePromise;
+                    uploadMedia(sighting.key, [croppedFile], photoDate);
                 });
                 $(this).val(''); // Reset input
             } else {
-                uploadMedia(sighting.key, this.files);
+                uploadMedia(sighting.key, selectedFiles);
             }
         });
         sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
@@ -593,6 +580,8 @@ export function renderSightingsTable(OFFSET, ROWS) {
             $(this).attr("title", tooltipNames || "Select Camera & Lens");
             $(this).closest('.camera-select-wrapper').find('.camera-count').text(selectedVals.length > 0 ? selectedVals.length : "");
         });
+        sightingRow.find(".move-up").click(() => moveSighting(sighting.key, -1));
+        sightingRow.find(".move-down").click(() => moveSighting(sighting.key, 1));
         sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
         sightingRow.find("select[data-field=country]").change(function () {
             sightingRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state')));
@@ -624,9 +613,7 @@ export function updatePaginationControls(OFFSET, ROWS) {
 export function validateAddFamilyForm() {
     const addFamilyForm = $("#add-family-form");
     let name = addFamilyForm.find("select[data-field=name]").val();
-    const displayName = addFamilyForm.find("input[data-field=display-name]").val();
-    const validDisplayName = !data.families.some(f => f.name === name) || (displayName && displayName.trim());
-    if (name && name.trim() && validDisplayName) {
+    if (name && name.trim()) {
         addFamilyForm.find("button.submit").removeAttr("disabled");
     } else {
         addFamilyForm.find("button.submit").attr("disabled", "disabled");
@@ -640,8 +627,6 @@ export function fillAddFamilyForm() {
     let nameVal = addFamilyForm.find("select[data-field=name]").val();
     let family = data.families.find(f => f.name == nameVal);
     if (family) {
-        addFamilyForm.find(".family-display-name-row").show();
-        addFamilyForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val(family.name);
         addFamilyForm.find("input[data-field=sci-name]").val(family.sci_name || "");
         addFamilyForm.find("input[data-field=ebird-code]").val(family.ebird_code || "");
 
@@ -655,8 +640,6 @@ export function fillAddFamilyForm() {
             addFamilyForm.find("button.delete").attr("disabled", "disabled");
         }
     } else {
-        addFamilyForm.find(".family-display-name-row").hide();
-        addFamilyForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val("");
         addFamilyForm.find("input[data-field=sci-name]").val("");
         addFamilyForm.find("input[data-field=ebird-code]").val('');
         addFamilyForm.find("span[data-field=species-count]").text("0");
@@ -680,17 +663,16 @@ export function setupAddFamilyForm() {
     // Populate family select
     let $famInput = addFamilyForm.find("select[data-field=name]");
 
-    $famInput.empty();
-    $famInput.append(new Option("", ""));
-    (data.families || []).forEach(family => {
-        $famInput.append(new Option(family.name, family.name));
+    $famInput.html('');
+    $famInput.append("<option value=''></option>");
+    data.families.forEach(function (family) {
+        $famInput.append("<option value=\"" + family.name + "\">" + family.name + "</option>");
     });
 
     $famInput.val('');
     fillAddFamilyForm();
     $famInput.unbind("change").on("change", fillAddFamilyForm);
-    $famInput.off("change.familyValidation input.familyValidation").on("change.familyValidation input.familyValidation", validateAddFamilyForm);
-    addFamilyForm.find("input[data-field=display-name]").off("input.familyValidation change.familyValidation").on("input.familyValidation change.familyValidation", validateAddFamilyForm);
+    $famInput.on("change input", validateAddFamilyForm);
 
     $famInput.attr("placeholder", "Select or type a family...");
     initSearchableSelect($famInput[0]);
@@ -725,31 +707,21 @@ export function setupAddFamilyForm() {
         let name = $famInput.val();
         if (!name) return;
 
-        const existingFamily = data.families.find(f => f.name === name);
-        const oldName = name;
-        const updatedName = existingFamily ? addFamilyForm.find("input[data-field=display-name]").val().trim() : name;
-        if (existingFamily) {
-            if (!renameFamily(name, updatedName,
-                addFamilyForm.find("input[data-field=ebird-code]").val(),
-                addFamilyForm.find("input[data-field=sci-name]").val())) return;
-            name = updatedName;
-        } else {
-            addFamily(name,
-                addFamilyForm.find("input[data-field=ebird-code]").val(),
-                addFamilyForm.find("input[data-field=sci-name]").val());
+        addFamily(
+            name,
+            addFamilyForm.find("input[data-field=ebird-code]").val(),
+            addFamilyForm.find("input[data-field=sci-name]").val()
+        );
+
+        // Refresh update species form dropdown if it's a new family
+        let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
+        if (speciesFamilySelect.find("option[value='" + name + "']").length == 0) {
+            speciesFamilySelect.append("<option value='" + name + "'>" + name + "</option>");
         }
 
-        // Keep both family selectors in sync after add/rename.
-        const speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
-        if (existingFamily && oldName !== name) {
-            speciesFamilySelect.find("option").filter(function () { return this.value === oldName; }).remove();
-            $famInput.find("option").filter(function () { return this.value === oldName; }).remove();
-        }
-        if (!speciesFamilySelect.find("option").filter(function () { return this.value === name; }).length) {
-            speciesFamilySelect.append(new Option(name, name));
-        }
-        if (!$famInput.find("option").filter(function () { return this.value === name; }).length) {
-            $famInput.append(new Option(name, name));
+        // Also update the select if it's new
+        if ($famInput.find("option[value='" + name + "']").length == 0) {
+            $famInput.append("<option value='" + name + "'>" + name + "</option>");
         }
 
         // Clear form

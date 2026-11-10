@@ -42,7 +42,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20261110_1"></script>
+	<script type="module" src="scripts/admin.js?v=20260923_3"></script>
 
 </head>
 
@@ -101,7 +101,7 @@
 				<div class="right-actions" style="float: right; display: flex; align-items: center; gap: 5px;">
 					<div class="sort-group">
 						<button class='sort-by-date' title='Sort all data by date and save'>Sort</button>
-						<button class='auto-sort-btn active' id='auto-sort-btn' title='Auto-sort when uploading media or saving'>Auto</button>
+						<button class='auto-sort-btn' id='auto-sort-btn' title='Auto-sort when uploading media or saving'>Auto</button>
 					</div>
 					<button class='cleanup-media' title='Remove unreferenced media from storage'>Cleanup Media</button>
 					<div class="btn-group">
@@ -172,10 +172,6 @@
 					<td>Name</td>
 					<td><select data-field='name' data-tags='true' style="width: 100%; max-width: 700px;" placeholder="Select or type a species..."></select></td>
 				</tr>
-				<tr class="species-display-name-row" style="display:none;">
-					<td>Species Name</td>
-					<td><input type="text" data-field="display-name" placeholder="Species name" style="width:100%;max-width:700px;" /></td>
-				</tr>
 				<tr>
 					<td>Family</td>
 					<td><select data-field='family' style="width: 100%; max-width: 700px;" placeholder="Select or type a family..."></select></td>
@@ -222,17 +218,6 @@
 				</tr>
 			</table>
 			</div>
-			<div class="admin-card" id="ebird-sync-card">
-				<h2>eBird Species &amp; Family Name Sync</h2>
-				<p>Compare local bird species and families with the current eBird taxonomy. Review proposed changes before applying them.</p>
-				<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-					<button id="ebird-sync-fetch">Fetch Changes</button>
-					<button id="ebird-sync-apply" disabled>Apply Selected Changes</button>
-					<button id="ebird-sync-select-all" disabled>Select All</button>
-				</div>
-				<div id="ebird-sync-progress" role="status" style="margin:10px 0;"></div>
-				<div id="ebird-sync-results"></div>
-			</div>
 		</div>
 
 		<div id="family-tab" class="admin-tab-content">
@@ -244,10 +229,6 @@
 					<td>
 						<select data-field='name' data-tags='true' style="width: 100%; max-width: 500px;" placeholder="Select or type a family..."></select>
 					</td>
-				</tr>
-				<tr class="family-display-name-row" style="display:none;">
-					<td>Family Name</td>
-					<td><input type="text" data-field="display-name" placeholder="Family name" style="width:100%;max-width:500px;" /></td>
 				</tr>
 				<tr>
 					<td>Scientific Name</td>

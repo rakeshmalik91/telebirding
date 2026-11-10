@@ -170,13 +170,57 @@ describe('Admin Data Module', () => {
         });
     });
 
+    describe('Photo EXIF date extraction', () => {
+        it('reads DateTimeOriginal in the app date format', async () => {
+            EXIF.getTag.mockImplementation((_file, tag) =>
+                tag === 'DateTimeOriginal' ? '2024:03:15 12:00:00' : undefined
+            );
+            await expect(AdminData.getSightingDateFromExif(new File(['x'], 'photo.jpg')))
+                .resolves.toBe('15-03-2024');
+        });
+
+        it('falls back to DateTimeDigitized when DateTimeOriginal is absent', async () => {
+            EXIF.getTag.mockImplementation((_file, tag) =>
+                tag === 'DateTimeDigitized' ? '2023:12:02 08:30:00' : undefined
+            );
+            await expect(AdminData.getSightingDateFromExif(new File(['x'], 'photo.jpg')))
+                .resolves.toBe('02-12-2023');
+        });
+
+        it('returns null for invalid or missing EXIF dates', async () => {
+            EXIF.getTag.mockReturnValue('2024:02:31 12:00:00');
+            await expect(AdminData.getSightingDateFromExif(new File(['x'], 'photo.jpg')))
+                .resolves.toBeNull();
+        });
+    });
+
     describe('Media Operations', () => {
-        it('should handle image upload with EXIF date extraction', async () => {
+        it('should populate an empty sighting date from the original photo EXIF date', async () => {
             const files = [new File(['mock'], 'test.jpg', { type: 'image/jpeg' })];
+            AdminData.data.sightings[2].date = '';
             EXIF.getTag.mockReturnValue('2024:03:15 12:00:00');
             AdminData.uploadMedia('s3', files);
             for(let i=0; i<10; i++) await Promise.resolve();
             expect(AdminData.data.sightings[2].media.length).toBe(1);
+            expect(AdminData.data.sightings[2].date).toBe('15-03-2024');
+        });
+
+
+        it('should not overwrite an existing sighting date when a photo is uploaded', async () => {
+            const files = [new File(['mock'], 'test.jpg', { type: 'image/jpeg' })];
+            AdminData.data.sightings[2].date = '03-01-2024';
+            EXIF.getTag.mockReturnValue('2024:03:15 12:00:00');
+            AdminData.uploadMedia('s3', files);
+            for (let i = 0; i < 10; i++) await Promise.resolve();
+            expect(AdminData.data.sightings[2].date).toBe('03-01-2024');
+            expect(AdminData.data.sightings[2].media.length).toBe(1);
+        });
+
+        it('should use the EXIF date captured before cropping when passed to uploadMedia', async () => {
+            const files = [new File(['cropped'], 'cropped.jpg', { type: 'image/jpeg' })];
+            AdminData.data.sightings[2].date = '';
+            AdminData.uploadMedia('s3', files, '15-03-2024');
+            for (let i = 0; i < 10; i++) await Promise.resolve();
             expect(AdminData.data.sightings[2].date).toBe('15-03-2024');
         });
 

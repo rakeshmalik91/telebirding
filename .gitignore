@@ -56,3 +56,5 @@ test*.txt
 utils/.cache
 
 .shai
+
+*.zip

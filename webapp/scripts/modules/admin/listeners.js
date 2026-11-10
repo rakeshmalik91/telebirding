@@ -1,6 +1,6 @@
 import {
     data, syncSightingsData, addSighting, backup, sortByDate, sightingMatches,
-    undoSighting, redoSighting, delayPendingSave, moveSighting
+    undoSighting, redoSighting, delayPendingSave
 } from './data.js';
 import { showLoader, hideLoader } from '../loader.js';
 import { customConfirm } from './ui.js';
@@ -85,9 +85,9 @@ export function setupDashboardListeners(render, viewState) {
     
     // Auto sort toggle
     const savedAutoSort = localStorage.getItem('autoSortEnabled');
-    if (savedAutoSort === 'false') {
-        $('#auto-sort-btn').removeClass('active');
-    }
+    // Auto-sort is opt-in. Existing explicit user preference is respected;
+    // absent preference defaults to disabled.
+    $('#auto-sort-btn').toggleClass('active', savedAutoSort === 'true');
     $('#auto-sort-btn').click(function() {
         $(this).toggleClass('active');
         localStorage.setItem('autoSortEnabled', $(this).hasClass('active'));
@@ -98,25 +98,6 @@ export function setupDashboardListeners(render, viewState) {
         addSighting();
     });
     $('.backup').click(backup);
-    // Explicit cross-page movement controls coexist with the drag-and-drop handle.
-    $('#sightings-table')
-        .off('click.sightingMove', '.move-sighting-page')
-        .on('click.sightingMove', '.move-sighting-page', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            if ($(this).prop('disabled')) return;
-
-            const key = $(this).attr('data-key');
-            const delta = $(this).hasClass('move-sighting-next') ? 1 : -1;
-            const currentIndex = data.sightings.findIndex(s => s.key === key);
-            const targetIndex = currentIndex + delta;
-
-            // Only allow a single adjacent-row swap; never wrap or jump pages.
-            if (currentIndex < 0 || targetIndex < 0 || targetIndex >= data.sightings.length) return;
-
-            moveSighting(key, delta);
-        });
     $('button.first-page').click(function () {
         if (viewState.offset > 0) {
             viewState.offset = 0;

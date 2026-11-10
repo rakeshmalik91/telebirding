@@ -15,6 +15,7 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     get currentMode() { return mockCurrentMode; },
     set currentMode(val) { mockCurrentMode = val; },
     uploadMedia: vi.fn(),
+    getSightingDateFromExif: vi.fn(() => Promise.resolve(null)),
     deleteMedia: vi.fn(),
     moveMediaLeft: vi.fn(),
     updateField: vi.fn(),
