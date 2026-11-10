@@ -7,7 +7,7 @@ import { initSearchableSelect, initSearchableSelects } from '../searchable-selec
 import { setChips } from './chip-input.js';
 import {
     data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
-    deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies,
+    deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies, renameFamily,
     syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
     uploadJSONData, getPlaceNode, getLocationGeo,
     ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary,
@@ -27,7 +27,9 @@ export function validateUpdateSpeciesForm() {
     let name = updateSpeciesForm.find("select[data-field=name]").val();
     let family = updateSpeciesForm.find("select[data-field=family]").val();
     let tags = updateSpeciesForm.find("input[data-field=tags]").val();
-    if (name && name.trim() && family && family.trim() && tags && tags.trim()) {
+    const displayName = updateSpeciesForm.find("input[data-field=display-name]").val();
+    const validDisplayName = !data.species[name] || (displayName && displayName.trim());
+    if (name && name.trim() && validDisplayName && family && family.trim() && tags && tags.trim()) {
         updateSpeciesForm.find("button.submit").removeAttr("disabled");
     } else {
         updateSpeciesForm.find("button.submit").attr("disabled", "disabled");
@@ -43,6 +45,8 @@ export function fillUpdateSpeciesForm() {
     if (nameVal && data.species[nameVal]) {
         const key = nameVal;
         const species = data.species[key];
+        updateSpeciesForm.find(".species-display-name-row").show();
+        updateSpeciesForm.find("input[data-field=display-name]").val(species.name || "");
         setChips(updateSpeciesForm.find(".chip-input-container"), species.tags.join(", "));
         updateSpeciesForm.find("select[data-field=family]").val(species.family).trigger("change");
         updateSpeciesForm.find("select[data-field=family] option[value='" + species.family + "']").attr("selected", "selected").trigger("change");
@@ -57,6 +61,8 @@ export function fillUpdateSpeciesForm() {
             updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
         }
     } else {
+        updateSpeciesForm.find(".species-display-name-row").hide();
+        updateSpeciesForm.find("input[data-field=display-name]").val("");
         // New custom name
         setChips(updateSpeciesForm.find(".chip-input-container"), '');
         updateSpeciesForm.find("select[data-field=family]").val('').trigger("change");
@@ -107,6 +113,7 @@ export function setupUpdateSpeciesForm() {
             key = nameVal;
             name = data.species[nameVal].name;
         }
+        if (key) name = updateSpeciesForm.find("input[data-field=display-name]").val().trim();
         saveSpecies(key, name,
             updateSpeciesForm.find("input[data-field=tags]").val(), updateSpeciesForm.find("select[data-field=family]").val(),
             updateSpeciesForm.find("input[data-field=latin-name]").val(), updateSpeciesForm.find("input[data-field=ebird-code]").val());
@@ -127,7 +134,7 @@ export function setupUpdateSpeciesForm() {
     initSearchableSelect(updateSpeciesForm.find("select[data-field=name]")[0]);
     initSearchableSelect(updateSpeciesForm.find("select[data-field=family]")[0]);
 
-    updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags]").on("change input", validateUpdateSpeciesForm);
+    updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags], input[data-field=display-name]").on("change input", validateUpdateSpeciesForm);
 
     updateSpeciesForm.find("select[data-field=name]").change(function () {
         let v = $(this).val();
@@ -331,7 +338,11 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "</td>";
 
         row += "<td class='noborder'>";
-        row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 10px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
+        row += "<div style='display:flex;flex-direction:column;align-items:center;gap:4px;'>";
+        row += "<button class='move-sighting-page move-sighting-prev' data-key='" + sighting.key + "' title='Move to previous page' " + (OFFSET === 0 ? "disabled" : "") + " style='padding:3px 7px;'>↑</button>";
+        row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 4px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
+        row += "<button class='move-sighting-page move-sighting-next' data-key='" + sighting.key + "' title='Move to next page' " + (OFFSET + ROWS >= filteredSightings.length ? "disabled" : "") + " style='padding:3px 7px;'>↓</button>";
+        row += "</div>";
         row += "</td>";
 
         row += "</tr>";
@@ -596,7 +607,9 @@ export function updatePaginationControls(OFFSET, ROWS) {
 export function validateAddFamilyForm() {
     const addFamilyForm = $("#add-family-form");
     let name = addFamilyForm.find("select[data-field=name]").val();
-    if (name && name.trim()) {
+    const displayName = addFamilyForm.find("input[data-field=display-name]").val();
+    const validDisplayName = !data.families.some(f => f.name === name) || (displayName && displayName.trim());
+    if (name && name.trim() && validDisplayName) {
         addFamilyForm.find("button.submit").removeAttr("disabled");
     } else {
         addFamilyForm.find("button.submit").attr("disabled", "disabled");
@@ -610,6 +623,8 @@ export function fillAddFamilyForm() {
     let nameVal = addFamilyForm.find("select[data-field=name]").val();
     let family = data.families.find(f => f.name == nameVal);
     if (family) {
+        addFamilyForm.find(".family-display-name-row").show();
+        addFamilyForm.find("input[data-field=display-name]").val(family.name);
         addFamilyForm.find("input[data-field=sci-name]").val(family.sci_name || "");
         addFamilyForm.find("input[data-field=ebird-code]").val(family.ebird_code || "");
 
@@ -623,6 +638,8 @@ export function fillAddFamilyForm() {
             addFamilyForm.find("button.delete").attr("disabled", "disabled");
         }
     } else {
+        addFamilyForm.find(".family-display-name-row").hide();
+        addFamilyForm.find("input[data-field=display-name]").val("");
         addFamilyForm.find("input[data-field=sci-name]").val("");
         addFamilyForm.find("input[data-field=ebird-code]").val('');
         addFamilyForm.find("span[data-field=species-count]").text("0");
@@ -656,6 +673,7 @@ export function setupAddFamilyForm() {
     fillAddFamilyForm();
     $famInput.unbind("change").on("change", fillAddFamilyForm);
     $famInput.on("change input", validateAddFamilyForm);
+    addFamilyForm.find("input[data-field=display-name]").on("input change", validateAddFamilyForm);
 
     $famInput.attr("placeholder", "Select or type a family...");
     initSearchableSelect($famInput[0]);
@@ -690,11 +708,18 @@ export function setupAddFamilyForm() {
         let name = $famInput.val();
         if (!name) return;
 
-        addFamily(
-            name,
-            addFamilyForm.find("input[data-field=ebird-code]").val(),
-            addFamilyForm.find("input[data-field=sci-name]").val()
-        );
+        const existingFamily = data.families.find(f => f.name === name);
+        const updatedName = existingFamily ? addFamilyForm.find("input[data-field=display-name]").val().trim() : name;
+        if (existingFamily) {
+            if (!renameFamily(name, updatedName,
+                addFamilyForm.find("input[data-field=ebird-code]").val(),
+                addFamilyForm.find("input[data-field=sci-name]").val())) return;
+            name = updatedName;
+        } else {
+            addFamily(name,
+                addFamilyForm.find("input[data-field=ebird-code]").val(),
+                addFamilyForm.find("input[data-field=sci-name]").val());
+        }
 
         // Refresh update species form dropdown if it's a new family
         let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");

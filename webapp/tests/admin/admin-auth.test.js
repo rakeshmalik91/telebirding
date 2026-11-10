@@ -70,7 +70,17 @@ describe('Admin Auth Module', () => {
             await Promise.resolve();
             await Promise.resolve();
             
-            expect(Util.setCookie).toHaveBeenCalledWith("credentials", "test-password", 7);
+            expect(Util.setCookie).toHaveBeenCalledWith("credentials", "test-password", 30);
+        });
+
+        it('should renew an existing remembered session for another 30 days after login', async () => {
+            Util.getCookie.mockReturnValue('test-password');
+            AdminAuth.tryLogin('test-password');
+            await Promise.resolve();
+            await Promise.resolve();
+            await Promise.resolve();
+
+            expect(Util.setCookie).toHaveBeenCalledWith("credentials", "test-password", 30);
         });
 
         it('should alert on login failure', async () => {

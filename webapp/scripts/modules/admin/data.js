@@ -753,10 +753,15 @@ export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
         name = name.replaceAll("’", "'");
         const newKey = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
         tags = tags.replaceAll("’", "'");
+        const previousSpecies = key ? data.species[key] : null;
+        const updatedTags = tags.split(/\s*,\s*/ig).filter(Boolean);
+        if (previousSpecies && previousSpecies.name && previousSpecies.name !== name && !updatedTags.includes(previousSpecies.name)) {
+            updatedTags.push(previousSpecies.name);
+        }
         data.species[newKey] = {
             key: newKey,
             name: name,
-            tags: tags.split(/\s*,\s*/ig),
+            tags: updatedTags,
             family: family,
             latin_name: (latin_name ? latin_name.toLowerCase().trim() : null),
             ebird_code: (ebird_code || null)
@@ -780,9 +785,38 @@ export function addFamily(name, ebirdCode, sciName) {
             data.families.push(fam);
         }
         data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
-        uploadJSONData("families", true);
+        uploadJSONData("families", true).then(() => triggerRender());
         showToast(`Family '${name}' saved successfully.`, 'success');
     }
+}
+
+
+export function renameFamily(oldName, newName, ebirdCode, sciName) {
+    oldName = (oldName || '').trim();
+    newName = (newName || '').trim();
+    if (!oldName || !newName) {
+        customAlert("Family name is mandatory");
+        return false;
+    }
+    if (oldName !== newName && data.families.some(f => f.name.toLowerCase() === newName.toLowerCase())) {
+        customAlert(`A family named '${newName}' already exists.`);
+        return false;
+    }
+    const family = data.families.find(f => f.name === oldName);
+    if (!family) return false;
+    family.name = newName;
+    if (ebirdCode) family.ebird_code = ebirdCode; else delete family.ebird_code;
+    if (sciName) family.sci_name = sciName; else delete family.sci_name;
+    Object.values(data.species || {}).forEach(species => {
+        if (species.family === oldName) species.family = newName;
+    });
+    data.families.sort((a, b) => a.name.localeCompare(b.name));
+    Promise.all([
+        uploadJSONData("families", true),
+        uploadJSONData("species", true)
+    ]).then(() => triggerRender());
+    showToast(`Family renamed to '${newName}'.`, 'success');
+    return true;
 }
 
 export function deleteFamily(name, onSuccess) {

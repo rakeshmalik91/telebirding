@@ -98,6 +98,19 @@ export function setupDashboardListeners(render, viewState) {
         addSighting();
     });
     $('.backup').click(backup);
+    // Explicit cross-page movement controls coexist with the drag-and-drop handle.
+    $('#sightings-table').on('click', '.move-sighting-page', function () {
+        if ($(this).prop('disabled')) return;
+        const key = $(this).attr('data-key');
+        const delta = $(this).hasClass('move-sighting-next') ? viewState.rows : -viewState.rows;
+        const currentIndex = data.sightings.findIndex(s => s.key === key);
+        if (currentIndex < 0) return;
+        const targetIndex = Math.max(0, Math.min(data.sightings.length - 1, currentIndex + delta));
+        if (targetIndex === currentIndex) return;
+        moveSighting(key, targetIndex - currentIndex);
+        viewState.offset = Math.floor(targetIndex / viewState.rows) * viewState.rows;
+        doRender();
+    });
     $('button.first-page').click(function () {
         if (viewState.offset > 0) {
             viewState.offset = 0;

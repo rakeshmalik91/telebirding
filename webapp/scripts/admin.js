@@ -11,6 +11,7 @@ import { setupAuthListeners } from './modules/admin/auth.js';
 import { setupDashboardListeners } from './modules/admin/listeners.js';
 import { setupCleanupListeners } from './modules/admin/cleanup.js';
 import { setupRestoreListeners } from './modules/admin/restore.js';
+import { setupEbirdSync } from './modules/admin/ebird-sync.js';
 
 const viewState = {
 	offset: 0,
@@ -39,6 +40,7 @@ function render() {
 	setupUpdateSpeciesForm();
 	setupAddFamilyForm();
 	setupPlacesTab();
+	setupEbirdSync();
 	renderSightingsTable(viewState.offset, viewState.rows);
 	updatePaginationControls(viewState.offset, viewState.rows);
 }
@@ -66,6 +68,9 @@ $(document).ready(function () {
 		$('#' + $(this).data('tab')).addClass('active').show();
 		if ($(this).data('tab') === 'places-tab') {
 			setupPlacesTab();
+		}
+		if ($(this).data('tab') === 'species-tab') {
+			setupEbirdSync();
 		}
 	});
 });

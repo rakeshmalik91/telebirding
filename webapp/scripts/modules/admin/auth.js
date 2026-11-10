@@ -8,8 +8,10 @@ export function tryLogin(password) {
     FirebaseApi.getFirebase().auth().signInWithEmailAndPassword("rakeshmalik91@gmail.com", password).then(() => {
         $('.data').show();
         $("#login-page").hide();
-        if ($("#login-page input[name=rememberme]").is(":checked")) {
-            Util.setCookie("credentials", password, 7);
+        // Keep remembered admin sessions alive for 30 days from the latest successful login.
+        // A remembered session refreshes this rolling expiry every time auto-login succeeds.
+        if ($("#login-page input[name=rememberme]").is(":checked") || Util.getCookie("credentials")) {
+            Util.setCookie("credentials", password, 30);
         }
         hideLoader("login");
     }).catch(e => {
