@@ -54,3 +54,5 @@ test*.txt
 # Build caches
 .cache
 utils/.cache
+
+.shai

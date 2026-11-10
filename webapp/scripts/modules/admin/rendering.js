@@ -353,9 +353,12 @@ export function renderSightingsTable(OFFSET, ROWS) {
 
         row += "<td class='noborder'>";
         row += "<div style='display:flex;flex-direction:column;align-items:center;gap:4px;'>";
-        row += "<button class='move-sighting-page move-sighting-prev' data-key='" + sighting.key + "' title='Move to previous page' " + (OFFSET === 0 ? "disabled" : "") + " style='padding:3px 7px;'>↑</button>";
+        const sightingIndex = data.sightings.findIndex(item => item.key === sighting.key);
+        const isFirstSighting = sightingIndex <= 0;
+        const isLastSighting = sightingIndex === data.sightings.length - 1;
+        row += "<button type='button' class='move-sighting-page move-sighting-prev' data-key='" + sighting.key + "' title='Move up one row' " + (isFirstSighting ? "disabled" : "") + " style='padding:3px 7px;'>↑</button>";
         row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 4px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
-        row += "<button class='move-sighting-page move-sighting-next' data-key='" + sighting.key + "' title='Move to next page' " + (OFFSET + ROWS >= filteredSightings.length ? "disabled" : "") + " style='padding:3px 7px;'>↓</button>";
+        row += "<button type='button' class='move-sighting-page move-sighting-next' data-key='" + sighting.key + "' title='Move down one row' " + (isLastSighting ? "disabled" : "") + " style='padding:3px 7px;'>↓</button>";
         row += "</div>";
         row += "</td>";
 

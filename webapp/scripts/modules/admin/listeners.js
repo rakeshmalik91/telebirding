@@ -1,6 +1,6 @@
 import {
     data, syncSightingsData, addSighting, backup, sortByDate, sightingMatches,
-    undoSighting, redoSighting, delayPendingSave
+    undoSighting, redoSighting, delayPendingSave, moveSighting
 } from './data.js';
 import { showLoader, hideLoader } from '../loader.js';
 import { customConfirm } from './ui.js';
@@ -99,18 +99,24 @@ export function setupDashboardListeners(render, viewState) {
     });
     $('.backup').click(backup);
     // Explicit cross-page movement controls coexist with the drag-and-drop handle.
-    $('#sightings-table').on('click', '.move-sighting-page', function () {
-        if ($(this).prop('disabled')) return;
-        const key = $(this).attr('data-key');
-        const delta = $(this).hasClass('move-sighting-next') ? viewState.rows : -viewState.rows;
-        const currentIndex = data.sightings.findIndex(s => s.key === key);
-        if (currentIndex < 0) return;
-        const targetIndex = Math.max(0, Math.min(data.sightings.length - 1, currentIndex + delta));
-        if (targetIndex === currentIndex) return;
-        moveSighting(key, targetIndex - currentIndex);
-        viewState.offset = Math.floor(targetIndex / viewState.rows) * viewState.rows;
-        doRender();
-    });
+    $('#sightings-table')
+        .off('click.sightingMove', '.move-sighting-page')
+        .on('click.sightingMove', '.move-sighting-page', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if ($(this).prop('disabled')) return;
+
+            const key = $(this).attr('data-key');
+            const delta = $(this).hasClass('move-sighting-next') ? 1 : -1;
+            const currentIndex = data.sightings.findIndex(s => s.key === key);
+            const targetIndex = currentIndex + delta;
+
+            // Only allow a single adjacent-row swap; never wrap or jump pages.
+            if (currentIndex < 0 || targetIndex < 0 || targetIndex >= data.sightings.length) return;
+
+            moveSighting(key, delta);
+        });
     $('button.first-page').click(function () {
         if (viewState.offset > 0) {
             viewState.offset = 0;
