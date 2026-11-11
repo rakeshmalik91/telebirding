@@ -1,0 +1,12 @@
+<en-US>
+    v1.0.4:
+    - Target API level upgraded to Android 16 (API level 36)
+    v1.0.3:
+    - Offline data handling enhancements
+    v1.0.2:
+    - Offline data handling
+    v1.0.1:
+    - Minor bugfixes
+    v1.0:
+    - Initial release
+</en-US>

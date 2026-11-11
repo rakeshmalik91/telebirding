@@ -1,16 +1,36 @@
 {
   "hosting": {
-    "public": "/",
+    "public": "webapp",
     "ignore": [
       "firebase.json",
+      "firebase-debug.log",
+      ".firebase/**",
+      ".DS_Store/**",
       "**/.*",
-      "**/node_modules/**"
+      "node_modules/**",
+      "package.json",
+      "package-lock.json",
+      "vitest.config.js",
+      "tests/**",
+      "coverage/**",
+      "resources/**"
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/",
         "destination": "/index.html"
+      },
+      {
+        "source": "/admin",
+        "destination": "/admin.html"
+      },
+      {
+        "source": "/privacy-policy",
+        "destination": "/privacy-policy.html"
       }
     ]
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }
