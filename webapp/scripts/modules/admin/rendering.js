@@ -329,7 +329,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
 
         row += "<td class='place-fields'>";
         row += "<div class='date-input-wrapper' style='display: flex; align-items: center; gap: 4px; margin-bottom: 4px;'>";
-        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-mm-yyyy').format('yyyy-mm-DD') + "' style='width:220px'></input>";
+        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-MM-YYYY').format('YYYY-MM-DD') + "' style='width:220px'></input>";
         row += "<button type='button' class='today-date-btn' data-sightingkey='" + sighting.key + "' title='Set to today' style='width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: transparent; border: none; box-shadow: none; color: #94a3b8; font-size: 16px; cursor: pointer;'>🕐</button>";
         row += "</div>";
         row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "125px");

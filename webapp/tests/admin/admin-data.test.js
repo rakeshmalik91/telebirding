@@ -187,6 +187,7 @@ describe('Admin Data Module', () => {
             for(let i=0; i<10; i++) await Promise.resolve();
             // Should resolve with current date or keep previous
             expect(AdminData.data.sightings[2].media.length).toBe(1);
+            expect(AdminData.data.sightings[2].date).toBe('03-01-2024');
         });
 
         it('should handle image upload with watermark checked (with author)', async () => {
@@ -665,6 +666,20 @@ describe('Admin Data Module', () => {
         });
 
         describe('applySpeciesTags', () => {
+            it('does not match Owl inside Fowl, but still matches Owl as a name token', () => {
+                const speciesMap = {
+                    fowl: { name: 'Jungle Fowl', tags: [] },
+                    owl: { name: 'Brown Fish-Owl', tags: [] }
+                };
+
+                applySpeciesTags(speciesMap);
+
+                expect(speciesMap.fowl.tags).not.toContain('Nocturnal');
+                expect(speciesMap.fowl.tags).not.toContain('Raptor');
+                expect(speciesMap.owl.tags).toContain('Nocturnal');
+                expect(speciesMap.owl.tags).toContain('Raptor');
+            });
+
             it('should auto-apply tags based on keywords and singularize them', () => {
                 const speciesMap = {
                     'golden-eagle': { name: 'Golden Eagle', tags: [] },

@@ -116,9 +116,14 @@ export function applySpeciesTags(speciesMap) {
         const tagsToAdd = new Set();
 
         for (const rule of TAG_RULES) {
-            const hasMatch = rule.keywords.some(kw => 
-                name.toLowerCase().includes(kw.toLowerCase())
-            );
+            // Match complete name tokens, not arbitrary substrings (e.g. Owl
+            // must not match the ending of Fowl). Hyphens and spaces delimit words,
+            // so compound names such as Eagle-Owl still match.
+            const hasMatch = rule.keywords.some(kw => {
+                const escapedKeyword = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const pattern = new RegExp(`(^|[^\\p{L}])${escapedKeyword}(?=$|[^\\p{L}])`, 'iu');
+                return pattern.test(name);
+            });
             if (hasMatch) {
                 for (const tag of rule.tags) {
                     tagsToAdd.add(tag);

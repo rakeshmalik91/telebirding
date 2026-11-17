@@ -411,12 +411,11 @@ function getSightingDateFromExif(file) {
                 EXIF.getTag(this, "DateTimeDigitized") ||
                 EXIF.getTag(this, "DateTime");
             if (dateOriginal) {
-                console.log("dateOriginal:", dateOriginal);
-                const parts = dateOriginal.split(' ')[0].split(':');
-                if (parts.length === 3) {
-                    const date = `${parts[2]}-${parts[1]}-${parts[0]}`;
-                    console.log("Extracted date from EXIF:", date);
-                    resolve(date);
+                // EXIF dates use YYYY:MM:DD HH:mm:ss. Sightings are stored as DD-MM-YYYY.
+                const match = String(dateOriginal).match(/^(\d{4}):(\d{2}):(\d{2})(?:\s|$)/);
+                if (match) {
+                    const [, year, month, day] = match;
+                    resolve(`${day}-${month}-${year}`);
                     return;
                 }
             }
@@ -607,7 +606,7 @@ export function updateField(sightingKey, field, value) {
         }
 
         if (field == 'date') {
-            sighting[field] = moment(value, 'yyyy-mm-DD').format('DD-mm-yyyy');
+            sighting[field] = moment(value, 'YYYY-MM-DD').format('DD-MM-YYYY');
         } else if (field == 'hidden') {
             sighting[field] = !value;
         } else {
