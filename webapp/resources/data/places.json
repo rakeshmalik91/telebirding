@@ -389,6 +389,118 @@
                             "lat": 34.13,
                             "lng": 74.84,
                             "radius": 5
+                        },
+                        "Pahalgam": {
+                            "name": "Pahalgam",
+                            "lat": 34.0322,
+                            "lng": 75.3226,
+                            "radius": 6,
+                            "places": {
+                                "Laripora": {
+                                    "name": "Laripora",
+                                    "lat": 34.0322,
+                                    "lng": 75.3226,
+                                    "radius": 6
+                                },
+                                "Batkote": {
+                                    "name": "Batkote",
+                                    "lat": 34.0322,
+                                    "lng": 75.3226,
+                                    "radius": 6
+                                }
+                            }
+                        },
+                        "Naranag": {
+                            "name": "Naranag",
+                            "lat": 34.3502,
+                            "lng": 74.9721,
+                            "radius": 5
+                        },
+                        "Wular Lake": {
+                            "name": "Wular Lake",
+                            "lat": 34.3503,
+                            "lng": 74.542,
+                            "radius": 13
+                        },
+                        "Gulmarg": {
+                            "name": "Gulmarg",
+                            "places": {
+                                "Strawberry valley": {
+                                    "name": "Strawberry valley",
+                                    "lat": 34.0496,
+                                    "lng": 74.3957,
+                                    "radius": 5
+                                }
+                            },
+                            "lat": 34.0496,
+                            "lng": 74.3957,
+                            "radius": 5
+                        },
+                        "Srinagar": {
+                            "name": "Srinagar",
+                            "places": {
+                                "Shalimar Bagh": {
+                                    "name": "Shalimar Bagh",
+                                    "lat": 34.1497,
+                                    "lng": 74.8732,
+                                    "radius": 1
+                                },
+                                "Shalimar": {
+                                    "name": "Shalimar",
+                                    "lat": 34.1497,
+                                    "lng": 74.8732,
+                                    "radius": 1
+                                },
+                                "Dal Lake": {
+                                    "name": "Dal Lake",
+                                    "lat": 34.1137,
+                                    "lng": 74.87,
+                                    "radius": 5
+                                },
+                                "Botanical Garden": {
+                                    "name": "Botanical Garden",
+                                    "lat": 34.0913,
+                                    "lng": 74.8834,
+                                    "radius": 1
+                                }
+                            },
+                            "lat": 34.0747,
+                            "lng": 74.8204,
+                            "radius": 23
+                        },
+                        "Zojila": {
+                            "name": "Zojila",
+                            "lat": 34.2856,
+                            "lng": 75.4821,
+                            "radius": 6
+                        },
+                        "Ganderbal": {
+                            "name": "Ganderbal",
+                            "places": {
+                                "Manasbal": {
+                                    "name": "Manasbal",
+                                    "lat": 34.2508,
+                                    "lng": 74.679,
+                                    "radius": 3
+                                }
+                            },
+                            "lat": 34.2889,
+                            "lng": 75.0408,
+                            "radius": 40
+                        },
+                        "Pulwama": {
+                            "name": "Pulwama",
+                            "places": {
+                                "Pampore": {
+                                    "name": "Pampore",
+                                    "lat": 34.0118,
+                                    "lng": 74.9162,
+                                    "radius": 1
+                                }
+                            },
+                            "lat": 33.949,
+                            "lng": 75.0418,
+                            "radius": 36
                         }
                     }
                 },
@@ -1780,7 +1892,23 @@
                     "name": "Central Province",
                     "lat": 7.3,
                     "lng": 80.63,
-                    "radius": 40
+                    "radius": 40,
+                    "cities": {
+                        "Nuwara Eliya": {
+                            "name": "Nuwara Eliya",
+                            "places": {
+                                "Victoria Park": {
+                                    "name": "Victoria Park",
+                                    "lat": 6.9695,
+                                    "lng": 80.7683,
+                                    "radius": 1
+                                }
+                            },
+                            "lat": 7.0124,
+                            "lng": 80.7572,
+                            "radius": 40
+                        }
+                    }
                 },
                 "Eastern Province": {
                     "name": "Eastern Province",
@@ -1816,13 +1944,29 @@
                     "name": "Southern Province",
                     "lat": 6.24,
                     "lng": 80.65,
-                    "radius": 40
+                    "radius": 40,
+                    "cities": {
+                        "Sinharaja Forest Reserve": {
+                            "name": "Sinharaja Forest Reserve",
+                            "lat": 6.4011,
+                            "lng": 80.5026,
+                            "radius": 26
+                        }
+                    }
                 },
                 "Uva Province": {
                     "name": "Uva Province",
                     "lat": 6.84,
                     "lng": 81.06,
-                    "radius": 40
+                    "radius": 40,
+                    "cities": {
+                        "Udawalawe": {
+                            "name": "Udawalawe",
+                            "lat": 6.4136,
+                            "lng": 80.8344,
+                            "radius": 5
+                        }
+                    }
                 },
                 "Western Province": {
                     "name": "Western Province",

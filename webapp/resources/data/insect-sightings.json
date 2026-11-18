@@ -1,6 +1,225 @@
 {
     "sightings": [
         {
+            "key": "s1793362814",
+            "species": "red-tailed-bumblebee",
+            "date": "24-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/red-tailed-bumblebee-1793362835.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793068553",
+            "species": "common-copper-butterfly",
+            "date": "24-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-copper-butterfly-1793068570.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793068312",
+            "species": "dark-clouded-yellow-butterfly",
+            "date": "24-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/dark-clouded-yellow-butterfly-1793068373.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793068231",
+            "species": "indian-tortoiseshell-butterfly",
+            "date": "23-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/indian-tortoiseshell-butterfly-1793068259.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793068156",
+            "species": "large-cabbage-white-butterfly",
+            "date": "23-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/large-cabbage-white-butterfly-1793068178.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/large-cabbage-white-butterfly-1793068170.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793067945",
+            "species": "small-branded-swift-butterfly",
+            "date": "22-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/small-branded-swift-butterfly-1793068063.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793501943",
+            "species": "common-bluebottle",
+            "date": "16-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-bluebottle-1793501960.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793362400",
+            "species": "unidentified-hornet",
+            "date": "16-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/unidentified-hornet-1793362424.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793068360",
+            "species": "black-spotted-grass-jewel-butterfly",
+            "date": "16-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/black-spotted-grass-jewel-butterfly-1793068390.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1790948673",
+            "species": "northern-lime-sallowtail-butterfly",
+            "date": "02-10-2026",
+            "place": "Tamluk",
+            "city": "West Midnapore",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/northern-lime-sallowtail-butterfly-1790948737.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1790683126",
+            "species": "olepa-ricini-tiger-moth",
+            "date": "29-09-2026",
+            "city": "Howrah",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/olepa-ricini-tiger-moth-1790683213.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
             "key": "s1787725795",
             "species": "common-baron-butterfly-",
             "date": "26-08-2026",

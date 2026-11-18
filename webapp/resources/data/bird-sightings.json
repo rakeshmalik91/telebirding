@@ -1,6 +1,3544 @@
 {
     "sightings": [
         {
+            "key": "s1795106540",
+            "species": "kashmir-flycatcher",
+            "date": "19-11-2026",
+            "place": "Victoria Park",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/kashmir-flycatcher-1795106651.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-flycatcher-1795106658.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-flycatcher-1795106668.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-flycatcher-1795106676.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105701",
+            "species": "jacobin-cuckoo",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/jacobin-cuckoo-1795105711.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105604",
+            "species": "malabar-pied-hornbill",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/malabar-pied-hornbill-1795105654.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105313",
+            "species": "spot-billed-pelican",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/spot-billed-pelican-1795105326.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-billed-pelican-1795105341.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-billed-pelican-1795105362.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-billed-pelican-1795105376.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105300",
+            "species": "gull-billed-tern",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/gull-billed-tern-1795105520.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/gull-billed-tern-1795105537.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105248",
+            "species": "whiskered-tern",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/whiskered-tern-1795105269.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/whiskered-tern-1795105278.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/whiskered-tern-1795105561.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1795018787",
+            "species": "indian-peafowl",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/indian-peafowl-1795106051.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/indian-peafowl-1795106066.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/indian-peafowl-1795018905.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4",
+            "gender": "M"
+        },
+        {
+            "key": "s1795105799",
+            "species": "gray-headed-fish-eagle",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/gray-headed-fish-eagle-1795105813.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/gray-headed-fish-eagle-1795105823.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105996",
+            "species": "white-tailed-iora",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/white-tailed-iora-1795106027.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105214",
+            "species": "indian-robin",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/indian-robin-1795105243.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1795105053",
+            "species": "blue-faced-malkoha",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/blue-faced-malkoha-1795105198.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-faced-malkoha-1795105213.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795105032",
+            "species": "jerdon-bushlark",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/jerdon-bushlark-1795105149.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/jerdon-bushlark-1795105087.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/jerdon-bushlark-1795105159.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1795105839",
+            "species": "changeagle-hawk-eagle",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/changeagle-hawk-eagle-1795105901.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795104874",
+            "species": "sri-lanka-green-pigeon",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/sri-lanka-green-pigeon-1795106428.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-green-pigeon-1795105186.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795104755",
+            "species": "brown-shrike",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/brown-shrike-1795104847.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795104671",
+            "species": "sri-lanka-junglefowl",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/sri-lanka-junglefowl-1795104748.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4",
+            "gender": "M"
+        },
+        {
+            "key": "s1795018971",
+            "species": "green-imperial-pigeon",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/green-imperial-pigeon-1795097008.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-imperial-pigeon-1795019025.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-imperial-pigeon-1795019036.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-imperial-pigeon-1795019044.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1795018928",
+            "species": "scaly-breasted-munia",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/scaly-breasted-munia-1795018969.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/scaly-breasted-munia-1795019010.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795018908",
+            "species": "barn-swallow",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/barn-swallow-1795018923.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795019147",
+            "species": "little-cormorant",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/little-cormorant-1795019224.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795018681",
+            "species": "white-browed-fantail",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/white-browed-fantail-1795018739.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-browed-fantail-1795018759.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-browed-fantail-1795018770.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1795018631",
+            "species": "sri-lanka-shama",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/sri-lanka-shama-1795018652.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-shama-1795018676.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795018595",
+            "species": "indian-pitta",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/indian-pitta-1795018691.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/indian-pitta-1795018720.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795018813",
+            "species": "black-headed-cuckoo-shrike",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/black-headed-cuckoo-shrike-1795018842.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795018555",
+            "species": "yellow-billed-babbler",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/yellow-billed-babbler-1795018573.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-billed-babbler-1795018580.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795018528",
+            "species": "forest-wagtail",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/forest-wagtail-1795018552.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1795015344",
+            "species": "sri-lanka-woodshrike",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/sri-lanka-woodshrike-1795019492.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-woodshrike-1795016629.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-woodshrike-1795019458.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "weather": "Cloudy"
+        },
+        {
+            "key": "s1795017200",
+            "species": "indian-paradise-flycatcher",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/indian-paradise-flycatcher-1795017237.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1795015108",
+            "species": "small-minivet",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/small-minivet-1795016637.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M",
+            "weather": "Cloudy"
+        },
+        {
+            "key": "s1795015059",
+            "species": "tawny-bellied-babbler",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/tawny-bellied-babbler-1795015079.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/tawny-bellied-babbler-1795015091.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/tawny-bellied-babbler-1795015097.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "weather": "Cloudy"
+        },
+        {
+            "key": "s1795016813",
+            "species": "shikra",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/shikra-1795016826.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M"
+        },
+        {
+            "key": "s1795019138",
+            "species": "common-sandpiper",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/common-sandpiper-1795019209.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1795017104",
+            "species": "plum-headed-parakeet",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/plum-headed-parakeet-1795017159.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/plum-headed-parakeet-1795017170.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795014703",
+            "species": "blue-tailed-bee-eater",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/blue-tailed-bee-eater-1795014808.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-tailed-bee-eater-1795014719.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-tailed-bee-eater-1795014820.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795009200",
+            "species": "green-warbler",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/green-warbler-1795009231.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "1"
+        },
+        {
+            "key": "s1795009050",
+            "species": "sri-lanka-myna",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/sri-lanka-myna-1795009060.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "1"
+        },
+        {
+            "key": "s1795008583",
+            "species": "chestnut-backed-owlet",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/chestnut-backed-owlet-1795008740.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/chestnut-backed-owlet-1795008797.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/chestnut-backed-owlet-1795008967.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795006761",
+            "species": "green-billed-coucal",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/green-billed-coucal-1795006774.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-billed-coucal-1795006802.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-billed-coucal-1795006814.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795006480",
+            "species": "malabar-trogon",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/malabar-trogon-1795006494.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/malabar-trogon-1795009017.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795006290",
+            "species": "white-rumped-munia",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/white-rumped-munia-1795006364.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795006197",
+            "species": "brown-capped-pygmy-woodpecker",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/brown-capped-pygmy-woodpecker-1795006223.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794906663",
+            "species": "layard-parakeet",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/layard-parakeet-1795008264.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/layard-parakeet-1795008196.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/layard-parakeet-1794906677.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/layard-parakeet-1794906712.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/layard-parakeet-1794906702.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M"
+        },
+        {
+            "key": "s1795008129",
+            "species": "layard-parakeet",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/layard-parakeet-1795008149.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "F",
+            "rating": "3"
+        },
+        {
+            "key": "s1794844392",
+            "species": "sri-lanka-hanging-parrot",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1795006926.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1795006936.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1795006907.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1794844411.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1794906538.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1794906551.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "5"
+        },
+        {
+            "key": "s1794905206",
+            "species": "red-backed-flameback",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/red-backed-flameback-1795017427.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/red-backed-flameback-1794905282.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/red-backed-flameback-1794905295.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795017025",
+            "species": "crimson-fronted-barbet",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/crimson-fronted-barbet-1795017072.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1795009117",
+            "species": "white-faced-starling",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/white-faced-starling-1795009134.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1794906270",
+            "species": "spot-bellied-eagle-owl",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Night",
+            "media": [
+                {
+                    "src": "images/spot-bellied-eagle-owl-1794906288.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-bellied-eagle-owl-1794906301.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-bellied-eagle-owl-1794906310.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-bellied-eagle-owl-1794906319.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794906184",
+            "species": "yellow-billed-babbler",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/yellow-billed-babbler-1794906222.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-billed-babbler-1794906236.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794906344",
+            "species": "brown-capped-babbler",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/brown-capped-babbler-1794906403.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794906479",
+            "species": "black-headed-cuckoo-shrike",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/black-headed-cuckoo-shrike-1794906490.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1794906409",
+            "species": "common-iora",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/common-iora-1794906438.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794906011",
+            "species": "sri-lanka-drongo",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-drongo-1794906023.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794905964",
+            "species": "white-bellied-drongo",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/white-bellied-drongo-1794905982.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794905188",
+            "species": "crimson-backed-flameback",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/crimson-backed-flameback-1794905225.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/crimson-backed-flameback-1794905242.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1794844551",
+            "species": "purple-rumped-sunbird",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/purple-rumped-sunbird-1794844566.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/purple-rumped-sunbird-1794844580.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794844464",
+            "species": "pale-billed-flowerpecker",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/pale-billed-flowerpecker-1794844528.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/pale-billed-flowerpecker-1794844548.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/pale-billed-flowerpecker-1795007063.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/pale-billed-flowerpecker-1795008058.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794844231",
+            "species": "banded-bay-cuckoo",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/banded-bay-cuckoo-1794844251.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/banded-bay-cuckoo-1794844262.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/banded-bay-cuckoo-1794844274.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794844120",
+            "species": "white-throated-flowerpecker",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/white-throated-flowerpecker-1794844187.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-throated-flowerpecker-1794844200.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-throated-flowerpecker-1794844171.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-throated-flowerpecker-1794844212.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-throated-flowerpecker-1795015027.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794821986",
+            "species": "orange-billed-babbler",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/orange-billed-babbler-1794822008.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/orange-billed-babbler-1794906165.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/orange-billed-babbler-1794906124.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/orange-billed-babbler-1794906136.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/orange-billed-babbler-1794906150.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1795006594",
+            "species": "red-faced-malkoha",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/red-faced-malkoha-1795006622.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1794844607",
+            "species": "sri-lanka-swallow",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-swallow-1795009286.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-swallow-1794844646.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-swallow-1794844697.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-swallow-1795009298.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794822625",
+            "species": "changeagle-hawk-eagle",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/changeagle-hawk-eagle-1794822642.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794822523",
+            "species": "sri-lanka-gray-hornbill",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-gray-hornbill-1794905881.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-gray-hornbill-1794905888.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-gray-hornbill-1794905898.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-gray-hornbill-1794905915.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M"
+        },
+        {
+            "key": "s1794822379",
+            "species": "serendib-scops-owl",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/serendib-scops-owl-1794822400.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794822255",
+            "species": "oriental-bay-owl",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/oriental-bay-owl-1794822279.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794822192",
+            "species": "ceylon-frogmouth",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/ceylon-frogmouth-1794822294.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794822109",
+            "species": "ashy-headed-laughingthrush",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/ashy-headed-laughingthrush-1794822125.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ashy-headed-laughingthrush-1794822139.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ashy-headed-laughingthrush-1794822186.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794821699",
+            "species": "spot-winged-thrush",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/spot-winged-thrush-1794821729.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-winged-thrush-1794821715.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/spot-winged-thrush-1794821750.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794820684",
+            "species": "sri-lanka-junglefowl",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-junglefowl-1794820708.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "F",
+            "rating": "3"
+        },
+        {
+            "key": "s1794820644",
+            "species": "sri-lanka-junglefowl",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-junglefowl-1794820665.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-junglefowl-1794820682.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794820427",
+            "species": "red-vented-bulbul",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/red-vented-bulbul-1794820440.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794820352",
+            "species": "asian-brown-flycatcher",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/asian-brown-flycatcher-1794820372.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/asian-brown-flycatcher-1794820385.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794819979",
+            "species": "brown-breasted-flycatcher",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/brown-breasted-flycatcher-1794820018.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/brown-breasted-flycatcher-1794820033.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/brown-breasted-flycatcher-1794820049.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794819858",
+            "species": "yellow-fronted-barbet",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/yellow-fronted-barbet-1794819890.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-fronted-barbet-1794906064.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-fronted-barbet-1794906074.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-fronted-barbet-1794819879.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-fronted-barbet-1794819906.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794819377",
+            "species": "blue-magpie",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/blue-magpie-1794819406.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-magpie-1794819545.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-magpie-1794819556.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-magpie-1794819572.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/blue-magpie-1794819616.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1794840716",
+            "species": "black-capped-bulbul",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/black-capped-bulbul-1794840792.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794822547",
+            "species": "sri-lanka-gray-hornbill",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-gray-hornbill-1794822564.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-gray-hornbill-1794822906.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "F"
+        },
+        {
+            "key": "s1794820790",
+            "species": "sri-lanka-spurfowl",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-spurfowl-1794820823.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-spurfowl-1794820805.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-spurfowl-1794820909.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794820394",
+            "species": "square-tailed-bulbul",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/square-tailed-bulbul-1794820419.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794819709",
+            "species": "yellow-browed-bulbul",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/yellow-browed-bulbul-1794819734.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-browed-bulbul-1794819750.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-browed-bulbul-1794819759.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-browed-bulbul-1794819772.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-browed-bulbul-1794822831.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1792749727",
+            "species": "eurasian-sparrowhawk",
+            "date": "09-11-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/eurasian-sparrowhawk-1794219456.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/eurasian-sparrowhawk-1792749743.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792682433",
+            "species": "yellow-billed-blue-magpie",
+            "date": "09-11-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/yellow-billed-blue-magpie-1794219476.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-billed-blue-magpie-1792765104.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794219398",
+            "species": "black-throated-accentor",
+            "date": "09-11-2026",
+            "place": "Pampore",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/black-throated-accentor-1794303213.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/black-throated-accentor-1794219421.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1794190643",
+            "species": "common-chiffchaff",
+            "date": "08-11-2026",
+            "place": "Manasbal",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-chiffchaff-1794190656.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794130741",
+            "species": "gray-crowned-goldfinch",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/gray-crowned-goldfinch-1794130900.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/gray-crowned-goldfinch-1794130934.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/gray-crowned-goldfinch-1794130924.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/gray-crowned-goldfinch-1794130955.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Manasbal"
+        },
+        {
+            "key": "s1794130709",
+            "species": "water-rail",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/water-rail-1794223819.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "1",
+            "place": "Manasbal"
+        },
+        {
+            "key": "s1794130665",
+            "species": "grey-headed-swamphen",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/grey-headed-swamphen-1794130691.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/grey-headed-swamphen-1794130705.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4",
+            "place": "Manasbal"
+        },
+        {
+            "key": "s1794130470",
+            "species": "blue-capped-redstart",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/blue-capped-redstart-1794130487.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "F"
+        },
+        {
+            "key": "s1794130434",
+            "species": "blue-capped-redstart",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/blue-capped-redstart-1794130463.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M"
+        },
+        {
+            "key": "s1794303374",
+            "species": "rock-bunting",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/rock-bunting-1794303510.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1794131683",
+            "species": "rufous-backed-redstart",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/rufous-backed-redstart-1794131716.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "F"
+        },
+        {
+            "key": "s1794130636",
+            "species": "eurasian-wren",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/eurasian-wren-1794130651.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "1"
+        },
+        {
+            "key": "s1794130494",
+            "species": "osprey",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/osprey-1794130596.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "1"
+        },
+        {
+            "key": "s1794047577",
+            "species": "yellow-billed-blue-magpie",
+            "date": "07-11-2026",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/yellow-billed-blue-magpie-1794047608.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794354246",
+            "species": "brown-fronted-woodpecker",
+            "date": "07-11-2026",
+            "place": "Pampore",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/brown-fronted-woodpecker-1794354304.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1792747055",
+            "species": "water-rail",
+            "date": "07-11-2026",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/water-rail-1794047534.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/water-rail-1794047548.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/water-rail-1794048719.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/water-rail-1792747101.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4",
+            "place": "Pampore"
+        },
+        {
+            "key": "s1794048380",
+            "species": "common-coot",
+            "date": "07-11-2026",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-coot-1794048417.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794048099",
+            "species": "eurasian-marsh-harrier",
+            "date": "07-11-2026",
+            "place": "Pampore",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/eurasian-marsh-harrier-1794048113.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1793426367",
+            "species": "common-kingfisher",
+            "date": "31-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-kingfisher-1793426384.jpg",
+                    "exif_data": {
+                        "camera_model": "55210+S7RV"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1793426399",
+            "species": "pond-heron",
+            "date": "31-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/pond-heron-1793449967.jpg",
+                    "exif_data": {
+                        "camera_model": "55210+S7RV"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792747082",
+            "species": "tawny-owl",
+            "date": "23-10-2026",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/tawny-owl-1793104850.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/tawny-owl-1792747134.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794326775",
+            "species": "white-wagtail",
+            "date": "23-10-2026",
+            "place": "Pampore",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/white-wagtail-1794326786.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794326397",
+            "species": "bluethroat",
+            "date": "23-10-2026",
+            "place": "Pampore",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/bluethroat-1794326409.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1792747136",
+            "species": "rosy-pipit",
+            "date": "23-10-2026",
+            "city": "Pulwama",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/rosy-pipit-1792747160.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rosy-pipit-1794326810.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rosy-pipit-1794326817.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Pampore"
+        },
+        {
+            "key": "s1794371974",
+            "species": "eurasian-moorhen",
+            "date": "22-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/eurasian-moorhen-1794371985.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "age": "Juvenile"
+        },
+        {
+            "key": "s1794371948",
+            "species": "eurasian-moorhen",
+            "date": "22-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/eurasian-moorhen-1794371964.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792682455",
+            "species": "little-grebe",
+            "date": "22-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/little-grebe-1792682470.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/little-grebe-1792682481.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794325101",
+            "species": "citrine-wagtail",
+            "date": "22-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/citrine-wagtail-1794325674.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "age": "Immature"
+        },
+        {
+            "key": "s1794371996",
+            "species": "mallard",
+            "date": "22-10-2026",
+            "place": "Botanical Garden",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/mallard-1794372021.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1793242263",
+            "species": "coal-tit",
+            "date": "22-10-2026",
+            "place": "Botanical Garden",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/coal-tit-1793242280.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
+            "key": "s1793242120",
+            "species": "russet-sparrow",
+            "date": "22-10-2026",
+            "place": "Botanical Garden",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/russet-sparrow-1793242132.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M"
+        },
+        {
+            "key": "s1793241989",
+            "species": "streaked-laughingthrush",
+            "date": "22-10-2026",
+            "city": "Srinagar ",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/streaked-laughingthrush-1793242006.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Botanical Garden"
+        },
+        {
+            "key": "s1792682401",
+            "species": "common-chiffchaff",
+            "date": "21-10-2026",
+            "place": "Dal Lake",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-chiffchaff-1792682419.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/common-chiffchaff-1792682430.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792596050",
+            "species": "alpine-chough",
+            "date": "21-10-2026",
+            "city": "Zojila",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/alpine-chough-1792596094.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1794371141",
+            "species": "wallcreeper",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/wallcreeper-1794371156.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792494674",
+            "species": "rock-bunting",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/rock-bunting-1792494690.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Laripora"
+        },
+        {
+            "key": "s1792494516",
+            "species": "ibisbill",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/ibisbill-1792494538.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ibisbill-1792494566.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ibisbill-1792494578.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ibisbill-1792494590.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "5"
+        },
+        {
+            "key": "s1792494594",
+            "species": "rosy-pipit",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/rosy-pipit-1792494639.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rosy-pipit-1792494653.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rosy-pipit-1792494662.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792494495",
+            "species": "jackdaw",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/jackdaw-1792494513.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494470",
+            "species": "blue-whistling-thrush",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/blue-whistling-thrush-1792494491.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792495042",
+            "species": "scaly-bellied-woodpecker",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/scaly-bellied-woodpecker-1792495069.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494411",
+            "species": "variegated-laughingthrush",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/variegated-laughingthrush-1792494435.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/variegated-laughingthrush-1792494448.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/variegated-laughingthrush-1792494464.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494389",
+            "species": "yellow-breasted-greenfinch",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/yellow-breasted-greenfinch-1792494406.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494740",
+            "species": "lemon-rumped-warbler",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/lemon-rumped-warbler-1792494764.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/lemon-rumped-warbler-1792495302.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494327",
+            "species": "himalayan-woodpecker",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/himalayan-woodpecker-1792494355.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/himalayan-woodpecker-1792494371.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/himalayan-woodpecker-1792495418.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "F",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494301",
+            "species": "brown-fronted-woodpecker",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/brown-fronted-woodpecker-1792494322.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494253",
+            "species": "brown-fronted-woodpecker",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/brown-fronted-woodpecker-1792494298.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "F",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1792494177",
+            "species": "bar-tailed-treecreeper",
+            "date": "20-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Dawn",
+            "media": [
+                {
+                    "src": "images/bar-tailed-treecreeper-1792494217.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Batkote"
+        },
+        {
+            "key": "s1794326233",
+            "species": "himalayan-bulbul",
+            "date": "19-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/himalayan-bulbul-1794326256.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792544121",
+            "species": "peregrine-falcon",
+            "date": "19-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "rating": "3",
+            "media": [
+                {
+                    "src": "images/peregrine-falcon-1792677525.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "place": "Shalimar",
+            "variation": "Shaheen"
+        },
+        {
+            "key": "s1792413556",
+            "species": "house-sparrow",
+            "date": "19-10-2026",
+            "city": "Pahalgam",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/house-sparrow-1792413588.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "gender": "M"
+        },
+        {
+            "key": "s1794325744",
+            "species": "mallard",
+            "date": "18-10-2026",
+            "city": "Wular Lake",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/mallard-1794325768.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792337669",
+            "species": "large-billed-crow",
+            "date": "18-10-2026",
+            "city": "Naranag",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/large-billed-crow-1792337711.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792335699",
+            "species": "purple-heron",
+            "date": "18-10-2026",
+            "city": "Wular Lake",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/purple-heron-1792335716.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792335649",
+            "species": "great-cormorant",
+            "date": "18-10-2026",
+            "city": "Wular Lake",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/great-cormorant-1792335685.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "4"
+        },
+        {
+            "key": "s1792240162",
+            "species": "white-capped-redstart",
+            "date": "17-10-2026",
+            "place": "Strawberry valley",
+            "city": "Gulmarg",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/white-capped-redstart-1792240186.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792234076",
+            "species": "brown-dipper",
+            "date": "17-10-2026",
+            "place": "Strawberry valley",
+            "city": "Gulmarg",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/brown-dipper-1792234098.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792233928",
+            "species": "white-cheeked-nuthatch",
+            "date": "17-10-2026",
+            "city": "Gulmarg",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/white-cheeked-nuthatch-1792233942.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-cheeked-nuthatch-1792233971.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-cheeked-nuthatch-1794322384.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792233880",
+            "species": "kashmir-nuthatch",
+            "date": "17-10-2026",
+            "city": "Gulmarg",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/kashmir-nuthatch-1792233895.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-nuthatch-1792233957.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-nuthatch-1792246136.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792233821",
+            "species": "kashmir-nutcracker",
+            "date": "17-10-2026",
+            "city": "Gulmarg",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/kashmir-nutcracker-1792233840.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-nutcracker-1792233856.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-nutcracker-1794355278.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/kashmir-nutcracker-1794322583.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792233732",
+            "species": "rufous-naped-tit",
+            "date": "17-10-2026",
+            "city": "Gulmarg",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/rufous-naped-tit-1792233770.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rufous-naped-tit-1792233990.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1792165548",
+            "species": "jackdaw",
+            "date": "16-10-2026",
+            "city": "Srinagar",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/jackdaw-1792165576.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+Tamron 28-200mm f/2.8"
+                    }
+                },
+                {
+                    "src": "images/jackdaw-1792337796.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+Tamron 28-200mm f/2.8"
+                    }
+                }
+            ],
+            "rating": "4",
+            "place": "Shalimar Bagh"
+        },
+        {
             "key": "s1789990405",
             "species": "common-tailorbird",
             "date": "21-09-2026",
@@ -75,6 +3613,12 @@
             "media": [
                 {
                     "src": "images/purple-sunbird-1784897467.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/purple-sunbird-1790141673.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }

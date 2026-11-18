@@ -48,6 +48,15 @@
             "family": "Damselflies",
             "latin_name": "onychargia atrocyana"
         },
+        "black-spotted-grass-jewel-butterfly": {
+            "key": "black-spotted-grass-jewel-butterfly",
+            "name": "Black-spotted Grass Jewel Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "freyeria putli"
+        },
         "blue-moon-butterfly": {
             "key": "blue-moon-butterfly",
             "name": "Blue Moon Butterfly",
@@ -142,6 +151,26 @@
             "family": "Butterflies",
             "latin_name": "euthalia aconthea"
         },
+        "common-bluebottle": {
+            "key": "common-bluebottle",
+            "name": "Common Bluebottle",
+            "tags": [
+                "Blowfly",
+                "Bluebottle",
+                "Fly"
+            ],
+            "family": "Flies",
+            "latin_name": "calliphora vicina"
+        },
+        "common-copper-butterfly": {
+            "key": "common-copper-butterfly",
+            "name": "Common Copper Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "lycaena phlaeas"
+        },
         "common-crow-butterfly": {
             "key": "common-crow-butterfly",
             "name": "Common Crow Butterfly",
@@ -234,6 +263,15 @@
             ],
             "family": "Butterflies",
             "latin_name": "cupha erymanthis"
+        },
+        "dark-clouded-yellow-butterfly": {
+            "key": "dark-clouded-yellow-butterfly",
+            "name": "Dark Clouded Yellow Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "colias fieldii"
         },
         "east-himalayan-straight-banded-treebrown-butterfly": {
             "key": "east-himalayan-straight-banded-treebrown-butterfly",
@@ -335,6 +373,15 @@
             ],
             "family": "Beetles"
         },
+        "hornet": {
+            "key": "hornet",
+            "name": "Hornet",
+            "tags": [
+                "Hornet"
+            ],
+            "family": "Hornets",
+            "latin_name": "vespa spp."
+        },
         "housefly": {
             "key": "housefly",
             "name": "Housefly",
@@ -363,6 +410,15 @@
             ],
             "family": "Butterflies",
             "latin_name": "vanessa indica"
+        },
+        "indian-tortoiseshell-butterfly": {
+            "key": "indian-tortoiseshell-butterfly",
+            "name": "Indian Tortoiseshell Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "agalais caschmirensis"
         },
         "indian-white-tiger-butterfly": {
             "key": "indian-white-tiger-butterfly",
@@ -411,6 +467,15 @@
             ],
             "family": "Butterflies",
             "latin_name": "symbrenthia lilaea"
+        },
+        "large-cabbage-white-butterfly": {
+            "key": "large-cabbage-white-butterfly",
+            "name": "Large Cabbage White Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "pieris brassicae"
         },
         "lesser-housefly": {
             "key": "lesser-housefly",
@@ -494,6 +559,16 @@
             "family": "Butterflies",
             "latin_name": "papilio demoleus"
         },
+        "olepa-ricini-tiger-moth": {
+            "key": "olepa-ricini-tiger-moth",
+            "name": "Olepa Ricini Tiger Moth",
+            "tags": [
+                "Moth",
+                "Tiger Moth"
+            ],
+            "family": "Moths",
+            "latin_name": "olepa ricini"
+        },
         "pareronia-hippia": {
             "key": "pareronia-hippia",
             "name": "Indian Wanderer Butterfly",
@@ -530,6 +605,15 @@
             "family": "Butterflies",
             "latin_name": "danaus chrysippus"
         },
+        "red-tailed-bumblebee": {
+            "key": "red-tailed-bumblebee",
+            "name": "Red-tailed Bumblebee",
+            "tags": [
+                "Bumblebee"
+            ],
+            "family": "Bumblebee",
+            "latin_name": "bombus haemorrhoidalis"
+        },
         "sailer-butterfly": {
             "key": "sailer-butterfly",
             "name": "Sailer Butterfly",
@@ -539,6 +623,15 @@
             ],
             "family": "Butterflies",
             "latin_name": "neptis spp"
+        },
+        "small-branded-swift-butterfly": {
+            "key": "small-branded-swift-butterfly",
+            "name": "Small Branded Swift Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "pelopidas mathias"
         },
         "southern-birdwing-butterfly": {
             "key": "southern-birdwing-butterfly",
@@ -650,6 +743,15 @@
                 "Grasshopper"
             ],
             "family": "Grasshoppers"
+        },
+        "unidentified-hornet": {
+            "key": "unidentified-hornet",
+            "name": "Unidentified Hornet",
+            "tags": [
+                "Hornet"
+            ],
+            "family": "Hornets",
+            "latin_name": "vespa spp."
         },
         "unidentified-moth": {
             "key": "unidentified-moth",

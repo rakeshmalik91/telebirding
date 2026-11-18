@@ -36,9 +36,9 @@
             "key": "alpine-chough",
             "name": "Yellow-billed Chough",
             "tags": [
+                "Alpine Chough",
                 "Chough",
-                "Crow",
-                "Alpine Chough"
+                "Crow"
             ],
             "family": "Crows, Jays, and Magpies",
             "ebird_code": "yebcho1",
@@ -58,10 +58,10 @@
             "key": "amur-stonechat",
             "name": "Amur Stonechat",
             "tags": [
-                "Stonechat",
-                "Stejneger's Stonechat",
+                "Chat",
                 "Flycatcher",
-                "Chat"
+                "Stejneger's Stonechat",
+                "Stonechat"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "stonec7",
@@ -72,11 +72,11 @@
             "name": "Andaman Boobook",
             "tags": [
                 "Andaman Hawk-owl",
-                "Owl",
-                "Raptor",
-                "Hawk-owl",
                 "Boobook",
-                "Nocturnal"
+                "Hawk-owl",
+                "Nocturnal",
+                "Owl",
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "andhao1",
@@ -129,9 +129,9 @@
             "key": "andaman-cuckoo-shrike",
             "name": "Andaman Cuckooshrike",
             "tags": [
+                "Andaman Cuckoo-shrike",
                 "Cuckoo-shrike",
-                "Cuckooshrike",
-                "Andaman Cuckoo-shrike"
+                "Cuckooshrike"
             ],
             "family": "Cuckooshrikes",
             "latin_name": "coracina dobsoni",
@@ -161,9 +161,9 @@
             "key": "andaman-green-pigeon",
             "name": "Andaman Green-Pigeon",
             "tags": [
+                "Dove",
                 "Green Pigeon",
-                "Pigeon",
-                "Dove"
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "pomgrp4",
@@ -230,8 +230,8 @@
             "key": "andaman-shama",
             "name": "Andaman Shama",
             "tags": [
-                "Shama",
-                "Robin"
+                "Robin",
+                "Shama"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "andsha1",
@@ -241,8 +241,8 @@
             "key": "andaman-teal",
             "name": "Andaman Teal",
             "tags": [
-                "Teal",
-                "Duck"
+                "Duck",
+                "Teal"
             ],
             "family": "Ducks, Geese, and Waterfowl",
             "latin_name": "anas albogularis",
@@ -304,8 +304,8 @@
             "key": "ashy-crowned-sparrow-lark",
             "name": "Ashy-crowned Sparrow-Lark",
             "tags": [
-                "Sparrow Lark",
-                "Lark"
+                "Lark",
+                "Sparrow Lark"
             ],
             "family": "Larks",
             "ebird_code": "ascspl1",
@@ -321,12 +321,22 @@
             "ebird_code": "ashdro1",
             "latin_name": "dicrurus leucophaeus"
         },
+        "ashy-headed-laughingthrush": {
+            "key": "ashy-headed-laughingthrush",
+            "name": "Ashy-headed Laughingthrush",
+            "tags": [
+                "Laughingthrush"
+            ],
+            "family": "Laughingthrushes and Allies",
+            "latin_name": "argya cinereifrons",
+            "ebird_code": "ashlau1"
+        },
         "ashy-minivet": {
             "key": "ashy-minivet",
             "name": "Ashy Minivet",
             "tags": [
-                "Minivet",
-                "Cuckooshrike"
+                "Cuckooshrike",
+                "Minivet"
             ],
             "family": "Cuckooshrikes",
             "latin_name": "pericrocotus divaricatus",
@@ -368,8 +378,8 @@
             "key": "ashy-woodswallow",
             "name": "Ashy Woodswallow",
             "tags": [
-                "Woodswallow",
-                "Swallow"
+                "Swallow",
+                "Woodswallow"
             ],
             "family": "Woodswallows, Bellmagpies, and Allies",
             "ebird_code": "ashwoo2",
@@ -435,8 +445,8 @@
             "key": "asian-houbara",
             "name": "Asian Houbara",
             "tags": [
-                "Houbara",
                 "Bustard",
+                "Houbara",
                 "MacQueen's Bustard"
             ],
             "family": "Bustards",
@@ -447,8 +457,8 @@
             "key": "asian-koel",
             "name": "Asian Koel",
             "tags": [
-                "Koel",
-                "Cuckoo"
+                "Cuckoo",
+                "Koel"
             ],
             "family": "Cuckoos",
             "ebird_code": "asikoe2",
@@ -458,11 +468,11 @@
             "key": "asian-openbill",
             "name": "Asian Openbill",
             "tags": [
+                "Open-billed Stork",
+                "Openbill",
                 "Stork",
                 "Wader",
-                "Wading Bird",
-                "Open-billed Stork",
-                "Openbill"
+                "Wading Bird"
             ],
             "family": "Storks",
             "ebird_code": "asiope1",
@@ -472,8 +482,8 @@
             "key": "asian-palm-swift",
             "name": "Asian Palm Swift",
             "tags": [
-                "Swift",
-                "Palm-Swift"
+                "Palm-Swift",
+                "Swift"
             ],
             "family": "Swifts",
             "ebird_code": "aspswi1",
@@ -540,8 +550,8 @@
             "key": "bar-tailed-treecreeper",
             "name": "Bar-tailed Treecreeper",
             "tags": [
-                "Treecreeper",
-                "Creeper"
+                "Creeper",
+                "Treecreeper"
             ],
             "family": "Treecreepers",
             "ebird_code": "battre1",
@@ -551,9 +561,9 @@
             "key": "bar-winged-flycatcher-shrike",
             "name": "Bar-winged Flycatcher-shrike",
             "tags": [
+                "Flycatcher",
                 "Flycatcher-shrike",
-                "Shrike",
-                "Flycatcher"
+                "Shrike"
             ],
             "family": "Vangas, Helmetshrikes, and Allies",
             "ebird_code": "bwfshr1",
@@ -568,9 +578,9 @@
                 "Bird of Prey",
                 "Nocturnal",
                 "Owl",
+                "Pelagic",
                 "Raptor",
-                "Seabird",
-                "Pelagic"
+                "Seabird"
             ],
             "family": "Barn-Owls",
             "latin_name": "tyto javanica",
@@ -605,10 +615,10 @@
             "key": "barred-buttonquail",
             "name": "Barred Buttonquail",
             "tags": [
-                "Buttonquail",
-                "Quail",
                 "Bustard-Quail",
-                "Common Bustard-Quail"
+                "Buttonquail",
+                "Common Bustard-Quail",
+                "Quail"
             ],
             "family": "Buttonquail",
             "ebird_code": "barbut1",
@@ -640,10 +650,10 @@
             "key": "baya-weaver",
             "name": "Baya Weaver",
             "tags": [
-                "Weaver",
                 "Baya",
                 "Common Baya",
-                "Indian Weaver"
+                "Indian Weaver",
+                "Weaver"
             ],
             "family": "Weavers and Allies",
             "ebird_code": "baywea1",
@@ -700,8 +710,8 @@
             "key": "black-baza",
             "name": "Black Baza",
             "tags": [
-                "Hawk",
                 "Baza",
+                "Hawk",
                 "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
@@ -725,8 +735,8 @@
             "name": "Black Bittern",
             "tags": [
                 "Bittern",
-                "Seabird",
-                "Pelagic"
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "botaurus flavicollis",
@@ -746,8 +756,8 @@
             "key": "black-browed-reed-warbler",
             "name": "Black-browed Reed Warbler",
             "tags": [
-                "Warbler",
-                "Reed Warbler"
+                "Reed Warbler",
+                "Warbler"
             ],
             "family": "Reed Warblers and Allies",
             "latin_name": "acrocephalus bistrigiceps",
@@ -762,6 +772,16 @@
             "family": "Bulbuls",
             "ebird_code": "blabul1",
             "latin_name": "hypsipetes leucocephalus"
+        },
+        "black-capped-bulbul": {
+            "key": "black-capped-bulbul",
+            "name": "Black-capped Bulbul",
+            "tags": [
+                "Bulbul"
+            ],
+            "family": "Bulbuls",
+            "latin_name": "rubigula melanictera",
+            "ebird_code": "bkcbul2"
         },
         "black-capped-kingfisher": {
             "key": "black-capped-kingfisher",
@@ -818,8 +838,8 @@
             "key": "black-crowned-sparrow-lark",
             "name": "Black-crowned Sparrow-Lark",
             "tags": [
-                "Sparrow-Lark",
-                "Lark"
+                "Lark",
+                "Sparrow-Lark"
             ],
             "family": "Larks",
             "ebird_code": "bcslar1",
@@ -896,7 +916,7 @@
             ],
             "family": "Old World Buntings",
             "ebird_code": "blhbun1",
-            "latin_name": "emberiza melanocephala"
+            "latin_name": "melophus melanocephalus"
         },
         "black-headed-cuckoo-shrike": {
             "key": "black-headed-cuckoo-shrike",
@@ -947,8 +967,8 @@
             "key": "black-headed-mountain-finch",
             "name": "Black-headed Mountain Finch",
             "tags": [
-                "Mountain-finch",
-                "Finch"
+                "Finch",
+                "Mountain-finch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "bhmfin1",
@@ -993,10 +1013,10 @@
             "key": "black-lored-tit",
             "name": "Himalayan Black-lored Tit",
             "tags": [
-                "Tit",
-                "Indian Yellow Tit",
                 "Black-lored Tit",
-                "Indian Black-lored Tit"
+                "Indian Black-lored Tit",
+                "Indian Yellow Tit",
+                "Tit"
             ],
             "family": "Tits, Chickadees, and Titmice",
             "ebird_code": "blltit1",
@@ -1115,9 +1135,9 @@
             "key": "black-throated-bushtit",
             "name": "Black-throated Tit",
             "tags": [
-                "Tit",
+                "Black-throated Bushtit",
                 "Bushtit",
-                "Black-throated Bushtit"
+                "Tit"
             ],
             "family": "Long-tailed Tits",
             "latin_name": "aegithalos concinnus",
@@ -1127,8 +1147,8 @@
             "key": "black-throated-munia",
             "name": "Black-throated Munia",
             "tags": [
-                "Munia",
-                "Finch"
+                "Finch",
+                "Munia"
             ],
             "family": "Waxbills and Allies",
             "ebird_code": "bltmun1",
@@ -1192,8 +1212,8 @@
             "tags": [
                 "Stilt",
                 "Wader",
-                "Water Bird",
-                "Wading Bird"
+                "Wading Bird",
+                "Water Bird"
             ],
             "family": "Stilts and Avocets",
             "ebird_code": "bkwsti",
@@ -1204,8 +1224,8 @@
             "name": "Blanford's Snowfinch",
             "tags": [
                 "Finch",
-                "Snowfinch",
-                "Snow Finch"
+                "Snow Finch",
+                "Snowfinch"
             ],
             "family": "Old World Sparrows",
             "ebird_code": "blasno1",
@@ -1235,9 +1255,9 @@
             "key": "blue-capped-rock-thrush",
             "name": "Blue-capped Rock-Thrush",
             "tags": [
-                "Rock-Thrush",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Old World Flycatcher",
+                "Rock-Thrush"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "bcrthr1",
@@ -1247,8 +1267,8 @@
             "key": "blue-cheeked-bee-eater",
             "name": "Blue-cheeked Bee-eater",
             "tags": [
-                "Beeeater",
-                "Bee-eater"
+                "Bee-eater",
+                "Beeeater"
             ],
             "family": "Bee-eaters",
             "ebird_code": "bcbeat1",
@@ -1264,6 +1284,16 @@
             "ebird_code": "blekin1",
             "latin_name": "alcedo meninting"
         },
+        "blue-faced-malkoha": {
+            "key": "blue-faced-malkoha",
+            "name": "Blue-faced Malkoha",
+            "tags": [
+                "Malkoha"
+            ],
+            "family": "Cuckoos",
+            "latin_name": "phaenicophaeus viridirostris",
+            "ebird_code": "blfmal1"
+        },
         "blue-fronted-redstart": {
             "key": "blue-fronted-redstart",
             "name": "Blue-fronted Redstart",
@@ -1274,14 +1304,24 @@
             "ebird_code": "blfred1",
             "latin_name": "phoenicurus frontalis"
         },
+        "blue-magpie": {
+            "key": "blue-magpie",
+            "name": "Blue Magpie",
+            "tags": [
+                "Magpie"
+            ],
+            "family": "Crows, Jays, and Magpies",
+            "latin_name": "urocissa ornata",
+            "ebird_code": "ceymag1"
+        },
         "blue-robin": {
             "key": "blue-robin",
             "name": "Indian Blue Robin",
             "tags": [
-                "Robin",
+                "Blue Robin",
                 "Flycatcher",
                 "Old World Flycatcher",
-                "Blue Robin"
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "inbrob1",
@@ -1291,9 +1331,9 @@
             "key": "blue-rock-thrush",
             "name": "Blue Rock-Thrush",
             "tags": [
-                "Rock-Thrush",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Old World Flycatcher",
+                "Rock-Thrush"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "burthr",
@@ -1324,9 +1364,9 @@
             "key": "blue-throated-blue-flycatcher",
             "name": "Blue-throated Flycatcher",
             "tags": [
+                "Blue-throated Blue Flycatcher",
                 "Flycatcher",
-                "Old World Flycatcher",
-                "Blue-throated Blue Flycatcher"
+                "Old World Flycatcher"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "butfly1",
@@ -1334,11 +1374,12 @@
         },
         "blue-whistling-thrush": {
             "key": "blue-whistling-thrush",
-            "name": "Blue Whistling-Thrush",
+            "name": "Chinese Whistling-Thrush",
             "tags": [
-                "Whistling Thrush",
+                "Blue Whistling-Thrush",
+                "Flycatcher",
                 "Old World Flycatcher",
-                "Flycatcher"
+                "Whistling Thrush"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "blwthr1",
@@ -1358,10 +1399,10 @@
             "key": "blue-winged-minla",
             "name": "Blue-winged Minla",
             "tags": [
-                "Minla",
-                "Siva",
                 "Blue-winged Siva",
-                "Laughingthrush"
+                "Laughingthrush",
+                "Minla",
+                "Siva"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "blwmin1",
@@ -1371,8 +1412,8 @@
             "key": "bluethroat",
             "name": "Bluethroat",
             "tags": [
-                "Old World Flycatcher",
-                "Flycatcher"
+                "Flycatcher",
+                "Old World Flycatcher"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "blueth",
@@ -1391,8 +1432,9 @@
         },
         "blyths-paradise-flycatcher": {
             "key": "blyths-paradise-flycatcher",
-            "name": "Blyth's Paradise Flycatcher",
+            "name": "Blyth's Paradise-Flycatcher",
             "tags": [
+                "Blyth's Paradise Flycatcher",
                 "Flycatcher"
             ],
             "family": "Monarch Flycatchers",
@@ -1403,8 +1445,8 @@
             "key": "blyths-reed-warbler",
             "name": "Blyth's Reed Warbler",
             "tags": [
-                "Warbler",
-                "Reed Warbler"
+                "Reed Warbler",
+                "Warbler"
             ],
             "family": "Reed Warblers and Allies",
             "ebird_code": "blrwar1",
@@ -1415,8 +1457,8 @@
             "name": "White-browed Shrike-Babbler",
             "tags": [
                 "Babbler",
-                "Shrike-babbler",
-                "Blyth's Shrike-Babbler"
+                "Blyth's Shrike-Babbler",
+                "Shrike-babbler"
             ],
             "family": "Vireos, Shrike-Babblers, and Erpornis",
             "ebird_code": "whbshb1",
@@ -1482,9 +1524,9 @@
             "key": "brahminy-starling",
             "name": "Brahminy Starling",
             "tags": [
-                "Starling",
+                "Brahminy Myna",
                 "Myna",
-                "Brahminy Myna"
+                "Starling"
             ],
             "family": "Starlings",
             "ebird_code": "brasta1",
@@ -1552,8 +1594,8 @@
             "name": "Brown Boobook",
             "tags": [
                 "Boobook",
-                "Hawk-Owl",
                 "Brown Hawk-Owl",
+                "Hawk-Owl",
                 "Nocturnal"
             ],
             "family": "Owls",
@@ -1575,20 +1617,30 @@
             "key": "brown-bullfinch",
             "name": "Brown Bullfinch",
             "tags": [
-                "Finch",
+                "Bull Finch",
                 "Bullfinch",
-                "Bull Finch"
+                "Finch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "brobul1",
             "latin_name": "pyrrhula nipalensis"
         },
+        "brown-capped-babbler": {
+            "key": "brown-capped-babbler",
+            "name": "Brown-capped Babbler",
+            "tags": [
+                "Babbler"
+            ],
+            "family": "Ground Babblers and Allies",
+            "latin_name": "pellorneum fuscocapillus",
+            "ebird_code": "bncbab1"
+        },
         "brown-capped-pygmy-woodpecker": {
             "key": "brown-capped-pygmy-woodpecker",
             "name": "Brown-capped Pygmy Woodpecker",
             "tags": [
-                "Woodpecker",
-                "Pygmy Woodpecker"
+                "Pygmy Woodpecker",
+                "Woodpecker"
             ],
             "family": "Woodpeckers",
             "ebird_code": "bncwoo3",
@@ -1676,8 +1728,8 @@
             "key": "brown-rock-chat",
             "name": "Brown Rock Chat",
             "tags": [
-                "Rock-Chat",
-                "Chat"
+                "Chat",
+                "Rock-Chat"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "indcha1",
@@ -1721,8 +1773,8 @@
             "key": "brown-woodpecker",
             "name": "Brown-capped Pygmy Woodpecker",
             "tags": [
-                "Woodpecker",
-                "Brown Woodpecker"
+                "Brown Woodpecker",
+                "Woodpecker"
             ],
             "family": "Woodpeckers",
             "latin_name": "yungipicus nanus",
@@ -1732,8 +1784,8 @@
             "key": "brownish-flanked-bush-warbler",
             "name": "Brownish-flanked Bush Warbler",
             "tags": [
-                "Warbler",
-                "Bush-Warbler"
+                "Bush-Warbler",
+                "Warbler"
             ],
             "family": "Bush Warblers and Allies",
             "ebird_code": "bfbwar1",
@@ -1743,8 +1795,8 @@
             "key": "buff-barred-warbler",
             "name": "Buff-barred Warbler",
             "tags": [
-                "Warbler",
-                "Leaf Warbler"
+                "Leaf Warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "latin_name": "phylloscopus pulcher",
@@ -1777,11 +1829,11 @@
             "key": "cattle-egret",
             "name": "Western Cattle-Egret",
             "tags": [
+                "Cattle Egret",
                 "Egret",
                 "Heron",
-                "Cattle Egret",
-                "Seabird",
-                "Pelagic"
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "ardea ibis",
@@ -1822,8 +1874,8 @@
             "name": "Cheer Pheasant",
             "tags": [
                 "Cheer",
-                "Pheasant",
-                "Fowl"
+                "Fowl",
+                "Pheasant"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "chephe1",
@@ -1839,6 +1891,17 @@
             "latin_name": "pterocles exustus",
             "ebird_code": "chbsan"
         },
+        "chestnut-backed-owlet": {
+            "key": "chestnut-backed-owlet",
+            "name": "Chestnut-backed Owlet",
+            "tags": [
+                "Owl",
+                "Owlet"
+            ],
+            "family": "Owls",
+            "latin_name": "glaucidium castanotum",
+            "ebird_code": "chbowl1"
+        },
         "chestnut-bellied-nuthatch": {
             "key": "chestnut-bellied-nuthatch",
             "name": "Chestnut-bellied Nuthatch",
@@ -1853,9 +1916,9 @@
             "key": "chestnut-bellied-rock-thrush",
             "name": "Chestnut-bellied Rock-Thrush",
             "tags": [
-                "Rock-Thrush",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Old World Flycatcher",
+                "Rock-Thrush"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "cbrthr1",
@@ -1916,11 +1979,11 @@
             "key": "chestnut-tailed-minla",
             "name": "Chestnut-tailed Minla",
             "tags": [
-                "Minla",
-                "Siva",
+                "Babbler",
                 "Bar-throated Siva",
                 "Laughingthrush",
-                "Babbler"
+                "Minla",
+                "Siva"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "chtmin1",
@@ -1958,8 +2021,9 @@
         },
         "chinese-pond-heron": {
             "key": "chinese-pond-heron",
-            "name": "Chinese Pond Heron",
+            "name": "Chinese Pond-Heron",
             "tags": [
+                "Chinese Pond Heron",
                 "Heron"
             ],
             "family": "Herons, Egrets, and Bitterns",
@@ -1991,9 +2055,9 @@
             "key": "cinereous-tit",
             "name": "Cinereous Tit",
             "tags": [
-                "Tit",
+                "Asian Tit",
                 "Great Tit",
-                "Asian Tit"
+                "Tit"
             ],
             "family": "Tits",
             "latin_name": "parus cinereus",
@@ -2017,10 +2081,10 @@
             "name": "Cinnamon Bittern",
             "tags": [
                 "Bittern",
-                "Wader",
-                "Wading Bird",
+                "Pelagic",
                 "Seabird",
-                "Pelagic"
+                "Wader",
+                "Wading Bird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "ebird_code": "cinbit1",
@@ -2144,8 +2208,8 @@
             "name": "Common Chiffchaff",
             "tags": [
                 "Chiffchaff",
-                "Warbler",
-                "Leaf Warbler"
+                "Leaf Warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "comchi1",
@@ -2155,10 +2219,10 @@
             "key": "common-coot",
             "name": "Eurasian Coot",
             "tags": [
+                "Common Coot",
                 "Coot",
                 "Wader",
-                "Wading Bird",
-                "Common Coot"
+                "Wading Bird"
             ],
             "family": "Rails, Gallinules, and Coots",
             "latin_name": "fulica atra",
@@ -2188,8 +2252,8 @@
             "key": "common-eider",
             "name": "Common Eider",
             "tags": [
-                "Eider",
                 "Duck",
+                "Eider",
                 "Wader",
                 "Wading Bird"
             ],
@@ -2222,10 +2286,10 @@
             "name": "Common Greenshank",
             "tags": [
                 "Greenshank",
+                "Shank",
                 "Wader",
                 "Wading Bird",
-                "Water Bird",
-                "Shank"
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "comgre",
@@ -2261,9 +2325,9 @@
             "key": "common-hill-myna",
             "name": "Common Hill Myna",
             "tags": [
+                "Hill Myna",
                 "Myna",
-                "Starling",
-                "Hill Myna"
+                "Starling"
             ],
             "family": "Starlings",
             "ebird_code": "hilmyn",
@@ -2273,8 +2337,8 @@
             "key": "common-hoopoe",
             "name": "Common Hoopoe",
             "tags": [
-                "Hoopoe",
-                "Eurasian Hoopoe"
+                "Eurasian Hoopoe",
+                "Hoopoe"
             ],
             "family": "Hoopoes",
             "latin_name": "upupa epops",
@@ -2304,10 +2368,10 @@
             "key": "common-merganser",
             "name": "Common Merganser",
             "tags": [
-                "Merganser",
+                "Common Goosander ",
                 "Duck",
                 "Goosander",
-                "Common Goosander "
+                "Merganser"
             ],
             "family": "Ducks, Geese, and Waterfowl",
             "ebird_code": "commer",
@@ -2338,8 +2402,8 @@
             "key": "common-pochard",
             "name": "Common Pochard",
             "tags": [
-                "Pochard",
                 "Duck",
+                "Pochard",
                 "Wader",
                 "Wading Bird"
             ],
@@ -2351,11 +2415,11 @@
             "key": "common-raven",
             "name": "Common Raven",
             "tags": [
-                "Raven",
-                "Western Raven",
+                "Crow",
                 "Northern Raven",
                 "Punjab Raven",
-                "Crow"
+                "Raven",
+                "Western Raven"
             ],
             "family": "Crows, Jays, and Magpies",
             "latin_name": "corvus corax",
@@ -2394,9 +2458,9 @@
             "key": "common-rosefinch",
             "name": "Common Rosefinch",
             "tags": [
-                "Rosefinch",
                 "Finch",
-                "Rose Finch"
+                "Rose Finch",
+                "Rosefinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "comros",
@@ -2528,6 +2592,16 @@
             "ebird_code": "crseag1",
             "latin_name": "spilornis cheela"
         },
+        "crimson-backed-flameback": {
+            "key": "crimson-backed-flameback",
+            "name": "Crimson-backed Flameback",
+            "tags": [
+                "Flameback"
+            ],
+            "family": "Woodpeckers",
+            "latin_name": "chrysocolaptes stricklandi",
+            "ebird_code": "crbfla1"
+        },
         "crimson-backed-sunbird": {
             "key": "crimson-backed-sunbird",
             "name": "Crimson-backed Sunbird",
@@ -2538,14 +2612,24 @@
             "ebird_code": "crbsun2",
             "latin_name": "leptocoma minima"
         },
+        "crimson-fronted-barbet": {
+            "key": "crimson-fronted-barbet",
+            "name": "Crimson-fronted Barbet",
+            "tags": [
+                "Barbet"
+            ],
+            "family": "Asian Barbets",
+            "latin_name": "psilopogon rubricapillus",
+            "ebird_code": "crfbar3"
+        },
         "crimson-naped-woodpecker": {
             "key": "crimson-naped-woodpecker",
             "name": "Crimson-naped Woodpecker",
             "tags": [
-                "Woodpecker",
                 "Crimson-breasted Woodpecker",
+                "Necklaced Woodpecker",
                 "Scarlet-breasted Woodpecker",
-                "Necklaced Woodpecker"
+                "Woodpecker"
             ],
             "family": "Woodpeckers",
             "ebird_code": "crbwoo6",
@@ -2601,9 +2685,9 @@
             "key": "dark-breasted-rosefinch",
             "name": "Dark-breasted Rosefinch",
             "tags": [
-                "Rosefinch",
                 "Finch",
-                "Rose Finch"
+                "Rose Finch",
+                "Rosefinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "dabros1",
@@ -2654,9 +2738,9 @@
             "key": "delicate-prinia",
             "name": "Delicate Prinia",
             "tags": [
-                "Prinia",
+                "Graceful Prinia",
                 "Indian Graceful Prinia",
-                "Graceful Prinia"
+                "Prinia"
             ],
             "family": "Cisticolas and Allies",
             "ebird_code": "delpri1",
@@ -2669,7 +2753,7 @@
                 "Crane"
             ],
             "family": "Cranes",
-            "latin_name": "anthropoides virgo",
+            "latin_name": "grus virgo",
             "ebird_code": "demcra1"
         },
         "desert-lark": {
@@ -2720,10 +2804,10 @@
             "key": "eastern-cattle-egret",
             "name": "Eastern Cattle-Egret",
             "tags": [
-                "Egret",
                 "Cattle Egret",
-                "Seabird",
-                "Pelagic"
+                "Egret",
+                "Pelagic",
+                "Seabird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "ardea coromanda",
@@ -2733,10 +2817,10 @@
             "key": "eastern-yellow-wagtail",
             "name": "Eastern Yellow Wagtail",
             "tags": [
-                "Wagtail",
-                "Yellow Wagtail",
+                "Pelagic",
                 "Seabird",
-                "Pelagic"
+                "Wagtail",
+                "Yellow Wagtail"
             ],
             "family": "Wagtails and Pipits",
             "ebird_code": "eaywag",
@@ -2760,8 +2844,8 @@
             "name": "Asian Emerald Dove",
             "tags": [
                 "Dove",
-                "Pigeon",
-                "Emerald Dove"
+                "Emerald Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "latin_name": "chalcophaps indica",
@@ -2782,8 +2866,8 @@
             "key": "eurasian-crag-martin",
             "name": "Eurasian Crag-Martin",
             "tags": [
-                "Martin",
-                "Crag-Martin"
+                "Crag-Martin",
+                "Martin"
             ],
             "family": "Swallows",
             "ebird_code": "eurcrm1",
@@ -2821,9 +2905,9 @@
             "name": "Eurasian Griffon",
             "tags": [
                 "Griffon",
-                "Vulture",
                 "Raptor",
-                "Scavenger"
+                "Scavenger",
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "eurgri1",
@@ -2888,9 +2972,9 @@
                 "Eurasian Marsh-Harrier",
                 "Harrier",
                 "Marsh-Harrier",
+                "Pelagic",
                 "Raptor",
-                "Seabird",
-                "Pelagic"
+                "Seabird"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "wemhar1",
@@ -2900,10 +2984,10 @@
             "key": "eurasian-moorhen",
             "name": "Eurasian Moorhen",
             "tags": [
+                "Common Moorhen",
                 "Moorhen",
                 "Wader",
-                "Wading Bird",
-                "Common Moorhen"
+                "Wading Bird"
             ],
             "family": "Rails, Gallinules, and Coots",
             "ebird_code": "commoo3",
@@ -2913,10 +2997,10 @@
             "key": "eurasian-oystercatcher",
             "name": "Eurasian Oystercatcher",
             "tags": [
-                "Wader",
+                "Oystercatcher",
                 "Shorebird",
-                "Wading Bird",
-                "Oystercatcher"
+                "Wader",
+                "Wading Bird"
             ],
             "family": "Oystercatchers",
             "latin_name": "haematopus ostralegus",
@@ -2940,8 +3024,8 @@
             "key": "eurasian-tree-sparrow",
             "name": "Eurasian Tree Sparrow",
             "tags": [
-                "Sparrow",
                 "Passerine",
+                "Sparrow",
                 "Tree Sparrow"
             ],
             "family": "Old World Sparrows",
@@ -2952,22 +3036,22 @@
             "key": "eurasian-whimbrel",
             "name": "Whimbrel",
             "tags": [
+                "Eurasian Whimbrel",
                 "Wader",
                 "Wading Bird",
-                "Water Bird",
-                "Eurasian Whimbrel"
+                "Water Bird"
             ],
-            "family": "Sandpipers & Allies",
-            "ebird_code": "whimbr",
-            "latin_name": "numenius phaeopus"
+            "family": "Sandpipers and Allies",
+            "latin_name": "numenius phaeopus",
+            "ebird_code": "whimbr"
         },
         "eurasian-wigeon": {
             "key": "eurasian-wigeon",
             "name": "Eurasian Wigeon",
             "tags": [
-                "Wigeon",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Wigeon"
             ],
             "family": "Ducks, Geese, and Waterfowl",
             "ebird_code": "eurwig",
@@ -2977,19 +3061,19 @@
             "key": "eurasian-wren",
             "name": "Eurasian Wren",
             "tags": [
-                "Wren",
-                "Winter Wren"
+                "Winter Wren",
+                "Wren"
             ],
             "family": "Wrens",
             "ebird_code": "winwre4",
-            "latin_name": "troglodytes troglodytes"
+            "latin_name": "nannus troglodytes"
         },
         "eurasian-wryneck": {
             "key": "eurasian-wryneck",
             "name": "Eurasian Wryneck",
             "tags": [
-                "Wryneck",
-                "Woodpecker"
+                "Woodpecker",
+                "Wryneck"
             ],
             "family": "Woodpeckers",
             "ebird_code": "eurwry",
@@ -3014,9 +3098,9 @@
             "key": "european-goldfinch",
             "name": "European Goldfinch",
             "tags": [
-                "Goldfinch",
                 "Finch",
-                "Gold Finch"
+                "Gold Finch",
+                "Goldfinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "eurgol",
@@ -3036,8 +3120,8 @@
             "key": "european-shag",
             "name": "European Shag",
             "tags": [
-                "Shag",
-                "Cormorant"
+                "Cormorant",
+                "Shag"
             ],
             "family": "Cormorants and Shags",
             "latin_name": "gulosus aristotelis",
@@ -3047,8 +3131,8 @@
             "key": "european-starling",
             "name": "European Starling",
             "tags": [
-                "Starling",
-                "Common Starling"
+                "Common Starling",
+                "Starling"
             ],
             "family": "Starlings",
             "ebird_code": "eursta",
@@ -3148,8 +3232,8 @@
             "key": "fork-tailed-drongo-cuckoo",
             "name": "Fork-tailed Drongo-Cuckoo",
             "tags": [
-                "Drongo Cuckoo",
-                "Cuckoo"
+                "Cuckoo",
+                "Drongo Cuckoo"
             ],
             "family": "Cuckoos",
             "ebird_code": "asidrc2",
@@ -3207,10 +3291,10 @@
             "name": "Garganey",
             "tags": [
                 "Duck",
-                "Wader",
-                "Wading Bird",
                 "Garganey Teal",
-                "Teal"
+                "Teal",
+                "Wader",
+                "Wading Bird"
             ],
             "family": "Ducks, Geese, and Waterfowl",
             "latin_name": "spatula querquedula",
@@ -3272,10 +3356,10 @@
             "key": "golden-bush-robin",
             "name": "Golden Bush-Robin",
             "tags": [
-                "Robin",
                 "Bush-Robin",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Old World Flycatcher",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "gobrob1",
@@ -3307,8 +3391,8 @@
             "key": "golden-oriole",
             "name": "Indian Golden Oriole",
             "tags": [
-                "Oriole",
-                "Golden Oriole"
+                "Golden Oriole",
+                "Oriole"
             ],
             "family": "Old World Orioles",
             "ebird_code": "ingori1",
@@ -3323,6 +3407,31 @@
             "family": "Asian Barbets",
             "ebird_code": "gotbar2",
             "latin_name": "psilopogon franklinii"
+        },
+        "gray-crowned-goldfinch": {
+            "key": "gray-crowned-goldfinch",
+            "name": "Gray-crowned Goldfinch",
+            "tags": [
+                "Finch",
+                "Gold Finch",
+                "Goldfinch"
+            ],
+            "family": "Finches, Euphonias, and Allies",
+            "latin_name": "carduelis caniceps",
+            "ebird_code": "eurgol2"
+        },
+        "gray-headed-fish-eagle": {
+            "key": "gray-headed-fish-eagle",
+            "name": "Gray-headed Fish-Eagle",
+            "tags": [
+                "Bird of Prey",
+                "Eagle",
+                "Fish-Eagle",
+                "Raptor"
+            ],
+            "family": "Hawks, Eagles, and Kites",
+            "latin_name": "icthyophaga ichthyaetus",
+            "ebird_code": "gyhfie1"
         },
         "gray-necked-bunting": {
             "key": "gray-necked-bunting",
@@ -3394,10 +3503,10 @@
             "key": "great-crested-grebe",
             "name": "Great Crested Grebe",
             "tags": [
+                "Crested Grebe",
                 "Grebe",
                 "Wader",
-                "Wading Bird",
-                "Crested Grebe"
+                "Wading Bird"
             ],
             "family": "Grebes",
             "ebird_code": "grcgre1",
@@ -3405,8 +3514,9 @@
         },
         "great-crested-tern": {
             "key": "great-crested-tern",
-            "name": "Great Crested Tern",
+            "name": "Greater Crested Tern",
             "tags": [
+                "Great Crested Tern",
                 "Pelagic",
                 "Seabird",
                 "Tern"
@@ -3445,9 +3555,9 @@
             "key": "great-grey-shrike",
             "name": "Great Gray Shrike",
             "tags": [
+                "Gray Shrike",
                 "Shrike",
-                "Southern Gray Shrike",
-                "Gray Shrike"
+                "Southern Gray Shrike"
             ],
             "family": "Shrikes",
             "ebird_code": "norshr1",
@@ -3488,9 +3598,9 @@
             "key": "great-rosefinch",
             "name": "Great Rosefinch",
             "tags": [
-                "Rosefinch",
                 "Finch",
-                "Rose Finch"
+                "Rose Finch",
+                "Rosefinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "greros1",
@@ -3510,11 +3620,11 @@
             "key": "great-thick-knee",
             "name": "Great Thick-knee",
             "tags": [
-                "Thick-knee",
-                "Great Stone Plover",
-                "Stone Plover",
                 "Great Stone Curlew",
+                "Great Stone Plover",
                 "Stone Curlew",
+                "Stone Plover",
+                "Thick-knee",
                 "Wader",
                 "Wading Bird"
             ],
@@ -3526,8 +3636,8 @@
             "key": "great-white-pelican",
             "name": "Great White Pelican",
             "tags": [
-                "Rosy Pelican",
                 "Pelican",
+                "Rosy Pelican",
                 "Wader",
                 "Wading Bird"
             ],
@@ -3574,8 +3684,8 @@
             "key": "greater-hoopoe-lark",
             "name": "Greater Hoopoe-Lark",
             "tags": [
-                "Lark",
-                "Hoopoe-Lark"
+                "Hoopoe-Lark",
+                "Lark"
             ],
             "family": "Larks",
             "ebird_code": "grhlar1",
@@ -3585,8 +3695,8 @@
             "key": "greater-necklaced-laughingthrush",
             "name": "Greater Necklaced Laughingthrush",
             "tags": [
-                "Necklaced Laughingthrush",
-                "Laughingthrush"
+                "Laughingthrush",
+                "Necklaced Laughingthrush"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "gnlthr",
@@ -3596,8 +3706,8 @@
             "key": "greater-painted-snipe",
             "name": "Greater Painted-Snipe",
             "tags": [
-                "Snipe",
                 "Painted Snipe",
+                "Snipe",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -3675,8 +3785,8 @@
             "key": "greater-yellownape",
             "name": "Greater Yellownape",
             "tags": [
-                "Yellownape",
-                "Woodpecker"
+                "Woodpecker",
+                "Yellownape"
             ],
             "family": "Woodpeckers",
             "ebird_code": "greyel1",
@@ -3686,8 +3796,8 @@
             "key": "green-backed-tit",
             "name": "Green-backed Tit",
             "tags": [
-                "Tit",
-                "Great Tit"
+                "Great Tit",
+                "Tit"
             ],
             "family": "Tits, Chickadees, and Titmice",
             "latin_name": "parus monticolus",
@@ -3698,19 +3808,29 @@
             "name": "Asian Green Bee-eater",
             "tags": [
                 "Bee-eater",
-                "Green Bee-eater",
-                "Beeeater"
+                "Beeeater",
+                "Green Bee-eater"
             ],
             "family": "Bee-eaters",
             "latin_name": "merops orientalis",
             "ebird_code": "grnbee3"
         },
+        "green-billed-coucal": {
+            "key": "green-billed-coucal",
+            "name": "Green-billed Coucal",
+            "tags": [
+                "Coucal"
+            ],
+            "family": "Cuckoos",
+            "latin_name": "centropus chlororhynchos",
+            "ebird_code": "grbcou2"
+        },
         "green-billed-malkoha": {
             "key": "green-billed-malkoha",
             "name": "Green-billed Malkoha",
             "tags": [
-                "Malkoha",
-                "Cuckoo"
+                "Cuckoo",
+                "Malkoha"
             ],
             "family": "Cuckoos",
             "ebird_code": "grbmal1",
@@ -3720,8 +3840,8 @@
             "key": "green-imperial-pigeon",
             "name": "Green Imperial-Pigeon",
             "tags": [
-                "Pigeon",
-                "Dove"
+                "Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "gripig1",
@@ -3755,8 +3875,8 @@
             "key": "green-warbler",
             "name": "Green Warbler",
             "tags": [
-                "Warbler",
-                "Leaf warbler"
+                "Leaf warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "latin_name": "phylloscopus nitidus",
@@ -3766,13 +3886,13 @@
             "key": "green-winged-teal",
             "name": "Green-winged Teal",
             "tags": [
-                "Teal",
-                "Duck",
-                "Wader",
-                "Wading Bird",
                 "Common Teal",
+                "Duck",
+                "Eurasian Green-winged Teal",
                 "Eurasian Teal",
-                "Eurasian Green-winged Teal"
+                "Teal",
+                "Wader",
+                "Wading Bird"
             ],
             "family": "Ducks, Geese, and Waterfowl",
             "ebird_code": "gnwtea",
@@ -3782,8 +3902,8 @@
             "key": "greenish-warbler",
             "name": "Greenish Warbler",
             "tags": [
-                "Warbler",
-                "Leaf Warbler"
+                "Leaf Warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "grewar3",
@@ -3835,8 +3955,8 @@
             "key": "grey-capped-pygmy-woodpecker",
             "name": "Gray-capped Pygmy Woodpecker",
             "tags": [
-                "Woodpecker",
-                "Pygmy Woodpecker"
+                "Pygmy Woodpecker",
+                "Woodpecker"
             ],
             "family": "Woodpeckers",
             "ebird_code": "gycwoo1",
@@ -3856,8 +3976,8 @@
             "key": "grey-chinned-minivet",
             "name": "Gray-chinned Minivet",
             "tags": [
-                "Minivet",
-                "Cuckoo-shrike"
+                "Cuckoo-shrike",
+                "Minivet"
             ],
             "family": "Cuckooshrikes",
             "ebird_code": "gycmin1",
@@ -3877,9 +3997,9 @@
             "key": "grey-francolin",
             "name": "Gray Francolin",
             "tags": [
+                "Fowl",
                 "Francolin",
-                "Partridge",
-                "Fowl"
+                "Partridge"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "gryfra",
@@ -3911,9 +4031,9 @@
             "key": "grey-headed-canary-flycatcher",
             "name": "Gray-headed Canary-Flycatcher",
             "tags": [
-                "Flycatcher",
                 "Canary Flycatcher",
-                "Fairy Flycatcher"
+                "Fairy Flycatcher",
+                "Flycatcher"
             ],
             "family": "Fairy Flycatchers",
             "ebird_code": "gyhcaf1",
@@ -3933,8 +4053,8 @@
             "key": "grey-headed-swamphen",
             "name": "Gray-headed Swamphen",
             "tags": [
-                "Swamphen",
                 "Moorhen",
+                "Swamphen",
                 "Wader",
                 "Wading Bird"
             ],
@@ -3976,11 +4096,11 @@
             "key": "grey-junglefowl",
             "name": "Gray Junglefowl",
             "tags": [
-                "Junglefowl",
-                "Fowl",
-                "Raptor",
                 "Bird of Prey",
-                "Nocturnal"
+                "Fowl",
+                "Junglefowl",
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "grejun2",
@@ -4072,14 +4192,26 @@
             "name": "Ground Tit",
             "tags": [
                 "Ground Pecker",
-                "Tibetan Ground Tit",
-                "Hume's Ground Tit",
                 "Hume's Ground Pecker",
+                "Hume's Ground Tit",
+                "Tibetan Ground Tit",
                 "Tit"
             ],
             "family": "Tits, Chickadees, and Titmice",
             "ebird_code": "grotit1",
             "latin_name": "pseudopodoces humilis"
+        },
+        "gull-billed-tern": {
+            "key": "gull-billed-tern",
+            "name": "Gull-billed Tern",
+            "tags": [
+                "Pelagic",
+                "Seabird",
+                "Tern"
+            ],
+            "family": "Gulls, Terns, and Skimmers",
+            "latin_name": "gelochelidon nilotica",
+            "ebird_code": "gubter2"
         },
         "hair-crested-drongo": {
             "key": "hair-crested-drongo",
@@ -4128,8 +4260,8 @@
             "key": "hill-pigeon",
             "name": "Hill Pigeon",
             "tags": [
-                "Pigeon",
-                "Dove"
+                "Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "hilpig1",
@@ -4139,8 +4271,8 @@
             "key": "hill-swallow",
             "name": "Hill Swallow",
             "tags": [
-                "Swallow",
-                "House Swallow"
+                "House Swallow",
+                "Swallow"
             ],
             "family": "Swallows",
             "latin_name": "hirundo domicola",
@@ -4150,8 +4282,8 @@
             "key": "himalayan-bluetail",
             "name": "Himalayan Bluetail",
             "tags": [
-                "Flycatcher",
                 "Bluetail",
+                "Flycatcher",
                 "Old World Flycatcher"
             ],
             "family": "Old World Flycatchers",
@@ -4205,11 +4337,11 @@
             "name": "Himalayan Griffon",
             "tags": [
                 "Griffon",
-                "Vulture",
+                "Griffon Vulture",
+                "Himalayan Griffon Vulture",
                 "Raptor",
                 "Scavenger",
-                "Himalayan Griffon Vulture",
-                "Griffon Vulture"
+                "Vulture"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "himgri1",
@@ -4219,9 +4351,9 @@
             "key": "himalayan-monal",
             "name": "Himalayan Monal",
             "tags": [
+                "Fowl",
                 "Monal",
-                "Pheasant",
-                "Fowl"
+                "Pheasant"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "himmon1",
@@ -4308,8 +4440,8 @@
             "key": "hodgsons-treecreeper",
             "name": "Hodgson's Treecreeper",
             "tags": [
-                "Treecreeper",
-                "Creeper"
+                "Creeper",
+                "Treecreeper"
             ],
             "family": "Treecreepers",
             "ebird_code": "eurtre3",
@@ -4339,8 +4471,8 @@
             "key": "house-sparrow",
             "name": "House Sparrow",
             "tags": [
-                "Sparrow",
-                "Passerine"
+                "Passerine",
+                "Sparrow"
             ],
             "family": "Old World Sparrows",
             "ebird_code": "houspa",
@@ -4362,10 +4494,10 @@
             "tags": [
                 "Boobook",
                 "Hawk-owl",
-                "Owl",
-                "Raptor",
                 "Hume's Hawk-owl",
-                "Nocturnal"
+                "Nocturnal",
+                "Owl",
+                "Raptor"
             ],
             "family": "Owls",
             "ebird_code": "brnhao3",
@@ -4383,11 +4515,12 @@
         },
         "humes-leaf-warbler": {
             "key": "humes-leaf-warbler",
-            "name": "Hume's Warbler",
+            "name": "Hume's Leaf Warbler",
             "tags": [
-                "Warbler",
+                "Hume's Leaf Warbler",
+                "Hume's Warbler",
                 "Leaf Warbler",
-                "Hume's Leaf Warbler"
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "humwar1",
@@ -4406,13 +4539,14 @@
         },
         "immaculate-cupwing": {
             "key": "immaculate-cupwing",
-            "name": "Immaculate Cupwing",
+            "name": "Nepal Cupwing",
             "tags": [
-                "Wren",
                 "Cupwing",
+                "Immaculate Cupwing",
                 "Nepal Cupwing",
-                "Wren-Babbler",
-                "Nepal Wren-Babbler"
+                "Nepal Wren-Babbler",
+                "Wren",
+                "Wren-Babbler"
             ],
             "family": "Cupwings",
             "ebird_code": "immwrb1",
@@ -4420,11 +4554,14 @@
         },
         "imperial-eagle": {
             "key": "imperial-eagle",
-            "name": "Imperial Eagle",
+            "name": "Eastern Imperial Eagle",
             "tags": [
                 "Bird of Prey",
                 "Eagle",
-                "Raptor"
+                "Imperial Eagle",
+                "Pelagic",
+                "Raptor",
+                "Seabird"
             ],
             "family": "Hawks, Eagles, and Kites",
             "ebird_code": "impeag1",
@@ -4445,9 +4582,9 @@
             "key": "indian-bush-lark",
             "name": "Indian Bushlark",
             "tags": [
-                "Lark",
                 "Bush-Lark",
-                "Bushlark"
+                "Bushlark",
+                "Lark"
             ],
             "family": "Larks",
             "latin_name": "plocealauda erythroptera",
@@ -4479,8 +4616,8 @@
             "key": "indian-grey-hornbill",
             "name": "Indian Gray Hornbill",
             "tags": [
-                "Hornbill",
-                "Gray Hornbill"
+                "Gray Hornbill",
+                "Hornbill"
             ],
             "family": "Hornbills",
             "ebird_code": "inghor2",
@@ -4504,8 +4641,8 @@
             "name": "Indian Paradise-Flycatcher",
             "tags": [
                 "Flycatcher",
-                "Paradise Flycatcher",
-                "Monarch Flycatcher"
+                "Monarch Flycatcher",
+                "Paradise Flycatcher"
             ],
             "family": "Monarch Flycatchers",
             "ebird_code": "aspfly1",
@@ -4515,11 +4652,11 @@
             "key": "indian-peafowl",
             "name": "Indian Peafowl",
             "tags": [
+                "Bird of Prey",
+                "Nocturnal",
                 "Peacock",
                 "Peafowl",
-                "Raptor",
-                "Bird of Prey",
-                "Nocturnal"
+                "Raptor"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "compea",
@@ -4539,9 +4676,9 @@
             "key": "indian-robin",
             "name": "Indian Robin",
             "tags": [
-                "Robin",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Old World Flycatcher",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "indrob1",
@@ -4561,8 +4698,8 @@
             "key": "indian-scimitar-babbler",
             "name": "Indian Scimitar-Babbler",
             "tags": [
-                "Scimitar-babbler",
-                "Babbler"
+                "Babbler",
+                "Scimitar-babbler"
             ],
             "family": "Tree-Babblers, Scimitar-Babblers, and Allies",
             "ebird_code": "insbab1",
@@ -4586,9 +4723,9 @@
             "key": "indian-silverbill",
             "name": "Indian Silverbill",
             "tags": [
-                "Silverbill",
                 "Finch",
-                "Silver Bill"
+                "Silver Bill",
+                "Silverbill"
             ],
             "family": "Waxbills and Allies",
             "ebird_code": "indsil",
@@ -4669,8 +4806,8 @@
             "key": "indian-white-eye",
             "name": "Indian White-eye",
             "tags": [
-                "White-eye",
-                "Oriental White-eye"
+                "Oriental White-eye",
+                "White-eye"
             ],
             "family": "White-eyes, Yuhinas, and Allies",
             "ebird_code": "indwhe1",
@@ -4680,8 +4817,8 @@
             "key": "indochinese-roller",
             "name": "Indochinese Roller",
             "tags": [
-                "Roller",
-                "Indian Roller"
+                "Indian Roller",
+                "Roller"
             ],
             "family": "Rollers",
             "ebird_code": "indrol3",
@@ -4718,6 +4855,16 @@
             "ebird_code": "isawhe1",
             "latin_name": "oenanthe isabellina"
         },
+        "jackdaw": {
+            "key": "jackdaw",
+            "name": "Eurasian Jackdaw",
+            "tags": [
+                "Jackdaw"
+            ],
+            "family": "Crows, Jays, and Magpies",
+            "latin_name": "coloeus monedula",
+            "ebird_code": "eurjac"
+        },
         "jacobin-cuckoo": {
             "key": "jacobin-cuckoo",
             "name": "Pied Cuckoo",
@@ -4728,6 +4875,19 @@
             "family": "Cuckoos",
             "ebird_code": "piecuc1",
             "latin_name": "clamator jacobinus"
+        },
+        "jerdon-bushlark": {
+            "key": "jerdon-bushlark",
+            "name": "Jerdon's Bushlark",
+            "tags": [
+                "Bish Lark",
+                "Bushlark",
+                "Jerdon Bushlark",
+                "Lark"
+            ],
+            "family": "Larks",
+            "latin_name": "plocealauda affinis",
+            "ebird_code": "jerbus2"
         },
         "jerdons-baza": {
             "key": "jerdons-baza",
@@ -4806,12 +4966,42 @@
             "key": "kalij-pheasant",
             "name": "Kalij Pheasant",
             "tags": [
-                "Pheasant",
-                "Fowl"
+                "Fowl",
+                "Pheasant"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "kalphe",
             "latin_name": "lophura leucomelanos"
+        },
+        "kashmir-flycatcher": {
+            "key": "kashmir-flycatcher",
+            "name": "Kashmir Flycatcher",
+            "tags": [
+                "Flycatcher"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "ficedula subrubra",
+            "ebird_code": "kasfly1"
+        },
+        "kashmir-nutcracker": {
+            "key": "kashmir-nutcracker",
+            "name": "Kashmir Nutcracker",
+            "tags": [
+                "Nutcracker"
+            ],
+            "family": "Crows, Jays, and Magpies",
+            "latin_name": "nucifraga multipunctata",
+            "ebird_code": "sponut1"
+        },
+        "kashmir-nuthatch": {
+            "key": "kashmir-nuthatch",
+            "name": "Kashmir Nuthatch",
+            "tags": [
+                "Nuthatch"
+            ],
+            "family": "Nuthatches",
+            "latin_name": "sitta cashmirensis",
+            "ebird_code": "kasnut1"
         },
         "kentish-plover": {
             "key": "kentish-plover",
@@ -4847,9 +5037,9 @@
             "key": "koklass-pheasant",
             "name": "Koklass Pheasant",
             "tags": [
-                "Pheasant",
+                "Fowl",
                 "Koklass",
-                "Fowl"
+                "Pheasant"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "kokphe1",
@@ -4884,8 +5074,8 @@
             "tags": [
                 "Cuckoo-shrike",
                 "Cuckooshrike",
-                "Large Cuckooshrike",
-                "Large Cuckoo-shrike"
+                "Large Cuckoo-shrike",
+                "Large Cuckooshrike"
             ],
             "family": "Cuckooshrikes",
             "latin_name": "coracina macei",
@@ -4919,10 +5109,10 @@
             "key": "large-niltava",
             "name": "Large Niltava",
             "tags": [
-                "Niltava",
-                "Robin",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Niltava",
+                "Old World Flycatcher",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "larnil1",
@@ -4939,12 +5129,23 @@
             "ebird_code": "laudov1",
             "latin_name": "spilopelia senegalensis"
         },
+        "layard-parakeet": {
+            "key": "layard-parakeet",
+            "name": "Layard's Parakeet",
+            "tags": [
+                "Parakeet",
+                "Parrot"
+            ],
+            "family": "Old World Parrots",
+            "latin_name": "psittacula calthrapae",
+            "ebird_code": "laypar1"
+        },
         "lemon-rumped-warbler": {
             "key": "lemon-rumped-warbler",
             "name": "Lemon-rumped Warbler",
             "tags": [
-                "Warbler",
-                "Leaf Warbler"
+                "Leaf Warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "parwar1",
@@ -4954,10 +5155,10 @@
             "key": "lesser-adjutant",
             "name": "Lesser Adjutant",
             "tags": [
-                "Stork",
                 "Adjutant",
-                "Lesser Adjutant Stork",
                 "Adjutant Stork",
+                "Lesser Adjutant Stork",
+                "Stork",
                 "Wader",
                 "Wading Bird"
             ],
@@ -5027,8 +5228,8 @@
             "key": "lesser-florican",
             "name": "Lesser Florican",
             "tags": [
-                "Florican",
-                "Bustard"
+                "Bustard",
+                "Florican"
             ],
             "family": "Bustards",
             "latin_name": "sypheotides indicus",
@@ -5080,8 +5281,8 @@
             "key": "lesser-yellownape",
             "name": "Lesser Yellownape",
             "tags": [
-                "Yellownape",
-                "Woodpecker"
+                "Woodpecker",
+                "Yellownape"
             ],
             "family": "Woodpeckers",
             "ebird_code": "lesyel1",
@@ -5105,7 +5306,7 @@
             ],
             "family": "Old World Buntings",
             "ebird_code": "litbun",
-            "latin_name": "emberiza pusilla"
+            "latin_name": "schoeniclus pusillus"
         },
         "little-cormorant": {
             "key": "little-cormorant",
@@ -5205,8 +5406,8 @@
             "key": "little-swift",
             "name": "Little Swift",
             "tags": [
-                "Swift",
-                "Indian House Swift"
+                "Indian House Swift",
+                "Swift"
             ],
             "family": "Swifts",
             "ebird_code": "litswi1",
@@ -5270,8 +5471,8 @@
             "key": "long-tailed-minivet",
             "name": "Long-tailed Minivet",
             "tags": [
-                "Minivet",
-                "Cuckoo-shrike"
+                "Cuckoo-shrike",
+                "Minivet"
             ],
             "family": "Cuckooshrikes",
             "ebird_code": "lotmin1",
@@ -5303,9 +5504,9 @@
             "name": "Long-toed Stint",
             "tags": [
                 "Stint",
-                "Water Bird",
+                "Wader",
                 "Wading Bird",
-                "Wader"
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "lotsti",
@@ -5396,9 +5597,9 @@
             "key": "malabar-whistling-thrush",
             "name": "Malabar Whistling-Thrush",
             "tags": [
-                "Whistling Thrush",
+                "Flycatcher",
                 "Old World Flycatcher",
-                "Flycatcher"
+                "Whistling Thrush"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "mawthr1",
@@ -5408,8 +5609,8 @@
             "key": "malabar-woodshrike",
             "name": "Malabar Woodshrike",
             "tags": [
-                "Woodshrike",
-                "Shrike"
+                "Shrike",
+                "Woodshrike"
             ],
             "family": "Vangas, Helmetshrikes, and Allies",
             "ebird_code": "malwoo1",
@@ -5546,8 +5747,8 @@
             "name": "Mountain Chiffchaff",
             "tags": [
                 "Chiffchaff",
-                "Warbler",
-                "Leaf Warbler"
+                "Leaf Warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "mouchi2",
@@ -5572,8 +5773,8 @@
             "key": "mountain-imperial-pigeon",
             "name": "Mountain Imperial-Pigeon",
             "tags": [
-                "Pigeon",
-                "Dove"
+                "Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "moipig1",
@@ -5628,8 +5829,8 @@
             "key": "nepal-fulvetta",
             "name": "Nepal Fulvetta",
             "tags": [
-                "Fulvetta",
-                "Alcippe Fulvetta"
+                "Alcippe Fulvetta",
+                "Fulvetta"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "nepful1",
@@ -5637,8 +5838,9 @@
         },
         "nicobar-hooded-pitta": {
             "key": "nicobar-hooded-pitta",
-            "name": "Nicobar Hooded-Pitta",
+            "name": "Nicobar Hooded Pitta",
             "tags": [
+                "Nicobar Hooded-Pitta",
                 "Pitta"
             ],
             "family": "Pittas",
@@ -5647,10 +5849,11 @@
         },
         "nicobar-imperial-pigeon": {
             "key": "nicobar-imperial-pigeon",
-            "name": "Nicobar Imperial Pigeon",
+            "name": "Nicobar Imperial-Pigeon",
             "tags": [
                 "Dove",
                 "Imperial Pigeon",
+                "Nicobar Imperial Pigeon",
                 "Pigeon"
             ],
             "family": "Pigeons and Doves",
@@ -5673,8 +5876,8 @@
             "name": "Nicobar Megapode",
             "tags": [
                 "Megapode",
-                "Scrubfowl",
-                "Nicobar Scrubfowl"
+                "Nicobar Scrubfowl",
+                "Scrubfowl"
             ],
             "family": "Megapodes",
             "latin_name": "megapodius nicobariensis",
@@ -5716,10 +5919,11 @@
         },
         "nicobar-serpent-eagle": {
             "key": "nicobar-serpent-eagle",
-            "name": "Nicobar Serpent Eagle",
+            "name": "Nicobar Serpent-Eagle",
             "tags": [
                 "Bird of Prey",
                 "Eagle",
+                "Nicobar Serpent Eagle",
                 "Raptor"
             ],
             "family": "Hawks, Eagles, and Kites",
@@ -5760,9 +5964,9 @@
             "key": "nilgiri-wood-pigeon",
             "name": "Nilgiri Wood-Pigeon",
             "tags": [
-                "Wood-Pigeon",
+                "Dove",
                 "Pigeon",
-                "Dove"
+                "Wood-Pigeon"
             ],
             "family": "Pigeons and Doves",
             "latin_name": "columba elphinstonii",
@@ -5804,8 +6008,8 @@
             "key": "northern-pintail",
             "name": "Northern Pintail",
             "tags": [
-                "Pintail",
                 "Duck",
+                "Pintail",
                 "Wader",
                 "Wading Bird"
             ],
@@ -5817,8 +6021,8 @@
             "key": "northern-shoveler",
             "name": "Northern Shoveler",
             "tags": [
-                "Shoveler",
                 "Duck",
+                "Shoveler",
                 "Wader",
                 "Wading Bird"
             ],
@@ -5850,8 +6054,8 @@
             "key": "olive-backed-sunbird",
             "name": "Ornate Sunbird",
             "tags": [
-                "Sunbird",
-                "Olive-backed Sunbird"
+                "Olive-backed Sunbird",
+                "Sunbird"
             ],
             "family": "Sunbirds and Spiderhunters",
             "ebird_code": "olbsun4",
@@ -5867,6 +6071,17 @@
             "ebird_code": "orblea1",
             "latin_name": "chloropsis hardwickii"
         },
+        "orange-billed-babbler": {
+            "key": "orange-billed-babbler",
+            "name": "Orange-billed Babbler",
+            "tags": [
+                "Babbler",
+                "Laughingthrush"
+            ],
+            "family": "Laughingthrushes and Allies",
+            "latin_name": "argya rufescens",
+            "ebird_code": "orbbab1"
+        },
         "orange-headed-thrush": {
             "key": "orange-headed-thrush",
             "name": "Orange-headed Thrush",
@@ -5881,8 +6096,8 @@
             "key": "orange-minivet",
             "name": "Orange Minivet",
             "tags": [
-                "Minivet",
-                "Cuckoo-shrike"
+                "Cuckoo-shrike",
+                "Minivet"
             ],
             "family": "Cuckooshrikes",
             "ebird_code": "scamin3",
@@ -5908,8 +6123,8 @@
             "key": "oriental-cuckooshrike",
             "name": "Oriental Cuckooshrike",
             "tags": [
-                "Cuckooshrike",
                 "Cuckoo-shrike",
+                "Cuckooshrike",
                 "Large Cuckooshrike",
                 "Oriental Cuckoo-shrike"
             ],
@@ -5921,9 +6136,9 @@
             "key": "oriental-darter",
             "name": "Oriental Darter",
             "tags": [
+                "Cormorant",
                 "Darter",
                 "Snake Bird",
-                "Cormorant",
                 "Wader",
                 "Wading Bird"
             ],
@@ -5933,22 +6148,36 @@
         },
         "oriental-dollarbird": {
             "key": "oriental-dollarbird",
-            "name": "Dollarbird",
+            "name": "Oriental Dollarbird",
             "tags": [
+                "Dollarbird",
                 "Oriental Dollarbird"
             ],
             "family": "Rollers",
             "ebird_code": "dollar1",
             "latin_name": "eurystomus orientalis"
         },
+        "oriental-hobby": {
+            "key": "oriental-hobby",
+            "name": "Oriental Hobby",
+            "tags": [
+                "Accipiter",
+                "Bird of Prey",
+                "Hobby",
+                "Raptor"
+            ],
+            "family": "Falcons and Caracaras",
+            "latin_name": "falco severus",
+            "ebird_code": "orihob1"
+        },
         "oriental-magpie-robin": {
             "key": "oriental-magpie-robin",
             "name": "Oriental Magpie-Robin",
             "tags": [
-                "Robin",
                 "Flycatcher",
                 "Magpie Robin",
-                "Old World Flycatcher"
+                "Old World Flycatcher",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "magrob",
@@ -6002,8 +6231,8 @@
             "key": "oriental-skylark",
             "name": "Oriental Skylark",
             "tags": [
-                "Skylark",
-                "Lark"
+                "Lark",
+                "Skylark"
             ],
             "family": "Larks",
             "ebird_code": "orisky1",
@@ -6136,9 +6365,9 @@
             "key": "pale-martin",
             "name": "Pale Martin",
             "tags": [
-                "Sand Martin",
                 "Martin",
-                "Pale Sand Martin"
+                "Pale Sand Martin",
+                "Sand Martin"
             ],
             "family": "Swallows",
             "latin_name": "riparia diluta",
@@ -6201,9 +6430,9 @@
             "key": "persian-wheatear",
             "name": "Persian Wheatear",
             "tags": [
-                "Wheatear",
                 "Red-tailed Wheatear",
-                "Rusty-tailed Wheatear"
+                "Rusty-tailed Wheatear",
+                "Wheatear"
             ],
             "family": "Old World Flycatchers",
             "latin_name": "oenanthe chrysopygia",
@@ -6272,11 +6501,11 @@
             "key": "pied-myna",
             "name": "Indian Pied Starling",
             "tags": [
-                "Myna",
-                "Starling",
-                "Pied Starling",
                 "Asian Pied Starling",
-                "Pied Myna"
+                "Myna",
+                "Pied Myna",
+                "Pied Starling",
+                "Starling"
             ],
             "family": "Starlings",
             "latin_name": "gracupica contra",
@@ -6286,8 +6515,8 @@
             "key": "pied-triller",
             "name": "Pied Triller",
             "tags": [
-                "Triller",
-                "Cuckooshrike"
+                "Cuckooshrike",
+                "Triller"
             ],
             "family": "Cuckooshrikes",
             "latin_name": "lalage nigra",
@@ -6310,9 +6539,9 @@
             "name": "Pin-tailed Snipe",
             "tags": [
                 "Snipe",
-                "Water Bird",
+                "Wader",
                 "Wading Bird",
-                "Wader"
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "pitsni",
@@ -6322,9 +6551,9 @@
             "key": "pink-browed-rosefinch",
             "name": "Pink-browed Rosefinch",
             "tags": [
-                "Rosefinch",
                 "Finch",
-                "Rose Finch"
+                "Rose Finch",
+                "Rosefinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "pibros2",
@@ -6379,8 +6608,8 @@
             "key": "plumbeous-water-redstart",
             "name": "Plumbeous Redstart",
             "tags": [
-                "Redstart",
-                "Plumbeous Water Redstart"
+                "Plumbeous Water Redstart",
+                "Redstart"
             ],
             "family": "Old World Flycatchers",
             "latin_name": "phoenicurus fuliginosus",
@@ -6477,21 +6706,31 @@
             "name": "Red Avadavat",
             "tags": [
                 "Avadavat",
-                "Munia",
                 "Finch",
-                "Strawberry Finch",
-                "Red Munia"
+                "Munia",
+                "Red Munia",
+                "Strawberry Finch"
             ],
             "family": "Waxbills and Allies",
             "ebird_code": "redava",
             "latin_name": "amandava amandava"
         },
+        "red-backed-flameback": {
+            "key": "red-backed-flameback",
+            "name": "Red-backed Flameback",
+            "tags": [
+                "Flameback"
+            ],
+            "family": "Woodpeckers",
+            "latin_name": "dinopium psarodes",
+            "ebird_code": "bkrfla2"
+        },
         "red-billed-blue-magpie": {
             "key": "red-billed-blue-magpie",
             "name": "Red-billed Blue-Magpie",
             "tags": [
-                "Magpie",
-                "Blue Magpie"
+                "Blue Magpie",
+                "Magpie"
             ],
             "family": "Crows, Jays, and Magpies",
             "ebird_code": "rbbmag",
@@ -6512,8 +6751,8 @@
             "key": "red-billed-leiothrix",
             "name": "Red-billed Leiothrix",
             "tags": [
-                "Leiothrix",
-                "Laughingthrush"
+                "Laughingthrush",
+                "Leiothrix"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "reblei",
@@ -6558,8 +6797,8 @@
             "key": "red-crested-pochard",
             "name": "Red-crested Pochard",
             "tags": [
-                "Pochard",
                 "Duck",
+                "Pochard",
                 "Wader",
                 "Wading Bird"
             ],
@@ -6567,13 +6806,23 @@
             "ebird_code": "recpoc",
             "latin_name": "netta rufina"
         },
+        "red-faced-malkoha": {
+            "key": "red-faced-malkoha",
+            "name": "Red-faced Malkoha",
+            "tags": [
+                "Malkoha"
+            ],
+            "family": "Cuckoos",
+            "latin_name": "phaenicophaeus pyrrhocephalus",
+            "ebird_code": "refmal1"
+        },
         "red-headed-bullfinch": {
             "key": "red-headed-bullfinch",
             "name": "Red-headed Bullfinch",
             "tags": [
-                "Finch",
+                "Bull Finch",
                 "Bullfinch",
-                "Bull Finch"
+                "Finch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "rehbul1",
@@ -6587,7 +6836,7 @@
             ],
             "family": "Old World Buntings",
             "ebird_code": "rehbun1",
-            "latin_name": "emberiza bruniceps"
+            "latin_name": "melophus bruniceps"
         },
         "red-headed-trogon": {
             "key": "red-headed-trogon",
@@ -6616,12 +6865,12 @@
             "key": "red-junglefowl",
             "name": "Red Junglefowl",
             "tags": [
-                "Junglefowl",
-                "Fowl",
-                "Chicken",
-                "Raptor",
                 "Bird of Prey",
-                "Nocturnal"
+                "Chicken",
+                "Fowl",
+                "Junglefowl",
+                "Nocturnal",
+                "Raptor"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "redjun",
@@ -6676,11 +6925,11 @@
             "key": "red-rumped-swallow",
             "name": "Red-rumped Swallow",
             "tags": [
-                "Swallow",
-                "European/African/Eastern Red-rumped Swallow",
                 "African Red-rumped Swallow",
+                "Eastern Red-rumped Swallow",
                 "European Red-rumped Swallow",
-                "Eastern Red-rumped Swallow"
+                "European/African/Eastern Red-rumped Swallow",
+                "Swallow"
             ],
             "family": "Swallows & Martins",
             "latin_name": "cecropis rufula/melanocrissus/daurica",
@@ -6690,11 +6939,11 @@
             "key": "red-spurfowl",
             "name": "Red Spurfowl",
             "tags": [
-                "Spurfowl",
-                "Fowl",
-                "Raptor",
                 "Bird of Prey",
-                "Nocturnal"
+                "Fowl",
+                "Nocturnal",
+                "Raptor",
+                "Spurfowl"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "redspu1",
@@ -6704,8 +6953,8 @@
             "key": "red-tailed-minla",
             "name": "Red-tailed Minla",
             "tags": [
-                "Minla",
-                "Laughingthrush"
+                "Laughingthrush",
+                "Minla"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "retmin1",
@@ -6816,8 +7065,8 @@
             "key": "rock-bush-quail",
             "name": "Rock Bush-Quail",
             "tags": [
-                "Quail",
-                "Bush-Quail"
+                "Bush-Quail",
+                "Quail"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "robqua1",
@@ -6844,11 +7093,11 @@
             "name": "Rock Pigeon",
             "tags": [
                 "Blue Rock Pigeon",
-                "Pigeon",
+                "Domestic Pigeon",
                 "Dove",
                 "Feral Pigeon",
-                "Rock Dove",
-                "Domestic Pigeon"
+                "Pigeon",
+                "Rock Dove"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "rocpig",
@@ -6865,12 +7114,23 @@
             "ebird_code": "rorpar",
             "latin_name": "psittacula krameri"
         },
+        "rosy-pipit": {
+            "key": "rosy-pipit",
+            "name": "Rosy Pipit",
+            "tags": [
+                "Rosy pipit",
+                "pipit"
+            ],
+            "family": "Wagtails and Pipits",
+            "latin_name": "anthus roseatus",
+            "ebird_code": "rospip1"
+        },
         "rosy-starling": {
             "key": "rosy-starling",
             "name": "Rosy Starling",
             "tags": [
-                "Starling",
-                "Myna"
+                "Myna",
+                "Starling"
             ],
             "family": "Starlings",
             "ebird_code": "rossta2",
@@ -6946,6 +7206,16 @@
             "ebird_code": "rufbab3",
             "latin_name": "argya subrufa"
         },
+        "rufous-backed-redstart": {
+            "key": "rufous-backed-redstart",
+            "name": "Rufous-backed Redstart",
+            "tags": [
+                "Redstart"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "phoenicurus erythronotus",
+            "ebird_code": "rubred2"
+        },
         "rufous-bellied-eagle": {
             "key": "rufous-bellied-eagle",
             "name": "Rufous-bellied Eagle",
@@ -6962,10 +7232,10 @@
             "key": "rufous-bellied-niltava",
             "name": "Rufous-bellied Niltava",
             "tags": [
-                "Niltava",
-                "Robin",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Niltava",
+                "Old World Flycatcher",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "rubnil1",
@@ -7031,6 +7301,16 @@
             "family": "Old World Flycatchers",
             "ebird_code": "rugfly1",
             "latin_name": "ficedula strophiata"
+        },
+        "rufous-naped-tit": {
+            "key": "rufous-naped-tit",
+            "name": "Rufous-naped Tit",
+            "tags": [
+                "Tit"
+            ],
+            "family": "Tits, Chickadees, and Titmice",
+            "latin_name": "periparus rufonuchalis",
+            "ebird_code": "bkbtit2"
         },
         "rufous-necked-hornbill": {
             "key": "rufous-necked-hornbill",
@@ -7126,8 +7406,8 @@
             "key": "rufous-winged-fulvetta",
             "name": "Rufous-winged Fulvetta",
             "tags": [
-                "Fulvetta",
-                "Babbler"
+                "Babbler",
+                "Fulvetta"
             ],
             "family": "Ground Babblers and Allies",
             "ebird_code": "ruwful1",
@@ -7147,8 +7427,8 @@
             "key": "russet-sparrow",
             "name": "Russet Sparrow",
             "tags": [
-                "Sparrow",
-                "Passerine"
+                "Passerine",
+                "Sparrow"
             ],
             "family": "Old World Sparrows",
             "ebird_code": "russpa2",
@@ -7158,8 +7438,8 @@
             "key": "rusty-cheeked-scimitar-babbler",
             "name": "Rusty-cheeked Scimitar-Babbler",
             "tags": [
-                "Scimitar-babbler",
-                "Babbler"
+                "Babbler",
+                "Scimitar-babbler"
             ],
             "family": "Tree-Babblers, Scimitar-Babblers, and Allies",
             "ebird_code": "rcsbab1",
@@ -7257,9 +7537,9 @@
             "key": "scaly-breasted-cupwing",
             "name": "Scaly-breasted Cupwing",
             "tags": [
-                "Wren",
                 "Cupwing",
                 "Scaly-breasted Wren-Babbler",
+                "Wren",
                 "Wren-Babbler"
             ],
             "family": "Cupwings",
@@ -7270,8 +7550,8 @@
             "key": "scaly-breasted-munia",
             "name": "Scaly-breasted Munia",
             "tags": [
-                "Munia",
                 "Finch",
+                "Munia",
                 "Spotted Munia"
             ],
             "family": "Waxbills and Allies",
@@ -7302,12 +7582,26 @@
             "key": "scarlet-minivet",
             "name": "Scarlet Minivet",
             "tags": [
-                "Minivet",
-                "Cuckoo-shrike"
+                "Cuckoo-shrike",
+                "Minivet"
             ],
             "family": "Cuckooshrikes",
             "ebird_code": "scamin1",
             "latin_name": "pericrocotus speciosus"
+        },
+        "serendib-scops-owl": {
+            "key": "serendib-scops-owl",
+            "name": "Serendib Scops Owl",
+            "tags": [
+                "Bird of Prey",
+                "Nocturnal",
+                "Owl",
+                "Raptor",
+                "Scops Owl"
+            ],
+            "family": "Owls",
+            "latin_name": "otus thilohoffmanni",
+            "ebird_code": "sersco1"
         },
         "shikra": {
             "key": "shikra",
@@ -7362,10 +7656,10 @@
             "key": "siberian-stonechat",
             "name": "Siberian Stonechat",
             "tags": [
-                "Stonechat",
                 "Chat",
+                "Common Stonechat",
                 "Flycatcher",
-                "Common Stonechat"
+                "Stonechat"
             ],
             "family": "Old World Flycatchers",
             "latin_name": "saxicola maurus",
@@ -7375,8 +7669,8 @@
             "key": "sikkim-treecreeper",
             "name": "Sikkim Treecreeper",
             "tags": [
-                "Treecreeper",
-                "Creeper"
+                "Creeper",
+                "Treecreeper"
             ],
             "family": "Treecreepers",
             "ebird_code": "bnttre1",
@@ -7386,8 +7680,8 @@
             "key": "silver-eared-mesia",
             "name": "Silver-eared Mesia",
             "tags": [
-                "Mesia",
-                "Leiothrix"
+                "Leiothrix",
+                "Mesia"
             ],
             "family": "Laughingthrushes and Allies",
             "ebird_code": "siemes1",
@@ -7397,9 +7691,9 @@
             "key": "singing-bushlark",
             "name": "Singing Bushlark",
             "tags": [
-                "Lark",
+                "Bush-lark",
                 "Bushlark",
-                "Bush-lark"
+                "Lark"
             ],
             "family": "Larks",
             "latin_name": "mirafra javanica"
@@ -7492,10 +7786,10 @@
             "key": "small-niltava",
             "name": "Small Niltava",
             "tags": [
-                "Niltava",
-                "Robin",
                 "Flycatcher",
-                "Old World Flycatcher"
+                "Niltava",
+                "Old World Flycatcher",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "smanil1",
@@ -7527,8 +7821,8 @@
             "key": "southern-hill-myna",
             "name": "Southern Hill Myna",
             "tags": [
-                "Myna",
                 "Hill Myna",
+                "Myna",
                 "Starling"
             ],
             "family": "Starlings",
@@ -7568,12 +7862,26 @@
             "ebird_code": "eurspo1",
             "latin_name": "platalea leucorodia"
         },
+        "spot-bellied-eagle-owl": {
+            "key": "spot-bellied-eagle-owl",
+            "name": "Spot-bellied Eagle-Owl",
+            "tags": [
+                "Bird of Prey",
+                "Eagle-Owl",
+                "Nocturnal",
+                "Owl",
+                "Raptor"
+            ],
+            "family": "Owls",
+            "latin_name": "ketupa nipalensis",
+            "ebird_code": "sbeowl1"
+        },
         "spot-billed-pelican": {
             "key": "spot-billed-pelican",
             "name": "Spot-billed Pelican",
             "tags": [
-                "Pelican",
                 "Gray Pelican",
+                "Pelican",
                 "Wader",
                 "Wading Bird"
             ],
@@ -7600,6 +7908,16 @@
             "family": "Starlings",
             "ebird_code": "spwsta1",
             "latin_name": "saroglossa spilopterus"
+        },
+        "spot-winged-thrush": {
+            "key": "spot-winged-thrush",
+            "name": "Spot-winged Thrush",
+            "tags": [
+                "Thrush"
+            ],
+            "family": "Thrushes and Allies",
+            "latin_name": "geokichla spiloptera",
+            "ebird_code": "spwthr1"
         },
         "spotted-crake": {
             "key": "spotted-crake",
@@ -7681,8 +7999,8 @@
             "key": "square-tailed-bulbul",
             "name": "Square-tailed Bulbul",
             "tags": [
-                "Bulbul",
-                "Black Bulbul"
+                "Black Bulbul",
+                "Bulbul"
             ],
             "family": "Bulbuls",
             "latin_name": "hypsipetes ganeesa",
@@ -7698,6 +8016,117 @@
             "family": "Cuckoos",
             "ebird_code": "asidrc3",
             "latin_name": "surniculus lugubris"
+        },
+        "sri-lanka-drongo": {
+            "key": "sri-lanka-drongo",
+            "name": "Sri Lanka Drongo",
+            "tags": [
+                "Drongo"
+            ],
+            "family": "Drongos",
+            "latin_name": "dicrurus lophorinus",
+            "ebird_code": "srldro1"
+        },
+        "sri-lanka-gray-hornbill": {
+            "key": "sri-lanka-gray-hornbill",
+            "name": "Sri Lanka Gray Hornbill",
+            "tags": [
+                "Gray Hornbill",
+                "Hornbill",
+                "Sri Lankan Gray Hornbill"
+            ],
+            "family": "Hornbills",
+            "latin_name": "ocyceros gingalensis",
+            "ebird_code": "ceghor1"
+        },
+        "sri-lanka-green-pigeon": {
+            "key": "sri-lanka-green-pigeon",
+            "name": "Sri Lanka Green Pigeon",
+            "tags": [
+                "Dove",
+                "Green Pigeon",
+                "Pigeon"
+            ],
+            "family": "Pigeons and Doves",
+            "latin_name": "treron pompadora",
+            "ebird_code": "pogpig1"
+        },
+        "sri-lanka-hanging-parrot": {
+            "key": "sri-lanka-hanging-parrot",
+            "name": "Sri Lanka Hanging Parrot",
+            "tags": [
+                "Parrot",
+                "Sri Lankan Hanging Parrot"
+            ],
+            "family": "Old World Parrots",
+            "latin_name": "loriculus beryllinus",
+            "ebird_code": "cehpar1"
+        },
+        "sri-lanka-junglefowl": {
+            "key": "sri-lanka-junglefowl",
+            "name": "Sri Lanka Junglefowl",
+            "tags": [
+                "Fowl",
+                "Junglefowl",
+                "Pheasant",
+                "Sri Lankan Junglefowl"
+            ],
+            "family": "Pheasants, Grouse, and Allies",
+            "latin_name": "gallus lafayettii",
+            "ebird_code": "ceyjun1"
+        },
+        "sri-lanka-myna": {
+            "key": "sri-lanka-myna",
+            "name": "Sri Lanka Myna",
+            "tags": [
+                "Myna",
+                "Starling"
+            ],
+            "family": "Starlings",
+            "latin_name": "gracula ptilogenys",
+            "ebird_code": "ceymyn1"
+        },
+        "sri-lanka-shama": {
+            "key": "sri-lanka-shama",
+            "name": "Sri Lanka Shama",
+            "tags": [
+                "Shama"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "copsychus leggei",
+            "ebird_code": "whrsha5"
+        },
+        "sri-lanka-spurfowl": {
+            "key": "sri-lanka-spurfowl",
+            "name": "Sri Lanka Spurfowl",
+            "tags": [
+                "Fowl",
+                "Spurfowl",
+                "Sri Lankan Spurfowl"
+            ],
+            "family": "Pheasants, Grouse, and Allies",
+            "latin_name": "galloperdix bicalcarata",
+            "ebird_code": "ceyspu1"
+        },
+        "sri-lanka-swallow": {
+            "key": "sri-lanka-swallow",
+            "name": "Sri Lanka Swallow",
+            "tags": [
+                "Swallow"
+            ],
+            "family": "Swallows",
+            "latin_name": "cecropis hyperythra",
+            "ebird_code": "srlswa1"
+        },
+        "sri-lanka-woodshrike": {
+            "key": "sri-lanka-woodshrike",
+            "name": "Sri Lanka Woodshrike",
+            "tags": [
+                "Woodshrike"
+            ],
+            "family": "Vangas, Helmetshrikes, and Allies",
+            "latin_name": "tephrodornis affinis",
+            "ebird_code": "srlwoo1"
         },
         "steppe-eagle": {
             "key": "steppe-eagle",
@@ -7756,9 +8185,9 @@
             "key": "streaked-rosefinch",
             "name": "Streaked Rosefinch",
             "tags": [
-                "Rosefinch",
                 "Finch",
-                "Rose Finch"
+                "Rose Finch",
+                "Rosefinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "strros1",
@@ -7809,10 +8238,10 @@
             "name": "Striated Heron",
             "tags": [
                 "Heron",
-                "Wader",
-                "Wading Bird",
+                "Little Green Heron",
                 "Little Heron",
-                "Little Green Heron"
+                "Wader",
+                "Wading Bird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "butorides striata",
@@ -7938,6 +8367,19 @@
             "ebird_code": "tawlar1",
             "latin_name": "galerida deva"
         },
+        "tawny-owl": {
+            "key": "tawny-owl",
+            "name": "Tawny Owl",
+            "tags": [
+                "Bird of Prey",
+                "Nocturnal",
+                "Owl",
+                "Raptor"
+            ],
+            "family": "Owls",
+            "latin_name": "ketupa flavipes",
+            "ebird_code": "tafowl1"
+        },
         "tawny-pipit": {
             "key": "tawny-pipit",
             "name": "Tawny Pipit",
@@ -7953,9 +8395,9 @@
             "name": "Temminck's Stint",
             "tags": [
                 "Stint",
-                "Water Bird",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Water Bird"
             ],
             "family": "Sandpipers and Allies",
             "ebird_code": "temsti",
@@ -7985,8 +8427,8 @@
             "key": "thick-billed-green-pigeon",
             "name": "Thick-billed Green-Pigeon",
             "tags": [
-                "Green-Pigeon",
                 "Dove",
+                "Green-Pigeon",
                 "Pigeon"
             ],
             "family": "Pigeons and Doves",
@@ -8015,12 +8457,13 @@
         },
         "tibetan-sand-plover": {
             "key": "tibetan-sand-plover",
-            "name": "Tibetan Sand Plover",
+            "name": "Tibetan Sand-Plover",
             "tags": [
                 "Lesser Sand Plover",
                 "Plover",
                 "Sand Plover",
                 "Shorebird",
+                "Tibetan Sand Plover",
                 "Wader",
                 "Wading Bird",
                 "Water Bird"
@@ -8044,8 +8487,8 @@
             "name": "Tibetan Snowcock",
             "tags": [
                 "Cock",
-                "Snowcock",
-                "Partridge"
+                "Partridge",
+                "Snowcock"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "ebird_code": "tibsno1",
@@ -8056,9 +8499,9 @@
             "name": "Black-winged Snowfinch",
             "tags": [
                 "Finch",
+                "Snow Finch",
                 "Snowfinch",
-                "Tibetan Snowfinch",
-                "Snow Finch"
+                "Tibetan Snowfinch"
             ],
             "family": "Old World Sparrows",
             "ebird_code": "blwsno1",
@@ -8079,8 +8522,8 @@
             "key": "tickells-leaf-warbler",
             "name": "Tickell's Leaf Warbler",
             "tags": [
-                "Warbler",
-                "Leaf Warbler"
+                "Leaf Warbler",
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "y00989",
@@ -8110,9 +8553,9 @@
             "key": "tricolor-munia",
             "name": "Tricolored Munia",
             "tags": [
-                "Munia",
-                "Finch",
                 "Black-headed Munia",
+                "Finch",
+                "Munia",
                 "Tricolor Munia"
             ],
             "family": "Waxbills and Allies",
@@ -8231,9 +8674,9 @@
             "key": "vernal-hanging-parrot",
             "name": "Vernal Hanging-Parrot",
             "tags": [
-                "Parrot",
+                "Hanging Parrot",
                 "Indian Lorikeet",
-                "Hanging Parrot"
+                "Parrot"
             ],
             "family": "Old World Parrots",
             "ebird_code": "vehpar1",
@@ -8243,9 +8686,9 @@
             "key": "vinaceous-rosefinch",
             "name": "Vinaceous Rosefinch",
             "tags": [
-                "Rosefinch",
                 "Finch",
-                "Rose Finch"
+                "Rose Finch",
+                "Rosefinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "vinros2",
@@ -8281,6 +8724,16 @@
             "latin_name": "anthus spinoletta",
             "ebird_code": "watpip1"
         },
+        "water-rail": {
+            "key": "water-rail",
+            "name": "Water Rail",
+            "tags": [
+                "Rail"
+            ],
+            "family": "Rails, Gallinules, and Coots",
+            "latin_name": "rallus aquaticus",
+            "ebird_code": "watrai1"
+        },
         "watercock": {
             "key": "watercock",
             "name": "Watercock",
@@ -8296,9 +8749,9 @@
             "key": "wedge-tailed-green-pigeon",
             "name": "Wedge-tailed Green-Pigeon",
             "tags": [
-                "Pigeon",
                 "Dove",
-                "Green Pigeon"
+                "Green Pigeon",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "wetpig1",
@@ -8308,9 +8761,9 @@
             "key": "western-crowned-warbler",
             "name": "Western Crowned Warbler",
             "tags": [
-                "Warbler",
+                "Pelagic",
                 "Seabird",
-                "Pelagic"
+                "Warbler"
             ],
             "family": "Leaf Warblers",
             "ebird_code": "weclew1",
@@ -8321,9 +8774,9 @@
             "name": "Western Reef-Heron",
             "tags": [
                 "Heron",
+                "Pelagic",
                 "Reef-Heron",
-                "Seabird",
-                "Pelagic"
+                "Seabird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "latin_name": "egretta gularis",
@@ -8333,9 +8786,9 @@
             "key": "western-tragopan",
             "name": "Western Tragopan",
             "tags": [
-                "Tragopan",
+                "Pelagic",
                 "Seabird",
-                "Pelagic"
+                "Tragopan"
             ],
             "family": "Pheasants, Grouse, and Allies",
             "latin_name": "tragopan melanocephalus",
@@ -8345,10 +8798,10 @@
             "key": "western-yellow-wagtail",
             "name": "Western Yellow Wagtail",
             "tags": [
-                "Wagtail",
-                "Yellow Wagtail",
+                "Pelagic",
                 "Seabird",
-                "Pelagic"
+                "Wagtail",
+                "Yellow Wagtail"
             ],
             "family": "Wagtails and Pipits",
             "ebird_code": "eaywag1",
@@ -8392,8 +8845,8 @@
             "key": "white-bellied-blue-flycatcher",
             "name": "White-bellied Blue Flycatcher",
             "tags": [
-                "Flycatcher",
                 "Blue Flycatcher",
+                "Flycatcher",
                 "Old World Flycatcher"
             ],
             "family": "Old World Flycatchers",
@@ -8468,9 +8921,9 @@
             "key": "white-breasted-waterhen",
             "name": "White-breasted Waterhen",
             "tags": [
-                "Waterhen",
                 "Wader",
-                "Wading Bird"
+                "Wading Bird",
+                "Waterhen"
             ],
             "family": "Rails, Gallinules, and Coots",
             "ebird_code": "whbwat1",
@@ -8500,8 +8953,8 @@
             "key": "white-browed-bush-robin",
             "name": "White-browed Bush-Robin",
             "tags": [
-                "Robin",
-                "Bush-Robin"
+                "Bush-Robin",
+                "Robin"
             ],
             "family": "Old World Flycatchers",
             "ebird_code": "wbbrob1",
@@ -8531,8 +8984,8 @@
             "key": "white-browed-scimitar-babbler",
             "name": "White-browed Scimitar-Babbler",
             "tags": [
-                "Scimitar-babbler",
-                "Babbler"
+                "Babbler",
+                "Scimitar-babbler"
             ],
             "family": "Tree-Babblers, Scimitar-Babblers, and Allies",
             "ebird_code": "wbsbab1",
@@ -8543,8 +8996,8 @@
             "name": "White-browed Tit-Warbler",
             "tags": [
                 "Tit",
-                "Warbler",
-                "Tit-Warbler"
+                "Tit-Warbler",
+                "Warbler"
             ],
             "family": "Long-tailed Tits",
             "ebird_code": "wbtwar1",
@@ -8590,6 +9043,16 @@
             "ebird_code": "whcbar1",
             "latin_name": "psilopogon viridis"
         },
+        "white-cheeked-nuthatch": {
+            "key": "white-cheeked-nuthatch",
+            "name": "White-cheeked Nuthatch",
+            "tags": [
+                "Nuthatch"
+            ],
+            "family": "Nuthatches",
+            "latin_name": "sitta leucopsis",
+            "ebird_code": "whcnut1"
+        },
         "white-collared-blackbird": {
             "key": "white-collared-blackbird",
             "name": "White-collared Blackbird",
@@ -8633,6 +9096,16 @@
             "ebird_code": "whebuz1",
             "latin_name": "butastur teesa"
         },
+        "white-faced-starling": {
+            "key": "white-faced-starling",
+            "name": "White-faced Starling",
+            "tags": [
+                "Starling"
+            ],
+            "family": "Starlings",
+            "latin_name": "sturnornis albofrontatus",
+            "ebird_code": "whfsta2"
+        },
         "white-headed-starling": {
             "key": "white-headed-starling",
             "name": "White-headed Starling",
@@ -8657,9 +9130,9 @@
             "key": "white-nest-swiftlet",
             "name": "White-nest Swiftlet",
             "tags": [
-                "Swiftlet",
                 "Edible Nest Swiftlet",
-                "Swift"
+                "Swift",
+                "Swiftlet"
             ],
             "family": "Swifts",
             "ebird_code": "y00731",
@@ -8669,8 +9142,8 @@
             "key": "white-rumped-munia",
             "name": "White-rumped Munia",
             "tags": [
-                "Munia",
-                "Finch"
+                "Finch",
+                "Munia"
             ],
             "family": "Waxbills and Allies",
             "ebird_code": "whrmun",
@@ -8708,6 +9181,17 @@
             "family": "Storks",
             "latin_name": "ciconia ciconia",
             "ebird_code": "whisto1"
+        },
+        "white-tailed-iora": {
+            "key": "white-tailed-iora",
+            "name": "White-tailed Iora",
+            "tags": [
+                "Iora",
+                "Marshall's Iora"
+            ],
+            "family": "Ioras",
+            "latin_name": "aegithina nigrolutea",
+            "ebird_code": "whtior1"
         },
         "white-tailed-lapwing": {
             "key": "white-tailed-lapwing",
@@ -8759,6 +9243,16 @@
             "family": "Fantails",
             "ebird_code": "whtfan1",
             "latin_name": "rhipidura albicollis"
+        },
+        "white-throated-flowerpecker": {
+            "key": "white-throated-flowerpecker",
+            "name": "White-throated Flowerpecker",
+            "tags": [
+                "Flowerpecker"
+            ],
+            "family": "Flowerpeckers",
+            "latin_name": "pachyglossa vincens",
+            "ebird_code": "whtflo1"
         },
         "white-throated-laughingthrush": {
             "key": "white-throated-laughingthrush",
@@ -8853,8 +9347,8 @@
             "name": "Yellow-bellied Fairy-Fantail",
             "tags": [
                 "Fairy-Fantail",
-                "Fantail",
                 "Fairy-Flycatcher",
+                "Fantail",
                 "Flycatcher"
             ],
             "family": "Fairy Flycatchers",
@@ -8885,8 +9379,8 @@
             "key": "yellow-billed-blue-magpie",
             "name": "Yellow-billed Blue-Magpie",
             "tags": [
-                "Magpie",
-                "Blue Magpie"
+                "Blue Magpie",
+                "Magpie"
             ],
             "family": "Crows, Jays, and Magpies",
             "ebird_code": "gobmag1",
@@ -8897,10 +9391,10 @@
             "name": "Yellow Bittern",
             "tags": [
                 "Bittern",
-                "Wader",
-                "Wading Bird",
+                "Pelagic",
                 "Seabird",
-                "Pelagic"
+                "Wader",
+                "Wading Bird"
             ],
             "family": "Herons, Egrets, and Bitterns",
             "ebird_code": "yelbit",
@@ -8910,9 +9404,9 @@
             "key": "yellow-breasted-greenfinch",
             "name": "Yellow-breasted Greenfinch",
             "tags": [
-                "Greenfinch",
+                "Finch",
                 "Green Finch",
-                "Finch"
+                "Greenfinch"
             ],
             "family": "Finches, Euphonias, and Allies",
             "ebird_code": "yebgre4",
@@ -8962,8 +9456,8 @@
             "key": "yellow-eyed-pigeon",
             "name": "Yellow-eyed Pigeon",
             "tags": [
-                "Pigeon",
-                "Dove"
+                "Dove",
+                "Pigeon"
             ],
             "family": "Pigeons and Doves",
             "ebird_code": "pabpig1",
@@ -8980,6 +9474,16 @@
             "ebird_code": "yefpig1",
             "latin_name": "treron phoenicopterus"
         },
+        "yellow-fronted-barbet": {
+            "key": "yellow-fronted-barbet",
+            "name": "Yellow-fronted Barbet",
+            "tags": [
+                "Barbet"
+            ],
+            "family": "Asian Barbets",
+            "latin_name": "psilopogon flavifrons",
+            "ebird_code": "yefbar1"
+        },
         "yellow-throated-fulvetta": {
             "key": "yellow-throated-fulvetta",
             "name": "Yellow-throated Fulvetta",
@@ -8994,10 +9498,10 @@
             "key": "yellow-throated-sparrow",
             "name": "Yellow-throated Sparrow",
             "tags": [
-                "Sparrow",
-                "Passerine",
                 "Chestnut-shouldered Petronia",
-                "Petronia"
+                "Passerine",
+                "Petronia",
+                "Sparrow"
             ],
             "family": "Old World Sparrows",
             "latin_name": "gymnoris xanthocollis",

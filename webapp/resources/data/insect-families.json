@@ -4,6 +4,10 @@
             "name": "Beetles"
         },
         {
+            "name": "Bumblebee",
+            "sci_name": "bombus spp."
+        },
+        {
             "name": "Butterflies"
         },
         {
@@ -20,6 +24,9 @@
         },
         {
             "name": "Grasshoppers"
+        },
+        {
+            "name": "Hornets"
         },
         {
             "name": "Houseflies & Allies"
