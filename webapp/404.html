@@ -1,0 +1,120 @@
+<html>
+
+<head>
+	<title>Telebirding - Page Not Found</title>
+
+	<meta charset="UTF-8">
+
+	<meta name="description" content="Telebirding - Page Not Found">
+	<meta name="author" content="Rakesh Malik">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+	<meta name="application-name" content="Telebirding - Page Not Found">
+	<meta name="msapplication-tooltip" content="Telebirding - Page Not Found">
+	<meta name="msapplication-TileImage" content="icons/favicon-64x64.png">
+
+	<meta property="og:description" content="Telebirding - Page Not Found">
+	<meta property="og:description" content="Telebirding - Page Not Found">
+
+	<link rel="icon" type="image/png" href="icons/favicon-48x48.png">
+	<link rel="shortcut icon" type="image/x-icon" href="icons/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="icons/favicon-64x64.png">
+
+	<link rel="stylesheet" charset="UTF-8" href="css/common.css?v=20260523">
+
+	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
+
+	<style type="text/css">
+		body {
+			background-color: #111b26;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			font-family: sans-serif;
+		}
+
+		div.notfound {
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		div.notfound img {
+			height: 300px;
+			max-width: 100%;
+			height: auto;
+		}
+
+		h1 {
+			font-size: 30px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		h2 {
+			font-size: 20px;
+		}
+
+		h1,
+		h2 {
+			margin: 0;
+			text-align: center;
+			color: #c9e0ff;
+		}
+
+		button {
+			display: block;
+			width: 200px;
+			margin: 10px 0;
+			padding: 10px;
+			border: none;
+			cursor: pointer;
+			text-align: center;
+			opacity: 1;
+		}
+
+		button.stay {
+			background-color: #3b4d61;
+		}
+
+		button.back {
+			background-color: #1b2638;
+		}
+
+		button,
+		button a {
+			color: #97adc7;
+			text-decoration: none;
+			font-size: 16px;
+		}
+
+		/* Optional hover effect for better UX */
+		button:hover {
+			background-color: #496b92;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="notfound">
+		<img src="icons/aerodactyl.png" />
+		<h1 style="color: #f19b9b;">Do you think you are allowed here!!!</h1>
+		<h2><span class="inline-loader"></span></h2>
+	</div>
+	<button class="stay" onclick="location.reload()">Stay Here Nevertheless</button>
+	<button class="back"><a href="/">Go Back</a></button>
+	<script>
+		fetch('https://naas.isalman.dev/no')
+			.then(response => response.json())
+			.then(data => {
+				if (data.reason) {
+					document.querySelector('h2').textContent = data.reason;
+				}
+			})
+			.catch(error => console.error('Error fetching 404 message:', error));
+	</script>
+</body>
+
+</html>
