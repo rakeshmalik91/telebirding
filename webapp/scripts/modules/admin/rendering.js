@@ -3,10 +3,10 @@ import Util from '../util.js';
 import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js?v=20260713-0645';
 import { showLoader, hideLoader } from '../loader.js';
 import EbirdApi from '../ebird-api.js';
-import { initSearchableSelect, initSearchableSelects } from '../searchable-select.js?v=20260923_4';
+import { initSearchableSelect, initSearchableSelects, destroySearchableSelect } from '../searchable-select.js?v=20260923_4';
 import { setChips } from './chip-input.js';
 import {
-    data, currentMode, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
+    data, currentMode, lastUpdatedSpecies, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
     deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies, renameFamily,
     syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
     uploadJSONData, getPlaceNode, getLocationGeo,
@@ -100,6 +100,13 @@ export function setupUpdateSpeciesForm() {
         updateSpeciesForm.find("input[data-field=ebird-code]").closest('tr').show();
     }
 
+    // Remember current selection so we can restore it after rebuilding options
+    // (prefer lastUpdatedSpecies when it exists — e.g. just after adding a new species)
+    const prevNameVal = updateSpeciesForm.find("select[data-field=name]").val();
+    const preferredKey = (lastUpdatedSpecies && data.species[lastUpdatedSpecies])
+        ? lastUpdatedSpecies
+        : (prevNameVal && data.species[prevNameVal] ? prevNameVal : "");
+
     const familySelect = updateSpeciesForm.find("select[data-field=family]").empty();
     const speciesSelect = updateSpeciesForm.find("select[data-field=name]").empty();
     familySelect.append(new Option("", ""));
@@ -113,6 +120,10 @@ export function setupUpdateSpeciesForm() {
         option.dataset.searchTerms = [species.key, ...(species.tags || [])].join(" ");
         speciesSelect.append(option);
     });
+
+    if (preferredKey) {
+        speciesSelect.val(preferredKey);
+    }
 
     fillUpdateSpeciesForm();
     updateSpeciesForm.find("select[data-field=name]").unbind("change").change(fillUpdateSpeciesForm);
@@ -142,11 +153,16 @@ export function setupUpdateSpeciesForm() {
         });
     });
 
-    // Init searchable selects on species form dropdowns
+    // Re-init searchable selects on species form dropdowns (destroy first so
+    // rebuilt option lists are picked up after adding/editing a species)
     updateSpeciesForm.find("select[data-field=name]").attr("placeholder", "Select or type a species...");
     updateSpeciesForm.find("select[data-field=family]").attr("placeholder", "Select or type a family...");
-    initSearchableSelect(updateSpeciesForm.find("select[data-field=name]")[0]);
-    initSearchableSelect(updateSpeciesForm.find("select[data-field=family]")[0]);
+    const nameSelectEl = updateSpeciesForm.find("select[data-field=name]")[0];
+    const familySelectEl = updateSpeciesForm.find("select[data-field=family]")[0];
+    destroySearchableSelect(nameSelectEl);
+    destroySearchableSelect(familySelectEl);
+    initSearchableSelect(nameSelectEl);
+    initSearchableSelect(familySelectEl);
 
     updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags], input[data-field=display-name]").off("change.speciesValidation input.speciesValidation").on("change.speciesValidation input.speciesValidation", validateUpdateSpeciesForm);
 

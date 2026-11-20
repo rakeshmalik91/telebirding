@@ -66,11 +66,20 @@ $(document).ready(function () {
 		$(this).addClass('active');
 		$('.admin-tab-content').removeClass('active').hide();
 		$('#' + $(this).data('tab')).addClass('active').show();
-		if ($(this).data('tab') === 'places-tab') {
+		const tab = $(this).data('tab');
+		if (tab === 'places-tab') {
 			setupPlacesTab();
 		}
-		if ($(this).data('tab') === 'species-tab') {
+		if (tab === 'species-tab') {
 			setupEbirdSync();
+			// Refresh species form so newly added families/species appear in its dropdowns
+			setupUpdateSpeciesForm();
+		}
+		if (tab === 'sightings-tab') {
+			// Rebuild sightings table so species/country/etc. dropdowns reflect
+			// any species (or other data) added while on another tab.
+			renderSightingsTable(viewState.offset, viewState.rows);
+			updatePaginationControls(viewState.offset, viewState.rows);
 		}
 	});
 });

@@ -864,8 +864,11 @@ export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
             ebird_code: (ebird_code || null)
         };
         data.species = Object.fromEntries(Object.entries(data.species).sort());
-        uploadJSONData("species", true).then(() => triggerRender());
         lastUpdatedSpecies = newKey;
+        // Refresh UI immediately so sightings/species dropdowns include the new entry
+        // without waiting for the network upload to finish.
+        triggerRender();
+        uploadJSONData("species", true);
         showToast(`Species '${name}' saved successfully.`, 'success');
     }
 }
@@ -882,7 +885,9 @@ export function addFamily(name, ebirdCode, sciName) {
             data.families.push(fam);
         }
         data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
-        uploadJSONData("families", true).then(() => triggerRender());
+        // Refresh UI immediately so family dropdowns include the new entry
+        triggerRender();
+        uploadJSONData("families", true);
         showToast(`Family '${name}' saved successfully.`, 'success');
     }
 }

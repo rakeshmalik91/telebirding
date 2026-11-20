@@ -20,11 +20,35 @@ const OPTIONS_CLASS = 'ss-options';
 const OPTION_CLASS = 'ss-option';
 const OPTION_SELECTED_CLASS = 'ss-option-selected';
 
-export function initSearchableSelect(selectEl) {
+/**
+ * Tear down a searchable-select wrapper so the native <select> can be
+ * re-initialized (e.g. after its options list is rebuilt).
+ */
+export function destroySearchableSelect(selectEl) {
+    if (!selectEl) return;
+    const $select = $(selectEl);
+    if (!$select.length) return;
+    if (!$select.data('ss-initialized')) return;
+
+    const $wrapper = $select.closest('.' + WRAPPER_CLASS);
+    if ($wrapper.length) {
+        // Move the native select back out of the wrapper, then remove wrapper UI
+        $wrapper.before($select);
+        $wrapper.remove();
+    }
+    $select.removeClass(SEARCHABLE_CLASS);
+    $select.removeData('ss-initialized');
+    $select.show();
+}
+
+export function initSearchableSelect(selectEl, force = false) {
     if (!selectEl) return;
     const $select = $(selectEl);
     if (!$select.length || !$select[0]) return;
-    if ($select.data('ss-initialized')) return;
+    if ($select.data('ss-initialized')) {
+        if (!force) return;
+        destroySearchableSelect(selectEl);
+    }
     $select.data('ss-initialized', true);
 
     const isMultiple = $select.prop('multiple');
