@@ -139,22 +139,22 @@
 			<div class="carousal-buttons"></div>
 		</div>
 		<div class="menu">
-			<button type="button" onclick="setMode('bird'); showPage('feed')"><img class="icon"
-					src="icons/archive-icon.png" /> Birds Feed</button>
+			<!-- Mode toggle at top of menu (Bird / Insect — extensible) -->
+			<div class="mode-toggle menu-mode-toggle" id="mode-toggle" role="tablist" aria-label="Content mode"></div>
+			<button type="button" onclick="showPage('feed')"><img class="icon"
+					src="icons/archive-icon.png" /> Feed</button>
 			<!-- <button type="button" onclick="showPage('stories')"><img class="icon" src="icons/video-icon.png"/> Birding Trips</button> -->
-			<button type="button" class='seq2' onclick="setMode('bird'); showPage('explore_menu')"><img class="icon"
-					src="icons/bino-icon.png" /> Explore Birds</button>
-			<button type="button" class='seq3' onclick="setMode('bird'); showPage('map_menu')"><img class="icon"
-					src="icons/map-icon.png" /> Bird Map</button>
+			<button type="button" class='seq2' onclick="showPage('explore_menu')"><img class="icon"
+					src="icons/bino-icon.png" /> Explore</button>
+			<button type="button" class='seq3' onclick="showPage('map_menu')"><img class="icon"
+					src="icons/map-icon.png" /> Map</button>
 			<button type="button" class='seq4' onclick="showPage('stories')"><img class="icon"
 					src="icons/video-icon.png" /> Stories</button>
 			<button type="button" class='seq4' onclick="showPage('about')"><img class="icon"
-					src="icons/about-icon.png" /> About Telebirding</button>
-			<button type="button" class='seq3 highlight' onclick="setMode('insect'); showPage('feed')"><img class="icon"
-					src="icons/insect-feed.png" /> Insects Feed</button>
-			<a href="https://github.com/rakeshmalik91/insect-id/blob/main/README.md" target="_blank"><button
+					src="icons/about-icon.png" /> About</button>
+			<!-- <a href="https://github.com/rakeshmalik91/insect-id/blob/main/README.md" target="_blank"><button
 					type="button" class='seq4'><img class="icon" src="icons/insect-id-app-icon.png" /> Insect ID AI
-					Android App</button></a>
+					Android App</button></a> -->
 			<button type="button" class="highlight" style="display:none;" id="admin-button"><img class="icon"
 					src="icons/admin-icon.png" /> Admin</button>
 		</div>
@@ -164,7 +164,7 @@
 			<div class="list"></div>
 		</div>
 		<div class="about-page" style="display:none;">
-			<h1>About Telebirding</h1>
+			<h1>About</h1>
 			<br>
 			<span>
 				Welcome to Telebirding!

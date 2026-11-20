@@ -270,6 +270,34 @@ export function setSiteLogo(modeConfig, currentMode) {
     jQuery('a.site-logo img').attr("src", modeConfig[currentMode].logo).attr("title", modeConfig[currentMode].title).attr("alt", modeConfig[currentMode].title);
 }
 
+/**
+ * Renders (or re-renders) the global mode toggle from Constants.MODES.
+ * Designed to be extensible: just add entries to Constants.MODES + Constants.MODE.
+ */
+export function renderModeToggle(currentMode) {
+    const $container = $('#mode-toggle');
+    if (!$container.length) return;
+
+    $container.empty();
+    Constants.MODES.forEach(function (mode) {
+        const config = Constants.MODE[mode];
+        if (!config) return;
+        const isActive = mode === currentMode;
+        const $btn = $('<button type="button" class="mode-toggle-btn" role="tab"></button>')
+            .attr('data-mode', mode)
+            .attr('aria-selected', isActive ? 'true' : 'false')
+            .attr('aria-label', config.label || mode)
+            .text(config.label || mode)
+            .toggleClass('active', isActive);
+        if (isActive) {
+            $btn.attr('tabindex', '0');
+        } else {
+            $btn.attr('tabindex', '-1');
+        }
+        $container.append($btn);
+    });
+}
+
 // ----------------- youtube videos -----------------
 
 export function stopYoutubeVideos() {

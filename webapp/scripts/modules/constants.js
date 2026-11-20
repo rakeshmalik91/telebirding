@@ -4,14 +4,19 @@ export default class Constants {
 	static MODE_INSECT = "insect";
 	static DEFAULT_MODE = Constants.MODE_BIRD;
 
+	// Ordered list of modes for the toggle UI (extensible — add new modes here and in MODE)
+	static MODES = [Constants.MODE_BIRD, Constants.MODE_INSECT];
+
 	static MODE = {
 		[Constants.MODE_BIRD]: {
 			"logo": "icons/telebirding-logo.png",
-			"title": "Telebirding - Rakesh's Bird Catalogue"
+			"title": "Telebirding - Rakesh's Bird Catalogue",
+			"label": "Bird"
 		},
 		[Constants.MODE_INSECT]: {
 			"logo": "icons/teleinsecta-logo.png",
-			"title": "Teleinsecta - Rakesh's Insect Catalogue"
+			"title": "Teleinsecta - Rakesh's Insect Catalogue",
+			"label": "Insect"
 		}
 	};
 
@@ -27,10 +32,10 @@ export default class Constants {
 	static PAGE = {
 		[Constants.HOME]: { name: "Home" },
 		[Constants.ARCHIVE]: { name: "Feed" },
-		[Constants.EXPLORE_MENU]: { name: "Explore Birds" },
-		[Constants.EXPLORE_PAGE]: { name: "Explore Birds" },
-		[Constants.MAP_MENU]: { name: "Bird Map" },
-		[Constants.MAP]: { name: "Bird Map" },
+		[Constants.EXPLORE_MENU]: { name: "Explore" },
+		[Constants.EXPLORE_PAGE]: { name: "Explore" },
+		[Constants.MAP_MENU]: { name: "Map" },
+		[Constants.MAP]: { name: "Map" },
 		[Constants.STORIES]: { name: "Stories" },
 		[Constants.ABOUT]: { name: "About" }
 	};

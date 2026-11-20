@@ -10,13 +10,49 @@ import {
 } from './rendering.js';
 import State from './state.js';
 import { showLoader, hideLoader, resetLoader } from '../loader.js';
-import { setSiteLogo, stopYoutubeVideos } from './ui-helpers.js';
+import { setSiteLogo, stopYoutubeVideos, renderModeToggle } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
 let isSamePageNavigation = false;
 
+/**
+ * Switch content mode (bird / insect / future modes).
+ * Updates state, logo, toggle UI, URL, and reloads the current page with the new mode's data.
+ */
 export function setMode(mode) {
+    if (!Constants.MODE[mode]) {
+        console.warn('Unknown mode:', mode);
+        return;
+    }
+    if (State.currentMode === mode) {
+        // Still refresh toggle active state in case of external nav
+        renderModeToggle(mode);
+        return;
+    }
     State.updateCurrentMode(mode);
+    setSiteLogo(Constants.MODE, mode);
+    renderModeToggle(mode);
+
+    // Rebuild current URL with new mode and navigate (reloads data for current page)
+    const filter = getFilters();
+    const state = {
+        page: State.currentPage,
+        params: {},
+        filter: filter,
+        sort: State.sort
+    };
+    // Preserve key params that affect the current view
+    const urlParams = Util.getUrlParams();
+    if (urlParams.family) state.params.family = decodeURIComponent(urlParams.family);
+    if (urlParams.story) state.params.story = decodeURIComponent(urlParams.story);
+    if (urlParams.sighting) state.params.sighting = decodeURIComponent(urlParams.sighting);
+    if (urlParams.place) state.params.place = decodeURIComponent(urlParams.place);
+    if (urlParams.date) state.params.date = decodeURIComponent(urlParams.date);
+    if (urlParams.camera_model) state.params.camera_model = decodeURIComponent(urlParams.camera_model);
+
+    history.pushState(state, '', getUrlFromState(state));
+    // Force a full reload of the page content under the new mode
+    showPage(State.currentPage, state.params, true);
 }
 
 export function showStoriesPage() {
@@ -77,7 +113,13 @@ export function toggleRightPane() {
 }
 
 export function getUrlFromState(state) {
-    if (state.page == Constants.HOME) return (window.location.origin + window.location.pathname); //blank url
+    if (state.page == Constants.HOME) {
+        // Keep mode in the URL even on the home page so back/forward and sharing preserve it
+        if (State.currentMode != Constants.MODE_BIRD) {
+            return "?mode=" + encodeURIComponent(State.currentMode);
+        }
+        return (window.location.origin + window.location.pathname); // blank url for default
+    }
     var url = "?page=" + encodeURIComponent(state.page);
     if (State.currentMode != Constants.MODE_BIRD) {
         url += "&mode=" + State.currentMode;
@@ -291,7 +333,7 @@ export function showPage(page, params, isPopstate) {
         switch (State.currentPage) {
             case Constants.HOME:
                 renderHome();
-                setMode(Constants.DEFAULT_MODE);
+                // Keep current mode (do not force default) so the global mode toggle persists across pages
                 break;
             case Constants.EXPLORE_MENU:
                 renderExploreMenu();
@@ -321,6 +363,7 @@ export function showPage(page, params, isPopstate) {
         }
 
         setSiteLogo(Constants.MODE, State.currentMode);
+        renderModeToggle(State.currentMode);
 
         if (State.currentPage != Constants.HOME) {
 

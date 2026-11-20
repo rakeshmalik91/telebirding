@@ -1189,3 +1189,64 @@ button.right-pane-button.button-active:before {
 .home {
 	z-index: 50;
 }
+/* ========== Mode toggle inside home menu (matches menu button style) ========== */
+.home .menu .mode-toggle.menu-mode-toggle {
+	float: left;
+	width: 40vw;
+	display: flex;
+	align-items: stretch;
+	background-color: #2f4054aa;
+	padding: 0;
+	margin: 0 0 12px 0;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	gap: 0;
+	position: static;
+	transform: none;
+	left: auto;
+	top: auto;
+}
+
+.home .menu .mode-toggle .mode-toggle-btn {
+	flex: 1;
+	float: none;
+	background-color: transparent;
+	color: #8293a6;
+	border: none;
+	border-radius: 0;
+	padding: 10px 12px;
+	margin: 0;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 0.2px;
+	min-height: auto;
+	opacity: 1;
+	box-shadow: none;
+	justify-content: center;
+	text-align: center;
+	line-height: 1.2;
+	white-space: nowrap;
+	transition: color 180ms ease, background-color 180ms ease, padding 180ms ease;
+}
+
+.home .menu .mode-toggle .mode-toggle-btn:hover {
+	color: #b2ffa7;
+	background-color: transparent;
+	box-shadow: none;
+	transform: none;
+	opacity: 1;
+	padding: 10px 12px; /* keep stable size unlike other menu buttons */
+}
+
+.home .menu .mode-toggle .mode-toggle-btn.active {
+	color: #bdd82f;
+	background-color: rgba(189, 216, 47, 0.08);
+	box-shadow: none;
+	opacity: 1;
+}
+
+.home .menu .mode-toggle .mode-toggle-btn.active:hover {
+	color: #cde84a;
+	background-color: rgba(189, 216, 47, 0.12);
+}

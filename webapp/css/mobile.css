@@ -232,3 +232,15 @@ screen and (max-width: 900px) and (max-height: 500px) {
 		--preview-image-margin-bottom: 200px;
 	}
 }
+/* Mode toggle lives in the home menu on all viewports; keep it full-width like other menu items */
+@media screen and (max-width: 768px), screen and (max-aspect-ratio: 13/9) {
+	.home .menu .mode-toggle.menu-mode-toggle {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.home .menu .mode-toggle .mode-toggle-btn {
+		font-size: 16px;
+		padding: 10px 8px;
+	}
+}

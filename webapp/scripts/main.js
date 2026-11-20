@@ -97,7 +97,11 @@ $(document).ready(function () {
 		});
 	}
 
-
+	// Global mode toggle (bird / insect / future modes)
+	$(document).on('click', '#mode-toggle .mode-toggle-btn', function () {
+		const mode = $(this).attr('data-mode');
+		if (mode) setMode(mode);
+	});
 
 	initHomePageCarousal();
 });
@@ -121,9 +125,19 @@ showPage(State.currentPage, {
 }, false);
 
 window.onpopstate = function (state) {
+	// Re-parse mode (and other params) from the new URL so back/forward restores correctly
+	const urlParams = Util.getUrlParams();
+	const modeFromUrl = urlParams.mode ? decodeURIComponent(urlParams.mode) : Constants.DEFAULT_MODE;
+	if (modeFromUrl !== State.currentMode && Constants.MODE[modeFromUrl]) {
+		State.updateCurrentMode(modeFromUrl);
+	}
 	if (state.state) {
 		setFilters(state.state.filter);
 		setSort(state.state.sort);
 		showPage(state.state.page, state.state.params, true);
+	} else {
+		// Fallback if no state object (e.g. direct hash / manual URL change)
+		retrieveStateFromUrlParams();
+		showPage(State.currentPage, {}, true);
 	}
 };
