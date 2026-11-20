@@ -531,15 +531,6 @@
             "family": "Butterflies",
             "latin_name": "mycalesis gotama"
         },
-        "neptis-hylas": {
-            "key": "neptis-hylas",
-            "name": "Common Sailer Butterfly",
-            "tags": [
-                "Butterfly"
-            ],
-            "family": "Butterflies",
-            "latin_name": "neptis hylas"
-        },
         "neptis-soma": {
             "key": "neptis-soma",
             "name": "Creamy Sailer Butterfly",

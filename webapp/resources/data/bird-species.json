@@ -1306,8 +1306,9 @@
         },
         "blue-magpie": {
             "key": "blue-magpie",
-            "name": "Blue Magpie",
+            "name": "Sri Lanka Blue-Magpie",
             "tags": [
+                "Blue Magpie",
                 "Magpie"
             ],
             "family": "Crows, Jays, and Magpies",
@@ -1771,9 +1772,8 @@
         },
         "brown-woodpecker": {
             "key": "brown-woodpecker",
-            "name": "Brown-capped Pygmy Woodpecker",
+            "name": "Brown Woodpecker",
             "tags": [
-                "Brown Woodpecker",
                 "Woodpecker"
             ],
             "family": "Woodpeckers",
@@ -2778,8 +2778,9 @@
         },
         "dull-blue-flycatcher": {
             "key": "dull-blue-flycatcher",
-            "name": "Dull Blue Flycatcher",
+            "name": "Dull-blue Flycatcher",
             "tags": [
+                "Dull Blue Flycatcher",
                 "Flycatcher"
             ],
             "family": "Old World Flycatchers",
@@ -7601,13 +7602,14 @@
         },
         "serendib-scops-owl": {
             "key": "serendib-scops-owl",
-            "name": "Serendib Scops Owl",
+            "name": "Serendib Scops-Owl",
             "tags": [
                 "Bird of Prey",
                 "Nocturnal",
                 "Owl",
                 "Raptor",
-                "Scops Owl"
+                "Scops Owl",
+                "Serendib Scops Owl"
             ],
             "family": "Owls",
             "latin_name": "otus thilohoffmanni",
@@ -8062,11 +8064,12 @@
         },
         "sri-lanka-green-pigeon": {
             "key": "sri-lanka-green-pigeon",
-            "name": "Sri Lanka Green Pigeon",
+            "name": "Sri Lanka Green-Pigeon",
             "tags": [
                 "Dove",
                 "Green Pigeon",
-                "Pigeon"
+                "Pigeon",
+                "Sri Lanka Green Pigeon"
             ],
             "family": "Pigeons and Doves",
             "latin_name": "treron pompadora",
@@ -8074,9 +8077,10 @@
         },
         "sri-lanka-hanging-parrot": {
             "key": "sri-lanka-hanging-parrot",
-            "name": "Sri Lanka Hanging Parrot",
+            "name": "Sri Lanka Hanging-Parrot",
             "tags": [
                 "Parrot",
+                "Sri Lanka Hanging Parrot",
                 "Sri Lankan Hanging Parrot"
             ],
             "family": "Old World Parrots",
@@ -8141,8 +8145,9 @@
         },
         "sri-lanka-whistling-thrush": {
             "key": "sri-lanka-whistling-thrush",
-            "name": "Sri Lanka Whistling Thrush",
+            "name": "Sri Lanka Whistling-Thrush",
             "tags": [
+                "Sri Lanka Whistling Thrush",
                 "Thrush"
             ],
             "family": "Old World Flycatchers",

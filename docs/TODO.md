@@ -13,4 +13,5 @@ commit after each features or set of fixes/enhancements
 - [x] auto detect sighting date from exif/metadata
 - [ ] fix duplicate species entries
 - [ ] BUG: adding a new species and switching to sightongs tab doesnt add new species in dropdowns, need to refresh page
+- [ ] BUG: to check why ebird sync is mapping brown woodpecker to brown capped pygmy woodpecker
 - [ ] 
