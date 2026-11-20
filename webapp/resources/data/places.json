@@ -1907,6 +1907,12 @@
                             "lat": 7.0124,
                             "lng": 80.7572,
                             "radius": 40
+                        },
+                        "Horton Plains": {
+                            "name": "Horton Plains",
+                            "lat": 6.8067,
+                            "lng": 80.8021,
+                            "radius": 5
                         }
                     }
                 },

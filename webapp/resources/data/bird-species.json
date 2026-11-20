@@ -2776,6 +2776,16 @@
             "ebird_code": "deswhe1",
             "latin_name": "oenanthe deserti"
         },
+        "dull-blue-flycatcher": {
+            "key": "dull-blue-flycatcher",
+            "name": "Dull Blue Flycatcher",
+            "tags": [
+                "Flycatcher"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "eumyias sordidus",
+            "ebird_code": "dubfly3"
+        },
         "dusky-eagle-owl": {
             "key": "dusky-eagle-owl",
             "name": "Dusky Eagle-Owl",
@@ -8017,6 +8027,17 @@
             "ebird_code": "asidrc3",
             "latin_name": "surniculus lugubris"
         },
+        "sri-lanka-bush-warbler": {
+            "key": "sri-lanka-bush-warbler",
+            "name": "Sri Lanka Bush Warbler",
+            "tags": [
+                "Bush Warbler",
+                "Warbler"
+            ],
+            "family": "Grassbirds and Allies",
+            "latin_name": "elaphrornis palliseri",
+            "ebird_code": "ceybuw1"
+        },
         "sri-lanka-drongo": {
             "key": "sri-lanka-drongo",
             "name": "Sri Lanka Drongo",
@@ -8117,6 +8138,26 @@
             "family": "Swallows",
             "latin_name": "cecropis hyperythra",
             "ebird_code": "srlswa1"
+        },
+        "sri-lanka-whistling-thrush": {
+            "key": "sri-lanka-whistling-thrush",
+            "name": "Sri Lanka Whistling Thrush",
+            "tags": [
+                "Thrush"
+            ],
+            "family": "Old World Flycatchers",
+            "latin_name": "myophonus blighi",
+            "ebird_code": "ceywht1"
+        },
+        "sri-lanka-white-eye": {
+            "key": "sri-lanka-white-eye",
+            "name": "Sri Lanka White-eye",
+            "tags": [
+                "White-eye"
+            ],
+            "family": "White-eyes, Yuhinas, and Allies",
+            "latin_name": "zosterops ceylonensis",
+            "ebird_code": "ceywhe1"
         },
         "sri-lanka-woodshrike": {
             "key": "sri-lanka-woodshrike",
@@ -9441,6 +9482,16 @@
             "family": "Woodpeckers",
             "latin_name": "leiopicus mahrattensis",
             "ebird_code": "yecwoo1"
+        },
+        "yellow-eared-bulbul": {
+            "key": "yellow-eared-bulbul",
+            "name": "Yellow-eared Bulbul",
+            "tags": [
+                "Bulbul"
+            ],
+            "family": "Bulbuls",
+            "latin_name": "pycnonotus penicillatus",
+            "ebird_code": "yeebul1"
         },
         "yellow-eyed-babbler": {
             "key": "yellow-eyed-babbler",

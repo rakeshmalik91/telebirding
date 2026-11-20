@@ -12,4 +12,5 @@ commit after each features or set of fixes/enhancements
 - [x] in admin, on ipad: when clicked on dropdown, focused on textbox; if dropdown is below screen, keyboard opens and screen scroll up automatically, the dropdown also moves up more, moving the textbox outside screen
 - [x] auto detect sighting date from exif/metadata
 - [ ] fix duplicate species entries
+- [ ] BUG: adding a new species and switching to sightongs tab doesnt add new species in dropdowns, need to refresh page
 - [ ] 

@@ -1,6 +1,345 @@
 {
     "sightings": [
         {
+            "key": "s1795181392",
+            "species": "hill-swallow",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/hill-swallow-1795181406.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/hill-swallow-1795181413.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/hill-swallow-1795181418.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795181367",
+            "species": "eurasian-kestrel",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/eurasian-kestrel-1795181384.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/eurasian-kestrel-1795181575.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795181339",
+            "species": "sri-lanka-bush-warbler",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795181356.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795181226",
+            "species": "sri-lanka-whistling-thrush",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-whistling-thrush-1795181289.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "F",
+            "rating": "3"
+        },
+        {
+            "key": "s1795181225",
+            "species": "sri-lanka-whistling-thrush",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-whistling-thrush-1795181247.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-whistling-thrush-1795181256.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-whistling-thrush-1795181270.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-whistling-thrush-1795181279.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1795181176",
+            "species": "brown-shrike",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/brown-shrike-1795181197.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795181133",
+            "species": "greenish-warbler",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/greenish-warbler-1795181148.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/greenish-warbler-1795181159.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/greenish-warbler-1795181174.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795180974",
+            "species": "blyths-reed-warbler",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/blyths-reed-warbler-1795181114.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795181048",
+            "species": "yellow-eared-bulbul",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/yellow-eared-bulbul-1795181065.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-eared-bulbul-1795181083.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-eared-bulbul-1795181095.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-eared-bulbul-1795181125.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795180815",
+            "species": "dull-blue-flycatcher",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/dull-blue-flycatcher-1795180889.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/dull-blue-flycatcher-1795180898.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/dull-blue-flycatcher-1795180908.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/dull-blue-flycatcher-1795180932.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795180786",
+            "species": "sri-lanka-white-eye",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-white-eye-1795181476.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-white-eye-1795180968.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-white-eye-1795180947.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-white-eye-1795181491.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795180718",
+            "species": "grey-wagtail",
+            "date": "20-11-2026",
+            "city": "Horton Plains",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/grey-wagtail-1795180741.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/grey-wagtail-1795180760.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1795106540",
             "species": "kashmir-flycatcher",
             "date": "19-11-2026",
