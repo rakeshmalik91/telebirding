@@ -431,8 +431,11 @@ export function renderSightingsTable(OFFSET, ROWS) {
         });
         sightingRow.find(".upload").change(function () {
             if (this.files[0] && this.files[0].type.match(/image.*/)) {
-                openCropper(this.files[0], (croppedFile) => {
-                    uploadMedia(sighting.key, [croppedFile]);
+                // Canvas cropping strips EXIF metadata. Keep the original File
+                // and pass it separately so uploadMedia can read the capture date.
+                const originalFile = this.files[0];
+                openCropper(originalFile, (croppedFile) => {
+                    uploadMedia(sighting.key, [croppedFile], [originalFile]);
                 });
                 $(this).val(''); // Reset input
             } else {

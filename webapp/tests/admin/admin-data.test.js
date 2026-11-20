@@ -86,6 +86,10 @@ describe('Admin Data Module', () => {
         global.firebase.storage().ref().put.mockReset();
         global.firebase.storage().ref().put.mockResolvedValue();
         Util.resizeImage.mockResolvedValue(new Blob(['mocked'], {type: 'image/jpeg'}));
+        delete global.EXIF.readFromBinaryFile;
+        EXIF.getData.mockReset();
+        EXIF.getData.mockImplementation((file, cb) => cb.call(file));
+        EXIF.getTag.mockReset();
 
         vi.clearAllMocks();
     });
@@ -178,6 +182,36 @@ describe('Admin Data Module', () => {
             for(let i=0; i<10; i++) await Promise.resolve();
             expect(AdminData.data.sightings[2].media.length).toBe(1);
             expect(AdminData.data.sightings[2].date).toBe('15-03-2024');
+        });
+
+        it('should read the capture date directly from the original image bytes', async () => {
+            const files = [new File(['mock'], 'camera-photo.jpg', { type: 'image/jpeg' })];
+            files[0].arrayBuffer = vi.fn().mockResolvedValue(new ArrayBuffer(16));
+            EXIF.readFromBinaryFile = vi.fn(() => ({
+                DateTimeOriginal: '2026:11:17 14:35:22',
+                DateTimeDigitized: '2026:11:16 14:35:22'
+            }));
+
+            AdminData.uploadMedia('s3', files);
+            for (let i = 0; i < 20; i++) await Promise.resolve();
+
+            expect(EXIF.readFromBinaryFile).toHaveBeenCalled();
+            expect(AdminData.data.sightings[2].date).toBe('17-11-2026');
+            expect(AdminData.data.sightings[2].media).toHaveLength(1);
+        });
+
+        it('should try the next EXIF date when DateTimeOriginal is invalid', async () => {
+            const files = [new File(['mock'], 'camera-photo.jpg', { type: 'image/jpeg' })];
+            files[0].arrayBuffer = vi.fn().mockResolvedValue(new ArrayBuffer(16));
+            EXIF.readFromBinaryFile = vi.fn(() => ({
+                DateTimeOriginal: '2026:02:30 14:35:22',
+                DateTimeDigitized: '2026:11:17 14:35:22'
+            }));
+
+            AdminData.uploadMedia('s3', files);
+            for (let i = 0; i < 20; i++) await Promise.resolve();
+
+            expect(AdminData.data.sightings[2].date).toBe('17-11-2026');
         });
 
         it('should handle image upload with missing EXIF date', async () => {

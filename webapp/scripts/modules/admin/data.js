@@ -404,27 +404,121 @@ export async function syncSightingsData(scheduleAfter, skipRefresh = false) {
     }, scheduleAfter);
 }
 
-function getSightingDateFromExif(file) {
-    return new Promise((resolve) => {
-        EXIF.getData(file, function () {
-            const dateOriginal = EXIF.getTag(this, "DateTimeOriginal") ||
-                EXIF.getTag(this, "DateTimeDigitized") ||
-                EXIF.getTag(this, "DateTime");
-            if (dateOriginal) {
-                // EXIF dates use YYYY:MM:DD HH:mm:ss. Sightings are stored as DD-MM-YYYY.
-                const match = String(dateOriginal).match(/^(\d{4}):(\d{2}):(\d{2})(?:\s|$)/);
-                if (match) {
-                    const [, year, month, day] = match;
-                    resolve(`${day}-${month}-${year}`);
-                    return;
-                }
-            }
-            resolve(null);
-        });
+function formatExifDate(dateValue) {
+    if (!dateValue) return null;
+
+    if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) {
+        const year = dateValue.getFullYear();
+        const month = String(dateValue.getMonth() + 1).padStart(2, '0');
+        const day = String(dateValue.getDate()).padStart(2, '0');
+        return `${day}-${month}-${year}`;
+    }
+
+    const value = String(dateValue).trim();
+    const match = value.match(/^(\d{4})[:\-](\d{2})[:\-](\d{2})(?:[ T]|$)/);
+    if (!match) return null;
+
+    const [, year, month, day] = match;
+    const numericYear = Number(year);
+    const numericMonth = Number(month);
+    const numericDay = Number(day);
+    const parsed = new Date(numericYear, numericMonth - 1, numericDay);
+    if (parsed.getFullYear() !== numericYear ||
+        parsed.getMonth() !== numericMonth - 1 ||
+        parsed.getDate() !== numericDay) return null;
+
+    return `${day}-${month}-${year}`;
+}
+
+function getDateFromExifTags(tags) {
+    if (!tags || typeof tags !== 'object') return null;
+    const candidates = [
+        tags.DateTimeOriginal,
+        tags.DateTimeDigitized,
+        tags.DateTime,
+        tags.DateCreated,
+        tags.CreateDate,
+        tags.dateCreated,
+        tags.createDate
+    ];
+    for (const candidate of candidates) {
+        const date = formatExifDate(candidate);
+        if (date) return date;
+    }
+    return null;
+}
+
+function readFileAsArrayBuffer(file) {
+    if (file && typeof file.arrayBuffer === 'function') {
+        return file.arrayBuffer();
+    }
+    if (typeof FileReader === 'undefined') return Promise.resolve(null);
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error || new Error('Unable to read image file'));
+        reader.readAsArrayBuffer(file);
     });
 }
 
-export function uploadMedia(sightingKey, files) {
+async function getSightingDateFromExif(file) {
+    if (!file || !/^image\//i.test(file.type || '')) return null;
+    if (typeof EXIF === 'undefined') return null;
+
+    // Prefer parsing the original uploaded File bytes. Do this before any
+    // resizing/watermarking so metadata from the camera file is preserved.
+    try {
+        if (typeof EXIF.readFromBinaryFile === 'function') {
+            const buffer = await readFileAsArrayBuffer(file);
+            if (buffer) {
+                const tags = EXIF.readFromBinaryFile(buffer);
+                const date = getDateFromExifTags(tags);
+                if (date) return date;
+            }
+        }
+    } catch (error) {
+        console.warn('Direct EXIF date extraction failed; trying EXIF.getData:', error);
+    }
+
+    // Fallback to the library's FileReader-backed API. It is asynchronous for
+    // File objects, so always wait for its callback before updating the sighting.
+    if (typeof EXIF.getData !== 'function') return null;
+    return new Promise((resolve) => {
+        let settled = false;
+        const finish = (date) => {
+            if (settled) return;
+            settled = true;
+            resolve(date || null);
+        };
+
+        try {
+            const accepted = EXIF.getData(file, function () {
+                try {
+                    let tags = {};
+                    if (typeof EXIF.getAllTags === 'function') {
+                        tags = EXIF.getAllTags(this) || {};
+                    } else if (typeof EXIF.getTag === 'function') {
+                        tags = {
+                            DateTimeOriginal: EXIF.getTag(this, 'DateTimeOriginal'),
+                            DateTimeDigitized: EXIF.getTag(this, 'DateTimeDigitized'),
+                            DateTime: EXIF.getTag(this, 'DateTime')
+                        };
+                    }
+                    finish(getDateFromExifTags(tags));
+                } catch (error) {
+                    console.warn('Could not extract EXIF date from uploaded image:', error);
+                    finish(null);
+                }
+            });
+            if (accepted === false) finish(null);
+        } catch (error) {
+            console.warn('Could not read EXIF metadata from uploaded image:', error);
+            finish(null);
+        }
+    });
+}
+
+export function uploadMedia(sightingKey, files, originalFiles = []) {
     $('#sync-spinner').css('display', 'flex');
     $('#sync-spinner .sync-text').text('Uploading Media...');
     $('#sync-spinner-icon').show();
@@ -438,7 +532,7 @@ export function uploadMedia(sightingKey, files) {
             color: $('input[name=watermark-color]').val() + "33"
         };
     }
-    Array.from(files).forEach(function (file) {
+    Array.from(files).forEach(function (file, index) {
         let mediaSrc;
         const speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
 
@@ -457,7 +551,10 @@ export function uploadMedia(sightingKey, files) {
                     if (!currentSighting.media) currentSighting.media = [];
                     
                     if (currentSighting.media.length === 0) {
-                        const date = await getSightingDateFromExif(file);
+                        // Prefer the unmodified source image: cropper/canvas output
+                        // does not retain EXIF metadata.
+                        const originalFile = originalFiles[index] || file;
+                        const date = await getSightingDateFromExif(originalFile);
                         if (date) currentSighting.date = date;
                     }
                     let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;

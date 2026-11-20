@@ -785,7 +785,7 @@ describe('Admin Rendering - Readonly Operations', () => {
             fileInput.trigger('change');
 
             expect(cropper.openCropper).toHaveBeenCalledWith(file, expect.any(Function));
-            expect(AdminData.uploadMedia).toHaveBeenCalledWith('sight1', [file]);
+            expect(AdminData.uploadMedia).toHaveBeenCalledWith('sight1', [file], [file]);
         });
 
         it('should handle non-image file upload and call uploadMedia directly', () => {
