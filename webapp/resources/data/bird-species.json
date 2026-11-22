@@ -4118,15 +4118,13 @@
             "key": "grey-junglefowl",
             "name": "Gray Junglefowl",
             "tags": [
-                "Bird of Prey",
+                "Chicken",
                 "Fowl",
-                "Junglefowl",
-                "Nocturnal",
-                "Raptor"
+                "Junglefowl"
             ],
             "family": "Pheasants, Grouse, and Allies",
-            "ebird_code": "grejun2",
-            "latin_name": "gallus sonneratii"
+            "latin_name": "gallus sonneratii",
+            "ebird_code": "grejun2"
         },
         "grey-nightjar": {
             "key": "grey-nightjar",
@@ -4674,15 +4672,12 @@
             "key": "indian-peafowl",
             "name": "Indian Peafowl",
             "tags": [
-                "Bird of Prey",
-                "Nocturnal",
                 "Peacock",
-                "Peafowl",
-                "Raptor"
+                "Peafowl"
             ],
             "family": "Pheasants, Grouse, and Allies",
-            "ebird_code": "compea",
-            "latin_name": "pavo cristatus"
+            "latin_name": "pavo cristatus",
+            "ebird_code": "compea"
         },
         "indian-pitta": {
             "key": "indian-pitta",
@@ -6887,16 +6882,13 @@
             "key": "red-junglefowl",
             "name": "Red Junglefowl",
             "tags": [
-                "Bird of Prey",
                 "Chicken",
                 "Fowl",
-                "Junglefowl",
-                "Nocturnal",
-                "Raptor"
+                "Junglefowl"
             ],
             "family": "Pheasants, Grouse, and Allies",
-            "ebird_code": "redjun",
-            "latin_name": "gallus gallus"
+            "latin_name": "gallus gallus",
+            "ebird_code": "redjun"
         },
         "red-naped-ibis": {
             "key": "red-naped-ibis",
@@ -6961,15 +6953,12 @@
             "key": "red-spurfowl",
             "name": "Red Spurfowl",
             "tags": [
-                "Bird of Prey",
                 "Fowl",
-                "Nocturnal",
-                "Raptor",
                 "Spurfowl"
             ],
             "family": "Pheasants, Grouse, and Allies",
-            "ebird_code": "redspu1",
-            "latin_name": "galloperdix spadicea"
+            "latin_name": "galloperdix spadicea",
+            "ebird_code": "redspu1"
         },
         "red-tailed-minla": {
             "key": "red-tailed-minla",
@@ -8102,6 +8091,7 @@
             "key": "sri-lanka-junglefowl",
             "name": "Sri Lanka Junglefowl",
             "tags": [
+                "Chicken",
                 "Fowl",
                 "Junglefowl",
                 "Pheasant",

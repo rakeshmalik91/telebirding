@@ -127,7 +127,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
     val scrollY = remember { mutableStateOf(0) }
     val showButton by remember {
         derivedStateOf {
-            scrollY.value > 2500  // Show button after scrolling down
+            scrollY.value > 1200  // Show button after scrolling down
         }
     }
     var webViewForScrolling by remember { mutableStateOf<WebView?>(null) }
@@ -355,7 +355,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             if (error?.errorCode == ERROR_HOST_LOOKUP && request?.isForMainFrame == true) {
                                 // If we have a cached site, load from there instead of showing offline page
                                 if (siteCache.hasCachedSite) {
-                                    view?.loadUrl("https://telebirding.info/?page=f")
+                                    view?.loadUrl("https://telebirding.info/?page=feed")
                                 } else {
                                     lastFailedUrl = request.url.toString()
                                     view?.loadUrl("file:///android_asset/offline.html")
@@ -399,7 +399,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                     )
 
                     // Load the site URL — the interceptor will serve from cache if available
-                    loadUrl("https://telebirding.info/?page=f")
+                    loadUrl("https://telebirding.info/?page=feed")
 
                     // Trigger background update check
                     CoroutineScope(Dispatchers.Main).launch {
@@ -456,7 +456,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
             visible = showButton,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(16.dp),
+                .padding(end = 16.dp, bottom = 86.dp),
             enter = fadeIn(),
             exit = fadeOut()
         ) {

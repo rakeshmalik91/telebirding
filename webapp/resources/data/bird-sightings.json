@@ -7,11 +7,42 @@
             "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
-            "time_of_day": "Dawn",
+            "time_of_day": "Day",
             "weather": "Foggy",
             "media": [
                 {
                     "src": "images/indian-blackbird-1795260530.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795181339",
+            "species": "sri-lanka-bush-warbler",
+            "date": "21-11-2026",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Cloudy",
+            "media": [
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795349780.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795181356.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795260477.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -57,10 +88,36 @@
             "rating": "3"
         },
         {
+            "key": "s1795181367",
+            "species": "eurasian-kestrel",
+            "date": "20-11-2026",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "media": [
+                {
+                    "src": "images/eurasian-kestrel-1795181384.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/eurasian-kestrel-1795181575.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "place": "Horton Plains National Park"
+        },
+        {
             "key": "s1795181392",
             "species": "hill-swallow",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -85,69 +142,14 @@
                     }
                 }
             ],
-            "rating": "3"
-        },
-        {
-            "key": "s1795181367",
-            "species": "eurasian-kestrel",
-            "date": "20-11-2026",
-            "city": "Horton Plains",
-            "state": "Central Province",
-            "country": "Sri Lanka",
-            "time_of_day": "Day",
-            "weather": "Sunny",
-            "media": [
-                {
-                    "src": "images/eurasian-kestrel-1795181384.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/eurasian-kestrel-1795181575.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                }
-            ],
-            "rating": "3"
-        },
-        {
-            "key": "s1795181339",
-            "species": "sri-lanka-bush-warbler",
-            "date": "20-11-2026",
-            "city": "Horton Plains",
-            "state": "Central Province",
-            "country": "Sri Lanka",
-            "time_of_day": "Day",
-            "weather": "Sunny",
-            "media": [
-                {
-                    "src": "images/sri-lanka-bush-warbler-1795181356.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/sri-lanka-bush-warbler-1795260544.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/sri-lanka-bush-warbler-1795260477.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                }
-            ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795181226",
             "species": "sri-lanka-whistling-thrush",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -161,13 +163,14 @@
                 }
             ],
             "gender": "F",
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795181225",
             "species": "sri-lanka-whistling-thrush",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -199,13 +202,14 @@
                 }
             ],
             "gender": "M",
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795181176",
             "species": "brown-shrike",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -218,13 +222,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795181133",
             "species": "greenish-warbler",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "unconfirmed": true,
@@ -250,13 +255,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795180974",
             "species": "blyths-reed-warbler",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -269,26 +275,27 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795181048",
             "species": "yellow-eared-bulbul",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/yellow-eared-bulbul-1795181065.jpg",
+                    "src": "images/yellow-eared-bulbul-1795181083.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/yellow-eared-bulbul-1795181083.jpg",
+                    "src": "images/yellow-eared-bulbul-1795181065.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -306,13 +313,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795180815",
             "species": "dull-blue-flycatcher",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -343,13 +351,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795180786",
             "species": "sri-lanka-white-eye",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -380,13 +389,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795180718",
             "species": "grey-wagtail",
             "date": "20-11-2026",
-            "city": "Horton Plains",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -405,7 +415,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795106540",
@@ -1301,6 +1312,12 @@
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
+                {
+                    "src": "images/chestnut-backed-owlet-1795360070.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
                 {
                     "src": "images/chestnut-backed-owlet-1795008740.jpg",
                     "exif_data": {

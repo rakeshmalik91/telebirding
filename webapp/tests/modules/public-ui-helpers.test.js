@@ -1,14 +1,15 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { renderModeToggle } from '../../scripts/modules/public/ui-helpers.js';
+import { renderModeToggle, updateMobileNavActiveTab } from '../../scripts/modules/public/ui-helpers.js';
 import Constants from '../../scripts/modules/constants.js';
+import State from '../../scripts/modules/public/state.js';
 
 describe('Public UI Helpers - renderModeToggle', () => {
     beforeEach(() => {
-        document.body.innerHTML = '<div id="mode-toggle"></div>';
+        document.body.innerHTML = '<div id="mode-toggle" class="mode-toggle"></div>';
     });
 
-    it('should do nothing gracefully if #mode-toggle does not exist in the DOM', () => {
-        $('#mode-toggle').remove();
+    it('should do nothing gracefully if .mode-toggle does not exist in the DOM', () => {
+        $('.mode-toggle').remove();
         expect(() => renderModeToggle(Constants.MODE_BIRD)).not.toThrow();
     });
 
@@ -48,6 +49,19 @@ describe('Public UI Helpers - renderModeToggle', () => {
         expect($insectBtn.attr('tabindex')).toBe('0');
     });
 
+    it('should update multiple .mode-toggle containers (e.g. header and menu) simultaneously', () => {
+        $('body').append('<div class="mode-toggle header-mode-toggle"></div>');
+        renderModeToggle(Constants.MODE_INSECT);
+
+        const $menuBtns = $('#mode-toggle .mode-toggle-btn');
+        const $headerBtns = $('.header-mode-toggle .mode-toggle-btn');
+
+        expect($menuBtns.length).toBe(2);
+        expect($headerBtns.length).toBe(2);
+        expect($headerBtns.filter('[data-mode="insect"]').hasClass('active')).toBe(true);
+        expect($menuBtns.filter('[data-mode="insect"]').hasClass('active')).toBe(true);
+    });
+
     it('should support image fallback if svg property is not defined on a mode config', () => {
         const originalBirdSvg = Constants.MODE[Constants.MODE_BIRD].svg;
         delete Constants.MODE[Constants.MODE_BIRD].svg;
@@ -61,3 +75,53 @@ describe('Public UI Helpers - renderModeToggle', () => {
         Constants.MODE[Constants.MODE_BIRD].svg = originalBirdSvg;
     });
 });
+
+describe('Public UI Helpers - updateMobileNavActiveTab', () => {
+    beforeEach(() => {
+        document.body.innerHTML = `
+            <nav id="mobile-bottom-nav">
+                <button class="mobile-nav-btn active" data-page="feed"></button>
+                <button class="mobile-nav-btn" data-page="explore_menu"></button>
+                <button class="mobile-nav-btn" data-page="map_menu"></button>
+                <button class="mobile-nav-btn" data-page="stories"></button>
+                <button class="mobile-nav-btn" data-page="about"></button>
+            </nav>
+        `;
+    });
+
+    it('should do nothing gracefully if #mobile-bottom-nav is not present', () => {
+        $('#mobile-bottom-nav').remove();
+        expect(() => updateMobileNavActiveTab('feed')).not.toThrow();
+    });
+
+    it('should activate feed tab for feed page', () => {
+        updateMobileNavActiveTab('feed');
+        expect($('.mobile-nav-btn[data-page="feed"]').hasClass('active')).toBe(true);
+        expect($('.mobile-nav-btn[data-page="explore_menu"]').hasClass('active')).toBe(false);
+    });
+
+    it('should activate explore_menu tab for explore_page', () => {
+        updateMobileNavActiveTab(Constants.EXPLORE_PAGE);
+        expect($('.mobile-nav-btn[data-page="explore_menu"]').hasClass('active')).toBe(true);
+        expect($('.mobile-nav-btn[data-page="feed"]').hasClass('active')).toBe(false);
+    });
+
+    it('should activate map_menu tab for map page', () => {
+        updateMobileNavActiveTab(Constants.MAP);
+        expect($('.mobile-nav-btn[data-page="map_menu"]').hasClass('active')).toBe(true);
+        expect($('.mobile-nav-btn[data-page="feed"]').hasClass('active')).toBe(false);
+    });
+
+    it('should activate stories tab for stories page', () => {
+        updateMobileNavActiveTab(Constants.STORIES);
+        expect($('.mobile-nav-btn[data-page="stories"]').hasClass('active')).toBe(true);
+        expect($('.mobile-nav-btn[data-page="feed"]').hasClass('active')).toBe(false);
+    });
+
+    it('should activate about tab for about page', () => {
+        updateMobileNavActiveTab(Constants.ABOUT);
+        expect($('.mobile-nav-btn[data-page="about"]').hasClass('active')).toBe(true);
+        expect($('.mobile-nav-btn[data-page="feed"]').hasClass('active')).toBe(false);
+    });
+});
+

@@ -1902,6 +1902,12 @@
                                     "lat": 6.9695,
                                     "lng": 80.7683,
                                     "radius": 1
+                                },
+                                "Horton Plains National Park": {
+                                    "name": "Horton Plains National Park",
+                                    "lat": 6.8067,
+                                    "lng": 80.8021,
+                                    "radius": 5
                                 }
                             },
                             "lat": 7.0124,

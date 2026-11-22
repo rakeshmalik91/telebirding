@@ -2,7 +2,7 @@ import Util from '../util.js';
 import Constants from '../constants.js';
 
 export default class State {
-    static IS_MOBILE_DEVICE = !Util.isDeviceOnLandscapeOrientation();
+    static IS_MOBILE_DEVICE = !Util.isDeviceOnLandscapeOrientation() || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android));
 
     static data = { "sightings": [] };
     static sort = { by: undefined, descending: undefined };
@@ -13,7 +13,7 @@ export default class State {
     static ratingFilter = 0;
     static autocompleteInitialized = false;
 
-    static currentPage = Constants.HOME;
+    static currentPage = (!Util.isDeviceOnLandscapeOrientation() || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android))) ? Constants.ARCHIVE : Constants.HOME;
     static currentMode = Constants.MODE_BIRD;
 
     static likeLocked = false;

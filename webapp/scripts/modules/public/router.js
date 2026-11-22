@@ -10,7 +10,7 @@ import {
 } from './rendering.js';
 import State from './state.js';
 import { showLoader, hideLoader, resetLoader } from '../loader.js';
-import { setSiteLogo, stopYoutubeVideos, renderModeToggle } from './ui-helpers.js';
+import { setSiteLogo, stopYoutubeVideos, renderModeToggle, updateMobileNavActiveTab } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
 let isSamePageNavigation = false;
@@ -141,7 +141,12 @@ export function getUrlFromState(state) {
 
 export function retrieveStateFromUrlParams() {
     var urlParams = Util.getUrlParams();
-    State.updateCurrentPage(urlParams.page ? decodeURIComponent(urlParams.page) : Constants.HOME);
+    const isMobile = State.IS_MOBILE_DEVICE || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android));
+    const defaultPage = isMobile ? Constants.ARCHIVE : Constants.HOME;
+    let page = urlParams.page ? decodeURIComponent(urlParams.page) : defaultPage;
+    if (page === 'f') page = Constants.ARCHIVE;
+    if (isMobile && (page === Constants.HOME || !page)) page = Constants.ARCHIVE;
+    State.updateCurrentPage(page);
     State.updateCurrentMode(urlParams.mode ? decodeURIComponent(urlParams.mode) : Constants.MODE_BIRD);
 
     if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(urlParams.page) && urlParams.sort_by) {
@@ -290,6 +295,11 @@ export function showPage(page, params, isPopstate) {
     stopYoutubeVideos();
     resetLoader();
 
+    const isMobile = State.IS_MOBILE_DEVICE || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android));
+    if ((page === Constants.HOME || page === 'f' || !page) && isMobile) {
+        page = Constants.ARCHIVE;
+    }
+
     var filter = getFilters();
     if (params) {
         filter.place = params.place || filter.place || '';
@@ -364,6 +374,7 @@ export function showPage(page, params, isPopstate) {
 
         setSiteLogo(Constants.MODE, State.currentMode);
         renderModeToggle(State.currentMode);
+        updateMobileNavActiveTab(State.currentPage);
 
         if (State.currentPage != Constants.HOME) {
 

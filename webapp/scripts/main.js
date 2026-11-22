@@ -44,6 +44,9 @@ window.showMore = showMore;
 window.like = like;
 window.renderPageName = renderPageName;
 window.copyStoryLink = copyStoryLink;
+window.scrollToTop = function () {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 
 
@@ -54,6 +57,20 @@ function isAdmin() {
 $(document).ready(function () {
 	showLoader();
 	setSiteLogo(Constants.MODE, State.currentMode);
+
+	// Hide web scroll-to-top button in Android app (which uses native Compose FAB)
+	if (typeof window !== 'undefined' && window.Android) {
+		$('#scroll-to-top-btn').remove();
+	}
+
+	// Show/hide web scroll to top button
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > 500) {
+			$('#scroll-to-top-btn').addClass('visible');
+		} else {
+			$('#scroll-to-top-btn').removeClass('visible');
+		}
+	});
 
 	//feed infinite scroll
 	$(window).scroll(function () {
@@ -98,7 +115,7 @@ $(document).ready(function () {
 	}
 
 	// Global mode toggle (bird / insect / future modes)
-	$(document).on('click', '#mode-toggle .mode-toggle-btn', function () {
+	$(document).on('click', '.mode-toggle .mode-toggle-btn', function () {
 		const mode = $(this).attr('data-mode');
 		if (mode) setMode(mode);
 	});

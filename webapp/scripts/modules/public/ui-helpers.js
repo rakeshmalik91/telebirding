@@ -271,45 +271,66 @@ export function setSiteLogo(modeConfig, currentMode) {
 }
 
 /**
- * Renders (or re-renders) the global mode toggle from Constants.MODES.
+ * Renders (or re-renders) the global mode toggle from Constants.MODES across all .mode-toggle containers.
  * Designed to be extensible: just add entries to Constants.MODES + Constants.MODE.
  */
 export function renderModeToggle(currentMode) {
-    const $container = $('#mode-toggle');
-    if (!$container.length) return;
+    const $containers = $('.mode-toggle');
+    if (!$containers.length) return;
 
-    $container.empty();
-    Constants.MODES.forEach(function (mode) {
-        const config = Constants.MODE[mode];
-        if (!config) return;
-        const isActive = mode === currentMode;
-        const label = config.label || mode;
-        const $btn = $('<button type="button" class="mode-toggle-btn" role="tab"></button>')
-            .attr('data-mode', mode)
-            .attr('aria-selected', isActive ? 'true' : 'false')
-            .attr('aria-label', label)
-            .attr('title', label)
-            .toggleClass('active', isActive);
-        if (isActive) {
-            $btn.attr('tabindex', '0');
-        } else {
-            $btn.attr('tabindex', '-1');
-        }
+    $containers.each(function () {
+        const $container = $(this);
+        $container.empty();
+        Constants.MODES.forEach(function (mode) {
+            const config = Constants.MODE[mode];
+            if (!config) return;
+            const isActive = mode === currentMode;
+            const label = config.label || mode;
+            const $btn = $('<button type="button" class="mode-toggle-btn" role="tab"></button>')
+                .attr('data-mode', mode)
+                .attr('aria-selected', isActive ? 'true' : 'false')
+                .attr('aria-label', label)
+                .attr('title', label)
+                .toggleClass('active', isActive);
+            if (isActive) {
+                $btn.attr('tabindex', '0');
+            } else {
+                $btn.attr('tabindex', '-1');
+            }
 
-        if (config.svg) {
-            $btn.html(config.svg);
-        } else if (config.icon) {
-            const $img = $('<img>')
-                .addClass('icon mode-toggle-icon')
-                .attr('src', config.icon)
-                .attr('alt', label)
-                .attr('aria-hidden', 'true');
-            $btn.append($img);
-        } else {
-            $btn.text(label);
-        }
-        $container.append($btn);
+            if (config.svg) {
+                $btn.html(config.svg);
+            } else if (config.icon) {
+                const $img = $('<img>')
+                    .addClass('icon mode-toggle-icon')
+                    .attr('src', config.icon)
+                    .attr('alt', label)
+                    .attr('aria-hidden', 'true');
+                $btn.append($img);
+            } else {
+                $btn.text(label);
+            }
+            $container.append($btn);
+        });
     });
+}
+
+/**
+ * Updates the active tab indicator in the mobile bottom navigation bar.
+ */
+export function updateMobileNavActiveTab(page) {
+    const $nav = $('#mobile-bottom-nav');
+    if (!$nav.length) return;
+    $nav.find('.mobile-nav-btn').removeClass('active');
+
+    let target = page;
+    if (page === Constants.EXPLORE_PAGE) target = Constants.EXPLORE_MENU;
+    if (page === Constants.MAP) target = Constants.MAP_MENU;
+    if ((page === Constants.HOME || page === 'f') && (State.IS_MOBILE_DEVICE || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android)))) {
+        target = Constants.ARCHIVE;
+    }
+
+    $nav.find(`.mobile-nav-btn[data-page="${target}"]`).addClass('active');
 }
 
 // ----------------- youtube videos -----------------

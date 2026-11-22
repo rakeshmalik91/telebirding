@@ -1274,3 +1274,12 @@ button.right-pane-button.button-active:before {
 .home .menu .mode-toggle .mode-toggle-btn:active .mode-toggle-icon {
 	transform: scale(0.95);
 }
+
+/* Mobile-only components hidden on desktop */
+.site-header .header-mode-toggle {
+	display: none;
+}
+.mobile-bottom-nav,
+.scroll-to-top-btn {
+	display: none;
+}
