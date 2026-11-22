@@ -1,6 +1,62 @@
 {
     "sightings": [
         {
+            "key": "s1795260440",
+            "species": "indian-blackbird",
+            "date": "21-11-2026",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Dawn",
+            "weather": "Foggy",
+            "media": [
+                {
+                    "src": "images/indian-blackbird-1795260530.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795260359",
+            "species": "sri-lanka-wood-pigeon",
+            "date": "21-11-2026",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Dawn",
+            "weather": "Foggy",
+            "media": [
+                {
+                    "src": "images/sri-lanka-wood-pigeon-1795260383.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-wood-pigeon-1795260418.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-wood-pigeon-1795260429.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-wood-pigeon-1795260438.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1795181392",
             "species": "hill-swallow",
             "date": "20-11-2026",
@@ -68,6 +124,18 @@
             "media": [
                 {
                     "src": "images/sri-lanka-bush-warbler-1795181356.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795260544.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795260477.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -917,6 +985,12 @@
                 },
                 {
                     "src": "images/indian-pitta-1795018720.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/indian-pitta-1795257965.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }

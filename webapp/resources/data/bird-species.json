@@ -673,6 +673,17 @@
             "ebird_code": "lammer1",
             "latin_name": "gypaetus barbatus"
         },
+        "bengal-florican": {
+            "key": "bengal-florican",
+            "name": "Bengal Florican",
+            "tags": [
+                "Bustard",
+                "Florican"
+            ],
+            "family": "Bustards",
+            "latin_name": "houbaropsis bengalensis",
+            "ebird_code": "benflo2"
+        },
         "besra": {
             "key": "besra",
             "name": "Besra",
@@ -8163,6 +8174,18 @@
             "family": "White-eyes, Yuhinas, and Allies",
             "latin_name": "zosterops ceylonensis",
             "ebird_code": "ceywhe1"
+        },
+        "sri-lanka-wood-pigeon": {
+            "key": "sri-lanka-wood-pigeon",
+            "name": "Sri Lanka Wood-Pigeon",
+            "tags": [
+                "Dove",
+                "Pigeon",
+                "Wood-Pigeon"
+            ],
+            "family": "Pigeons and Doves",
+            "latin_name": "columba torringtoniae",
+            "ebird_code": "ceywop1"
         },
         "sri-lanka-woodshrike": {
             "key": "sri-lanka-woodshrike",
