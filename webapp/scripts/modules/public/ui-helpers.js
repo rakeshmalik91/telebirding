@@ -283,16 +283,30 @@ export function renderModeToggle(currentMode) {
         const config = Constants.MODE[mode];
         if (!config) return;
         const isActive = mode === currentMode;
+        const label = config.label || mode;
         const $btn = $('<button type="button" class="mode-toggle-btn" role="tab"></button>')
             .attr('data-mode', mode)
             .attr('aria-selected', isActive ? 'true' : 'false')
-            .attr('aria-label', config.label || mode)
-            .text(config.label || mode)
+            .attr('aria-label', label)
+            .attr('title', label)
             .toggleClass('active', isActive);
         if (isActive) {
             $btn.attr('tabindex', '0');
         } else {
             $btn.attr('tabindex', '-1');
+        }
+
+        if (config.svg) {
+            $btn.html(config.svg);
+        } else if (config.icon) {
+            const $img = $('<img>')
+                .addClass('icon mode-toggle-icon')
+                .attr('src', config.icon)
+                .attr('alt', label)
+                .attr('aria-hidden', 'true');
+            $btn.append($img);
+        } else {
+            $btn.text(label);
         }
         $container.append($btn);
     });

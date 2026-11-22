@@ -241,6 +241,11 @@ screen and (max-width: 900px) and (max-height: 500px) {
 
 	.home .menu .mode-toggle .mode-toggle-btn {
 		font-size: 16px;
-		padding: 10px 8px;
+		padding: 8px 8px;
+	}
+
+	.home .menu .mode-toggle .mode-toggle-btn .mode-toggle-icon {
+		width: 26px;
+		height: 26px;
 	}
 }

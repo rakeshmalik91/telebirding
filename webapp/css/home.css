@@ -1215,7 +1215,7 @@ button.right-pane-button.button-active:before {
 	color: #8293a6;
 	border: none;
 	border-radius: 0;
-	padding: 10px 12px;
+	padding: 8px 12px;
 	margin: 0;
 	font-size: 20px;
 	font-weight: bold;
@@ -1223,11 +1223,27 @@ button.right-pane-button.button-active:before {
 	min-height: auto;
 	opacity: 1;
 	box-shadow: none;
+	display: flex;
+	align-items: center;
 	justify-content: center;
 	text-align: center;
 	line-height: 1.2;
 	white-space: nowrap;
+	cursor: pointer;
 	transition: color 180ms ease, background-color 180ms ease, padding 180ms ease;
+}
+
+.home .menu .mode-toggle .mode-toggle-btn .mode-toggle-icon {
+	width: 28px;
+	height: 28px;
+	display: block;
+	pointer-events: none;
+	transition: transform 180ms ease, color 180ms ease;
+}
+
+.home .menu .mode-toggle .mode-toggle-btn .mode-toggle-icon path {
+	fill: currentColor;
+	transition: fill 180ms ease;
 }
 
 .home .menu .mode-toggle .mode-toggle-btn:hover {
@@ -1236,7 +1252,11 @@ button.right-pane-button.button-active:before {
 	box-shadow: none;
 	transform: none;
 	opacity: 1;
-	padding: 10px 12px; /* keep stable size unlike other menu buttons */
+	padding: 8px 12px; /* keep stable size unlike other menu buttons */
+}
+
+.home .menu .mode-toggle .mode-toggle-btn:hover .mode-toggle-icon {
+	transform: scale(1.1);
 }
 
 .home .menu .mode-toggle .mode-toggle-btn.active {
@@ -1249,4 +1269,8 @@ button.right-pane-button.button-active:before {
 .home .menu .mode-toggle .mode-toggle-btn.active:hover {
 	color: #cde84a;
 	background-color: rgba(189, 216, 47, 0.12);
+}
+
+.home .menu .mode-toggle .mode-toggle-btn:active .mode-toggle-icon {
+	transform: scale(0.95);
 }
