@@ -79,7 +79,14 @@ export function computeInternalDataFields() {
                 }
             });
         });
-        State.data.countries = countries;
+        const sortedCountryKeys = Object.keys(countries).sort((a, b) =>
+            Util.compare(countries[b].count, countries[a].count, Util.compare(countries[a].name, countries[b].name))
+        );
+        const sortedCountries = {};
+        sortedCountryKeys.forEach(k => {
+            sortedCountries[k] = countries[k];
+        });
+        State.data.countries = sortedCountries;
     }
 
     //years

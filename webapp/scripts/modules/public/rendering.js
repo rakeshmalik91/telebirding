@@ -276,7 +276,10 @@ export function renderLocationList(container) {
     container.append("<div class='location-list'></div>")
     container = container.find('.location-list');
     let html = "";
-    Object.keys(State.data.countries).forEach(function (countryCode, l1Index) {
+    const l1Children = Object.keys(State.data.countries)
+        .filter(c => State.data.countries[c].count > 0)
+        .sort((a, b) => Util.compare(State.data.countries[b].count, State.data.countries[a].count, Util.compare(State.data.countries[a].name, State.data.countries[b].name)));
+    l1Children.forEach(function (countryCode, l1Index) {
         const country = State.data.countries[countryCode];
         const count = State.data.countries[countryCode].count;
         if (count > 0) {

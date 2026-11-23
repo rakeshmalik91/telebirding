@@ -456,6 +456,24 @@ describe('Public Rendering', () => {
             div.find('.location-item button.expand').eq(0).trigger('click');
             vi.advanceTimersByTime(110);
         });
+
+        it('should sort countries by count descending instead of alphabetical order', () => {
+            State.data.countries = {
+                'IS': { name: 'Iceland', count: 28, states: {} },
+                'IN': { name: 'India', count: 771, states: {} },
+                'LK': { name: 'Sri Lanka', count: 50, states: {} }
+            };
+            const div = $('<div></div>');
+            Rendering.renderLocationList(div);
+
+            const countryButtons = div.find('button.country');
+            expect(countryButtons.eq(0).text()).toContain('India');
+            expect(countryButtons.eq(0).text()).toContain('771');
+            expect(countryButtons.eq(1).text()).toContain('Sri Lanka');
+            expect(countryButtons.eq(1).text()).toContain('50');
+            expect(countryButtons.eq(2).text()).toContain('Iceland');
+            expect(countryButtons.eq(2).text()).toContain('28');
+        });
     });
 
     describe('renderMapMenu and renderYearList', () => {

@@ -134,10 +134,41 @@ describe('DataHelpers Module', () => {
         });
 
         it('should populate countries nested hierarchy', () => {
+            // Add a second country to verify sorting by count descending
+            State.data.countries['IN'] = { name: 'India', states: { 'MH': { name: 'Maharashtra' } } };
+            State.data.sightings.push(
+                {
+                    key: 's3',
+                    species: 'sp1',
+                    date: '02 Jan 2023',
+                    hidden: false,
+                    media: [],
+                    country: 'IN',
+                    state: 'MH',
+                    city: 'Pune',
+                    place: 'Park'
+                },
+                {
+                    key: 's4',
+                    species: 'sp2',
+                    date: '03 Jan 2023',
+                    hidden: false,
+                    media: [],
+                    country: 'IN',
+                    state: 'MH',
+                    city: 'Pune',
+                    place: 'Park'
+                }
+            );
+
             DataHelpers.computeInternalDataFields();
 
             // After compute, we should have countries populated with counts and states and cities
             expect(State.data.countries['US'].count).toBe(1);
+            expect(State.data.countries['IN'].count).toBe(2);
+            // Countries should be sorted descending by count (IN with 2 before US with 1)
+            expect(Object.keys(State.data.countries)[0]).toBe('IN');
+            expect(Object.keys(State.data.countries)[1]).toBe('US');
             expect(State.data.countries['US'].states['NY'].count).toBe(1);
             expect(State.data.countries['US'].states['NY'].cities['New York']).toBeDefined();
             expect(State.data.countries['US'].states['NY'].cities['New York'].places['Central Park']).toBeDefined();
