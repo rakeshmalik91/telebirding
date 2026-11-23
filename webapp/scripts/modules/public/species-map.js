@@ -426,6 +426,11 @@ export function toggleFullscreen(forceState) {
 
     mapContainer.classList.toggle('map-fullscreen', isFullscreen);
     document.body.classList.toggle('has-fullscreen-map', isFullscreen);
+    document.documentElement.classList.toggle('has-fullscreen-map', isFullscreen);
+
+    if (isFullscreen) {
+        window.scrollTo(0, 0);
+    }
 
     const enterIcon = mapContainer.querySelector('.fullscreen-icon-enter');
     const exitIcon = mapContainer.querySelector('.fullscreen-icon-exit');
@@ -463,8 +468,12 @@ export function toggleFullscreen(forceState) {
         }
     }
 
-    setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 100);
-    setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 300);
+    if (speciesMap) {
+        speciesMap.invalidateSize();
+        setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 50);
+        setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 150);
+        setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 350);
+    }
 }
 
 // Expose globally so Android BackHandler can toggle/exit fullscreen
@@ -538,6 +547,7 @@ function addMapControls(map) {
             isHtml5Fullscreen = false;
             mapContainer.classList.remove('map-fullscreen');
             document.body.classList.remove('has-fullscreen-map');
+            document.documentElement.classList.remove('has-fullscreen-map');
             const enterIcon = mapContainer.querySelector('.fullscreen-icon-enter');
             const exitIcon = mapContainer.querySelector('.fullscreen-icon-exit');
             if (enterIcon && exitIcon) {
@@ -710,8 +720,12 @@ export async function initSpeciesMap(countriesData, placesGeo) {
     }
 
     // Invalidate map size once container layout stabilizes (after sidebar transitions)
-    setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 100);
-    setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 300);
+    if (speciesMap) {
+        speciesMap.invalidateSize();
+        setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 50);
+        setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 150);
+        setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 350);
+    }
 
     // Listen for touch interactions on the map container to notify Android SwipeRefreshLayout
     const mapTouchHandler = () => {
@@ -752,6 +766,8 @@ export function destroySpeciesMap() {
             window.Android.setMapFullscreen(false);
         }
     }
+    document.body.classList.remove('has-fullscreen-map');
+    document.documentElement.classList.remove('has-fullscreen-map');
     if (speciesMap) {
         speciesMap.remove();
         speciesMap = null;

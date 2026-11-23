@@ -296,4 +296,41 @@ describe('Species Map Module', () => {
         expect(placeCalls[0][1].color).toBe('rgb(65, 215, 95)');
         expect(cityCalls[0][1].color).not.toBe(placeCalls[0][1].color);
     });
+
+    it('should toggle fullscreen classes on body, html, and species-map element', () => {
+        window.Android = {
+            setMapFullscreen: vi.fn(),
+            setMapInteracting: vi.fn()
+        };
+        window.scrollTo = vi.fn();
+
+        const mapContainer = document.getElementById('species-map');
+        mapContainer.innerHTML = `
+            <svg class="fullscreen-icon-enter"></svg>
+            <svg class="fullscreen-icon-exit" style="display: none;"></svg>
+        `;
+
+        // Toggle on
+        SpeciesMap.toggleFullscreen();
+        expect(mapContainer.classList.contains('map-fullscreen')).toBe(true);
+        expect(document.body.classList.contains('has-fullscreen-map')).toBe(true);
+        expect(document.documentElement.classList.contains('has-fullscreen-map')).toBe(true);
+        expect(window.Android.setMapFullscreen).toHaveBeenCalledWith(true);
+
+        // Toggle off
+        SpeciesMap.toggleFullscreen();
+        expect(mapContainer.classList.contains('map-fullscreen')).toBe(false);
+        expect(document.body.classList.contains('has-fullscreen-map')).toBe(false);
+        expect(document.documentElement.classList.contains('has-fullscreen-map')).toBe(false);
+        expect(window.Android.setMapFullscreen).toHaveBeenCalledWith(false);
+
+        // destroySpeciesMap cleans up classes
+        SpeciesMap.toggleFullscreen(true);
+        expect(document.body.classList.contains('has-fullscreen-map')).toBe(true);
+        SpeciesMap.destroySpeciesMap();
+        expect(document.body.classList.contains('has-fullscreen-map')).toBe(false);
+        expect(document.documentElement.classList.contains('has-fullscreen-map')).toBe(false);
+
+        delete window.Android;
+    });
 });
