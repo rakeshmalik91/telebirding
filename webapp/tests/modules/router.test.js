@@ -97,6 +97,8 @@ describe('Router Module', () => {
     it('setMode should update current mode', () => {
         Router.setMode(Constants.MODE_INSECT);
         expect(State.currentMode).toBe(Constants.MODE_INSECT);
+        Router.setMode(Constants.MODE_REPTILE);
+        expect(State.currentMode).toBe(Constants.MODE_REPTILE);
     });
 
     it('showStoriesPage should update UI', () => {

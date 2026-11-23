@@ -103,9 +103,12 @@ export function setupUpdateSpeciesForm() {
     // Remember current selection so we can restore it after rebuilding options
     // (prefer lastUpdatedSpecies when it exists — e.g. just after adding a new species)
     const prevNameVal = updateSpeciesForm.find("select[data-field=name]").val();
+    const defaultSpeciesKey = Constants.getDefaultSpecies(currentMode);
     const preferredKey = (lastUpdatedSpecies && data.species[lastUpdatedSpecies])
         ? lastUpdatedSpecies
-        : (prevNameVal && data.species[prevNameVal] ? prevNameVal : "");
+        : (prevNameVal && data.species[prevNameVal]
+            ? prevNameVal
+            : (defaultSpeciesKey && data.species[defaultSpeciesKey] ? defaultSpeciesKey : ""));
 
     const familySelect = updateSpeciesForm.find("select[data-field=family]").empty();
     const speciesSelect = updateSpeciesForm.find("select[data-field=name]").empty();

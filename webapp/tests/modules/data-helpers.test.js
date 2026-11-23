@@ -113,6 +113,37 @@ describe('DataHelpers Module', () => {
             expect(State.data.sightings[0].species.tags.length).toBe(2);
         });
 
+        it('should handle sightings with missing or unmapped species without throwing', () => {
+            State.data.sightings.push({
+                key: 's_unmapped_1',
+                // species is undefined
+                date: '03 Jan 2023',
+                hidden: false,
+                media: [],
+                country: 'US',
+                state: 'NY'
+            });
+            State.data.sightings.push({
+                key: 's_unmapped_2',
+                species: 'unknown-species', // not in State.data.species
+                date: '04 Jan 2023',
+                hidden: false,
+                media: [],
+                country: 'US',
+                state: 'NY'
+            });
+
+            expect(() => DataHelpers.computeInternalDataFields()).not.toThrow();
+            const s1 = State.data.sightings.find(s => s.key === 's_unmapped_1');
+            expect(s1.species).toBeDefined();
+            expect(s1.species.key).toBe('unidentified');
+            expect(s1.species.tags).toEqual([]);
+
+            const s2 = State.data.sightings.find(s => s.key === 's_unmapped_2');
+            expect(s2.species).toBeDefined();
+            expect(s2.species.key).toBe('unknown-species');
+        });
+
         it('should build missing families and compute counts/imagesrc', () => {
             // Add a sighting with a family not in State.data.families
             State.data.sightings.push({

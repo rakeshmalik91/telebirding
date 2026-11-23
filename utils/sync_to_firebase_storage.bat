@@ -91,7 +91,7 @@ REM Upload missing data/site-data.json, data/places.json and featured-images/* t
 REM Upload missing data/site-data.json, data/places.json and featured-images/* to Firebase Storage
 python "%~dp0sync_static_files_to_firebase_storage.py"
 
-REM Upload bird/insect data (only changed files unless -f is passed)
+REM Upload bird/insect/reptile data (only changed files unless -f is passed)
 echo.
-echo Syncing bird/insect data...
+echo Syncing bird/insect/reptile data...
 python "%~dp0sync_dynamic_files_to_firebase_storage.py" %*

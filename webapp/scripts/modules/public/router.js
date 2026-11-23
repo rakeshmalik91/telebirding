@@ -98,10 +98,11 @@ export function toggleRightPane() {
             $(".right-pane").append("<h1>Index by Year</h1>");
             renderYearList($(".right-pane"));
 
-            const filteredSpecies = [...new Set(State.data.filteredSightings.map(b => b.species.key))];
+            const filteredSpecies = [...new Set(State.data.filteredSightings.map(b => b.species?.key || 'unidentified'))];
             $(".right-pane").append("<h1>Species List<span class='count'>" + filteredSpecies.length + "<span></h1>");
             filteredSpecies.sort().forEach(function (species) {
-                $(".right-pane").append("<div class='species'><button class='family' onclick='triggerFilter(\"sighting\", \"" + State.data.species[species].name + "\")'><span>" + State.data.species[species].name + "</span></button></div>");
+                const spName = State.data.species?.[species]?.name || Util.capitalize(species.replace(/[-_]/g, ' '));
+                $(".right-pane").append("<div class='species'><button class='family' onclick='triggerFilter(\"sighting\", \"" + spName + "\")'><span>" + spName + "</span></button></div>");
             });
 
             $(".right-pane").append("<h1></h1>");
@@ -147,7 +148,7 @@ export function retrieveStateFromUrlParams() {
     if (page === 'f') page = Constants.ARCHIVE;
     if (isMobile && (page === Constants.HOME || !page)) page = Constants.ARCHIVE;
     State.updateCurrentPage(page);
-    State.updateCurrentMode(urlParams.mode ? decodeURIComponent(urlParams.mode) : Constants.MODE_BIRD);
+    State.updateCurrentMode(Constants.normalizeMode(urlParams.mode ? decodeURIComponent(urlParams.mode) : Constants.MODE_BIRD));
 
     if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(urlParams.page) && urlParams.sort_by) {
         let newSort = { by: decodeURIComponent(urlParams.sort_by), descending: !!urlParams.sort_descending };

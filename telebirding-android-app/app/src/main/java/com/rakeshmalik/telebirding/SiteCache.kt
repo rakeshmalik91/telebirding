@@ -35,7 +35,7 @@ class SiteCache(private val context: Context) {
         private val SHELL_ENTRY_FILES = listOf("index.html", "404.html", "privacy-policy.html")
         private val DATA_ENTRY_FILES = listOf("data/site-data.json", "data/stories.json", "data/places.json")
         private val DATA_TYPES = listOf("sightings", "species", "families", "likes")
-        private val MODES = listOf("bird", "insect")
+        private val MODES = listOf("bird", "insect", "reptile")
 
 
     }

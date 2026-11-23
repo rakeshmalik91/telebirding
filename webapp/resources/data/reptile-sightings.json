@@ -1,0 +1,265 @@
+{
+    "sightings": [
+        {
+            "key": "s1795424305",
+            "species": "rhino-horned-lizard",
+            "date": "20-11-2026",
+            "city": "Horton Plains National Park",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/rhino-horned-lizard-1795424325.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rhino-horned-lizard-1795424346.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795423791",
+            "species": "rhino-horned-lizard",
+            "date": "20-11-2026",
+            "city": "Horton Plains National Park",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/rhino-horned-lizard-1795423854.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/rhino-horned-lizard-1795423824.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795423900",
+            "species": "green-garden-lizard",
+            "date": "20-11-2026",
+            "city": "Horton Plains National Park",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/green-garden-lizard-1795423918.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-garden-lizard-1795423929.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795416048",
+            "species": "green-vine-snake",
+            "date": "19-11-2026",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "media": [
+                {
+                    "src": "images/green-vine-snake-1795420639.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-vine-snake-1795420659.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-vine-snake-1795420674.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "time_of_day": "Day",
+            "city": "Sinharaja Forest Reserve"
+        },
+        {
+            "key": "s1795420675",
+            "date": "18-11-2026",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "rating": "3",
+            "city": "Sinharaja Forest Reserve",
+            "species": "green-garden-lizard",
+            "media": [
+                {
+                    "src": "images/green-garden-lizard-1795422503.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/green-garden-lizard-1795422483.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "time_of_day": "Day"
+        },
+        {
+            "key": "s1795424005",
+            "species": "common-bronzeback",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/common-bronzeback-1795424184.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "unconfirmed": true
+        },
+        {
+            "key": "s1795423933",
+            "species": "sri-lankan-kangaroo-lizard",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/sri-lankan-kangaroo-lizard-1795424001.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795423813",
+            "species": "checkered-keelback",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/checkered-keelback-1795423892.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "unconfirmed": true
+        },
+        {
+            "key": "s1795424483",
+            "species": "rat-snake",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/rat-snake-1795424588.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795423706",
+            "species": "sri-lankan-kangaroo-lizard",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/unidentified-snake-1795423788.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "unconfirmed": true
+        },
+        {
+            "key": "s1795422516",
+            "species": "unidentified-skink",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/unidentified-skink-1795422549.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795422564",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Dusk",
+            "media": [
+                {
+                    "src": "images/unidentified-1795422606.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/unidentified-1795422641.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "species": "green-garden-lizard"
+        }
+    ]
+}

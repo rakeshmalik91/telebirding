@@ -717,6 +717,7 @@ select[data-field=species] {
 
 .mode-tabs {
 	display: inline-flex;
+	align-items: stretch;
 	background-color: rgba(255, 255, 255, 0.05);
 	border-radius: 6px;
 	padding: 4px;
@@ -733,6 +734,17 @@ select[data-field=species] {
 	box-shadow: none;
 	font-weight: 600;
 	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	cursor: pointer;
+}
+
+.mode-tab[data-mode="reptile"] {
+	font-size: 10.5px;
+	line-height: 1.15;
+	padding: 3px 8px;
 }
 
 .mode-tab:hover {

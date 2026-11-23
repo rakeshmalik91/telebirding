@@ -4,7 +4,7 @@ import FirebaseApi from '../firebase-api.js';
 import State from './state.js';
 
 export function getSpeciesCount(sightings) {
-    return [...new Set(sightings.map(b => b.species.key))].length;
+    return [...new Set(sightings.map(b => (b.species?.key || b.species || 'unidentified')))].length;
 }
 
 export function computeInternalDataFields() {
@@ -17,25 +17,34 @@ export function computeInternalDataFields() {
         sighting.date = moment(sighting.date, Constants.DATA_DATE_FORMAT);
         sighting.dateString = sighting.date.format(Constants.DISPLAY_DATE_FORMAT);
         //tags
-        sighting.species = State.data.species[sighting.species];
+        const rawSpeciesKey = sighting.species;
+        const speciesObj = (State.data.species && rawSpeciesKey) ? State.data.species[rawSpeciesKey] : null;
+        sighting.species = speciesObj ? { ...speciesObj } : {
+            key: rawSpeciesKey || 'unidentified',
+            name: rawSpeciesKey ? Util.capitalize(rawSpeciesKey.replace(/[-_]/g, ' ')) : 'Unidentified',
+            family: '',
+            tags: []
+        };
         sighting.species.tags = (sighting.species.tags || []).sort((a, b) => Util.compare(b.length, a.length));
         //images
+        sighting.media = sighting.media || [];
         sighting.media.forEach(function (m) {
             m.src = Util.getMedia(m.src);
             if (m.thumbnail) m.thumbnail = Util.getMedia(m.thumbnail);
         });
         //new species flag
-        sighting.newSpecies = (State.data.sightings.slice(index + 1).map(b => b.species).indexOf(sighting.species.key) < 0);
+        const currentKey = sighting.species.key;
+        sighting.newSpecies = (State.data.sightings.slice(index + 1).map(b => (b.species?.key || b.species || 'unidentified')).indexOf(currentKey) < 0);
     });
     //add missing families
     let familyNames = State.data.families.map(f => f.name);
-    const newFamilies = [...new Set(State.data.sightings.filter(b => b.species.family && !familyNames.includes(b.species.family)).map(b => b.species.family))];
+    const newFamilies = [...new Set(State.data.sightings.filter(b => b.species && b.species.family && !familyNames.includes(b.species.family)).map(b => b.species.family))];
     State.data.families = State.data.families.concat(newFamilies.map(function (f) { return { name: f }; }));
     //fix missing family images or paths
     State.data.families.forEach(function (family) {
-        family.imagesrc = ((((State.data.sightings.filter(b => b.species.family == family.name) || [])[0] || {}).media || []).filter(m => m.type !== 'video')[0] || {}).src;
-        family.count = State.data.sightings.filter(b => b.species.family == family.name).length;
-    })
+        family.imagesrc = ((((State.data.sightings.filter(b => b.species && b.species.family == family.name) || [])[0] || {}).media || []).filter(m => m.type !== 'video')[0] || {}).src;
+        family.count = State.data.sightings.filter(b => b.species && b.species.family == family.name).length;
+    });
     State.data.families.sort((a, b) => Util.compare(a.name, b.name));
 
     //places
@@ -93,10 +102,10 @@ export function computeInternalDataFields() {
     State.data.years = {};
     [...new Set(State.data.sightings.map(b => b.date.format(Constants.FILTER_YEAR_FORMAT)))].forEach(function (year) {
         let yearSightings = State.data.sightings.filter(b => b.date.format(Constants.FILTER_YEAR_FORMAT) == year);
-        let yearSpecies = [...new Set(yearSightings.map(b => b.species.key))];
-        let oldestDate = yearSightings[0].date;
-        yearSightings.forEach(b => oldestDate = (b.date < oldestDate) ? b.date : oldestDate);
-        let oldSpecies = [...new Set(State.data.sightings.filter(b => b.date < oldestDate).map(b => b.species.key))];
+        let yearSpecies = [...new Set(yearSightings.map(b => (b.species?.key || b.species || 'unidentified')))];
+        let oldestDate = yearSightings[0] ? yearSightings[0].date : null;
+        yearSightings.forEach(b => oldestDate = (oldestDate === null || b.date < oldestDate) ? b.date : oldestDate);
+        let oldSpecies = [...new Set(State.data.sightings.filter(b => oldestDate !== null && b.date < oldestDate).map(b => (b.species?.key || b.species || 'unidentified')))];
         State.data.years[year] = {
             sighting_count: yearSightings.length,
             new_species_count: yearSpecies.filter(s => oldSpecies.indexOf(s) < 0).length

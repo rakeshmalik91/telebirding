@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20260922_1">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261123_1">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260923_4">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
@@ -42,7 +42,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20261110_1"></script>
+	<script type="module" src="scripts/admin.js?v=20261123_14"></script>
 
 </head>
 
@@ -77,6 +77,7 @@
 			<div class="mode-tabs">
 				<button class="mode-tab" data-mode="bird">BIRD</button>
 				<button class="mode-tab" data-mode="insect">INSECT</button>
+				<button class="mode-tab" data-mode="reptile">REPTILES &amp;<br>AMPHIBIANS</button>
 			</div>
 		</div>
 
@@ -105,8 +106,8 @@
 					</div>
 					<button class='cleanup-media' title='Remove unreferenced media from storage'>Cleanup Media</button>
 					<div class="btn-group">
-						<button class='backup' title='Backup Data'>Backup</button>
-						<button class="restore-backup" title="Restore Data from Backup">Restore</button>
+						<button class='backup' title='Backup all modes data and places'>Backup</button>
+						<button class="restore-backup" title="Restore all modes data from backup">Restore</button>
 					</div>
 				</div>
 				<br style="clear: both;">

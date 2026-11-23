@@ -1,3 +1,4 @@
+import Constants from '../constants.js';
 import FirebaseApi from '../firebase-api.js';
 import Util from '../util.js';
 import { customAlert, customConfirm } from './ui.js';
@@ -7,32 +8,20 @@ export function setupCleanupListeners() {
     $('.cleanup-media').click(async function () {
         showLoader();
         try {
-            // Fetch both sightings to ensure we don't delete media from another mode
-            let birdSightings = [];
-            let insectSightings = [];
-            
-            try {
-                const birdRes = await fetch(Util.getData('data/bird-sightings.json'));
-                if (birdRes.ok) {
-                    const data = await birdRes.json();
-                    birdSightings = data.sightings || [];
+            // Fetch sightings across all modes to ensure we don't delete media from another mode
+            let allSightings = [];
+            for (const mode of Constants.MODES) {
+                try {
+                    const res = await fetch(Util.getData(`data/${mode}-sightings.json`));
+                    if (res.ok) {
+                        const data = await res.json();
+                        allSightings.push(...(data.sightings || []));
+                    }
+                } catch (e) {
+                    console.warn(`Could not fetch ${mode} sightings`, e);
                 }
-            } catch (e) {
-                console.warn("Could not fetch bird sightings", e);
             }
-            
-            try {
-                const insectRes = await fetch(Util.getData('data/insect-sightings.json'));
-                if (insectRes.ok) {
-                    const data = await insectRes.json();
-                    insectSightings = data.sightings || [];
-                }
-            } catch (e) {
-                console.warn("Could not fetch insect sightings", e);
-            }
-            
-            const allSightings = [...birdSightings, ...insectSightings];
-            
+
             const referencedMedia = new Set();
             allSightings.forEach(sighting => {
                 if (sighting.media) {

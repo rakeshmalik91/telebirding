@@ -218,9 +218,9 @@ def main():
     )
     parser.add_argument(
         '--category', '-c',
-        choices=['bird', 'insect', 'both'],
-        default='both',
-        help='Which category to process (default: both)'
+        choices=['bird', 'insect', 'reptile', 'all', 'both'],
+        default='all',
+        help='Which category to process (default: all)'
     )
     
     args = parser.parse_args()
@@ -229,7 +229,7 @@ def main():
     
     total_merged = 0
     
-    if args.category in ['bird', 'both']:
+    if args.category in ['bird', 'all', 'both']:
         total_merged += process_category(
             'Bird',
             base_path / 'bird-species.json',
@@ -237,11 +237,19 @@ def main():
             dry_run=args.dry_run
         )
     
-    if args.category in ['insect', 'both']:
+    if args.category in ['insect', 'all', 'both']:
         total_merged += process_category(
             'Insect',
             base_path / 'insect-species.json',
             base_path / 'insect-sightings.json',
+            dry_run=args.dry_run
+        )
+
+    if args.category in ['reptile', 'all', 'both']:
+        total_merged += process_category(
+            'Reptile & Amphibian',
+            base_path / 'reptile-species.json',
+            base_path / 'reptile-sightings.json',
             dry_run=args.dry_run
         )
     

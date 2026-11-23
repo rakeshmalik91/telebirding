@@ -10,29 +10,37 @@ resourcesDir = ROOT / "webapp" / "resources"
 
 print(f'\nBacking up data and images from Firebase Storage ...\n{"-"*50}\n')
 
-for mode in ["bird", "insect"]:
+for mode in ["bird", "insect", "reptile"]:
 	for filename in ["sightings", "species", "families", "likes"]:
 		src = firestoragePath + dataDir + "%2F" + mode + "-" + filename + ".json?alt=media"
 		dst_path = resourcesDir / dataDir / f"{mode}-{filename}.json"
 		print(f"Downloading {dst_path.relative_to(ROOT)} ...")
 		dst_path.parent.mkdir(parents=True, exist_ok=True)
-		urllib.request.urlretrieve(src, str(dst_path))
-		with open(dst_path, 'r', encoding='utf-8') as f:
-			content = json.load(f)
-		with open(dst_path, 'w', encoding='utf-8') as f:
-			json.dump(content, f, indent=4, ensure_ascii=False)
-	with open(resourcesDir / dataDir / f"{mode}-sightings.json", 'r', encoding='utf-8') as f:
-		data = json.load(f)
-	for sighting in data.get('sightings', []):
-		for media in sighting.get('media', []):
-			media_rel = media.get('src') if ('type' not in media or media['type'] == 'image') else media.get('thumbnail')
-			if media_rel:
-				src = firestoragePath + media_rel.replace('/', '%2F') + "?alt=media"
-				dst_path = resourcesDir / media_rel
-				if not dst_path.is_file():
-					print(f"Downloading {dst_path.relative_to(ROOT)} ...")
-					dst_path.parent.mkdir(parents=True, exist_ok=True)
-					urllib.request.urlretrieve(src, str(dst_path))
+		try:
+			urllib.request.urlretrieve(src, str(dst_path))
+			with open(dst_path, 'r', encoding='utf-8') as f:
+				content = json.load(f)
+			with open(dst_path, 'w', encoding='utf-8') as f:
+				json.dump(content, f, indent=4, ensure_ascii=False)
+		except Exception as e:
+			print(f"Notice: {dst_path.name} not found or could not be downloaded from storage ({e}); keeping local file.")
+	sightings_path = resourcesDir / dataDir / f"{mode}-sightings.json"
+	if sightings_path.is_file():
+		with open(sightings_path, 'r', encoding='utf-8') as f:
+			data = json.load(f)
+		for sighting in data.get('sightings', []):
+			for media in sighting.get('media', []):
+				media_rel = media.get('src') if ('type' not in media or media['type'] == 'image') else media.get('thumbnail')
+				if media_rel:
+					src = firestoragePath + media_rel.replace('/', '%2F') + "?alt=media"
+					dst_path = resourcesDir / media_rel
+					if not dst_path.is_file():
+						print(f"Downloading {dst_path.relative_to(ROOT)} ...")
+						dst_path.parent.mkdir(parents=True, exist_ok=True)
+						try:
+							urllib.request.urlretrieve(src, str(dst_path))
+						except Exception as e:
+							print(f"Warning: Could not download {media_rel}: {e}")
 
 # Download places.json
 places_src = firestoragePath + dataDir + "%2Fplaces.json?alt=media"

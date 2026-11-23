@@ -20,30 +20,35 @@ export function getSightingPhotoTitle(sighting, image) {
 export function renderSightingTags(sightingLabelDiv, sighting) {
     sightingLabelDiv.append("<div class='sighting-tags'></div>");
     let tagsDiv = sightingLabelDiv.find(".sighting-tags");
-    if (sighting.species.tags && sighting.species.tags.length) {
+    const tags = sighting.species?.tags || [];
+    if (tags.length) {
         tagsDiv.append("Tagged ");
-        sighting.species.tags.forEach(function (t) {
+        tags.forEach(function (t) {
             const safeT = t.replace(/'/g, "\\'");
             tagsDiv.append('<span class="tags" title="Tag" onclick="triggerFilter(\'sighting\', \'' + safeT + '\')">' + t + '</span> ');
         });
         tagsDiv.append(" ");
     }
-    const safeFamily = sighting.species.family ? sighting.species.family.replace(/'/g, "\\'") : '';
-    tagsDiv.append('in <span class="tags" title="Family" onclick="triggerFilter(\'sighting\', \'' + safeFamily + '\')">' + sighting.species.family + '</span>');
+    const family = sighting.species?.family || '';
+    if (family) {
+        const safeFamily = family.replace(/'/g, "\\'");
+        tagsDiv.append('in <span class="tags" title="Family" onclick="triggerFilter(\'sighting\', \'' + safeFamily + '\')">' + family + '</span>');
+    }
 }
 
 export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
     const ti = inPreviewPage ? "" : " tabindex='-1'";
-    let nameSplit = sighting.species.name.replace(/\bunidentified\b\s*/gi, '').split(' ');
+    const speciesName = sighting.species?.name || 'Unidentified';
+    let nameSplit = speciesName.replace(/\bunidentified\b\s*/gi, '').split(' ');
     let nameFirst = nameSplit.reverse().splice(1).reverse().join(' ');
     let nameLast = nameSplit.splice(-1);
 
     if (inPreviewPage) {
         sightingLabelDiv.append('<div class="vgap30px"></div> ');
     }
-    let unidentifiedSpan = sighting.species.name.match(/.*\bunidentified\b.*/gi) ? '<a' + ti + ' class="unidentified">Unidentified</a> ' : '';
+    let unidentifiedSpan = speciesName.match(/.*\bunidentified\b.*/gi) ? '<a' + ti + ' class="unidentified">Unidentified</a> ' : '';
     sightingLabelDiv.append('<div class="sighting-name">' + unidentifiedSpan + '<a' + ti + '>' + nameFirst + '</a> <a' + ti + '>' + nameLast + '</a></div> ');
-    sightingLabelDiv.find('a.unidentified:not(:last-child)').click(function () { triggerFilter('sighting', sighting.species.name); })
+    sightingLabelDiv.find('a.unidentified:not(:last-child)').click(function () { triggerFilter('sighting', speciesName); })
     sightingLabelDiv.find('a:not(.unidentified):not(:last-child)').click(function () { triggerFilter('sighting', nameFirst + " " + nameLast); })
     sightingLabelDiv.find('a:last-child').click(function () { triggerFilter('sighting', nameLast); })
     let sightingNameDiv = sightingLabelDiv.find(".sighting-name");

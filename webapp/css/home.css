@@ -1294,20 +1294,21 @@ button.right-pane-button.button-active:before {
 	display: flex;
 	align-items: center;
 	background-color: #253547;
-	border-radius: 8px;
-	padding: 2px;
-	gap: 2px;
+	border-radius: 9px;
+	padding: 3px;
+	gap: 3px;
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-	margin-top: -12px;
+	margin-top: -10px;
+	margin-left: 20px;
 }
 
 .site-header .header-mode-toggle .mode-toggle-btn {
 	background-color: transparent;
 	color: #8293a6;
 	border: none;
-	border-radius: 6px;
-	padding: 4px 10px;
+	border-radius: 7px;
+	padding: 5px 12px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -1336,8 +1337,8 @@ button.right-pane-button.button-active:before {
 }
 
 .site-header .header-mode-toggle .mode-toggle-btn .mode-toggle-icon {
-	width: 20px;
-	height: 20px;
+	width: 24px;
+	height: 24px;
 	display: block;
 	pointer-events: none;
 }

@@ -7,11 +7,12 @@ import { lookupLocation, geoService, fetchStatesForCountry } from '../geo-servic
 
 export let data = {};
 export let loadedEtags = {};
-export let currentMode = Util.getUrlParams().mode || Constants.MODE_BIRD;
+export let currentMode = Constants.normalizeMode(Util.getUrlParams().mode);
 export function setCurrentMode(mode) {
     currentMode = mode;
+    lastUpdatedSpecies = Constants.getDefaultSpecies(mode);
 }
-export let lastUpdatedSpecies = "";
+export let lastUpdatedSpecies = Constants.getDefaultSpecies(currentMode);
 
 export const historyManager = new UndoRedoManager(50);
 historyManager.onChange = (canUndo, canRedo) => {
@@ -297,33 +298,76 @@ export function uploadJSONData(type, skipRefresh) {
     });
 }
 
+async function fetchRemoteModeFile(mode, file) {
+    try {
+        const url = Util.getData(`data/${mode}-${file}.json`);
+        if (typeof fetch === 'function') {
+            const res = await fetch(url);
+            if (res.ok) {
+                return await res.json();
+            }
+        }
+    } catch (e) {
+        // Fallback to storage
+    }
+
+    try {
+        const storage = FirebaseApi.getFirebase().storage();
+        const url = await storage.ref(`data/${mode}-${file}.json`).getDownloadURL();
+        if (typeof fetch === 'function') {
+            const res = await fetch(url);
+            if (res.ok) {
+                return await res.json();
+            }
+        }
+    } catch (e) {
+        // File might not exist yet
+    }
+
+    return { [file]: ['species', 'families'].includes(file) ? {} : [] };
+}
+
 export async function backup() {
-    showLoader("backup", "Backing up...");
+    showLoader("backup", "Backing up all modes...");
     console.log("Backing up...");
     const date = moment(Date.now()).format(Constants.BACKUP_DATE_FORMAT);
-    const filesToBackup = ["species", "families", "sightings", "likes", "places"];
     
     const uploadTasks = [];
     const storage = FirebaseApi.getFirebase().storage();
 
-    // Start base files backup synchronously immediately
-    for (const file of filesToBackup) {
-        let fileData = {};
-        let fileName = "";
-        if (file === "places") {
-            fileData = { countries: data.countries || {} };
-            fileName = "places.json";
-        } else {
-            fileData[file] = data[file];
-            fileName = currentMode + "-" + file + ".json";
-        }
+    // 1. Places backup (common across all modes) - start immediately
+    const placesData = { countries: data.countries || {} };
+    const placesBlob = new File(JSON.stringify(placesData, null, '\t').split('\n').map(l => l + '\n'), "places.json");
+    uploadTasks.push(
+        storage.ref(`backup/${date}/places.json`).put(placesBlob)
+    );
+
+    // 2. Active mode files - start synchronously with in-memory data
+    const modeFiles = ["species", "families", "sightings", "likes"];
+    for (const file of modeFiles) {
+        const fileData = { [file]: data[file] || (['species', 'families'].includes(file) ? {} : []) };
+        const fileName = `${currentMode}-${file}.json`;
         const fileBlob = new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName);
         uploadTasks.push(
-            storage.ref("backup/" + date + "/" + fileName).put(fileBlob)
+            storage.ref(`backup/${date}/${fileName}`).put(fileBlob)
         );
     }
 
-    // Now asynchronously ensure geo boundaries and back them up
+    // 3. Other modes files - fetch from remote/storage and back up
+    const otherModes = (Constants.MODES || [currentMode]).filter(m => m !== currentMode);
+    for (const mode of otherModes) {
+        for (const file of modeFiles) {
+            uploadTasks.push(
+                fetchRemoteModeFile(mode, file).then(fileData => {
+                    const fileName = `${mode}-${file}.json`;
+                    const fileBlob = new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName);
+                    return storage.ref(`backup/${date}/${fileName}`).put(fileBlob);
+                })
+            );
+        }
+    }
+
+    // 4. Asynchronously ensure geo boundaries and back them up
     const geoPromise = (async () => {
         try {
             await ensureGeoBoundariesLoaded();
@@ -346,11 +390,15 @@ export async function backup() {
     })();
 
     try {
-        await Promise.all([...uploadTasks, geoPromise]);
+        const results = await Promise.allSettled([...uploadTasks, geoPromise]);
+        const failure = results.find(r => r.status === 'rejected');
+        if (failure) {
+            throw failure.reason || new Error("Failed to upload all backup files");
+        }
         refresh();
         console.log("Backup completed");
         hideLoader("backup");
-        showToast(`Backup created successfully for ${date}!`, "success");
+        showToast(`Backup created successfully for all modes (${date})!`, "success");
     } catch (e) {
         console.error("Backup failed", e);
         hideLoader("backup");
@@ -527,14 +575,17 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
 
     let watermark = null;
     if ($('input[name=watermark-on]').is(":checked")) {
+        const author = sighting?.author || Constants.DEFAULT_AUTHOR;
         watermark = {
-            text: $('input[name=watermark]').val().replace("${author}", (data.sightings.filter(b => b.key == sightingKey)[0].author || Constants.DEFAULT_AUTHOR)).trim(),
+            text: $('input[name=watermark]').val().replace("${author}", author).trim(),
             color: $('input[name=watermark-color]').val() + "33"
         };
     }
     Array.from(files).forEach(function (file, index) {
         let mediaSrc;
-        const speciesKey = data.species[data.sightings.filter(b => b.key == sightingKey)[0].species].key;
+        const speciesObj = (sighting && sighting.species && data.species) ? data.species[sighting.species] : null;
+        const rawKey = speciesObj?.key || sighting?.species || 'unidentified';
+        const speciesKey = rawKey.toLowerCase().replaceAll(/\s+/g, '-').replaceAll("'", '') || 'unidentified';
 
         if (file.type.match(/image.*/)) {
             mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
@@ -795,9 +846,10 @@ export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
 
 export function addSighting(filterSightingVal) {
     snapshotSightings();
+    const defaultSpeciesKey = Constants.getDefaultSpecies(currentMode);
     data.sightings.unshift({
         "key": ("s" + Math.floor(Date.now() / 1000)),
-        "species": lastUpdatedSpecies,
+        "species": lastUpdatedSpecies || defaultSpeciesKey,
         "date": (data.sightings[0] || {}).date || moment(Date.now()).format(Constants.DATA_DATE_FORMAT),
         "place": (data.sightings[0] || {}).place,
         "city": (data.sightings[0] || {}).city || "Howrah",
@@ -1009,13 +1061,15 @@ export function sightingMatches(sighting, searchKey) {
     } else if (searchKey.match(/^rating=/i)) {
         return sighting.rating == searchKey.split("=")[1] || 0;
     }
-    return sighting.key.indexOf(searchKey) >= 0
-        || data.species[sighting.species].name.toLowerCase().indexOf(searchKey) >= 0
-        || (data.species[sighting.species].tags && data.species[sighting.species].tags.length > 0 && data.species[sighting.species].tags.some(t => t.toLowerCase().indexOf(searchKey) >= 0))
+    const speciesObj = (sighting.species && data.species) ? data.species[sighting.species] : null;
+    const speciesName = speciesObj?.name || sighting.species || '';
+    return (sighting.key && sighting.key.indexOf(searchKey) >= 0)
+        || (speciesName && speciesName.toLowerCase().indexOf(searchKey) >= 0)
+        || (speciesObj?.tags && speciesObj.tags.length > 0 && speciesObj.tags.some(t => t.toLowerCase().indexOf(searchKey) >= 0))
         || (sighting.place && sighting.place.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.city && sighting.city.toLowerCase().indexOf(searchKey) >= 0)
-        || sighting.state.toLowerCase().indexOf(searchKey) >= 0
-        || sighting.country.toLowerCase().indexOf(searchKey) >= 0
+        || (sighting.state && sighting.state.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.country && sighting.country.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.variation && sighting.variation.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.subspecies && sighting.subspecies.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.plumage && sighting.plumage.toLowerCase().indexOf(searchKey) >= 0)

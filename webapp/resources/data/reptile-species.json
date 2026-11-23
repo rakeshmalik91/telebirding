@@ -1,0 +1,99 @@
+{
+    "species": {
+        "checkered-keelback": {
+            "key": "checkered-keelback",
+            "name": "Checkered Keelback",
+            "tags": [
+                "Keelback"
+            ],
+            "family": "Snakes"
+        },
+        "common-bronzeback": {
+            "key": "common-bronzeback",
+            "name": "Common Bronzeback",
+            "tags": [
+                "Bronzeback"
+            ],
+            "family": "Snakes"
+        },
+        "green-garden-lizard": {
+            "key": "green-garden-lizard",
+            "name": "Green Garden Lizard",
+            "tags": [
+                "Common Green Forest Lizard",
+                "Garden Lizard",
+                "Lizard"
+            ],
+            "family": "Agamid Lizards",
+            "latin_name": "calotes calotes"
+        },
+        "green-vine-snake": {
+            "key": "green-vine-snake",
+            "name": "Green Vine Snake",
+            "tags": [
+                "Snake"
+            ],
+            "family": "Snakes",
+            "latin_name": "ahaetulla nasuta"
+        },
+        "rat-snake": {
+            "key": "rat-snake",
+            "name": "Rat Snake",
+            "tags": [
+                "Snake"
+            ],
+            "family": "Snakes"
+        },
+        "rhino-horned-lizard": {
+            "key": "rhino-horned-lizard",
+            "name": "Rhino-horned Lizard",
+            "tags": [
+                "Lizard",
+                "Stoddart's Unicorn Lizard"
+            ],
+            "family": "Agamid Lizards",
+            "latin_name": "ceratophora stoddartii"
+        },
+        "sri-lankan-kangaroo-lizard": {
+            "key": "sri-lankan-kangaroo-lizard",
+            "name": "Sri Lankan Kangaroo Lizard",
+            "tags": [
+                "Lizard"
+            ],
+            "family": "Agamid Lizards",
+            "latin_name": "otocryptis wiegmanni"
+        },
+        "unidentified-gecko": {
+            "key": "unidentified-gecko",
+            "name": "Unidentified Gecko",
+            "tags": [
+                "Gecko"
+            ],
+            "family": "Geckos"
+        },
+        "unidentified-lizard": {
+            "key": "unidentified-lizard",
+            "name": "Unidentified Lizard",
+            "tags": [
+                "Lizard"
+            ],
+            "family": "Agamid Lizards"
+        },
+        "unidentified-skink": {
+            "key": "unidentified-skink",
+            "name": "Unidentified Skink",
+            "tags": [
+                "Skink"
+            ],
+            "family": "Skinks"
+        },
+        "unidentified-snake": {
+            "key": "unidentified-snake",
+            "name": "Unidentified Snake",
+            "tags": [
+                "Snake"
+            ],
+            "family": "Snakes"
+        }
+    }
+}

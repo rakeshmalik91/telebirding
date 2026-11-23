@@ -33,17 +33,20 @@ export function filterAndSortData(filter, params) {
 
     //family filter
     if (State.sightingFamilyFilter) {
-        filteredSightings = filteredSightings.filter(b => b.species.family.toLowerCase() == State.sightingFamilyFilter.toLowerCase());
+        filteredSightings = filteredSightings.filter(b => (b.species?.family || '').toLowerCase() == State.sightingFamilyFilter.toLowerCase());
     }
 
     //sighting filter
     if (filter.sighting) {
-        filteredSightings = filteredSightings.filter(b =>
-            Util.tagMatchesSubstring(b.species.name, filter.sighting)
-            || Util.tagMatches(b.species.name, filter.sighting)
-            || (b.species.family && (Util.tagMatches(b.species.family, filter.sighting) || Util.tagMatchesSubstring(b.species.family, filter.sighting)))
-            || (b.species.tags && b.species.tags.some(t => Util.tagMatches(t, filter.sighting) || Util.tagMatchesSubstring(t, filter.sighting)))
-        );
+        filteredSightings = filteredSightings.filter(b => {
+            const name = b.species?.name || '';
+            const family = b.species?.family || '';
+            const tags = b.species?.tags || [];
+            return Util.tagMatchesSubstring(name, filter.sighting)
+                || Util.tagMatches(name, filter.sighting)
+                || (family && (Util.tagMatches(family, filter.sighting) || Util.tagMatchesSubstring(family, filter.sighting)))
+                || (tags.length > 0 && tags.some(t => Util.tagMatches(t, filter.sighting) || Util.tagMatchesSubstring(t, filter.sighting)));
+        });
     }
 
     //place filter

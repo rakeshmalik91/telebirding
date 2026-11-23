@@ -147,7 +147,7 @@ showPage(State.currentPage, {
 window.onpopstate = function (state) {
 	// Re-parse mode (and other params) from the new URL so back/forward restores correctly
 	const urlParams = Util.getUrlParams();
-	const modeFromUrl = urlParams.mode ? decodeURIComponent(urlParams.mode) : Constants.DEFAULT_MODE;
+	const modeFromUrl = Constants.normalizeMode(urlParams.mode ? decodeURIComponent(urlParams.mode) : Constants.DEFAULT_MODE);
 	if (modeFromUrl !== State.currentMode && Constants.MODE[modeFromUrl]) {
 		State.updateCurrentMode(modeFromUrl);
 	}

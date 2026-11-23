@@ -310,6 +310,23 @@ describe('Admin Data Module', () => {
             expect(global.alert).toHaveBeenCalledWith(expect.stringContaining('Upload failed'));
         });
 
+        it('should handle image upload when sighting has blank or unmapped species', async () => {
+            AdminData.data.sightings.push({
+                key: 's_blank',
+                species: '',
+                date: '01-01-2024',
+                media: [],
+                author: 'Tester'
+            });
+            const files = [new File(['mock'], 'test.jpg', { type: 'image/jpeg' })];
+            AdminData.uploadMedia('s_blank', files);
+            for(let i=0; i<10; i++) await Promise.resolve();
+            vi.runAllTicks();
+            const sBlank = AdminData.data.sightings.find(s => s.key === 's_blank');
+            expect(sBlank.media.length).toBe(1);
+            expect(sBlank.media[0].src).toMatch(/^images\/unidentified-\d+\.jpg$/);
+        });
+
         it('should delete media on confirmation', async () => {
             vi.spyOn(window, 'confirm').mockReturnValue(true);
             AdminData.deleteMedia('s1', 'img1.jpg');
@@ -399,10 +416,10 @@ describe('Admin Data Module', () => {
     });
 
     describe('Firebase Data Operations', () => {
-        it('should backup all data files', async () => {
+        it('should backup all data files across all modes and places', async () => {
             const putSpy = vi.spyOn(global.firebase.storage().ref(), 'put');
-            AdminData.backup();
-            expect(putSpy).toHaveBeenCalledTimes(5);
+            await AdminData.backup();
+            expect(putSpy).toHaveBeenCalledTimes(13);
         });
 
         it('should refresh data from storage', () => {
@@ -428,8 +445,7 @@ describe('Admin Data Module', () => {
             const putSpy = vi.spyOn(global.firebase.storage().ref(), 'put');
             putSpy.mockReturnValue(Promise.reject({message: 'Fail'}));
             const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-            AdminData.backup();
-            for(let i=0; i<10; i++) await Promise.resolve();
+            await AdminData.backup();
             expect(errorSpy).toHaveBeenCalled();
             errorSpy.mockRestore();
         });
@@ -544,6 +560,16 @@ describe('Admin Data Module', () => {
             expect(AdminData.sightingMatches(sighting, 'bird')).toBeTruthy(); // tag match
         });
 
+        it('should handle sightingMatches when sighting species is blank or unmapped', () => {
+            const sighting = {
+                key: 's_blank',
+                species: '',
+                place: 'Nuwara Eliya'
+            };
+            expect(AdminData.sightingMatches(sighting, 'eliya')).toBeTruthy();
+            expect(AdminData.sightingMatches(sighting, 'pigeon')).toBeFalsy();
+        });
+
         it('should call getCurrentMode', () => {
             const mode = AdminData.getCurrentMode();
             expect(mode).toBe('bird');
@@ -629,6 +655,21 @@ describe('Admin Data Module', () => {
             const freshAdminData = await import('../../scripts/modules/admin/data.js');
             expect(freshAdminData.currentMode).toBe('insect');
             expect(freshAdminData.lastUpdatedSpecies).toBe('');
+
+            freshAdminData.refreshData();
+
+            Util.getUrlParams.mockReturnValue({}); // restore default
+        });
+
+        it('should initialize lastUpdatedSpecies to unidentified-lizard in reptile mode', async () => {
+            Util.getUrlParams.mockReturnValue({ mode: 'reptile' });
+            vi.resetModules();
+            
+            Util.readJSONFiles.mockImplementation((files, cb) => cb({ sightings: [], species: {}, families: [] }));
+
+            const freshAdminData = await import('../../scripts/modules/admin/data.js');
+            expect(freshAdminData.currentMode).toBe('reptile');
+            expect(freshAdminData.lastUpdatedSpecies).toBe('unidentified-lizard');
 
             freshAdminData.refreshData();
 

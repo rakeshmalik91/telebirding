@@ -25,6 +25,9 @@ def get_target_files():
         "data/insect-families.json",
         "data/insect-species.json",
         "data/insect-sightings.json",
+        "data/reptile-families.json",
+        "data/reptile-species.json",
+        "data/reptile-sightings.json",
         "data/places.json"
     ]
     geo_dir = DATA_DIR / "geo"
@@ -185,6 +188,7 @@ def main():
         # Define groups
         bird_files = [f for f in target_files if "bird-" in f]
         insect_files = [f for f in target_files if "insect-" in f]
+        reptile_files = [f for f in target_files if "reptile-" in f]
         geo_files = [f for f in target_files if f.startswith("data/geo/") or f == "data/places.json"]
         
         files_set = set()
@@ -198,6 +202,11 @@ def main():
         if any(f in changed_files for f in insect_files):
             print("-> Insect data change detected. Queueing all insect files.")
             files_set.update(insect_files)
+
+        # Check reptile group
+        if any(f in changed_files for f in reptile_files):
+            print("-> Reptile & Amphibian data change detected. Queueing all reptile files.")
+            files_set.update(reptile_files)
 
         # Check places / geo group
         changed_geo = [f for f in geo_files if f in changed_files]

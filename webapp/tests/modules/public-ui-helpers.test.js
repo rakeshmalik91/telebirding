@@ -13,10 +13,10 @@ describe('Public UI Helpers - renderModeToggle', () => {
         expect(() => renderModeToggle(Constants.MODE_BIRD)).not.toThrow();
     });
 
-    it('should render icon toggle buttons for bird and insect modes with bird active by default', () => {
+    it('should render icon toggle buttons for bird, insect, and reptile modes with bird active by default', () => {
         renderModeToggle(Constants.MODE_BIRD);
         const $btns = $('#mode-toggle .mode-toggle-btn');
-        expect($btns.length).toBe(2);
+        expect($btns.length).toBe(3);
 
         const $birdBtn = $btns.filter('[data-mode="bird"]');
         expect($birdBtn.hasClass('active')).toBe(true);
@@ -33,33 +33,46 @@ describe('Public UI Helpers - renderModeToggle', () => {
         expect($insectBtn.attr('aria-label')).toBe('Insect');
         expect($insectBtn.attr('title')).toBe('Insect');
         expect($insectBtn.find('svg.mode-toggle-icon').length).toBe(1);
+
+        const $reptileBtn = $btns.filter('[data-mode="reptile"]');
+        expect($reptileBtn.hasClass('active')).toBe(false);
+        expect($reptileBtn.attr('aria-selected')).toBe('false');
+        expect($reptileBtn.attr('tabindex')).toBe('-1');
+        expect($reptileBtn.attr('aria-label')).toBe('Reptiles & Amphibians');
+        expect($reptileBtn.attr('title')).toBe('Reptiles & Amphibians');
+        expect($reptileBtn.find('svg.mode-toggle-icon').length).toBe(1);
     });
 
-    it('should update active class and accessibility attributes when insect mode is active', () => {
-        renderModeToggle(Constants.MODE_INSECT);
+    it('should update active class and accessibility attributes when insect or reptile mode is active', () => {
+        renderModeToggle(Constants.MODE_REPTILE);
         const $birdBtn = $('#mode-toggle .mode-toggle-btn[data-mode="bird"]');
         const $insectBtn = $('#mode-toggle .mode-toggle-btn[data-mode="insect"]');
+        const $reptileBtn = $('#mode-toggle .mode-toggle-btn[data-mode="reptile"]');
 
         expect($birdBtn.hasClass('active')).toBe(false);
         expect($birdBtn.attr('aria-selected')).toBe('false');
         expect($birdBtn.attr('tabindex')).toBe('-1');
 
-        expect($insectBtn.hasClass('active')).toBe(true);
-        expect($insectBtn.attr('aria-selected')).toBe('true');
-        expect($insectBtn.attr('tabindex')).toBe('0');
+        expect($insectBtn.hasClass('active')).toBe(false);
+        expect($insectBtn.attr('aria-selected')).toBe('false');
+        expect($insectBtn.attr('tabindex')).toBe('-1');
+
+        expect($reptileBtn.hasClass('active')).toBe(true);
+        expect($reptileBtn.attr('aria-selected')).toBe('true');
+        expect($reptileBtn.attr('tabindex')).toBe('0');
     });
 
     it('should update multiple .mode-toggle containers (e.g. header and menu) simultaneously', () => {
         $('body').append('<div class="mode-toggle header-mode-toggle"></div>');
-        renderModeToggle(Constants.MODE_INSECT);
+        renderModeToggle(Constants.MODE_REPTILE);
 
         const $menuBtns = $('#mode-toggle .mode-toggle-btn');
         const $headerBtns = $('.header-mode-toggle .mode-toggle-btn');
 
-        expect($menuBtns.length).toBe(2);
-        expect($headerBtns.length).toBe(2);
-        expect($headerBtns.filter('[data-mode="insect"]').hasClass('active')).toBe(true);
-        expect($menuBtns.filter('[data-mode="insect"]').hasClass('active')).toBe(true);
+        expect($menuBtns.length).toBe(3);
+        expect($headerBtns.length).toBe(3);
+        expect($headerBtns.filter('[data-mode="reptile"]').hasClass('active')).toBe(true);
+        expect($menuBtns.filter('[data-mode="reptile"]').hasClass('active')).toBe(true);
     });
 
     it('should support image fallback if svg property is not defined on a mode config', () => {
