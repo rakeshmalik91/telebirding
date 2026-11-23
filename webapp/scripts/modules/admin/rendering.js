@@ -11,7 +11,7 @@ import {
     syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
     uploadJSONData, getPlaceNode, getLocationGeo,
     ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary,
-    getGeocodeCoverage, getBoundaryProvider, setBoundaryProvider
+    getGeocodeCoverage, getBoundaryProvider, setBoundaryProvider, togglePinSighting
 } from './data.js';
 import { geoService, lookupLocation, setGeoProvider } from '../geo-service.js';
 import { showToast, customAlert } from './ui.js';
@@ -268,6 +268,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
         row += "<div style='display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px;'>"
         row += "<button class='delete-sighting' title='Delete sighting'>🗑️</button>";
         row += "<input class='hide-toggle' type='checkbox' data-field='hidden' " + (sighting.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
+        row += "<button type='button' class='pin-toggle" + (sighting.pinned ? " pinned" : "") + "' data-key='" + sighting.key + "' title='" + (sighting.pinned ? "Unpin sighting" : "Pin sighting") + "'>📌</button>";
         row += "</div></td>";
 
         row += "<td>"
@@ -618,6 +619,11 @@ export function renderSightingsTable(OFFSET, ROWS) {
             $(this).closest('.camera-select-wrapper').find('.camera-count').text(selectedVals.length > 0 ? selectedVals.length : "");
         });
         sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
+        sightingRow.find(".pin-toggle").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            togglePinSighting(sighting.key);
+        });
         sightingRow.find("select[data-field=country]").change(function () {
             sightingRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state')));
             sightingRow.find("select[data-field=state]").trigger('change');

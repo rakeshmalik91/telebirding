@@ -395,6 +395,31 @@ textarea {
     transform: scale(1.1);
 }
 
+.pin-toggle {
+	display: block;
+	padding: 0;
+	margin: 0;
+	height: 24px;
+	border: none;
+	background: none;
+	font-size: 16px;
+	cursor: pointer;
+	filter: grayscale(100%);
+	opacity: 0.3;
+	transition: opacity 0.2s, filter 0.2s, transform 0.1s;
+}
+
+.pin-toggle.pinned {
+	filter: none;
+	opacity: 1;
+}
+
+.pin-toggle:hover {
+	background: none;
+	box-shadow: none;
+	transform: scale(1.15);
+}
+
 .today-date-btn:hover {
     background: rgba(56, 189, 248, 0.2) !important;
     border-color: #38bdf8 !important;

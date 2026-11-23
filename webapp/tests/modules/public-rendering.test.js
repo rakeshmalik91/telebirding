@@ -175,6 +175,27 @@ describe('Public Rendering', () => {
             expect(div.html()).toContain('feral');
         });
 
+        it('should render sighting-pin-icon on top of photo for pinned sighting', () => {
+            const div = $('<div></div>');
+            const sighting = {
+                ...State.data.filteredSightings[0],
+                pinned: true
+            };
+            Rendering.renderSighting(div, sighting);
+            expect(div.find('.sighting-pin-icon').length).toBe(1);
+            expect(div.find('.sighting-image-carousal .sighting-pin-icon').length).toBe(1);
+        });
+
+        it('should not render sighting-pin-icon for unpinned sighting', () => {
+            const div = $('<div></div>');
+            const sighting = {
+                ...State.data.filteredSightings[0],
+                pinned: false
+            };
+            Rendering.renderSighting(div, sighting);
+            expect(div.find('.sighting-pin-icon').length).toBe(0);
+        });
+
         it('should render weather and time_of_day', () => {
             const div = $('#test-container');
             const sighting = State.data.filteredSightings[0];

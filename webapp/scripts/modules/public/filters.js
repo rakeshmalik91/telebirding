@@ -96,6 +96,11 @@ export function filterAndSortData(filter, params) {
             break;
     }
 
+    // Place pinned sightings at top regardless of sorting, while preserving the active sort order among themselves
+    const pinnedSightings = filteredSightings.filter(b => b.pinned);
+    const unpinnedSightings = filteredSightings.filter(b => !b.pinned);
+    filteredSightings = [...pinnedSightings, ...unpinnedSightings];
+
     // Update data wrapper with filtered result
     State.data.filteredSightings = filteredSightings;
 

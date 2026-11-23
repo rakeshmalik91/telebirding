@@ -103,7 +103,8 @@
             ],
             "rating": "3",
             "time_of_day": "Day",
-            "city": "Sinharaja Forest Reserve"
+            "city": "Sinharaja Forest Reserve",
+            "pinned": true
         },
         {
             "key": "s1795420675",
@@ -238,7 +239,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "pinned": true
         },
         {
             "key": "s1795422564",
@@ -262,7 +264,8 @@
                 }
             ],
             "rating": "3",
-            "species": "green-garden-lizard"
+            "species": "green-garden-lizard",
+            "pinned": true
         },
         {
             "key": "s1795430166",

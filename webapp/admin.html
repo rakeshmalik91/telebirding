@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261123_1">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261123_2">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260923_4">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
@@ -42,7 +42,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20261123_15"></script>
+	<script type="module" src="scripts/admin.js?v=20261123_16"></script>
 
 </head>
 
@@ -146,7 +146,7 @@
 			</div>
 			<table id="sightings-table"></table>
 			<div class='nav-bottom'>
-				<div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+				<div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 					<span>Watermark: </span>
 					<label class="toggle-switch">
 						<input type="checkbox" name="watermark-on" checked>
@@ -154,6 +154,8 @@
 					</label>
 					<input type="text" name="watermark" value="© ${author}">
 					<input type="color" name="watermark-color" value="#ffffff">
+					<span style="margin-left: 15px;">Max Pinned: </span>
+					<input type="number" name="max-pinned" min="1" max="50" value="3" style="width: 50px; text-align: center;">
 				</div>
 				<button class='first-page' title='First page'>&lt;&lt;</button>
 				<button class='previous' title='Previous page'>&lt;</button>

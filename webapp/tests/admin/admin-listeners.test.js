@@ -14,7 +14,9 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     sightingMatches: vi.fn(() => true),
     undoSighting: vi.fn(),
     redoSighting: vi.fn(),
-    delayPendingSave: vi.fn()
+    delayPendingSave: vi.fn(),
+    getMaxPinnedCount: vi.fn(() => 3),
+    setMaxPinnedCount: vi.fn((val) => parseInt(val, 10) || 3)
 }));
 
 describe('Admin Listeners Module', () => {
@@ -34,6 +36,7 @@ describe('Admin Listeners Module', () => {
             <button class="last-page"></button>
             <select name="page-size"><option value="5">5</option><option value="10" selected>10</option></select>
             <input name="filter-sighting" value="" />
+            <input type="number" name="max-pinned" value="3" />
         `;
 
         renderFn = vi.fn();
@@ -59,6 +62,14 @@ describe('Admin Listeners Module', () => {
         it('should call sortByDate on click', () => {
             $('button.sort-by-date').trigger('click');
             expect(AdminData.sortByDate).toHaveBeenCalled();
+        });
+    });
+
+    describe('max-pinned configuration', () => {
+        it('should initialize input with getMaxPinnedCount and call setMaxPinnedCount on change', () => {
+            expect($('input[name=max-pinned]').val()).toBe('3');
+            $('input[name=max-pinned]').val('5').trigger('change');
+            expect(AdminData.setMaxPinnedCount).toHaveBeenCalledWith('5');
         });
     });
 

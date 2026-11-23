@@ -167,6 +167,9 @@ export function renderSighting(sightingDiv, sighting) {
             mediaDiv.append('<img class="fadein" src="' + image.src + '" alt="' + sighting.species.name + '" onload="this.style.opacity=1"/>');
         }
     });
+    if (sighting.pinned) {
+        sightingCarousal.append('<div class="sighting-pin-icon" title="Pinned post">📌</div>');
+    }
     initSightingCarousal(sightingCarousal);
 
     sightingDiv.append('<div class="sighting-label"></div>');
@@ -193,7 +196,7 @@ export function renderSightings(offset, pageSize) {
     }
 
     $.each(dataToRender, function (i, sighting) {
-        $(".sightings-list").append('<div id="' + sighting.key + '" class="sighting-panel"></div>');
+        $(".sightings-list").append('<div id="' + sighting.key + '" class="sighting-panel' + (sighting.pinned ? ' pinned' : '') + '"></div>');
         let sightingDiv = $("#" + sighting.key);
         renderSighting(sightingDiv, sighting)
     });

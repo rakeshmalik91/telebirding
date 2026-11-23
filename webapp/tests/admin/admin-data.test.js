@@ -774,5 +774,61 @@ describe('Admin Data Module', () => {
                 expect(speciesMap['white-pigeon'].tags).toContain('Pigeon'); // singularized from Pigeon/Dove rules
             });
         });
+
+        describe('Pinned Sightings and Max Pins', () => {
+            beforeEach(() => {
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.clear();
+                }
+            });
+
+            it('getMaxPinnedCount returns 3 by default, and setMaxPinnedCount updates it in localStorage', () => {
+                expect(AdminData.getMaxPinnedCount()).toBe(3);
+                AdminData.setMaxPinnedCount(5);
+                expect(AdminData.getMaxPinnedCount()).toBe(5);
+                // Invalid or <= 0 defaults back to 3
+                AdminData.setMaxPinnedCount('invalid');
+                expect(AdminData.getMaxPinnedCount()).toBe(3);
+                AdminData.setMaxPinnedCount(0);
+                expect(AdminData.getMaxPinnedCount()).toBe(3);
+            });
+
+            it('togglePinSighting toggles pinned state of a sighting', () => {
+                expect(AdminData.data.sightings[0].pinned).toBeFalsy();
+                AdminData.togglePinSighting('s1');
+                expect(AdminData.data.sightings[0].pinned).toBe(true);
+                AdminData.togglePinSighting('s1');
+                expect(AdminData.data.sightings[0].pinned).toBe(false);
+            });
+
+            it('togglePinSighting unpins the oldest (in time) sighting when maxPins limit is reached', () => {
+                AdminData.setMaxPinnedCount(2);
+                AdminData.data.sightings = [
+                    { key: 's1', date: '01-01-2023', pinned: false }, // oldest
+                    { key: 's2', date: '01-01-2024', pinned: false },
+                    { key: 's3', date: '01-01-2025', pinned: false }  // newest
+                ];
+
+                AdminData.togglePinSighting('s1');
+                AdminData.togglePinSighting('s2');
+                expect(AdminData.data.sightings.filter(s => s.pinned).map(s => s.key)).toEqual(['s1', 's2']);
+
+                // Pinning third when max is 2 should unpin s1 (oldest date: 2023)
+                AdminData.togglePinSighting('s3');
+                expect(AdminData.data.sightings.find(s => s.key === 's1').pinned).toBe(false);
+                expect(AdminData.data.sightings.find(s => s.key === 's2').pinned).toBe(true);
+                expect(AdminData.data.sightings.find(s => s.key === 's3').pinned).toBe(true);
+            });
+
+            it('sightingMatches matches "pinned" search key correctly', () => {
+                const sPinned = { key: 's1', species: 'sparrow', pinned: true };
+                const sUnpinned = { key: 's2', species: 'sparrow', pinned: false };
+                const sUndefined = { key: 's3', species: 'sparrow' };
+
+                expect(AdminData.sightingMatches(sPinned, 'pinned')).toBe(true);
+                expect(AdminData.sightingMatches(sUnpinned, 'pinned')).toBe(false);
+                expect(AdminData.sightingMatches(sUndefined, 'pinned')).toBe(false);
+            });
+        });
     });
 });

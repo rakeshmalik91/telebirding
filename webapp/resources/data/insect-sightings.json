@@ -107,7 +107,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "pinned": true
         },
         {
             "key": "s1795430256",
@@ -205,7 +206,8 @@
                 }
             ],
             "rating": "3",
-            "unconfirmed": true
+            "unconfirmed": true,
+            "pinned": true
         },
         {
             "key": "s1793068156",
@@ -331,7 +333,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "pinned": true
         },
         {
             "key": "s1790683126",

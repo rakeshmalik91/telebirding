@@ -151,7 +151,7 @@ export function previewImage(sightingKey, imageSrc, index, skipAnimation) {
         $('body').append('<div class="' + wrapperClass + '"></div>');
         const wrapper = $('.preview-wrapper');
 
-        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + buildExifInfoIcon(media, sighting.author || Constants.DEFAULT_AUTHOR) + '</div>');
+        wrapper.append('<div class="preview-image" data-index="' + index + '">' + mediaTag + buildExifInfoIcon(media, sighting.author || Constants.DEFAULT_AUTHOR) + (sighting.pinned ? '<div class="sighting-pin-icon" title="Pinned post">📌</div>' : '') + '</div>');
         wrapper.append('<div class="preview-image-desc"></div>');
 
         $('.preview-image-desc').append('<button class="close-button" onclick="removePreviewImage()"><img src="icons/close.png" title="Close"/></button>');
@@ -206,7 +206,7 @@ function updatePreviewMedia(sightingKey, imageSrc) {
     } else {
         mediaTag = '<img src="' + imageSrc + '" title="' + sighting.species.name + '" alt="' + sighting.species.name + '"></img>';
     }
-    previewImageDiv.html(mediaTag + buildExifInfoIcon(media, sighting.author || Constants.DEFAULT_AUTHOR));
+    previewImageDiv.html(mediaTag + buildExifInfoIcon(media, sighting.author || Constants.DEFAULT_AUTHOR) + (sighting.pinned ? '<div class="sighting-pin-icon" title="Pinned post">📌</div>' : ''));
 
     // Update thumbnail selection
     $('.preview-image-desc .photos div').removeClass('selected');

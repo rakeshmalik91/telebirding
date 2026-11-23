@@ -8,11 +8,11 @@ commit after each features or set of fixes/enhancements
 - [ ] 
 
 ### Features
-- [ ] pinned posts:
-  - [ ] in admin configure a sighting to be pinned. toggle button on ui. boolean in json "pinned": true/false
-  - [ ] admin search "pinned" searches all pinned sightings only
-  - [ ] set max pin to 3 by default. make it configurable in admin where watermark config is shown. keep value in local storage. setting a new pin when 3 are already pinned unpins the oldest (in time) pinned sighting. 
-  - [ ] on public facing site, pinned sightings appear at top regardless of sorting, and they are sorted by selected sort order among themselves
+- [x] pinned posts:
+  - [x] in admin configure a sighting to be pinned. toggle button on ui. boolean in json "pinned": true/false
+  - [x] admin search "pinned" searches all pinned sightings only
+  - [x] set max pin to 3 by default. make it configurable in admin where watermark config is shown. keep value in local storage. setting a new pin when 3 are already pinned unpins the oldest (in time) pinned sighting. 
+  - [x] on public facing site, pinned sightings appear at top regardless of sorting, and they are sorted by selected sort order among themselves
 - [ ] 
 
 ### Fixes / Enhancements

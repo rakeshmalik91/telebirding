@@ -1502,13 +1502,13 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/sri-lanka-hanging-parrot-1795006926.jpg",
+                    "src": "images/sri-lanka-hanging-parrot-1795006936.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-hanging-parrot-1795006936.jpg",
+                    "src": "images/sri-lanka-hanging-parrot-1795006926.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1538,7 +1538,8 @@
                     }
                 }
             ],
-            "rating": "5"
+            "rating": "5",
+            "pinned": true
         },
         {
             "key": "s1794905206",
@@ -2050,6 +2051,12 @@
             "weather": "Sunny",
             "media": [
                 {
+                    "src": "images/sri-lanka-gray-hornbill-1794905898.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/sri-lanka-gray-hornbill-1794905881.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
@@ -2062,12 +2069,6 @@
                     }
                 },
                 {
-                    "src": "images/sri-lanka-gray-hornbill-1794905898.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
                     "src": "images/sri-lanka-gray-hornbill-1794905915.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
@@ -2075,7 +2076,8 @@
                 }
             ],
             "rating": "3",
-            "gender": "M"
+            "gender": "M",
+            "pinned": true
         },
         {
             "key": "s1794822379",
@@ -2538,7 +2540,8 @@
                     }
                 }
             ],
-            "rating": "4"
+            "rating": "4",
+            "pinned": true
         },
         {
             "key": "s1792749727",

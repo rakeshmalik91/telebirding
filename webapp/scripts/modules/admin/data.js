@@ -1044,6 +1044,54 @@ export function moveSightingToTarget(draggedKey, targetKey, dropAfter) {
     syncSightingsData(SYNC_SCHEDULE_TIME, true);
 }
 
+export function getMaxPinnedCount() {
+    if (typeof localStorage !== 'undefined') {
+        const val = parseInt(localStorage.getItem('maxPinnedCount'), 10);
+        if (!isNaN(val) && val > 0) return val;
+    }
+    return 3;
+}
+
+export function setMaxPinnedCount(val) {
+    val = parseInt(val, 10);
+    if (isNaN(val) || val < 1) val = 3;
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('maxPinnedCount', val);
+    }
+    return val;
+}
+
+export function togglePinSighting(sightingKey) {
+    snapshotSightings();
+    const target = (data.sightings || []).find(s => s.key === sightingKey);
+    if (!target) return;
+
+    if (target.pinned) {
+        target.pinned = false;
+    } else {
+        const maxPins = getMaxPinnedCount();
+        const currentPinned = data.sightings.filter(s => s.pinned && s.key !== sightingKey);
+        while (currentPinned.length >= maxPins) {
+            // Sort by date ascending to unpin the oldest in time
+            currentPinned.sort((a, b) => {
+                const timeA = moment(a.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
+                const timeB = moment(b.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
+                if (timeA !== timeB) return timeA - timeB;
+                const idxA = data.sightings.indexOf(a);
+                const idxB = data.sightings.indexOf(b);
+                return idxB - idxA;
+            });
+            const oldest = currentPinned.shift();
+            oldest.pinned = false;
+        }
+        target.pinned = true;
+    }
+
+    commitSightingsChange();
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
 export function sortByDate() {
     snapshotSightings();
     data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));
@@ -1058,6 +1106,8 @@ export function sightingMatches(sighting, searchKey) {
         return !!sighting.hidden;
     } else if (searchKey == "unconfirmed") {
         return sighting.unconfirmed;
+    } else if (searchKey == "pinned") {
+        return !!sighting.pinned;
     } else if (searchKey.match(/^rating=/i)) {
         return sighting.rating == searchKey.split("=")[1] || 0;
     }

@@ -1,6 +1,7 @@
 import {
     data, syncSightingsData, addSighting, backup, sortByDate, sightingMatches,
-    undoSighting, redoSighting, delayPendingSave, moveSighting
+    undoSighting, redoSighting, delayPendingSave, moveSighting,
+    getMaxPinnedCount, setMaxPinnedCount
 } from './data.js';
 import { showLoader, hideLoader } from '../loader.js';
 import { customConfirm } from './ui.js';
@@ -82,6 +83,14 @@ export function setupDashboardListeners(render, viewState) {
     $('#undo-btn').click(undoSighting);
     $('#redo-btn').click(redoSighting);
     $('.sort-by-date').click(sortByDate);
+
+    // Max pinned configuration
+    const savedMaxPins = typeof getMaxPinnedCount === 'function' ? getMaxPinnedCount() : 3;
+    $('input[name=max-pinned]').val(savedMaxPins);
+    $('input[name=max-pinned]').on('change', function () {
+        const validated = typeof setMaxPinnedCount === 'function' ? setMaxPinnedCount($(this).val()) : $(this).val();
+        $(this).val(validated);
+    });
     
     // Auto sort toggle
     const savedAutoSort = localStorage.getItem('autoSortEnabled');

@@ -147,6 +147,12 @@ describe('Preview Module', () => {
             Preview.previewImage('s1', 'img2.jpg', 0);
             expect($('.preview-image img').attr('src')).toBe('img2.jpg');
         });
+
+        it('should render pin icon in preview when sighting is pinned', () => {
+            State.data.sightings[0].pinned = true;
+            Preview.previewImage('s1', 'img1.jpg', 0);
+            expect($('.preview-image .sighting-pin-icon').length).toBe(1);
+        });
     });
 
     describe('removePreviewImage', () => {

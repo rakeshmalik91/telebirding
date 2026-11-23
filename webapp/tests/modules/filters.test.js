@@ -638,6 +638,38 @@ describe('Filters Module', () => {
             expect($('.filter-panel').hasClass('has-family-filter')).toBe(false);
         });
     });
+
+    describe('Pinned sightings sorting', () => {
+        beforeEach(() => {
+            State.data = {
+                sightings: [
+                    { key: 's1', species: { name: 'A-Bird' }, date: '2023-01-01', pinned: false, index: 1 },
+                    { key: 's2', species: { name: 'Z-Bird' }, date: '2023-02-01', pinned: true, index: 2 },
+                    { key: 's3', species: { name: 'M-Bird' }, date: '2023-03-01', pinned: false, index: 3 },
+                    { key: 's4', species: { name: 'B-Bird' }, date: '2023-04-01', pinned: true, index: 4 }
+                ],
+                camera_model: {}
+            };
+            State.sort = { by: 'date', descending: false };
+        });
+
+        it('should place pinned sightings at top while preserving their internal sort order by date', () => {
+            Filters.filterAndSortData({});
+            const keys = State.data.filteredSightings.map(s => s.key);
+            // Pinned are s2 (Feb) and s4 (Apr). Ascending date: s2, then s4.
+            // Unpinned are s1 (Jan) and s3 (Mar). Ascending date: s1, then s3.
+            expect(keys).toEqual(['s2', 's4', 's1', 's3']);
+        });
+
+        it('should place pinned sightings at top while preserving their internal sort order by name', () => {
+            State.sort = { by: 'name', descending: false };
+            Filters.filterAndSortData({});
+            const keys = State.data.filteredSightings.map(s => s.key);
+            // Pinned: B-Bird (s4), Z-Bird (s2). Ascending name: s4, then s2.
+            // Unpinned: A-Bird (s1), M-Bird (s3). Ascending name: s1, then s3.
+            expect(keys).toEqual(['s4', 's2', 's1', 's3']);
+        });
+    });
 });
 
 
