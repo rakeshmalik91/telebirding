@@ -87,9 +87,14 @@ export function refreshData() {
         Util.getData("data/" + currentMode + "-families.json"),
         Util.getData("data/" + currentMode + "-likes.json"),
         Util.getData("data/places.json"),
-        Util.getData("data/site-data.json")
+        Util.getData("data/site-data.json"),
+        Util.getData("data/stories.json")
     ], function (json) {
         data = json;
+        data.stories = data.stories || [];
+        data.author = data.author || {};
+        data.camera_model = data.camera_model || {};
+        data.featured = data.featured || [];
         for (let key in data) {
             let fileData = {};
             fileData[key] = data[key];
@@ -141,6 +146,8 @@ export function uploadJSONData(type, skipRefresh) {
         isUploading[type] = true;
 
         const storagePath = (type === 'places') ? "data/places.json"
+            : (type === 'site-data') ? "data/site-data.json"
+            : (type === 'stories') ? "data/stories.json"
             : (type.startsWith('geo/')) ? `data/${type}.json`
             : ("data/" + currentMode + "-" + type + ".json");
 
@@ -158,6 +165,16 @@ export function uploadJSONData(type, skipRefresh) {
         let fileData = {};
         if (type === 'places') {
             fileData = { countries: data.countries };
+        } else if (type === 'site-data') {
+            fileData = {
+                author: data.author || {},
+                camera_model: data.camera_model || {},
+                featured: data.featured || []
+            };
+        } else if (type === 'stories') {
+            fileData = {
+                stories: data.stories || []
+            };
         } else if (type.startsWith('geo/')) {
             const country = type.slice(4);
             fileData = getCountryGeoJSON(country);
@@ -340,6 +357,25 @@ export async function backup() {
     const placesBlob = new File(JSON.stringify(placesData, null, '\t').split('\n').map(l => l + '\n'), "places.json");
     uploadTasks.push(
         storage.ref(`backup/${date}/places.json`).put(placesBlob)
+    );
+
+    // Backup site-data.json and stories.json
+    const siteDataPayload = {
+        author: data.author || {},
+        camera_model: data.camera_model || {},
+        featured: data.featured || []
+    };
+    const siteDataBlob = new File(JSON.stringify(siteDataPayload, null, '\t').split('\n').map(l => l + '\n'), "site-data.json");
+    uploadTasks.push(
+        storage.ref(`backup/${date}/site-data.json`).put(siteDataBlob)
+    );
+
+    const storiesPayload = {
+        stories: data.stories || []
+    };
+    const storiesBlob = new File(JSON.stringify(storiesPayload, null, '\t').split('\n').map(l => l + '\n'), "stories.json");
+    uploadTasks.push(
+        storage.ref(`backup/${date}/stories.json`).put(storiesBlob)
     );
 
     // 2. Active mode files - start synchronously with in-memory data
@@ -1059,6 +1095,36 @@ export function setMaxPinnedCount(val) {
         localStorage.setItem('maxPinnedCount', val);
     }
     return val;
+}
+
+let siteDataSyncTimeout = null;
+export function syncSiteData(delay = 1000) {
+    if (siteDataSyncTimeout) clearTimeout(siteDataSyncTimeout);
+    if (delay === 0) {
+        return uploadJSONData('site-data', true);
+    }
+    return new Promise((resolve) => {
+        siteDataSyncTimeout = setTimeout(async () => {
+            const res = await uploadJSONData('site-data', true);
+            siteDataSyncTimeout = null;
+            resolve(res);
+        }, delay);
+    });
+}
+
+let storiesSyncTimeout = null;
+export function syncStoriesData(delay = 1000) {
+    if (storiesSyncTimeout) clearTimeout(storiesSyncTimeout);
+    if (delay === 0) {
+        return uploadJSONData('stories', true);
+    }
+    return new Promise((resolve) => {
+        storiesSyncTimeout = setTimeout(async () => {
+            const res = await uploadJSONData('stories', true);
+            storiesSyncTimeout = null;
+            resolve(res);
+        }, delay);
+    });
 }
 
 export function togglePinSighting(sightingKey) {
@@ -1835,6 +1901,184 @@ export async function ensureGeoBoundariesLoaded() {
     await Promise.all(countryNames.map(loadCountryFile));
 
     return { geoCountries: data.geoCountries, geoStates: data.geoStates };
+}
+
+export function replaceCameraCode(codeString, oldCode, newCode) {
+    if (!codeString || typeof codeString !== 'string') return codeString;
+    const parts = codeString.split('+').map(x => x.trim());
+    let changed = false;
+    const newParts = parts.map(part => {
+        if (part === oldCode) {
+            changed = true;
+            return newCode;
+        }
+        return part;
+    });
+    return changed ? newParts.join('+') : codeString;
+}
+
+export function replaceCameraModelInSightings(oldCode, newCode) {
+    if (!oldCode || !newCode || oldCode === newCode) return 0;
+    let count = 0;
+
+    function replaceInMedia(m) {
+        let changed = false;
+        if (m.camera_model) {
+            const replaced = replaceCameraCode(m.camera_model, oldCode, newCode);
+            if (replaced !== m.camera_model) {
+                m.camera_model = replaced;
+                changed = true;
+            }
+        }
+        if (m.exif_data && m.exif_data.camera_model) {
+            const replaced = replaceCameraCode(m.exif_data.camera_model, oldCode, newCode);
+            if (replaced !== m.exif_data.camera_model) {
+                m.exif_data.camera_model = replaced;
+                changed = true;
+            }
+        }
+        return changed;
+    }
+
+    (data.sightings || []).forEach(s => {
+        let sightingChanged = false;
+        if (s.camera_model) {
+            const replaced = replaceCameraCode(s.camera_model, oldCode, newCode);
+            if (replaced !== s.camera_model) {
+                s.camera_model = replaced;
+                sightingChanged = true;
+            }
+        }
+        (s.media || []).forEach(m => {
+            if (replaceInMedia(m)) sightingChanged = true;
+        });
+        if (sightingChanged) count++;
+    });
+
+    if (count > 0) {
+        syncSightingsData(0, true);
+    }
+    return count;
+}
+
+export function replaceAuthorInSightings(oldAuthor, newAuthor) {
+    if (!oldAuthor || !newAuthor || oldAuthor === newAuthor) return 0;
+    let count = 0;
+
+    (data.sightings || []).forEach(s => {
+        let sightingChanged = false;
+        if (s.author === oldAuthor) {
+            s.author = newAuthor;
+            sightingChanged = true;
+        }
+        (s.media || []).forEach(m => {
+            if (m.author === oldAuthor) {
+                m.author = newAuthor;
+                sightingChanged = true;
+            }
+            if (m.exif_data && m.exif_data.author === oldAuthor) {
+                m.exif_data.author = newAuthor;
+                sightingChanged = true;
+            }
+        });
+        if (sightingChanged) count++;
+    });
+
+    if (count > 0) {
+        syncSightingsData(0, true);
+    }
+    return count;
+}
+
+export async function uploadOtherModeFile(mode, type, payload) {
+    const storage = FirebaseApi.getFirebase().storage();
+    const fileName = `${mode}-${type}.json`;
+    const fileBlob = new File(
+        JSON.stringify(payload, null, '\t').split('\n').map(l => l + '\n'),
+        fileName
+    );
+    return await storage.ref(`data/${fileName}`).put(fileBlob);
+}
+
+export async function replaceCameraModelInAllModes(oldCode, newCode) {
+    const activeCount = replaceCameraModelInSightings(oldCode, newCode);
+    const otherModes = (Constants.MODES || ['bird', 'insect', 'reptile']).filter(m => m !== currentMode);
+    for (const mode of otherModes) {
+        try {
+            const fileData = await fetchRemoteModeFile(mode, 'sightings');
+            let modeChanged = false;
+            (fileData.sightings || []).forEach(s => {
+                if (s.camera_model) {
+                    const replaced = replaceCameraCode(s.camera_model, oldCode, newCode);
+                    if (replaced !== s.camera_model) {
+                        s.camera_model = replaced;
+                        modeChanged = true;
+                    }
+                }
+                (s.media || []).forEach(m => {
+                    if (m.camera_model) {
+                        const replaced = replaceCameraCode(m.camera_model, oldCode, newCode);
+                        if (replaced !== m.camera_model) {
+                            m.camera_model = replaced;
+                            modeChanged = true;
+                        }
+                    }
+                    if (m.exif_data && m.exif_data.camera_model) {
+                        const replaced = replaceCameraCode(m.exif_data.camera_model, oldCode, newCode);
+                        if (replaced !== m.exif_data.camera_model) {
+                            m.exif_data.camera_model = replaced;
+                            modeChanged = true;
+                        }
+                    }
+                });
+            });
+            if (modeChanged) {
+                await uploadOtherModeFile(mode, 'sightings', fileData);
+            }
+        } catch (e) {
+            console.warn(`Could not update camera model in mode ${mode}:`, e);
+        }
+    }
+    return activeCount;
+}
+
+export async function replaceAuthorInAllModes(oldAuthor, newAuthor) {
+    const activeCount = replaceAuthorInSightings(oldAuthor, newAuthor);
+    (data.featured || []).forEach(f => {
+        if (f.author === oldAuthor) f.author = newAuthor;
+        if (f.titleLine2 && f.titleLine2.includes(oldAuthor)) {
+            f.titleLine2 = f.titleLine2.replace(oldAuthor, newAuthor);
+        }
+    });
+    const otherModes = (Constants.MODES || ['bird', 'insect', 'reptile']).filter(m => m !== currentMode);
+    for (const mode of otherModes) {
+        try {
+            const fileData = await fetchRemoteModeFile(mode, 'sightings');
+            let modeChanged = false;
+            (fileData.sightings || []).forEach(s => {
+                if (s.author === oldAuthor) {
+                    s.author = newAuthor;
+                    modeChanged = true;
+                }
+                (s.media || []).forEach(m => {
+                    if (m.author === oldAuthor) {
+                        m.author = newAuthor;
+                        modeChanged = true;
+                    }
+                    if (m.exif_data && m.exif_data.author === oldAuthor) {
+                        m.exif_data.author = newAuthor;
+                        modeChanged = true;
+                    }
+                });
+            });
+            if (modeChanged) {
+                await uploadOtherModeFile(mode, 'sightings', fileData);
+            }
+        } catch (e) {
+            console.warn(`Could not update author in mode ${mode}:`, e);
+        }
+    }
+    return activeCount;
 }
 
 

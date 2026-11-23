@@ -1673,3 +1673,7 @@ export function setupPlacesTab() {
 
 }
 
+export { setupSiteDataTab, renderSiteData } from './site-data.js';
+export { setupStoriesTab, renderStoriesSheet } from './stories.js';
+
+

@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261123_2">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261123_6">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260923_4">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
@@ -42,7 +42,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20261123_16"></script>
+	<script type="module" src="scripts/admin.js?v=20261123_21"></script>
 
 </head>
 
@@ -89,6 +89,8 @@
 			<button class="admin-nav-tab" data-tab="species-tab">Species</button>
 			<button class="admin-nav-tab" data-tab="family-tab">Family</button>
 			<button class="admin-nav-tab" data-tab="places-tab">Places</button>
+			<button class="admin-nav-tab" data-tab="site-data-tab">Site Data</button>
+			<button class="admin-nav-tab" data-tab="stories-tab">Stories</button>
 		</div>
 
 		<div id="sightings-tab" class="admin-tab-content active">
@@ -533,6 +535,9 @@
 				</div>
 			</div>
 		</div>
+
+		<div id="site-data-tab" class="admin-tab-content" style="display: none;"></div>
+		<div id="stories-tab" class="admin-tab-content" style="display: none;"></div>
 	</div>
 
 	<div id="crop-modal"

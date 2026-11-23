@@ -1,18 +1,19 @@
 {
     "author": {
-        "Rakesh Malik": "https://www.instagram.com/rakeshmalik_art",
+        "Rakesh Malik": "https://www.instagram.com/rakeshmalik.blog",
         "Ranjan Malik": "https://www.instagram.com/ranjan_033",
         "Chinmaya Mohini": "https://www.instagram.com/ratdon",
         "Latif Alvani": "https://www.instagram.com/nalsarovar_latif_alvani",
         "Shakti Vel": "https://www.instagram.com/andaman_boy"
     },
     "camera_model": {
+        "55210": "Sony E 55-210mm F4.5-6.3 OSS",
+        "200600": "Sony FE 200-600mm F5.6-6.3 G OSS",
         "S7RV": "Sony α7rmV",
         "S6400": "Sony α6400",
-        "200600": "Sony FE 200-600mm F5.6-6.3 G OSS",
-        "55210": "Sony E 55-210mm F4.5-6.3 OSS",
         "NZ8": "Nikon Z8",
-        "NP900": "Nikon P900"
+        "NP900": "Nikon P900",
+        "PXL6A": "Google Pixel 6a"
     },
     "featured": [
         {
@@ -65,16 +66,16 @@
             "alt": "Collared Kingfisher"
         },
         {
-            "src": "featured-images/himalayan-rubythroat.jpg",
-            "titleLine1": "Himalayan Rubythroat, Kathgodam, Uttarakhand, India",
-            "titleLine2": "© Rakesh Malik, 2023",
-            "alt": "Himalayan Rubythroat"
-        },
-        {
             "src": "featured-images/blue-rock-thrush.jpg",
             "titleLine1": "Blue Rock Thrush, Shivkhola Forest, West Bengal, India",
             "titleLine2": "© Rakesh Malik, 2021",
             "alt": "Blue Rock Thrush"
+        },
+        {
+            "src": "featured-images/himalayan-rubythroat.jpg",
+            "titleLine1": "Himalayan Rubythroat, Kathgodam, Uttarakhand, India",
+            "titleLine2": "© Rakesh Malik, 2023",
+            "alt": "Himalayan Rubythroat"
         },
         {
             "src": "featured-images/rufous-necked-hornbill.jpg",

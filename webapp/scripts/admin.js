@@ -5,7 +5,8 @@ import {
 } from './modules/admin/data.js';
 import { customAlert } from './modules/admin/ui.js';
 import {
-	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm, setupPlacesTab
+	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm, setupPlacesTab,
+	setupSiteDataTab, setupStoriesTab
 } from './modules/admin/rendering.js';
 import { setupAuthListeners } from './modules/admin/auth.js';
 import { setupDashboardListeners } from './modules/admin/listeners.js';
@@ -48,6 +49,8 @@ function render() {
 	setupAddFamilyForm();
 	setupPlacesTab();
 	setupEbirdSync();
+	setupSiteDataTab();
+	setupStoriesTab();
 	renderSightingsTable(viewState.offset, viewState.rows);
 	updatePaginationControls(viewState.offset, viewState.rows);
 }
@@ -76,6 +79,12 @@ $(document).ready(function () {
 		const tab = $(this).data('tab');
 		if (tab === 'places-tab') {
 			setupPlacesTab();
+		}
+		if (tab === 'site-data-tab') {
+			setupSiteDataTab();
+		}
+		if (tab === 'stories-tab') {
+			setupStoriesTab();
 		}
 		if (tab === 'species-tab') {
 			setupEbirdSync();

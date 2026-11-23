@@ -5,7 +5,6 @@
             "date": "February - March 2026",
             "youtubeVideoId": "bqlvur3NTds",
             "storyHtml": "<p>It was a 2.5 week trip to Andaman & Nicobar Islands, with <a href='https://www.instagram.com/andaman_birding_tours' target='_blank'>Andaman Birding Tours</a> & <a href='https://www.instagram.com/nicobarbirding' target='_blank'>Nicobar Birding</a>.</p><p>Andaman trip was mainly targetted to cover the leftover endemics from 2022 trip.</p><p>The Nicobar trip however, was booked since 2023, and was on hold due to tourists or birders not being allowed in Nicobar Islands, for Adani's port works. Finally, we got the green signal for February 2025. Still it was hard to get hotels or guest house there as most were booked by OIL already. The ship was pretty good, didn't have a deck though. Weather in Nicobar specifically was extremely hot. For Kamorta we had to get some permissions for 30 min birding during both way ship ride between Andaman-Nicobar. Got some good sightings of Pied Triller, though not the endemic subspecies. Galathea again got closed off the next day, right after we got our Megapode though.</p>",
-            "itineraryExpanded": false,
             "itinerary": [
                 {
                     "date": "25/02/2026",
@@ -52,14 +51,14 @@
                         "date": "2026"
                     }
                 }
-            ]
+            ],
+            "itineraryExpanded": true
         },
         {
             "title": "Nalsarovar & Little Rann of Kutch, Gujarat",
             "date": "August 2025, January 2026",
             "youtubeVideoId": "jxE1H7RRWlQ",
             "storyHtml": "<p>It was 2 trips, 3 days in Nalsarovar during monsoon and 4 days in Nalsarovar & LRK during winter, with <a href='https://www.instagram.com/nalsarovar_latif_alvani' target='_blank'>Latif Alvani</a> as guide in Nalsarovar and <a href='https://www.instagram.com/gopal.khambhala.37/' target='_blank'>Gopal Khambhala</a> as guide in LRK.</p>",
-            "itineraryExpanded": false,
             "itinerary": [
                 {
                     "date": "21/08/2025",
@@ -105,7 +104,8 @@
                         "date": "Jan, 2026"
                     }
                 }
-            ]
+            ],
+            "itineraryExpanded": true
         },
         {
             "title": "Iceland",
@@ -563,7 +563,6 @@
             "date": "June-July 2022",
             "youtubeVideoId": "AUshy6QoV6M",
             "storyHtml": "<p>It was a one and a half month trip to Ladakh. We stayed in Leh with WFH and did sightseeing and birding by the weekend and holidays. Most of the birds were covered during a 9 day trip to Pangong Tso, Hanle, Umling La, Tso Moriri, Tso Kar and Taglang La. Especially Hanle consists of vairety of birds sucha as Tibetan Lark, Black-necked Crane, Mongolian Finch etc. And Salk lake of Tso Kar and fresh water lake Startsapuk Tso consists a lot of Waders, Crane, Buzzard and Tibetan Sandgrouse.</p><p>We even got some good sightings of wild mammals as well, such as Tibetan Gazelle, Himalayan Mermot, Himalayan Red Fox, Plateau Pika, Mountain Vole, Blue Sheep and Kiang.</p>",
-            "hidden": true,
             "sightings": [
                 {
                     "text": "All Sightings",
@@ -593,7 +592,6 @@
             "date": "December 2021",
             "youtubeVideoId": "rcn8NojlOxg",
             "storyHtml": "<p>It was a week long trip to Latpanchar. First 2 days we were mostly spent in search of Rufous-necked Hornbill. And then 2 days to Mahananda Wildlife Sanctuary, 1 day to Gajoldoba and the last day to Shivkhola, wehere we got Pied Hornbill before returning to NJP.</p>",
-            "hidden": true,
             "sightings": [
                 {
                     "text": "Darjeeling Sightings",
@@ -616,7 +614,6 @@
             "date": "November 2021",
             "youtubeVideoId": "FSuHmoQfSQU",
             "storyHtml": "<p>7 species of kingfishers are found across Bhitarkanika: White-throated Kingfisher, Common Kingfisher, Brown-winged Kingfisher, Collared Kingfisher, Black-capped Kingfisher, Pied Kingfisher and Stork-billed Kingfisher. They were pretty much abundant. In our 5 day trip, e could find all of them in a single session.</p><p>Apart from that found some other waders, owls etc.</p>",
-            "hidden": true,
             "sightings": [
                 {
                     "text": "Sightings",
@@ -632,7 +629,6 @@
             "date": "December 2017",
             "youtubeVideoId": "rEshkm6j9i0",
             "storyHtml": "<p>We left for Mysuru during the Chistmas holidays from Bengaluru on a scooty ride. Spent half a day at Ranganathittu Bird Sanctuary.</p>",
-            "hidden": true,
             "sightings": [
                 {
                     "text": "Sightings",

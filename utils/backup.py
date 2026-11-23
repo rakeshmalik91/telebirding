@@ -1,4 +1,5 @@
 import urllib.request
+import urllib.parse
 import json
 from pathlib import Path
 
@@ -57,6 +58,63 @@ try:
 	countries.update(places_content.get('countries', {}).keys())
 except Exception as e:
 	print(f"Error downloading places.json: {e}")
+
+# Download site-data.json and stories.json
+for filename in ["site-data.json", "stories.json"]:
+	file_src = firestoragePath + dataDir + "%2F" + filename + "?alt=media"
+	file_dst = resourcesDir / dataDir / filename
+	print(f"Downloading {file_dst.relative_to(ROOT)} ...")
+	file_dst.parent.mkdir(parents=True, exist_ok=True)
+	try:
+		urllib.request.urlretrieve(file_src, str(file_dst))
+		with open(file_dst, 'r', encoding='utf-8') as f:
+			content = json.load(f)
+		with open(file_dst, 'w', encoding='utf-8') as f:
+			json.dump(content, f, indent=4, ensure_ascii=False)
+	except Exception as e:
+		print(f"Notice: {file_dst.name} not found or could not be downloaded from storage ({e}); keeping local file.")
+
+# Download featured images referenced in site-data.json
+site_data_path = resourcesDir / dataDir / "site-data.json"
+if site_data_path.is_file():
+	try:
+		with open(site_data_path, 'r', encoding='utf-8') as f:
+			site_data = json.load(f)
+		for item in site_data.get('featured', []):
+			media_rel = item.get('src')
+			if media_rel:
+				src = firestoragePath + media_rel.replace('/', '%2F') + "?alt=media"
+				dst_path = resourcesDir / media_rel
+				if not dst_path.is_file():
+					print(f"Downloading {dst_path.relative_to(ROOT)} ...")
+					dst_path.parent.mkdir(parents=True, exist_ok=True)
+					try:
+						urllib.request.urlretrieve(src, str(dst_path))
+					except Exception as e:
+						print(f"Warning: Could not download {media_rel}: {e}")
+	except Exception as e:
+		print(f"Notice: Could not parse site-data.json for media: {e}")
+
+# Download story images referenced in stories.json
+stories_path = resourcesDir / dataDir / "stories.json"
+if stories_path.is_file():
+	try:
+		with open(stories_path, 'r', encoding='utf-8') as f:
+			stories_data = json.load(f)
+		for story in stories_data.get('stories', []):
+			for img in story.get('images', []):
+				if img:
+					src = firestoragePath + img.replace('/', '%2F') + "?alt=media"
+					dst_path = resourcesDir / img
+					if not dst_path.is_file():
+						print(f"Downloading {dst_path.relative_to(ROOT)} ...")
+						dst_path.parent.mkdir(parents=True, exist_ok=True)
+						try:
+							urllib.request.urlretrieve(src, str(dst_path))
+						except Exception as e:
+							print(f"Warning: Could not download {img}: {e}")
+	except Exception as e:
+		print(f"Notice: Could not parse stories.json for media: {e}")
 
 # Also discover any locally known geo countries
 geo_dir = resourcesDir / dataDir / "geo"
