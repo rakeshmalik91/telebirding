@@ -20,6 +20,8 @@ const OPTIONS_CLASS = 'ss-options';
 const OPTION_CLASS = 'ss-option';
 const OPTION_SELECTED_CLASS = 'ss-option-selected';
 
+const normalizeQuotes = s => String(s || '').replaceAll(/[\u2018\u2019]/g, "'");
+
 /**
  * Tear down a searchable-select wrapper so the native <select> can be
  * re-initialized (e.g. after its options list is rebuilt).
@@ -193,7 +195,7 @@ export function initSearchableSelect(selectEl, force = false) {
 
     function buildOptions(filter) {
         $options.empty();
-        const filterLower = (filter || '').toLowerCase();
+        const filterNorm = normalizeQuotes(filter).trim().toLowerCase();
 
         let exactMatch = false;
 
@@ -205,12 +207,14 @@ export function initSearchableSelect(selectEl, force = false) {
             // Skip placeholder empty options in search
             if (!text.trim()) return;
 
-            const searchTerms = ($opt.data('search-terms') || '').toLowerCase();
-            const searchText = text.toLowerCase() + ' ' + searchTerms;
+            const searchTerms = normalizeQuotes($opt.data('search-terms') || '').toLowerCase();
+            const textNorm = normalizeQuotes(text).toLowerCase();
+            const valNorm = normalizeQuotes(val).toLowerCase();
+            const searchText = textNorm + ' ' + searchTerms;
 
-            if (filterLower && !searchText.includes(filterLower)) return;
+            if (filterNorm && !searchText.includes(filterNorm)) return;
 
-            if (filterLower && text.toLowerCase() === filterLower) {
+            if (filterNorm && (textNorm === filterNorm || valNorm === filterNorm)) {
                 exactMatch = true;
             }
 
@@ -235,11 +239,12 @@ export function initSearchableSelect(selectEl, force = false) {
         });
 
         // Add custom tag option if allowed and no exact match
-        if (allowTags && filterLower && !exactMatch) {
+        if (allowTags && filterNorm && !exactMatch) {
+            const rawVal = normalizeQuotes(filter).trim();
             const $optDiv = $('<div>').addClass(OPTION_CLASS).addClass('ss-option-new')
-                .html(`Add: <strong>${filter}</strong>`)
-                .attr('data-value', filter)
+                .attr('data-value', rawVal)
                 .attr('data-is-new', 'true');
+            $optDiv.append($('<span>').text('Add: '), $('<strong>').text(rawVal));
             $options.prepend($optDiv);
         }
     }
@@ -356,8 +361,67 @@ export function initSearchableSelect(selectEl, force = false) {
         });
     }
 
+    function commitTagIfPending() {
+        if (!allowTags) return;
+        const searchRaw = normalizeQuotes($search.val()).trim();
+        if (!searchRaw) return;
+
+        const searchLower = searchRaw.toLowerCase();
+        let matchedOpt = null;
+        $select.find('option').each(function () {
+            const optText = normalizeQuotes($(this).text()).trim().toLowerCase();
+            const optVal = normalizeQuotes($(this).val()).trim().toLowerCase();
+            if (optText === searchLower || optVal === searchLower) {
+                matchedOpt = $(this);
+                return false;
+            }
+        });
+
+        if (matchedOpt) {
+            const val = matchedOpt.val();
+            if (isMultiple) {
+                let currentVals = $select.val() || [];
+                if (!Array.isArray(currentVals)) currentVals = [currentVals];
+                if (!currentVals.includes(val)) {
+                    currentVals.push(val);
+                    $select.val(currentVals).trigger('change');
+                }
+            } else {
+                if ($select.val() !== val) {
+                    $select.val(val).trigger('change');
+                }
+            }
+        } else {
+            let optExists = false;
+            $select.find('option').each(function () {
+                if ($(this).val() === searchRaw) {
+                    optExists = true;
+                    return false;
+                }
+            });
+            if (!optExists) {
+                const newOption = new Option(searchRaw, searchRaw, false, true);
+                newOption.setAttribute('data-custom', 'true');
+                $select.append(newOption);
+            }
+            if (isMultiple) {
+                let currentVals = $select.val() || [];
+                if (!Array.isArray(currentVals)) currentVals = [currentVals];
+                if (!currentVals.includes(searchRaw)) {
+                    currentVals.push(searchRaw);
+                    $select.val(currentVals).trigger('change');
+                }
+            } else {
+                $select.val(searchRaw).trigger('change');
+            }
+        }
+        $search.val('');
+        updateDisplay();
+    }
+
     function closeDropdown() {
         if (!$dropdown.hasClass('open')) return;
+        commitTagIfPending();
         $dropdown.removeClass('open');
         $dropdown.css({
             position: '',
@@ -416,7 +480,7 @@ export function initSearchableSelect(selectEl, force = false) {
 
         if (isNew) {
             // Add new option to select
-            const newOption = new Option(val, val, false, false);
+            const newOption = new Option(val, val, false, true);
             newOption.setAttribute('data-custom', 'true');
             $select.append(newOption);
         }
@@ -436,6 +500,7 @@ export function initSearchableSelect(selectEl, force = false) {
             updateDisplay();
         } else {
             $select.val(val).trigger('change');
+            $search.val('');
             updateDisplay();
             closeDropdown();
         }
@@ -463,6 +528,12 @@ export function initSearchableSelect(selectEl, force = false) {
             const $first = $options.find('.' + OPTION_CLASS).first();
             if ($first.length) {
                 $first.click(); // Trigger click logic
+            } else if (allowTags) {
+                closeDropdown();
+            }
+        } else if (e.key === 'Tab') {
+            if (allowTags && $search.val().trim()) {
+                closeDropdown();
             }
         }
     });

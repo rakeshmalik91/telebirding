@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { hasMatchingScientificName, hasMatchingTaxonIdentity, hasTaxonomyCodeConflict, resolveCurrentTaxonFromHistory } from '../../scripts/modules/admin/ebird-sync.js';
+import { hasMatchingScientificName, hasMatchingTaxonIdentity, hasTaxonomyCodeConflict, resolveCurrentTaxonFromHistory, hasDuplicateSpeciesConflict } from '../../scripts/modules/admin/ebird-sync.js';
 
 describe('eBird taxonomy identity validation', () => {
     it('accepts the same scientific name regardless of case and whitespace', () => {
@@ -144,5 +144,47 @@ describe('eBird taxonomy identity validation', () => {
     it('rejects records when either scientific name is missing', () => {
         expect(hasMatchingScientificName({ latin_name: '' }, { sciName: 'Strix aluco' })).toBe(false);
         expect(hasMatchingScientificName({ latin_name: 'Strix aluco' }, {})).toBe(false);
+    });
+
+    describe('hasDuplicateSpeciesConflict', () => {
+        const allSpecies = {
+            'brown-capped-pygmy-woodpecker': {
+                key: 'brown-capped-pygmy-woodpecker',
+                name: 'Brown-capped Pygmy Woodpecker',
+                ebird_code: 'bncwoo3'
+            },
+            'rock-pigeon': {
+                key: 'rock-pigeon',
+                name: 'Rock Pigeon',
+                ebird_code: 'rocpig'
+            }
+        };
+
+        it('detects conflict when another species already has the resolved common name', () => {
+            const conflict = hasDuplicateSpeciesConflict(
+                'brown-woodpecker',
+                { comName: 'Brown-capped Pygmy Woodpecker' },
+                allSpecies
+            );
+            expect(conflict).toBe(true);
+        });
+
+        it('does not detect conflict when checking the matching species against itself', () => {
+            const conflict = hasDuplicateSpeciesConflict(
+                'brown-capped-pygmy-woodpecker',
+                { comName: 'Brown-capped Pygmy Woodpecker' },
+                allSpecies
+            );
+            expect(conflict).toBe(false);
+        });
+
+        it('does not detect conflict when no other species has that name', () => {
+            const conflict = hasDuplicateSpeciesConflict(
+                'rock-pigeon',
+                { comName: 'Feral Pigeon' },
+                allSpecies
+            );
+            expect(conflict).toBe(false);
+        });
     });
 });

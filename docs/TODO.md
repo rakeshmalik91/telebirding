@@ -13,6 +13,6 @@ commit after each features or set of fixes/enhancements
 - [x] auto detect sighting date from exif/metadata
 - [x] fix duplicate species entries
 - [x] BUG: adding a new species and switching to sightings tab doesnt add new species in dropdowns
-- [ ] BUG: to check why ebird sync is mapping brown woodpecker to brown capped pygmy woodpecker
-- [ ] BUG: adding species with 's is failing. eg Marshall's Iora
+- [x] BUG: to check why ebird sync is mapping brown woodpecker to brown capped pygmy woodpecker
+- [x] BUG: adding species with 's is failing. eg Marshall's Iora
 - [ ] 

@@ -136,7 +136,8 @@ export function setupUpdateSpeciesForm() {
             key = nameVal;
             name = data.species[nameVal].name;
         }
-        if (key) name = updateSpeciesForm.find("input[data-field=display-name]").val().trim();
+        const displayNameVal = updateSpeciesForm.find("input[data-field=display-name]").val();
+        if (key && displayNameVal !== undefined) name = displayNameVal.trim() || name;
         const selectedFamily = updateSpeciesForm.find("select[data-field=family]").val();
         const family = selectedFamily || (key && data.species[key] ? data.species[key].family : "");
         saveSpecies(key, name,
@@ -148,7 +149,7 @@ export function setupUpdateSpeciesForm() {
         let key = updateSpeciesForm.find("select[data-field=name]").val();
         if (!key || !data.species[key]) return;
         deleteSpecies(key, () => {
-            updateSpeciesForm.find("select[data-field=name] option[value='" + key + "']").remove();
+            updateSpeciesForm.find("select[data-field=name] option").filter(function () { return this.value === key; }).remove();
             updateSpeciesForm.find("select[data-field=name]").val('').trigger('change');
         });
     });
@@ -171,6 +172,7 @@ export function setupUpdateSpeciesForm() {
         if (!v || !v.trim()) return;
 
         let actualName = data.species[v] ? data.species[v].name : v;
+        actualName = (actualName || '').replaceAll("’", "'");
 
         if (currentMode == Constants.MODE_INSECT) {
             let lastWord = actualName.trim().split(/\s+/).slice(-1)[0];
@@ -214,8 +216,8 @@ export function setupUpdateSpeciesForm() {
                             
                             // Also update the add-family-form's name dropdown
                             let addFamilySelect = $("#add-family-form select[data-field=name]");
-                            if (addFamilySelect.length > 0 && addFamilySelect.find("option[value='" + s.familyComName + "']").length === 0) {
-                                addFamilySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
+                            if (addFamilySelect.length > 0 && addFamilySelect.find("option").filter(function () { return this.value === s.familyComName; }).length === 0) {
+                                addFamilySelect.append(new Option(s.familyComName, s.familyComName));
                             }
                         }
                     }
@@ -643,8 +645,9 @@ export function updatePaginationControls(OFFSET, ROWS) {
 export function validateAddFamilyForm() {
     const addFamilyForm = $("#add-family-form");
     let name = addFamilyForm.find("select[data-field=name]").val();
-    const displayName = addFamilyForm.find("input[data-field=display-name]").val();
-    const validDisplayName = !data.families.some(f => f.name === name) || (displayName && displayName.trim());
+    const displayNameInput = addFamilyForm.find("input[data-field=display-name]");
+    const displayName = displayNameInput.val();
+    const validDisplayName = !data.families.some(f => f.name === name) || (!displayNameInput.length || (displayName && displayName.trim()));
     if (name && name.trim() && validDisplayName) {
         addFamilyForm.find("button.submit").removeAttr("disabled");
     } else {
@@ -727,8 +730,8 @@ export function setupAddFamilyForm() {
                     
                     if (fName) {
                         let nameInput = addFamilyForm.find("select[data-field=name]");
-                        if (nameInput.find("option[value='" + fName + "']").length == 0) {
-                            nameInput.append("<option value='" + fName + "'>" + fName + "</option>");
+                        if (nameInput.find("option").filter(function () { return this.value === fName; }).length == 0) {
+                            nameInput.append(new Option(fName, fName));
                         }
                         nameInput.val(fName).trigger('change');
                     }
@@ -746,7 +749,8 @@ export function setupAddFamilyForm() {
 
         const existingFamily = data.families.find(f => f.name === name);
         const oldName = name;
-        const updatedName = existingFamily ? addFamilyForm.find("input[data-field=display-name]").val().trim() : name;
+        const displayNameVal = addFamilyForm.find("input[data-field=display-name]").val();
+        const updatedName = existingFamily ? ((displayNameVal !== undefined ? displayNameVal.trim() : "") || name) : name;
         if (existingFamily) {
             if (!renameFamily(name, updatedName,
                 addFamilyForm.find("input[data-field=ebird-code]").val(),
@@ -782,10 +786,10 @@ export function setupAddFamilyForm() {
         deleteFamily(name, () => {
             // Remove from species form dropdown
             let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
-            speciesFamilySelect.find("option[value='" + name + "']").remove();
+            speciesFamilySelect.find("option").filter(function () { return this.value === name; }).remove();
 
             // Remove from select and reset
-            $famInput.find("option[value='" + name + "']").remove();
+            $famInput.find("option").filter(function () { return this.value === name; }).remove();
             $famInput.val('').trigger('change');
         });
     });

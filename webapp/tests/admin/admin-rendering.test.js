@@ -14,6 +14,7 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     },
     get currentMode() { return mockCurrentMode; },
     set currentMode(val) { mockCurrentMode = val; },
+    lastUpdatedSpecies: '',
     uploadMedia: vi.fn(),
     deleteMedia: vi.fn(),
     moveMediaLeft: vi.fn(),
@@ -23,6 +24,7 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     moveSighting: vi.fn(),
     sightingMatches: vi.fn(() => true), // default true for rendering
     addFamily: vi.fn(),
+    renameFamily: vi.fn(() => true),
     saveSpecies: vi.fn(),
     deleteFamily: vi.fn(),
     deleteSpecies: vi.fn()
@@ -64,6 +66,7 @@ function buildBaseDOM() {
                 <tr><td><select data-field="key"><option value="s1" selected>s1</option></select></td></tr>
                 <tr><td><select data-field="family"><option value="Columbidae">Columbidae</option></select></td></tr>
                 <tr><td><select data-field="name"><option value="s1">Rock Pigeon</option></select></td></tr>
+                <tr class="species-display-name-row"><td><input data-field="display-name" value="Rock Pigeon" /></td></tr>
                 <tr><td>
                     <div class="chip-input-container">
                         <div class="chips-wrapper"></div>
@@ -83,6 +86,7 @@ function buildBaseDOM() {
             <div id="add-family-form">
                 <table>
                     <tr><td><select data-field="name"><option value="Columbidae" selected>Columbidae</option></select></td></tr>
+                    <tr class="family-display-name-row"><td><input data-field="display-name" value="Columbidae" /></td></tr>
                     <tr><td><input data-field="sci-name" value="" /></td></tr>
                     <tr><td><input data-field="ebird-code" value="" /></td></tr>
                     <tr><td><span data-field="species-count">-</span></td></tr>
@@ -576,6 +580,29 @@ describe('Admin Rendering - Readonly Operations', () => {
             expect($('#update-species-form select[data-field="name"] option[value="s1"]').length).toBe(0);
         });
 
+        it('should handle species and family with apostrophes without error', () => {
+            AdminData.deleteSpecies.mockClear();
+            AdminData.data.species['marshalls-iora'] = {
+                key: 'marshalls-iora',
+                name: "Marshall's Iora",
+                tags: ['Iora'],
+                family: "Wilson's Storm-Petrels"
+            };
+            AdminRendering.setupUpdateSpeciesForm();
+
+            // Should be able to delete without throwing querySelectorAll syntax error on single quotes
+            AdminData.deleteSpecies.mockImplementation((key, cb) => {
+                delete AdminData.data.species[key];
+                if (cb) cb();
+            });
+
+            $('#update-species-form select[data-field="name"]').val('marshalls-iora');
+            expect(() => {
+                $('#update-species-form button.delete').trigger('click');
+            }).not.toThrow();
+            expect(AdminData.deleteSpecies).toHaveBeenCalledWith('marshalls-iora', expect.any(Function));
+        });
+
         it('should not call deleteSpecies when delete button is clicked but no key selected', () => {
             AdminData.deleteSpecies.mockClear();
             AdminRendering.setupUpdateSpeciesForm();
@@ -619,9 +646,9 @@ describe('Admin Rendering - Readonly Operations', () => {
             AdminRendering.setupAddFamilyForm();
             AdminData.addFamily.mockClear();
 
-            $('#add-family-form select[data-field="name"]').val('Columbidae');
+            $('#add-family-form select[data-field="name"]').append('<option value="NewFamily">NewFamily</option>').val('NewFamily');
             $('#add-family-form button.submit').trigger('click');
-            expect(AdminData.addFamily).toHaveBeenCalledWith('Columbidae', expect.any(String), expect.any(String));
+            expect(AdminData.addFamily).toHaveBeenCalledWith('NewFamily', expect.any(String), expect.any(String));
         });
 
         it('should not call addFamily when name is empty', () => {

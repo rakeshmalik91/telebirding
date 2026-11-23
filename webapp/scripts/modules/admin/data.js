@@ -11,7 +11,7 @@ export let currentMode = Util.getUrlParams().mode || Constants.MODE_BIRD;
 export function setCurrentMode(mode) {
     currentMode = mode;
 }
-export let lastUpdatedSpecies = (currentMode == Constants.MODE_INSECT) ? "unidentified" : 'rock-pigeon';
+export let lastUpdatedSpecies = "";
 
 export const historyManager = new UndoRedoManager(50);
 historyManager.onChange = (canUndo, canRedo) => {

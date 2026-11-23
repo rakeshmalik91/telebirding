@@ -23,10 +23,8 @@ export function hasMatchingScientificName(localSpecies, ebirdSpecies) {
 // incorrect stored code (e.g. Tawny Owl -> tafowl1), while allowing scientific
 // name/genus changes when the old common name still resolves to the same code.
 export function hasMatchingTaxonIdentity(localSpecies, ebirdSpecies, localNameCode, nameLookupRequired = false) {
-    // When either the common name or scientific name changes, require eBird to
-    // resolve the existing local common name to this exact stored species code.
-    // Never fall back to matching scientific strings in this situation.
-    if (nameLookupRequired) return Boolean(localNameCode && localNameCode === ebirdSpecies?.speciesCode);
+    if (localNameCode) return localNameCode === ebirdSpecies?.speciesCode;
+    if (nameLookupRequired) return false;
     return hasMatchingScientificName(localSpecies, ebirdSpecies);
 }
 
@@ -41,6 +39,18 @@ export function hasTaxonomyCodeConflict(localSpecies, ebirdSpecies, taxonomyByCo
     // conflict. The stored code has already been resolved directly; only block
     // when the local common name positively resolves to a different code.
     return { conflict: codeConflict, localNameTaxon, localNameCode, scientificNameDiffers };
+}
+
+export function hasDuplicateSpeciesConflict(localKey, ebirdSpecies, allSpecies) {
+    if (!ebirdSpecies?.comName || !allSpecies) return false;
+    const targetName = normalizeTaxonName(ebirdSpecies.comName);
+    const targetSlug = ebirdSpecies.comName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return Object.entries(allSpecies).some(([k, s]) =>
+        k !== localKey && (
+            (s?.name && normalizeTaxonName(s.name) === targetName) ||
+            k === targetSlug
+        )
+    );
 }
 
 function ebirdSpeciesLink(code, label = 'View on eBird') {
@@ -358,6 +368,16 @@ export function setupEbirdSync() {
                             details.push(`Historical eBird code: ${item.historicalSpeciesCode} (taxonomy ${item.taxonomyVersion}) → current code ${item.speciesCode}`);
                         }
                         if (item.comName && local.name !== item.comName) {
+                            if (hasDuplicateSpeciesConflict(key, item, species)) {
+                                proposedWarnings.push({
+                                    id: `collision:${key}:${code}`,
+                                    title: local.name || key,
+                                    ebirdCode: code,
+                                    taxonomyVersion: item.taxonomyVersion || 'current',
+                                    message: `Stored eBird code ${code} maps to “${item.comName}”, but another local species with that name already exists. No automatic rename will be proposed.`
+                                });
+                                continue;
+                            }
                             details.push(`Species name: “${local.name || ''}” → “${item.comName}”`);
                             updates.name = item.comName;
                         }

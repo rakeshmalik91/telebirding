@@ -120,7 +120,7 @@ describe('Admin Data Module', () => {
 
         it('should alert if mandatory fields are missing in saveSpecies', () => {
             AdminData.saveSpecies('k', '', '', '');
-            expect(global.alert).toHaveBeenCalledWith('All fields are mandatory');
+            expect(global.alert).toHaveBeenCalledWith('Name, tags and family are required for a new species.');
         });
 
         it('should delete family if not in use', () => {
@@ -619,7 +619,7 @@ describe('Admin Data Module', () => {
     });
 
     describe('Insect Mode Initialization', () => {
-        it('should initialize lastUpdatedSpecies to unidentified in insect mode', async () => {
+        it('should initialize lastUpdatedSpecies to empty string in insect mode', async () => {
             Util.getUrlParams.mockReturnValue({ mode: 'insect' });
             vi.resetModules();
             
@@ -628,7 +628,7 @@ describe('Admin Data Module', () => {
 
             const freshAdminData = await import('../../scripts/modules/admin/data.js');
             expect(freshAdminData.currentMode).toBe('insect');
-            expect(freshAdminData.lastUpdatedSpecies).toBe('unidentified');
+            expect(freshAdminData.lastUpdatedSpecies).toBe('');
 
             freshAdminData.refreshData();
 
