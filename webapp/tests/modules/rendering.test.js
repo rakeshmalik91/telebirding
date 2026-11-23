@@ -91,6 +91,19 @@ describe('Rendering Module', () => {
              const listHtml = $('.explore-menu .list').html();
              expect(listHtml).toContain('onclick="showPage(&quot;explore_page&quot;, {family:&quot;Columbidae&quot;})"');
         });
+
+        it('should safely escape quotes in family names without syntax errors', () => {
+             State.data.families = [
+                 { name: "Asian and Grauer's Broadbills", count: 2, imagesrc: 'broadbill.jpg' }
+             ];
+             $('.explore-menu .list').empty();
+             Rendering.renderExploreMenu();
+             const listHtml = $('.explore-menu .list').html();
+             expect(listHtml).toContain('onclick="showPage(&quot;explore_page&quot;, {family:&quot;Asian and Grauer\'s Broadbills&quot;})"');
+             const onclickCode = $('.explore-menu .sighting-family').attr('onclick');
+             expect(onclickCode).toBe('showPage("explore_page", {family:"Asian and Grauer\'s Broadbills"})');
+             expect(() => new Function('event', onclickCode)).not.toThrow();
+        });
     });
 
     describe('renderMapMenu', () => {

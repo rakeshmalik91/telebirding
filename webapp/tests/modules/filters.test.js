@@ -587,6 +587,57 @@ describe('Filters Module', () => {
             expect(State.autocompleteInitialized).toBe(true);
         });
     });
+
+    describe('updateActiveFilterBadges & clearFamilyFilter', () => {
+        beforeEach(() => {
+            document.body.innerHTML = `
+                <div class="filter-panel">
+                    <div class="filter">
+                        <div class="component filter-name-component">
+                            <input data-value="sighting" value="" />
+                            <button class="name-filter-badge active-filter-badge hidden"></button>
+                        </div>
+                        <div class="component filter-location-component">
+                            <input data-value="place" value="" />
+                            <button class="place-filter-badge active-filter-badge hidden"></button>
+                        </div>
+                        <div class="filter-active-badges-row">
+                            <div class="component filter-family-component">
+                                <button class="family-filter-badge active-filter-badge hidden"></button>
+                            </div>
+                            <div class="component filter-date-component">
+                                <input data-value="date" value="" />
+                                <button class="date-filter active-filter-badge hidden"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            State.sightingFamilyFilter = null;
+        });
+
+        it('should show family filter badge when sightingFamilyFilter is set', () => {
+            State.updateSightingFamilyFilter('Corvidae');
+            Filters.updateActiveFilterBadges();
+            expect($('.family-filter-badge').hasClass('active')).toBe(true);
+            expect($('.family-filter-badge').text()).toBe('Corvidae');
+            expect($('.filter-panel').hasClass('has-family-filter')).toBe(true);
+            expect($('.filter-panel').hasClass('has-active-filters')).toBe(true);
+        });
+
+        it('should clear family filter and navigate to explore_menu on clearFamilyFilter', () => {
+            window.showPage = vi.fn();
+            State.updateSightingFamilyFilter('Corvidae');
+            Filters.updateActiveFilterBadges();
+            expect(State.sightingFamilyFilter).toBe('Corvidae');
+
+            Filters.clearFamilyFilter();
+            expect(State.sightingFamilyFilter).toBeNull();
+            expect(window.showPage).toHaveBeenCalledWith(Constants.EXPLORE_MENU);
+            expect($('.family-filter-badge').hasClass('active')).toBe(false);
+            expect($('.filter-panel').hasClass('has-family-filter')).toBe(false);
+        });
+    });
 });
 
 

@@ -3,6 +3,7 @@ import Constants from '../constants.js';
 import { Autocomplete } from './autocomplete.js';
 import State from './state.js';
 import { removePreviewImage } from './preview.js';
+import { updateMobileFilterToggleBadge } from './ui-helpers.js';
 
 export function filterAndSortData(filter, params) {
     removePreviewImage();
@@ -107,7 +108,7 @@ export function triggerFilter(type, value) {
         State.updateRatingFilter(value || 0);
         if (window.showPage) window.showPage(State.currentPage, { rating: value });
     } else {
-        if ($('.filter').is(':visible')) {
+        if ($('.filter').length) {
             setFilter(type, value);
             filterOnChange(type);
         }
@@ -115,10 +116,91 @@ export function triggerFilter(type, value) {
     }
 }
 
+export function updateActiveFilterBadges() {
+    const sighting = getFilter('sighting');
+    const place = getFilter('place');
+    const date = getFilter('date');
+    const rating = State.ratingFilter || 0;
+    const family = State.sightingFamilyFilter || '';
+
+    const $nameBadge = $('.name-filter-badge');
+    const $placeBadge = $('.place-filter-badge');
+    const $familyBadge = $('.family-filter-badge');
+    const $dateBadge = $('.date-filter');
+    const $ratingBadge = $('.rating-filter');
+
+    if ($nameBadge.length) {
+        if (sighting) {
+            $nameBadge.removeClass('hidden').addClass('active button-active').html(sighting);
+            $nameBadge.closest('.filter-name-component').addClass('has-active-filter');
+        } else {
+            $nameBadge.addClass('hidden').removeClass('active button-active').empty();
+            $nameBadge.closest('.filter-name-component').removeClass('has-active-filter');
+        }
+    }
+
+    if ($placeBadge.length) {
+        if (place) {
+            $placeBadge.removeClass('hidden').addClass('active button-active').html(place);
+            $placeBadge.closest('.filter-location-component').addClass('has-active-filter');
+            $('.filter-panel').addClass('has-place-filter');
+        } else {
+            $placeBadge.addClass('hidden').removeClass('active button-active').empty();
+            $placeBadge.closest('.filter-location-component').removeClass('has-active-filter');
+            $('.filter-panel').removeClass('has-place-filter');
+        }
+    }
+
+    if ($familyBadge.length) {
+        if (family) {
+            $familyBadge.removeClass('hidden').addClass('active button-active').html(family);
+            $familyBadge.closest('.filter-family-component').addClass('has-active-filter');
+            $('.filter-panel').addClass('has-family-filter');
+        } else {
+            $familyBadge.addClass('hidden').removeClass('active button-active').empty();
+            $familyBadge.closest('.filter-family-component').removeClass('has-active-filter');
+            $('.filter-panel').removeClass('has-family-filter');
+        }
+    }
+
+    if ($dateBadge.length) {
+        if (date) {
+            $dateBadge.removeClass('hidden').addClass('active button-active').html(date);
+            $('.filter-date-component').addClass('active');
+            $('.filter-panel').addClass('has-date-filter');
+        } else {
+            $dateBadge.addClass('hidden').removeClass('active button-active');
+            $('.filter-date-component').removeClass('active');
+            $('.filter-panel').removeClass('has-date-filter');
+        }
+    }
+
+    if ($ratingBadge.length) {
+        if (rating > 0) {
+            $ratingBadge.removeClass('hidden').addClass('active button-active').show();
+            $ratingBadge.find('.rating').html(rating + ' +');
+            $('.filter-rating-component').addClass('active has-active-filter');
+            $('.filter-panel').addClass('has-rating-filter');
+        } else {
+            $ratingBadge.addClass('hidden').removeClass('active button-active').hide();
+            $ratingBadge.find('.rating').empty();
+            $('.filter-rating-component').removeClass('active has-active-filter');
+            $('.filter-panel').removeClass('has-rating-filter');
+        }
+    }
+
+    if (sighting || place || date || rating > 0 || family) {
+        $('.filter-panel').addClass('has-active-filters');
+    } else {
+        $('.filter-panel').removeClass('has-active-filters');
+    }
+}
+
 export function filterOnChange(type) {
     let value = $('.filter input[data-value=' + type + ']')[0].value
     if (value != "") $(".filter input[data-value='" + type + "']").addClass("button-active").val(Util.capitalize(value).trim());
     else $(".filter input[data-value='" + type + "']").removeClass("button-active");
+    updateActiveFilterBadges();
     refresh();
 }
 
@@ -157,12 +239,24 @@ export function setFilter(type, value) {
             if (value) {
                 input.addClass("button-active");
                 input.next("button").removeClass("hidden");
-                if (type == 'date') input.next("button").addClass("button-active").html(value);
+                if (type == 'date') {
+                    input.next("button").addClass("button-active").html(value);
+                    input.closest(".filter-date-component").addClass("active");
+                    $(".filter-panel").addClass("has-date-filter");
+                }
             } else {
                 input.removeClass("button-active");
-                if (type == 'date') input.next("button").addClass("hidden");
+                if (type == 'date') {
+                    input.next("button").addClass("hidden");
+                    input.closest(".filter-date-component").removeClass("active");
+                    $(".filter-panel").removeClass("has-date-filter");
+                }
             }
         }
+    }
+    updateActiveFilterBadges();
+    if (typeof updateMobileFilterToggleBadge === 'function') {
+        updateMobileFilterToggleBadge();
     }
 }
 
@@ -177,13 +271,35 @@ export function setFilters(filter) {
 }
 
 export function clearFilter(type) {
-    if ($(".filter").is(':visible')) {
-        $(".filter input[data-value='" + type + "']").removeClass("button-active").val("");
+    const $input = $(".filter input[data-value='" + type + "']");
+    if ($input.length) {
+        $input.removeClass("button-active").val("");
         if (type == 'date') {
-            $(".filter input[data-value='" + type + "'] + button").addClass("hidden");
+            $input.next("button").addClass("hidden");
+            $input.closest(".filter-date-component").removeClass("active");
+            $(".filter-panel").removeClass("has-date-filter");
         }
-        refresh();
-        $(".filter input[data-value='" + type + "']").focus();
+        if (type == 'place' && State.currentPage === Constants.MAP) {
+            if (window.showPage) window.showPage(Constants.MAP_MENU);
+        } else {
+            refresh();
+        }
+        updateActiveFilterBadges();
+        if (typeof updateMobileFilterToggleBadge === 'function') {
+            updateMobileFilterToggleBadge();
+        }
+        if ($input.is(':visible')) $input.focus();
+    }
+}
+
+export function clearFamilyFilter() {
+    State.updateSightingFamilyFilter(null);
+    updateActiveFilterBadges();
+    if (typeof updateMobileFilterToggleBadge === 'function') {
+        updateMobileFilterToggleBadge();
+    }
+    if (window.showPage) {
+        window.showPage(Constants.EXPLORE_MENU);
     }
 }
 
@@ -228,6 +344,10 @@ export function toggleNewSpeciesFilter() {
 
 export function resetRatingFilter() {
     if (State.ratingFilter != 0) State.updateRatingFilter(0);
+    updateActiveFilterBadges();
+    if (typeof updateMobileFilterToggleBadge === 'function') {
+        updateMobileFilterToggleBadge();
+    }
     refresh();
 }
 

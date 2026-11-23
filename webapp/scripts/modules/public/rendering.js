@@ -23,11 +23,13 @@ export function renderSightingTags(sightingLabelDiv, sighting) {
     if (sighting.species.tags && sighting.species.tags.length) {
         tagsDiv.append("Tagged ");
         sighting.species.tags.forEach(function (t) {
-            tagsDiv.append('<span class="tags" title="Tag" onclick="triggerFilter(\'sighting\', \'' + t + '\')">' + t + '</span> ');
+            const safeT = t.replace(/'/g, "\\'");
+            tagsDiv.append('<span class="tags" title="Tag" onclick="triggerFilter(\'sighting\', \'' + safeT + '\')">' + t + '</span> ');
         });
         tagsDiv.append(" ");
     }
-    tagsDiv.append('in <span class="tags" title="Family" onclick="triggerFilter(\'sighting\', \'' + sighting.species.family + '\')">' + sighting.species.family + '</span>');
+    const safeFamily = sighting.species.family ? sighting.species.family.replace(/'/g, "\\'") : '';
+    tagsDiv.append('in <span class="tags" title="Family" onclick="triggerFilter(\'sighting\', \'' + safeFamily + '\')">' + sighting.species.family + '</span>');
 }
 
 export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage) {
@@ -243,9 +245,10 @@ export function renderExploreMenu() {
                 const nameSpan = "<span class='name'>" + family.name + "</span>";
                 const sciNameSpan = family.sci_name ? "<span class='sci-name'>" + family.sci_name + "</span>" : "";
                 const countSpan = "<span class='count'>" + family.count + "</span>";
+                const safeFamilyName = family.name.replace(/'/g, '&#39;').replace(/"/g, '&quot;');
                 const imgSrc = Util.getMedia(family.imagesrc);
-                const img = imgSrc ? "<img class='fadein-50percent' src='" + imgSrc + "' alt='" + family.name + "'></img>" : "";
-                const div = "<div class='sighting-family' onclick='showPage(\"explore_page\", {family:\"" + family.name + "\"})'>" + nameSpan + sciNameSpan + countSpan + img + "</div>";
+                const img = imgSrc ? "<img class='fadein-50percent' src='" + imgSrc + "' alt='" + safeFamilyName + "'></img>" : "";
+                const div = "<div class='sighting-family' onclick='showPage(\"explore_page\", {family:\"" + safeFamilyName + "\"})'>" + nameSpan + sciNameSpan + countSpan + img + "</div>";
                 $('.explore-menu .list').append(div);
             }
         });
@@ -410,8 +413,17 @@ export function fillStats(ratingFilter, newSpeciesFilter, getFilters) {
     let selectedSpecies = [...new Set(State.data.filteredSightings.map(b => b.species.name.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")))];
     $(".species-count").html(selectedSpecies.length);
 
-    (ratingFilter > 0) ? $(".rating").parent().show() : $(".rating").parent().hide();
-    $(".rating").html((ratingFilter == 0) ? "All" : (ratingFilter + " +"));
+    if (ratingFilter > 0) {
+        $(".rating").parent().show().removeClass("hidden").addClass("active");
+        $(".rating").html(ratingFilter + " +");
+        $(".filter-rating-component").addClass("active has-active-filter");
+        $(".filter-panel").addClass("has-rating-filter");
+    } else {
+        $(".rating").parent().hide().addClass("hidden").removeClass("active");
+        $(".rating").html("All");
+        $(".filter-rating-component").removeClass("active has-active-filter");
+        $(".filter-panel").removeClass("has-rating-filter");
+    }
 
     let filters = getFilters();
     if (filters.date || filters.place) {

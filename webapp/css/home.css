@@ -334,10 +334,32 @@
 	width: 22px;
 }
 
-.site-logo,
+.site-brand {
+	position: absolute;
+	left: 25px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	z-index: 71;
+}
+
+.site-logo {
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
 .site-logo img {
-	max-height: 70px;
-	max-width: 40vw;
+	position: static;
+	max-height: 54px;
+	max-width: 32vw;
+	width: auto;
+	margin: 0;
+	display: block;
+	cursor: pointer;
 }
 
 .site-header {
@@ -370,16 +392,7 @@
 	/* box-shadow: 6px 4px 12px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.01); */
 }
 
-.site-logo,
-.site-logo img {
-	position: absolute;
-	cursor: pointer;
-}
 
-.site-logo img {
-	margin-top: 5px;
-	margin-left: 25px;
-}
 
 .page-name {
 	font-weight: bold;
@@ -1169,6 +1182,7 @@ button.right-pane-button.button-active:before {
 	z-index: 72;
 }
 
+.site-brand,
 .site-logo,
 .site-logo img {
 	z-index: 71;
@@ -1275,11 +1289,69 @@ button.right-pane-button.button-active:before {
 	transform: scale(0.95);
 }
 
-/* Mobile-only components hidden on desktop */
+/* Desktop styling for header mode toggle */
 .site-header .header-mode-toggle {
+	display: flex;
+	align-items: center;
+	background-color: #253547;
+	border-radius: 8px;
+	padding: 2px;
+	gap: 2px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+	margin-top: -12px;
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn {
+	background-color: transparent;
+	color: #8293a6;
+	border: none;
+	border-radius: 6px;
+	padding: 4px 10px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
+	outline: none;
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn:hover {
+	color: #b2ffa7;
+	background-color: rgba(255, 255, 255, 0.05);
+	transform: scale(1.05);
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn.active {
+	background-color: #111b26;
+	color: #c2f73b;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn.active:hover {
+	color: #cde84a;
+	background-color: #111b26;
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn .mode-toggle-icon {
+	width: 20px;
+	height: 20px;
+	display: block;
+	pointer-events: none;
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn .mode-toggle-icon path {
+	fill: currentColor;
+}
+
+/* Mode toggle moved to header; hide redundant toggle in home menu on desktop */
+.home .menu .mode-toggle.menu-mode-toggle {
 	display: none;
 }
+
+/* Mobile-only components hidden on desktop */
 .mobile-bottom-nav,
-.scroll-to-top-btn {
-	display: none;
+.scroll-to-top-btn,
+.mobile-filter-toggle-btn {
+	display: none !important;
 }

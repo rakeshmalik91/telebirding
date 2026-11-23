@@ -2,6 +2,7 @@ import Util from '../util.js';
 import Constants from '../constants.js';
 import { renderStories } from './rendering.js';
 import { showLoader, hideLoader } from '../loader.js';
+import State from './state.js';
 
 // ----------------- archive page sighting carousal -----------------
 
@@ -326,11 +327,49 @@ export function updateMobileNavActiveTab(page) {
     let target = page;
     if (page === Constants.EXPLORE_PAGE) target = Constants.EXPLORE_MENU;
     if (page === Constants.MAP) target = Constants.MAP_MENU;
-    if ((page === Constants.HOME || page === 'f') && (State.IS_MOBILE_DEVICE || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android)))) {
+    if ((page === Constants.HOME || page === 'f') && State.IS_MOBILE_DEVICE) {
         target = Constants.ARCHIVE;
     }
 
     $nav.find(`.mobile-nav-btn[data-page="${target}"]`).addClass('active');
+}
+
+/**
+ * Toggles mobile filter panel expanded/collapsed state.
+ */
+export function toggleMobileFilters() {
+    const $panel = $('.filter-panel');
+    const isExpanded = $panel.hasClass('mobile-filters-expanded');
+    $panel.toggleClass('mobile-filters-expanded', !isExpanded);
+    $('.mobile-filter-toggle-btn').toggleClass('active', !isExpanded);
+}
+
+/**
+ * Updates the filter count badge on the mobile filter toggle button.
+ */
+export function updateMobileFilterToggleBadge() {
+    const $btn = $('.mobile-filter-toggle-btn');
+    if (!$btn.length) return;
+    const placeVal = $('.filter input[data-value="place"]').val() || '';
+    const nameVal = $('.filter input[data-value="sighting"]').val() || '';
+    const dateVal = $('.filter input[data-value="date"]').val() || '';
+    const ratingVal = State.ratingFilter || 0;
+    const familyVal = State.sightingFamilyFilter || '';
+    let count = 0;
+    if (placeVal.trim()) count++;
+    if (nameVal.trim()) count++;
+    if (dateVal.trim()) count++;
+    if (ratingVal > 0) count++;
+    if (familyVal.trim()) count++;
+
+    const $badge = $btn.find('.mobile-filter-badge');
+    if (count > 0) {
+        $btn.addClass('has-filters');
+        $badge.text(count).show();
+    } else {
+        $btn.removeClass('has-filters');
+        $badge.hide();
+    }
 }
 
 // ----------------- youtube videos -----------------

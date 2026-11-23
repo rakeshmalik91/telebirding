@@ -395,7 +395,44 @@ span.text-seperator {
 	content: '↓';
 }
 
-.filter .component button.date-filter:after {
+.name-filter-badge,
+.place-filter-badge,
+.family-filter-badge {
+	display: none !important;
+}
+
+/* For map page or explore page filtered lists, show the filters like badges */
+body[data-page="map"] .place-filter-badge.active,
+body[data-page="explore_page"] .family-filter-badge.active {
+	display: inline-flex !important;
+}
+
+body[data-page="map"] .filter-location-component input,
+body[data-page="map"] .filter-location-component .button-clear {
+	display: none !important;
+}
+
+body[data-page="explore_page"] .filter-location-component,
+body[data-page="explore_page"] .filter-name-component,
+body[data-page="explore_page"] .right-pane-button-container {
+	display: none !important;
+}
+
+.filter-active-badges-row {
+	display: contents;
+}
+
+.filter .filter-rating-component:not(.active),
+.filter .filter-rating-component button.rating-filter.hidden,
+.filter .filter-family-component:not(.has-active-filter),
+.filter .filter-family-component button.family-filter-badge.hidden {
+	display: none !important;
+}
+
+.filter .component button.date-filter:after,
+.filter .component button.rating-filter:after,
+.filter .component button.place-filter-badge:after,
+.filter .component button.family-filter-badge:after {
 	padding-left: 10px;
 	content: "✕";
 	color: #bc7e7e;
@@ -833,6 +870,14 @@ span.text-seperator {
 	background-color: #ffffff;
 }
 
+.box.active .label {
+	color: #111b26;
+}
+
+.box.active .label.count {
+	color: #d93838;
+}
+
 /* ---- EXIF Info Icon on Preview Image ---- */
 .exif-info-icon {
 	position: absolute;
@@ -850,7 +895,7 @@ span.text-seperator {
 	justify-content: center;
 	transition: all 0.2s;
 	background: rgba(0, 0, 0, 0.4);
-	text-shadow: 0px 0px 4px rgba(0,0,0,1);
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
 	border-radius: 50%;
 	opacity: 0.7;
 }
@@ -872,7 +917,7 @@ span.text-seperator {
 	border-radius: 6px;
 	white-space: nowrap;
 	/* pointer-events: none; */
-	box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 	text-align: left;
 }
 

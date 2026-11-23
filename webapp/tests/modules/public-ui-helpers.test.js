@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { renderModeToggle, updateMobileNavActiveTab } from '../../scripts/modules/public/ui-helpers.js';
+import { renderModeToggle, updateMobileNavActiveTab, updateMobileFilterToggleBadge } from '../../scripts/modules/public/ui-helpers.js';
 import Constants from '../../scripts/modules/constants.js';
 import State from '../../scripts/modules/public/state.js';
 
@@ -122,6 +122,56 @@ describe('Public UI Helpers - updateMobileNavActiveTab', () => {
         updateMobileNavActiveTab(Constants.ABOUT);
         expect($('.mobile-nav-btn[data-page="about"]').hasClass('active')).toBe(true);
         expect($('.mobile-nav-btn[data-page="feed"]').hasClass('active')).toBe(false);
+    });
+});
+
+describe('Public UI Helpers - updateMobileFilterToggleBadge', () => {
+    beforeEach(() => {
+        State.ratingFilter = 0;
+        document.body.innerHTML = `
+            <button type="button" class="mobile-filter-toggle-btn">
+                <span class="mobile-filter-badge" style="display:none;"></span>
+            </button>
+            <div class="filter">
+                <input data-value="place" value="" />
+                <input data-value="sighting" value="" />
+                <input data-value="date" value="" />
+            </div>
+        `;
+    });
+
+    it('should hide badge when no filters are active', () => {
+        updateMobileFilterToggleBadge();
+        const $btn = $('.mobile-filter-toggle-btn');
+        expect($btn.hasClass('has-filters')).toBe(false);
+        expect($btn.find('.mobile-filter-badge').css('display')).toBe('none');
+    });
+
+    it('should show count 1 when rating filter is active', () => {
+        State.ratingFilter = 3;
+        updateMobileFilterToggleBadge();
+        const $btn = $('.mobile-filter-toggle-btn');
+        expect($btn.hasClass('has-filters')).toBe(true);
+        expect($btn.find('.mobile-filter-badge').text()).toBe('1');
+    });
+
+    it('should sum inputs and rating filter correctly', () => {
+        $('.filter input[data-value="place"]').val('Park');
+        $('.filter input[data-value="date"]').val('2026');
+        State.ratingFilter = 4;
+        updateMobileFilterToggleBadge();
+        const $btn = $('.mobile-filter-toggle-btn');
+        expect($btn.hasClass('has-filters')).toBe(true);
+        expect($btn.find('.mobile-filter-badge').text()).toBe('3');
+    });
+
+    it('should include family filter in count', () => {
+        State.updateSightingFamilyFilter('Corvidae');
+        updateMobileFilterToggleBadge();
+        const $btn = $('.mobile-filter-toggle-btn');
+        expect($btn.hasClass('has-filters')).toBe(true);
+        expect($btn.find('.mobile-filter-badge').text()).toBe('1');
+        State.updateSightingFamilyFilter(null);
     });
 });
 

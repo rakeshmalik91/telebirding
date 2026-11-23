@@ -3,7 +3,8 @@ import Util from './modules/util.js';
 import { showLoader } from './modules/loader.js';
 import {
 	rollSightingCarousal, showMore, setSiteLogo,
-	initHomePageCarousal, rollHomePageCarousal, copyStoryLink
+	initHomePageCarousal, rollHomePageCarousal, copyStoryLink,
+	toggleMobileFilters
 } from './modules/public/ui-helpers.js';
 import State from './modules/public/state.js';
 import { renderSightings, renderPageName } from './modules/public/rendering.js';
@@ -12,7 +13,7 @@ import {
 	retrieveStateFromUrlParams
 } from './modules/public/router.js';
 import {
-	triggerFilter, sortByOnChange, filterOnChange, clearFilter, resetRatingFilter,
+	triggerFilter, sortByOnChange, filterOnChange, clearFilter, clearFamilyFilter, resetRatingFilter,
 	toggleNewSpeciesFilter, getFilters, setSort, setFilters
 } from './modules/public/filters.js';
 import {
@@ -22,6 +23,7 @@ import { like } from './modules/public/data-helpers.js';
 
 // Expose functions to window for HTML onclick handlers
 window.showPage = showPage;
+window.toggleMobileFilters = toggleMobileFilters;
 
 window.toggleCollpasible = Util.toggleCollpasible;
 
@@ -35,6 +37,7 @@ window.triggerFilter = triggerFilter;
 window.sortByOnChange = sortByOnChange;
 window.filterOnChange = filterOnChange;
 window.clearFilter = clearFilter;
+window.clearFamilyFilter = clearFamilyFilter;
 window.resetRatingFilter = resetRatingFilter;
 window.toggleNewSpeciesFilter = toggleNewSpeciesFilter;
 window.toggleRightPane = toggleRightPane;

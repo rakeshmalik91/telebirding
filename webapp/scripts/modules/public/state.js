@@ -1,8 +1,23 @@
 import Util from '../util.js';
 import Constants from '../constants.js';
 
+function isMobileViewport() {
+    if (typeof window === 'undefined') return false;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    // Mobile phones: portrait width < 768px, or landscape phone height <= 500px and width <= 950px
+    return (w < 768 && h > w) || (h <= 500 && w <= 950);
+}
+
 export default class State {
-    static IS_MOBILE_DEVICE = !Util.isDeviceOnLandscapeOrientation() || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android));
+    static _isMobileOverride = undefined;
+    static get IS_MOBILE_DEVICE() {
+        if (State._isMobileOverride !== undefined) return State._isMobileOverride;
+        return isMobileViewport();
+    }
+    static set IS_MOBILE_DEVICE(val) {
+        State._isMobileOverride = val;
+    }
 
     static data = { "sightings": [] };
     static sort = { by: undefined, descending: undefined };
@@ -13,7 +28,14 @@ export default class State {
     static ratingFilter = 0;
     static autocompleteInitialized = false;
 
-    static currentPage = (!Util.isDeviceOnLandscapeOrientation() || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android))) ? Constants.ARCHIVE : Constants.HOME;
+    static _currentPage = undefined;
+    static get currentPage() {
+        if (State._currentPage !== undefined) return State._currentPage;
+        return State.IS_MOBILE_DEVICE ? Constants.ARCHIVE : Constants.HOME;
+    }
+    static set currentPage(val) {
+        State._currentPage = val;
+    }
     static currentMode = Constants.MODE_BIRD;
 
     static likeLocked = false;

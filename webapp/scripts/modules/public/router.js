@@ -2,7 +2,7 @@ import Constants from '../constants.js';
 import Util from '../util.js';
 import {
     getFilters, setFilters, filterAndSortData, initAutocomplete,
-    setSort, setNewSpeciesFilterState
+    setSort, setNewSpeciesFilterState, setFilter, updateActiveFilterBadges
 } from './filters.js';
 import {
     renderPageName, renderSightings, renderExploreMenu, fillStats,
@@ -10,7 +10,7 @@ import {
 } from './rendering.js';
 import State from './state.js';
 import { showLoader, hideLoader, resetLoader } from '../loader.js';
-import { setSiteLogo, stopYoutubeVideos, renderModeToggle, updateMobileNavActiveTab } from './ui-helpers.js';
+import { setSiteLogo, stopYoutubeVideos, renderModeToggle, updateMobileNavActiveTab, updateMobileFilterToggleBadge } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
 let isSamePageNavigation = false;
@@ -141,7 +141,7 @@ export function getUrlFromState(state) {
 
 export function retrieveStateFromUrlParams() {
     var urlParams = Util.getUrlParams();
-    const isMobile = State.IS_MOBILE_DEVICE || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android));
+    const isMobile = State.IS_MOBILE_DEVICE;
     const defaultPage = isMobile ? Constants.ARCHIVE : Constants.HOME;
     let page = urlParams.page ? decodeURIComponent(urlParams.page) : defaultPage;
     if (page === 'f') page = Constants.ARCHIVE;
@@ -227,11 +227,11 @@ const VIEW_STATES = {
         featured: 'visible'
     },
     [Constants.EXPLORE_PAGE]: {
-        show: ['.home', '.sightings-list', '.filter-panel', '.filter-panel .stats'],
+        show: ['.home', '.sightings-list', '.filter-panel', '.filter-panel .filter', '.filter-panel .sortby', '.filter-panel .stats'],
         featured: 'hidden'
     },
     [Constants.MAP_MENU]: {
-        show: ['.home', '.home .map-menu'],
+        show: ['.home', '.map-menu'],
         featured: 'collapsed'
     },
     [Constants.MAP]: {
@@ -254,6 +254,10 @@ const VIEW_STATES = {
 
 function updatePageUI(page) {
     const config = VIEW_STATES[page] || VIEW_STATES.DEFAULT;
+
+    // Scoping attributes for CSS (mobile feed filter isolation and page-specific rules)
+    $('body').attr('data-page', page);
+    $('.filter-panel').attr('data-page', page);
 
     // Hide all managed views
     $(UI_VIEWS.join(', ')).hide();
@@ -287,15 +291,13 @@ function updatePageUI(page) {
     featured.removeClass('hidden collapsed');
     if (config.featured === 'hidden') featured.addClass('hidden');
     else if (config.featured === 'collapsed') featured.addClass('collapsed');
-
-
 }
 
 export function showPage(page, params, isPopstate) {
     stopYoutubeVideos();
     resetLoader();
 
-    const isMobile = State.IS_MOBILE_DEVICE || (typeof window !== 'undefined' && (window.innerWidth <= 768 || window.Android));
+    const isMobile = State.IS_MOBILE_DEVICE;
     if ((page === Constants.HOME || page === 'f' || !page) && isMobile) {
         page = Constants.ARCHIVE;
     }
@@ -310,12 +312,34 @@ export function showPage(page, params, isPopstate) {
         filter.rating = params.rating || filter.rating;
     }
 
+    // When navigating to feed/archive without specific params from another page (or clicking the Feed tab),
+    // clear active filters so user returns to a clean all-sightings feed.
+    if (page === Constants.ARCHIVE && (!params || Object.keys(params).length === 0)) {
+        State.updateSightingFamilyFilter(null);
+        if (State.currentPage !== Constants.ARCHIVE) {
+            filter.place = '';
+            filter.sighting = '';
+            filter.date = '';
+            setFilter('place', '');
+            setFilter('sighting', '');
+            setFilter('date', '');
+        }
+    }
+
     if (!isPopstate) {
         var state = { page: page, params: params, filter: filter, sort: State.sort };
         history.pushState(state, '', getUrlFromState(state));
     }
 
     isSamePageNavigation = (page == State.currentPage);
+    if (!isSamePageNavigation) {
+        $('.filter-panel').removeClass('mobile-filters-expanded');
+        $('.mobile-filter-toggle-btn').removeClass('active');
+        if (typeof window !== 'undefined' && window.scrollTo) {
+            window.scrollTo(0, 0);
+        }
+    }
+
     State.updateCurrentPage(page);
     if ([Constants.ARCHIVE, Constants.EXPLORE_PAGE, Constants.MAP, Constants.STORIES].includes(page)) {
         showLoader('page-load');
@@ -346,6 +370,7 @@ export function showPage(page, params, isPopstate) {
                 // Keep current mode (do not force default) so the global mode toggle persists across pages
                 break;
             case Constants.EXPLORE_MENU:
+                State.updateSightingFamilyFilter(null);
                 renderExploreMenu();
                 break;
             case Constants.MAP_MENU:
@@ -355,6 +380,7 @@ export function showPage(page, params, isPopstate) {
                 renderStories('.stories', 0, params ? params.story : null);
                 break;
             case Constants.ARCHIVE:
+                State.updateSightingFamilyFilter(null);
                 State.updateData({ ...State.data, sightingFamilyFilter: null });
                 filterAndSortData(filter);
                 fillStats(State.ratingFilter, State.newSpeciesFilter, getFilters);
@@ -375,6 +401,8 @@ export function showPage(page, params, isPopstate) {
         setSiteLogo(Constants.MODE, State.currentMode);
         renderModeToggle(State.currentMode);
         updateMobileNavActiveTab(State.currentPage);
+        updateMobileFilterToggleBadge();
+        updateActiveFilterBadges();
 
         if (State.currentPage != Constants.HOME) {
 

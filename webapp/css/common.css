@@ -190,11 +190,13 @@ input+.button-clear {
 	border-radius: .25rem;
 	opacity: 0;
 	color: #bc7e7e;
+	pointer-events: none;
 }
 
 input.button-active+.button-clear {
 	background-color: #d3e5e9;
 	opacity: 1;
+	pointer-events: auto;
 }
 
 input+.button-clear:before {

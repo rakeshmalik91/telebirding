@@ -11,7 +11,9 @@ vi.mock('../../scripts/modules/public/filters.js', () => ({
     filterAndSortData: vi.fn(),
     initAutocomplete: vi.fn(),
     setSort: vi.fn(),
-    setNewSpeciesFilterState: vi.fn()
+    setNewSpeciesFilterState: vi.fn(),
+    setFilter: vi.fn(),
+    updateActiveFilterBadges: vi.fn()
 }));
 
 vi.mock('../../scripts/modules/public/rendering.js', () => ({
