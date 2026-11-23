@@ -236,6 +236,15 @@
             ],
             "family": "Butterflies"
         },
+        "common-rose-butterfly": {
+            "key": "common-rose-butterfly",
+            "name": "Common Rose Butterfly",
+            "tags": [
+                "Butterfly"
+            ],
+            "family": "Butterflies",
+            "latin_name": "pachliopta aristolochiae"
+        },
         "common-sailer-butterfly": {
             "key": "common-sailer-butterfly",
             "name": "Common Sailer Butterfly",
@@ -495,6 +504,16 @@
             ],
             "family": "Beetles"
         },
+        "malabar-tree-nymph-butterfly": {
+            "key": "malabar-tree-nymph-butterfly",
+            "name": "Malabar Tree-Nymph Butterfly",
+            "tags": [
+                "Butterfly",
+                "Tree-Nymph"
+            ],
+            "family": "Butterflies",
+            "latin_name": "idea malabarica"
+        },
         "malay-cruiser-butterfly": {
             "key": "malay-cruiser-butterfly",
             "name": "Malay Cruiser Butterfly",
@@ -578,6 +597,18 @@
             "family": "Butterflies",
             "latin_name": "papilio paris"
         },
+        "peninsular-great-mormon": {
+            "key": "peninsular-great-mormon",
+            "name": "Peninsular Great Mormon Butterfly",
+            "tags": [
+                "Blue Mormon",
+                "Butterfly",
+                "Mormon",
+                "Peninsular Great Mormon"
+            ],
+            "family": "Butterflies",
+            "latin_name": "papilio polymnestor"
+        },
         "phalanta-alcippe": {
             "key": "phalanta-alcippe",
             "name": "Small Leopard Butterfly",
@@ -586,6 +617,16 @@
             ],
             "family": "Butterflies",
             "latin_name": "phalanta alcippe"
+        },
+        "plain-tawny-rajah-butterfly": {
+            "key": "plain-tawny-rajah-butterfly",
+            "name": "Plain Tawny Rajah Butterfly",
+            "tags": [
+                "Butterfly",
+                "Tawny Rajah"
+            ],
+            "family": "Butterflies",
+            "latin_name": "charaxes psaphon"
         },
         "plain-tiger-butterfly": {
             "key": "plain-tiger-butterfly",
@@ -751,6 +792,14 @@
                 "Moth"
             ],
             "family": "Moths"
+        },
+        "unidentified-spider": {
+            "key": "unidentified-spider",
+            "name": "Unidentified Spider",
+            "tags": [
+                "Spider"
+            ],
+            "family": "Spiders"
         },
         "vietnamese-red-spot-jezebel-butterfly": {
             "key": "vietnamese-red-spot-jezebel-butterfly",

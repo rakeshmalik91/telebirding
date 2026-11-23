@@ -5,6 +5,7 @@ let speciesMap = null;
 let countryLayer = null;
 let detailLayer = null;      // state + city + place combined in one layer group
 let initialView = null;       // {center, zoom} for reset button
+let isHtml5Fullscreen = false;
 
 // GeoJSON boundary data (loaded once)
 let geoCountries = null;
@@ -413,12 +414,17 @@ function updateVisibleLayers() {
 
 /**
  * Toggle fullscreen mode for the map
+ * @param {boolean} [forceState] - Optional boolean to force open (true) or close (false)
  */
-function toggleFullscreen() {
+export function toggleFullscreen(forceState) {
     const mapContainer = document.getElementById('species-map');
     if (!mapContainer) return;
 
-    const isFullscreen = mapContainer.classList.toggle('map-fullscreen');
+    const isFullscreen = (typeof forceState === 'boolean')
+        ? forceState
+        : !mapContainer.classList.contains('map-fullscreen');
+
+    mapContainer.classList.toggle('map-fullscreen', isFullscreen);
     document.body.classList.toggle('has-fullscreen-map', isFullscreen);
 
     const enterIcon = mapContainer.querySelector('.fullscreen-icon-enter');
@@ -428,24 +434,41 @@ function toggleFullscreen() {
         exitIcon.style.display = isFullscreen ? 'block' : 'none';
     }
 
-    // Try HTML5 Fullscreen API
-    if (isFullscreen) {
-        if (mapContainer.requestFullscreen) {
-            mapContainer.requestFullscreen().catch(() => {});
-        } else if (mapContainer.webkitRequestFullscreen) {
-            mapContainer.webkitRequestFullscreen();
-        }
-    } else {
-        if (document.fullscreenElement && document.exitFullscreen) {
-            document.exitFullscreen().catch(() => {});
-        } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
+    if (window.Android && typeof window.Android.setMapFullscreen === 'function') {
+        window.Android.setMapFullscreen(isFullscreen);
+    }
+
+    // Try HTML5 Fullscreen API only when supported and not inside Android app WebView
+    // (Android WebView doesn't implement WebChromeClient.onShowCustomView, so requestFullscreen fails or triggers immediate cancellation)
+    const isAndroid = !!(window.Android || navigator.userAgent.includes('TelebirdingAndroid'));
+    if (!isAndroid && document.fullscreenEnabled) {
+        if (isFullscreen) {
+            if (mapContainer.requestFullscreen) {
+                mapContainer.requestFullscreen()
+                    .then(() => { isHtml5Fullscreen = true; })
+                    .catch(() => { isHtml5Fullscreen = false; });
+            } else if (mapContainer.webkitRequestFullscreen) {
+                mapContainer.webkitRequestFullscreen();
+                isHtml5Fullscreen = true;
+            }
+        } else {
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen()
+                    .then(() => { isHtml5Fullscreen = false; })
+                    .catch(() => {});
+            } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+                isHtml5Fullscreen = false;
+            }
         }
     }
 
     setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 100);
     setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 300);
 }
+
+// Expose globally so Android BackHandler can toggle/exit fullscreen
+window.toggleFullscreen = toggleFullscreen;
 
 /**
  * Reset map to initial view (center + zoom)
@@ -506,11 +529,13 @@ function addMapControls(map) {
 
     new MapControls().addTo(map);
 
-    // Sync fullscreen state when user presses Escape or browser exits fullscreen
-    document.addEventListener('fullscreenchange', function () {
+    // Sync fullscreen state when user presses Escape or browser exits HTML5 fullscreen
+    const handleFullscreenChange = () => {
+        if (!isHtml5Fullscreen) return;
         const mapContainer = document.getElementById('species-map');
         if (!mapContainer) return;
-        if (!document.fullscreenElement && mapContainer.classList.contains('map-fullscreen')) {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement && mapContainer.classList.contains('map-fullscreen')) {
+            isHtml5Fullscreen = false;
             mapContainer.classList.remove('map-fullscreen');
             document.body.classList.remove('has-fullscreen-map');
             const enterIcon = mapContainer.querySelector('.fullscreen-icon-enter');
@@ -519,9 +544,14 @@ function addMapControls(map) {
                 enterIcon.style.display = 'block';
                 exitIcon.style.display = 'none';
             }
+            if (window.Android && typeof window.Android.setMapFullscreen === 'function') {
+                window.Android.setMapFullscreen(false);
+            }
             setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 150);
         }
-    });
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 }
 
 /**
@@ -682,12 +712,46 @@ export async function initSpeciesMap(countriesData, placesGeo) {
     // Invalidate map size once container layout stabilizes (after sidebar transitions)
     setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 100);
     setTimeout(() => { if (speciesMap) speciesMap.invalidateSize(); }, 300);
+
+    // Listen for touch interactions on the map container to notify Android SwipeRefreshLayout
+    const mapTouchHandler = () => {
+        if (window.Android && typeof window.Android.setMapInteracting === 'function') {
+            window.Android.setMapInteracting(true);
+        }
+    };
+    const mapTouchEndHandler = (e) => {
+        if (!e.touches || e.touches.length === 0) {
+            if (window.Android && typeof window.Android.setMapInteracting === 'function') {
+                window.Android.setMapInteracting(false);
+            }
+        }
+    };
+
+    container.addEventListener('touchstart', mapTouchHandler, { passive: true });
+    container.addEventListener('touchend', mapTouchEndHandler, { passive: true });
+    container.addEventListener('touchcancel', mapTouchEndHandler, { passive: true });
+
+    speciesMap.on('movestart dragstart zoomstart', mapTouchHandler);
+    speciesMap.on('moveend dragend zoomend', () => {
+        if (window.Android && typeof window.Android.setMapInteracting === 'function') {
+            window.Android.setMapInteracting(false);
+        }
+    });
 }
 
 /**
  * Destroy the map instance (for cleanup)
  */
 export function destroySpeciesMap() {
+    isHtml5Fullscreen = false;
+    if (window.Android) {
+        if (typeof window.Android.setMapInteracting === 'function') {
+            window.Android.setMapInteracting(false);
+        }
+        if (typeof window.Android.setMapFullscreen === 'function') {
+            window.Android.setMapFullscreen(false);
+        }
+    }
     if (speciesMap) {
         speciesMap.remove();
         speciesMap = null;

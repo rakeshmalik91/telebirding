@@ -3,7 +3,7 @@ import Util from '../util.js';
 import State from './state.js';
 import { initSightingCarousal } from './ui-helpers.js';
 import { getFilter } from './filters.js';
-import { initSpeciesMap } from './species-map.js?v=20260831_1';
+import { initSpeciesMap, destroySpeciesMap } from './species-map.js?v=20261123_2';
 
 let storyInViewObserver;
 
@@ -240,12 +240,16 @@ export function renderSightingThumbnailsAndDescription(div, selectedSighting, se
     }
 }
 
-export function renderExploreMenu() {
+export function renderExploreMenu(force = false) {
     $('.featured').addClass('collapsed');
     $('.explore-menu').addClass('expanded');
 
-    if ($('.explore-menu .list').html() == '') {
-        State.data.families.forEach(function (family, i) {
+    const currentMode = State.currentMode;
+    const renderedMode = $('.explore-menu .list').attr('data-mode');
+
+    if (force || renderedMode !== currentMode || $('.explore-menu .list').html() == '') {
+        $('.explore-menu .list').empty().attr('data-mode', currentMode);
+        (State.data.families || []).forEach(function (family, i) {
             if (family.count > 0) {
                 const nameSpan = "<span class='name'>" + family.name + "</span>";
                 const sciNameSpan = family.sci_name ? "<span class='sci-name'>" + family.sci_name + "</span>" : "";
@@ -349,10 +353,18 @@ export function renderLocationList(container) {
     });
 }
 
-export function renderMapMenu() {
+export function renderMapMenu(force = false) {
     $('.home .featured').addClass('collapsed');
     $('.map-menu').show();
-    if ($('.map-menu').html() == '') {
+
+    const currentMode = State.currentMode;
+    const renderedMode = $('.map-menu').attr('data-mode');
+
+    if (force || renderedMode !== currentMode || $('.map-menu').html() == '') {
+        if (typeof destroySpeciesMap === 'function') {
+            destroySpeciesMap();
+        }
+        $('.map-menu').empty().attr('data-mode', currentMode);
         $('.map-menu').append("<h1>Species Observed by Location</h1>");
         $('.map-menu').append("<div id='species-map'></div>");
         renderLocationList($('.map-menu'));

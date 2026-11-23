@@ -534,6 +534,7 @@ body[data-page="explore_page"] .right-pane-button-container {
 }*/
 
 .sighting-tags {
+	box-sizing: border-box;
 	padding-left: 15px;
 	padding-bottom: 20px;
 	padding-right: 50px;
@@ -545,6 +546,20 @@ body[data-page="explore_page"] .right-pane-button-container {
 	width: 100%;
 }
 
+.preview-image-desc .sighting-tags {
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	right: 60px;
+	width: auto;
+	max-width: calc(100% - 60px);
+	box-sizing: border-box;
+	padding-left: 15px;
+	padding-right: 25px;
+	padding-bottom: 20px;
+	word-break: break-word;
+}
+
 .sighting-tags span.tags {
 	font-size: 14px;
 	background-color: transparent;
@@ -552,6 +567,13 @@ body[data-page="explore_page"] .right-pane-button-container {
 	color: #cccccc;
 	cursor: pointer;
 	margin-left: 0;
+	display: inline-block;
+	white-space: nowrap;
+	margin-bottom: 4px;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
 }
 
 .sighting-tags span.tags:hover {
@@ -618,6 +640,8 @@ body[data-page="explore_page"] .right-pane-button-container {
 	height: 100%;
 	overflow-y: scroll;
 	margin-right: 60px;
+	padding-bottom: 60px;
+	box-sizing: border-box;
 	scrollbar-width: none;
 	/* Firefox */
 	-ms-overflow-style: none;
@@ -650,6 +674,8 @@ body[data-page="explore_page"] .right-pane-button-container {
 	height: 100%;
 	overflow-y: scroll;
 	margin-right: 60px;
+	padding-bottom: 60px;
+	box-sizing: border-box;
 	scrollbar-width: none;
 	/* Firefox */
 	-ms-overflow-style: none;

@@ -13,12 +13,12 @@ import { setupCleanupListeners } from './modules/admin/cleanup.js';
 import { setupRestoreListeners } from './modules/admin/restore.js';
 import { setupEbirdSync } from './modules/admin/ebird-sync.js';
 
-const viewState = {
+export const viewState = {
 	offset: 0,
 	rows: 10
 };
 
-function switchMode(targetMode) {
+export function switchMode(targetMode) {
 	if (currentMode !== targetMode) {
 		if (hasUnsavedChanges()) {
 			customAlert("Please wait for your changes to finish saving before switching modes.");
@@ -32,6 +32,13 @@ function switchMode(targetMode) {
 		$(`.mode-tab[data-mode="${targetMode}"]`).addClass('active');
 		$('.site-logo').html('<img class="logo" src="' + Constants.MODE[targetMode].logo + '" alt="' + Constants.MODE[targetMode].title + '" title="' + Constants.MODE[targetMode].title + '" />');
 		
+		// When mode is changed, reset to page 1 (offset 0) with no filters applied
+		viewState.offset = 0;
+		$("input[name=filter-sighting]").val("").closest('.input-clear-wrapper').removeClass('has-value');
+		if (typeof window !== 'undefined' && window.scrollTo) {
+			window.scrollTo(0, 0);
+		}
+
 		refreshData();
 	}
 }
@@ -83,6 +90,14 @@ $(document).ready(function () {
 		}
 	});
 });
+
+window.onpopstate = function () {
+	const urlParams = new URLSearchParams(window.location.search);
+	const targetMode = urlParams.get('mode') || Constants.DEFAULT_MODE;
+	if (Constants.MODE[targetMode] && currentMode !== targetMode) {
+		switchMode(targetMode);
+	}
+};
 
 window.onbeforeunload = function (e) {
 	// Sync check logic skipped

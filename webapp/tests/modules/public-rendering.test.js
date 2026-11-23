@@ -418,6 +418,22 @@ describe('Public Rendering', () => {
             Rendering.renderExploreMenu();
             expect($('.explore-menu .list').html()).toBe(firstHtml);
         });
+
+        it('should re-render explore menu when mode changes', () => {
+            State.currentMode = 'bird';
+            Rendering.renderExploreMenu();
+            expect($('.explore-menu .list').html()).toContain('Corvidae');
+
+            // Switch mode and data
+            State.currentMode = 'insect';
+            State.data.families = [
+                { name: 'Papilionidae', count: 3, sci_name: 'Papilio', imagesrc: 'p.jpg' }
+            ];
+            Rendering.renderExploreMenu();
+            expect($('.explore-menu .list').html()).toContain('Papilionidae');
+            expect($('.explore-menu .list').html()).not.toContain('Corvidae');
+            expect($('.explore-menu .list').attr('data-mode')).toBe('insect');
+        });
     });
 
     describe('renderHome', () => {
@@ -487,6 +503,25 @@ describe('Public Rendering', () => {
             const first = $('.map-menu').html();
             Rendering.renderMapMenu();
             expect($('.map-menu').html()).toBe(first);
+        });
+
+        it('should re-render map menu when mode changes', () => {
+            State.currentMode = 'bird';
+            Rendering.renderMapMenu();
+            expect($('.map-menu').html()).toContain('India');
+
+            // Switch mode and data
+            State.currentMode = 'reptile';
+            State.data.countries = {
+                'US': {
+                    name: 'United States', count: 5,
+                    states: {}
+                }
+            };
+            Rendering.renderMapMenu();
+            expect($('.map-menu').html()).toContain('United States');
+            expect($('.map-menu').html()).not.toContain('India');
+            expect($('.map-menu').attr('data-mode')).toBe('reptile');
         });
 
         it('should render year list', () => {

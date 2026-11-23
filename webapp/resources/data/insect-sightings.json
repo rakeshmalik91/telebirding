@@ -1,6 +1,134 @@
 {
     "sightings": [
         {
+            "key": "s1795430328",
+            "species": "common-rose-butterfly",
+            "date": "19-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/common-rose-butterfly-1795430392.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795430394",
+            "species": "unidentified-spider",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/unidentified-spider-1795431337.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/unidentified-spider-1795430583.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/unidentified-spider-1795430520.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795430663",
+            "species": "peninsular-great-mormon",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/peninsular-great-mormon-1795430693.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795430591",
+            "species": "malabar-tree-nymph-butterfly",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/malabar-tree-nymph-butterfly-1795430638.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795430293",
+            "species": "plain-tawny-rajah-butterfly",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/plain-tawny-rajah-butterfly-1795430326.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795430256",
+            "species": "unidentified-grasshopper",
+            "date": "08-11-2026",
+            "city": "Ganderbal",
+            "state": "Jammu & Kashmir",
+            "country": "India",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/unidentified-grasshopper-1795430273.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1793362814",
             "species": "red-tailed-bumblebee",
             "date": "24-10-2026",
@@ -56,7 +184,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1793068231",
@@ -75,7 +204,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1793068156",
@@ -100,7 +230,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1793067945",
@@ -119,7 +250,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1793501943",
@@ -1101,7 +1233,7 @@
             "species": "indian-red-admiral-butterfly",
             "date": "28-10-2023",
             "city": "Mulkharka",
-            "state": "Sikkim",
+            "state": "West Bengal",
             "country": "India",
             "media": [
                 {
@@ -1119,7 +1251,7 @@
             "species": "himalayan-dark-clouded-yellow-butterfly",
             "date": "28-10-2023",
             "city": "Mulkharka",
-            "state": "Sikkim",
+            "state": "West Bengal",
             "country": "India",
             "media": [
                 {
@@ -1347,22 +1479,21 @@
         },
         {
             "key": "s1713021675",
-            "species": "golden-silk-orb-weaver",
+            "species": "unidentified-spider",
             "date": "23-12-2021",
             "city": "Thattekad",
             "state": "Kerala",
             "country": "India",
             "media": [
                 {
-                    "src": "images/golden-silk-orb-weaver-1713021704.jpg",
+                    "src": "images/unidentified-spider-1713021704.jpg",
                     "exif_data": {
                         "camera_model": "S6400+200600"
                     }
                 }
             ],
             "rating": "3",
-            "time_of_day": "Day",
-            "unconfirmed": true
+            "time_of_day": "Day"
         },
         {
             "key": "s1738039137",
@@ -1567,21 +1698,20 @@
         },
         {
             "key": "s1738465528",
-            "species": "golden-silk-orb-weaver",
+            "species": "unidentified-spider",
             "date": "18-11-2018",
             "city": "Thattekad",
             "state": "Kerala",
             "country": "India",
             "media": [
                 {
-                    "src": "images/golden-silk-orb-weaver-1738465599.jpg",
+                    "src": "images/unidentified-spider-1738465599.jpg",
                     "exif_data": {
                         "camera_model": "NP900"
                     }
                 }
             ],
-            "rating": "3",
-            "unconfirmed": true
+            "rating": "3"
         },
         {
             "key": "s1738484224",

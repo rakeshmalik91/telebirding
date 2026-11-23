@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Message
 import android.util.AttributeSet
 import android.util.Log
+import android.view.MotionEvent
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
@@ -78,9 +79,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             TelebirdingTheme {
                 var webView by remember { mutableStateOf<WebView?>(null) }
+                var isMapFullscreen by remember { mutableStateOf(false) }
 
                 BackHandler {
-                    if (webView?.canGoBack() == true) {
+                    if (isMapFullscreen) {
+                        webView?.evaluateJavascript("if (typeof window.toggleFullscreen === 'function') { window.toggleFullscreen(false); }", null)
+                    } else if (webView?.canGoBack() == true) {
                         webView?.goBack()
                     } else {
                         // Exit app if no history
@@ -88,7 +92,10 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                WebViewScreen { webView = it }
+                WebViewScreen(
+                    onMapFullscreenChanged = { isMapFullscreen = it },
+                    onWebViewCreated = { webView = it }
+                )
             }
         }
     }
@@ -96,7 +103,7 @@ class MainActivity : ComponentActivity() {
 
 /**
  * A custom SwipeRefreshLayout that can be told by Javascript whether a nested scrollable
- * element is being touched and can be scrolled up.
+ * element is being touched and can be scrolled up, or if the interactive species map is being touched/dragged.
  */
 class CustomSwipeRefreshLayout @JvmOverloads constructor(
     context: Context,
@@ -105,6 +112,8 @@ class CustomSwipeRefreshLayout @JvmOverloads constructor(
 
     @Volatile
     var nestedCanScrollUp = false
+    @Volatile
+    var isMapInteracting = false
     private var webView: WebView? = null
 
     fun setWebView(webView: WebView) {
@@ -112,17 +121,28 @@ class CustomSwipeRefreshLayout @JvmOverloads constructor(
     }
 
     override fun canChildScrollUp(): Boolean {
-        // If JS tells us the nested element can scroll, we return true to prevent refresh.
-        if (nestedCanScrollUp) {
+        // If JS tells us the map is being interacted with, or nested element can scroll up,
+        // we return true to prevent pull-to-refresh from triggering.
+        if (isMapInteracting || nestedCanScrollUp) {
             return true
         }
-        // Otherwise, fall back to the default behavior of checking the WebView's scroll position.
+        // Otherwise, fall back to checking the WebView's scroll position.
         return webView?.scrollY ?: 0 > 0
+    }
+
+    override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+        if (isMapInteracting) {
+            return false
+        }
+        return super.onInterceptTouchEvent(ev)
     }
 }
 
 @Composable
-fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
+fun WebViewScreen(
+    onMapFullscreenChanged: (Boolean) -> Unit = {},
+    onWebViewCreated: (WebView) -> Unit
+) {
     var lastFailedUrl by remember { mutableStateOf<String?>(null) }
     val scrollY = remember { mutableStateOf(0) }
     val showButton by remember {
@@ -288,7 +308,7 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                 })();
                             """.trimIndent(), null)
 
-                            // Inject JS to handle nested scrolling
+                            // Inject JS to handle nested scrolling and map touch interaction
                             view?.evaluateJavascript("""
                                 (function() {
                                     var scrollableElement = null;
@@ -306,6 +326,18 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                         return findScrollableElement(element.parentElement);
                                     }
 
+                                    // Check if touch target belongs to species-map
+                                    function isMapElement(element) {
+                                        if (!element) return false;
+                                        if (element.id === 'species-map' || (element.classList && element.classList.contains('leaflet-container'))) {
+                                            return true;
+                                        }
+                                        if (typeof element.closest === 'function' && element.closest('#species-map, .leaflet-container')) {
+                                            return true;
+                                        }
+                                        return false;
+                                    }
+
                                     // Check the state of the scrollable element and notify Android
                                     function updateScrollState() {
                                         let canScroll = false;
@@ -317,8 +349,13 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                         }
                                     }
 
-                                    // On touch start, find the scrollable element
+                                    // On touch start, notify if map is touched and find scrollable element
                                     document.body.addEventListener('touchstart', function(event) {
+                                        if (isMapElement(event.target)) {
+                                            if (window.Android && window.Android.setMapInteracting) {
+                                                window.Android.setMapInteracting(true);
+                                            }
+                                        }
                                         scrollableElement = findScrollableElement(event.target);
                                         updateScrollState(); // Initial check
                                     }, { passive: true });
@@ -331,7 +368,12 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                                     }, { passive: true });
 
                                     // When the touch ends, reset everything
-                                    const endTouch = () => {
+                                    const endTouch = (event) => {
+                                        if (!event.touches || event.touches.length === 0) {
+                                            if (window.Android && window.Android.setMapInteracting) {
+                                                window.Android.setMapInteracting(false);
+                                            }
+                                        }
                                         if (scrollableElement) {
                                             if (window.Android && window.Android.setNestedCanScrollUp) {
                                                 window.Android.setNestedCanScrollUp(false);
@@ -393,6 +435,27 @@ fun WebViewScreen(onWebViewCreated: (WebView) -> Unit) {
                             @JavascriptInterface
                             fun setNestedCanScrollUp(canScroll: Boolean) {
                                 swipeRefreshLayout?.nestedCanScrollUp = canScroll
+                            }
+
+                            @JavascriptInterface
+                            fun setMapInteracting(interacting: Boolean) {
+                                swipeRefreshLayout?.let { srl ->
+                                    srl.isMapInteracting = interacting
+                                    if (interacting) {
+                                        srl.requestDisallowInterceptTouchEvent(true)
+                                    }
+                                }
+                            }
+
+                            @JavascriptInterface
+                            fun setMapFullscreen(fullscreen: Boolean) {
+                                onMapFullscreenChanged(fullscreen)
+                                swipeRefreshLayout?.post {
+                                    swipeRefreshLayout?.isEnabled = !fullscreen
+                                    if (fullscreen) {
+                                        swipeRefreshLayout?.isRefreshing = false
+                                    }
+                                }
                             }
                         },
                         "Android"

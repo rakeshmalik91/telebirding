@@ -154,6 +154,12 @@
                                     "lat": 7.0324,
                                     "lng": 93.7808,
                                     "radius": 5
+                                },
+                                "GNBR": {
+                                    "name": "GNBR",
+                                    "lat": 7,
+                                    "lng": 93.8111,
+                                    "radius": 20
                                 }
                             },
                             "lat": 7,
@@ -186,7 +192,21 @@
                     "name": "Andhra Pradesh",
                     "lat": 15.9241,
                     "lng": 80.1864,
-                    "radius": 200
+                    "radius": 200,
+                    "cities": {
+                        "Tada Falls": {
+                            "name": "Tada Falls",
+                            "lat": 13.6072,
+                            "lng": 79.8446,
+                            "radius": 5
+                        },
+                        "Nagalapuram": {
+                            "name": "Nagalapuram",
+                            "lat": 13.3877,
+                            "lng": 79.7963,
+                            "radius": 5
+                        }
+                    }
                 },
                 "Arunachal Pradesh": {
                     "name": "Arunachal Pradesh",
@@ -311,6 +331,12 @@
                             "lat": 28.25,
                             "lng": 77.07,
                             "radius": 8
+                        },
+                        "Gurgaon": {
+                            "name": "Gurgaon",
+                            "lat": 28.4646,
+                            "lng": 77.0299,
+                            "radius": 24
                         }
                     }
                 },
@@ -881,6 +907,18 @@
                                     "radius": 5
                                 }
                             }
+                        },
+                        "Mangalajodi": {
+                            "name": "Mangalajodi",
+                            "lat": 19.9143,
+                            "lng": 85.4298,
+                            "radius": 5
+                        },
+                        "Bhitarkanika": {
+                            "name": "Bhitarkanika",
+                            "lat": 20.7195,
+                            "lng": 86.8619,
+                            "radius": 26
                         }
                     }
                 },
@@ -888,7 +926,23 @@
                     "name": "Pondicherry",
                     "lat": 10.9156,
                     "lng": 79.8069,
-                    "radius": 200
+                    "radius": 200,
+                    "cities": {
+                        "Puducherry": {
+                            "name": "Puducherry",
+                            "places": {
+                                "Pondicherry University": {
+                                    "name": "Pondicherry University",
+                                    "lat": 12.0229,
+                                    "lng": 79.8509,
+                                    "radius": 1
+                                }
+                            },
+                            "lat": 11.9341,
+                            "lng": 79.8306,
+                            "radius": 25
+                        }
+                    }
                 },
                 "Punjab": {
                     "name": "Punjab",
@@ -1603,6 +1657,12 @@
                                     "lat": 22.64,
                                     "lng": 88.45,
                                     "radius": 3
+                                },
+                                "ICCR": {
+                                    "name": "ICCR",
+                                    "lat": 22.5475,
+                                    "lng": 88.3517,
+                                    "radius": 1
                                 }
                             }
                         },
@@ -1670,7 +1730,15 @@
                             "name": "Purulia",
                             "lat": 23.33,
                             "lng": 86.37,
-                            "radius": 10
+                            "radius": 10,
+                            "places": {
+                                "Tepantar Gram": {
+                                    "name": "Tepantar Gram",
+                                    "lat": 23.2021,
+                                    "lng": 86.3229,
+                                    "radius": 20
+                                }
+                            }
                         },
                         "Siliguri": {
                             "name": "Siliguri",
@@ -1699,6 +1767,38 @@
                                     "radius": 2
                                 }
                             }
+                        },
+                        "West Midnapore": {
+                            "name": "West Midnapore",
+                            "places": {
+                                "Tamluk": {
+                                    "name": "Tamluk",
+                                    "lat": 22.4189,
+                                    "lng": 87.3072,
+                                    "radius": 5
+                                }
+                            },
+                            "lat": 22.4189,
+                            "lng": 87.3072,
+                            "radius": 5
+                        },
+                        "Sonada": {
+                            "name": "Sonada",
+                            "lat": 26.9614,
+                            "lng": 88.2749,
+                            "radius": 6
+                        },
+                        "Rongo": {
+                            "name": "Rongo",
+                            "lat": 27.0386,
+                            "lng": 88.8359,
+                            "radius": 5
+                        },
+                        "Jaldapara": {
+                            "name": "Jaldapara",
+                            "lat": 26.6848,
+                            "lng": 89.3047,
+                            "radius": 22
                         }
                     }
                 }

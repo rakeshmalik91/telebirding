@@ -33,17 +33,27 @@ export function setMode(mode) {
     setSiteLogo(Constants.MODE, mode);
     renderModeToggle(mode);
 
+    // Invalidate mode-specific cached containers so explore and map menus re-render cleanly
+    $('.explore-menu .list').removeAttr('data-mode').empty();
+    $('.map-menu').removeAttr('data-mode').empty();
+    $('.right-pane').removeAttr('data-mode').empty();
+
+    let targetPage = State.currentPage;
+    if (targetPage === Constants.EXPLORE_PAGE) {
+        targetPage = Constants.EXPLORE_MENU;
+    }
+
     // Rebuild current URL with new mode and navigate (reloads data for current page)
     const filter = getFilters();
     const state = {
-        page: State.currentPage,
+        page: targetPage,
         params: {},
         filter: filter,
         sort: State.sort
     };
     // Preserve key params that affect the current view
     const urlParams = Util.getUrlParams();
-    if (urlParams.family) state.params.family = decodeURIComponent(urlParams.family);
+    if (targetPage !== Constants.EXPLORE_MENU && urlParams.family) state.params.family = decodeURIComponent(urlParams.family);
     if (urlParams.story) state.params.story = decodeURIComponent(urlParams.story);
     if (urlParams.sighting) state.params.sighting = decodeURIComponent(urlParams.sighting);
     if (urlParams.place) state.params.place = decodeURIComponent(urlParams.place);
@@ -52,7 +62,7 @@ export function setMode(mode) {
 
     history.pushState(state, '', getUrlFromState(state));
     // Force a full reload of the page content under the new mode
-    showPage(State.currentPage, state.params, true);
+    showPage(targetPage, state.params, true);
 }
 
 export function showStoriesPage() {
@@ -91,7 +101,10 @@ export function toggleRightPane() {
         setTimeout(function () { $('.overlay-on-body').removeClass('fadeout').hide() }, 250);
         // document.body.style.overflow = 'visible';
     } else {
-        if ($(".right-pane").html() == '') {
+        const currentMode = State.currentMode;
+        const renderedMode = $(".right-pane").attr('data-mode');
+        if (renderedMode !== currentMode || $(".right-pane").html() == '') {
+            $(".right-pane").empty().attr('data-mode', currentMode);
             $(".right-pane").append("<h1>Index by Location</h1>");
             renderLocationList($(".right-pane"));
 

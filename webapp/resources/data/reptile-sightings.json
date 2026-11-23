@@ -4,7 +4,7 @@
             "key": "s1795424305",
             "species": "rhino-horned-lizard",
             "date": "20-11-2026",
-            "city": "Horton Plains National Park",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -22,13 +22,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795423791",
             "species": "rhino-horned-lizard",
             "date": "20-11-2026",
-            "city": "Horton Plains National Park",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -46,13 +47,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795423900",
             "species": "green-garden-lizard",
             "date": "20-11-2026",
-            "city": "Horton Plains National Park",
+            "city": "Nuwara Eliya",
             "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
@@ -70,13 +72,14 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Horton Plains National Park"
         },
         {
             "key": "s1795416048",
             "species": "green-vine-snake",
             "date": "19-11-2026",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "media": [
                 {
@@ -131,7 +134,7 @@
             "species": "common-bronzeback",
             "date": "17-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
@@ -150,7 +153,7 @@
             "species": "sri-lankan-kangaroo-lizard",
             "date": "17-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
@@ -168,7 +171,7 @@
             "species": "checkered-keelback",
             "date": "17-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
@@ -187,7 +190,7 @@
             "species": "rat-snake",
             "date": "15-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
@@ -205,7 +208,7 @@
             "species": "sri-lankan-kangaroo-lizard",
             "date": "15-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
@@ -224,7 +227,7 @@
             "species": "unidentified-skink",
             "date": "15-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
@@ -241,7 +244,7 @@
             "key": "s1795422564",
             "date": "14-11-2026",
             "city": "Sinharaja Forest Reserve",
-            "state": "Uva Province",
+            "state": "Southern Province",
             "country": "Sri Lanka",
             "time_of_day": "Dusk",
             "media": [
@@ -260,6 +263,43 @@
             ],
             "rating": "3",
             "species": "green-garden-lizard"
+        },
+        {
+            "key": "s1795430166",
+            "species": "unidentified-snake",
+            "date": "06-03-2026",
+            "place": "GNBR",
+            "city": "Great Nicobar",
+            "state": "Andaman & Nicobar Islands",
+            "country": "India",
+            "time_of_day": "Night",
+            "media": [
+                {
+                    "src": "images/unidentified-snake-1795430188.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795429118",
+            "species": "unidentified-lizard",
+            "date": "02-05-2024",
+            "city": "Latpanchar",
+            "state": "West Bengal",
+            "country": "India",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/unidentified-lizard-1795429177.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
         }
     ]
 }
