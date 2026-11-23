@@ -1274,15 +1274,15 @@ button.right-pane-button.button-active:before {
 }
 
 .home .menu .mode-toggle .mode-toggle-btn.active {
-	color: #bdd82f;
-	background-color: rgba(189, 216, 47, 0.08);
+	color: #a3ff2e;
+	background-color: rgba(163, 255, 46, 0.12);
 	box-shadow: none;
 	opacity: 1;
 }
 
 .home .menu .mode-toggle .mode-toggle-btn.active:hover {
-	color: #cde84a;
-	background-color: rgba(189, 216, 47, 0.12);
+	color: #bbf74d;
+	background-color: rgba(163, 255, 46, 0.18);
 }
 
 .home .menu .mode-toggle .mode-toggle-btn:active .mode-toggle-icon {
@@ -1314,6 +1314,7 @@ button.right-pane-button.button-active:before {
 	justify-content: center;
 	transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
 	outline: none;
+	opacity: 1;
 }
 
 .site-header .header-mode-toggle .mode-toggle-btn:hover {
@@ -1324,8 +1325,9 @@ button.right-pane-button.button-active:before {
 
 .site-header .header-mode-toggle .mode-toggle-btn.active {
 	background-color: #111b26;
-	color: #c2f73b;
+	color: #a3ff2e;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+	opacity: 1;
 }
 
 .site-header .header-mode-toggle .mode-toggle-btn.active:hover {
