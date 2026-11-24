@@ -44,8 +44,8 @@
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
 	<link rel="stylesheet" charset="UTF-8" href="css/common.css?v=20261123_11">
 	<link rel="stylesheet" charset="UTF-8" href="css/home.css?v=20261124_02">
-	<link rel="stylesheet" charset="UTF-8" href="css/archive-page.css?v=20261123_14">
-	<link rel="stylesheet" charset="UTF-8" href="css/mobile.css?v=20261124_04">
+	<link rel="stylesheet" charset="UTF-8" href="css/archive-page.css?v=20261124_1638">
+	<link rel="stylesheet" charset="UTF-8" href="css/mobile.css?v=20261124_1235">
 	<link rel="stylesheet" charset="UTF-8" href="css/toast.css?v=20261124_01">
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -61,7 +61,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
 
-	<script type="module" src="scripts/main.js?v=20261124_04"></script>
+	<script type="module" src="scripts/main.js?v=20261124_1000"></script>
 </head>
 
 <body>
@@ -135,6 +135,16 @@
 				<div class="component right-pane-button-container">
 					<button type="button" class="right-pane-button" onclick="toggleRightPane()" tabindex="9"
 						title="Index"></button>
+				</div>
+				<div class="component copy-url-component">
+					<button type="button" class="copy-url-button" onclick="copyCurrentPageUrl()" tabindex="9"
+						title="Copy URL" aria-label="Copy URL">
+						<svg class="copy-url-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+							<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+						</svg>
+					</button>
 				</div>
 				<div class="component filter-location-component">
 					<input type="text" data-value="place" onchange="filterOnChange('place')" tabindex="6"

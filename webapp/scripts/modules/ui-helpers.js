@@ -41,6 +41,12 @@ export function getSelectDOM(field, options, value, width, extraAttrs = "") {
 }
 
 function preventDefault(e) {
+    const el = e.target && e.target.nodeType === 1 ? e.target : e.target?.parentElement;
+    if (el && typeof el.closest === 'function') {
+        if (el.closest('.photos') || el.closest('.preview-content') || el.closest('.right-pane') || el.closest('.scrollable')) {
+            return;
+        }
+    }
     e.preventDefault();
 }
 

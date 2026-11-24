@@ -917,4 +917,170 @@ describe('Admin Rendering - Readonly Operations', () => {
             expect($('#update-species-form select[data-field="family"] option[value="NewFamily"]').length).toBeGreaterThan(0);
         });
     });
+
+    describe('Place and City Suggestions - Last Used Sorting and Limiting', () => {
+        beforeEach(() => {
+            AdminData.data.countries = {
+                India: {
+                    name: 'India',
+                    states: {
+                        'West Bengal': {
+                            name: 'West Bengal',
+                            cities: {
+                                Howrah: {
+                                    name: 'Howrah',
+                                    places: {
+                                        Bally: {},
+                                        BotanicalGarden: {}
+                                    }
+                                },
+                                Kolkata: {
+                                    name: 'Kolkata',
+                                    places: {
+                                        NewTown: {}
+                                    }
+                                },
+                                Darjeeling: {
+                                    name: 'Darjeeling',
+                                    places: {
+                                        TigerHill: {}
+                                    }
+                                },
+                                UnusedCity: {
+                                    name: 'UnusedCity',
+                                    places: {
+                                        UnusedPlace: {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            AdminData.data.sightings = [
+                { key: 's1', date: '25-11-2026', country: 'India', state: 'West Bengal', city: 'Kolkata', place: 'NewTown' },
+                { key: 's2', date: '10-06-2025', country: 'India', state: 'West Bengal', city: 'Howrah', place: 'BotanicalGarden' },
+                { key: 's3', date: '01-01-2024', country: 'India', state: 'West Bengal', city: 'Darjeeling', place: 'TigerHill' },
+                { key: 's4', date: '05-05-2025', country: 'India', state: 'West Bengal', city: 'Howrah', place: 'Bally' }
+            ];
+        });
+
+        it('getLocationsLastUsed should accurately determine the latest timestamp per location', () => {
+            const { cityLastUsed, placeLastUsed } = AdminRendering.getLocationsLastUsed(AdminData.data.sightings);
+            expect(cityLastUsed.get('kolkata').timestamp).toBeGreaterThan(cityLastUsed.get('howrah').timestamp);
+            expect(cityLastUsed.get('howrah').timestamp).toBeGreaterThan(cityLastUsed.get('darjeeling').timestamp);
+            expect(placeLastUsed.get('newtown').timestamp).toBeGreaterThan(placeLastUsed.get('botanicalgarden').timestamp);
+            expect(placeLastUsed.get('botanicalgarden').timestamp).toBeGreaterThan(placeLastUsed.get('bally').timestamp);
+        });
+
+        it('getSortedCities should sort by last used descending and limit results', () => {
+            const cities = AdminRendering.getSortedCities({ country: 'India', state: 'West Bengal' });
+            // Kolkata (2026) -> Howrah (June 2025) -> Darjeeling (Jan 2024) -> UnusedCity (never used)
+            expect(cities[0]).toBe('Kolkata');
+            expect(cities[1]).toBe('Howrah');
+            expect(cities[2]).toBe('Darjeeling');
+            expect(cities[3]).toBe('UnusedCity');
+
+            // Limit
+            const limited = AdminRendering.getSortedCities({ country: 'India', state: 'West Bengal', limit: 2 });
+            expect(limited).toEqual(['Kolkata', 'Howrah']);
+        });
+
+        it('getSortedPlaces should filter by city, sort by last used descending, and limit results', () => {
+            const howrahPlaces = AdminRendering.getSortedPlaces({ city: 'Howrah' });
+            // BotanicalGarden (June 2025) -> Bally (May 2025)
+            expect(howrahPlaces).toEqual(['BotanicalGarden', 'Bally']);
+
+            const limited = AdminRendering.getSortedPlaces({ city: 'Howrah', limit: 1 });
+            expect(limited).toEqual(['BotanicalGarden']);
+
+            const allPlaces = AdminRendering.getSortedPlaces({ limit: 3 });
+            // NewTown (Nov 2026) -> BotanicalGarden (June 2025) -> Bally (May 2025)
+            expect(allPlaces).toEqual(['NewTown', 'BotanicalGarden', 'Bally']);
+        });
+
+        it('updateSightingDatalists should populate datalists and react to city filtering', () => {
+            document.body.innerHTML = '<div id="sightings-tab"><datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist></div>';
+            AdminRendering.updateSightingDatalists('Howrah');
+
+            const cityOptions = $('#sighting-city-list option').map(function () { return $(this).val(); }).get();
+            expect(cityOptions[0]).toBe('Kolkata');
+            expect(cityOptions[1]).toBe('Howrah');
+
+            const placeOptions = $('#sighting-place-list option').map(function () { return $(this).val(); }).get();
+            expect(placeOptions).toEqual(['BotanicalGarden', 'Bally']);
+        });
+
+        it('findHierarchyForPlace and findHierarchyForCity should locate country, state, and city', () => {
+            const placeRes = AdminRendering.findHierarchyForPlace('Bally');
+            expect(placeRes).toEqual({
+                place: 'Bally',
+                city: 'Howrah',
+                state: 'West Bengal',
+                country: 'India'
+            });
+
+            const cityRes = AdminRendering.findHierarchyForCity('Kolkata');
+            expect(cityRes).toEqual({
+                city: 'Kolkata',
+                state: 'West Bengal',
+                country: 'India'
+            });
+
+            // Fallback to places.json for never-sighted location
+            const unusedPlaceRes = AdminRendering.findHierarchyForPlace('UnusedPlace');
+            expect(unusedPlaceRes).toEqual({
+                place: 'UnusedPlace',
+                city: 'UnusedCity',
+                state: 'West Bengal',
+                country: 'India'
+            });
+
+            const unusedCityRes = AdminRendering.findHierarchyForCity('UnusedCity');
+            expect(unusedCityRes).toEqual({
+                city: 'UnusedCity',
+                state: 'West Bengal',
+                country: 'India'
+            });
+        });
+
+        it('replicateLocationForPlaceInRow should replicate city, state, country on sighting row', () => {
+            const $row = $(`
+                <tr id="test-s1">
+                    <td><input data-field="place" value="Bally" /></td>
+                    <td><input data-field="city" value="" /></td>
+                    <td><select data-field="country"><option value="India">India</option></select></td>
+                    <td><select data-field="state"><option value="Karnataka">Karnataka</option></select></td>
+                </tr>
+            `);
+
+            AdminData.updateField.mockClear();
+            const success = AdminRendering.replicateLocationForPlaceInRow($row, 'test-s1', 'Bally');
+            expect(success).toBe(true);
+            expect($row.find('input[data-field="city"]').val()).toBe('Howrah');
+            expect($row.find('select[data-field="state"]').val()).toBe('West Bengal');
+            expect($row.find('select[data-field="country"]').val()).toBe('India');
+            expect(AdminData.updateField).toHaveBeenCalledWith('test-s1', 'city', 'Howrah');
+            expect(AdminData.updateField).toHaveBeenCalledWith('test-s1', 'state', 'West Bengal');
+        });
+
+        it('replicateLocationForCityInRow should replicate state and country on sighting row', () => {
+            const $row = $(`
+                <tr id="test-s2">
+                    <td><input data-field="place" value="" /></td>
+                    <td><input data-field="city" value="Howrah" /></td>
+                    <td><select data-field="country"><option value="India">India</option></select></td>
+                    <td><select data-field="state"><option value="Karnataka">Karnataka</option></select></td>
+                </tr>
+            `);
+
+            AdminData.updateField.mockClear();
+            const success = AdminRendering.replicateLocationForCityInRow($row, 'test-s2', 'Howrah');
+            expect(success).toBe(true);
+            expect($row.find('select[data-field="state"]').val()).toBe('West Bengal');
+            expect($row.find('select[data-field="country"]').val()).toBe('India');
+            expect(AdminData.updateField).toHaveBeenCalledWith('test-s2', 'state', 'West Bengal');
+        });
+    });
 });

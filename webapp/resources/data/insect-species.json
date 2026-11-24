@@ -84,6 +84,17 @@
             "family": "Butterflies",
             "latin_name": "byasa polyeuctes"
         },
+        "catoria-sublavaria-moth": {
+            "key": "catoria-sublavaria-moth",
+            "name": "Geometridae (Catoria Sublavaria) Moth",
+            "tags": [
+                "Catoria Sublavaria Moth",
+                "Geometridae",
+                "Moth"
+            ],
+            "family": "Moths",
+            "latin_name": "catoria sublavaria"
+        },
         "chestnut-tiger-butterfly": {
             "key": "chestnut-tiger-butterfly",
             "name": "Chestnut Tiger Butterfly",

@@ -386,20 +386,91 @@ export function stopYoutubeVideos() {
     });
 }
 
+/**
+ * Copies plain text to clipboard with fallback for non-secure contexts or legacy browsers.
+ * @param {string} text
+ * @returns {Promise<void>}
+ */
+export function copyText(text) {
+    if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+    }
+    return new Promise((resolve, reject) => {
+        try {
+            if (typeof document === 'undefined') {
+                return resolve();
+            }
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            const success = typeof document.execCommand === 'function' ? document.execCommand('copy') : true;
+            document.body.removeChild(textArea);
+            if (success) resolve();
+            else reject(new Error('execCommand copy failed'));
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
+/**
+ * Displays a transient notification toast at the bottom of the screen.
+ * @param {string} message
+ */
+export function showToast(message) {
+    if (typeof $ === 'undefined' || typeof document === 'undefined') return;
+    $('.toast').remove();
+    const $toast = $('<div class="toast"></div>').text(message);
+    $('body').append($toast);
+    setTimeout(() => {
+        $toast.addClass('show');
+        setTimeout(() => {
+            $toast.removeClass('show');
+            setTimeout(() => $toast.remove(), 500);
+        }, 2000);
+    }, 50);
+}
+
+/**
+ * Copies the current shareable page URL (with active filters/state) to clipboard and shows feedback.
+ * @returns {Promise<string>}
+ */
+export function copyCurrentPageUrl() {
+    let url = (typeof window !== 'undefined' && window.location) ? window.location.href : '';
+    try {
+        const urlObj = new URL(url);
+        const placeVal = $('.filter input[data-value="place"]').val();
+        const nameVal = $('.filter input[data-value="sighting"]').val();
+        if (placeVal && placeVal.trim()) urlObj.searchParams.set('place', placeVal.trim());
+        if (nameVal && nameVal.trim()) urlObj.searchParams.set('sighting', nameVal.trim());
+        url = urlObj.toString();
+    } catch (e) {
+        // Fall back to window.location.href
+    }
+
+    return copyText(url).then(() => {
+        showToast('Link copied to clipboard');
+        const $btns = $('.copy-url-button');
+        $btns.addClass('copied').attr('title', 'Copied!');
+        setTimeout(() => {
+            $btns.removeClass('copied').attr('title', 'Copy URL');
+        }, 2000);
+        return url;
+    }).catch(err => {
+        console.error('Failed to copy URL:', err);
+    });
+}
+
 export function copyStoryLink(slug) {
     const url = window.location.origin + window.location.pathname + "?page=" + Constants.STORIES + "&story=" + slug;
-    navigator.clipboard.writeText(url).then(function () {
-        // Optional: Show a toast or feedback
-        const toast = $('<div class="toast">Link copied to clipboard</div>');
-        $('body').append(toast);
-        setTimeout(() => {
-            toast.addClass('show');
-            setTimeout(() => {
-                toast.removeClass('show');
-                setTimeout(() => toast.remove(), 500);
-            }, 2000);
-        }, 100);
-    }, function (err) {
+    return copyText(url).then(() => {
+        showToast('Link copied to clipboard');
+    }).catch(err => {
         console.error('Async: Could not copy text: ', err);
     });
 }

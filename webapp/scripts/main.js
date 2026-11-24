@@ -4,7 +4,7 @@ import { showLoader } from './modules/loader.js';
 import {
 	rollSightingCarousal, showMore, setSiteLogo,
 	initHomePageCarousal, rollHomePageCarousal, copyStoryLink,
-	toggleMobileFilters
+	toggleMobileFilters, copyCurrentPageUrl, showToast, copyText
 } from './modules/public/ui-helpers.js';
 import State from './modules/public/state.js';
 import { renderSightings, renderPageName } from './modules/public/rendering.js';
@@ -47,6 +47,8 @@ window.showMore = showMore;
 window.like = like;
 window.renderPageName = renderPageName;
 window.copyStoryLink = copyStoryLink;
+window.copyCurrentPageUrl = copyCurrentPageUrl;
+window.showToast = showToast;
 window.scrollToTop = function () {
 	window.scrollTo({ top: 0, behavior: 'smooth' });
 };

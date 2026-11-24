@@ -163,6 +163,12 @@
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
+                },
+                {
+                    "src": "images/sri-lankan-kangaroo-lizard-1795501563.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
                 }
             ],
             "rating": "3"
@@ -221,7 +227,8 @@
                 }
             ],
             "rating": "3",
-            "unconfirmed": true
+            "unconfirmed": true,
+            "age": "Juvenile"
         },
         {
             "key": "s1795422516",

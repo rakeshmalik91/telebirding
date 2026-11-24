@@ -234,9 +234,460 @@ export function setupUpdateSpeciesForm() {
     });
 }
 
+export const SUGGEST_LIMIT = 20;
+
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+/**
+ * Calculates the latest usage timestamp for each city and place from sightings.
+ * @param {Array} [sightings] - Defaults to data.sightings
+ * @returns {{ cityLastUsed: Map<string, {displayName: string, timestamp: number, index: number}>, placeLastUsed: Map<string, {displayName: string, timestamp: number, index: number, city: string}> }}
+ */
+export function getLocationsLastUsed(sightings = data.sightings || []) {
+    const cityLastUsed = new Map();
+    const placeLastUsed = new Map();
+
+    if (!Array.isArray(sightings)) return { cityLastUsed, placeLastUsed };
+
+    sightings.forEach((s, idx) => {
+        if (!s) return;
+        let ts = 0;
+        if (s.date) {
+            const m = moment(s.date, ['DD-MM-YYYY', 'YYYY-MM-DD', 'DD/MM/YYYY']);
+            if (m.isValid()) {
+                ts = m.valueOf();
+            }
+        }
+        // If timestamp is not a positive epoch, use -idx so top items in sightings table take precedence
+        const effectiveTs = ts > 0 ? ts : -idx;
+
+        if (s.city && typeof s.city === 'string') {
+            const cityName = s.city.trim();
+            if (cityName) {
+                const key = cityName.toLowerCase();
+                const existing = cityLastUsed.get(key);
+                if (!existing || effectiveTs > existing.timestamp || (effectiveTs === existing.timestamp && idx < existing.index)) {
+                    cityLastUsed.set(key, { displayName: cityName, timestamp: effectiveTs, index: idx });
+                }
+            }
+        }
+
+        if (s.place && typeof s.place === 'string') {
+            const placeName = s.place.trim();
+            if (placeName) {
+                const key = placeName.toLowerCase();
+                const cityName = (s.city && typeof s.city === 'string') ? s.city.trim() : '';
+                const existing = placeLastUsed.get(key);
+                if (!existing || effectiveTs > existing.timestamp || (effectiveTs === existing.timestamp && idx < existing.index)) {
+                    placeLastUsed.set(key, { displayName: placeName, timestamp: effectiveTs, index: idx, city: cityName });
+                }
+            }
+        }
+    });
+
+    return { cityLastUsed, placeLastUsed };
+}
+
+/**
+ * Returns candidate cities sorted by last used (most recent sighting first), limited to `limit`.
+ * @param {Object} [options]
+ * @param {string} [options.country] - Filter to country
+ * @param {string} [options.state] - Filter to state
+ * @param {number} [options.limit=SUGGEST_LIMIT] - Max items to return
+ * @returns {Array<string>}
+ */
+export function getSortedCities({ country = '', state = '', limit = SUGGEST_LIMIT } = {}) {
+    const { cityLastUsed } = getLocationsLastUsed(data.sightings || []);
+    const candidateMap = new Map();
+
+    const selectedCountry = (country || '').trim().toLowerCase();
+    const selectedState = (state || '').trim().toLowerCase();
+
+    // 1. Gather cities from places.json (data.countries)
+    const countries = data.countries || {};
+    Object.keys(countries).forEach(cName => {
+        if (selectedCountry && cName.toLowerCase() !== selectedCountry) return;
+        const countryObj = countries[cName];
+        const states = countryObj.states || {};
+        Object.keys(states).forEach(sName => {
+            if (selectedState && sName.toLowerCase() !== selectedState) return;
+            const stateObj = states[sName];
+            const cities = stateObj.cities || {};
+            Object.keys(cities).forEach(cityName => {
+                const key = cityName.toLowerCase().trim();
+                if (key && !candidateMap.has(key)) {
+                    candidateMap.set(key, cityName.trim());
+                }
+            });
+        });
+    });
+
+    // 2. Gather cities from sightings
+    (data.sightings || []).forEach(s => {
+        if (!s || !s.city || typeof s.city !== 'string') return;
+        if (selectedCountry && (s.country || '').trim().toLowerCase() !== selectedCountry) return;
+        if (selectedState && (s.state || '').trim().toLowerCase() !== selectedState) return;
+        const key = s.city.toLowerCase().trim();
+        if (key && !candidateMap.has(key)) {
+            candidateMap.set(key, s.city.trim());
+        }
+    });
+
+    // 3. Sort candidate cities by last used
+    const candidates = Array.from(candidateMap.values());
+    candidates.sort((a, b) => {
+        const infoA = cityLastUsed.get(a.toLowerCase());
+        const infoB = cityLastUsed.get(b.toLowerCase());
+        const tsA = infoA ? infoA.timestamp : Number.MIN_SAFE_INTEGER;
+        const tsB = infoB ? infoB.timestamp : Number.MIN_SAFE_INTEGER;
+        if (tsB !== tsA) {
+            return tsB - tsA; // higher timestamp (more recent) first
+        }
+        // Tie-breaker: alphabetical A-Z
+        return a.localeCompare(b);
+    });
+
+    return typeof limit === 'number' && limit > 0 ? candidates.slice(0, limit) : candidates;
+}
+
+/**
+ * Returns candidate places sorted by last used (most recent sighting first), limited to `limit`.
+ * @param {Object} [options]
+ * @param {string} [options.country] - Filter to country
+ * @param {string} [options.state] - Filter to state
+ * @param {string} [options.city] - Filter to city
+ * @param {number} [options.limit=SUGGEST_LIMIT] - Max items to return
+ * @returns {Array<string>}
+ */
+export function getSortedPlaces({ country = '', state = '', city = '', limit = SUGGEST_LIMIT } = {}) {
+    const { placeLastUsed } = getLocationsLastUsed(data.sightings || []);
+    const candidateMap = new Map();
+
+    const selectedCountry = (country || '').trim().toLowerCase();
+    const selectedState = (state || '').trim().toLowerCase();
+    const selectedCity = (city || '').trim().toLowerCase();
+
+    // 1. Gather places from places.json (data.countries)
+    const countries = data.countries || {};
+    Object.keys(countries).forEach(cName => {
+        if (selectedCountry && cName.toLowerCase() !== selectedCountry) return;
+        const countryObj = countries[cName];
+        const states = countryObj.states || {};
+        Object.keys(states).forEach(sName => {
+            if (selectedState && sName.toLowerCase() !== selectedState) return;
+            const stateObj = states[sName];
+            const cities = stateObj.cities || {};
+            Object.keys(cities).forEach(cityName => {
+                if (selectedCity && cityName.toLowerCase() !== selectedCity) return;
+                const cityObj = cities[cityName];
+                const places = cityObj.places || {};
+                Object.keys(places).forEach(placeName => {
+                    const key = placeName.toLowerCase().trim();
+                    if (key && !candidateMap.has(key)) {
+                        candidateMap.set(key, placeName.trim());
+                    }
+                });
+            });
+        });
+    });
+
+    // 2. Gather places from sightings
+    (data.sightings || []).forEach(s => {
+        if (!s || !s.place || typeof s.place !== 'string') return;
+        if (selectedCountry && (s.country || '').trim().toLowerCase() !== selectedCountry) return;
+        if (selectedState && (s.state || '').trim().toLowerCase() !== selectedState) return;
+        if (selectedCity && (s.city || '').trim().toLowerCase() !== selectedCity) return;
+        const key = s.place.toLowerCase().trim();
+        if (key && !candidateMap.has(key)) {
+            candidateMap.set(key, s.place.trim());
+        }
+    });
+
+    // 3. Sort candidate places by last used
+    const candidates = Array.from(candidateMap.values());
+    candidates.sort((a, b) => {
+        const infoA = placeLastUsed.get(a.toLowerCase());
+        const infoB = placeLastUsed.get(b.toLowerCase());
+        const tsA = infoA ? infoA.timestamp : Number.MIN_SAFE_INTEGER;
+        const tsB = infoB ? infoB.timestamp : Number.MIN_SAFE_INTEGER;
+        if (tsB !== tsA) {
+            return tsB - tsA; // higher timestamp (more recent) first
+        }
+        // Tie-breaker: alphabetical A-Z
+        return a.localeCompare(b);
+    });
+
+    return typeof limit === 'number' && limit > 0 ? candidates.slice(0, limit) : candidates;
+}
+
+function findCityInPlacesJson(targetCityLower) {
+    const countries = data.countries || {};
+    for (const cName of Object.keys(countries)) {
+        const states = countries[cName]?.states || {};
+        for (const sName of Object.keys(states)) {
+            const cities = states[sName]?.cities || {};
+            for (const c of Object.keys(cities)) {
+                if (c.trim().toLowerCase() === targetCityLower) {
+                    return {
+                        city: c.trim(),
+                        state: sName.trim(),
+                        country: cName.trim()
+                    };
+                }
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * Find country, state, city hierarchy for a given place name.
+ * Searches sightings first (most recent sighting taking precedence),
+ * then falls back to places.json (data.countries).
+ * @param {string} placeName
+ * @param {string} [preferCity]
+ * @returns {{ country: string, state: string, city: string, place: string } | null}
+ */
+export function findHierarchyForPlace(placeName, preferCity = '') {
+    if (!placeName || typeof placeName !== 'string') return null;
+    const targetPlace = placeName.trim().toLowerCase();
+    if (!targetPlace) return null;
+    const targetCity = (preferCity || '').trim().toLowerCase();
+
+    // 1. Search sightings (most recent sighting first)
+    const sightings = data.sightings || [];
+    let bestMatch = null;
+    for (let i = 0; i < sightings.length; i++) {
+        const s = sightings[i];
+        if (!s || !s.place || typeof s.place !== 'string') continue;
+        if (s.place.trim().toLowerCase() === targetPlace) {
+            let sCity = (s.city || '').trim();
+            let sState = (s.state || '').trim();
+            let sCountry = (s.country || '').trim();
+
+            if (sCity && (!sState || !sCountry)) {
+                const cityInfo = findHierarchyForCity(sCity);
+                if (cityInfo) {
+                    if (!sState) sState = cityInfo.state;
+                    if (!sCountry) sCountry = cityInfo.country;
+                }
+            }
+
+            const candidate = {
+                place: s.place.trim(),
+                city: sCity,
+                state: sState,
+                country: sCountry
+            };
+
+            if (targetCity && sCity.toLowerCase() === targetCity) {
+                return candidate;
+            }
+            if (!bestMatch) {
+                bestMatch = candidate;
+            }
+        }
+    }
+    if (bestMatch && (!targetCity || bestMatch.city.toLowerCase() === targetCity)) {
+        return bestMatch;
+    }
+
+    // 2. Search places.json (data.countries)
+    const countries = data.countries || {};
+    for (const cName of Object.keys(countries)) {
+        const states = countries[cName]?.states || {};
+        for (const sName of Object.keys(states)) {
+            const cities = states[sName]?.cities || {};
+            for (const cityName of Object.keys(cities)) {
+                if (targetCity && cityName.trim().toLowerCase() !== targetCity) continue;
+                const places = cities[cityName]?.places || {};
+                for (const pName of Object.keys(places)) {
+                    if (pName.trim().toLowerCase() === targetPlace) {
+                        return {
+                            place: pName.trim(),
+                            city: cityName.trim(),
+                            state: sName.trim(),
+                            country: cName.trim()
+                        };
+                    }
+                }
+            }
+        }
+    }
+
+    return bestMatch || null;
+}
+
+/**
+ * Find country and state hierarchy for a given city name.
+ * Searches sightings first (most recent sighting taking precedence),
+ * then falls back to places.json (data.countries).
+ * @param {string} cityName
+ * @returns {{ country: string, state: string, city: string } | null}
+ */
+export function findHierarchyForCity(cityName) {
+    if (!cityName || typeof cityName !== 'string') return null;
+    const targetCity = cityName.trim().toLowerCase();
+    if (!targetCity) return null;
+
+    // 1. Search sightings (most recent sighting first)
+    const sightings = data.sightings || [];
+    for (let i = 0; i < sightings.length; i++) {
+        const s = sightings[i];
+        if (!s || !s.city || typeof s.city !== 'string') continue;
+        if (s.city.trim().toLowerCase() === targetCity) {
+            let sState = (s.state || '').trim();
+            let sCountry = (s.country || '').trim();
+
+            if (!sState || !sCountry) {
+                const fromPlaces = findCityInPlacesJson(targetCity);
+                if (fromPlaces) {
+                    if (!sState) sState = fromPlaces.state;
+                    if (!sCountry) sCountry = fromPlaces.country;
+                }
+            }
+
+            return {
+                city: s.city.trim(),
+                state: sState,
+                country: sCountry
+            };
+        }
+    }
+
+    // 2. Search places.json (data.countries)
+    return findCityInPlacesJson(targetCity);
+}
+
+/**
+ * Auto-replicates city, state, and country for a given place in a sighting row
+ */
+export function replicateLocationForPlaceInRow(sightingRow, sightingKey, placeVal) {
+    const currentCity = sightingRow.find("input[data-field=city]").val() || '';
+    const hierarchy = findHierarchyForPlace(placeVal, currentCity);
+    if (!hierarchy) return false;
+
+    // 1. City
+    if (hierarchy.city) {
+        const $cityInput = sightingRow.find("input[data-field=city]");
+        if ($cityInput.val() !== hierarchy.city) {
+            $cityInput.val(hierarchy.city);
+            updateField(sightingKey, 'city', hierarchy.city);
+        }
+    }
+
+    // 2. Country & State
+    const $countrySelect = sightingRow.find("select[data-field=country]");
+    const $stateSelect = sightingRow.find("select[data-field=state]");
+    const currentCountry = $countrySelect.val();
+    const currentState = $stateSelect.val();
+
+    let countryChanged = false;
+    if (hierarchy.country) {
+        if (currentCountry !== hierarchy.country) {
+            $countrySelect.val(hierarchy.country);
+            updateField(sightingKey, 'country', hierarchy.country);
+            countryChanged = true;
+        }
+    }
+
+    if (hierarchy.state) {
+        const targetCountry = hierarchy.country || currentCountry;
+        if (countryChanged || !$stateSelect.find(`option[value="${hierarchy.state}"]`).length) {
+            const statesObj = (data.countries && data.countries[targetCountry]) ? data.countries[targetCountry].states : {};
+            $stateSelect.html(getSelectOptionsDOM("state", statesObj || {}, hierarchy.state || ''));
+        }
+        $stateSelect.val(hierarchy.state);
+        if (currentState !== hierarchy.state) {
+            updateField(sightingKey, 'state', hierarchy.state);
+        }
+        $stateSelect.trigger('change.ss');
+    }
+
+    if (hierarchy.country) {
+        $countrySelect.trigger('change.ss');
+    }
+
+    return true;
+}
+
+/**
+ * Auto-replicates state and country for a given city in a sighting row
+ */
+export function replicateLocationForCityInRow(sightingRow, sightingKey, cityVal) {
+    const hierarchy = findHierarchyForCity(cityVal);
+    if (!hierarchy) return false;
+
+    const $countrySelect = sightingRow.find("select[data-field=country]");
+    const $stateSelect = sightingRow.find("select[data-field=state]");
+    const currentCountry = $countrySelect.val();
+    const currentState = $stateSelect.val();
+
+    let countryChanged = false;
+    if (hierarchy.country) {
+        if (currentCountry !== hierarchy.country) {
+            $countrySelect.val(hierarchy.country);
+            updateField(sightingKey, 'country', hierarchy.country);
+            countryChanged = true;
+        }
+    }
+
+    if (hierarchy.state) {
+        const targetCountry = hierarchy.country || currentCountry;
+        if (countryChanged || !$stateSelect.find(`option[value="${hierarchy.state}"]`).length) {
+            const statesObj = (data.countries && data.countries[targetCountry]) ? data.countries[targetCountry].states : {};
+            $stateSelect.html(getSelectOptionsDOM("state", statesObj || {}, hierarchy.state || ''));
+        }
+        $stateSelect.val(hierarchy.state);
+        if (currentState !== hierarchy.state) {
+            updateField(sightingKey, 'state', hierarchy.state);
+        }
+        $stateSelect.trigger('change.ss');
+    }
+
+    if (hierarchy.country) {
+        $countrySelect.trigger('change.ss');
+    }
+
+    return true;
+}
+
+/**
+ * Updates the sighting datalists for City and Place suggestions
+ */
+export function updateSightingDatalists(filterCity = '') {
+    let $cityList = $('#sighting-city-list');
+    let $placeList = $('#sighting-place-list');
+    if (!$cityList.length && typeof document !== 'undefined') {
+        const target = $('#sightings-tab').length ? $('#sightings-tab') : $('body');
+        target.prepend('<datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist>');
+        $cityList = $('#sighting-city-list');
+        $placeList = $('#sighting-place-list');
+    }
+    if ($cityList.length) {
+        const cities = getSortedCities({ limit: SUGGEST_LIMIT });
+        $cityList.html(cities.map(c => `<option value="${escapeHtml(c)}">`).join(''));
+    }
+    if ($placeList.length) {
+        const places = getSortedPlaces({ city: filterCity, limit: SUGGEST_LIMIT });
+        $placeList.html(places.map(p => `<option value="${escapeHtml(p)}">`).join(''));
+    }
+}
+
 function getTextDOM(field, value, width, placeholder) {
+    let listAttr = '';
+    if (field === 'city') listAttr = " list='sighting-city-list'";
+    else if (field === 'place') listAttr = " list='sighting-place-list'";
     let html = `<div class='input-clear-wrapper ${value ? 'has-value' : ''}' style='width:${width}'>`;
-    html += `<input type='text' data-field='${field}' value='${value}' style='width:100%' placeholder='${placeholder}'></input>`;
+    html += `<input type='text' data-field='${field}'${listAttr} value='${value}' style='width:100%' placeholder='${placeholder}'></input>`;
     html += `<button type='button' class='input-clear-btn' title='Clear' tabindex='-1'>✕</button>`;
     html += `</div>`;
     return html;
@@ -250,6 +701,7 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
         table.css('min-height', prevHeight + 'px');
     }
     table.html("");
+    updateSightingDatalists();
     table.append("<tr>" +
         "<th class='noborder' style='width: 60px;'></th>" +
         "<th style='width: 246px;'>Species</th>" +
@@ -477,6 +929,19 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
         sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
             let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
             updateField(sighting.key, $(this).attr("data-field"), value);
+        });
+        sightingRow.find("input[data-field=place]").on('focus', function () {
+            const rowCity = sightingRow.find("input[data-field=city]").val() || sighting.city || '';
+            updateSightingDatalists(rowCity);
+        }).on('input change', function () {
+            const placeVal = $(this).val().trim();
+            replicateLocationForPlaceInRow(sightingRow, sighting.key, placeVal);
+        });
+        sightingRow.find("input[data-field=city]").on('focus', function () {
+            updateSightingDatalists();
+        }).on('input change', function () {
+            const cityVal = $(this).val().trim();
+            replicateLocationForCityInRow(sightingRow, sighting.key, cityVal);
         });
         // Today button click handler
         sightingRow.find(".today-date-btn").click(function () {
@@ -963,12 +1428,11 @@ export function setupPlacesTab() {
     function updateCityDatalist() {
         const c = $countrySelect.val();
         const s = $stateSelect.val();
+        const cities = getSortedCities({ country: c, state: s, limit: SUGGEST_LIMIT });
         let options = '';
-        if (c && s && data.countries?.[c]?.states?.[s]?.cities) {
-            Object.keys(data.countries[c].states[s].cities).sort().forEach(cityName => {
-                options += `<option value="${cityName}">`;
-            });
-        }
+        cities.forEach(cityName => {
+            options += `<option value="${escapeHtml(cityName)}">`;
+        });
         $cityList.html(options);
     }
 
@@ -976,12 +1440,11 @@ export function setupPlacesTab() {
         const c = $countrySelect.val();
         const s = $stateSelect.val();
         const city = $cityInput.val().trim();
+        const places = getSortedPlaces({ country: c, state: s, city, limit: SUGGEST_LIMIT });
         let options = '';
-        if (c && s && city && data.countries?.[c]?.states?.[s]?.cities?.[city]?.places) {
-            Object.keys(data.countries[c].states[s].cities[city].places).sort().forEach(placeName => {
-                options += `<option value="${placeName}">`;
-            });
-        }
+        places.forEach(placeName => {
+            options += `<option value="${escapeHtml(placeName)}">`;
+        });
         $placeList.html(options);
     }
 
@@ -1306,11 +1769,53 @@ export function setupPlacesTab() {
         });
 
         $cityInput.off('input change').on('input change', function () {
+            const enteredCity = $(this).val().trim();
+            const hierarchy = findHierarchyForCity(enteredCity);
+            if (hierarchy) {
+                if (hierarchy.country && $countrySelect.val() !== hierarchy.country) {
+                    $countrySelect.val(hierarchy.country);
+                    let stateOptions = '<option value="">-- All / Country Level --</option>';
+                    const countries = data.countries || {};
+                    if (countries[hierarchy.country]?.states) {
+                        Object.keys(countries[hierarchy.country].states).sort().forEach(s => {
+                            stateOptions += `<option value="${s}">${s}</option>`;
+                        });
+                    }
+                    $stateSelect.html(stateOptions);
+                }
+                if (hierarchy.state && $stateSelect.val() !== hierarchy.state) {
+                    $stateSelect.val(hierarchy.state);
+                }
+                updateCityDatalist();
+            }
             updatePlaceDatalist();
             updateCurrentCoordsBanner();
         });
 
         $placeInput.off('input change').on('input change', function () {
+            const enteredPlace = $(this).val().trim();
+            const hierarchy = findHierarchyForPlace(enteredPlace, $cityInput.val().trim());
+            if (hierarchy) {
+                if (hierarchy.city && $cityInput.val().trim().toLowerCase() !== hierarchy.city.toLowerCase()) {
+                    $cityInput.val(hierarchy.city);
+                }
+                if (hierarchy.country && $countrySelect.val() !== hierarchy.country) {
+                    $countrySelect.val(hierarchy.country);
+                    let stateOptions = '<option value="">-- All / Country Level --</option>';
+                    const countries = data.countries || {};
+                    if (countries[hierarchy.country]?.states) {
+                        Object.keys(countries[hierarchy.country].states).sort().forEach(s => {
+                            stateOptions += `<option value="${s}">${s}</option>`;
+                        });
+                    }
+                    $stateSelect.html(stateOptions);
+                }
+                if (hierarchy.state && $stateSelect.val() !== hierarchy.state) {
+                    $stateSelect.val(hierarchy.state);
+                }
+                updateCityDatalist();
+                updatePlaceDatalist();
+            }
             updateCurrentCoordsBanner();
         });
 

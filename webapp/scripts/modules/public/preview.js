@@ -214,6 +214,53 @@ function updatePreviewMedia(sightingKey, imageSrc) {
         const onclick = $(this).attr('onclick') || '';
         if (onclick.includes(imageSrc)) {
             $(this).addClass('selected');
+            if (typeof this.scrollIntoView === 'function') {
+                this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+            }
+        }
+    });
+}
+
+// Enable touch swipe scrolling on thumbnail lists and prevent accidental click when swiping on touch devices
+if (typeof $(document) !== 'undefined' && typeof $(document).on === 'function') {
+    $(document).on('touchstart', '.preview-image-desc .photos', function (e) {
+        const touch = e.originalEvent && e.originalEvent.touches ? e.originalEvent.touches[0] : null;
+        if (!touch) return;
+        $(this).data('touch-start-x', touch.clientX);
+        $(this).data('touch-start-y', touch.clientY);
+        $(this).data('touch-scroll-left', this.scrollLeft);
+        $(this).data('is-dragging', false);
+    });
+
+    $(document).on('touchmove', '.preview-image-desc .photos', function (e) {
+        const startX = $(this).data('touch-start-x');
+        const startY = $(this).data('touch-start-y');
+        if (startX === undefined) return;
+
+        const touch = e.originalEvent && e.originalEvent.touches ? e.originalEvent.touches[0] : null;
+        if (!touch) return;
+
+        const diffX = startX - touch.clientX;
+        const diffY = startY - touch.clientY;
+
+        if (Math.abs(diffX) > 6 && Math.abs(diffX) > Math.abs(diffY)) {
+            $(this).data('is-dragging', true);
+            this.scrollLeft = $(this).data('touch-scroll-left') + diffX;
+            if (e.stopPropagation) e.stopPropagation();
+        }
+    });
+
+    $(document).on('touchend', '.preview-image-desc .photos', function () {
+        if ($(this).data('is-dragging')) {
+            const $photos = $(this);
+            $photos.addClass('swiping');
+            setTimeout(() => {
+                $photos.removeClass('swiping');
+                $photos.removeData('is-dragging');
+                $photos.removeData('touch-start-x');
+                $photos.removeData('touch-start-y');
+                $photos.removeData('touch-scroll-left');
+            }, 120);
         }
     });
 }

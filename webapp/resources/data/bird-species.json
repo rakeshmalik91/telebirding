@@ -6187,6 +6187,20 @@
             "latin_name": "falco severus",
             "ebird_code": "orihob1"
         },
+        "oriental-honey-buzzard": {
+            "key": "oriental-honey-buzzard",
+            "name": "Oriental Honey-buzzard",
+            "tags": [
+                "Bird of Prey",
+                "Buzzard",
+                "Crested Honey Buzzard",
+                "Honey-buzzard",
+                "Raptor"
+            ],
+            "family": "Hawks, Eagles, and Kites",
+            "latin_name": "pernis ptilorhynchus",
+            "ebird_code": "orihob2"
+        },
         "oriental-magpie-robin": {
             "key": "oriental-magpie-robin",
             "name": "Oriental Magpie-Robin",
@@ -8111,6 +8125,17 @@
             "family": "Starlings",
             "latin_name": "gracula ptilogenys",
             "ebird_code": "ceymyn1"
+        },
+        "sri-lanka-scimitar-babbler": {
+            "key": "sri-lanka-scimitar-babbler",
+            "name": "Sri Lanka Scimitar-Babbler",
+            "tags": [
+                "Babbler",
+                "Scimitar-Babbler"
+            ],
+            "family": "Tree-Babblers, Scimitar-Babblers, and Allies",
+            "latin_name": "pomatorhinus melanurus",
+            "ebird_code": "srlscb1"
         },
         "sri-lanka-shama": {
             "key": "sri-lanka-shama",

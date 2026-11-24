@@ -374,4 +374,80 @@ describe('Admin Places Geocoding Integration', () => {
         expect(updatedCoverage.places.geocoded).toBe(1);
         expect(updatedCoverage.missingList.length).toBe(0);
     });
+
+    it('setupPlacesTab should populate city and place datalists sorted by last used and limited', () => {
+        document.body.innerHTML = `
+            <div id="places-tab">
+                <select id="geo-provider-select"></select>
+                <span id="geo-provider-status"></span>
+                <select id="place-lookup-country"></select>
+                <select id="place-lookup-state"></select>
+                <input type="text" id="place-lookup-city" list="place-lookup-city-list" />
+                <datalist id="place-lookup-city-list"></datalist>
+                <input type="text" id="place-lookup-place" list="place-lookup-place-list" />
+                <datalist id="place-lookup-place-list"></datalist>
+                <select id="new-state-country-select"></select>
+                <select id="scan-country-filter"></select>
+                <div id="place-current-coords-box"></div>
+                <div id="place-current-coords-title"></div>
+                <div id="place-current-coords-text"></div>
+                <button id="btn-fetch-geo"></button>
+                <button id="btn-batch-regeocode-sub"></button>
+                <span id="geocode-stat-countries"></span>
+                <span id="geocode-stat-states"></span>
+                <span id="geocode-stat-cities"></span>
+                <span id="geocode-stat-places"></span>
+                <div id="geocode-missing-alert"></div>
+                <div id="missing-places-summary"></div>
+                <div id="missing-places-count"></div>
+                <div id="missing-places-list"></div>
+                <select id="boundary-inspect-country"></select>
+                <select id="boundary-inspect-state"></select>
+                <div id="boundary-stat-countries"></div>
+                <div id="boundary-stat-states"></div>
+                <div id="boundary-missing-alert"></div>
+            </div>
+        `;
+
+        AdminData.data.countries.India.states['West Bengal'].cities.Kolkata = {
+            name: 'Kolkata',
+            places: { NewTown: {}, Alipore: {} }
+        };
+
+        AdminData.data.sightings = [
+            { key: 's1', date: '25-11-2026', country: 'India', state: 'West Bengal', city: 'Kolkata', place: 'Alipore' },
+            { key: 's2', date: '15-05-2025', country: 'India', state: 'West Bengal', city: 'Howrah', place: 'Bally' }
+        ];
+
+        setupPlacesTab();
+
+        $('#place-lookup-country').val('India').trigger('change');
+        $('#place-lookup-state').val('West Bengal').trigger('change');
+
+        const cityOptions = $('#place-lookup-city-list option').map(function () { return $(this).val(); }).get();
+        // Kolkata (Nov 2026) -> Howrah (May 2025)
+        expect(cityOptions[0]).toBe('Kolkata');
+        expect(cityOptions[1]).toBe('Howrah');
+
+        $('#place-lookup-city').val('Kolkata').trigger('input');
+        const placeOptions = $('#place-lookup-place-list option').map(function () { return $(this).val(); }).get();
+        // Alipore (Nov 2026) -> NewTown (never used)
+        expect(placeOptions[0]).toBe('Alipore');
+        expect(placeOptions[1]).toBe('NewTown');
+    });
+
+    it('should replicate city, state, country when place is entered in Places tab', () => {
+        setupPlacesTab();
+        $('#place-lookup-place').val('Bally').trigger('input');
+        expect($('#place-lookup-city').val()).toBe('Howrah');
+        expect($('#place-lookup-state').val()).toBe('West Bengal');
+        expect($('#place-lookup-country').val()).toBe('India');
+    });
+
+    it('should replicate state and country when city is entered in Places tab', () => {
+        setupPlacesTab();
+        $('#place-lookup-city').val('Howrah').trigger('input');
+        expect($('#place-lookup-state').val()).toBe('West Bengal');
+        expect($('#place-lookup-country').val()).toBe('India');
+    });
 });

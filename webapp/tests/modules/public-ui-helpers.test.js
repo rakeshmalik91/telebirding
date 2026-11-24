@@ -1,5 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { renderModeToggle, updateMobileNavActiveTab, updateMobileFilterToggleBadge } from '../../scripts/modules/public/ui-helpers.js';
+import {
+    renderModeToggle, updateMobileNavActiveTab, updateMobileFilterToggleBadge,
+    copyText, showToast, copyCurrentPageUrl, copyStoryLink
+} from '../../scripts/modules/public/ui-helpers.js';
 import Constants from '../../scripts/modules/constants.js';
 import State from '../../scripts/modules/public/state.js';
 
@@ -188,6 +191,95 @@ describe('Public UI Helpers - updateMobileFilterToggleBadge', () => {
         expect($btn.hasClass('has-filters')).toBe(true);
         expect($btn.find('.mobile-filter-badge').text()).toBe('1');
         State.updateSightingFamilyFilter(null);
+    });
+});
+
+describe('Public UI Helpers - copyText and showToast', () => {
+    beforeEach(() => {
+        document.body.innerHTML = '';
+        vi.restoreAllMocks();
+    });
+
+    it('copyText should use navigator.clipboard.writeText when available', async () => {
+        const writeTextMock = vi.fn().mockResolvedValue(undefined);
+        Object.assign(navigator, {
+            clipboard: { writeText: writeTextMock }
+        });
+
+        await copyText('https://telebirding.info/?page=feed');
+        expect(writeTextMock).toHaveBeenCalledWith('https://telebirding.info/?page=feed');
+    });
+
+    it('copyText should fallback to document.execCommand when clipboard is unavailable', async () => {
+        Object.assign(navigator, {
+            clipboard: undefined
+        });
+        document.execCommand = vi.fn().mockReturnValue(true);
+
+        await copyText('https://telebirding.info/?page=map');
+        expect(document.execCommand).toHaveBeenCalledWith('copy');
+    });
+
+    it('showToast should create a .toast element and display the message', () => {
+        vi.useFakeTimers();
+        showToast('Link copied to clipboard');
+
+        const $toast = $('.toast');
+        expect($toast.length).toBe(1);
+        expect($toast.text()).toBe('Link copied to clipboard');
+
+        vi.advanceTimersByTime(60);
+        expect($toast.hasClass('show')).toBe(true);
+
+        vi.advanceTimersByTime(2050);
+        expect($toast.hasClass('show')).toBe(false);
+
+        vi.useRealTimers();
+    });
+});
+
+describe('Public UI Helpers - copyCurrentPageUrl and copyStoryLink', () => {
+    beforeEach(() => {
+        document.body.innerHTML = `
+            <div class="filter-panel">
+                <div class="filter">
+                    <input data-value="place" value="Kolkata" />
+                    <input data-value="sighting" value="Kingfisher" />
+                </div>
+                <div class="component copy-url-component">
+                    <button type="button" class="copy-url-button" title="Copy URL">
+                        <svg class="copy-url-icon" viewBox="0 0 24 24"></svg>
+                    </button>
+                </div>
+            </div>
+        `;
+        Object.assign(navigator, {
+            clipboard: { writeText: vi.fn().mockResolvedValue(undefined) }
+        });
+    });
+
+    it('copyCurrentPageUrl should capture active filters into the copied URL and show feedback', async () => {
+        vi.useFakeTimers();
+        const url = await copyCurrentPageUrl();
+        expect(url).toContain('place=Kolkata');
+        expect(url).toContain('sighting=Kingfisher');
+        expect(navigator.clipboard.writeText).toHaveBeenCalledWith(url);
+
+        const $btn = $('.copy-url-button');
+        expect($btn.hasClass('copied')).toBe(true);
+        expect($btn.attr('title')).toBe('Copied!');
+
+        vi.advanceTimersByTime(2100);
+        expect($btn.hasClass('copied')).toBe(false);
+        expect($btn.attr('title')).toBe('Copy URL');
+        vi.useRealTimers();
+    });
+
+    it('copyStoryLink should copy the full story URL and trigger toast', async () => {
+        await copyStoryLink('bhimtal-trip');
+        expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expect.stringContaining('story=bhimtal-trip'));
+        expect($('.toast').length).toBe(1);
+        expect($('.toast').text()).toBe('Link copied to clipboard');
     });
 });
 

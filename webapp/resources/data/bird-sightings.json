@@ -1286,24 +1286,6 @@
             "rating": "1"
         },
         {
-            "key": "s1795009050",
-            "species": "sri-lanka-myna",
-            "date": "17-11-2026",
-            "city": "Sinharaja Forest Reserve",
-            "state": "Southern Province",
-            "country": "Sri Lanka",
-            "time_of_day": "Day",
-            "media": [
-                {
-                    "src": "images/sri-lanka-myna-1795009060.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                }
-            ],
-            "rating": "1"
-        },
-        {
             "key": "s1795008583",
             "species": "chestnut-backed-owlet",
             "date": "17-11-2026",
@@ -1606,6 +1588,12 @@
             "time_of_day": "Day",
             "media": [
                 {
+                    "src": "images/white-faced-starling-1795503289.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/white-faced-starling-1795009134.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
@@ -1648,7 +1636,8 @@
                     }
                 }
             ],
-            "rating": "4"
+            "rating": "4",
+            "place": "Jansen's Bungalow"
         },
         {
             "key": "s1794906184",
@@ -1741,6 +1730,18 @@
             "media": [
                 {
                     "src": "images/sri-lanka-drongo-1794906023.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-drongo-1795497537.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-drongo-1795497624.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1973,6 +1974,93 @@
             "rating": "4"
         },
         {
+            "key": "s1795502487",
+            "species": "sri-lanka-scimitar-babbler",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "media": [
+                {
+                    "src": "images/sri-lanka-scimitar-babbler-1795503175.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-scimitar-babbler-1795502517.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-scimitar-babbler-1795502716.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-scimitar-babbler-1795502991.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-scimitar-babbler-1795503027.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795499001",
+            "species": "oriental-honey-buzzard",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "unconfirmed": true,
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "media": [
+                {
+                    "src": "images/oriental-honey-buzzard-1795499007.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795009050",
+            "species": "sri-lanka-myna",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/sri-lanka-myna-1795497083.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-myna-1795009060.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1795006594",
             "species": "red-faced-malkoha",
             "date": "15-11-2026",
@@ -2038,7 +2126,7 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/changeagle-hawk-eagle-1794822642.jpg",
+                    "src": "images/changeagle-hawk-eagle-1795508952.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2083,7 +2171,8 @@
             ],
             "rating": "4",
             "gender": "M",
-            "pinned": true
+            "pinned": true,
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1794822379",
@@ -2153,19 +2242,31 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/ashy-headed-laughingthrush-1794822125.jpg",
+                    "src": "images/ashy-headed-laughingthrush-1795499693.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/ashy-headed-laughingthrush-1794822139.jpg",
+                    "src": "images/ashy-headed-laughingthrush-1795501737.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/ashy-headed-laughingthrush-1794822186.jpg",
+                    "src": "images/ashy-headed-laughingthrush-1795501913.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ashy-headed-laughingthrush-1795501878.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/ashy-headed-laughingthrush-1795502009.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2245,9 +2346,23 @@
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
+                },
+                {
+                    "src": "images/sri-lanka-junglefowl-1795497854.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-junglefowl-1795497903.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Martin's Lodge",
+            "gender": "M"
         },
         {
             "key": "s1794820427",
@@ -2266,7 +2381,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1794820352",
@@ -2335,7 +2451,7 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/yellow-fronted-barbet-1794819890.jpg",
+                    "src": "images/yellow-fronted-barbet-1795491924.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2365,7 +2481,8 @@
                     }
                 }
             ],
-            "rating": "4"
+            "rating": "4",
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1794819377",
@@ -2408,7 +2525,35 @@
                     }
                 }
             ],
-            "rating": "4"
+            "rating": "4",
+            "place": "Martin's Lodge"
+        },
+        {
+            "key": "s1795490887",
+            "species": "sri-lanka-spurfowl",
+            "date": "14-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lanka-spurfowl-1795490969.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-spurfowl-1795490761.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "F",
+            "rating": "3",
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1794840716",
@@ -2422,6 +2567,18 @@
             "media": [
                 {
                     "src": "images/black-capped-bulbul-1794840792.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/black-capped-bulbul-1795497301.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/black-capped-bulbul-1795497239.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2453,7 +2610,8 @@
                 }
             ],
             "rating": "3",
-            "gender": "F"
+            "gender": "F",
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1794820790",
@@ -2466,25 +2624,28 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/sri-lanka-spurfowl-1794820823.jpg",
+                    "src": "images/sri-lanka-spurfowl-1795489757.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
+                },
+                {
+                    "src": "images/sri-lanka-spurfowl-1795489788.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    },
+                    "title": "Male & Female"
                 },
                 {
                     "src": "images/sri-lanka-spurfowl-1794820805.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
-                },
-                {
-                    "src": "images/sri-lanka-spurfowl-1794820909.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Martin's Lodge",
+            "gender": "M"
         },
         {
             "key": "s1794820394",
@@ -2503,7 +2664,8 @@
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1794819709",
@@ -2547,7 +2709,8 @@
                 }
             ],
             "rating": "4",
-            "pinned": true
+            "pinned": true,
+            "place": "Martin's Lodge"
         },
         {
             "key": "s1792749727",

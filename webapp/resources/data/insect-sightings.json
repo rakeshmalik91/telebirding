@@ -4,8 +4,8 @@
             "key": "s1795488890",
             "species": "sri-lankan-cricula-silkmoth",
             "date": "20-11-2026",
-            "city": "Sinharaja Forest Reserve",
-            "state": "Southern Province",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "weather": "Sunny",
@@ -70,6 +70,25 @@
             "rating": "3"
         },
         {
+            "key": "s1795489217",
+            "species": "catoria-sublavaria-moth",
+            "date": "16-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "unconfirmed": true,
+            "time_of_day": "Night",
+            "media": [
+                {
+                    "src": "images/catoria-sublavaria-moth-1795489228.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1795430663",
             "species": "peninsular-great-mormon",
             "date": "16-11-2026",
@@ -109,9 +128,16 @@
                     "exif_data": {
                         "camera_model": "PXL6A"
                     }
+                },
+                {
+                    "src": "images/fruit-sucking-moth-1795510163.jpg",
+                    "exif_data": {
+                        "camera_model": "PXL6A"
+                    }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "unconfirmed": true
         },
         {
             "key": "s1795430591",
@@ -125,7 +151,13 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/malabar-tree-nymph-butterfly-1795430638.jpg",
+                    "src": "images/malabar-tree-nymph-butterfly-1795502134.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/malabar-tree-nymph-butterfly-1795502236.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
