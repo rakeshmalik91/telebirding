@@ -311,6 +311,10 @@ export function renderModeToggle(currentMode) {
             } else {
                 $btn.text(label);
             }
+
+            const $labelSpan = $('<span class="mode-toggle-label"></span>').text(label);
+            $btn.append($labelSpan);
+
             $container.append($btn);
         });
     });

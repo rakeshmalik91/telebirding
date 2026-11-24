@@ -1,6 +1,25 @@
 {
     "sightings": [
         {
+            "key": "s1795488890",
+            "species": "sri-lankan-cricula-silkmoth",
+            "date": "20-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/sri-lankan-cricula-silkmoth-1795488914.jpg",
+                    "exif_data": {
+                        "camera_model": "PXL6A"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
             "key": "s1795430328",
             "species": "common-rose-butterfly",
             "date": "19-11-2026",
@@ -64,6 +83,31 @@
                     "src": "images/peninsular-great-mormon-1795430693.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3"
+        },
+        {
+            "key": "s1795488725",
+            "species": "fruit-sucking-moth",
+            "date": "15-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Sunny",
+            "media": [
+                {
+                    "src": "images/fruit-sucking-moth-1795488754.jpg",
+                    "exif_data": {
+                        "camera_model": "PXL6A"
+                    }
+                },
+                {
+                    "src": "images/fruit-sucking-moth-1795488780.jpg",
+                    "exif_data": {
+                        "camera_model": "PXL6A"
                     }
                 }
             ],

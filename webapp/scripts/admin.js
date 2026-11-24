@@ -44,15 +44,23 @@ export function switchMode(targetMode) {
 	}
 }
 
-function render() {
+function render(preserveScroll = true) {
+	const scrollY = (typeof window !== 'undefined' && preserveScroll) ? window.scrollY : 0;
 	setupUpdateSpeciesForm();
 	setupAddFamilyForm();
 	setupPlacesTab();
 	setupEbirdSync();
 	setupSiteDataTab();
 	setupStoriesTab();
-	renderSightingsTable(viewState.offset, viewState.rows);
+	renderSightingsTable(viewState.offset, viewState.rows, preserveScroll);
 	updatePaginationControls(viewState.offset, viewState.rows);
+	if (preserveScroll && typeof window !== 'undefined' && scrollY > 0) {
+		try {
+			if (typeof window.scrollTo === 'function') {
+				window.scrollTo(0, scrollY);
+			}
+		} catch (e) {}
+	}
 }
 
 setRenderCallback(render);

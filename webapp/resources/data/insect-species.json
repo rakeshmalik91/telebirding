@@ -324,6 +324,15 @@
             "family": "Moths",
             "latin_name": "eupterote undata"
         },
+        "fruit-sucking-moth": {
+            "key": "fruit-sucking-moth",
+            "name": "Fruit-sucking Moth",
+            "tags": [
+                "Moth"
+            ],
+            "family": "Moths",
+            "latin_name": "eudocima aurantia"
+        },
         "golden-silk-orb-weaver": {
             "key": "golden-silk-orb-weaver",
             "name": "Golden Orb-Weaver Spider",
@@ -673,6 +682,16 @@
             ],
             "family": "Butterflies",
             "latin_name": "troides minos"
+        },
+        "sri-lankan-cricula-silkmoth": {
+            "key": "sri-lankan-cricula-silkmoth",
+            "name": "Sri Lankan Cricula Silkmoth",
+            "tags": [
+                "Moth",
+                "Silkmoth"
+            ],
+            "family": "Moths",
+            "latin_name": "cricula ceylonica"
         },
         "stag-beetle": {
             "key": "stag-beetle",

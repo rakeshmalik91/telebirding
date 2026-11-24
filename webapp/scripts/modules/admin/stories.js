@@ -1,4 +1,5 @@
 import { data, syncStoriesData, uploadJSONData } from './data.js';
+import { showLoader, hideLoader } from '../loader.js';
 import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
 import { customAlert, customConfirm, showToast } from './ui.js';
@@ -844,6 +845,7 @@ function bindSubTableEvents($tab) {
 
         const storagePath = `images/story-${Math.floor(Date.now() / 1000)}-${file.name}`;
         showToast(`Uploading ${file.name}...`, 'info');
+        showLoader('upload-story-img', `Uploading ${file.name}...`);
         try {
             await FirebaseApi.getFirebase().storage().ref(storagePath).put(file);
             data.stories[storyIdx].images[imgIdx] = storagePath;
@@ -852,6 +854,8 @@ function bindSubTableEvents($tab) {
             renderStoriesSheet();
         } catch (e) {
             customAlert(`Failed to upload image: ${e.message}`);
+        } finally {
+            hideLoader('upload-story-img');
         }
     });
 

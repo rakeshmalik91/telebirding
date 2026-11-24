@@ -101,6 +101,10 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		transition: color 180ms ease, background-color 180ms ease;
 	}
 
+	.site-header .header-mode-toggle .mode-toggle-btn .mode-toggle-label {
+		display: none !important;
+	}
+
 	.site-header .header-mode-toggle .mode-toggle-btn:hover,
 	.site-header .header-mode-toggle .mode-toggle-btn:focus,
 	.site-header .header-mode-toggle .mode-toggle-btn:active {
@@ -809,10 +813,16 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		padding-left: 20px !important;
 		padding-right: 20px !important;
 		padding-top: 0 !important;
-		margin-top: 40px !important;
+		margin-top: 15px !important;
 		float: none !important;
 		position: static !important;
 		box-sizing: border-box;
+	}
+
+	.stories > h1,
+	.stories > .heading-hr,
+	.stories .stories-heading {
+		display: none !important;
 	}
 
 
@@ -842,8 +852,8 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		bottom: 82px;
 		bottom: calc(68px + max(14px, env(safe-area-inset-bottom, 0px)));
 		right: 16px;
-		width: 44px;
-		height: 44px;
+		width: 54px;
+		height: 54px;
 		border-radius: 50%;
 		background-color: #253547;
 		color: #a3ff2e;
@@ -868,6 +878,20 @@ screen and (max-width: 950px) and (max-height: 500px) {
 	.scroll-to-top-btn:active {
 		transform: scale(0.92);
 		background-color: #1a2735;
+	}
+
+	/* Toasts positioned to the left on mobile so they don't overlap the scroll-to-top button */
+	.toast {
+		left: 16px !important;
+		right: auto !important;
+		margin-left: 0 !important;
+		transform: none !important;
+		bottom: calc(68px + max(14px, env(safe-area-inset-bottom, 0px))) !important;
+		max-width: calc(100vw - 100px);
+	}
+
+	.toast.show {
+		bottom: calc(78px + max(14px, env(safe-area-inset-bottom, 0px))) !important;
 	}
 
 	/* ========== Mobile Bottom Navigation Bar (Instagram Style) ========== */

@@ -61,7 +61,7 @@ $(document).ready(function () {
 	showLoader();
 	setSiteLogo(Constants.MODE, State.currentMode);
 
-	// Hide web scroll-to-top button in Android app (which uses native Compose FAB)
+	// Hide web scroll-to-top button in Android app (which uses native Compose button)
 	if (typeof window !== 'undefined' && window.Android) {
 		$('#scroll-to-top-btn').remove();
 	}

@@ -242,8 +242,13 @@ function getTextDOM(field, value, width, placeholder) {
     return html;
 }
 
-export function renderSightingsTable(OFFSET, ROWS) {
+export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
     const table = $("#sightings-table");
+    const prevScroll = (typeof window !== 'undefined' && preserveScroll) ? window.scrollY : 0;
+    const prevHeight = table.outerHeight();
+    if (preserveScroll && prevHeight > 0) {
+        table.css('min-height', prevHeight + 'px');
+    }
     table.html("");
     table.append("<tr>" +
         "<th class='noborder' style='width: 60px;'></th>" +
@@ -266,7 +271,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
 
         row += "<td class='noborder' style='vertical-align: middle;'>"
         row += "<div style='display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px;'>"
-        row += "<button class='delete-sighting' title='Delete sighting'>🗑️</button>";
+        row += "<button type='button' class='delete-sighting' title='Delete sighting'>🗑️</button>";
         row += "<input class='hide-toggle' type='checkbox' data-field='hidden' " + (sighting.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
         row += "<button type='button' class='pin-toggle" + (sighting.pinned ? " pinned" : "") + "' data-key='" + sighting.key + "' title='" + (sighting.pinned ? "Unpin sighting" : "Pin sighting") + "'>📌</button>";
         row += "</div></td>";
@@ -292,7 +297,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
             let ext = media.src.split('.').pop().toLowerCase();
             row += "<div class='media-header'>";
             row += "<span class='media-ext-badge'>." + ext + "</span>";
-            row += "<button class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>🗑️</button>";
+            row += "<button type='button' class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>🗑️</button>";
             row += "</div>";
             if (media.type == 'video') {
                 if (media.thumbnail && media.thumbnail.toLowerCase().endsWith('.jpg')) {
@@ -345,7 +350,7 @@ export function renderSightingsTable(OFFSET, ROWS) {
             row += "</div>";
             row += "</div>";
         });
-        row += "<button class='upload-button' title='Add media'>+</button>";
+        row += "<button type='button' class='upload-button' title='Add media'>+</button>";
         row += "<input class='upload' type='file' accept='.jpg,.mp4' hidden/>";
         row += "</div></td>";
 
@@ -448,10 +453,13 @@ export function renderSightingsTable(OFFSET, ROWS) {
             }
         });
 
-        sightingRow.find(".upload-button").click(function () {
+        sightingRow.find(".upload-button").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             sightingRow.find(".upload").click();
         });
         sightingRow.find(".upload").change(function () {
+            if (!this.files || this.files.length === 0) return;
             if (this.files[0] && this.files[0].type.match(/image.*/)) {
                 // Canvas cropping strips EXIF metadata. Keep the original File
                 // and pass it separately so uploadMedia can read the capture date.
@@ -461,7 +469,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
                 });
                 $(this).val(''); // Reset input
             } else {
+                showLoader('upload-media', 'Uploading Media...');
                 uploadMedia(sighting.key, this.files);
+                $(this).val(''); // Reset input
             }
         });
         sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
@@ -524,7 +534,9 @@ export function renderSightingsTable(OFFSET, ROWS) {
                 $btn.text("📍").removeAttr("disabled");
             }
         });
-        sightingRow.find("button.delete-media").click(function () {
+        sightingRow.find("button.delete-media").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             deleteMedia(sighting.key, $(this).attr("data-mediasrc"));
         });
         sightingRow.find(".thumbnail").on('dragstart', function (e) {
@@ -630,6 +642,28 @@ export function renderSightingsTable(OFFSET, ROWS) {
         });
     });
 
+    if (preserveScroll && typeof window !== 'undefined' && prevScroll > 0) {
+        try {
+            if (typeof window.scrollTo === 'function') {
+                window.scrollTo(0, prevScroll);
+            }
+        } catch (e) {}
+
+        if (typeof window.requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => {
+                try {
+                    if (prevScroll > 0 && typeof window.scrollTo === 'function') {
+                        window.scrollTo(0, prevScroll);
+                    }
+                } catch (e) {}
+                table.css('min-height', '');
+            });
+        } else {
+            table.css('min-height', '');
+        }
+    } else {
+        table.css('min-height', '');
+    }
 }
 
 export function updatePaginationControls(OFFSET, ROWS) {

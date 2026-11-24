@@ -22,17 +22,19 @@ describe('Public UI Helpers - renderModeToggle', () => {
         expect($birdBtn.hasClass('active')).toBe(true);
         expect($birdBtn.attr('aria-selected')).toBe('true');
         expect($birdBtn.attr('tabindex')).toBe('0');
-        expect($birdBtn.attr('aria-label')).toBe('Bird');
-        expect($birdBtn.attr('title')).toBe('Bird');
+        expect($birdBtn.attr('aria-label')).toBe('Birds');
+        expect($birdBtn.attr('title')).toBe('Birds');
         expect($birdBtn.find('svg.mode-toggle-icon').length).toBe(1);
+        expect($birdBtn.find('.mode-toggle-label').text()).toBe('Birds');
 
         const $insectBtn = $btns.filter('[data-mode="insect"]');
         expect($insectBtn.hasClass('active')).toBe(false);
         expect($insectBtn.attr('aria-selected')).toBe('false');
         expect($insectBtn.attr('tabindex')).toBe('-1');
-        expect($insectBtn.attr('aria-label')).toBe('Insect');
-        expect($insectBtn.attr('title')).toBe('Insect');
+        expect($insectBtn.attr('aria-label')).toBe('Insects');
+        expect($insectBtn.attr('title')).toBe('Insects');
         expect($insectBtn.find('svg.mode-toggle-icon').length).toBe(1);
+        expect($insectBtn.find('.mode-toggle-label').text()).toBe('Insects');
 
         const $reptileBtn = $btns.filter('[data-mode="reptile"]');
         expect($reptileBtn.hasClass('active')).toBe(false);
@@ -41,6 +43,7 @@ describe('Public UI Helpers - renderModeToggle', () => {
         expect($reptileBtn.attr('aria-label')).toBe('Reptiles & Amphibians');
         expect($reptileBtn.attr('title')).toBe('Reptiles & Amphibians');
         expect($reptileBtn.find('svg.mode-toggle-icon').length).toBe(1);
+        expect($reptileBtn.find('.mode-toggle-label').text()).toBe('Reptiles & Amphibians');
     });
 
     it('should update active class and accessibility attributes when insect or reptile mode is active', () => {

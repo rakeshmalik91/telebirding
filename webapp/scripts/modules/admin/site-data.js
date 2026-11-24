@@ -1,4 +1,5 @@
 import { data, syncSiteData, uploadJSONData, replaceCameraModelInAllModes, replaceAuthorInAllModes } from './data.js';
+import { showLoader, hideLoader } from '../loader.js';
 import Util from '../util.js';
 import FirebaseApi from '../firebase-api.js';
 import { customAlert, customConfirm, showToast } from './ui.js';
@@ -366,6 +367,7 @@ function renderFeaturedSheet($container) {
 
         const storagePath = `featured-images/${file.name}`;
         showToast(`Uploading ${file.name}...`, 'info');
+        showLoader('upload-featured', `Uploading ${file.name}...`);
         try {
             await FirebaseApi.getFirebase().storage().ref(storagePath).put(file);
             data.featured[idx].src = storagePath;
@@ -374,6 +376,8 @@ function renderFeaturedSheet($container) {
             renderActiveSheet();
         } catch (e) {
             customAlert(`Failed to upload image: ${e.message}`);
+        } finally {
+            hideLoader('upload-featured');
         }
     });
 

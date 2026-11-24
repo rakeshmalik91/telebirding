@@ -25,6 +25,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -36,10 +38,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
@@ -60,7 +59,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -145,9 +149,10 @@ fun WebViewScreen(
 ) {
     var lastFailedUrl by remember { mutableStateOf<String?>(null) }
     val scrollY = remember { mutableStateOf(0) }
+    var isMapFullscreen by remember { mutableStateOf(false) }
     val showButton by remember {
         derivedStateOf {
-            scrollY.value > 1200  // Show button after scrolling down
+            scrollY.value > 600 && !isMapFullscreen
         }
     }
     var webViewForScrolling by remember { mutableStateOf<WebView?>(null) }
@@ -449,6 +454,7 @@ fun WebViewScreen(
 
                             @JavascriptInterface
                             fun setMapFullscreen(fullscreen: Boolean) {
+                                isMapFullscreen = fullscreen
                                 onMapFullscreenChanged(fullscreen)
                                 swipeRefreshLayout?.post {
                                     swipeRefreshLayout?.isEnabled = !fullscreen
@@ -523,12 +529,45 @@ fun WebViewScreen(
             enter = fadeIn(),
             exit = fadeOut()
         ) {
-            FloatingActionButton(
-                onClick = {
-                    webViewForScrolling?.scrollTo(0, 0)
-                },
+            Surface(
+                modifier = Modifier
+                    .size(54.dp)
+                    .clip(CircleShape)
+                    .clickable {
+                        webViewForScrolling?.evaluateJavascript(
+                            "if (typeof window.scrollToTop === 'function') { window.scrollToTop(); } else { window.scrollTo({ top: 0, behavior: 'smooth' }); }",
+                            null
+                        )
+                        webViewForScrolling?.scrollTo(0, 0)
+                    },
+                shape = CircleShape,
+                color = Color(0xFF253547),
+                border = BorderStroke(1.dp, Color(0x1FFFFFFF)),
+                elevation = 4.dp
             ) {
-                Icon(Icons.Filled.ArrowUpward, contentDescription = "Scroll to top")
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Canvas(modifier = Modifier.size(28.dp)) {
+                        val w = size.width
+                        val h = size.height
+                        val path = Path().apply {
+                            moveTo(w * (6f / 24f), h * (15f / 24f))
+                            lineTo(w * (12f / 24f), h * (9f / 24f))
+                            lineTo(w * (18f / 24f), h * (15f / 24f))
+                        }
+                        drawPath(
+                            path = path,
+                            color = Color(0xFFA3FF2E),
+                            style = Stroke(
+                                width = 3f * density,
+                                cap = StrokeCap.Round,
+                                join = StrokeJoin.Round
+                            )
+                        )
+                    }
+                }
             }
         }
 
@@ -613,12 +652,12 @@ fun WebViewScreen(
                     }
                 }
             } else {
-                // Background Indicator: Small spinner at the bottom right
+                // Background Indicator: Small spinner at the bottom left
 
                 Surface(
                     modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(bottom = if (showButton) 80.dp else 16.dp, end = 16.dp)
+                        .align(Alignment.BottomStart)
+                        .padding(start = 16.dp, bottom = 86.dp)
                         .clickable { 
                             showUpdateOverlay = true
                         },

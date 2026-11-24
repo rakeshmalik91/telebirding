@@ -16,6 +16,12 @@ describe('Constants', () => {
         expect(Constants.getDefaultSpecies(Constants.MODE_REPTILE)).toBe('unidentified-lizard');
     });
 
+    it('should use plural labels for all modes', () => {
+        expect(Constants.MODE[Constants.MODE_BIRD].label).toBe('Birds');
+        expect(Constants.MODE[Constants.MODE_INSECT].label).toBe('Insects');
+        expect(Constants.MODE[Constants.MODE_REPTILE].label).toBe('Reptiles & Amphibians');
+    });
+
     it('should use the same site logo for all modes', () => {
         Constants.MODES.forEach(mode => {
             expect(Constants.MODE[mode].logo).toBe('icons/telebirding-logo.png');

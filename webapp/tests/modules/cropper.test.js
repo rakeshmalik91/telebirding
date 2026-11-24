@@ -60,6 +60,8 @@ describe('Cropper Module', () => {
 
         expect(callback).toHaveBeenCalled();
         expect(document.getElementById('crop-modal').style.display).toBe('none');
+        expect($('#page-loader').css('display')).toBe('flex');
+        expect($('#page-loader .loader-text').text()).toBe('Uploading Media...');
         vi.useRealTimers();
     });
 
@@ -84,6 +86,8 @@ describe('Cropper Module', () => {
 
         expect(callback).toHaveBeenCalledWith(file);
         expect(document.getElementById('crop-modal').style.display).toBe('none');
+        expect($('#page-loader').css('display')).toBe('flex');
+        expect($('#page-loader .loader-text').text()).toBe('Uploading Media...');
     });
 
     it('should handle escape key', () => {

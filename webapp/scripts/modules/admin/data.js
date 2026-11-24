@@ -617,7 +617,26 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
             color: $('input[name=watermark-color]').val() + "33"
         };
     }
-    Array.from(files).forEach(function (file, index) {
+
+    const fileList = Array.from(files || []);
+    const validFiles = fileList.filter(f => f && (f.type.match(/image.*/) || f.type.match(/video.*/)));
+    if (validFiles.length === 0) {
+        hideLoader('upload-media');
+        if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+        return;
+    }
+
+    showLoader('upload-media', 'Uploading Media...');
+    let pendingUploads = validFiles.length;
+
+    const finishOneUpload = () => {
+        pendingUploads--;
+        if (pendingUploads <= 0) {
+            hideLoader('upload-media');
+        }
+    };
+
+    fileList.forEach(function (file, index) {
         let mediaSrc;
         const speciesObj = (sighting && sighting.species && data.species) ? data.species[sighting.species] : null;
         const rawKey = speciesObj?.key || sighting?.species || 'unidentified';
@@ -633,6 +652,7 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
                     let currentSighting = data.sightings.find(s => s.key == sightingKey);
                     if (!currentSighting) {
                         customAlert("Media uploaded, but the sighting was deleted or is no longer available.");
+                        finishOneUpload();
                         return;
                     }
                     if (!currentSighting.media) currentSighting.media = [];
@@ -658,13 +678,23 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
                             "camera_model": inheritedCamera
                         }
                     });
+                    const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
                     commitSightingsChange();
                     renderCallback();
+                    if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                        try { window.scrollTo(0, savedScrollY); } catch (e) {}
+                    }
                     syncSightingsData(0, true);
+                    finishOneUpload();
                 }).catch(e => {
                     customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
                     if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+                    finishOneUpload();
                 });
+            }).catch(e => {
+                customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+                finishOneUpload();
             });
         } else if (file.type.match(/video.*/)) {
             // Upload video as is
@@ -677,6 +707,7 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
                 let currentSighting = data.sightings.find(s => s.key == sightingKey);
                 if (!currentSighting) {
                     customAlert("Media uploaded, but the sighting was deleted or is no longer available.");
+                    finishOneUpload();
                     return;
                 }
                 if (!currentSighting.media) currentSighting.media = [];
@@ -699,12 +730,18 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
                     }
                 });
                 
+                const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
                 commitSightingsChange();
                 renderCallback();
+                if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                    try { window.scrollTo(0, savedScrollY); } catch (e) {}
+                }
                 syncSightingsData(0, true);
+                finishOneUpload();
             }).catch(e => {
                 customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
                 if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+                finishOneUpload();
             });
         }
     });
@@ -717,6 +754,7 @@ export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
     }
     
     const executeDelete = () => {
+        showLoader('delete-media', 'Deleting Media...');
         $('#sync-spinner').css('display', 'flex');
         $('#sync-spinner .sync-text').text('Deleting Media...');
         $('#sync-spinner-icon').show();
@@ -728,11 +766,21 @@ export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
             commitSightingsChange();
         });
         FirebaseApi.getFirebase().storage().ref(mediaSrc).delete().then(() => {
+            hideLoader('delete-media');
+            const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
             renderCallback();
+            if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                try { window.scrollTo(0, savedScrollY); } catch (e) {}
+            }
             syncSightingsData(0);
         }, (error) => {
+            hideLoader('delete-media');
             if (error.code === 'storage/object-not-found') {
+                const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
                 renderCallback();
+                if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                    try { window.scrollTo(0, savedScrollY); } catch (e) {}
+                }
                 syncSightingsData(0);
             } else {
                 customAlert(error.message);

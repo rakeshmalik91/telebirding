@@ -1,8 +1,11 @@
+import { showLoader, hideLoader } from './loader.js';
+
 let currentCropper = null;
 let escapeHandler = null;
 let originalFile = null;
 
 export function openCropper(file, callback) {
+    hideLoader('upload-media');
     // Store original file for skip functionality
     originalFile = file;
 
@@ -61,6 +64,7 @@ export function openCropper(file, callback) {
         // Escape key handler
         escapeHandler = function (evt) {
             if (evt.key === 'Escape' || evt.keyCode === 27) {
+                hideLoader('upload-media');
                 closeModal();
             }
         };
@@ -81,17 +85,22 @@ export function openCropper(file, callback) {
 
         newConfirmBtn.addEventListener('click', function (evt) {
             evt.preventDefault();
+            showLoader('upload-media', 'Uploading Media...');
             if (currentCropper) {
                 currentCropper.getCroppedCanvas().toBlob(function (blob) {
                     const croppedFile = new File([blob], file.name, { type: file.type });
                     closeModal();
                     if (callback) callback(croppedFile);
                 }, file.type);
+            } else {
+                closeModal();
+                if (callback && originalFile) callback(originalFile);
             }
         });
 
         newSkipBtn.addEventListener('click', function (evt) {
             evt.preventDefault();
+            showLoader('upload-media', 'Uploading Media...');
             const fileToUpload = originalFile;
             closeModal();
             if (callback && fileToUpload) {
@@ -101,6 +110,7 @@ export function openCropper(file, callback) {
 
         newCancelBtn.addEventListener('click', function (evt) {
             evt.preventDefault();
+            hideLoader('upload-media');
             closeModal();
         });
     };

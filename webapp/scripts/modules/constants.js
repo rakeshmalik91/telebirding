@@ -31,8 +31,8 @@ export default class Constants {
 	static MODE = {
 		[Constants.MODE_BIRD]: {
 			"logo": "icons/telebirding-logo.png",
-			"title": "Telebirding - Rakesh's Bird Catalogue",
-			"label": "Bird",
+			"title": "Telebirding - Rakesh's Birds Catalogue",
+			"label": "Birds",
 			"defaultSpecies": "",
 			"icon": "icons/bird-icon.svg",
 			"iconPng": "icons/bird-icon.png",
@@ -40,8 +40,8 @@ export default class Constants {
 		},
 		[Constants.MODE_INSECT]: {
 			"logo": "icons/telebirding-logo.png",
-			"title": "Telebirding - Rakesh's Insect Catalogue",
-			"label": "Insect",
+			"title": "Telebirding - Rakesh's Insects Catalogue",
+			"label": "Insects",
 			"defaultSpecies": "",
 			"icon": "icons/insect-icon.svg",
 			"iconPng": "icons/insect-icon.png",
@@ -221,7 +221,7 @@ export default class Constants {
 	static IMAGE_COMPRESSION_QUALITY = 0.7;
 
 	static DEFAULT_TITLE = "Telebirding";
-	static DEFAULT_DESCRIPTION = "Rakesh's Bird Catalogue";
+	static DEFAULT_DESCRIPTION = "Rakesh's Birds Catalogue";
 
 	static TAG_NORMALIZE_REPLACE_MAPPING = {
 		"-": " ",

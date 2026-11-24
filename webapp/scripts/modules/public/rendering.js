@@ -463,7 +463,7 @@ export function renderStories(containerSelector = '.stories', limit = 0, targetS
     div.empty();
 
     if (containerSelector === '.stories') {
-        div.append('<h1>Stories</h1><hr class="heading-hr" />');
+        div.append('<h1 class="stories-heading">Stories</h1><hr class="heading-hr stories-heading" />');
         if (!storyInViewObserver) {
             storyInViewObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {

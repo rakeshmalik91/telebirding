@@ -460,7 +460,7 @@
 .about-page {
 	padding-top: 50px;
 	padding-left: 50px;
-	text-align: justify;
+	text-align: left;
 }
 
 .about-page .social-icon img {
@@ -1332,7 +1332,7 @@ button.right-pane-button.button-active:before {
 	gap: 3px;
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-	margin-top: -10px;
+	margin-top: -18px;
 	margin-left: 20px;
 }
 
@@ -1346,9 +1346,30 @@ button.right-pane-button.button-active:before {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 6px;
 	transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
 	outline: none;
 	opacity: 1;
+}
+
+.mode-toggle .mode-toggle-label {
+	display: none;
+}
+
+.site-header .header-mode-toggle .mode-toggle-btn.active .mode-toggle-label {
+	display: inline-block;
+	font-size: 13.5px;
+	font-weight: 600;
+	letter-spacing: 0.2px;
+	line-height: 1;
+	white-space: nowrap;
+	color: inherit;
+	padding-right: 2px;
+}
+
+/* Don't show name if birds is selected */
+.site-header .header-mode-toggle .mode-toggle-btn[data-mode="bird"] .mode-toggle-label {
+	display: none !important;
 }
 
 .site-header .header-mode-toggle .mode-toggle-btn:hover {

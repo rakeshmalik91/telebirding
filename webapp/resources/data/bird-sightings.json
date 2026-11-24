@@ -227,7 +227,7 @@
         },
         {
             "key": "s1795181133",
-            "species": "greenish-warbler",
+            "species": "green-warbler",
             "date": "20-11-2026",
             "city": "Nuwara Eliya",
             "state": "Central Province",
@@ -237,19 +237,19 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/greenish-warbler-1795181148.jpg",
+                    "src": "images/green-warbler-1795181148.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/greenish-warbler-1795181159.jpg",
+                    "src": "images/green-warbler-1795181159.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/greenish-warbler-1795181174.jpg",
+                    "src": "images/green-warbler-1795181174.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -598,13 +598,13 @@
             "weather": "Cloudy",
             "media": [
                 {
-                    "src": "images/indian-peafowl-1795106051.jpg",
+                    "src": "images/indian-peafowl-1795106066.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/indian-peafowl-1795106066.jpg",
+                    "src": "images/indian-peafowl-1795106051.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1502,13 +1502,19 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/sri-lanka-hanging-parrot-1795006936.jpg",
+                    "src": "images/sri-lanka-hanging-parrot-1795453837.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-hanging-parrot-1795006926.jpg",
+                    "src": "images/sri-lanka-hanging-parrot-1795453432.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1795453184.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2075,7 +2081,7 @@
                     }
                 }
             ],
-            "rating": "3",
+            "rating": "4",
             "gender": "M",
             "pinned": true
         },
@@ -6256,7 +6262,6 @@
             "country": "India",
             "time_of_day": "Day",
             "weather": "Sunny",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/red-necked-stint-1772373280.jpg",
@@ -13376,7 +13381,6 @@
             "city": "Bhigwan",
             "state": "Maharashtra",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/black-headed-gull-1735364991.jpg",
@@ -21078,7 +21082,6 @@
             "city": "Kathgodam",
             "state": "Uttarakhand",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/velvet-fronted-nuthatch-1704541462.jpg",
@@ -22173,7 +22176,6 @@
             "city": "Chopta",
             "state": "Uttarakhand",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/himalayan-woodpecker-1703838109.jpg",
@@ -23820,7 +23822,6 @@
             "city": "Lungthung",
             "state": "Sikkim",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/blue-fronted-redstart-1698841273.jpg",
@@ -29493,7 +29494,6 @@
             "city": "Lachen",
             "state": "Sikkim",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/eurasian-kestrel-1668271630.jpg",
@@ -30397,7 +30397,6 @@
             "city": "South Andaman",
             "state": "Andaman & Nicobar Islands",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/andaman-green-pigeon-1666795571.jpg",
@@ -32065,7 +32064,6 @@
             "city": "Sumdo",
             "state": "Ladakh",
             "country": "India",
-            "hidden": true,
             "media": [
                 {
                     "src": "images/white-throated-dipper-1663038308.jpg",
@@ -35376,7 +35374,6 @@
                     }
                 }
             ],
-            "hidden": true,
             "rating": 1
         },
         {
@@ -35562,7 +35559,6 @@
                 }
             ],
             "city": "Zuluk",
-            "hidden": true,
             "rating": "1"
         },
         {
