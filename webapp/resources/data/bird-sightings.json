@@ -1301,19 +1301,19 @@
                     }
                 },
                 {
-                    "src": "images/chestnut-backed-owlet-1795008740.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/chestnut-backed-owlet-1795008797.jpg",
+                    "src": "images/chestnut-backed-owlet-1795524763.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
                     "src": "images/chestnut-backed-owlet-1795008967.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/chestnut-backed-owlet-1795008740.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1421,6 +1421,12 @@
             "time_of_day": "Day",
             "media": [
                 {
+                    "src": "images/layard-parakeet-1794906677.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/layard-parakeet-1795008264.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
@@ -1428,12 +1434,6 @@
                 },
                 {
                     "src": "images/layard-parakeet-1795008196.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/layard-parakeet-1794906677.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1496,6 +1496,12 @@
                     }
                 },
                 {
+                    "src": "images/sri-lanka-hanging-parrot-1795527041.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/sri-lanka-hanging-parrot-1795453184.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
@@ -1508,19 +1514,13 @@
                     }
                 },
                 {
+                    "src": "images/sri-lanka-hanging-parrot-1795527732.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/sri-lanka-hanging-parrot-1794844411.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/sri-lanka-hanging-parrot-1794906538.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/sri-lanka-hanging-parrot-1794906551.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1552,7 +1552,7 @@
                     }
                 },
                 {
-                    "src": "images/red-backed-flameback-1794905295.jpg",
+                    "src": "images/red-backed-flameback-1795520169.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1842,13 +1842,13 @@
                     }
                 },
                 {
-                    "src": "images/pale-billed-flowerpecker-1795007063.jpg",
+                    "src": "images/pale-billed-flowerpecker-1795523025.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/pale-billed-flowerpecker-1795008058.jpg",
+                    "src": "images/pale-billed-flowerpecker-1795007063.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1898,19 +1898,13 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/white-throated-flowerpecker-1794844187.jpg",
+                    "src": "images/white-throated-flowerpecker-1795526640.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/white-throated-flowerpecker-1794844200.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/white-throated-flowerpecker-1794844171.jpg",
+                    "src": "images/white-throated-flowerpecker-1795526487.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1923,6 +1917,12 @@
                 },
                 {
                     "src": "images/white-throated-flowerpecker-1795015027.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/white-throated-flowerpecker-1794844171.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1966,6 +1966,12 @@
                 },
                 {
                     "src": "images/orange-billed-babbler-1794906150.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/orange-billed-babbler-1795521428.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2101,13 +2107,19 @@
                     }
                 },
                 {
-                    "src": "images/sri-lanka-swallow-1794844697.jpg",
+                    "src": "images/sri-lanka-swallow-1795009298.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-swallow-1795009298.jpg",
+                    "src": "images/sri-lanka-swallow-1795527514.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-swallow-1795527615.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2457,6 +2469,12 @@
                     }
                 },
                 {
+                    "src": "images/yellow-fronted-barbet-1795519823.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/yellow-fronted-barbet-1794906064.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
@@ -2476,6 +2494,12 @@
                 },
                 {
                     "src": "images/yellow-fronted-barbet-1794819906.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/yellow-fronted-barbet-1795519888.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2566,7 +2590,19 @@
             "weather": "Sunny",
             "media": [
                 {
+                    "src": "images/black-capped-bulbul-1795520501.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/black-capped-bulbul-1794840792.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/black-capped-bulbul-1795520341.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2578,7 +2614,7 @@
                     }
                 },
                 {
-                    "src": "images/black-capped-bulbul-1795497239.jpg",
+                    "src": "images/black-capped-bulbul-1795520844.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }

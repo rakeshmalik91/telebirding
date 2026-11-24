@@ -1,11 +1,6 @@
----
-name: android-cache-flow
-description: Architecture and step-by-step logic for the Telebirding Android app offline caching, staging/live directory swaps, delta media downloads, and lazy WebView interception. Use when working on Android offline storage, SiteCache.kt, CachedWebViewClient.kt, network sync, or web asset interception.
----
-
 # Telebirding Cache & Offline Sync Flow
 
-This skill describes the caching and offline synchronization architecture for agents modifying Android network or caching components.
+This document describes the caching and offline synchronization architecture for the Telebirding Android application.
 
 ---
 
@@ -22,7 +17,7 @@ This skill describes the caching and offline synchronization architecture for ag
 * **`liveDir`**: Active local cache directory served offline to `WebView`.
 * **`stagingDir`**: Temporary workspace for downloading new updates. Files are merged into `liveDir` only after successful download verification.
 * **Shell Files**: Core structural resources (`index.html`, CSS, JS scripts, fonts, UI icons).
-* **Data Files**: Structured JSON files (`birds.json`, `places.json`, `taxa.json`).
+* **Data Files**: Structured JSON files (`birds.json`, `places.json`, `taxa.json`, `geo/*.json`).
 * **Media Files**: Binary media assets (`images/*.jpg`, `videos/*.mp4`).
 
 ---
@@ -61,4 +56,3 @@ Assets are resolved dynamically in JavaScript by [`webapp/scripts/modules/util.j
 | **Localhost Desktop** | `localhost:5000` / `127.0.0.1` | `resources/data/...`, `resources/images/...` | Local `webapp/resources/` directory |
 | **Android WebView** | `window.FIREBASE_ENABLED = false` & `!isLocalhost` | `data/...`, `images/...` (no `resources/` prefix) | Matches Android `siteCache.liveDir/data/` and `siteCache.liveDir/images/` |
 | **Production Web** | `FIREBASE_ENABLED = true` | `https://firebasestorage.googleapis.com/...` | Firebase Storage CDN |
-

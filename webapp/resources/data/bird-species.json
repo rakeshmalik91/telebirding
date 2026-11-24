@@ -8093,8 +8093,8 @@
             "key": "sri-lanka-hanging-parrot",
             "name": "Sri Lanka Hanging-Parrot",
             "tags": [
+                "Hanging-Parrot",
                 "Parrot",
-                "Sri Lanka Hanging Parrot",
                 "Sri Lankan Hanging Parrot"
             ],
             "family": "Old World Parrots",
@@ -8760,11 +8760,12 @@
             "tags": [
                 "Hanging Parrot",
                 "Indian Lorikeet",
+                "Lorikeet",
                 "Parrot"
             ],
             "family": "Old World Parrots",
-            "ebird_code": "vehpar1",
-            "latin_name": "loriculus vernalis"
+            "latin_name": "loriculus vernalis",
+            "ebird_code": "vehpar1"
         },
         "vinaceous-rosefinch": {
             "key": "vinaceous-rosefinch",

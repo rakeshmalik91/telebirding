@@ -1,15 +1,10 @@
----
-name: project-structure
-description: Architecture, layout, and component breakdown of the Telebirding repository. Use when navigating the codebase, locating files, understanding how the nested Android app (telebirding-app) interacts with web assets, running tests, or determining where to add new features or utility scripts.
----
-
 # Telebirding Project Architecture & Layout
 
-This skill provides an actionable directory guide for AI agents and developers.
+This document provides an actionable directory and architecture guide for the Telebirding repository.
 
 ---
 
-## 🎯 Agent Quick Reference (Task → Directory Map)
+## 🎯 Quick Reference (Task → Directory Map)
 
 | Task / Domain | Target Path(s) | Key Constraints & Rules |
 | :--- | :--- | :--- |
@@ -18,12 +13,13 @@ This skill provides an actionable directory guide for AI agents and developers.
 | **Client JavaScript Logic** | [`webapp/scripts/`](file:///d:/Projects/telebirding/webapp/scripts/) | Use ES6+ modules and `State` module. Avoid global variables. |
 | **Web Fonts & Icons** | [`webapp/fonts/`](file:///d:/Projects/telebirding/webapp/fonts/), [`webapp/icons/`](file:///d:/Projects/telebirding/webapp/icons/) | Static assets served with web application. |
 | **Android App Code** | [`telebirding-android-app/app/src/main/java/`](file:///d:/Projects/telebirding/telebirding-android-app/app/src/main/java/) | Jetpack Compose + `SiteCache.kt` + `CachedWebViewClient.kt`. |
-| **Android Build & Versioning** | [`telebirding-android-app/app/build.gradle.kts`](file:///d:/Projects/telebirding/telebirding-android-app/app/build.gradle.kts) | `compileSdk=36`, `targetSdk=36`. Use `android-release` skill. |
+| **Android Build & Versioning** | [`telebirding-android-app/app/build.gradle.kts`](file:///d:/Projects/telebirding/telebirding-android-app/app/build.gradle.kts) | `compileSdk=36`, `targetSdk=36`. See [`docs/android-release.md`](file:///d:/Projects/telebirding/docs/android-release.md). |
 | **Android Release Notes** | [`telebirding-android-app/app/release-notes.xml`](file:///d:/Projects/telebirding/telebirding-android-app/app/release-notes.xml) | Update `<en-US>` block on release. |
-| **Offline Sync Logic** | [`telebirding-android-app/app/src/main/java/.../SiteCache.kt`](file:///d:/Projects/telebirding/telebirding-android-app/app/src/main/java/com/rakeshmalik/telebirding/SiteCache.kt) | Consult `android-cache-flow` skill. |
+| **Offline Sync Logic** | [`telebirding-android-app/app/src/main/java/.../SiteCache.kt`](file:///d:/Projects/telebirding/telebirding-android-app/app/src/main/java/com/rakeshmalik/telebirding/SiteCache.kt) | Consult [`docs/android-cache-flow.md`](file:///d:/Projects/telebirding/docs/android-cache-flow.md). |
+| **Geocoding & Boundaries** | [`webapp/scripts/modules/geo-service.js`](file:///d:/Projects/telebirding/webapp/scripts/modules/geo-service.js), [`webapp/resources/data/places.json`](file:///d:/Projects/telebirding/webapp/resources/data/places.json) | Consult [`docs/geocoding-and-boundaries.md`](file:///d:/Projects/telebirding/docs/geocoding-and-boundaries.md). |
 | **Data Processing & Utilities** | [`utils/`](file:///d:/Projects/telebirding/utils/) | Python / Node scripts for taxonomy, EXIF, and data sync. |
-| **Automated Testing** | [`webapp/tests/`](file:///d:/Projects/telebirding/webapp/tests/), [`webapp/vitest.config.js`](file:///d:/Projects/telebirding/webapp/vitest.config.js) | Run via `npm test` inside `webapp/`. |
-| **Agent Rules & Workflows** | [`.agents/agents.md`](file:///d:/Projects/telebirding/.agents/agents.md), [`.agents/skills/`](file:///d:/Projects/telebirding/.agents/skills/) | Always consult before modifying project core. |
+| **Automated Testing** | [`webapp/tests/`](file:///d:/Projects/telebirding/webapp/tests/), [`run_all_tests.bat`](file:///d:/Projects/telebirding/run_all_tests.bat) | Run via `npm test` in `webapp/` or `.\run_all_tests.bat` in root. |
+| **Agent Rules & Workflows** | [`.agents/AGENTS.md`](file:///d:/Projects/telebirding/.agents/AGENTS.md), [`docs/`](file:///d:/Projects/telebirding/docs/) | Always consult before modifying project core. |
 
 ---
 
@@ -58,19 +54,26 @@ telebirding/
 │   └── gradle/                  # Gradle wrapper & dependency version catalog (libs.versions.toml)
 │
 ├── utils/                       # Python & JS automation scripts (EXIF parser, media optimization)
+├── docs/                        # 📚 TECHNICAL ARCHITECTURE & REFERENCE GUIDES
+│   ├── android-cache-flow.md    # Android offline caching & delta media sync architecture
+│   ├── android-release.md       # Android version bumping, packaging & release runbook
+│   ├── geocoding-and-boundaries.md # 4-level place hierarchy & GeoJSON polygon boundaries
+│   ├── ebird-api-and-syncing.md # eBird API integration & sync pipelines
+│   ├── project-structure.md     # Codebase layout & directory reference
+│   ├── NOTES.md                 # Design notes & decisions
+│   └── TODO.md                  # Task backlog & checklist
 │
 ├── run.bat                      # ⚡ 1-click local serve & browser launch
 ├── deploy.bat                   # 🚀 1-click Firebase deploy
-├── run_all_tests.bat            # 🧪 Run test suites for both webapp & Android app
-├── run_all_tests.ps1            # 🧪 PowerShell runner for all test suites
+├── run_all_tests.bat            # 🧪 Run test suites for both webapp (Vitest) & Android app (Gradle)
 ├── firebase.json                # Firebase Hosting (public: webapp) & Storage rules
 ├── storage.rules                # Firebase Storage security policies
 ├── netlify.toml                 # Netlify deployment rules (publish: webapp)
 │
 ├── .agents/                     # AI Agent configuration directory
-│   ├── agents.md                # Project guidelines & strict constraints
-│   ├── skills/                  # Skills: android-release, android-cache-flow, project-structure
-│   └── workflows/               # Operational workflows: testing-guidelines.md
+│   ├── AGENTS.md                # Project rules & strict constraints
+│   ├── skills/                  # Action skills (commit)
+│   └── workflows/               # Operational workflows (testing-guidelines.md)
 │
 └── README.md                    # Main project overview
 ```
@@ -82,6 +85,7 @@ telebirding/
 1. **Working Directory for Commands**:
    - Web app & testing tasks: Execute commands from inside `webapp/` (e.g. `cd webapp` and `npm test`).
    - Android build tasks: Execute Gradle commands from inside `telebirding-android-app/` (e.g. `cd telebirding-android-app` and run `.\gradlew.bat <task>`).
+   - Unified testing: Run `.\run_all_tests.bat` from repository root.
 
 2. **Git Safeguard**:
    - **Do not execute any Git commands** (`git commit`, `git push`, etc.) unless explicitly instructed by the user.

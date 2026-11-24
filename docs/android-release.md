@@ -1,11 +1,6 @@
----
-name: android-release
-description: Standard procedure for releasing a new version of the Telebirding Android app. Use when creating a new release, bumping app version, updating release-notes.xml, building release APK/AAB packages, or meeting Google Play target API requirements.
----
-
 # Android Release Procedure
 
-This skill provides step-by-step instructions for agents to bump version numbers, update release notes, and assemble release packages for the Telebirding Android app.
+This document provides step-by-step instructions for bumping version numbers, updating release notes, and assembling release packages for the Telebirding Android app.
 
 ---
 

@@ -49,13 +49,13 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/unidentified-spider-1795431337.jpg",
+                    "src": "images/unidentified-spider-1795430583.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/unidentified-spider-1795430583.jpg",
+                    "src": "images/unidentified-spider-1795431337.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -99,7 +99,13 @@
             "weather": "Sunny",
             "media": [
                 {
-                    "src": "images/peninsular-great-mormon-1795430693.jpg",
+                    "src": "images/peninsular-great-mormon-1795525350.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/peninsular-great-mormon-1795525366.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
