@@ -1,8 +1,8 @@
 {
     "sightings": [
         {
-            "key": "s1795260440",
-            "species": "indian-blackbird",
+            "key": "s1795661410",
+            "species": "common-tailorbird",
             "date": "21-11-2026",
             "city": "Nuwara Eliya",
             "state": "Central Province",
@@ -11,7 +11,7 @@
             "weather": "Foggy",
             "media": [
                 {
-                    "src": "images/indian-blackbird-1795260530.jpg",
+                    "src": "images/common-tailorbird-1795661483.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -30,13 +30,25 @@
             "weather": "Foggy",
             "media": [
                 {
-                    "src": "images/sri-lanka-bush-warbler-1795399097.jpg",
+                    "src": "images/sri-lanka-bush-warbler-1795661684.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-bush-warbler-1795181356.jpg",
+                    "src": "images/sri-lanka-bush-warbler-1795661739.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795661878.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-bush-warbler-1795662262.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -51,6 +63,39 @@
             "rating": "3"
         },
         {
+            "key": "s1795260440",
+            "species": "indian-blackbird",
+            "date": "21-11-2026",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "media": [
+                {
+                    "src": "images/indian-blackbird-1795661127.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/indian-blackbird-1795661035.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/indian-blackbird-1795661344.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "3",
+            "subspecies": "kinnisii",
+            "variation": "Sri Lanka"
+        },
+        {
             "key": "s1795260359",
             "species": "sri-lanka-wood-pigeon",
             "date": "21-11-2026",
@@ -61,19 +106,19 @@
             "weather": "Foggy",
             "media": [
                 {
-                    "src": "images/sri-lanka-wood-pigeon-1795260383.jpg",
+                    "src": "images/sri-lanka-wood-pigeon-1795624509.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-wood-pigeon-1795260418.jpg",
+                    "src": "images/sri-lanka-wood-pigeon-1795624766.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-wood-pigeon-1795260429.jpg",
+                    "src": "images/sri-lanka-wood-pigeon-1795624715.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -137,6 +182,12 @@
                 },
                 {
                     "src": "images/hill-swallow-1795181418.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/hill-swallow-1795662040.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1380,13 +1431,19 @@
             "time_of_day": "Day",
             "media": [
                 {
-                    "src": "images/malabar-trogon-1795584435.jpg",
+                    "src": "images/malabar-trogon-1795584636.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
                     "src": "images/malabar-trogon-1795584348.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/malabar-trogon-1795584435.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1447,13 +1504,19 @@
                     }
                 },
                 {
-                    "src": "images/layard-parakeet-1795008264.jpg",
+                    "src": "images/layard-parakeet-1795608603.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/layard-parakeet-1795008196.jpg",
+                    "src": "images/layard-parakeet-1795608283.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/layard-parakeet-1795608411.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1516,19 +1579,25 @@
                     }
                 },
                 {
+                    "src": "images/sri-lanka-hanging-parrot-1795608882.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1795607614.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-hanging-parrot-1795607467.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
                     "src": "images/sri-lanka-hanging-parrot-1795527041.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/sri-lanka-hanging-parrot-1795453184.jpg",
-                    "exif_data": {
-                        "camera_model": "S7RV+200600"
-                    }
-                },
-                {
-                    "src": "images/sri-lanka-hanging-parrot-1795006907.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2121,13 +2190,13 @@
                     }
                 },
                 {
-                    "src": "images/sri-lanka-swallow-1794844646.jpg",
+                    "src": "images/sri-lanka-swallow-1795610534.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-swallow-1795009298.jpg",
+                    "src": "images/sri-lanka-swallow-1794844646.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -2439,7 +2508,8 @@
                     }
                 }
             ],
-            "rating": "4"
+            "rating": "4",
+            "subspecies": "poonensis"
         },
         {
             "key": "s1794819979",
