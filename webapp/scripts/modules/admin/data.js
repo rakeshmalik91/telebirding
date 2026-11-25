@@ -1049,10 +1049,11 @@ export function renameFamily(oldName, newName, ebirdCode, sciName) {
         if (species.family === oldName) species.family = newName;
     });
     data.families.sort((a, b) => a.name.localeCompare(b.name));
+    triggerRender();
     Promise.all([
         uploadJSONData("families", true),
         uploadJSONData("species", true)
-    ]).then(() => triggerRender());
+    ]);
     showToast(`Family renamed to '${newName}'.`, 'success');
     return true;
 }
@@ -1065,6 +1066,7 @@ export function deleteFamily(name, onSuccess) {
     }
     customConfirm("Are you sure you want to delete family '" + name + "'?", () => {
         data.families = data.families.filter(f => f.name != name);
+        triggerRender();
         uploadJSONData("families", true);
         if (onSuccess) onSuccess();
         showToast("Family deleted successfully.", 'success');
@@ -1079,6 +1081,7 @@ export function deleteSpecies(key, onSuccess) {
     }
     customConfirm("Are you sure you want to delete species '" + key + "'?", () => {
         delete data.species[key];
+        triggerRender();
         uploadJSONData("species", true);
         if (onSuccess) onSuccess();
         showToast("Species deleted successfully.", 'success');

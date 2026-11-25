@@ -1455,6 +1455,12 @@ input:checked+.toggle-slider:before {
 	font-size: 13px;
 }
 
+.spreadsheet-table thead {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+}
+
 .spreadsheet-table th {
 	background: #0f172a;
 	color: #38bdf8;
@@ -1464,9 +1470,41 @@ input:checked+.toggle-slider:before {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	border: 1px solid rgba(255, 255, 255, 0.12);
-	position: sticky;
-	top: 0;
-	z-index: 2;
+	white-space: nowrap;
+}
+
+.spreadsheet-table tr.hierarchy-filter-row th {
+	background: #131c31;
+	padding: 5px 8px;
+	text-transform: none;
+	font-weight: 400;
+	letter-spacing: normal;
+}
+
+.spreadsheet-table tr.hierarchy-filter-row .hierarchy-col-filter {
+	width: 100%;
+	min-width: 0;
+	height: 30px;
+	font-size: 12px;
+	padding: 4px 6px;
+}
+
+input.spreadsheet-cell-input {
+	width: 100%;
+	min-width: 0;
+}
+
+#species-hierarchy-table {
+	table-layout: fixed;
+	width: 100%;
+	min-width: 820px;
+}
+
+#species-hierarchy-table td {
+	overflow-wrap: break-word;
+}
+
+#species-hierarchy-table .btn-add-sp-to-fam {
 	white-space: nowrap;
 }
 
@@ -1620,4 +1658,129 @@ input:checked+.toggle-slider:before {
 .media-popup-close:hover {
 	transform: scale(1.1);
 	color: #ef4444;
+}
+
+/* Species / Family Subtabs and Hierarchical Spreadsheet */
+.species-subnav-container {
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.species-subnav-tabs {
+	display: inline-flex;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 8px;
+	padding: 4px;
+	gap: 4px;
+}
+
+.species-subtab-btn {
+	background: transparent;
+	border: none;
+	color: #94a3b8;
+	padding: 8px 16px;
+	font-size: 13px;
+	font-weight: 500;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	user-select: none;
+}
+
+.species-subtab-btn:hover {
+	color: #f8fafc;
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.species-subtab-btn.active {
+	background: #0284c7;
+	color: #ffffff;
+	font-weight: 600;
+}
+
+.species-subtab-btn .subtab-icon {
+	font-size: 13px;
+	line-height: 1;
+}
+
+@media (max-width: 640px) {
+	.species-subnav-tabs {
+		display: flex;
+		width: 100%;
+		overflow-x: auto;
+		box-sizing: border-box;
+	}
+	.species-subtab-btn {
+		flex: 1;
+		justify-content: center;
+		padding: 8px 10px;
+		font-size: 13px;
+		white-space: nowrap;
+	}
+}
+
+.species-forms-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.species-form-card {
+	background: rgba(15, 23, 42, 0.45);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+	overflow-x: hidden;
+}
+
+.species-form-card #update-species-form,
+.species-form-card #add-family-form {
+	margin-left: 0;
+}
+
+.species-forms-grid .admin-card,
+.species-forms-grid .species-form-card {
+	overflow-x: hidden;
+}
+
+.species-forms-grid .select2-container {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+.species-forms-grid input,
+.species-forms-grid select,
+.species-forms-grid .input-clear-wrapper,
+.species-forms-grid .chip-input-container {
+	max-width: 100% !important;
+	box-sizing: border-box;
+}
+
+.family-row {
+	transition: background 0.15s ease;
+}
+
+.family-row:hover td {
+	background: rgba(56, 189, 248, 0.08) !important;
+}
+
+.species-row {
+	transition: background 0.15s ease;
+}
+
+.species-row:hover td {
+	background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.family-chevron {
+	display: inline-block;
+	transition: transform 0.15s ease;
 }

@@ -6,7 +6,7 @@ import {
 import { customAlert } from './modules/admin/ui.js';
 import {
 	setupUpdateSpeciesForm, renderSightingsTable, updatePaginationControls, setupAddFamilyForm, setupPlacesTab,
-	setupSiteDataTab, setupStoriesTab
+	setupSiteDataTab, setupStoriesTab, setupSpeciesSubtabs, renderSpeciesHierarchy
 } from './modules/admin/rendering.js';
 import { setupAuthListeners } from './modules/admin/auth.js';
 import { setupDashboardListeners } from './modules/admin/listeners.js';
@@ -52,6 +52,8 @@ function render(preserveScroll = true) {
 	setupEbirdSync();
 	setupSiteDataTab();
 	setupStoriesTab();
+	setupSpeciesSubtabs();
+	renderSpeciesHierarchy();
 	renderSightingsTable(viewState.offset, viewState.rows, preserveScroll);
 	updatePaginationControls(viewState.offset, viewState.rows);
 	if (preserveScroll && typeof window !== 'undefined' && scrollY > 0) {
@@ -95,9 +97,11 @@ $(document).ready(function () {
 			setupStoriesTab();
 		}
 		if (tab === 'species-tab') {
-			setupEbirdSync();
-			// Refresh species form so newly added families/species appear in its dropdowns
 			setupUpdateSpeciesForm();
+			setupAddFamilyForm();
+			setupSpeciesSubtabs();
+			renderSpeciesHierarchy();
+			setupEbirdSync();
 		}
 		if (tab === 'sightings-tab') {
 			// Rebuild sightings table so species/country/etc. dropdowns reflect

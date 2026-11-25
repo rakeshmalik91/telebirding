@@ -154,6 +154,7 @@ export function setupUpdateSpeciesForm() {
         deleteSpecies(key, () => {
             updateSpeciesForm.find("select[data-field=name] option").filter(function () { return this.value === key; }).remove();
             updateSpeciesForm.find("select[data-field=name]").val('').trigger('change');
+            triggerRender();
         });
     });
 
@@ -1285,6 +1286,7 @@ export function setupAddFamilyForm() {
 
         // Clear form
         $famInput.val('').trigger('change');
+        triggerRender();
     });
 
     addFamilyForm.find("button.delete").unbind("click").click(function () {
@@ -1299,6 +1301,7 @@ export function setupAddFamilyForm() {
             // Remove from select and reset
             $famInput.find("option").filter(function () { return this.value === name; }).remove();
             $famInput.val('').trigger('change');
+            triggerRender();
         });
     });
 }
@@ -2214,5 +2217,6 @@ export function setupPlacesTab() {
 
 export { setupSiteDataTab, renderSiteData } from './site-data.js';
 export { setupStoriesTab, renderStoriesSheet } from './stories.js';
+export { setupSpeciesSubtabs, renderSpeciesHierarchy } from './species-hierarchy.js';
 
 

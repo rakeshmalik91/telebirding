@@ -1213,6 +1213,25 @@
             "rating": "2"
         },
         {
+            "key": "s1795583599",
+            "species": "black-hooded-oriole",
+            "date": "17-11-2026",
+            "city": "Sinharaja Forest Reserve",
+            "state": "Southern Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Hazy",
+            "media": [
+                {
+                    "src": "images/black-hooded-oriole-1795583620.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "rating": "2"
+        },
+        {
             "key": "s1795017104",
             "species": "plum-headed-parakeet",
             "date": "17-11-2026",
@@ -1331,19 +1350,19 @@
             "time_of_day": "Day",
             "media": [
                 {
-                    "src": "images/green-billed-coucal-1795006774.jpg",
+                    "src": "images/green-billed-coucal-1795583068.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/green-billed-coucal-1795006802.jpg",
+                    "src": "images/green-billed-coucal-1795582166.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/green-billed-coucal-1795006814.jpg",
+                    "src": "images/green-billed-coucal-1795583223.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1361,19 +1380,20 @@
             "time_of_day": "Day",
             "media": [
                 {
-                    "src": "images/malabar-trogon-1795006494.jpg",
+                    "src": "images/malabar-trogon-1795584435.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/malabar-trogon-1795009017.jpg",
+                    "src": "images/malabar-trogon-1795584348.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 }
             ],
-            "rating": "3"
+            "rating": "3",
+            "gender": "M"
         },
         {
             "key": "s1795006290",

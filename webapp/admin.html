@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261123_6">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261125_0935">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260923_4">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
@@ -42,7 +42,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20261124_0915"></script>
+	<script type="module" src="scripts/admin.js?v=20261125_0930"></script>
 
 </head>
 
@@ -86,8 +86,7 @@
 
 		<div class="admin-nav-tabs">
 			<button class="admin-nav-tab active" data-tab="sightings-tab">Sightings</button>
-			<button class="admin-nav-tab" data-tab="species-tab">Species</button>
-			<button class="admin-nav-tab" data-tab="family-tab">Family</button>
+			<button class="admin-nav-tab" data-tab="species-tab">Species / Family</button>
 			<button class="admin-nav-tab" data-tab="places-tab">Places</button>
 			<button class="admin-nav-tab" data-tab="site-data-tab">Site Data</button>
 			<button class="admin-nav-tab" data-tab="stories-tab">Stories</button>
@@ -172,122 +171,154 @@
 		</div>
 		
 		<div id="species-tab" class="admin-tab-content">
-			<div class="admin-card">
-				<h2>Add/Modify Species</h2>
-			<table id="update-species-form">
-				<tr>
-					<td>Name</td>
-					<td><select data-field='name' data-tags='true' style="width: 100%; max-width: 700px;" placeholder="Select or type a species..."></select></td>
-				</tr>
-				<tr class="species-display-name-row" style="display:none;">
-					<td>Species Name</td>
-					<td><input type="text" data-field="display-name" placeholder="Species name" style="width:100%;max-width:700px;" /></td>
-				</tr>
-				<tr>
-					<td>Family</td>
-					<td><select data-field='family' style="width: 100%; max-width: 700px;" placeholder="Select or type a family..."></select></td>
-				</tr>
-				<tr>
-					<td>Tags</td>
-					<td>
-			<div class="chip-input-container" style="width: 100%; max-width: 700px;">
-				<div class="chips-wrapper"></div>
-				<input type='text' class="chip-input" placeholder="Add tag..." />
-				<input type='hidden' data-field='tags' />
-			</div>
-		</td>
-				</tr>
-				<tr>
-					<td>Scientific Name</td>
-					<td>
-						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
-							<input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 100%;" />
-							<span class='input-clear-btn' title='Clear'>✕</span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>eBird Code</td>
-					<td>
-						<div class='input-clear-wrapper' style="width: 100%; max-width: 700px;">
-							<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
-							<span class='input-clear-btn' title='Clear'>✕</span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>Sighting Count</td>
-					<td>
-						<span data-field='sighting-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
-					</td>
-				</tr>
-				<tr>
-					<td class='noborder'>
-						<button class='submit'>Add</button>
-						<button class='delete' style='background-color: #d9534f;'>Delete</button>
-					</td>
-				</tr>
-			</table>
-			</div>
-			<div class="admin-card" id="ebird-sync-card">
-				<h2>eBird Species &amp; Family Name Sync</h2>
-				<p>Compare local bird species and families with the current eBird taxonomy. Review proposed changes before applying them.</p>
-				<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-					<button id="ebird-sync-fetch">Fetch Changes</button>
-					<button id="ebird-sync-apply" disabled>Apply Selected Changes</button>
-					<button id="ebird-sync-select-all" disabled>Select All</button>
+			<div class="admin-card species-card">
+				<div style="margin-bottom: 14px;">
+					<h2 style="margin: 0; border: none; padding: 0;">Species / Family</h2>
+					<div style="font-size: 13px; color: #94a3b8; margin-top: 4px;">
+						Manage species, families, taxonomy hierarchy, and eBird synchronization.
+					</div>
 				</div>
-				<div id="ebird-sync-progress" role="status" style="margin:10px 0;"></div>
-				<div id="ebird-sync-results"></div>
-			</div>
-		</div>
 
-		<div id="family-tab" class="admin-tab-content">
-			<div id="add-family-section" class="admin-card" style="display:none;">
-			<h2>Add/Modify Family</h2>
-			<table id="add-family-form">
-				<tr>
-					<td>Name</td>
-					<td>
-						<select data-field='name' data-tags='true' style="width: 100%; max-width: 500px;" placeholder="Select or type a family..."></select>
-					</td>
-				</tr>
-				<tr class="family-display-name-row" style="display:none;">
-					<td>Family Name</td>
-					<td><input type="text" data-field="display-name" placeholder="Family name" style="width:100%;max-width:500px;" /></td>
-				</tr>
-				<tr>
-					<td>Scientific Name</td>
-					<td>
-						<div class='input-clear-wrapper' style="width: 100%; max-width: 500px;">
-							<input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 100%;" />
-							<span class='input-clear-btn' title='Clear'>✕</span>
+				<!-- Subtab Navigation Strip -->
+				<div class="spreadsheet-toolbar" style="margin-bottom: 20px;">
+					<div class="spreadsheet-sheet-tabs species-subnav-tabs" role="tablist">
+						<button type="button" class="spreadsheet-sheet-tab species-subtab-btn active" data-subtab="add-species-family" role="tab">
+							<span class="subtab-icon">➕</span> Add Species / Family
+						</button>
+						<button type="button" class="spreadsheet-sheet-tab species-subtab-btn" data-subtab="hierarchical-view" role="tab">
+							<span class="subtab-icon">🗂️</span> Hierarchical View
+						</button>
+						<button type="button" class="spreadsheet-sheet-tab species-subtab-btn" data-subtab="ebird-sync" role="tab">
+							<span class="subtab-icon">🔄</span> eBird Sync
+						</button>
+					</div>
+				</div>
+
+				<!-- Forms section: shown in 'Add Species/Family' subtab -->
+				<div id="species-forms-wrapper">
+					<div class="species-forms-grid">
+						<div class="species-form-card">
+							<h3 style="color: #38bdf8; font-size: 18px; margin: 0 0 15px 0;">Add/Modify Species</h3>
+							<table id="update-species-form" style="width: 100%;">
+								<tr>
+									<td>Name</td>
+									<td><select data-field='name' data-tags='true' style="width: 100%;" placeholder="Select or type a species..."></select></td>
+								</tr>
+								<tr class="species-display-name-row" style="display:none;">
+									<td>Species Name</td>
+									<td><input type="text" data-field="display-name" placeholder="Species name" style="width: 100%;" /></td>
+								</tr>
+								<tr>
+									<td>Family</td>
+									<td><select data-field='family' style="width: 100%;" placeholder="Select or type a family..."></select></td>
+								</tr>
+								<tr>
+									<td>Tags</td>
+									<td>
+										<div class="chip-input-container" style="width: 100%;">
+											<div class="chips-wrapper"></div>
+											<input type='text' class="chip-input" placeholder="Add tag..." />
+											<input type='hidden' data-field='tags' />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Scientific Name</td>
+									<td>
+										<div class='input-clear-wrapper' style="width: 100%;">
+											<input type='text' data-field='latin-name' placeholder="Scientific Name" style="width: 100%;" />
+											<span class='input-clear-btn' title='Clear'>✕</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>eBird Code</td>
+									<td>
+										<div class='input-clear-wrapper' style="width: 100%;">
+											<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
+											<span class='input-clear-btn' title='Clear'>✕</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Sighting Count</td>
+									<td>
+										<span data-field='sighting-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
+									</td>
+								</tr>
+								<tr>
+									<td class='noborder'>
+										<button class='submit'>Add</button>
+										<button class='delete' style='background-color: #d9534f;'>Delete</button>
+									</td>
+								</tr>
+							</table>
 						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>eBird Code</td>
-					<td>
-						<div class='input-clear-wrapper' style="width: 100%; max-width: 500px;">
-							<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
-							<span class='input-clear-btn' title='Clear'>✕</span>
+
+						<div id="add-family-section" class="species-form-card" style="display:none;">
+							<h3 style="color: #38bdf8; font-size: 18px; margin: 0 0 15px 0;">Add/Modify Family</h3>
+							<table id="add-family-form" style="width: 100%;">
+								<tr>
+									<td>Name</td>
+									<td>
+										<select data-field='name' data-tags='true' style="width: 100%;" placeholder="Select or type a family..."></select>
+									</td>
+								</tr>
+								<tr class="family-display-name-row" style="display:none;">
+									<td>Family Name</td>
+									<td><input type="text" data-field="display-name" placeholder="Family name" style="width: 100%;" /></td>
+								</tr>
+								<tr>
+									<td>Scientific Name</td>
+									<td>
+										<div class='input-clear-wrapper' style="width: 100%;">
+											<input type='text' data-field='sci-name' placeholder="Scientific Name" style="width: 100%;" />
+											<span class='input-clear-btn' title='Clear'>✕</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>eBird Code</td>
+									<td>
+										<div class='input-clear-wrapper' style="width: 100%;">
+											<input type='text' data-field='ebird-code' placeholder="eBird Code" style="width: 100%;" />
+											<span class='input-clear-btn' title='Clear'>✕</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Species Count</td>
+									<td>
+										<span data-field='species-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
+									</td>
+								</tr>
+								<tr>
+									<td class='noborder'>
+										<button class='submit'>Add</button>
+										<button class='delete' style='background-color: #d9534f;'>Delete</button>
+									</td>
+								</tr>
+							</table>
 						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>Species Count</td>
-					<td>
-						<span data-field='species-count' style="font-weight: bold; margin-left: 12px; padding: 8px 0; display: inline-block;">-</span>
-					</td>
-				</tr>
-				<tr>
-					<td class='noborder'>
-						<button class='submit'>Add</button>
-						<button class='delete' style='background-color: #d9534f;'>Delete</button>
-					</td>
-				</tr>
-			</table>
-		</div>
+					</div>
+				</div>
+
+				<!-- Hierarchical spreadsheet: shown only in 'Hierarchical View' subtab -->
+				<div id="species-hierarchical-section" style="display: none;"></div>
+
+				<!-- eBird sync section: shown only in 'eBird Sync' subtab -->
+				<div class="species-form-card" id="ebird-sync-card" style="display:none;">
+					<h3 style="color: #38bdf8; font-size: 18px; margin: 0 0 15px 0;">eBird Species &amp; Family Name Sync</h3>
+					<p style="color: #94a3b8; font-size: 13px; margin-bottom: 15px;">Compare local bird species and families with the current eBird taxonomy. Review proposed changes before applying them.</p>
+					<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+						<button id="ebird-sync-fetch">Fetch Changes</button>
+						<button id="ebird-sync-apply" disabled>Apply Selected Changes</button>
+						<button id="ebird-sync-select-all" disabled>Select All</button>
+					</div>
+					<div id="ebird-sync-progress" role="status" style="margin:10px 0;"></div>
+					<div id="ebird-sync-results"></div>
+				</div>
+			</div>
 		</div>
 
 		<div id="places-tab" class="admin-tab-content">

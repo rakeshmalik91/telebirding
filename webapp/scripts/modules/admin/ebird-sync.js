@@ -1,4 +1,6 @@
 import { data, currentMode, uploadJSONData, triggerRender } from './data.js';
+import { renderSpeciesHierarchy, autoExpandFamilies } from './species-hierarchy.js';
+import { showToast } from './ui.js';
 import Constants from '../constants.js';
 import EbirdApi from '../ebird-api.js';
 
@@ -204,7 +206,7 @@ export function setupEbirdSync() {
         $('#ebird-sync-card').hide();
         return;
     }
-    $('#ebird-sync-card').show();
+    // Visibility of #ebird-sync-card is controlled by setupSpeciesSubtabs (only visible on 'ebird-sync' subtab)
     $('#ebird-sync-fetch').off('click').on('click', async function () {
         const $button = $(this);
         $button.prop('disabled', true);
@@ -463,30 +465,42 @@ export function setupEbirdSync() {
         $button.prop('disabled', true);
         let speciesChanged = false;
         let familiesChanged = false;
+        const affectedFamilies = new Set();
+        let lastSpeciesKey = null;
         changesToApply.forEach(change => {
             if (change.type === 'species') {
                 const local = data.species[change.key];
                 if (!local) return;
                 if (change.updates.name && local.name) { local.tags ||= []; if (!local.tags.includes(local.name)) local.tags.push(local.name); }
                 Object.assign(local, change.updates);
+                if (local.family) affectedFamilies.add(local.family);
+                lastSpeciesKey = change.key;
                 speciesChanged = true;
             } else {
                 const existing = data.families.find(f => f.name === change.name);
                 if (existing) Object.assign(existing, change.updates);
                 else data.families.push({ ...change.updates });
+                affectedFamilies.add(change.name);
+                if (change.updates.name) affectedFamilies.add(change.updates.name);
                 familiesChanged = true;
             }
         });
+        if (lastSpeciesKey) {
+            data.lastUpdatedSpecies = lastSpeciesKey;
+        }
         if (familiesChanged) {
             data.families.sort((a, b) => a.name.localeCompare(b.name));
             await uploadJSONData('families', true);
         }
         if (speciesChanged) await uploadJSONData('species', true);
+        autoExpandFamilies([...affectedFamilies]);
         triggerRender();
+        renderSpeciesHierarchy();
         proposedChanges = proposedChanges.filter(change => !changesToApply.includes(change));
         changesToApply.forEach(change => selectionState.delete(change.id));
         renderChanges();
         $('#ebird-sync-progress').text(`Applied ${selected.length} selected change(s)${dependencies.length ? ` plus ${dependencies.length} required family record(s)` : ''}.`);
+        showToast('eBird sync applied and hierarchy table updated', 'success');
         $button.prop('disabled', proposedChanges.length === 0);
     });
 }

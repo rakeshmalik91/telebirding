@@ -27,7 +27,8 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     renameFamily: vi.fn(() => true),
     saveSpecies: vi.fn(),
     deleteFamily: vi.fn(),
-    deleteSpecies: vi.fn()
+    deleteSpecies: vi.fn(),
+    triggerRender: vi.fn()
 }));
 
 vi.mock('../../scripts/modules/ui-helpers.js', () => ({
