@@ -186,7 +186,8 @@ export function updateActiveFilterBadges() {
     if ($ratingBadge.length) {
         if (rating > 0) {
             $ratingBadge.removeClass('hidden').addClass('active button-active').show();
-            $ratingBadge.find('.rating').html(rating + ' +');
+            $ratingBadge.find('.rating-label').html('Grade:&nbsp;');
+            $ratingBadge.find('.rating').html(rating + '+');
             $('.filter-rating-component').addClass('active has-active-filter');
             $('.filter-panel').addClass('has-rating-filter');
         } else {

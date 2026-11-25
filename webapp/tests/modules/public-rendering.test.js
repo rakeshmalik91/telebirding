@@ -565,7 +565,7 @@ describe('Public Rendering', () => {
 
             expect($('.sightings-count').html()).toBe("1");
             expect($('.species-count').html()).toBe("1");
-            expect($('.rating').html()).toBe("4 +");
+            expect($('.rating').html()).toBe("4+");
             expect($('.new-species-count').html()).toBe("1");
         });
 

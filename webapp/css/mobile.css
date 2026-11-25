@@ -440,16 +440,58 @@ screen and (max-width: 950px) and (max-height: 500px) {
 	/* Expanded state when filter toggle button is clicked */
 	.filter-panel.mobile-filters-expanded {
 		display: grid !important;
-		grid-template-columns: 1fr auto !important;
+		grid-template-columns: auto minmax(0, 1fr) auto !important;
 		grid-template-areas:
-			"stats stats"
-			"date date"
-			"name name"
-			"location location"
-			"copy sortby" !important;
+			"stats stats stats"
+			"name name name"
+			"location location location"
+			"copy date sortby" !important;
 		gap: 6px 8px !important;
 		align-items: center !important;
 		padding: 0 0 6px 0 !important;
+	}
+
+	/* Synced styling with active filter inputs when mobile filter panel is expanded */
+	.filter-panel.mobile-filters-expanded .active-filter-badge,
+	.filter-panel.mobile-filters-expanded .name-filter-badge,
+	.filter-panel.mobile-filters-expanded .place-filter-badge,
+	.filter-panel.mobile-filters-expanded .family-filter-badge,
+	.filter-panel.mobile-filters-expanded .filter .filter-date-component button.date-filter,
+	.filter-panel.mobile-filters-expanded .filter .filter-rating-component button.rating-filter {
+		background-color: #bedde4 !important;
+		color: #333333 !important;
+		border: 1px solid rgba(0, 0, 0, 0.15) !important;
+		border-radius: .25rem !important;
+		height: 36px !important;
+		padding: 0 10px !important;
+		font-size: 13px !important;
+		font-weight: 600 !important;
+		line-height: 1 !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .filter-active-badges-row .rating-filter span {
+		color: #333333 !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .active-filter-badge:after,
+	.filter-panel.mobile-filters-expanded .name-filter-badge:after,
+	.filter-panel.mobile-filters-expanded .place-filter-badge:after,
+	.filter-panel.mobile-filters-expanded .family-filter-badge:after,
+	.filter-panel.mobile-filters-expanded .filter .filter-date-component button.date-filter:after,
+	.filter-panel.mobile-filters-expanded .filter .filter-rating-component button.rating-filter:after {
+		color: #bc7e7e !important;
+		margin-left: 6px !important;
+		font-size: 13px !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .active-filter-badge:hover,
+	.filter-panel.mobile-filters-expanded .active-filter-badge:focus,
+	.filter-panel.mobile-filters-expanded .filter .filter-date-component button.date-filter:hover,
+	.filter-panel.mobile-filters-expanded .filter .filter-date-component button.date-filter:focus,
+	.filter-panel.mobile-filters-expanded .filter .filter-rating-component button.rating-filter:hover,
+	.filter-panel.mobile-filters-expanded .filter .filter-rating-component button.rating-filter:focus {
+		background-color: #b0d4dc !important;
+		border-color: rgba(0, 0, 0, 0.25) !important;
 	}
 
 	.mobile-filter-toggle-btn {
@@ -749,6 +791,35 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		gap: 6px 8px !important;
 		justify-content: flex-end !important;
 		text-align: right !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .filter-active-badges-row {
+		margin: 0 !important;
+		height: 36px !important;
+		display: flex !important;
+		flex-wrap: nowrap !important;
+		align-items: center !important;
+		justify-content: flex-start !important;
+		gap: 6px !important;
+		min-width: 0 !important;
+		overflow-x: auto !important;
+		scrollbar-width: none !important;
+		-ms-overflow-style: none !important;
+		text-align: left !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .filter-active-badges-row::-webkit-scrollbar {
+		display: none !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .filter-active-badges-row .component {
+		height: 36px !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-start !important;
+		flex-shrink: 0 !important;
 	}
 
 	.filter-panel:not(.has-date-filter):not(.has-rating-filter):not(.has-family-filter) .filter-active-badges-row {

@@ -438,7 +438,8 @@ export function fillStats(ratingFilter, newSpeciesFilter, getFilters) {
 
     if (ratingFilter > 0) {
         $(".rating").parent().show().removeClass("hidden").addClass("active");
-        $(".rating").html(ratingFilter + " +");
+        $(".rating-label").html("Grade:&nbsp;");
+        $(".rating").html(ratingFilter + "+");
         $(".filter-rating-component").addClass("active has-active-filter");
         $(".filter-panel").addClass("has-rating-filter");
     } else {
