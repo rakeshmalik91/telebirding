@@ -831,6 +831,29 @@ describe('Admin Rendering - Readonly Operations', () => {
 
             expect(AdminData.uploadMedia).toHaveBeenCalledWith('sight1', [file]);
         });
+
+        it('should handle drag and drop of image files onto a sighting row', async () => {
+            const cropper = await import('../../scripts/modules/cropper.js');
+            AdminData.uploadMedia.mockClear();
+            cropper.openCropper.mockClear();
+
+            const file = new File(['dummy content'], 'dropped.jpg', { type: 'image/jpeg' });
+            const dropEvent = $.Event('drop', {
+                originalEvent: {
+                    preventDefault: () => {},
+                    stopPropagation: () => {},
+                    dataTransfer: {
+                        files: [file],
+                        getData: () => ''
+                    }
+                }
+            });
+
+            $('#sight1').trigger(dropEvent);
+
+            expect(cropper.openCropper).toHaveBeenCalledWith(file, expect.any(Function));
+            expect(AdminData.uploadMedia).toHaveBeenCalledWith('sight1', [file], [file]);
+        });
     });
 
     describe('setupUpdateSpeciesForm event handlers (eBird API integration)', () => {

@@ -241,7 +241,8 @@
                     }
                 }
             ],
-            "rating": "1"
+            "rating": "1",
+            "unconfirmed": true
         },
         {
             "key": "s1795675010",
@@ -1035,6 +1036,48 @@
             "trip_id": "sri-lanka-2026"
         },
         {
+            "key": "s1795697252",
+            "species": "black-headed-cuckoo-shrike",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "trip_id": "sri-lanka-2026",
+            "media": [
+                {
+                    "src": "images/black-headed-cuckoo-shrike-1795697274.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "M",
+            "rating": "3"
+        },
+        {
+            "key": "s1795696966",
+            "species": "black-headed-cuckoo-shrike",
+            "date": "18-11-2026",
+            "city": "Udawalawe",
+            "state": "Uva Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "weather": "Foggy",
+            "trip_id": "sri-lanka-2026",
+            "media": [
+                {
+                    "src": "images/black-headed-cuckoo-shrike-1795697001.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "gender": "F",
+            "rating": "3"
+        },
+        {
             "key": "s1795018971",
             "species": "green-imperial-pigeon",
             "date": "18-11-2026",
@@ -1149,19 +1192,19 @@
             "weather": "Cloudy",
             "media": [
                 {
-                    "src": "images/white-browed-fantail-1795018739.jpg",
+                    "src": "images/white-browed-fantail-1795698899.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/white-browed-fantail-1795018759.jpg",
+                    "src": "images/white-browed-fantail-1795698900.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/white-browed-fantail-1795018770.jpg",
+                    "src": "images/white-browed-fantail-1795698974.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1181,13 +1224,19 @@
             "weather": "Cloudy",
             "media": [
                 {
-                    "src": "images/sri-lanka-shama-1795018652.jpg",
+                    "src": "images/sri-lanka-shama-1795695873.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
                 },
                 {
-                    "src": "images/sri-lanka-shama-1795018676.jpg",
+                    "src": "images/sri-lanka-shama-1795695874.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/sri-lanka-shama-1795695875.jpg",
                     "exif_data": {
                         "camera_model": "S7RV+200600"
                     }
@@ -1246,7 +1295,8 @@
                 }
             ],
             "rating": "3",
-            "trip_id": "sri-lanka-2026"
+            "trip_id": "sri-lanka-2026",
+            "gender": "M"
         },
         {
             "key": "s1795018555",
@@ -1303,6 +1353,12 @@
             "country": "Sri Lanka",
             "time_of_day": "Day",
             "media": [
+                {
+                    "src": "images/sri-lanka-woodshrike-1795696451.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
                 {
                     "src": "images/sri-lanka-woodshrike-1795019492.jpg",
                     "exif_data": {
@@ -1423,7 +1479,7 @@
                 }
             ],
             "rating": "3",
-            "gender": "M",
+            "gender": "F",
             "trip_id": "sri-lanka-2026"
         },
         {

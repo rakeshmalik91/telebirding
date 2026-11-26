@@ -1060,6 +1060,12 @@ select::-ms-expand {
 	opacity: 1;
 }
 
+tr.drag-over-file {
+	outline: 2px dashed #38bdf8;
+	outline-offset: -2px;
+	background-color: rgba(56, 189, 248, 0.12) !important;
+}
+
 .custom-modal-content {
 	background: #1e1e1e;
 	color: #f0f0f0;
@@ -1079,7 +1085,13 @@ select::-ms-expand {
 	max-width: 92vw;
 }
 
-#custom-modal-overlay.visible .custom-modal-content {
+#custom-modal-overlay.visible tr.drag-over-file {
+	outline: 2px dashed #38bdf8;
+	outline-offset: -2px;
+	background-color: rgba(56, 189, 248, 0.12) !important;
+}
+
+.custom-modal-content {
 	transform: scale(1);
 }
 

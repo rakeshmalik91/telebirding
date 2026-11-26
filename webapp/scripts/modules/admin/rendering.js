@@ -918,22 +918,40 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
         });
         sightingRow.on('dragover', function (e) {
             e.preventDefault();
-            e.originalEvent.dataTransfer.dropEffect = 'move';
+            const dt = e.originalEvent && e.originalEvent.dataTransfer;
+            const types = dt && dt.types;
+            const hasFiles = types && (typeof types.includes === 'function' ? types.includes('Files') : Array.from(types).includes('Files'));
+            if (hasFiles) {
+                if (dt) dt.dropEffect = 'copy';
+                $(this).removeClass('drag-over-top drag-over-bottom').addClass('drag-over-file');
+                return;
+            }
+            if (dt) dt.dropEffect = 'move';
             let bounding = this.getBoundingClientRect();
             let offset = bounding.y + (bounding.height / 2);
             if (e.originalEvent.clientY > offset) {
-                $(this).removeClass('drag-over-top').addClass('drag-over-bottom');
+                $(this).removeClass('drag-over-top drag-over-file').addClass('drag-over-bottom');
             } else {
-                $(this).removeClass('drag-over-bottom').addClass('drag-over-top');
+                $(this).removeClass('drag-over-bottom drag-over-file').addClass('drag-over-top');
             }
         });
         sightingRow.on('dragleave', function (e) {
-            $(this).removeClass('drag-over-top drag-over-bottom');
+            $(this).removeClass('drag-over-top drag-over-bottom drag-over-file');
         });
         sightingRow.on('drop', function (e) {
             e.preventDefault();
-            $(this).removeClass('drag-over-top drag-over-bottom');
-            let draggedKey = e.originalEvent.dataTransfer.getData('text/plain');
+            $(this).removeClass('drag-over-top drag-over-bottom drag-over-file');
+            const dt = e.originalEvent && e.originalEvent.dataTransfer;
+            const droppedFiles = dt && dt.files;
+            if (droppedFiles && droppedFiles.length > 0) {
+                e.stopPropagation();
+                const mediaFiles = Array.from(droppedFiles).filter(f =>
+                    f && ((f.type && /^(image|video)\//.test(f.type)) || /\.(jpe?g|png|webp|mp4)$/i.test(f.name || ''))
+                );
+                handleMediaFilesUpload(sighting.key, mediaFiles);
+                return;
+            }
+            let draggedKey = dt ? dt.getData('text/plain') : '';
             let targetKey = sighting.key;
             if (draggedKey && draggedKey !== targetKey) {
                 let bounding = this.getBoundingClientRect();
@@ -943,14 +961,9 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
             }
         });
 
-        sightingRow.find(".upload-button").click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            sightingRow.find(".upload").click();
-        });
-        sightingRow.find(".upload").change(function () {
-            if (!this.files || this.files.length === 0) return;
-            const allFiles = Array.from(this.files);
+        function handleMediaFilesUpload(sightingKey, fileList) {
+            if (!fileList || fileList.length === 0) return;
+            const allFiles = Array.from(fileList);
             const imageFiles = allFiles.filter(f => f && f.type && f.type.match(/image.*/));
             const otherFiles = allFiles.filter(f => f && (!f.type || !f.type.match(/image.*/)));
             if (imageFiles.length > 0) {
@@ -971,19 +984,28 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
                     }
                     const filesToUpload = [...finalImages, ...otherFiles];
                     const originalSources = [...imageFiles, ...otherFiles];
-                    uploadMedia(sighting.key, filesToUpload, originalSources);
+                    uploadMedia(sightingKey, filesToUpload, originalSources);
                 };
                 if (imageFiles.length > 1) {
                     openCropper(firstImage, onCropDone, { totalCount: imageFiles.length, includeCropMeta: true });
                 } else {
                     openCropper(firstImage, onCropDone);
                 }
-                $(this).val(''); // Reset input
             } else {
                 showLoader('upload-media', 'Uploading Media...');
-                uploadMedia(sighting.key, allFiles);
-                $(this).val(''); // Reset input
+                uploadMedia(sightingKey, allFiles);
             }
+        }
+
+        sightingRow.find(".upload-button").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            sightingRow.find(".upload").click();
+        });
+        sightingRow.find(".upload").change(function () {
+            if (!this.files || this.files.length === 0) return;
+            handleMediaFilesUpload(sighting.key, this.files);
+            $(this).val(''); // Reset input
         });
         sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
             let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
