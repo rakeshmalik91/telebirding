@@ -499,6 +499,18 @@ describe('Filters Module', () => {
             expect(State.sort.by).toBe('date');
             expect(State.sort.descending).toBe(true);
         });
+
+        it('should sort by image grade (rating) descending by default and toggle ascending', () => {
+            window.showPage = vi.fn();
+            Filters.setSort({ by: 'date', descending: true });
+
+            Filters.sortByOnChange('rating');
+            expect(State.sort.by).toBe('rating');
+            expect(State.sort.descending).toBe(true);
+
+            Filters.sortByOnChange('rating');
+            expect(State.sort.descending).toBe(false);
+        });
     });
 
     describe('setNewSpeciesFilterState and toggle', () => {

@@ -95,6 +95,9 @@ export function filterAndSortData(filter, params) {
         case 'name':
             filteredSightings.sort((a, b) => (State.sort.descending ? -1 : 1) * Util.compare(a.species.name, b.species.name, Util.compare(a.key, b.key)));
             break;
+        case 'rating':
+            filteredSightings.sort((a, b) => (State.sort.descending ? -1 : 1) * Util.compare(Number(a.rating) || 0, Number(b.rating) || 0, Util.compare(b.index, a.index)));
+            break;
         case 'shuffle':
             filteredSightings = Util.shuffle(filteredSightings);
             break;
@@ -385,7 +388,7 @@ export function sortByOnChange(value) {
     $(".sortby button[data-value='" + value + "']").addClass("button-active");
     let newSort = { ...State.sort };
     if (newSort.by != value) {
-        newSort.descending = (newSort.by != "date");
+        newSort.descending = (value !== 'name');
     } else {
         newSort.descending = !newSort.descending;
     }

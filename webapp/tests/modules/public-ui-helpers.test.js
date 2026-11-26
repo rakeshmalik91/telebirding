@@ -275,6 +275,13 @@ describe('Public UI Helpers - copyCurrentPageUrl and copyStoryLink', () => {
         vi.useRealTimers();
     });
 
+    it('copyCurrentPageUrl should encode spaces as %20 instead of +', async () => {
+        $('.filter input[data-value="place"]').val('Sri Lanka');
+        const url = await copyCurrentPageUrl();
+        expect(url).toContain('place=Sri%20Lanka');
+        expect(url).not.toContain('place=Sri+Lanka');
+    });
+
     it('copyStoryLink should copy the full story URL and trigger toast', async () => {
         await copyStoryLink('bhimtal-trip');
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expect.stringContaining('story=bhimtal-trip'));

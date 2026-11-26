@@ -385,9 +385,11 @@ export function updateSortToggleLabel() {
     const $sortby = $('.sortby');
     if (!$sortby.length) return;
     const isOpen = $sortby.hasClass('sortby-open');
-    const byLabel = State.sort?.by === 'name' ? 'Name' : 'Date';
+    const SORT_LABELS = { date: 'Date', name: 'Name', rating: 'Grade' };
+    const byLabel = SORT_LABELS[State.sort?.by] || 'Date';
     const isDesc = !!State.sort?.descending;
     const $btn = $sortby.find('.sortby-toggle-btn');
+    $btn.addClass('button-active');
     if ($btn.find('.sortby-label').length) {
         $btn.find('.sortby-label').text(byLabel);
         $btn.find('.order').toggleClass('desc', isDesc).toggleClass('asc', !isDesc);
@@ -565,7 +567,8 @@ export function copyCurrentPageUrl() {
         if (placeVal && placeVal.trim()) urlObj.searchParams.set('place', placeVal.trim());
         if (nameVal && nameVal.trim()) urlObj.searchParams.set('sighting', nameVal.trim());
         if (State.tripIdFilter && String(State.tripIdFilter).trim()) urlObj.searchParams.set('trip_id', String(State.tripIdFilter).trim());
-        url = urlObj.toString();
+        const searchStr = urlObj.searchParams.toString().replace(/\+/g, '%20');
+        url = `${urlObj.origin}${urlObj.pathname}${searchStr ? `?${searchStr}` : ''}${urlObj.hash}`;
     } catch (e) {
         // Fall back to window.location.href
     }

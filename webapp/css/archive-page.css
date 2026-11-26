@@ -547,6 +547,11 @@ body[data-page="explore_page"] .right-pane-button-container {
 }
 
 @media screen and (min-width: 769px) {
+	.filter-panel .filter-name-component input,
+	.filter-panel .filter-location-component input {
+		width: clamp(120px, calc(36vw - 220px), 340px);
+	}
+
 	.filter-panel.desktop-badges-collapsed .desktop-badges-wrapper {
 		position: relative;
 		float: right;

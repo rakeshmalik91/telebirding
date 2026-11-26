@@ -17,6 +17,13 @@ export function getSightingPhotoTitle(sighting, image) {
     return plumage.length ? plumage.join(" ").trim() : Constants.DEFAULT_PLUMAGE;
 }
 
+function escapeOnclickArg(val) {
+    return String(val || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '&quot;');
+}
+
 export function renderSightingTags(sightingLabelDiv, sighting) {
     sightingLabelDiv.append("<div class='sighting-tags'></div>");
     let tagsDiv = sightingLabelDiv.find(".sighting-tags");
@@ -97,12 +104,12 @@ export function renderSightingDetails(sightingLabelDiv, sighting, inPreviewPage)
         sightingLabelDiv.append(refDiv);
     }
 
-    let aPlace = (sighting.place ? ("<a" + ti + " class='place' onclick=\"triggerFilter('place', '" + sighting.place + "')\">" + (inPreviewPage ? sighting.place : Util.trimPlaceName(sighting.place, 25)) + "</a>, ") : "");
-    let aCity = (sighting.city ? ("<a" + ti + " class='city' onclick=\"triggerFilter('place', '" + sighting.city + "')\">" + (inPreviewPage ? sighting.city : Util.trimPlaceName(sighting.city, (sighting.place ? 15 : 25))) + "</a>, ") : "");
+    let aPlace = (sighting.place ? ("<a" + ti + " class='place' onclick=\"triggerFilter('place', '" + escapeOnclickArg(sighting.place) + "')\">" + (inPreviewPage ? sighting.place : Util.trimPlaceName(sighting.place, 25)) + "</a>, ") : "");
+    let aCity = (sighting.city ? ("<a" + ti + " class='city' onclick=\"triggerFilter('place', '" + escapeOnclickArg(sighting.city) + "')\">" + (inPreviewPage ? sighting.city : Util.trimPlaceName(sighting.city, (sighting.place ? 15 : 25))) + "</a>, ") : "");
     let stateFullName = Util.getStateFullName(sighting.country, sighting.state, State.data.countries);
-    let aState = "<a" + ti + " class='state' onclick=\"triggerFilter('place', '" + stateFullName + "')\">" + (inPreviewPage ? stateFullName : Util.trimPlaceName(stateFullName, 15)) + "</a>, ";
+    let aState = "<a" + ti + " class='state' onclick=\"triggerFilter('place', '" + escapeOnclickArg(stateFullName) + "')\">" + (inPreviewPage ? stateFullName : Util.trimPlaceName(stateFullName, 15)) + "</a>, ";
     let countryFullName = Util.getCountryFullName(sighting.country, State.data.countries);
-    let aCountry = "<a" + ti + " class='country' onclick=\"triggerFilter('place', '" + countryFullName + "')\">" + countryFullName + "</a>";
+    let aCountry = "<a" + ti + " class='country' onclick=\"triggerFilter('place', '" + escapeOnclickArg(countryFullName) + "')\">" + countryFullName + "</a>";
     if (stateFullName == countryFullName) aState = '';
     sightingLabelDiv.append('<div class="sighting-desc">' + aPlace + aCity + aState + aCountry + '</div>');
 

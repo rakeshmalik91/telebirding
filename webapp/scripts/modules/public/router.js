@@ -10,7 +10,7 @@ import {
 } from './rendering.js';
 import State from './state.js';
 import { showLoader, hideLoader, resetLoader } from '../loader.js';
-import { setSiteLogo, stopYoutubeVideos, renderModeToggle, updateMobileNavActiveTab, updateMobileFilterToggleBadge } from './ui-helpers.js';
+import { setSiteLogo, stopYoutubeVideos, renderModeToggle, updateMobileNavActiveTab, updateMobileFilterToggleBadge, updateSortToggleLabel } from './ui-helpers.js';
 import { computeInternalDataFields } from './data-helpers.js';
 
 let isSamePageNavigation = false;
@@ -168,19 +168,21 @@ export function retrieveStateFromUrlParams() {
     if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(urlParams.page) && urlParams.sort_by) {
         let newSort = { by: decodeURIComponent(urlParams.sort_by), descending: !!urlParams.sort_descending };
         $(".sortby").ready(function () {
-            $(".sortby button").removeClass("button-active");
+            $(".sortby button[data-value]").removeClass("button-active");
             $(".sortby button[data-value='" + newSort.by + "']").addClass("button-active");
             if (newSort.descending) {
                 $(".sortby button[data-value='" + newSort.by + "'] span.order").addClass('desc').removeClass('asc');
             } else {
                 $(".sortby button[data-value='" + newSort.by + "'] span.order").removeClass('desc').addClass('asc');
             }
+            updateSortToggleLabel();
         });
         setSort(newSort);
     } else {
         setSort({ by: 'date', descending: true });
         $(".sortby").ready(function () {
             $(".sortby button[data-value='date'] span.order").addClass('desc').removeClass('asc');
+            updateSortToggleLabel();
         });
     }
 
