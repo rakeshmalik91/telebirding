@@ -47,12 +47,10 @@
                 {
                     "text": "Andaman & Nicobar Sightings",
                     "params": {
-                        "place": "Andaman & Nicobar Islands",
-                        "date": "2026"
+                        "trip_id": "andaman-2026"
                     }
                 }
-            ],
-            "itineraryExpanded": true
+            ]
         },
         {
             "title": "Nalsarovar & Little Rann of Kutch, Gujarat",
@@ -93,15 +91,13 @@
                 {
                     "text": "Nalsarovar (Monsoon) Sightings",
                     "params": {
-                        "place": "Gujarat",
-                        "date": "Aug, 2025"
+                        "trip_id": "nalsarovar-2025"
                     }
                 },
                 {
                     "text": "LRK & Nalsarovar (Winter) Sightings",
                     "params": {
-                        "place": "Gujarat",
-                        "date": "Jan, 2026"
+                        "trip_id": "lrk-nalsarovar-2026"
                     }
                 }
             ],
@@ -116,8 +112,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Iceland",
-                        "date": "2025"
+                        "trip_id": "iceland-2025"
                     }
                 }
             ],
@@ -185,8 +180,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Sambhar",
-                        "date": "2025"
+                        "trip_id": "sambhar-2025"
                     }
                 }
             ]
@@ -226,8 +220,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Maharashtra",
-                        "date": "2024"
+                        "trip_id": "maharashtra-2024"
                     }
                 }
             ]
@@ -241,8 +234,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Sambhar",
-                        "date": "2024"
+                        "trip_id": "sambhar-2024"
                     }
                 }
             ]
@@ -294,8 +286,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Ladakh",
-                        "date": "2024"
+                        "trip_id": "ladakh-2024"
                     }
                 }
             ]
@@ -327,8 +318,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "West Bengal",
-                        "date": "2024"
+                        "trip_id": "latpanchar-lava-2024"
                     }
                 }
             ]
@@ -380,8 +370,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Uttarakhand",
-                        "date": "Dec, 2023"
+                        "trip_id": "uttarakhand-2023"
                     }
                 }
             ]
@@ -429,8 +418,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Uttarakhand",
-                        "date": "Jan, 2024"
+                        "trip_id": "uttarakhand-2024"
                     }
                 }
             ]
@@ -444,8 +432,7 @@
                 {
                     "text": "Tal Chhapar Sightings",
                     "params": {
-                        "place": "Tal Chhapar",
-                        "date": "2023"
+                        "trip_id": "tal-chhapar-2023"
                     }
                 }
             ]
@@ -459,8 +446,7 @@
                 {
                     "text": "Jorbeer Sightings",
                     "params": {
-                        "place": "Bikaner",
-                        "date": "Dec, 2023"
+                        "trip_id": "jorbeer-2023"
                     }
                 }
             ]
@@ -474,8 +460,7 @@
                 {
                     "text": "DNP Sightings",
                     "params": {
-                        "place": "Desert National Park",
-                        "date": "Dec, 2023"
+                        "trip_id": "dnp-2023"
                     }
                 }
             ]
@@ -489,8 +474,7 @@
                 {
                     "text": "Khichan Sightings",
                     "params": {
-                        "place": "Khichan",
-                        "date": "2023"
+                        "trip_id": "khichan-2023"
                     }
                 }
             ]
@@ -504,8 +488,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Bharatpur",
-                        "date": "Jan, 2023"
+                        "trip_id": "bharatpur-2023"
                     }
                 }
             ]
@@ -519,8 +502,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Thattekad Bird Sanctuary",
-                        "date": "Dec, 2022"
+                        "trip_id": "thattekad-2022"
                     }
                 }
             ]
@@ -537,8 +519,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Purbasthali",
-                        "date": "Nov, 2022"
+                        "trip_id": "purbasthali-2022"
                     }
                 }
             ]
@@ -552,8 +533,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "South Andaman",
-                        "date": "2022"
+                        "trip_id": "south-andaman-2022"
                     }
                 }
             ]
@@ -567,22 +547,21 @@
                 {
                     "text": "All Sightings",
                     "params": {
-                        "place": "Ladakh",
-                        "date": "2022"
+                        "trip_id": "ladakh-2022"
                     }
                 },
                 {
                     "text": "Hanle Sightings",
                     "params": {
-                        "place": "Hanle",
-                        "date": "2022"
+                        "trip_id": "ladakh-2022",
+                        "place": "Hanle"
                     }
                 },
                 {
                     "text": "Tso Kar Sightings",
                     "params": {
-                        "place": "Tso Kar",
-                        "date": "2022"
+                        "trip_id": "ladakh-2022",
+                        "place": "Tso Kar"
                     }
                 }
             ]
@@ -596,15 +575,13 @@
                 {
                     "text": "Darjeeling Sightings",
                     "params": {
-                        "place": "Darjeeling",
-                        "date": "Dec, 2021"
+                        "trip_id": "darjeeling-2021"
                     }
                 },
                 {
                     "text": "Gajoldoba Sightings",
                     "params": {
-                        "place": "Gajoldoba",
-                        "date": "Dec, 2021"
+                        "trip_id": "gajoldoba-2021"
                     }
                 }
             ]
@@ -618,8 +595,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Bhitarkanika National Park",
-                        "date": "Nov, 2021"
+                        "trip_id": "bhitarkanika-2021"
                     }
                 }
             ]
@@ -633,8 +609,7 @@
                 {
                     "text": "Sightings",
                     "params": {
-                        "place": "Ranganathittu Bird Sanctuary",
-                        "date": "2017"
+                        "trip_id": "ranganathittu-2017"
                     }
                 }
             ]

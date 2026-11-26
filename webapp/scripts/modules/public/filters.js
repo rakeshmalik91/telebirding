@@ -3,7 +3,7 @@ import Constants from '../constants.js';
 import { Autocomplete } from './autocomplete.js';
 import State from './state.js';
 import { removePreviewImage } from './preview.js';
-import { updateMobileFilterToggleBadge } from './ui-helpers.js';
+import { updateMobileFilterToggleBadge, syncDesktopHeaderHeight, updateSortToggleLabel } from './ui-helpers.js';
 
 export function filterAndSortData(filter, params) {
     removePreviewImage();
@@ -71,6 +71,13 @@ export function filterAndSortData(filter, params) {
         filteredSightings = filteredSightings.filter(b => (b.rating || 0) >= State.ratingFilter);
     }
 
+    //trip_id filter (URL/state only, not visible as filter on UI)
+    const tripIdFilter = (params && params.trip_id !== undefined ? params.trip_id : (filter && filter.trip_id)) || State.tripIdFilter || '';
+    if (tripIdFilter) {
+        const tripIdLower = String(tripIdFilter).trim().toLowerCase();
+        filteredSightings = filteredSightings.filter(b => b.trip_id && String(b.trip_id).trim().toLowerCase() === tripIdLower);
+    }
+
     //camera_model filter
     if (filter.camera_model) {
         filteredSightings = filteredSightings.filter(b => b.media && b.media.some(m => {
@@ -124,16 +131,46 @@ export function triggerFilter(type, value) {
     }
 }
 
+const TRIP_MONTH_TOKENS = new Set(['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']);
+const TRIP_UPPERCASE_TOKENS = new Set(['lrk', 'dnp']);
+
+export function formatTripIdForDisplay(tripId) {
+    if (!tripId) return '';
+    const tokens = String(tripId).trim().split('-').filter(Boolean);
+    if (!tokens.length) return '';
+
+    const firstDateIdx = tokens.findIndex(t => TRIP_MONTH_TOKENS.has(t.toLowerCase()) || /^\d{4}$/.test(t));
+    const formatPlaceToken = (t) => {
+        const lower = t.toLowerCase();
+        if (TRIP_UPPERCASE_TOKENS.has(lower)) return lower.toUpperCase();
+        return Util.capitalize(lower);
+    };
+
+    if (firstDateIdx <= 0) {
+        return tokens.map(formatPlaceToken).join(' ');
+    }
+
+    const placePart = tokens.slice(0, firstDateIdx).map(formatPlaceToken).join(' ');
+    const dateTokens = tokens.slice(firstDateIdx);
+    const yearTokens = dateTokens.filter(t => /^\d{4}$/.test(t));
+    const monthTokens = dateTokens.filter(t => !/^\d{4}$/.test(t)).map(t => Util.capitalize(t.toLowerCase()));
+
+    const datePart = [monthTokens.join('-'), yearTokens.join(' ')].filter(Boolean).join(' ');
+    return datePart ? `${placePart}, ${datePart}` : placePart;
+}
+
 export function updateActiveFilterBadges() {
     const sighting = getFilter('sighting');
     const place = getFilter('place');
     const date = getFilter('date');
     const rating = State.ratingFilter || 0;
     const family = State.sightingFamilyFilter || '';
+    const tripId = State.tripIdFilter || '';
 
     const $nameBadge = $('.name-filter-badge');
     const $placeBadge = $('.place-filter-badge');
     const $familyBadge = $('.family-filter-badge');
+    const $tripBadge = $('.trip-filter-badge');
     const $dateBadge = $('.date-filter');
     const $ratingBadge = $('.rating-filter');
 
@@ -171,6 +208,18 @@ export function updateActiveFilterBadges() {
         }
     }
 
+    if ($tripBadge.length) {
+        if (tripId) {
+            $tripBadge.removeClass('hidden').addClass('active button-active').text(formatTripIdForDisplay(tripId));
+            $tripBadge.closest('.filter-trip-component').addClass('has-active-filter');
+            $('.filter-panel').addClass('has-trip-filter');
+        } else {
+            $tripBadge.addClass('hidden').removeClass('active button-active').empty();
+            $tripBadge.closest('.filter-trip-component').removeClass('has-active-filter');
+            $('.filter-panel').removeClass('has-trip-filter');
+        }
+    }
+
     if ($dateBadge.length) {
         if (date) {
             $dateBadge.removeClass('hidden').addClass('active button-active').html(date);
@@ -198,10 +247,14 @@ export function updateActiveFilterBadges() {
         }
     }
 
-    if (sighting || place || date || rating > 0 || family) {
+    if (sighting || place || date || rating > 0 || family || tripId) {
         $('.filter-panel').addClass('has-active-filters');
     } else {
         $('.filter-panel').removeClass('has-active-filters');
+    }
+
+    if (typeof syncDesktopHeaderHeight === 'function') {
+        syncDesktopHeaderHeight();
     }
 }
 
@@ -233,6 +286,7 @@ export function getFilters() {
         place: getFilter('place') || '',
         date: getFilter('date') || '',
         camera_model: getFilter('camera_model') || '',
+        trip_id: State.tripIdFilter || getFilter('trip_id') || '',
         newspecies: State.newSpeciesFilter,
         rating: State.ratingFilter
     };
@@ -241,6 +295,8 @@ export function getFilters() {
 export function setFilter(type, value) {
     if (type == 'rating') {
         State.updateRatingFilter(value || 0);
+    } else if (type == 'trip_id') {
+        State.updateTripIdFilter(value ? String(value).trim() : null);
     } else {
         const input = $(".filter input[data-value='" + type + "']");
         if (input.length) {
@@ -276,6 +332,7 @@ export function setFilters(filter) {
         setFilter('date', filter.date);
         setFilter('rating', filter.rating);
         setFilter('camera_model', filter.camera_model);
+        setFilter('trip_id', filter.trip_id);
     }
 }
 
@@ -312,8 +369,19 @@ export function clearFamilyFilter() {
     }
 }
 
+export function clearTripFilter() {
+    State.updateTripIdFilter(null);
+    updateActiveFilterBadges();
+    if (typeof updateMobileFilterToggleBadge === 'function') {
+        updateMobileFilterToggleBadge();
+    }
+    if (window.showPage) {
+        window.showPage(State.currentPage, { ...getFilters(), trip_id: '' });
+    }
+}
+
 export function sortByOnChange(value) {
-    $(".sortby button").removeClass("button-active");
+    $(".sortby button[data-value]").removeClass("button-active");
     $(".sortby button[data-value='" + value + "']").addClass("button-active");
     let newSort = { ...State.sort };
     if (newSort.by != value) {
@@ -328,13 +396,21 @@ export function sortByOnChange(value) {
         $(".sortby button[data-value='" + value + "'] span.order").removeClass('desc').addClass('asc');
     }
     State.updateSort(newSort);
+    $('.sortby').removeClass('sortby-open');
+    updateSortToggleLabel();
     refresh();
 }
 
 export function setSort(newSort) {
     State.updateSort(newSort);
-    $(".sortby button").removeClass("button-active");
+    $(".sortby button[data-value]").removeClass("button-active");
     $(".sortby button[data-value='" + newSort.by + "']").addClass("button-active");
+    if (newSort.descending) {
+        $(".sortby button[data-value='" + newSort.by + "'] span.order").addClass('desc').removeClass('asc');
+    } else {
+        $(".sortby button[data-value='" + newSort.by + "'] span.order").removeClass('desc').addClass('asc');
+    }
+    updateSortToggleLabel();
 }
 
 export function setNewSpeciesFilterState() {

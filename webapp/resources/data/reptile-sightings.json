@@ -76,6 +76,38 @@
             "place": "Horton Plains National Park"
         },
         {
+            "key": "s1795671898",
+            "species": "greens-paddy-field-frog",
+            "date": "20-11-2026",
+            "place": "Horton Plains National Park",
+            "city": "Nuwara Eliya",
+            "state": "Central Province",
+            "country": "Sri Lanka",
+            "time_of_day": "Day",
+            "media": [
+                {
+                    "src": "images/greens-paddy-field-frog-1795671908.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/greens-paddy-field-frog-1795671921.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                },
+                {
+                    "src": "images/greens-paddy-field-frog-1795672001.jpg",
+                    "exif_data": {
+                        "camera_model": "S7RV+200600"
+                    }
+                }
+            ],
+            "unconfirmed": true,
+            "rating": "2"
+        },
+        {
             "key": "s1795416048",
             "species": "green-vine-snake",
             "date": "19-11-2026",

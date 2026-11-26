@@ -521,6 +521,7 @@ function renderSubTable(story, storyIndex, subType) {
                             <th style="min-width: 200px;">Button / Link Display Text</th>
                             <th style="width: 200px;">Place Filter Param</th>
                             <th style="width: 140px;">Date Filter Param</th>
+                            <th style="width: 160px;">Trip ID Filter Param</th>
                             <th style="width: 50px; text-align: center;">Action</th>
                         </tr>
                     </thead>
@@ -530,6 +531,7 @@ function renderSubTable(story, storyIndex, subType) {
             const text = item.text || '';
             const place = item.params?.place || '';
             const date = item.params?.date || '';
+            const tripId = item.params?.trip_id || '';
             html += `
                 <tr>
                     <td style="text-align: center; color: #94a3b8;">${linkIdx + 1}</td>
@@ -542,6 +544,9 @@ function renderSubTable(story, storyIndex, subType) {
                     <td>
                         <input type="text" class="spreadsheet-cell-input sighting-link-field" data-story-idx="${storyIndex}" data-link-idx="${linkIdx}" data-field="date" value="${escapeHtml(date)}" placeholder="e.g. 2026" />
                     </td>
+                    <td>
+                        <input type="text" class="spreadsheet-cell-input sighting-link-field" data-story-idx="${storyIndex}" data-link-idx="${linkIdx}" data-field="trip_id" value="${escapeHtml(tripId)}" placeholder="e.g. andaman-2026" />
+                    </td>
                     <td style="text-align: center;">
                         <button class="delete-sighting delete-sighting-link-btn" data-story-idx="${storyIndex}" data-link-idx="${linkIdx}" title="Delete Link" style="margin: 0 auto;">🗑️</button>
                     </td>
@@ -549,7 +554,7 @@ function renderSubTable(story, storyIndex, subType) {
             `;
         });
         if (sightings.length === 0) {
-            html += `<tr><td colspan="5" style="text-align:center; color:#94a3b8; padding:12px;">No sightings filter links added yet.</td></tr>`;
+            html += `<tr><td colspan="6" style="text-align:center; color:#94a3b8; padding:12px;">No sightings filter links added yet.</td></tr>`;
         }
         html += `
                     </tbody>
@@ -803,7 +808,8 @@ function bindSubTableEvents($tab) {
             text: 'Sightings',
             params: {
                 place: data.stories[storyIdx].title || '',
-                date: ''
+                date: '',
+                trip_id: ''
             }
         });
         syncStoriesData();

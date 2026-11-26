@@ -194,11 +194,14 @@ describe('Admin Stories Module', () => {
         // Expand sightings
         $('.toggle-sub-btn[data-sub="sightings"]').first().trigger('click');
         expect($('.sub-table-row').length).toBe(1);
-        expect($('.sighting-link-field').length).toBe(3);
+        expect($('.sighting-link-field').length).toBe(4);
 
-        // Edit text
+        // Edit text and trip_id
         $('.sighting-link-field[data-field="text"]').first().val('All Sightings').trigger('input');
         expect(AdminData.data.stories[0].sightings[0].text).toBe('All Sightings');
+
+        $('.sighting-link-field[data-field="trip_id"]').first().val('andaman-2026').trigger('input');
+        expect(AdminData.data.stories[0].sightings[0].params.trip_id).toBe('andaman-2026');
 
         // Add link
         $('.add-sighting-link-btn').trigger('click');

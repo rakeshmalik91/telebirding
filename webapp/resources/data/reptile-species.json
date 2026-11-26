@@ -36,6 +36,15 @@
             "family": "Snakes",
             "latin_name": "ahaetulla nasuta"
         },
+        "greens-paddy-field-frog": {
+            "key": "greens-paddy-field-frog",
+            "name": "Green's Paddy-field Frog",
+            "tags": [
+                "Frog"
+            ],
+            "family": "Frogs & Toads",
+            "latin_name": "minervarya greenii"
+        },
         "rat-snake": {
             "key": "rat-snake",
             "name": "Rat Snake",
@@ -62,6 +71,14 @@
             ],
             "family": "Agamid Lizards",
             "latin_name": "otocryptis wiegmanni"
+        },
+        "unidentified-frog": {
+            "key": "unidentified-frog",
+            "name": "Unidentified Frog",
+            "tags": [
+                "Frog"
+            ],
+            "family": "Frogs & Toads"
         },
         "unidentified-gecko": {
             "key": "unidentified-gecko",

@@ -6,3 +6,5 @@ REM It will also remove any unreferenced images from local images folder
 cd /d "%~dp0.."
 python "%~dp0backup.py" %*
 timeout /t 10
+
+git add webapp/resources/data

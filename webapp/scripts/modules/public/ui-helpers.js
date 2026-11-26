@@ -359,12 +359,14 @@ export function updateMobileFilterToggleBadge() {
     const dateVal = $('.filter input[data-value="date"]').val() || '';
     const ratingVal = State.ratingFilter || 0;
     const familyVal = State.sightingFamilyFilter || '';
+    const tripVal = State.tripIdFilter || '';
     let count = 0;
     if (placeVal.trim()) count++;
     if (nameVal.trim()) count++;
     if (dateVal.trim()) count++;
     if (ratingVal > 0) count++;
     if (familyVal.trim()) count++;
+    if (String(tripVal).trim()) count++;
 
     const $badge = $btn.find('.mobile-filter-badge');
     if (count > 0) {
@@ -373,6 +375,120 @@ export function updateMobileFilterToggleBadge() {
     } else {
         $btn.removeClass('has-filters');
         $badge.hide();
+    }
+}
+
+/**
+ * Syncs --header-height CSS variable on desktop when wrapped filter badges expand .site-header.
+ */
+export function updateSortToggleLabel() {
+    const $sortby = $('.sortby');
+    if (!$sortby.length) return;
+    const isOpen = $sortby.hasClass('sortby-open');
+    const byLabel = State.sort?.by === 'name' ? 'Name' : 'Date';
+    const isDesc = !!State.sort?.descending;
+    const $btn = $sortby.find('.sortby-toggle-btn');
+    if ($btn.find('.sortby-label').length) {
+        $btn.find('.sortby-label').text(byLabel);
+        $btn.find('.order').toggleClass('desc', isDesc).toggleClass('asc', !isDesc);
+        $btn.find('.dropdown-caret').text(` ${isOpen ? '▴' : '▾'}`);
+    } else {
+        $btn.text(`${byLabel} ${isDesc ? '↓' : '↑'} ${isOpen ? '▴' : '▾'}`);
+    }
+}
+
+export function toggleSortDropdown(e) {
+    if (e) e.stopPropagation();
+    const $panel = $('.filter-panel.desktop-badges-open');
+    if ($panel.length) {
+        $panel.removeClass('desktop-badges-open');
+        const count = $panel.find('.desktop-badges-toggle-btn').attr('data-count') || '';
+        $panel.find('.desktop-badges-toggle-btn').text(`Filters (${count}) ▾`);
+    }
+    const $sortby = $('.sortby');
+    $sortby.toggleClass('sortby-open');
+    updateSortToggleLabel();
+}
+
+export function toggleDesktopFilterBadges(e) {
+    if (e) e.stopPropagation();
+    const $sortby = $('.sortby.sortby-open');
+    if ($sortby.length) {
+        $sortby.removeClass('sortby-open');
+        updateSortToggleLabel();
+    }
+    const $panel = $('.filter-panel');
+    $panel.toggleClass('desktop-badges-open');
+    const isOpen = $panel.hasClass('desktop-badges-open');
+    const count = $panel.find('.desktop-badges-toggle-btn').attr('data-count') || '';
+    $panel.find('.desktop-badges-toggle-btn').text(`Filters (${count}) ${isOpen ? '▴' : '▾'}`);
+}
+
+/**
+ * Collapses non-editable filter badges into a toggle button on desktop when they would
+ * overlap the site brand or overflow the header, and syncs --header-height.
+ */
+export function syncDesktopHeaderHeight() {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return;
+    const $panel = $('.filter-panel');
+    const activeBadgeCount = $panel.find('.filter-active-badges-row .active-filter-badge:not(.hidden)').length;
+    $panel.toggleClass('mobile-badges-collapsed', activeBadgeCount > 1);
+    const isMobileViewport = State.IS_MOBILE_DEVICE
+        || (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 767px) and (orientation: portrait), (max-width: 950px) and (max-height: 500px)').matches)
+        || (window.innerWidth > 0 && window.innerWidth <= 768);
+    if (isMobileViewport) {
+        $panel.removeClass('desktop-badges-collapsed');
+        if (activeBadgeCount > 1) {
+            const isOpen = $panel.hasClass('desktop-badges-open');
+            $panel.find('.desktop-badges-toggle-btn')
+                .attr('data-count', activeBadgeCount)
+                .text(`Filters (${activeBadgeCount}) ${isOpen ? '▴' : '▾'}`);
+        } else {
+            $panel.removeClass('desktop-badges-open');
+        }
+        document.documentElement.style.removeProperty('--header-height');
+        return;
+    }
+
+    if (activeBadgeCount > 1) {
+        const wasOpen = $panel.hasClass('desktop-badges-open');
+        $panel.removeClass('desktop-badges-collapsed desktop-badges-open');
+
+        const $header = $('.site-header');
+        const $brand = $('.site-brand');
+        const $filter = $('.filter-panel .filter');
+        const $sortby = $('.filter-panel .sortby');
+
+        let overlapsBrand = false;
+        if ($brand.length && $filter.length && typeof $brand[0].getBoundingClientRect === 'function') {
+            const brandRect = $brand[0].getBoundingClientRect();
+            const filterRect = $filter[0].getBoundingClientRect();
+            if (brandRect.width > 0 && filterRect.width > 0 && filterRect.left < brandRect.right + 12) {
+                overlapsBrand = true;
+            }
+        }
+        const headerWrapped = ($header.outerHeight() || 0) > 116 || ($sortby.length && $sortby.position().top > 45);
+
+        if (overlapsBrand || headerWrapped) {
+            $panel.addClass('desktop-badges-collapsed');
+            if (wasOpen) $panel.addClass('desktop-badges-open');
+            $panel.find('.desktop-badges-toggle-btn')
+                .attr('data-count', activeBadgeCount)
+                .text(`Filters (${activeBadgeCount}) ${wasOpen ? '▴' : '▾'}`);
+        }
+    } else {
+        $panel.removeClass('desktop-badges-collapsed desktop-badges-open');
+    }
+
+    const $header = $('.site-header');
+    if (!$header.length) return;
+    const h = Math.ceil($header.outerHeight() || 0);
+    // Normal single-line desktop header outerHeight is 115px (95px min-height + 20px vertical padding),
+    // which is already covered by --header-height (95px) + --header-padding (25px).
+    if (h > 115) {
+        document.documentElement.style.setProperty('--header-height', `${h - 20}px`);
+    } else {
+        document.documentElement.style.removeProperty('--header-height');
     }
 }
 
@@ -448,6 +564,7 @@ export function copyCurrentPageUrl() {
         const nameVal = $('.filter input[data-value="sighting"]').val();
         if (placeVal && placeVal.trim()) urlObj.searchParams.set('place', placeVal.trim());
         if (nameVal && nameVal.trim()) urlObj.searchParams.set('sighting', nameVal.trim());
+        if (State.tripIdFilter && String(State.tripIdFilter).trim()) urlObj.searchParams.set('trip_id', String(State.tripIdFilter).trim());
         url = urlObj.toString();
     } catch (e) {
         // Fall back to window.location.href

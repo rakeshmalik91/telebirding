@@ -43,9 +43,9 @@
 
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
 	<link rel="stylesheet" charset="UTF-8" href="css/common.css?v=20261123_11">
-	<link rel="stylesheet" charset="UTF-8" href="css/home.css?v=20261125_1708">
-	<link rel="stylesheet" charset="UTF-8" href="css/archive-page.css?v=20261125_1708">
-	<link rel="stylesheet" charset="UTF-8" href="css/mobile.css?v=20261125_1708">
+	<link rel="stylesheet" charset="UTF-8" href="css/home.css?v=20261126_1015">
+	<link rel="stylesheet" charset="UTF-8" href="css/archive-page.css?v=20261126_1020">
+	<link rel="stylesheet" charset="UTF-8" href="css/mobile.css?v=20261126_1020">
 	<link rel="stylesheet" charset="UTF-8" href="css/toast.css?v=20261124_01">
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -61,7 +61,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
 
-	<script type="module" src="scripts/main.js?v=20261125_0635"></script>
+	<script type="module" src="scripts/main.js?v=20261126_1539"></script>
 </head>
 
 <body>
@@ -165,33 +165,47 @@
 					<button type="button" class="hidden name-filter-badge active-filter-badge"
 						onclick="clearFilter('sighting')" tabindex="5" title="Clear Bird Name Filter"></button>
 				</div>
-				<div class="filter-active-badges-row">
-					<div class="component filter-family-component">
-						<button type="button" class="hidden family-filter-badge active-filter-badge"
-							onclick="clearFamilyFilter()" tabindex="5" title="Clear Family Filter"></button>
+				<div class="desktop-badges-wrapper">
+					<div class="component desktop-badges-toggle-component">
+						<button type="button" class="desktop-badges-toggle-btn" onclick="toggleDesktopFilterBadges(event)"
+							title="Show active filters"></button>
 					</div>
-					<div class="component filter-date-component">
-						<input type="text" class="hidden" data-value="date" />
-						<button type="button" class="hidden date-filter active-filter-badge"
-							onclick="clearFilter('date')" tabindex="8" title="Clear Date Filter"></button>
-					</div>
-					<div class="component filter-rating-component">
-						<button type="button" class="hidden rating-filter active-filter-badge"
-							onclick="resetRatingFilter()" tabindex="8" title="Clear Rating Filter"><span
-								class="rating-label">Grade:&nbsp;</span><span class="rating"></span></button>
+					<div class="filter-active-badges-row">
+						<div class="component filter-trip-component">
+							<button type="button" class="hidden trip-filter-badge active-filter-badge"
+								onclick="clearTripFilter()" tabindex="5" title="Clear Trip Filter"></button>
+						</div>
+						<div class="component filter-family-component">
+							<button type="button" class="hidden family-filter-badge active-filter-badge"
+								onclick="clearFamilyFilter()" tabindex="5" title="Clear Family Filter"></button>
+						</div>
+						<div class="component filter-date-component">
+							<input type="text" class="hidden" data-value="date" />
+							<button type="button" class="hidden date-filter active-filter-badge"
+								onclick="clearFilter('date')" tabindex="8" title="Clear Date Filter"></button>
+						</div>
+						<div class="component filter-rating-component">
+							<button type="button" class="hidden rating-filter active-filter-badge"
+								onclick="resetRatingFilter()" tabindex="8" title="Clear Rating Filter"><span
+									class="rating-label">Grade:&nbsp;</span><span class="rating"></span></button>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="sortby">
-				<!-- <div class="component"><button type="button" data-value="family" tabindex="3"  onclick="sortByOnChange('family')" title="Sort by Bird Family">Family</button></div> -->
-				<!-- <div class="component"><button type="button" data-value="shuffle" tabindex="0"  onclick="sortByOnChange('shuffle')" title="Shuffle"><img class="icon" src="icons/shuffle.png"/></button></div> -->
-				<div class="component sortby-name-component"><button type="button" data-value="name" tabindex="2"
-						onclick="sortByOnChange('name')" title="Sort by Name">Name<span class="order"></span></button>
+				<div class="component sortby-toggle-component">
+					<button type="button" class="sortby-toggle-btn button-active" onclick="toggleSortDropdown(event)"
+						tabindex="1" title="Sort sightings"><span class="sortby-label">Date</span><span
+							class="order desc"></span><span class="dropdown-caret"> ▾</span></button>
 				</div>
-				<div class="component sortby-date-component"><button type="button" data-value="date" tabindex="1"
-						onclick="sortByOnChange('date')" class="button-active" title="Sort by Date">Date<span
-							class="order"></span></button></div>
-				<!--<div class="label">Sort by:</div>-->
+				<div class="sortby-dropdown">
+					<div class="component sortby-date-component"><button type="button" data-value="date" tabindex="1"
+							onclick="sortByOnChange('date')" class="button-active" title="Sort by Date">Date<span
+								class="order desc"></span></button></div>
+					<div class="component sortby-name-component"><button type="button" data-value="name" tabindex="2"
+							onclick="sortByOnChange('name')" title="Sort by Name">Name<span class="order"></span></button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -16,7 +16,7 @@ import {
 import { geoService, lookupLocation, setGeoProvider } from '../geo-service.js';
 import { showToast, customAlert } from './ui.js';
 
-import { openCropper } from '../cropper.js';
+import { openCropper, cropImageWithRatios } from '../cropper.js';
 
 export function getValue(sighting, prop) {
     return sighting[prop] ? sighting[prop] : '';
@@ -667,11 +667,17 @@ export function replicateLocationForCityInRow(sightingRow, sightingKey, cityVal)
 export function updateSightingDatalists(filterCity = '') {
     let $cityList = $('#sighting-city-list');
     let $placeList = $('#sighting-place-list');
+    let $tripList = $('#sighting-trip-list');
     if (!$cityList.length && typeof document !== 'undefined') {
         const target = $('#sightings-tab').length ? $('#sightings-tab') : $('body');
-        target.prepend('<datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist>');
+        target.prepend('<datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist><datalist id="sighting-trip-list"></datalist>');
         $cityList = $('#sighting-city-list');
         $placeList = $('#sighting-place-list');
+        $tripList = $('#sighting-trip-list');
+    } else if (!$tripList.length && typeof document !== 'undefined') {
+        const target = $('#sightings-tab').length ? $('#sightings-tab') : $('body');
+        target.prepend('<datalist id="sighting-trip-list"></datalist>');
+        $tripList = $('#sighting-trip-list');
     }
     if ($cityList.length) {
         const cities = getSortedCities({ limit: SUGGEST_LIMIT });
@@ -681,12 +687,42 @@ export function updateSightingDatalists(filterCity = '') {
         const places = getSortedPlaces({ city: filterCity, limit: SUGGEST_LIMIT });
         $placeList.html(places.map(p => `<option value="${escapeHtml(p)}">`).join(''));
     }
+    if ($tripList.length) {
+        const latestByTrip = new Map();
+        const recordTrip = (tid, time) => {
+            if (!tid) return;
+            const prev = latestByTrip.get(tid);
+            if (prev === undefined || time > prev) {
+                latestByTrip.set(tid, time);
+            }
+        };
+        (data.sightings || []).forEach(s => {
+            const tid = (s && s.trip_id) ? String(s.trip_id).trim() : '';
+            if (tid) {
+                const t = s.date ? (moment(s.date, Constants.DATA_DATE_FORMAT).valueOf() || 0) : 0;
+                recordTrip(tid, t);
+            }
+        });
+        (data.stories || []).forEach(st => {
+            const stTime = st && st.date ? (moment(st.date, Constants.DATA_DATE_FORMAT).valueOf() || 0) : 0;
+            (st.sightings || []).forEach(link => {
+                const tid = (link && link.params && link.params.trip_id) ? String(link.params.trip_id).trim() : '';
+                if (tid) recordTrip(tid, stTime);
+            });
+        });
+        const tripIds = Array.from(latestByTrip.entries())
+            .sort((a, b) => b[1] - a[1])
+            .map(([tid]) => tid)
+            .slice(0, 5);
+        $tripList.html(tripIds.map(t => `<option value="${escapeHtml(t)}">`).join(''));
+    }
 }
 
 function getTextDOM(field, value, width, placeholder) {
     let listAttr = '';
     if (field === 'city') listAttr = " list='sighting-city-list'";
     else if (field === 'place') listAttr = " list='sighting-place-list'";
+    else if (field === 'trip_id') listAttr = " list='sighting-trip-list'";
     let html = `<div class='input-clear-wrapper ${value ? 'has-value' : ''}' style='width:${width}'>`;
     html += `<input type='text' data-field='${field}'${listAttr} value='${value}' style='width:100%' placeholder='${placeholder}'></input>`;
     html += `<button type='button' class='input-clear-btn' title='Clear' tabindex='-1'>✕</button>`;
@@ -804,7 +840,7 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
             row += "</div>";
         });
         row += "<button type='button' class='upload-button' title='Add media'>+</button>";
-        row += "<input class='upload' type='file' accept='.jpg,.mp4' hidden/>";
+        row += "<input class='upload' type='file' accept='.jpg,.mp4' multiple hidden/>";
         row += "</div></td>";
 
         row += "<td class='place-fields'>";
@@ -829,6 +865,7 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
         row += getSelectDOM("plumage", Constants.OPT_PLUMAGE[currentMode], getValue(sighting, 'plumage'), "120px");
         row += getTextDOM("variation", getValue(sighting, 'variation'), "120px", "Add variation");
         row += getTextDOM("subspecies", getValue(sighting, 'subspecies'), "120px", "Add subspecies");
+        row += getTextDOM("trip_id", getValue(sighting, 'trip_id'), "120px", "Add trip ID");
         row += "</td>";
 
         row += "<td class='noborder'>";
@@ -913,17 +950,38 @@ export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
         });
         sightingRow.find(".upload").change(function () {
             if (!this.files || this.files.length === 0) return;
-            if (this.files[0] && this.files[0].type.match(/image.*/)) {
-                // Canvas cropping strips EXIF metadata. Keep the original File
-                // and pass it separately so uploadMedia can read the capture date.
-                const originalFile = this.files[0];
-                openCropper(originalFile, (croppedFile) => {
-                    uploadMedia(sighting.key, [croppedFile], [originalFile]);
-                });
+            const allFiles = Array.from(this.files);
+            const imageFiles = allFiles.filter(f => f && f.type && f.type.match(/image.*/));
+            const otherFiles = allFiles.filter(f => f && (!f.type || !f.type.match(/image.*/)));
+            if (imageFiles.length > 0) {
+                // Canvas cropping strips EXIF metadata. Keep the original Files
+                // and pass them separately so uploadMedia can read the capture date.
+                const firstImage = imageFiles[0];
+                const onCropDone = async (processedFirst, meta) => {
+                    let finalImages = [processedFirst];
+                    if (imageFiles.length > 1) {
+                        if (meta && meta.action === 'crop' && meta.cropRatios) {
+                            const restCropped = await Promise.all(
+                                imageFiles.slice(1).map(f => cropImageWithRatios(f, meta.cropRatios))
+                            );
+                            finalImages = [processedFirst, ...restCropped];
+                        } else {
+                            finalImages = [processedFirst, ...imageFiles.slice(1)];
+                        }
+                    }
+                    const filesToUpload = [...finalImages, ...otherFiles];
+                    const originalSources = [...imageFiles, ...otherFiles];
+                    uploadMedia(sighting.key, filesToUpload, originalSources);
+                };
+                if (imageFiles.length > 1) {
+                    openCropper(firstImage, onCropDone, { totalCount: imageFiles.length, includeCropMeta: true });
+                } else {
+                    openCropper(firstImage, onCropDone);
+                }
                 $(this).val(''); // Reset input
             } else {
                 showLoader('upload-media', 'Uploading Media...');
-                uploadMedia(sighting.key, this.files);
+                uploadMedia(sighting.key, allFiles);
                 $(this).val(''); // Reset input
             }
         });

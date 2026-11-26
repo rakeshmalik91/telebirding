@@ -364,7 +364,8 @@ span.text-seperator {
 .filter,
 .sortby {
 	float: right;
-	height: 32px;
+	min-height: 32px;
+	height: auto;
 	/* width: 100%; */
 }
 
@@ -372,6 +373,7 @@ span.text-seperator {
 .filter div.component {
 	float: right;
 	padding-right: 7px;
+	margin-bottom: 4px;
 }
 
 .sortby div.label,
@@ -386,6 +388,41 @@ span.text-seperator {
 
 .sortby {
 	margin-bottom: 5px;
+	position: relative;
+}
+
+.sortby:not(.sortby-open) .sortby-dropdown {
+	display: none !important;
+}
+
+.sortby.sortby-open .sortby-dropdown {
+	display: flex !important;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 6px;
+	position: absolute;
+	top: calc(100% + 6px);
+	right: 0;
+	min-width: 120px;
+	background: #111b26;
+	border: 1px solid rgba(190, 221, 228, 0.3);
+	border-radius: 8px;
+	padding: 8px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
+	z-index: 80;
+}
+
+.sortby .sortby-dropdown .component {
+	float: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sortby .sortby-dropdown .component button {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .filter-panel button,
@@ -481,21 +518,88 @@ body[data-page="explore_page"] .right-pane-button-container {
 	flex-shrink: 0;
 }
 
+.desktop-badges-wrapper,
 .filter-active-badges-row {
 	display: contents;
+}
+
+.desktop-badges-toggle-component {
+	display: none !important;
+}
+
+.desktop-badges-toggle-btn {
+	background-color: #bedde4;
+	color: #333333;
+	border: none;
+	border-radius: .25rem;
+	height: 28px;
+	padding: 0 10px;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.desktop-badges-toggle-btn:hover {
+	background-color: #cde6ec;
+}
+
+@media screen and (min-width: 769px) {
+	.filter-panel.desktop-badges-collapsed .desktop-badges-wrapper {
+		position: relative;
+		float: right;
+		display: block;
+	}
+
+	.filter-panel.desktop-badges-collapsed .desktop-badges-toggle-component {
+		display: block !important;
+	}
+
+	.filter-panel.desktop-badges-collapsed:not(.desktop-badges-open) .filter-active-badges-row {
+		display: none !important;
+	}
+
+	.filter-panel.desktop-badges-collapsed.desktop-badges-open .filter-active-badges-row {
+		display: flex !important;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 6px;
+		position: absolute;
+		top: calc(100% + 6px);
+		left: 0;
+		width: max-content;
+		background: #111b26;
+		border: 1px solid rgba(190, 221, 228, 0.3);
+		border-radius: 8px;
+		padding: 8px 10px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
+		z-index: 80;
+		max-width: min(90vw, 520px);
+	}
+
+	.filter-panel.desktop-badges-collapsed.desktop-badges-open .filter-active-badges-row .component {
+		float: none;
+		padding-right: 0;
+		margin-bottom: 0;
+	}
 }
 
 .filter .filter-rating-component:not(.active),
 .filter .filter-rating-component button.rating-filter.hidden,
 .filter .filter-family-component:not(.has-active-filter),
-.filter .filter-family-component button.family-filter-badge.hidden {
+.filter .filter-family-component button.family-filter-badge.hidden,
+.filter .filter-trip-component:not(.has-active-filter),
+.filter .filter-trip-component button.trip-filter-badge.hidden {
 	display: none !important;
 }
 
 .filter .component button.date-filter:after,
 .filter .component button.rating-filter:after,
 .filter .component button.place-filter-badge:after,
-.filter .component button.family-filter-badge:after {
+.filter .component button.family-filter-badge:after,
+.filter .component button.trip-filter-badge:after {
 	padding-left: 10px;
 	content: "✕";
 	color: #bc7e7e;

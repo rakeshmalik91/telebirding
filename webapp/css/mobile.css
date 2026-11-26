@@ -348,8 +348,13 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		margin-bottom: 0 !important;
 	}
 
+	.filter-panel:not(.mobile-filters-expanded) .desktop-badges-wrapper,
 	.filter-panel:not(.mobile-filters-expanded) .filter-active-badges-row {
 		display: contents !important;
+	}
+
+	.filter-panel:not(.mobile-filters-expanded) .desktop-badges-toggle-component {
+		display: none !important;
 	}
 
 	.filter-panel:not(.mobile-filters-expanded) .filter .component:not(.has-active-filter):not(.filter-date-component):not(.filter-rating-component),
@@ -391,11 +396,12 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		display: none !important;
 	}
 
-	/* Uniform filter badge styling across all mobile filters (name, place, family, date, rating) */
+	/* Uniform filter badge styling across all mobile filters (name, place, family, trip, date, rating) */
 	.active-filter-badge,
 	.name-filter-badge,
 	.place-filter-badge,
 	.family-filter-badge,
+	.trip-filter-badge,
 	.filter .filter-date-component button.date-filter,
 	.filter .filter-rating-component button.rating-filter {
 		display: inline-flex !important;
@@ -422,6 +428,7 @@ screen and (max-width: 950px) and (max-height: 500px) {
 	.name-filter-badge:after,
 	.place-filter-badge:after,
 	.family-filter-badge:after,
+	.trip-filter-badge:after,
 	.filter .filter-date-component button.date-filter:after,
 	.filter .filter-rating-component button.rating-filter:after {
 		content: "✕" !important;
@@ -456,6 +463,7 @@ screen and (max-width: 950px) and (max-height: 500px) {
 	.filter-panel.mobile-filters-expanded .name-filter-badge,
 	.filter-panel.mobile-filters-expanded .place-filter-badge,
 	.filter-panel.mobile-filters-expanded .family-filter-badge,
+	.filter-panel.mobile-filters-expanded .trip-filter-badge,
 	.filter-panel.mobile-filters-expanded .filter .filter-date-component button.date-filter,
 	.filter-panel.mobile-filters-expanded .filter .filter-rating-component button.rating-filter {
 		background-color: #bedde4 !important;
@@ -477,6 +485,7 @@ screen and (max-width: 950px) and (max-height: 500px) {
 	.filter-panel.mobile-filters-expanded .name-filter-badge:after,
 	.filter-panel.mobile-filters-expanded .place-filter-badge:after,
 	.filter-panel.mobile-filters-expanded .family-filter-badge:after,
+	.filter-panel.mobile-filters-expanded .trip-filter-badge:after,
 	.filter-panel.mobile-filters-expanded .filter .filter-date-component button.date-filter:after,
 	.filter-panel.mobile-filters-expanded .filter .filter-rating-component button.rating-filter:after {
 		color: #bc7e7e !important;
@@ -685,6 +694,7 @@ screen and (max-width: 950px) and (max-height: 500px) {
 
 	.sortby {
 		grid-area: sortby !important;
+		position: relative !important;
 		display: flex !important;
 		justify-content: flex-end !important;
 		align-items: center !important;
@@ -704,14 +714,6 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		padding: 0 !important;
 	}
 
-	.sortby .sortby-date-component {
-		order: 1 !important;
-	}
-
-	.sortby .sortby-name-component {
-		order: 2 !important;
-	}
-
 	.sortby .component button {
 		height: 36px !important;
 		padding: 4px 10px !important;
@@ -721,6 +723,11 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		align-items: center !important;
 		white-space: nowrap !important;
 		box-sizing: border-box !important;
+	}
+
+	.sortby .sortby-dropdown .component button {
+		width: 100% !important;
+		justify-content: space-between !important;
 	}
 
 	.right-pane-button-container,
@@ -777,58 +784,94 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		border-color: #a3ff2e !important;
 	}
 
-	.filter-active-badges-row {
+	.filter-panel.mobile-filters-expanded .desktop-badges-wrapper {
 		grid-area: date !important;
-		float: none !important;
-		clear: both !important;
-		width: 100% !important;
+		position: relative !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-start !important;
 		min-width: 0 !important;
-		margin: 2px 0 4px 0 !important;
-		box-sizing: border-box !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		height: 36px !important;
+	}
+
+	.filter-panel.mobile-filters-expanded:not(.has-date-filter):not(.has-rating-filter):not(.has-family-filter):not(.has-trip-filter) .desktop-badges-wrapper {
+		display: none !important;
+	}
+
+	.filter-panel.mobile-filters-expanded.mobile-badges-collapsed .desktop-badges-toggle-component {
+		display: flex !important;
+		align-items: center !important;
+		height: 36px !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.filter-panel.mobile-filters-expanded:not(.mobile-badges-collapsed) .desktop-badges-toggle-component {
+		display: none !important;
+	}
+
+	.filter-panel.mobile-filters-expanded .desktop-badges-toggle-btn {
+		height: 36px !important;
+		margin: 0 !important;
+		padding: 0 12px !important;
+	}
+
+	.filter-panel.mobile-filters-expanded:not(.mobile-badges-collapsed) .filter-active-badges-row {
 		display: flex !important;
 		flex-wrap: wrap !important;
 		align-items: center !important;
-		gap: 6px 8px !important;
-		justify-content: flex-end !important;
-		text-align: right !important;
-	}
-
-	.filter-panel.mobile-filters-expanded .filter-active-badges-row {
-		margin: 0 !important;
-		height: 36px !important;
-		display: flex !important;
-		flex-wrap: nowrap !important;
-		align-items: center !important;
 		justify-content: flex-start !important;
 		gap: 6px !important;
-		min-width: 0 !important;
-		overflow-x: auto !important;
-		scrollbar-width: none !important;
-		-ms-overflow-style: none !important;
+		margin: 0 !important;
+		min-height: 36px !important;
+		height: auto !important;
+		overflow: visible !important;
 		text-align: left !important;
 	}
 
-	.filter-panel.mobile-filters-expanded .filter-active-badges-row::-webkit-scrollbar {
+	.filter-panel.mobile-filters-expanded.mobile-badges-collapsed:not(.desktop-badges-open) .filter-active-badges-row {
 		display: none !important;
+	}
+
+	.filter-panel.mobile-filters-expanded.mobile-badges-collapsed.desktop-badges-open .filter-active-badges-row {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		align-items: center !important;
+		justify-content: flex-start !important;
+		gap: 6px !important;
+		position: absolute !important;
+		top: calc(100% + 6px) !important;
+		left: 0 !important;
+		width: max-content !important;
+		max-width: calc(100vw - 80px) !important;
+		background: #111b26 !important;
+		border: 1px solid rgba(190, 221, 228, 0.3) !important;
+		border-radius: 8px !important;
+		padding: 8px 10px !important;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55) !important;
+		z-index: 80 !important;
+		margin: 0 !important;
+		min-height: 36px !important;
+		height: auto !important;
+		overflow: visible !important;
+		text-align: left !important;
 	}
 
 	.filter-panel.mobile-filters-expanded .filter-active-badges-row .component {
 		height: 36px !important;
 		margin: 0 !important;
 		padding: 0 !important;
-		display: flex !important;
 		align-items: center !important;
 		justify-content: flex-start !important;
 		flex-shrink: 0 !important;
 	}
 
-	.filter-panel:not(.has-date-filter):not(.has-rating-filter):not(.has-family-filter) .filter-active-badges-row {
-		display: none !important;
-	}
-
 	.filter .filter-date-component,
 	.filter .filter-rating-component,
-	.filter .filter-family-component {
+	.filter .filter-family-component,
+	.filter .filter-trip-component {
 		float: none !important;
 		clear: none !important;
 		width: auto !important;
@@ -839,15 +882,18 @@ screen and (max-width: 950px) and (max-height: 500px) {
 		text-align: right !important;
 	}
 
-	.filter .filter-date-component:not(.active),
-	.filter .filter-rating-component:not(.active),
-	.filter .filter-family-component:not(.has-active-filter) {
+	.filter-panel .filter .filter-date-component:not(.active),
+	.filter-panel .filter .filter-rating-component:not(.active),
+	.filter-panel .filter .filter-family-component:not(.has-active-filter),
+	.filter-panel .filter .filter-trip-component:not(.has-active-filter),
+	.filter-panel .filter .active-filter-badge.hidden {
 		display: none !important;
 	}
 
 	.filter .filter-date-component.active,
 	.filter .filter-rating-component.active,
-	.filter .filter-family-component.has-active-filter {
+	.filter .filter-family-component.has-active-filter,
+	.filter .filter-trip-component.has-active-filter {
 		display: flex !important;
 		align-items: center !important;
 		justify-content: flex-end !important;

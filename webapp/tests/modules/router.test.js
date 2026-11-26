@@ -401,5 +401,23 @@ describe('Router Module', () => {
             Router.showPage(Constants.STORIES, null, true);
             expect(State.currentPage).toBe(Constants.STORIES);
         });
+
+        it('should serialize and retrieve trip_id state from URL params', () => {
+            const url = Router.getUrlFromState({
+                page: Constants.ARCHIVE,
+                filter: { trip_id: 'andaman-2026' },
+                sort: { by: 'date', descending: true }
+            });
+            expect(url).toContain('page=feed');
+            expect(url).toContain('trip_id=andaman-2026');
+
+            vi.spyOn(Util, 'getUrlParams').mockReturnValue({
+                page: Constants.ARCHIVE,
+                trip_id: 'andaman-2026'
+            });
+            Router.retrieveStateFromUrlParams();
+            expect(State.currentPage).toBe(Constants.ARCHIVE);
+            expect(State.tripIdFilter).toBe('andaman-2026');
+        });
     });
 });

@@ -31,6 +31,11 @@ vi.mock('../../scripts/modules/admin/ui.js', () => ({
             cb();
         }
     }),
+    customSelectModal: vi.fn((title, msg, options, cb) => {
+        if (cb && options && options.length) {
+            cb(options[0].value);
+        }
+    }),
     showToast: vi.fn(),
     showModal: vi.fn(),
     closeModal: vi.fn()
@@ -599,6 +604,14 @@ describe('Admin Data Module', () => {
             AdminData.addSighting();
             expect(AdminData.data.sightings.length).toBe(1);
             expect(AdminData.data.sightings[0].city).toBe('Howrah');
+            expect(AdminData.data.sightings[0].trip_id).toBe('');
+        });
+
+        it('should replicate trip_id from the latest sighting', () => {
+            AdminData.data.sightings = [{ key: 's0', trip_id: 'sri-lanka-nov-2026', city: 'Nuwara Eliya' }];
+            AdminData.addSighting();
+            expect(AdminData.data.sightings.length).toBe(2);
+            expect(AdminData.data.sightings[0].trip_id).toBe('sri-lanka-nov-2026');
         });
     });
 
@@ -801,22 +814,30 @@ describe('Admin Data Module', () => {
                 expect(AdminData.data.sightings[0].pinned).toBe(false);
             });
 
-            it('togglePinSighting unpins the oldest (in time) sighting when maxPins limit is reached', () => {
+            it('togglePinSighting asks which sighting to unpin when maxPins limit is reached', async () => {
+                const AdminUi = await import('../../scripts/modules/admin/ui.js');
+                AdminUi.customSelectModal.mockImplementationOnce((title, msg, options, cb) => {
+                    cb('s2'); // user chooses to unpin s2 instead of oldest s1
+                });
+
                 AdminData.setMaxPinnedCount(2);
                 AdminData.data.sightings = [
-                    { key: 's1', date: '01-01-2023', pinned: false }, // oldest
-                    { key: 's2', date: '01-01-2024', pinned: false },
-                    { key: 's3', date: '01-01-2025', pinned: false }  // newest
+                    { key: 's1', species: 'sparrow', date: '01-01-2023', pinned: false, media: [{ src: 'images/sparrow-1.jpg' }] },
+                    { key: 's2', species: 'pigeon', date: '01-01-2024', pinned: false, media: [{ src: 'images/pigeon-1.jpg' }] },
+                    { key: 's3', species: 'myna', date: '01-01-2025', pinned: false }
                 ];
 
                 AdminData.togglePinSighting('s1');
                 AdminData.togglePinSighting('s2');
                 expect(AdminData.data.sightings.filter(s => s.pinned).map(s => s.key)).toEqual(['s1', 's2']);
 
-                // Pinning third when max is 2 should unpin s1 (oldest date: 2023)
                 AdminData.togglePinSighting('s3');
-                expect(AdminData.data.sightings.find(s => s.key === 's1').pinned).toBe(false);
-                expect(AdminData.data.sightings.find(s => s.key === 's2').pinned).toBe(true);
+                expect(AdminUi.customSelectModal).toHaveBeenCalled();
+                const modalOptions = AdminUi.customSelectModal.mock.calls[0][2];
+                expect(modalOptions[0].thumb).toBeTruthy();
+                expect(modalOptions[1].thumb).toBeTruthy();
+                expect(AdminData.data.sightings.find(s => s.key === 's1').pinned).toBe(true);
+                expect(AdminData.data.sightings.find(s => s.key === 's2').pinned).toBe(false);
                 expect(AdminData.data.sightings.find(s => s.key === 's3').pinned).toBe(true);
             });
 
@@ -828,6 +849,28 @@ describe('Admin Data Module', () => {
                 expect(AdminData.sightingMatches(sPinned, 'pinned')).toBe(true);
                 expect(AdminData.sightingMatches(sUnpinned, 'pinned')).toBe(false);
                 expect(AdminData.sightingMatches(sUndefined, 'pinned')).toBe(false);
+            });
+
+            it('updateField asks whether to clear only this trip_id or also newer sightings with same trip_id', async () => {
+                const AdminUi = await import('../../scripts/modules/admin/ui.js');
+                AdminData.data.sightings = [
+                    { key: 's_new', date: '03-01-2026', trip_id: 'andaman-2026' },
+                    { key: 's_mid', date: '02-01-2026', trip_id: 'andaman-2026' },
+                    { key: 's_old', date: '01-01-2026', trip_id: 'andaman-2026' }
+                ];
+
+                // User chooses 'single'
+                AdminUi.customSelectModal.mockImplementationOnce((title, msg, options, cb) => cb('single'));
+                AdminData.updateField('s_mid', 'trip_id', '');
+                expect(AdminData.data.sightings.find(s => s.key === 's_mid').trip_id).toBe('');
+                expect(AdminData.data.sightings.find(s => s.key === 's_new').trip_id).toBe('andaman-2026');
+                expect(AdminData.data.sightings.find(s => s.key === 's_old').trip_id).toBe('andaman-2026');
+
+                // User chooses 'newer' when clearing s_old
+                AdminUi.customSelectModal.mockImplementationOnce((title, msg, options, cb) => cb('newer'));
+                AdminData.updateField('s_old', 'trip_id', '');
+                expect(AdminData.data.sightings.find(s => s.key === 's_old').trip_id).toBe('');
+                expect(AdminData.data.sightings.find(s => s.key === 's_new').trip_id).toBe('');
             });
         });
     });

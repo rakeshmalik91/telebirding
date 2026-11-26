@@ -1002,7 +1002,8 @@ describe('Admin Rendering - Readonly Operations', () => {
         });
 
         it('updateSightingDatalists should populate datalists and react to city filtering', () => {
-            document.body.innerHTML = '<div id="sightings-tab"><datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist></div>';
+            AdminData.data.sightings.push({ key: 's_trip', trip_id: 'sri-lanka-nov-2026', city: 'Kolkata', place: 'Park' });
+            document.body.innerHTML = '<div id="sightings-tab"><datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist><datalist id="sighting-trip-list"></datalist></div>';
             AdminRendering.updateSightingDatalists('Howrah');
 
             const cityOptions = $('#sighting-city-list option').map(function () { return $(this).val(); }).get();
@@ -1011,6 +1012,9 @@ describe('Admin Rendering - Readonly Operations', () => {
 
             const placeOptions = $('#sighting-place-list option').map(function () { return $(this).val(); }).get();
             expect(placeOptions).toEqual(['BotanicalGarden', 'Bally']);
+
+            const tripOptions = $('#sighting-trip-list option').map(function () { return $(this).val(); }).get();
+            expect(tripOptions).toContain('sri-lanka-nov-2026');
         });
 
         it('findHierarchyForPlace and findHierarchyForCity should locate country, state, and city', () => {

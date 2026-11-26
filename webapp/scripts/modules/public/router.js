@@ -59,6 +59,7 @@ export function setMode(mode) {
     if (urlParams.place) state.params.place = decodeURIComponent(urlParams.place);
     if (urlParams.date) state.params.date = decodeURIComponent(urlParams.date);
     if (urlParams.camera_model) state.params.camera_model = decodeURIComponent(urlParams.camera_model);
+    if (urlParams.trip_id) state.params.trip_id = decodeURIComponent(urlParams.trip_id);
 
     history.pushState(state, '', getUrlFromState(state));
     // Force a full reload of the page content under the new mode
@@ -143,6 +144,7 @@ export function getUrlFromState(state) {
     if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.place) url += "&place=" + encodeURIComponent(state.filter.place);
     if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.date) url += "&date=" + encodeURIComponent(state.filter.date);
     if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.camera_model) url += "&camera_model=" + encodeURIComponent(state.filter.camera_model);
+    if ([Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.filter && state.filter.trip_id) url += "&trip_id=" + encodeURIComponent(state.filter.trip_id);
     if (!(state.sort.by == 'date' && state.sort.descending)) {
         if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.sort && state.sort.by) url += "&sort_by=" + encodeURIComponent(state.sort.by);
         if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(state.page) && state.sort && state.sort.descending) url += "&sort_descending=" + encodeURIComponent(state.sort.descending);
@@ -188,6 +190,11 @@ export function retrieveStateFromUrlParams() {
     }
     if ([Constants.EXPLORE_PAGE, Constants.ARCHIVE, Constants.MAP].includes(urlParams.page) && urlParams.rating) {
         State.updateRatingFilter(urlParams.rating || 0);
+    }
+    if ([Constants.ARCHIVE, Constants.MAP].includes(State.currentPage)) {
+        State.updateTripIdFilter(urlParams.trip_id ? decodeURIComponent(urlParams.trip_id).trim() : null);
+    } else {
+        State.updateTripIdFilter(null);
     }
 
     if ([Constants.ARCHIVE, Constants.MAP].includes(State.currentPage)) {
@@ -322,6 +329,7 @@ export function showPage(page, params, isPopstate) {
         filter.date = params.date || filter.date || '';
         filter.sighting = params.sighting || filter.sighting || '';
         filter.camera_model = params.camera_model || filter.camera_model || '';
+        filter.trip_id = params.trip_id !== undefined ? (params.trip_id || '') : (filter.trip_id || '');
         filter.newspecies = params.newspecies || filter.newspecies;
         filter.rating = params.rating || filter.rating;
     }
@@ -334,6 +342,8 @@ export function showPage(page, params, isPopstate) {
             filter.place = '';
             filter.sighting = '';
             filter.date = '';
+            filter.trip_id = '';
+            State.updateTripIdFilter(null);
             setFilter('place', '');
             setFilter('sighting', '');
             setFilter('date', '');

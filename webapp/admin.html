@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
-	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261125_0935">
+	<link rel="stylesheet" charset="UTF-8" href="css/admin.css?v=20261126_1658">
 	<link rel="stylesheet" charset="UTF-8" href="css/searchable-select.css?v=20260923_4">
 	<link rel="stylesheet" charset="UTF-8" href="css/cropper-custom.css?v=20260318">
 
@@ -42,7 +42,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
-	<script type="module" src="scripts/admin.js?v=20261125_0930"></script>
+	<script type="module" src="scripts/admin.js?v=20261126_1700"></script></script></script>
 
 </head>
 
@@ -147,6 +147,7 @@
 			</div>
 			<datalist id="sighting-city-list"></datalist>
 			<datalist id="sighting-place-list"></datalist>
+			<datalist id="sighting-trip-list"></datalist>
 			<table id="sightings-table"></table>
 			<div class='nav-bottom'>
 				<div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -610,9 +611,19 @@
 	<div id="media-popup" style="display: none;">
 		<div class="media-popup-overlay"></div>
 		<div class="media-popup-content">
-			<button class="media-popup-close" title="Close">✕</button>
-			<img src="" id="media-popup-img" style="display:none;" />
-			<video src="" id="media-popup-video" controls autoplay loop style="display:none;"></video>
+			<button class="media-popup-close" title="Close (Esc)">✕</button>
+			<div class="media-popup-stage">
+				<button class="media-popup-nav media-popup-prev" title="Previous (Left Arrow)" style="display:none;">‹</button>
+				<img src="" id="media-popup-img" style="display:none;" />
+				<video src="" id="media-popup-video" controls autoplay loop style="display:none;"></video>
+				<button class="media-popup-nav media-popup-next" title="Next (Right Arrow)" style="display:none;">›</button>
+			</div>
+			<div id="media-popup-details" class="media-popup-details" style="display: none;">
+				<div id="media-popup-details-body" class="media-popup-details-body"></div>
+				<div class="media-popup-details-footer">
+					<button type="button" id="media-popup-delete" class="media-popup-delete-btn" title="Delete media (Delete key)">🗑️ Delete Media</button>
+				</div>
+			</div>
 		</div>
 	</div>
 

@@ -1047,7 +1047,7 @@ select::-ms-expand {
 	position: fixed;
 	inset: 0;
 	background: rgba(0, 0, 0, 0.7);
-	z-index: 20000;
+	z-index: 100010;
 	justify-content: center;
 	align-items: center;
 	backdrop-filter: blur(4px);
@@ -1072,6 +1072,11 @@ select::-ms-expand {
 	border: 1px solid #333;
 	transform: scale(0.95);
 	transition: transform 0.2s ease-in-out;
+}
+
+.custom-modal-content.custom-modal-wide {
+	width: 580px;
+	max-width: 92vw;
 }
 
 #custom-modal-overlay.visible .custom-modal-content {
@@ -1379,21 +1384,120 @@ input:checked+.toggle-slider:before {
 
 .media-popup-content {
 	position: relative;
-	max-width: 90vw;
+	max-width: 92vw;
 	max-height: 90vh;
 	z-index: 100000;
 	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	gap: 16px;
+	background: #0f172a;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 10px;
+	padding: 14px;
+	box-sizing: border-box;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.media-popup-stage {
+	position: relative;
+	display: flex;
 	align-items: center;
 	justify-content: center;
+	min-width: 0;
 }
 
 .media-popup-content img,
 .media-popup-content video {
 	max-width: 100%;
-	max-height: 90vh;
+	max-height: calc(90vh - 28px);
 	object-fit: contain;
 	border-radius: 8px;
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.media-popup-details {
+	width: 280px;
+	min-width: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: rgba(30, 41, 59, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 8px;
+	padding: 14px;
+	color: #e2e8f0;
+	font-size: 13px;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+
+.media-popup-details-body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.media-popup-details-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.media-popup-details-title {
+	font-size: 15px;
+	font-weight: 600;
+	color: #38bdf8;
+}
+
+.media-popup-details-counter {
+	font-size: 12px;
+	color: #94a3b8;
+	white-space: nowrap;
+}
+
+.media-popup-detail-row {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.media-popup-detail-label {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+	color: #94a3b8;
+}
+
+.media-popup-detail-value {
+	color: #f8fafc;
+	word-break: break-word;
+}
+
+.media-popup-details-footer {
+	margin-top: 14px;
+	padding-top: 12px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.media-popup-delete-btn {
+	width: 100%;
+	background: #dc2626 !important;
+	color: #ffffff !important;
+	border: none;
+	border-radius: 6px;
+	padding: 9px 12px;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s ease;
+}
+
+.media-popup-delete-btn:hover {
+	background: #b91c1c !important;
 }
 
 /* ============================================================
@@ -1658,6 +1762,57 @@ input.spreadsheet-cell-input {
 .media-popup-close:hover {
 	transform: scale(1.1);
 	color: #ef4444;
+}
+
+.media-popup-nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(15, 23, 42, 0.7) !important;
+	color: #f8fafc;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	width: 42px;
+	height: 42px;
+	font-size: 26px;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 100001;
+	transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.media-popup-nav:hover {
+	background: rgba(2, 132, 199, 0.9) !important;
+	transform: translateY(-50%) scale(1.08);
+}
+
+.media-popup-prev {
+	left: -56px;
+}
+
+.media-popup-next {
+	right: -56px;
+}
+
+@media (max-width: 768px) {
+	.media-popup-content {
+		flex-direction: column;
+		max-height: 92vh;
+		overflow-y: auto;
+	}
+	.media-popup-details {
+		width: 100%;
+		min-width: 0;
+	}
+	.media-popup-prev {
+		left: 8px;
+	}
+	.media-popup-next {
+		right: 8px;
+	}
 }
 
 /* Species / Family Subtabs and Hierarchical Spreadsheet */

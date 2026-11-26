@@ -26,6 +26,7 @@ export default class State {
     static sightingFamilyFilter = null;
     static newSpeciesFilter = false;
     static ratingFilter = 0;
+    static tripIdFilter = null;
     static autocompleteInitialized = false;
 
     static _currentPage = undefined;
@@ -49,6 +50,7 @@ export default class State {
     static updateSightingFamilyFilter(val) { State.sightingFamilyFilter = val; }
     static updateNewSpeciesFilter(val) { State.newSpeciesFilter = val; }
     static updateRatingFilter(val) { State.ratingFilter = val; }
+    static updateTripIdFilter(val) { State.tripIdFilter = val; }
     static updateAutocompleteInitialized(val) { State.autocompleteInitialized = val; }
     static updateCurrentPage(val) { State.currentPage = val; }
     static updateCurrentMode(val) { State.currentMode = val; }

@@ -4,7 +4,7 @@ import { showLoader } from './modules/loader.js';
 import {
 	rollSightingCarousal, showMore, setSiteLogo,
 	initHomePageCarousal, rollHomePageCarousal, copyStoryLink,
-	toggleMobileFilters, copyCurrentPageUrl, showToast, copyText
+	toggleMobileFilters, toggleDesktopFilterBadges, toggleSortDropdown, updateSortToggleLabel, copyCurrentPageUrl, showToast, copyText, syncDesktopHeaderHeight
 } from './modules/public/ui-helpers.js';
 import State from './modules/public/state.js';
 import { renderSightings, renderPageName } from './modules/public/rendering.js';
@@ -13,7 +13,7 @@ import {
 	retrieveStateFromUrlParams
 } from './modules/public/router.js';
 import {
-	triggerFilter, sortByOnChange, filterOnChange, clearFilter, clearFamilyFilter, resetRatingFilter,
+	triggerFilter, sortByOnChange, filterOnChange, clearFilter, clearFamilyFilter, clearTripFilter, resetRatingFilter,
 	toggleNewSpeciesFilter, getFilters, setSort, setFilters
 } from './modules/public/filters.js';
 import {
@@ -24,6 +24,22 @@ import { like } from './modules/public/data-helpers.js';
 // Expose functions to window for HTML onclick handlers
 window.showPage = showPage;
 window.toggleMobileFilters = toggleMobileFilters;
+window.toggleDesktopFilterBadges = toggleDesktopFilterBadges;
+window.toggleSortDropdown = toggleSortDropdown;
+
+$(document).on('click', function (e) {
+	const $panel = $('.filter-panel.desktop-badges-open');
+	if ($panel.length && !$(e.target).closest('.filter-active-badges-row, .desktop-badges-toggle-component').length) {
+		$panel.removeClass('desktop-badges-open');
+		const count = $panel.find('.desktop-badges-toggle-btn').attr('data-count') || '';
+		$panel.find('.desktop-badges-toggle-btn').text(`Filters (${count}) ▾`);
+	}
+	const $sortby = $('.sortby.sortby-open');
+	if ($sortby.length && !$(e.target).closest('.sortby').length) {
+		$sortby.removeClass('sortby-open');
+		updateSortToggleLabel();
+	}
+});
 
 window.toggleCollpasible = Util.toggleCollpasible;
 
@@ -38,6 +54,7 @@ window.sortByOnChange = sortByOnChange;
 window.filterOnChange = filterOnChange;
 window.clearFilter = clearFilter;
 window.clearFamilyFilter = clearFamilyFilter;
+window.clearTripFilter = clearTripFilter;
 window.resetRatingFilter = resetRatingFilter;
 window.toggleNewSpeciesFilter = toggleNewSpeciesFilter;
 window.toggleRightPane = toggleRightPane;
@@ -47,6 +64,8 @@ window.showMore = showMore;
 window.like = like;
 window.renderPageName = renderPageName;
 window.copyStoryLink = copyStoryLink;
+
+$(window).on('resize', syncDesktopHeaderHeight);
 window.copyCurrentPageUrl = copyCurrentPageUrl;
 window.showToast = showToast;
 window.scrollToTop = function () {
@@ -141,6 +160,7 @@ showPage(State.currentPage, {
 	place: params.place ? decodeURIComponent(params.place) : undefined,
 	date: params.date ? decodeURIComponent(params.date) : undefined,
 	camera_model: params.camera_model ? decodeURIComponent(params.camera_model) : undefined,
+	trip_id: params.trip_id ? decodeURIComponent(params.trip_id) : undefined,
 	story: params.story ? decodeURIComponent(params.story) : undefined,
 	sort_by: params.sort_by ? decodeURIComponent(params.sort_by) : undefined,
 	sort_descending: params.sort_descending

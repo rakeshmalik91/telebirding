@@ -62,7 +62,7 @@ const SYNC_SCHEDULE_TIME = 3000;
 let syncRef;
 
 import { removeUnwantedValues, applySpeciesTags } from './data-cleanup.js';
-import { customAlert, customConfirm, showToast } from './ui.js';
+import { customAlert, customConfirm, customSelectModal, showToast } from './ui.js';
 
 
 let renderCallback = () => { };
@@ -643,7 +643,7 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
         const speciesKey = rawKey.toLowerCase().replaceAll(/\s+/g, '-').replaceAll("'", '') || 'unidentified';
 
         if (file.type.match(/image.*/)) {
-            mediaSrc = 'images/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".jpg";
+            mediaSrc = 'images/' + speciesKey + "-" + (Math.floor(Date.now() / 1000) + index) + ".jpg";
             console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
             Util.resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
                 FirebaseApi.getFirebase().storage().ref(mediaSrc).put(resizedImage).then(async () => {
@@ -698,7 +698,7 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
             });
         } else if (file.type.match(/video.*/)) {
             // Upload video as is
-            mediaSrc = 'videos/' + speciesKey + "-" + Math.floor(Date.now() / 1000) + ".mp4";
+            mediaSrc = 'videos/' + speciesKey + "-" + (Math.floor(Date.now() / 1000) + index) + ".mp4";
             console.log("uploading video " + file.name + " for " + sightingKey + " as " + mediaSrc);
 
             FirebaseApi.getFirebase().storage().ref(mediaSrc).put(file).then(() => {
@@ -747,7 +747,7 @@ export function uploadMedia(sightingKey, files, originalFiles = []) {
     });
 }
 
-export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
+export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false, onDeleted = null) {
     if (!mediaSrc.toLowerCase().endsWith(".jpg") && !mediaSrc.toLowerCase().endsWith(".mp4")) {
         customAlert("Unsupported!!!");
         return;
@@ -765,6 +765,7 @@ export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false) {
             sighting.media = sighting.media.filter(m => m.src != mediaSrc);
             commitSightingsChange();
         });
+        if (typeof onDeleted === 'function') onDeleted();
         FirebaseApi.getFirebase().storage().ref(mediaSrc).delete().then(() => {
             hideLoader('delete-media');
             const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
@@ -829,6 +830,51 @@ export function moveMediaToTarget(sourceSightingKey, targetSightingKey, draggedS
 }
 
 export function updateField(sightingKey, field, value) {
+    const target = (data.sightings || []).find(s => s.key == sightingKey);
+    if (!target) return;
+
+    if (field === 'trip_id') {
+        const oldTripId = (target.trip_id || '').trim();
+        const newTripId = String(value || '').trim();
+        if (oldTripId && !newTripId) {
+            const targetIdx = data.sightings.indexOf(target);
+            const targetTime = moment(target.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
+            const newerSameTrip = data.sightings.filter((s, idx) => {
+                if (!s || s.key == sightingKey) return false;
+                if ((s.trip_id || '').trim() !== oldTripId) return false;
+                const sTime = moment(s.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
+                return sTime > targetTime || (sTime === targetTime && idx < targetIdx);
+            });
+
+            if (newerSameTrip.length > 0 && typeof customSelectModal === 'function') {
+                const options = [
+                    { value: 'single', label: 'Clear this sighting only' },
+                    { value: 'newer', label: `Clear this and ${newerSameTrip.length} newer sighting(s) with "${oldTripId}"` }
+                ];
+                customSelectModal(
+                    'Clear Trip ID',
+                    `Trip ID "${oldTripId}" is also set on ${newerSameTrip.length} newer sighting(s). Choose what to clear:`,
+                    options,
+                    (choice) => {
+                        if (!choice) {
+                            renderCallback();
+                            return;
+                        }
+                        snapshotSightings();
+                        target.trip_id = '';
+                        if (choice === 'newer') {
+                            newerSameTrip.forEach(s => { s.trip_id = ''; });
+                        }
+                        commitSightingsChange();
+                        renderCallback();
+                        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+                    }
+                );
+                return;
+            }
+        }
+    }
+
     snapshotSightings();
     data.sightings.forEach(function (sighting) {
         if (sighting.key != sightingKey) return;
@@ -943,6 +989,7 @@ export function addSighting(filterSightingVal) {
         "unconfirmed": false,
         "time_of_day": "Day",
         "weather": (data.sightings[0] || {}).weather || null,
+        "trip_id": (data.sightings[0] || {}).trip_id || "",
         "hidden": true,
         "media": []
     });
@@ -1178,30 +1225,57 @@ export function syncStoriesData(delay = 1000) {
     });
 }
 
-export function togglePinSighting(sightingKey) {
-    snapshotSightings();
+export function togglePinSighting(sightingKey, unpinKey) {
     const target = (data.sightings || []).find(s => s.key === sightingKey);
     if (!target) return;
 
     if (target.pinned) {
+        snapshotSightings();
         target.pinned = false;
     } else {
         const maxPins = getMaxPinnedCount();
         const currentPinned = data.sightings.filter(s => s.pinned && s.key !== sightingKey);
-        while (currentPinned.length >= maxPins) {
-            // Sort by date ascending to unpin the oldest in time
-            currentPinned.sort((a, b) => {
-                const timeA = moment(a.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
-                const timeB = moment(b.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
-                if (timeA !== timeB) return timeA - timeB;
-                const idxA = data.sightings.indexOf(a);
-                const idxB = data.sightings.indexOf(b);
-                return idxB - idxA;
-            });
-            const oldest = currentPinned.shift();
-            oldest.pinned = false;
+        if (currentPinned.length >= maxPins) {
+            if (!unpinKey) {
+                const options = currentPinned.map(s => {
+                    const speciesName = (data.species && s.species && data.species[s.species]?.name) || s.species || 'Unknown';
+                    const place = [s.place, s.city].filter(Boolean).join(', ');
+                    const label = `${speciesName}${place ? ` — ${place}` : ''} (${s.date || 'No date'})`;
+                    const firstPhoto = (s.media || []).find(m => m && m.type !== 'video' && m.src)
+                        || (s.media || []).find(m => m && m.thumbnail);
+                    const rawThumb = firstPhoto ? (firstPhoto.type === 'video' ? firstPhoto.thumbnail : firstPhoto.src) : null;
+                    const thumb = rawThumb ? Util.getMedia(rawThumb) : null;
+                    return { value: s.key, label, thumb };
+                });
+                if (typeof customSelectModal === 'function') {
+                    customSelectModal(
+                        'Pin Limit Reached',
+                        `Maximum ${maxPins} pinned sightings allowed. Choose one to unpin:`,
+                        options,
+                        (selectedKey) => {
+                            if (selectedKey) {
+                                togglePinSighting(sightingKey, selectedKey);
+                            }
+                        }
+                    );
+                }
+                return;
+            }
+            const toUnpin = currentPinned.find(s => s.key === unpinKey);
+            if (!toUnpin) return;
+            snapshotSightings();
+            toUnpin.pinned = false;
+            if (data.sightings.filter(s => s.pinned && s.key !== sightingKey).length >= maxPins) {
+                commitSightingsChange();
+                renderCallback();
+                togglePinSighting(sightingKey);
+                return;
+            }
+            target.pinned = true;
+        } else {
+            snapshotSightings();
+            target.pinned = true;
         }
-        target.pinned = true;
     }
 
     commitSightingsChange();
@@ -1240,7 +1314,8 @@ export function sightingMatches(sighting, searchKey) {
         || (sighting.variation && sighting.variation.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.subspecies && sighting.subspecies.toLowerCase().indexOf(searchKey) >= 0)
         || (sighting.plumage && sighting.plumage.toLowerCase().indexOf(searchKey) >= 0)
-        || (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0);
+        || (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.trip_id && String(sighting.trip_id).toLowerCase().indexOf(searchKey) >= 0);
 }
 
 export function getCurrentMode() {

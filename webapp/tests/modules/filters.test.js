@@ -670,6 +670,53 @@ describe('Filters Module', () => {
             expect(keys).toEqual(['s4', 's2', 's1', 's3']);
         });
     });
+
+    describe('trip_id filter', () => {
+        it('should filter sightings by trip_id without rendering a UI filter input', () => {
+            State.data.sightings = [
+                { key: 's1', species: { name: 'Bird A' }, trip_id: 'andaman-2026', date: 1, index: 1 },
+                { key: 's2', species: { name: 'Bird B' }, trip_id: 'sri-lanka-2026', date: 2, index: 2 },
+                { key: 's3', species: { name: 'Bird C' }, date: 3, index: 3 }
+            ];
+            State.sort = { by: 'date', descending: false };
+
+            Filters.setFilter('trip_id', 'andaman-2026');
+            expect(State.tripIdFilter).toBe('andaman-2026');
+            expect(Filters.getFilters().trip_id).toBe('andaman-2026');
+            expect($('.filter input[data-value="trip_id"]').length).toBe(0);
+
+            Filters.filterAndSortData(Filters.getFilters());
+            expect(State.data.filteredSightings.map(s => s.key)).toEqual(['s1']);
+
+            Filters.setFilter('trip_id', '');
+            expect(State.tripIdFilter).toBeNull();
+        });
+
+        it('should format trip_id into readable display text and update/clear the trip badge', () => {
+            expect(Filters.formatTripIdForDisplay('andaman-feb-mar-2026')).toBe('Andaman, Feb-Mar 2026');
+            expect(Filters.formatTripIdForDisplay('lrk-nalsarovar-jan-2026')).toBe('LRK Nalsarovar, Jan 2026');
+            expect(Filters.formatTripIdForDisplay('dnp-dec-2023')).toBe('DNP, Dec 2023');
+
+            $('.filter').append(`
+                <div class="filter-active-badges-row">
+                    <div class="component filter-trip-component">
+                        <button type="button" class="hidden trip-filter-badge active-filter-badge"></button>
+                    </div>
+                </div>
+            `);
+
+            Filters.setFilter('trip_id', 'andaman-feb-mar-2026');
+            expect($('.trip-filter-badge').hasClass('hidden')).toBe(false);
+            expect($('.trip-filter-badge').text()).toBe('Andaman, Feb-Mar 2026');
+            expect($('.filter-trip-component').hasClass('has-active-filter')).toBe(true);
+
+            window.showPage = vi.fn();
+            Filters.clearTripFilter();
+            expect(State.tripIdFilter).toBeNull();
+            expect($('.trip-filter-badge').hasClass('hidden')).toBe(true);
+            expect(window.showPage).toHaveBeenCalledWith(State.currentPage, expect.objectContaining({ trip_id: '' }));
+        });
+    });
 });
 
 

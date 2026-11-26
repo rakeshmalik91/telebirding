@@ -15,6 +15,7 @@ vi.mock('../../scripts/modules/admin/data.js', () => ({
     undoSighting: vi.fn(),
     redoSighting: vi.fn(),
     delayPendingSave: vi.fn(),
+    deleteMedia: vi.fn(),
     getMaxPinnedCount: vi.fn(() => 3),
     setMaxPinnedCount: vi.fn((val) => parseInt(val, 10) || 3)
 }));
@@ -208,6 +209,118 @@ describe('Admin Listeners Module', () => {
             input.trigger('focus');
             expect(selectSpy).toHaveBeenCalled();
             selectSpy.mockRestore();
+        });
+    });
+
+    describe('media-popup keyboard navigation', () => {
+        beforeEach(() => {
+            AdminData.data.species = {
+                'rock-pigeon': { name: 'Rock Pigeon' }
+            };
+            AdminData.data.camera_model = {
+                'a1': 'Sony A1'
+            };
+            AdminData.data.sightings[0] = {
+                key: 's0',
+                species: 'rock-pigeon',
+                date: '26-11-2026',
+                place: 'Wetland',
+                country: 'India',
+                rating: 4,
+                media: [
+                    { src: 'images/img1.jpg', type: 'image', title: 'Perching', exif_data: { camera_model: 'a1' } },
+                    { src: 'videos/vid1.mp4', type: 'video', title: 'Flying' },
+                    { src: 'images/img2.jpg', type: 'image', title: 'Portrait' }
+                ]
+            };
+            document.body.innerHTML += `
+                <table>
+                    <tr>
+                        <td>
+                            <div class="thumbnail" data-sightingkey="s0" data-mediasrc="images/img1.jpg" data-fullsrc="img1.jpg" data-mediatype="image"></div>
+                            <div class="thumbnail" data-sightingkey="s0" data-mediasrc="videos/vid1.mp4" data-fullsrc="vid1.mp4" data-mediatype="video"></div>
+                            <div class="thumbnail" data-sightingkey="s0" data-mediasrc="images/img2.jpg" data-fullsrc="img2.jpg" data-mediatype="image"></div>
+                        </td>
+                    </tr>
+                </table>
+                <div id="media-popup" style="display: none;">
+                    <div class="media-popup-overlay"></div>
+                    <div class="media-popup-content">
+                        <button class="media-popup-close">✕</button>
+                        <div class="media-popup-stage">
+                            <button class="media-popup-nav media-popup-prev" style="display:none;">‹</button>
+                            <img src="" id="media-popup-img" style="display:none;" />
+                            <video src="" id="media-popup-video" style="display:none;"></video>
+                            <button class="media-popup-nav media-popup-next" style="display:none;">›</button>
+                        </div>
+                        <div id="media-popup-details" class="media-popup-details" style="display: none;">
+                            <div id="media-popup-details-body" class="media-popup-details-body"></div>
+                            <div class="media-popup-details-footer">
+                                <button type="button" id="media-popup-delete" class="media-popup-delete-btn">🗑️ Delete Media</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            setupDashboardListeners(renderFn, viewState);
+        });
+
+        it('should render media details on the right side and navigate with ArrowRight and ArrowLeft', () => {
+            $('.thumbnail').eq(0).trigger('click');
+            expect($('#media-popup-img').attr('src')).toBe('img1.jpg');
+            expect($('#media-popup-details').css('display')).not.toBe('none');
+            expect($('#media-popup-details-body').text()).toContain('Rock Pigeon');
+            expect($('#media-popup-details-body').text()).toContain('Perching');
+            expect($('#media-popup-details-body').text()).toContain('Sony A1');
+            expect($('#media-popup-details-body').text()).toContain('1 / 3');
+
+            $(document).trigger($.Event('keydown', { key: 'ArrowRight' }));
+            expect($('#media-popup-video').attr('src')).toBe('vid1.mp4');
+            expect($('#media-popup-img').attr('src')).toBe('');
+            expect($('#media-popup-details-body').text()).toContain('2 / 3');
+
+            $(document).trigger($.Event('keydown', { key: 'ArrowRight' }));
+            expect($('#media-popup-img').attr('src')).toBe('img2.jpg');
+
+            // Wraps around forward and backward
+            $(document).trigger($.Event('keydown', { key: 'ArrowRight' }));
+            expect($('#media-popup-img').attr('src')).toBe('img1.jpg');
+
+            $(document).trigger($.Event('keydown', { key: 'ArrowLeft' }));
+            expect($('#media-popup-img').attr('src')).toBe('img2.jpg');
+        });
+
+        it('should delete current media via delete button or Delete key and advance preview', () => {
+            AdminData.deleteMedia.mockImplementation((_key, _src, _skip, onDeleted) => {
+                if (typeof onDeleted === 'function') onDeleted();
+            });
+
+            $('.thumbnail').eq(0).trigger('click');
+            expect($('#media-popup-img').attr('src')).toBe('img1.jpg');
+
+            // Delete via button click -> advances to vid1.mp4
+            $('#media-popup-delete').trigger('click');
+            expect(AdminData.deleteMedia).toHaveBeenCalledWith('s0', 'images/img1.jpg', false, expect.any(Function));
+            expect($('#media-popup-video').attr('src')).toBe('vid1.mp4');
+
+            // Delete via Delete key -> advances to img2.jpg
+            $(document).trigger($.Event('keydown', { key: 'Delete' }));
+            expect(AdminData.deleteMedia).toHaveBeenCalledWith('s0', 'videos/vid1.mp4', false, expect.any(Function));
+            expect($('#media-popup-img').attr('src')).toBe('img2.jpg');
+
+            // Delete last remaining media -> closes popup
+            $(document).trigger($.Event('keydown', { key: 'Delete' }));
+            vi.runAllTimers();
+            expect($('#media-popup').css('display')).toBe('none');
+        });
+
+        it('should close media popup on Escape', () => {
+            $('.thumbnail').eq(0).trigger('click');
+            expect($('#media-popup').css('display')).not.toBe('none');
+
+            $(document).trigger($.Event('keydown', { key: 'Escape' }));
+            vi.runAllTimers();
+            expect($('#media-popup').css('display')).toBe('none');
         });
     });
 });
