@@ -380,11 +380,15 @@
 .site-header {
 	position: fixed;
 	top: 0px;
+	left: 0px;
+	right: 0px;
 	width: 100%;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	background-color: #111b26;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 	/* box-shadow: 6px 4px 12px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.01); */
 }
 
