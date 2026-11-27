@@ -1,0 +1,47 @@
+{
+    "families": [
+        {
+            "name": "Beetles"
+        },
+        {
+            "name": "Bumblebee",
+            "sci_name": "bombus spp."
+        },
+        {
+            "name": "Butterflies"
+        },
+        {
+            "name": "Cicadas"
+        },
+        {
+            "name": "Damselflies"
+        },
+        {
+            "name": "Dung Beetles"
+        },
+        {
+            "name": "Flies"
+        },
+        {
+            "name": "Grasshoppers"
+        },
+        {
+            "name": "Hornets"
+        },
+        {
+            "name": "Houseflies & Allies"
+        },
+        {
+            "name": "Mantises"
+        },
+        {
+            "name": "Moths"
+        },
+        {
+            "name": "Spiders"
+        },
+        {
+            "name": "Unidentified"
+        }
+    ]
+}

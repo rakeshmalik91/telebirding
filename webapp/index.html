@@ -1,0 +1,373 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+	<title>Telebirding</title>
+
+	<meta name="title" content="Telebirding">
+	<meta name="author" content="Rakesh Malik">
+	<meta name="description" content="Rakesh's Bird Catalog">
+	<meta name="keywords"
+		content="bhimtal, bhitarkanika, bird, bird blog, bird details, bird gallery, bird list, bird log, bird lover, bird photo, bird photography, bird sanctuary, bird sighting, bird watching, bird watching gallery, birder, birder blog, birding, birding blog, birds, birdwatching, birdwatching blog, blog, gajoldoba, gallery, ladakh, latpanchar, leh, malik, mangalaodi, ornithologist, ornithology, pangong, rakesh, rakesh malik, sattal, sighting, telebirding, telebirding.wordpress.com, thattekad, tso kar, wordpress, india, indian, indian bird, birds of india, indian subcontinent, birds of indian subcontinent, tal chhapar, rajasthan, chhapar">
+
+	<!-- Browser favicons -->
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48x48.png">
+	<link rel="icon" type="image/x-icon" href="icons/telebirding.ico">
+
+	<!-- Apple Home Screen -->
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+
+	<!-- Installed web app -->
+	<meta name="application-name" content="Telebirding">
+	<meta name="apple-mobile-web-app-title" content="Telebirding">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="msapplication-tooltip" content="Telebirding - Rakesh's Bird Catalog">
+	<meta name="msapplication-TileImage" content="icons/favicon-64x64.png">
+	<meta property="al:ios:app_name" content="Telebirding">
+	<meta property="al:android:app_name" content="Telebirding">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Telebirding">
+	<meta property="og:site_name" content="Telebirding">
+	<meta property="og:url" content="https://telebirding.info">
+	<meta property="og:description" content="Telebirding - Rakesh's Bird Catalog">
+	<meta name="twitter:title" content="Telebirding">
+	<meta name="twitter:description" content="Rakesh's Bird Catalog">
+
+	<link rel="canonical" href="https://telebirding.info">
+	<link rel="next" href="https://telebirding.info/?page=feed">
+
+	<link rel="stylesheet" charset="UTF-8" href="css/animations.css?v=20260318">
+	<link rel="stylesheet" charset="UTF-8" href="css/common.css?v=20261127_0757">
+	<link rel="stylesheet" charset="UTF-8" href="css/home.css?v=20261127_0757">
+	<link rel="stylesheet" charset="UTF-8" href="css/archive-page.css?v=20261126_2323">
+	<link rel="stylesheet" charset="UTF-8" href="css/mobile.css?v=20261126_1020">
+	<link rel="stylesheet" charset="UTF-8" href="css/toast.css?v=20261124_01">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+	<script type="text/javascript" charset="UTF-8" src="lib/js/jquery.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="lib/js/moment.min.js"></script>
+
+	<!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
+
+	<script type="module" src="scripts/main.js?v=20261126_2112"></script>
+</head>
+
+<body>
+	<div style="display:none;">bhimtal, bhitarkanika, bird, bird blog, bird details, bird gallery, bird list, bird log,
+		bird lover, bird photo, bird photography, bird sanctuary, bird sighting, bird watching, bird watching gallery,
+		birder, birder blog, birding, birding blog, birds, birdwatching, birdwatching blog, blog, gajoldoba, gallery,
+		ladakh, latpanchar, leh, malik, mangalaodi, ornithologist, ornithology, pangong, rakesh, rakesh malik, sattal,
+		sighting, telebirding, telebirding.wordpress.com, thattekad, tso kar, wordpress, india, indian, indian bird,
+		birds of india, indian subcontinent, birds of indian subcontinent</div>
+
+	<div class="site-header">
+		<div class="site-brand">
+			<a class="site-logo" onclick="showPage('home')"><img src="icons/telebirding-logo.png" alt="Telebirding"
+					title="Telebirding" /></a>
+			<div class="mode-toggle header-mode-toggle" role="tablist" aria-label="Content mode">
+				<button type="button" class="mode-toggle-btn active" data-mode="bird" role="tab" aria-selected="true"
+					aria-label="Birds" title="Birds" tabindex="0">
+					<svg class="mode-toggle-icon" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"
+						focusable="false">
+						<path fill="currentColor"
+							d="M51.70 9.38 L43.57 7.62 L39.20 7.12 L33.32 5.00 L29.95 5.25 L28.07 6.00 L26.70 7.25 L25.45 9.62 L24.57 12.25 L22.82 14.25 L18.07 17.62 L16.45 20.88 L15.20 25.38 L14.32 38.88 L11.95 39.88 L14.20 41.00 L14.45 45.00 L15.45 45.25 L12.20 55.25 L12.32 56.00 L13.57 56.00 L13.32 58.00 L13.70 58.50 L14.45 58.88 L15.32 58.50 L16.07 57.62 L20.82 44.50 L21.57 44.12 L23.32 44.25 L23.32 46.38 L23.82 48.50 L25.95 52.50 L26.82 53.38 L27.20 53.25 L28.57 50.50 L29.70 47.25 L30.20 42.75 L34.57 42.25 L37.57 41.25 L42.07 38.25 L46.57 34.00 L41.32 33.00 L37.70 33.00 L35.20 33.38 L31.32 34.62 L34.07 29.25 L35.70 23.50 L35.70 20.75 L34.45 15.50 L36.70 12.50 L39.95 11.12 L47.57 10.88 L50.95 10.25 L51.70 9.88 L51.45 9.62 Z" />
+					</svg>
+					<span class="mode-toggle-label">Birds</span>
+				</button>
+				<button type="button" class="mode-toggle-btn" data-mode="insect" role="tab" aria-selected="false"
+					aria-label="Insects" title="Insects" tabindex="-1">
+					<svg class="mode-toggle-icon" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"
+						focusable="false">
+						<path fill="currentColor"
+							d="M46.66 12.14 L44.73 12.07 L42.95 13.11 L37.38 19.34 L31.37 24.09 L29.07 26.91 L28.18 29.14 L28.10 31.74 L30.85 40.05 L28.77 37.60 L27.21 33.97 L24.61 33.74 L22.16 34.56 L18.23 36.94 L15.63 39.31 L13.92 41.84 L13.48 43.32 L13.78 45.62 L16.52 48.29 L22.61 50.22 L32.04 50.97 L29.66 51.41 L27.66 53.12 L25.88 55.94 L26.02 57.50 L27.51 56.76 L29.44 54.16 L31.59 52.38 L34.41 51.26 L40.20 50.22 L43.40 48.74 L45.47 46.07 L47.70 45.62 L48.00 43.91 L51.34 39.91 L51.41 39.16 L50.74 39.02 L50.15 41.02 L47.92 43.54 L46.59 43.54 L44.66 45.03 L43.99 44.58 L42.88 45.84 L45.33 41.98 L47.63 36.79 L49.26 31.44 L50.37 25.28 L50.52 20.23 L49.93 16.82 L48.52 13.70 Z M41.61 7.24 L40.28 6.57 L39.02 6.50 L37.38 7.32 L35.45 9.69 L32.26 15.04 L28.10 19.49 L26.10 22.16 L25.13 24.17 L24.69 26.32 L24.98 28.92 L26.10 31.29 L22.24 31.37 L20.38 32.19 L18.16 33.82 L15.48 36.42 L13.85 38.64 L13.03 40.28 L12.59 42.21 L13.18 40.72 L14.74 38.57 L16.74 36.64 L19.34 34.78 L23.50 32.78 L27.06 32.63 L26.84 31.52 L27.06 28.77 L28.10 26.25 L29.14 24.76 L31.96 22.02 L36.57 18.53 L42.21 12.22 L44.21 11.03 L43.17 8.95 Z" />
+					</svg>
+					<span class="mode-toggle-label">Insects</span>
+				</button>
+				<button type="button" class="mode-toggle-btn" data-mode="reptile" role="tab" aria-selected="false"
+					aria-label="Reptiles & Amphibians" title="Reptiles & Amphibians" tabindex="-1">
+					<svg class="mode-toggle-icon" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"
+						focusable="false">
+						<path fill="currentColor"
+							d="M51.98 11.36 L50.24 10.10 L48.80 9.32 L48.02 9.08 L47.12 9.20 L46.52 9.56 L46.04 10.04 L45.44 10.94 L44.72 12.56 L44.06 15.02 L43.88 15.32 L43.10 14.66 L42.80 13.58 L41.96 11.78 L41.12 10.46 L40.40 9.68 L39.56 9.92 L37.82 11.00 L36.50 8.78 L35.54 7.76 L35.00 7.76 L34.58 7.94 L32.78 9.26 L32.48 9.32 L30.38 7.88 L29.66 7.52 L29.06 7.40 L28.58 7.58 L28.16 7.94 L27.14 9.56 L26.60 9.56 L24.26 8.72 L23.24 8.66 L22.76 9.14 L22.28 10.58 L21.98 11.06 L20.96 11.24 L18.44 11.30 L18.14 11.96 L18.02 13.64 L16.40 13.82 L15.50 14.06 L15.38 14.54 L15.44 16.04 L12.38 17.54 L11.42 18.26 L11.54 18.86 L12.14 19.70 L12.08 19.88 L10.64 21.02 L9.80 21.86 L9.20 22.70 L9.14 23.78 L9.44 24.92 L8.18 27.56 L6.92 30.74 L6.02 33.68 L5.42 36.32 L5.00 39.56 L5.00 42.56 L5.30 44.60 L5.66 45.98 L6.32 47.78 L7.46 49.94 L8.96 51.98 L10.82 53.78 L12.74 55.10 L14.24 55.82 L16.40 56.42 L17.48 56.54 L18.98 56.48 L19.94 56.30 L21.32 55.82 L22.16 55.40 L23.54 54.44 L24.38 53.60 L25.40 51.98 L25.88 50.42 L26.00 48.92 L25.82 47.48 L25.28 45.86 L24.56 44.60 L23.36 43.22 L22.04 42.26 L20.30 41.54 L19.34 41.36 L17.42 41.42 L16.10 41.84 L15.08 42.44 L14.00 43.46 L13.16 44.84 L12.80 45.98 L12.74 47.42 L13.22 48.92 L13.64 49.52 L14.78 50.48 L15.92 51.02 L16.94 51.32 L18.80 51.32 L19.76 50.84 L20.48 49.94 L20.72 49.16 L20.72 48.26 L20.48 47.54 L19.94 46.94 L18.74 46.52 L18.08 46.64 L17.90 46.88 L17.90 47.36 L18.08 47.54 L18.86 47.84 L19.10 48.08 L19.10 48.56 L18.92 48.92 L18.32 49.40 L17.96 49.52 L17.12 49.40 L16.58 49.10 L16.04 48.56 L15.80 48.02 L15.68 47.24 L15.98 45.92 L16.34 45.32 L16.88 44.78 L17.72 44.30 L18.38 44.12 L19.76 44.12 L20.30 44.24 L21.44 44.84 L22.28 45.74 L22.88 46.88 L23.12 47.84 L23.18 49.22 L22.94 50.42 L22.46 51.44 L21.50 52.52 L20.84 52.94 L19.52 53.36 L17.66 53.42 L16.10 53.12 L14.00 52.22 L12.62 51.26 L11.30 49.94 L10.34 48.56 L9.50 46.70 L9.14 45.08 L9.08 44.18 L9.20 42.80 L9.86 40.58 L10.82 38.78 L12.14 37.04 L14.00 35.18 L15.56 33.92 L18.20 32.24 L19.46 31.58 L19.88 31.64 L21.20 32.24 L22.58 33.20 L24.80 35.42 L26.00 36.44 L27.08 37.16 L27.86 37.52 L29.30 37.94 L31.28 38.24 L33.08 38.30 L35.06 38.12 L36.38 37.76 L37.22 37.22 L37.46 36.68 L37.22 35.90 L36.62 35.36 L35.36 34.88 L31.88 34.22 L30.62 33.74 L29.54 32.66 L28.10 30.50 L27.08 29.36 L27.02 29.06 L30.86 28.22 L33.74 27.74 L33.98 27.80 L34.10 28.46 L34.82 29.54 L35.90 30.38 L37.52 31.22 L39.38 31.88 L41.12 32.30 L43.70 32.60 L45.02 32.54 L45.86 32.36 L46.34 32.12 L46.76 31.64 L46.76 30.98 L46.58 30.62 L46.04 30.08 L45.50 29.72 L43.58 28.82 L41.42 28.10 L39.32 27.62 L39.20 27.50 L39.68 27.02 L40.34 26.90 L46.04 26.48 L50.78 26.36 L54.32 26.00 L56.30 25.58 L58.04 24.80 L58.46 24.38 L58.88 23.42 L58.94 21.62 L58.52 19.88 L57.92 18.32 L57.26 17.06 L55.70 14.96 L53.18 12.38 Z" />
+					</svg>
+					<span class="mode-toggle-label">Reptiles &amp; Amphibians</span>
+				</button>
+			</div>
+		</div>
+		<div class="page-name"><span class='active'>Home</span></div>
+		<div class="filter-panel fadein" style="display:none;">
+			<div class="stats">
+				<div class="box newspeciesfilter cursorpointer" onclick="toggleNewSpeciesFilter()"
+					title="Filter only lifers (new observed species) / Clear filter">
+					<div class="label new-species-count count"></div>
+					<div class="label">Lifers:</div>
+				</div>
+				<div class="box ">
+					<div class="label species-count count"></div>
+					<div class="label">Species:</div>
+				</div>
+				<div class="box">
+					<div class="label sightings-count count"></div>
+					<div class="label">Sightings:</div>
+				</div>
+				<button type="button" class="mobile-filter-toggle-btn" onclick="toggleMobileFilters()"
+					aria-label="Toggle filters">
+					<svg class="filter-btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+						<path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
+					</svg>
+					<span class="filter-btn-text">Filter</span>
+					<span class="mobile-filter-badge" style="display:none;"></span>
+				</button>
+			</div>
+			<div class="filter">
+				<div class="component right-pane-button-container">
+					<button type="button" class="right-pane-button" onclick="toggleRightPane()" tabindex="9"
+						title="Index"></button>
+				</div>
+				<div class="component copy-url-component">
+					<button type="button" class="copy-url-button" onclick="copyCurrentPageUrl()" tabindex="9"
+						title="Copy URL" aria-label="Copy URL">
+						<svg class="copy-url-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+							<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+						</svg>
+					</button>
+				</div>
+				<div class="component filter-location-component">
+					<input type="text" data-value="place" onchange="filterOnChange('place')" tabindex="6"
+						placeholder="Filter by Location" />
+					<button type="button" class="button-clear" onclick="clearFilter('place'); event.stopPropagation();"
+						onmousedown="clearFilter('place'); event.preventDefault();" tabindex="7"
+						title="Clear Place Filter"></button>
+					<button type="button" class="hidden place-filter-badge active-filter-badge"
+						onclick="clearFilter('place')" tabindex="7" title="Clear Place Filter"></button>
+				</div>
+				<div class="component filter-name-component">
+					<input type="text" data-value="sighting" onchange="filterOnChange('sighting')" tabindex="4"
+						placeholder="Filter by Name" />
+					<button type="button" class="button-clear"
+						onclick="clearFilter('sighting'); event.stopPropagation();"
+						onmousedown="clearFilter('sighting'); event.preventDefault();" tabindex="5"
+						title="Clear Bird Name Filter"></button>
+					<button type="button" class="hidden name-filter-badge active-filter-badge"
+						onclick="clearFilter('sighting')" tabindex="5" title="Clear Bird Name Filter"></button>
+				</div>
+				<div class="desktop-badges-wrapper">
+					<div class="component desktop-badges-toggle-component">
+						<button type="button" class="desktop-badges-toggle-btn" onclick="toggleDesktopFilterBadges(event)"
+							title="Show active filters"></button>
+					</div>
+					<div class="filter-active-badges-row">
+						<div class="component filter-trip-component">
+							<button type="button" class="hidden trip-filter-badge active-filter-badge"
+								onclick="clearTripFilter()" tabindex="5" title="Clear Trip Filter"></button>
+						</div>
+						<div class="component filter-family-component">
+							<button type="button" class="hidden family-filter-badge active-filter-badge"
+								onclick="clearFamilyFilter()" tabindex="5" title="Clear Family Filter"></button>
+						</div>
+						<div class="component filter-date-component">
+							<input type="text" class="hidden" data-value="date" />
+							<button type="button" class="hidden date-filter active-filter-badge"
+								onclick="clearFilter('date')" tabindex="8" title="Clear Date Filter"></button>
+						</div>
+						<div class="component filter-rating-component">
+							<button type="button" class="hidden rating-filter active-filter-badge"
+								onclick="resetRatingFilter()" tabindex="8" title="Clear Rating Filter"><span
+									class="rating-label">Grade:&nbsp;</span><span class="rating"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sortby">
+				<div class="component sortby-toggle-component">
+					<button type="button" class="sortby-toggle-btn button-active" onclick="toggleSortDropdown(event)"
+						tabindex="1" title="Sort sightings"><span class="sortby-label">Date</span><span
+							class="order desc"></span><span class="dropdown-caret"> ▾</span></button>
+				</div>
+				<div class="sortby-dropdown">
+					<div class="component sortby-date-component"><button type="button" data-value="date" tabindex="1"
+							onclick="sortByOnChange('date')" class="button-active" title="Sort by Date">Date<span
+								class="order desc"></span></button></div>
+					<div class="component sortby-name-component"><button type="button" data-value="name" tabindex="2"
+							onclick="sortByOnChange('name')" title="Sort by Name">Name<span class="order"></span></button>
+					</div>
+					<div class="component sortby-rating-component"><button type="button" data-value="rating" tabindex="3"
+							onclick="sortByOnChange('rating')" title="Sort by Image Grade">Grade<span class="order"></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="home">
+		<div class="featured" onclick="showPage('home')">
+			<div class="images"></div>
+			<div class="carousal-buttons"></div>
+		</div>
+		<div class="menu">
+			<!-- Mode toggle at top of menu (Bird / Insect — extensible) -->
+			<div class="mode-toggle menu-mode-toggle" id="mode-toggle" role="tablist" aria-label="Content mode">
+				<button type="button" class="mode-toggle-btn active" data-mode="bird" role="tab" aria-selected="true"
+					aria-label="Birds" title="Birds" tabindex="0">
+					<svg class="mode-toggle-icon" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"
+						focusable="false">
+						<path fill="currentColor"
+							d="M51.70 9.38 L43.57 7.62 L39.20 7.12 L33.32 5.00 L29.95 5.25 L28.07 6.00 L26.70 7.25 L25.45 9.62 L24.57 12.25 L22.82 14.25 L18.07 17.62 L16.45 20.88 L15.20 25.38 L14.32 38.88 L11.95 39.88 L14.20 41.00 L14.45 45.00 L15.45 45.25 L12.20 55.25 L12.32 56.00 L13.57 56.00 L13.32 58.00 L13.70 58.50 L14.45 58.88 L15.32 58.50 L16.07 57.62 L20.82 44.50 L21.57 44.12 L23.32 44.25 L23.32 46.38 L23.82 48.50 L25.95 52.50 L26.82 53.38 L27.20 53.25 L28.57 50.50 L29.70 47.25 L30.20 42.75 L34.57 42.25 L37.57 41.25 L42.07 38.25 L46.57 34.00 L41.32 33.00 L37.70 33.00 L35.20 33.38 L31.32 34.62 L34.07 29.25 L35.70 23.50 L35.70 20.75 L34.45 15.50 L36.70 12.50 L39.95 11.12 L47.57 10.88 L50.95 10.25 L51.70 9.88 L51.45 9.62 Z" />
+					</svg>
+					<span class="mode-toggle-label">Birds</span>
+				</button>
+				<button type="button" class="mode-toggle-btn" data-mode="insect" role="tab" aria-selected="false"
+					aria-label="Insects" title="Insects" tabindex="-1">
+					<svg class="mode-toggle-icon" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"
+						focusable="false">
+						<path fill="currentColor"
+							d="M46.66 12.14 L44.73 12.07 L42.95 13.11 L37.38 19.34 L31.37 24.09 L29.07 26.91 L28.18 29.14 L28.10 31.74 L30.85 40.05 L28.77 37.60 L27.21 33.97 L24.61 33.74 L22.16 34.56 L18.23 36.94 L15.63 39.31 L13.92 41.84 L13.48 43.32 L13.78 45.62 L16.52 48.29 L22.61 50.22 L32.04 50.97 L29.66 51.41 L27.66 53.12 L25.88 55.94 L26.02 57.50 L27.51 56.76 L29.44 54.16 L31.59 52.38 L34.41 51.26 L40.20 50.22 L43.40 48.74 L45.47 46.07 L47.70 45.62 L48.00 43.91 L51.34 39.91 L51.41 39.16 L50.74 39.02 L50.15 41.02 L47.92 43.54 L46.59 43.54 L44.66 45.03 L43.99 44.58 L42.88 45.84 L45.33 41.98 L47.63 36.79 L49.26 31.44 L50.37 25.28 L50.52 20.23 L49.93 16.82 L48.52 13.70 Z M41.61 7.24 L40.28 6.57 L39.02 6.50 L37.38 7.32 L35.45 9.69 L32.26 15.04 L28.10 19.49 L26.10 22.16 L25.13 24.17 L24.69 26.32 L24.98 28.92 L26.10 31.29 L22.24 31.37 L20.38 32.19 L18.16 33.82 L15.48 36.42 L13.85 38.64 L13.03 40.28 L12.59 42.21 L13.18 40.72 L14.74 38.57 L16.74 36.64 L19.34 34.78 L23.50 32.78 L27.06 32.63 L26.84 31.52 L27.06 28.77 L28.10 26.25 L29.14 24.76 L31.96 22.02 L36.57 18.53 L42.21 12.22 L44.21 11.03 L43.17 8.95 Z" />
+					</svg>
+					<span class="mode-toggle-label">Insects</span>
+				</button>
+				<button type="button" class="mode-toggle-btn" data-mode="reptile" role="tab" aria-selected="false"
+					aria-label="Reptiles & Amphibians" title="Reptiles & Amphibians" tabindex="-1">
+					<svg class="mode-toggle-icon" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"
+						focusable="false">
+						<path fill="currentColor"
+							d="M51.98 11.36 L50.24 10.10 L48.80 9.32 L48.02 9.08 L47.12 9.20 L46.52 9.56 L46.04 10.04 L45.44 10.94 L44.72 12.56 L44.06 15.02 L43.88 15.32 L43.10 14.66 L42.80 13.58 L41.96 11.78 L41.12 10.46 L40.40 9.68 L39.56 9.92 L37.82 11.00 L36.50 8.78 L35.54 7.76 L35.00 7.76 L34.58 7.94 L32.78 9.26 L32.48 9.32 L30.38 7.88 L29.66 7.52 L29.06 7.40 L28.58 7.58 L28.16 7.94 L27.14 9.56 L26.60 9.56 L24.26 8.72 L23.24 8.66 L22.76 9.14 L22.28 10.58 L21.98 11.06 L20.96 11.24 L18.44 11.30 L18.14 11.96 L18.02 13.64 L16.40 13.82 L15.50 14.06 L15.38 14.54 L15.44 16.04 L12.38 17.54 L11.42 18.26 L11.54 18.86 L12.14 19.70 L12.08 19.88 L10.64 21.02 L9.80 21.86 L9.20 22.70 L9.14 23.78 L9.44 24.92 L8.18 27.56 L6.92 30.74 L6.02 33.68 L5.42 36.32 L5.00 39.56 L5.00 42.56 L5.30 44.60 L5.66 45.98 L6.32 47.78 L7.46 49.94 L8.96 51.98 L10.82 53.78 L12.74 55.10 L14.24 55.82 L16.40 56.42 L17.48 56.54 L18.98 56.48 L19.94 56.30 L21.32 55.82 L22.16 55.40 L23.54 54.44 L24.38 53.60 L25.40 51.98 L25.88 50.42 L26.00 48.92 L25.82 47.48 L25.28 45.86 L24.56 44.60 L23.36 43.22 L22.04 42.26 L20.30 41.54 L19.34 41.36 L17.42 41.42 L16.10 41.84 L15.08 42.44 L14.00 43.46 L13.16 44.84 L12.80 45.98 L12.74 47.42 L13.22 48.92 L13.64 49.52 L14.78 50.48 L15.92 51.02 L16.94 51.32 L18.80 51.32 L19.76 50.84 L20.48 49.94 L20.72 49.16 L20.72 48.26 L20.48 47.54 L19.94 46.94 L18.74 46.52 L18.08 46.64 L17.90 46.88 L17.90 47.36 L18.08 47.54 L18.86 47.84 L19.10 48.08 L19.10 48.56 L18.92 48.92 L18.32 49.40 L17.96 49.52 L17.12 49.40 L16.58 49.10 L16.04 48.56 L15.80 48.02 L15.68 47.24 L15.98 45.92 L16.34 45.32 L16.88 44.78 L17.72 44.30 L18.38 44.12 L19.76 44.12 L20.30 44.24 L21.44 44.84 L22.28 45.74 L22.88 46.88 L23.12 47.84 L23.18 49.22 L22.94 50.42 L22.46 51.44 L21.50 52.52 L20.84 52.94 L19.52 53.36 L17.66 53.42 L16.10 53.12 L14.00 52.22 L12.62 51.26 L11.30 49.94 L10.34 48.56 L9.50 46.70 L9.14 45.08 L9.08 44.18 L9.20 42.80 L9.86 40.58 L10.82 38.78 L12.14 37.04 L14.00 35.18 L15.56 33.92 L18.20 32.24 L19.46 31.58 L19.88 31.64 L21.20 32.24 L22.58 33.20 L24.80 35.42 L26.00 36.44 L27.08 37.16 L27.86 37.52 L29.30 37.94 L31.28 38.24 L33.08 38.30 L35.06 38.12 L36.38 37.76 L37.22 37.22 L37.46 36.68 L37.22 35.90 L36.62 35.36 L35.36 34.88 L31.88 34.22 L30.62 33.74 L29.54 32.66 L28.10 30.50 L27.08 29.36 L27.02 29.06 L30.86 28.22 L33.74 27.74 L33.98 27.80 L34.10 28.46 L34.82 29.54 L35.90 30.38 L37.52 31.22 L39.38 31.88 L41.12 32.30 L43.70 32.60 L45.02 32.54 L45.86 32.36 L46.34 32.12 L46.76 31.64 L46.76 30.98 L46.58 30.62 L46.04 30.08 L45.50 29.72 L43.58 28.82 L41.42 28.10 L39.32 27.62 L39.20 27.50 L39.68 27.02 L40.34 26.90 L46.04 26.48 L50.78 26.36 L54.32 26.00 L56.30 25.58 L58.04 24.80 L58.46 24.38 L58.88 23.42 L58.94 21.62 L58.52 19.88 L57.92 18.32 L57.26 17.06 L55.70 14.96 L53.18 12.38 Z" />
+					</svg>
+					<span class="mode-toggle-label">Reptiles &amp; Amphibians</span>
+				</button>
+			</div>
+			<button type="button" onclick="showPage('feed')"><img class="icon" src="icons/archive-icon.png" />
+				Feed</button>
+			<!-- <button type="button" onclick="showPage('stories')"><img class="icon" src="icons/video-icon.png"/> Birding Trips</button> -->
+			<button type="button" class='seq2' onclick="showPage('explore_menu')"><img class="icon"
+					src="icons/bino-icon.png" /> Explore</button>
+			<button type="button" class='seq3' onclick="showPage('map_menu')"><img class="icon"
+					src="icons/map-icon.png" /> Map</button>
+			<button type="button" class='seq4' onclick="showPage('stories')"><img class="icon"
+					src="icons/video-icon.png" /> Stories</button>
+			<button type="button" class='seq4' onclick="showPage('about')"><img class="icon"
+					src="icons/about-icon.png" /> About</button>
+			<!-- <a href="https://github.com/rakeshmalik91/insect-id/blob/main/README.md" target="_blank"><button
+					type="button" class='seq4'><img class="icon" src="icons/insect-id-app-icon.png" /> Insect ID AI
+					Android App</button></a> -->
+			<button type="button" class="highlight" style="display:none;" id="admin-button"><img class="icon"
+					src="icons/admin-icon.png" /> Admin</button>
+		</div>
+		<div class="explore-menu" style="display:none;">
+			<h1>Sightings by Category</h1>
+			<!-- <div><p><b>Note:</b> Sightings are categorized based on genus/family or group of similar species in a genus/family.</p></div> -->
+			<div class="list"></div>
+		</div>
+		<div class="about-page" style="display:none;">
+			<h1>About</h1>
+			<br>
+			<span>
+				Welcome to Telebirding!
+				<br><br>
+				My name is Rakesh. This blog contains a catalogue of birds I have encountered during my trips across
+				India. Most of the photos here are shot with Sony Alpha
+				<a href="https://www.sony.co.in/interchangeable-lens-cameras/products/ilce-6400"
+					target="_blank">A6400</a> /
+				<a href="https://www.sony.co.in/interchangeable-lens-cameras/products/ilce-7rm5"
+					target="_blank">7RmV</a> +
+				<a href="https://www.sony.co.in/electronics/camera-lenses/sel200600g" target="_blank">200-600mm G
+					Lens</a> or
+				<a href="https://www.nikonusa.com/en/nikon-products/product-archive/compact-digital-cameras/coolpix-p900.html"
+					target="_blank">Nikon Coolpix P900</a>.
+				<br><br>
+				Identifications are mostly made visually using <a href="https://ebird.org/home"
+					target="_blank">eBird</a> or
+				<a href="https://merlin.allaboutbirds.org/" target="_blank">Merlin</a> data. Feel free to reach out for
+				any discrepencies.
+				<br><br>
+				Try our <a href="https://play.google.com/store/apps/details?id=com.rakeshmalik.insectid"
+					target="_blank">Insect ID AI Android App</a> for identifying
+				Butterflies/Moths/Dragonflies/Damseflies of India.
+				<br><br>
+				Feel free to contact in the following for any enquiries.
+			</span>
+			<br>
+			<span class="social-icon" title="E-Mail: rakeshmalik91@gmail.com">
+				<a href="mailto:rakeshmalik91@gmail.com?subject=About Telebirding" target="_blank"><img
+						src="icons/email-icon.png"></img></a>
+			</span>
+			<span class="social-icon" title="Instagram: @rakeshmalik.blog">
+				<a href="https://www.instagram.com/rakeshmalik.blog" target="_blank"><img
+						src="icons/instagram-icon.png"></img></a>
+			</span>
+			<!-- <span class="social-icon" title="LinkedIn: @rakesh-malik-120bb140">
+					<a href="https://www.linkedin.com/in/rakesh-malik-120bb140" target="_blank"><img src="icons/linkedin-icon.png"></img></a>
+				</span> -->
+		</div>
+		<div class="home-page">
+			<div class='text centeralign'>
+				<p class='text centeralign'>Welcome to Telebirding.</p>
+				<p class='text centeralign'>Check our feed for latest bird sightings in the menu above.</p>
+			</div>
+			<hr />
+
+			<div class="home-stories"></div>
+
+			<div class="show-more" onclick="showPage('stories')"><a>Show more stories...</a></div>
+		</div>
+
+	</div>
+	<div class="sightings-list" style="display:none;"></div>
+	<div class="stories" style="display:none;"></div>
+	<div class="map-menu" style="display:none;"></div>
+	<div class="right-pane slide-in" style="display:none;"></div>
+	<div class="overlay fadein" style="display:none;" onclick="removePreviewImage()"></div>
+	<div class="overlay-on-body fadein" style="display:none;"></div>
+
+	<!-- Scroll to top button for mobile -->
+	<button type="button" class="scroll-to-top-btn" id="scroll-to-top-btn" onclick="scrollToTop()"
+		aria-label="Scroll to top" title="Scroll to top">
+		<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.6"
+			stroke-linecap="round" stroke-linejoin="round">
+			<path d="M18 15l-6-6-6 6" />
+		</svg>
+	</button>
+
+	<!-- Fixed Bottom Navigation for Mobile (Instagram Style) -->
+	<nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile Navigation">
+		<button type="button" class="mobile-nav-btn active" data-page="feed" onclick="showPage('feed')">
+			<span class="icon" aria-hidden="true"><img src="icons/archive-icon.png" alt="" /></span>
+			<span class="label">Feed</span>
+			<span class="indicator"></span>
+		</button>
+		<button type="button" class="mobile-nav-btn" data-page="explore_menu" onclick="showPage('explore_menu')">
+			<span class="icon" aria-hidden="true"><img src="icons/bino-icon.png" alt="" /></span>
+			<span class="label">Explore</span>
+			<span class="indicator"></span>
+		</button>
+		<button type="button" class="mobile-nav-btn" data-page="map_menu" onclick="showPage('map_menu')">
+			<span class="icon" aria-hidden="true"><img src="icons/map-icon.png" alt="" /></span>
+			<span class="label">Map</span>
+			<span class="indicator"></span>
+		</button>
+		<button type="button" class="mobile-nav-btn" data-page="stories" onclick="showPage('stories')">
+			<span class="icon" aria-hidden="true"><img src="icons/video-icon.png" alt="" /></span>
+			<span class="label">Stories</span>
+			<span class="indicator"></span>
+		</button>
+		<button type="button" class="mobile-nav-btn" data-page="about" onclick="showPage('about')">
+			<span class="icon" aria-hidden="true"><img src="icons/about-icon.png" alt="" /></span>
+			<span class="label">About</span>
+			<span class="indicator"></span>
+		</button>
+	</nav>
+</body>
+
+</html>

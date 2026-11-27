@@ -1,0 +1,2211 @@
+import Constants from '../constants.js';
+import Util from '../util.js';
+import FirebaseApi from '../firebase-api.js';
+import { showLoader, hideLoader } from '../loader.js';
+import { UndoRedoManager } from './history.js';
+import { lookupLocation, geoService, fetchStatesForCountry } from '../geo-service.js';
+
+export let data = {};
+export let loadedEtags = {};
+export let currentMode = Constants.normalizeMode(Util.getUrlParams().mode);
+export function setCurrentMode(mode) {
+    currentMode = mode;
+    lastUpdatedSpecies = Constants.getDefaultSpecies(mode);
+}
+export let lastUpdatedSpecies = Constants.getDefaultSpecies(currentMode);
+
+export const historyManager = new UndoRedoManager(50);
+historyManager.onChange = (canUndo, canRedo) => {
+    $('#undo-btn').prop('disabled', !canUndo);
+    $('#redo-btn').prop('disabled', !canRedo);
+};
+
+let isCommitPending = false;
+let preChangeSnapshot = null;
+export function snapshotSightings() {
+    if (!preChangeSnapshot && data.sightings) {
+        preChangeSnapshot = JSON.parse(JSON.stringify(data.sightings));
+    }
+}
+
+export function commitSightingsChange() {
+    if (!isCommitPending && preChangeSnapshot) {
+        isCommitPending = true;
+        queueMicrotask(() => {
+            if (preChangeSnapshot && data.sightings) {
+                historyManager.pushState(preChangeSnapshot, data.sightings);
+                preChangeSnapshot = null;
+            }
+            isCommitPending = false;
+        });
+    }
+}
+
+export function undoSighting() {
+    if (data.sightings) {
+        data.sightings = historyManager.undo(data.sightings);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
+
+export function redoSighting() {
+    if (data.sightings) {
+        data.sightings = historyManager.redo(data.sightings);
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
+
+const IMAGE_SIZE = 1000;
+const SYNC_SCHEDULE_TIME = 3000;
+let syncRef;
+
+import { removeUnwantedValues, applySpeciesTags } from './data-cleanup.js';
+import { customAlert, customConfirm, customSelectModal, showToast } from './ui.js';
+
+
+let renderCallback = () => { };
+
+export function setRenderCallback(callback) {
+    renderCallback = callback;
+}
+
+export function triggerRender() {
+    renderCallback();
+}
+
+export function refreshData() {
+    showLoader("refresh", "Loading Data...");
+    Util.clearFileCache();
+    data = {};
+    historyManager.resetMemory();
+    preChangeSnapshot = null;
+    Util.readJSONFiles([
+        Util.getData("data/" + currentMode + "-sightings.json"),
+        Util.getData("data/" + currentMode + "-species.json"),
+        Util.getData("data/" + currentMode + "-families.json"),
+        Util.getData("data/" + currentMode + "-likes.json"),
+        Util.getData("data/places.json"),
+        Util.getData("data/site-data.json"),
+        Util.getData("data/stories.json")
+    ], function (json) {
+        data = json;
+        data.stories = data.stories || [];
+        data.author = data.author || {};
+        data.camera_model = data.camera_model || {};
+        data.featured = data.featured || [];
+        for (let key in data) {
+            let fileData = {};
+            fileData[key] = data[key];
+            fileData = removeUnwantedValues(fileData) || {};
+            lastUploadedData[key] = JSON.stringify(fileData);
+            
+            if (Constants.ADMIN_USE_ETAG && ['sightings', 'species', 'families', 'likes'].includes(key)) {
+                FirebaseApi.getFirebase().storage().ref("data/" + currentMode + "-" + key + ".json").getMetadata().then(metadata => {
+                    loadedEtags[key] = metadata.generation;
+                    if (key === 'sightings') {
+                        historyManager.loadFromStorage(metadata.generation);
+                    }
+                }).catch(e => {
+                    if (key === 'sightings') historyManager.loadFromStorage(null);
+                });
+            } else if (!Constants.ADMIN_USE_ETAG && key === 'sightings') {
+                historyManager.loadFromStorage(null);
+            }
+        }
+        if (data.sightings) {
+            data.sightings.forEach(s => s.media = s.media || []);
+        }
+        const scrollY = window.scrollY;
+        renderCallback();
+        window.scrollTo(0, scrollY);
+        hideLoader("refresh");
+    });
+}
+
+function refresh() {
+    refreshData();
+}
+
+let isUploading = {};
+let pendingUpload = {};
+export let lastUploadedData = {};
+
+export function uploadJSONData(type, skipRefresh) {
+    return new Promise((resolve, reject) => {
+        if (isUploading[type]) {
+            if (pendingUpload[type] !== undefined) {
+                pendingUpload[type] = pendingUpload[type] && skipRefresh;
+            } else {
+                pendingUpload[type] = skipRefresh;
+            }
+            resolve();
+            return;
+        }
+        isUploading[type] = true;
+
+        const storagePath = (type === 'places') ? "data/places.json"
+            : (type === 'site-data') ? "data/site-data.json"
+            : (type === 'stories') ? "data/stories.json"
+            : (type.startsWith('geo/')) ? `data/${type}.json`
+            : ("data/" + currentMode + "-" + type + ".json");
+
+        $('.save').text('Saving...').attr('disabled', 'disabled');
+        $('#sync-spinner').css('display', 'flex');
+        $('#sync-spinner .sync-text').text('Saving...');
+        $('#sync-spinner-icon').show();
+
+        // --- Pre-upload cleanup (ported from data-cleanup.py) ---
+        // Apply species-specific tag rules when uploading species data
+        if (type === 'species' && data[type]) {
+            applySpeciesTags(data[type]);
+        }
+
+        let fileData = {};
+        if (type === 'places') {
+            fileData = { countries: data.countries };
+        } else if (type === 'site-data') {
+            fileData = {
+                author: data.author || {},
+                camera_model: data.camera_model || {},
+                featured: data.featured || []
+            };
+        } else if (type === 'stories') {
+            fileData = {
+                stories: data.stories || []
+            };
+        } else if (type.startsWith('geo/')) {
+            const country = type.slice(4);
+            fileData = getCountryGeoJSON(country);
+        } else {
+            fileData[type] = data[type];
+        }
+
+        // Remove unwanted values (null, false, [], "", {}) before upload (preserve GeoJSON intact)
+        if (!type.startsWith('geo/')) {
+            fileData = removeUnwantedValues(fileData) || {};
+        }
+
+        fileData = JSON.stringify(fileData);
+
+        if (fileData === lastUploadedData[type]) {
+            console.log("No changes detected for " + type + ", skipping upload.");
+            isUploading[type] = false;
+
+            if (pendingUpload[type] !== undefined) {
+                delete pendingUpload[type];
+            }
+
+            if (!skipRefresh) renderCallback();
+            if (!hasUnsavedChanges()) {
+                $('.save').text('Saved!');
+                $('#sync-spinner .sync-text').text('Saved!');
+                $('#sync-spinner-icon').hide();
+                setTimeout(() => { 
+                    if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
+                    if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+                }, 2000);
+            }
+            resolve();
+            return;
+        }
+
+        if (fileData.length < 100) {
+            customAlert("Unknown error while uploading (file data too small) ...");
+            isUploading[type] = false;
+            $('.save').text('Error').removeAttr('disabled');
+            $('#sync-spinner .sync-text').text('Error');
+            $('#sync-spinner-icon').hide();
+            setTimeout(() => { 
+                if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
+            }, 2000);
+            resolve({ success: false });
+            return;
+        }
+        lastUploadedData[type] = fileData;
+        fileData = [fileData];
+
+        const fileName = (type === 'places') ? "places.json"
+            : (type.startsWith('geo/')) ? `${type.slice(4)}.json`
+            : (currentMode + "-" + type + ".json");
+        const file = new File(fileData, fileName);
+
+        const finishUpload = () => {
+            isUploading[type] = false;
+            if (pendingUpload[type] !== undefined) {
+                let nextSkip = pendingUpload[type];
+                delete pendingUpload[type];
+                uploadJSONData(type, nextSkip);
+                return;
+            }
+            if (!hasUnsavedChanges()) {
+                $('.save').text('Saved!');
+                $('#sync-spinner .sync-text').text('Saved!');
+                $('#sync-spinner-icon').hide();
+                setTimeout(() => { 
+                    if ($('.save').first().text() === 'Saved!') $('.save').text('Save'); 
+                    if ($('#sync-spinner .sync-text').text() === 'Saved!') $('#sync-spinner').fadeOut(300);
+                }, 2000);
+            }
+            resolve({ success: true });
+        };
+
+        const doUpload = () => {
+            FirebaseApi.getFirebase().storage().ref(storagePath).put(file).then((snapshot) => {
+                console.log("uploaded " + storagePath);
+                
+                if (Constants.ADMIN_USE_ETAG) {
+                    const newGen = snapshot && snapshot.metadata ? snapshot.metadata.generation : null;
+                    if (newGen) {
+                        loadedEtags[type] = newGen;
+                        if (type === 'sightings') {
+                            historyManager.etag = newGen;
+                            historyManager.saveToStorage();
+                        }
+                    }
+                } else if (type === 'sightings') {
+                    historyManager.etag = null;
+                    historyManager.saveToStorage();
+                }
+                finishUpload();
+            }).catch(e => {
+                isUploading[type] = false;
+                customAlert(e.message);
+                $('.save').text('Error').removeAttr('disabled');
+                $('#sync-spinner .sync-text').text('Error');
+                $('#sync-spinner-icon').hide();
+                setTimeout(() => { 
+                    if ($('#sync-spinner .sync-text').text() === 'Error') $('#sync-spinner').fadeOut(300);
+                }, 2000);
+                resolve({ success: false });
+            });
+        };
+
+        if (Constants.ADMIN_USE_ETAG) {
+            const expectedGen = loadedEtags[type];
+            if (!expectedGen) {
+                doUpload();
+                return;
+            }
+
+            FirebaseApi.getFirebase().storage().ref(storagePath).getMetadata().then(metadata => {
+                const currentGen = metadata.generation;
+                if (currentGen && currentGen !== expectedGen) {
+                    console.warn("Generation mismatch! Expected:", expectedGen, "Got:", currentGen);
+                    isUploading[type] = false;
+                    customAlert("Data was modified in another tab or device. Please refresh the page to get the latest changes before saving again.");
+                    $('.save').text('Conflict').removeAttr('disabled');
+                    $('#sync-spinner .sync-text').text('Conflict');
+                    $('#sync-spinner-icon').hide();
+                    setTimeout(() => { 
+                        if ($('#sync-spinner .sync-text').text() === 'Conflict') $('#sync-spinner').fadeOut(300);
+                    }, 3000);
+                    resolve({ success: false });
+                } else {
+                    doUpload();
+                }
+            }).catch(err => {
+                console.warn("Could not check metadata, proceeding with upload...", err);
+                doUpload();
+            });
+        } else {
+            doUpload();
+        }
+    });
+}
+
+async function fetchRemoteModeFile(mode, file) {
+    try {
+        const url = Util.getData(`data/${mode}-${file}.json`);
+        if (typeof fetch === 'function') {
+            const res = await fetch(url);
+            if (res.ok) {
+                return await res.json();
+            }
+        }
+    } catch (e) {
+        // Fallback to storage
+    }
+
+    try {
+        const storage = FirebaseApi.getFirebase().storage();
+        const url = await storage.ref(`data/${mode}-${file}.json`).getDownloadURL();
+        if (typeof fetch === 'function') {
+            const res = await fetch(url);
+            if (res.ok) {
+                return await res.json();
+            }
+        }
+    } catch (e) {
+        // File might not exist yet
+    }
+
+    return { [file]: ['species', 'families'].includes(file) ? {} : [] };
+}
+
+export async function backup() {
+    showLoader("backup", "Backing up all modes...");
+    console.log("Backing up...");
+    const date = moment(Date.now()).format(Constants.BACKUP_DATE_FORMAT);
+    
+    const uploadTasks = [];
+    const storage = FirebaseApi.getFirebase().storage();
+
+    // 1. Places backup (common across all modes) - start immediately
+    const placesData = { countries: data.countries || {} };
+    const placesBlob = new File(JSON.stringify(placesData, null, '\t').split('\n').map(l => l + '\n'), "places.json");
+    uploadTasks.push(
+        storage.ref(`backup/${date}/places.json`).put(placesBlob)
+    );
+
+    // Backup site-data.json and stories.json
+    const siteDataPayload = {
+        author: data.author || {},
+        camera_model: data.camera_model || {},
+        featured: data.featured || []
+    };
+    const siteDataBlob = new File(JSON.stringify(siteDataPayload, null, '\t').split('\n').map(l => l + '\n'), "site-data.json");
+    uploadTasks.push(
+        storage.ref(`backup/${date}/site-data.json`).put(siteDataBlob)
+    );
+
+    const storiesPayload = {
+        stories: data.stories || []
+    };
+    const storiesBlob = new File(JSON.stringify(storiesPayload, null, '\t').split('\n').map(l => l + '\n'), "stories.json");
+    uploadTasks.push(
+        storage.ref(`backup/${date}/stories.json`).put(storiesBlob)
+    );
+
+    // 2. Active mode files - start synchronously with in-memory data
+    const modeFiles = ["species", "families", "sightings", "likes"];
+    for (const file of modeFiles) {
+        const fileData = { [file]: data[file] || (['species', 'families'].includes(file) ? {} : []) };
+        const fileName = `${currentMode}-${file}.json`;
+        const fileBlob = new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName);
+        uploadTasks.push(
+            storage.ref(`backup/${date}/${fileName}`).put(fileBlob)
+        );
+    }
+
+    // 3. Other modes files - fetch from remote/storage and back up
+    const otherModes = (Constants.MODES || [currentMode]).filter(m => m !== currentMode);
+    for (const mode of otherModes) {
+        for (const file of modeFiles) {
+            uploadTasks.push(
+                fetchRemoteModeFile(mode, file).then(fileData => {
+                    const fileName = `${mode}-${file}.json`;
+                    const fileBlob = new File(JSON.stringify(fileData, null, '\t').split('\n').map(l => l + '\n'), fileName);
+                    return storage.ref(`backup/${date}/${fileName}`).put(fileBlob);
+                })
+            );
+        }
+    }
+
+    // 4. Asynchronously ensure geo boundaries and back them up
+    const geoPromise = (async () => {
+        try {
+            await ensureGeoBoundariesLoaded();
+        } catch (err) {
+            console.warn("Could not ensure all geo boundaries loaded before backup:", err);
+        }
+        const countries = Object.keys(data.countries || {});
+        const geoUploads = [];
+        for (const country of countries) {
+            const geoPayload = getCountryGeoJSON(country);
+            if (geoPayload.country || (geoPayload.states && Array.isArray(geoPayload.states.features) && geoPayload.states.features.length > 0)) {
+                const fileName = `${country}.json`;
+                const fileBlob = new File([JSON.stringify(geoPayload)], fileName);
+                geoUploads.push(
+                    storage.ref(`backup/${date}/geo/${fileName}`).put(fileBlob)
+                );
+            }
+        }
+        return Promise.all(geoUploads);
+    })();
+
+    try {
+        const results = await Promise.allSettled([...uploadTasks, geoPromise]);
+        const failure = results.find(r => r.status === 'rejected');
+        if (failure) {
+            throw failure.reason || new Error("Failed to upload all backup files");
+        }
+        refresh();
+        console.log("Backup completed");
+        hideLoader("backup");
+        showToast(`Backup created successfully for all modes (${date})!`, "success");
+    } catch (e) {
+        console.error("Backup failed", e);
+        hideLoader("backup");
+        showToast("Backup encountered an error: " + e.message, "error");
+    }
+}
+
+
+export function isInputActive() {
+    const active = document.activeElement;
+    const isEditingInput = active && (
+        ['INPUT', 'SELECT', 'TEXTAREA'].includes(active.tagName) ||
+        active.isContentEditable ||
+        $(active).closest('.ss-wrapper, .ss-dropdown, .chip-input-container').length > 0
+    );
+    const isDropdownOpen = $('.ss-dropdown.open').length > 0;
+    return Boolean(isEditingInput || isDropdownOpen);
+}
+
+export function delayPendingSave() {
+    if (typeof syncRef !== 'undefined') {
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
+
+export async function syncSightingsData(scheduleAfter, skipRefresh = false) {
+    clearTimeout(syncRef);
+    if (scheduleAfter > 0) {
+        $('.save').removeAttr("disabled");
+        if ($('.save').first().text() === 'Saved!') $('.save').text('Save');
+    }
+    syncRef = setTimeout(async function () {
+        if (scheduleAfter > 0 && isInputActive()) {
+            syncSightingsData(SYNC_SCHEDULE_TIME, skipRefresh);
+            return;
+        }
+        if ($('#auto-sort-btn').hasClass('active') && data && data.sightings) {
+            let originalKeys = data.sightings.map(s => s.key).join(',');
+            data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));
+            if (originalKeys !== data.sightings.map(s => s.key).join(',')) {
+                renderCallback();
+            }
+        }
+        syncRef = undefined;
+        try {
+            await uploadJSONData('sightings', skipRefresh);
+        } catch (e) {
+            console.error('Failed to sync sightings:', e);
+        }
+        $('.save').attr("disabled", "disabled");
+    }, scheduleAfter);
+}
+
+function formatExifDate(dateValue) {
+    if (!dateValue) return null;
+
+    if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) {
+        const year = dateValue.getFullYear();
+        const month = String(dateValue.getMonth() + 1).padStart(2, '0');
+        const day = String(dateValue.getDate()).padStart(2, '0');
+        return `${day}-${month}-${year}`;
+    }
+
+    const value = String(dateValue).trim();
+    const match = value.match(/^(\d{4})[:\-](\d{2})[:\-](\d{2})(?:[ T]|$)/);
+    if (!match) return null;
+
+    const [, year, month, day] = match;
+    const numericYear = Number(year);
+    const numericMonth = Number(month);
+    const numericDay = Number(day);
+    const parsed = new Date(numericYear, numericMonth - 1, numericDay);
+    if (parsed.getFullYear() !== numericYear ||
+        parsed.getMonth() !== numericMonth - 1 ||
+        parsed.getDate() !== numericDay) return null;
+
+    return `${day}-${month}-${year}`;
+}
+
+function getDateFromExifTags(tags) {
+    if (!tags || typeof tags !== 'object') return null;
+    const candidates = [
+        tags.DateTimeOriginal,
+        tags.DateTimeDigitized,
+        tags.DateTime,
+        tags.DateCreated,
+        tags.CreateDate,
+        tags.dateCreated,
+        tags.createDate
+    ];
+    for (const candidate of candidates) {
+        const date = formatExifDate(candidate);
+        if (date) return date;
+    }
+    return null;
+}
+
+function readFileAsArrayBuffer(file) {
+    if (file && typeof file.arrayBuffer === 'function') {
+        return file.arrayBuffer();
+    }
+    if (typeof FileReader === 'undefined') return Promise.resolve(null);
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error || new Error('Unable to read image file'));
+        reader.readAsArrayBuffer(file);
+    });
+}
+
+async function getSightingDateFromExif(file) {
+    if (!file || !/^image\//i.test(file.type || '')) return null;
+    if (typeof EXIF === 'undefined') return null;
+
+    // Prefer parsing the original uploaded File bytes. Do this before any
+    // resizing/watermarking so metadata from the camera file is preserved.
+    try {
+        if (typeof EXIF.readFromBinaryFile === 'function') {
+            const buffer = await readFileAsArrayBuffer(file);
+            if (buffer) {
+                const tags = EXIF.readFromBinaryFile(buffer);
+                const date = getDateFromExifTags(tags);
+                if (date) return date;
+            }
+        }
+    } catch (error) {
+        console.warn('Direct EXIF date extraction failed; trying EXIF.getData:', error);
+    }
+
+    // Fallback to the library's FileReader-backed API. It is asynchronous for
+    // File objects, so always wait for its callback before updating the sighting.
+    if (typeof EXIF.getData !== 'function') return null;
+    return new Promise((resolve) => {
+        let settled = false;
+        const finish = (date) => {
+            if (settled) return;
+            settled = true;
+            resolve(date || null);
+        };
+
+        try {
+            const accepted = EXIF.getData(file, function () {
+                try {
+                    let tags = {};
+                    if (typeof EXIF.getAllTags === 'function') {
+                        tags = EXIF.getAllTags(this) || {};
+                    } else if (typeof EXIF.getTag === 'function') {
+                        tags = {
+                            DateTimeOriginal: EXIF.getTag(this, 'DateTimeOriginal'),
+                            DateTimeDigitized: EXIF.getTag(this, 'DateTimeDigitized'),
+                            DateTime: EXIF.getTag(this, 'DateTime')
+                        };
+                    }
+                    finish(getDateFromExifTags(tags));
+                } catch (error) {
+                    console.warn('Could not extract EXIF date from uploaded image:', error);
+                    finish(null);
+                }
+            });
+            if (accepted === false) finish(null);
+        } catch (error) {
+            console.warn('Could not read EXIF metadata from uploaded image:', error);
+            finish(null);
+        }
+    });
+}
+
+export function uploadMedia(sightingKey, files, originalFiles = []) {
+    $('#sync-spinner').css('display', 'flex');
+    $('#sync-spinner .sync-text').text('Uploading Media...');
+    $('#sync-spinner-icon').show();
+
+    const sighting = data.sightings.find(s => s.key === sightingKey);
+
+    let watermark = null;
+    if ($('input[name=watermark-on]').is(":checked")) {
+        const author = sighting?.author || Constants.DEFAULT_AUTHOR;
+        watermark = {
+            text: $('input[name=watermark]').val().replace("${author}", author).trim(),
+            color: $('input[name=watermark-color]').val() + "33"
+        };
+    }
+
+    const fileList = Array.from(files || []);
+    const validFiles = fileList.filter(f => f && (f.type.match(/image.*/) || f.type.match(/video.*/)));
+    if (validFiles.length === 0) {
+        hideLoader('upload-media');
+        if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+        return;
+    }
+
+    showLoader('upload-media', 'Uploading Media...');
+    let pendingUploads = validFiles.length;
+
+    const finishOneUpload = () => {
+        pendingUploads--;
+        if (pendingUploads <= 0) {
+            hideLoader('upload-media');
+        }
+    };
+
+    fileList.forEach(function (file, index) {
+        let mediaSrc;
+        const speciesObj = (sighting && sighting.species && data.species) ? data.species[sighting.species] : null;
+        const rawKey = speciesObj?.key || sighting?.species || 'unidentified';
+        const speciesKey = rawKey.toLowerCase().replaceAll(/\s+/g, '-').replaceAll("'", '') || 'unidentified';
+
+        if (file.type.match(/image.*/)) {
+            mediaSrc = 'images/' + speciesKey + "-" + (Math.floor(Date.now() / 1000) + index) + ".jpg";
+            console.log("uploading image " + file.name + " for " + sightingKey + " as " + mediaSrc);
+            Util.resizeImage(file, IMAGE_SIZE, watermark).then((resizedImage) => {
+                FirebaseApi.getFirebase().storage().ref(mediaSrc).put(resizedImage).then(async () => {
+                    console.log("uploaded image " + mediaSrc);
+                    snapshotSightings();
+                    let currentSighting = data.sightings.find(s => s.key == sightingKey);
+                    if (!currentSighting) {
+                        customAlert("Media uploaded, but the sighting was deleted or is no longer available.");
+                        finishOneUpload();
+                        return;
+                    }
+                    if (!currentSighting.media) currentSighting.media = [];
+                    
+                    if (currentSighting.media.length === 0) {
+                        // Prefer the unmodified source image: cropper/canvas output
+                        // does not retain EXIF metadata.
+                        const originalFile = originalFiles[index] || file;
+                        const date = await getSightingDateFromExif(originalFile);
+                        if (date) currentSighting.date = date;
+                    }
+                    let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
+                    if (currentSighting.media && currentSighting.media.length > 0) {
+                        let lastMedia = currentSighting.media[currentSighting.media.length - 1];
+                        if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
+                            inheritedCamera = lastMedia.exif_data.camera_model;
+                        }
+                    }
+
+                    currentSighting.media.push({
+                        src: mediaSrc,
+                        exif_data: {
+                            "camera_model": inheritedCamera
+                        }
+                    });
+                    const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
+                    commitSightingsChange();
+                    renderCallback();
+                    if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                        try { window.scrollTo(0, savedScrollY); } catch (e) {}
+                    }
+                    syncSightingsData(0, true);
+                    finishOneUpload();
+                }).catch(e => {
+                    customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                    if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+                    finishOneUpload();
+                });
+            }).catch(e => {
+                customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+                finishOneUpload();
+            });
+        } else if (file.type.match(/video.*/)) {
+            // Upload video as is
+            mediaSrc = 'videos/' + speciesKey + "-" + (Math.floor(Date.now() / 1000) + index) + ".mp4";
+            console.log("uploading video " + file.name + " for " + sightingKey + " as " + mediaSrc);
+
+            FirebaseApi.getFirebase().storage().ref(mediaSrc).put(file).then(() => {
+                console.log("uploaded video " + mediaSrc);
+                snapshotSightings();
+                let currentSighting = data.sightings.find(s => s.key == sightingKey);
+                if (!currentSighting) {
+                    customAlert("Media uploaded, but the sighting was deleted or is no longer available.");
+                    finishOneUpload();
+                    return;
+                }
+                if (!currentSighting.media) currentSighting.media = [];
+                
+                let inheritedCamera = Constants.DEFAULT_CAMERA_MODEL;
+                if (currentSighting.media && currentSighting.media.length > 0) {
+                    let lastMedia = currentSighting.media[currentSighting.media.length - 1];
+                    if (lastMedia.exif_data && lastMedia.exif_data.camera_model) {
+                        inheritedCamera = lastMedia.exif_data.camera_model;
+                    }
+                }
+
+                currentSighting.media.push({
+                    src: mediaSrc,
+                    type: 'video',
+                    mute: true,
+                    thumbnail: currentSighting.media.find(m => m.type !== 'video')?.src || null, // Use first image as thumbnail if available, else null
+                    exif_data: {
+                        "camera_model": inheritedCamera
+                    }
+                });
+                
+                const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
+                commitSightingsChange();
+                renderCallback();
+                if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                    try { window.scrollTo(0, savedScrollY); } catch (e) {}
+                }
+                syncSightingsData(0, true);
+                finishOneUpload();
+            }).catch(e => {
+                customAlert(e.message + "\n (Possible reason: Unsupported media or Invalid media file size)");
+                if ($('#sync-spinner .sync-text').text() === 'Uploading Media...') $('#sync-spinner').fadeOut(300);
+                finishOneUpload();
+            });
+        }
+    });
+}
+
+export function deleteMedia(sightingKey, mediaSrc, skipConfirm = false, onDeleted = null) {
+    if (!mediaSrc.toLowerCase().endsWith(".jpg") && !mediaSrc.toLowerCase().endsWith(".mp4")) {
+        customAlert("Unsupported!!!");
+        return;
+    }
+    
+    const executeDelete = () => {
+        showLoader('delete-media', 'Deleting Media...');
+        $('#sync-spinner').css('display', 'flex');
+        $('#sync-spinner .sync-text').text('Deleting Media...');
+        $('#sync-spinner-icon').show();
+
+        data.sightings.forEach(function (sighting) {
+            if (sighting.key != sightingKey) return;
+            snapshotSightings();
+            sighting.media = sighting.media.filter(m => m.src != mediaSrc);
+            commitSightingsChange();
+        });
+        if (typeof onDeleted === 'function') onDeleted();
+        FirebaseApi.getFirebase().storage().ref(mediaSrc).delete().then(() => {
+            hideLoader('delete-media');
+            const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
+            renderCallback();
+            if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                try { window.scrollTo(0, savedScrollY); } catch (e) {}
+            }
+            syncSightingsData(0);
+        }, (error) => {
+            hideLoader('delete-media');
+            if (error.code === 'storage/object-not-found') {
+                const savedScrollY = (typeof window !== 'undefined') ? window.scrollY : 0;
+                renderCallback();
+                if (savedScrollY > 0 && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+                    try { window.scrollTo(0, savedScrollY); } catch (e) {}
+                }
+                syncSightingsData(0);
+            } else {
+                customAlert(error.message);
+                if ($('#sync-spinner .sync-text').text() === 'Deleting Media...') $('#sync-spinner').fadeOut(300);
+            }
+        });
+    };
+
+    if (skipConfirm) {
+        executeDelete();
+    } else {
+        customConfirm("You are about to delete this media.", executeDelete);
+    }
+}
+
+export function moveMediaToTarget(sourceSightingKey, targetSightingKey, draggedSrc, targetSrc, dropAfter) {
+    let sourceSighting = data.sightings.find(s => s.key == sourceSightingKey);
+    let targetSighting = data.sightings.find(s => s.key == targetSightingKey);
+    
+    if (!sourceSighting || !targetSighting) return;
+    
+    let draggedIndex = sourceSighting.media.findIndex(m => m.src === draggedSrc);
+    if (draggedIndex === -1) return;
+    
+    snapshotSightings();
+    let draggedItem = sourceSighting.media.splice(draggedIndex, 1)[0];
+    
+    if (!targetSrc) {
+        targetSighting.media.push(draggedItem);
+    } else {
+        let targetIndex = targetSighting.media.findIndex(m => m.src === targetSrc);
+        if (targetIndex !== -1) {
+            if (sourceSightingKey == targetSightingKey) {
+                targetIndex = targetSighting.media.findIndex(m => m.src === targetSrc);
+            }
+            let newIndex = dropAfter ? targetIndex + 1 : targetIndex;
+            targetSighting.media.splice(newIndex, 0, draggedItem);
+        } else {
+            targetSighting.media.push(draggedItem);
+        }
+    }
+    
+    commitSightingsChange();
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+export function updateField(sightingKey, field, value) {
+    const target = (data.sightings || []).find(s => s.key == sightingKey);
+    if (!target) return;
+
+    if (field === 'trip_id') {
+        const oldTripId = (target.trip_id || '').trim();
+        const newTripId = String(value || '').trim();
+        if (oldTripId && !newTripId) {
+            const targetIdx = data.sightings.indexOf(target);
+            const targetTime = moment(target.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
+            const newerSameTrip = data.sightings.filter((s, idx) => {
+                if (!s || s.key == sightingKey) return false;
+                if ((s.trip_id || '').trim() !== oldTripId) return false;
+                const sTime = moment(s.date, Constants.DATA_DATE_FORMAT).valueOf() || 0;
+                return sTime > targetTime || (sTime === targetTime && idx < targetIdx);
+            });
+
+            if (newerSameTrip.length > 0 && typeof customSelectModal === 'function') {
+                const options = [
+                    { value: 'single', label: 'Clear this sighting only' },
+                    { value: 'newer', label: `Clear this and ${newerSameTrip.length} newer sighting(s) with "${oldTripId}"` }
+                ];
+                customSelectModal(
+                    'Clear Trip ID',
+                    `Trip ID "${oldTripId}" is also set on ${newerSameTrip.length} newer sighting(s). Choose what to clear:`,
+                    options,
+                    (choice) => {
+                        if (!choice) {
+                            renderCallback();
+                            return;
+                        }
+                        snapshotSightings();
+                        target.trip_id = '';
+                        if (choice === 'newer') {
+                            newerSameTrip.forEach(s => { s.trip_id = ''; });
+                        }
+                        commitSightingsChange();
+                        renderCallback();
+                        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+                    }
+                );
+                return;
+            }
+        }
+    }
+
+    snapshotSightings();
+    data.sightings.forEach(function (sighting) {
+        if (sighting.key != sightingKey) return;
+
+        if (field == 'species' && sighting.species !== value) {
+            renameSightingMedia(sighting, sighting.species, value);
+        }
+
+        if (field == 'date') {
+            sighting[field] = moment(value, 'YYYY-MM-DD').format('DD-MM-YYYY');
+        } else if (field == 'hidden') {
+            sighting[field] = !value;
+        } else {
+            sighting[field] = value;
+        }
+    });
+    commitSightingsChange();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+function renameSightingMedia(sighting, oldSpeciesKey, newSpeciesKey) {
+    $('#sync-spinner').css('display', 'flex');
+    $('#sync-spinner .sync-text').text('Renaming Media...');
+    $('#sync-spinner-icon').show();
+
+    const promises = [];
+    const errors = [];
+
+    sighting.media.forEach((media, index) => {
+        const parts = media.src.split('/');
+        const filename = parts[parts.length - 1];
+
+        // Only rename if it matches the pattern <oldSpeciesKey>-<timestamp>.{jpg|mp4}
+        // and avoid partial matches by checking the boundary (hyphen)
+        if (filename.startsWith(oldSpeciesKey + "-") && (media.src.toLowerCase().endsWith(".jpg") || media.src.toLowerCase().endsWith(".mp4"))) {
+            const newFilename = filename.replace(oldSpeciesKey, newSpeciesKey);
+            const newSrc = media.src.replace(filename, newFilename);
+
+            console.log(`Renaming ${media.src} to ${newSrc}`);
+
+            const p = FirebaseApi.moveFile(media.src, newSrc).then(() => {
+                snapshotSightings();
+                media.src = newSrc;
+                if (media.type === 'video' && media.thumbnail && media.thumbnail.includes(oldSpeciesKey)) {
+                    // Try to update thumbnail path if it was also renamed (though thumbnail is usually a separate image src, 
+                    // if it points to an image that was just renamed, we should update it too. 
+                    // However, the Thumbnail string usually mimics an image src. 
+                    // If the thumbnail is one of the images we are renaming, its string update might need care.
+                    // But here we are just updating the reference in the media object.
+                    const thumbParts = media.thumbnail.split('/');
+                    const thumbFilename = thumbParts[thumbParts.length - 1];
+                    if (thumbFilename.startsWith(oldSpeciesKey + "-")) {
+                        const newThumbFilename = thumbFilename.replace(oldSpeciesKey, newSpeciesKey);
+                        media.thumbnail = media.thumbnail.replace(thumbFilename, newThumbFilename);
+                    }
+                }
+                commitSightingsChange();
+            }).catch(err => {
+                console.error("Failed to move " + media.src, err);
+                errors.push(`Failed to move ${media.src}: ${err.message}`);
+            });
+            promises.push(p);
+        }
+    });
+
+    if (promises.length > 0) {
+        Promise.all(promises).then(() => {
+            if (errors.length > 0) {
+                customAlert("Some files could not be renamed:\n" + errors.join("\n"));
+                if ($('#sync-spinner .sync-text').text() === 'Renaming Media...') $('#sync-spinner').fadeOut(300);
+            }
+            syncSightingsData(0, true); // Force immediate sync to save new paths
+            console.log("Renaming process completed.");
+        });
+    } else {
+        if ($('#sync-spinner .sync-text').text() === 'Renaming Media...') $('#sync-spinner').fadeOut(300);
+    }
+}
+
+export function updateMediaProperty(sightingKey, mediaSrc, property, value) {
+    snapshotSightings();
+    data.sightings.forEach(function (sighting) {
+        if (sighting.key != sightingKey) return;
+        sighting.media.forEach(media => {
+            if (media.src == mediaSrc) {
+                const keys = property.split('.');
+                let obj = media;
+                for (let i = 0; i < keys.length - 1; i++) {
+                    if (!obj[keys[i]]) obj[keys[i]] = {};
+                    obj = obj[keys[i]];
+                }
+                obj[keys[keys.length - 1]] = value;
+            }
+        });
+    });
+    commitSightingsChange();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+export function addSighting(filterSightingVal) {
+    snapshotSightings();
+    const defaultSpeciesKey = Constants.getDefaultSpecies(currentMode);
+    data.sightings.unshift({
+        "key": ("s" + Math.floor(Date.now() / 1000)),
+        "species": lastUpdatedSpecies || defaultSpeciesKey,
+        "date": (data.sightings[0] || {}).date || moment(Date.now()).format(Constants.DATA_DATE_FORMAT),
+        "place": (data.sightings[0] || {}).place,
+        "city": (data.sightings[0] || {}).city || "Howrah",
+        "state": (data.sightings[0] || {}).state || "West Bengal",
+        "country": (data.sightings[0] || {}).country || "India",
+        "author": null,
+        "unconfirmed": false,
+        "time_of_day": "Day",
+        "weather": (data.sightings[0] || {}).weather || null,
+        "trip_id": (data.sightings[0] || {}).trip_id || "",
+        "hidden": true,
+        "media": []
+    });
+    commitSightingsChange();
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+
+export function deleteSighting(sightingKey) {
+    let sighting = data.sightings.find(b => b.key == sightingKey);
+    let numMedia = sighting.media ? sighting.media.length : 0;
+    
+    let message = "You are about to delete this sighting.";
+    if (numMedia > 0) {
+        message += `<br><br>This will also permanently delete the following ${numMedia} media file${numMedia > 1 ? 's' : ''}:<br><div style='display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; justify-content:center;'>`;
+        (sighting.media || []).forEach(m => {
+            let src = m.type === 'video' ? (m.thumbnail || m.src) : m.src;
+            message += `<img src='${Util.getMedia(src)}' style='max-height: 60px; max-width: 60px; border-radius: 4px; object-fit: cover;'>`;
+        });
+        message += `</div>`;
+    }
+
+    customConfirm(message, () => {
+        snapshotSightings();
+        (sighting.media || []).forEach(function (media) {
+            deleteMedia(sightingKey, media.src, true);
+        });
+        data.sightings = data.sightings.filter(b => b.key != sightingKey);
+        commitSightingsChange();
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    });
+}
+
+export function saveSpecies(key, name, tags, family, latin_name, ebird_code) {
+    const previousSpecies = key ? data.species[key] : null;
+    family = family || previousSpecies?.family || '';
+    if (!name || !tags || (!family && !previousSpecies)) {
+        customAlert("Name, tags and family are required for a new species.");
+    } else {
+        name = name.replaceAll("’", "'");
+        const newKey = key || name.toLowerCase().replaceAll(/\s+/ig, "-").replaceAll('\'', "");
+        tags = tags.replaceAll("’", "'");
+        const updatedTags = tags.split(/\s*,\s*/ig).filter(Boolean);
+        if (previousSpecies && previousSpecies.name && previousSpecies.name !== name && !updatedTags.includes(previousSpecies.name)) {
+            updatedTags.push(previousSpecies.name);
+        }
+        data.species[newKey] = {
+            key: newKey,
+            name: name,
+            tags: updatedTags,
+            family: family,
+            latin_name: (latin_name ? latin_name.toLowerCase().trim() : null),
+            ebird_code: (ebird_code || null)
+        };
+        data.species = Object.fromEntries(Object.entries(data.species).sort());
+        lastUpdatedSpecies = newKey;
+        // Refresh UI immediately so sightings/species dropdowns include the new entry
+        // without waiting for the network upload to finish.
+        triggerRender();
+        uploadJSONData("species", true);
+        showToast(`Species '${name}' saved successfully.`, 'success');
+    }
+}
+
+export function addFamily(name, ebirdCode, sciName) {
+    if (!name) {
+        customAlert("Name is mandatory");
+    } else {
+        data.families = data.families.filter(f => f.name != name);
+        if (name.trim()) {
+            let fam = { name: name };
+            if (ebirdCode) fam.ebird_code = ebirdCode;
+            if (sciName) fam.sci_name = sciName;
+            data.families.push(fam);
+        }
+        data.families = data.families.sort((f1, f2) => f1.name.localeCompare(f2.name));
+        // Refresh UI immediately so family dropdowns include the new entry
+        triggerRender();
+        uploadJSONData("families", true);
+        showToast(`Family '${name}' saved successfully.`, 'success');
+    }
+}
+
+
+export function renameFamily(oldName, newName, ebirdCode, sciName) {
+    oldName = (oldName || '').trim();
+    newName = (newName || '').trim();
+    if (!oldName || !newName) {
+        customAlert("Family name is mandatory");
+        return false;
+    }
+    if (oldName !== newName && data.families.some(f => f.name.toLowerCase() === newName.toLowerCase())) {
+        customAlert(`A family named '${newName}' already exists.`);
+        return false;
+    }
+    const family = data.families.find(f => f.name === oldName);
+    if (!family) return false;
+    family.name = newName;
+    if (ebirdCode) family.ebird_code = ebirdCode; else delete family.ebird_code;
+    if (sciName) family.sci_name = sciName; else delete family.sci_name;
+    Object.values(data.species || {}).forEach(species => {
+        if (species.family === oldName) species.family = newName;
+    });
+    data.families.sort((a, b) => a.name.localeCompare(b.name));
+    triggerRender();
+    Promise.all([
+        uploadJSONData("families", true),
+        uploadJSONData("species", true)
+    ]);
+    showToast(`Family renamed to '${newName}'.`, 'success');
+    return true;
+}
+
+export function deleteFamily(name, onSuccess) {
+    if (!name) return;
+    if (Object.values(data.species).some(s => s.family == name)) {
+        customAlert("Cannot delete family '" + name + "' as it is used by one or more species.");
+        return;
+    }
+    customConfirm("Are you sure you want to delete family '" + name + "'?", () => {
+        data.families = data.families.filter(f => f.name != name);
+        triggerRender();
+        uploadJSONData("families", true);
+        if (onSuccess) onSuccess();
+        showToast("Family deleted successfully.", 'success');
+    });
+}
+
+export function deleteSpecies(key, onSuccess) {
+    if (!key) return;
+    if (data.sightings.some(s => s.species == key)) {
+        customAlert("Cannot delete species '" + key + "' as it has sightings.");
+        return;
+    }
+    customConfirm("Are you sure you want to delete species '" + key + "'?", () => {
+        delete data.species[key];
+        triggerRender();
+        uploadJSONData("species", true);
+        if (onSuccess) onSuccess();
+        showToast("Species deleted successfully.", 'success');
+    });
+}
+
+export function moveSighting(sightingKey, value) {
+    let sighting = data.sightings.filter(b => b.key == sightingKey)[0];
+    let index = data.sightings.map(b => b.key).indexOf(sightingKey);
+    if (index === -1) return;
+    
+    snapshotSightings();
+    if (value > 0 && index < data.sightings.length - 1) { // move down
+        let newIndex = Math.min(index + value, data.sightings.length - 1);
+        data.sightings = [data.sightings.slice(0, index), data.sightings.slice(index + 1, newIndex + 1), [sighting], data.sightings.slice(newIndex + 1)].flat();
+        commitSightingsChange();
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    } else if (value < 0 && index > 0) { // move up
+        let newIndex = Math.max(index + value, 0);
+        data.sightings = [data.sightings.slice(0, newIndex), [sighting], data.sightings.slice(newIndex, index), data.sightings.slice(index + 1)].flat();
+        commitSightingsChange();
+        renderCallback();
+        syncSightingsData(SYNC_SCHEDULE_TIME, true);
+    }
+}
+
+export function moveSightingToTarget(draggedKey, targetKey, dropAfter) {
+    let index = data.sightings.map(b => b.key).indexOf(draggedKey);
+    let targetIndex = data.sightings.map(b => b.key).indexOf(targetKey);
+    if (index === -1 || targetIndex === -1) return;
+    if (index === targetIndex) return;
+
+    snapshotSightings();
+    let sighting = data.sightings[index];
+    data.sightings.splice(index, 1);
+    
+    let newTargetIndex = data.sightings.map(b => b.key).indexOf(targetKey);
+    
+    if (dropAfter) {
+        data.sightings.splice(newTargetIndex + 1, 0, sighting);
+    } else {
+        data.sightings.splice(newTargetIndex, 0, sighting);
+    }
+    commitSightingsChange();
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+export function getMaxPinnedCount() {
+    if (typeof localStorage !== 'undefined') {
+        const val = parseInt(localStorage.getItem('maxPinnedCount'), 10);
+        if (!isNaN(val) && val > 0) return val;
+    }
+    return 3;
+}
+
+export function setMaxPinnedCount(val) {
+    val = parseInt(val, 10);
+    if (isNaN(val) || val < 1) val = 3;
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('maxPinnedCount', val);
+    }
+    return val;
+}
+
+let siteDataSyncTimeout = null;
+export function syncSiteData(delay = 1000) {
+    if (siteDataSyncTimeout) clearTimeout(siteDataSyncTimeout);
+    if (delay === 0) {
+        return uploadJSONData('site-data', true);
+    }
+    return new Promise((resolve) => {
+        siteDataSyncTimeout = setTimeout(async () => {
+            const res = await uploadJSONData('site-data', true);
+            siteDataSyncTimeout = null;
+            resolve(res);
+        }, delay);
+    });
+}
+
+let storiesSyncTimeout = null;
+export function syncStoriesData(delay = 1000) {
+    if (storiesSyncTimeout) clearTimeout(storiesSyncTimeout);
+    if (delay === 0) {
+        return uploadJSONData('stories', true);
+    }
+    return new Promise((resolve) => {
+        storiesSyncTimeout = setTimeout(async () => {
+            const res = await uploadJSONData('stories', true);
+            storiesSyncTimeout = null;
+            resolve(res);
+        }, delay);
+    });
+}
+
+export function togglePinSighting(sightingKey, unpinKey) {
+    const target = (data.sightings || []).find(s => s.key === sightingKey);
+    if (!target) return;
+
+    if (target.pinned) {
+        snapshotSightings();
+        target.pinned = false;
+    } else {
+        const maxPins = getMaxPinnedCount();
+        const currentPinned = data.sightings.filter(s => s.pinned && s.key !== sightingKey);
+        if (currentPinned.length >= maxPins) {
+            if (!unpinKey) {
+                const options = currentPinned.map(s => {
+                    const speciesName = (data.species && s.species && data.species[s.species]?.name) || s.species || 'Unknown';
+                    const place = [s.place, s.city].filter(Boolean).join(', ');
+                    const label = `${speciesName}${place ? ` — ${place}` : ''} (${s.date || 'No date'})`;
+                    const firstPhoto = (s.media || []).find(m => m && m.type !== 'video' && m.src)
+                        || (s.media || []).find(m => m && m.thumbnail);
+                    const rawThumb = firstPhoto ? (firstPhoto.type === 'video' ? firstPhoto.thumbnail : firstPhoto.src) : null;
+                    const thumb = rawThumb ? Util.getMedia(rawThumb) : null;
+                    return { value: s.key, label, thumb };
+                });
+                if (typeof customSelectModal === 'function') {
+                    customSelectModal(
+                        'Pin Limit Reached',
+                        `Maximum ${maxPins} pinned sightings allowed. Choose one to unpin:`,
+                        options,
+                        (selectedKey) => {
+                            if (selectedKey) {
+                                togglePinSighting(sightingKey, selectedKey);
+                            }
+                        }
+                    );
+                }
+                return;
+            }
+            const toUnpin = currentPinned.find(s => s.key === unpinKey);
+            if (!toUnpin) return;
+            snapshotSightings();
+            toUnpin.pinned = false;
+            if (data.sightings.filter(s => s.pinned && s.key !== sightingKey).length >= maxPins) {
+                commitSightingsChange();
+                renderCallback();
+                togglePinSighting(sightingKey);
+                return;
+            }
+            target.pinned = true;
+        } else {
+            snapshotSightings();
+            target.pinned = true;
+        }
+    }
+
+    commitSightingsChange();
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+export function sortByDate() {
+    snapshotSightings();
+    data.sightings.sort((a, b) => Util.compare(moment(b.date, Constants.DATA_DATE_FORMAT), moment(a.date, Constants.DATA_DATE_FORMAT)));
+    commitSightingsChange();
+    renderCallback();
+    syncSightingsData(SYNC_SCHEDULE_TIME, true);
+}
+
+export function sightingMatches(sighting, searchKey) {
+    searchKey = searchKey.toLowerCase().trim();
+    if (searchKey == "hidden") {
+        return !!sighting.hidden;
+    } else if (searchKey == "unconfirmed") {
+        return sighting.unconfirmed;
+    } else if (searchKey == "pinned") {
+        return !!sighting.pinned;
+    } else if (searchKey.match(/^rating=/i)) {
+        return sighting.rating == searchKey.split("=")[1] || 0;
+    }
+    const speciesObj = (sighting.species && data.species) ? data.species[sighting.species] : null;
+    const speciesName = speciesObj?.name || sighting.species || '';
+    return (sighting.key && sighting.key.indexOf(searchKey) >= 0)
+        || (speciesName && speciesName.toLowerCase().indexOf(searchKey) >= 0)
+        || (speciesObj?.tags && speciesObj.tags.length > 0 && speciesObj.tags.some(t => t.toLowerCase().indexOf(searchKey) >= 0))
+        || (sighting.place && sighting.place.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.city && sighting.city.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.state && sighting.state.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.country && sighting.country.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.variation && sighting.variation.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.subspecies && sighting.subspecies.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.plumage && sighting.plumage.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.age && sighting.age.toLowerCase().indexOf(searchKey) >= 0)
+        || (sighting.trip_id && String(sighting.trip_id).toLowerCase().indexOf(searchKey) >= 0);
+}
+
+export function getCurrentMode() {
+    return currentMode;
+}
+
+export function hasUnsavedChanges() {
+    if (typeof syncRef !== 'undefined') return true;
+    if (Object.values(isUploading).some(v => v === true)) return true;
+    if (Object.values(pendingUpload).some(v => v !== undefined)) return true;
+    return false;
+}
+
+window.addEventListener('beforeunload', function (e) {
+    if (hasUnsavedChanges()) {
+        e.preventDefault();
+        e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+        return e.returnValue;
+    }
+});
+
+/**
+ * Save coordinates for a country, state, city, or place in data.countries and sync to Firebase
+ */
+export function savePlaceGeo({ country, state, city, place, lat, lng, radius, skipUpload = false }) {
+    if (!country) return false;
+
+    data.countries = data.countries || {};
+    if (!data.countries[country]) {
+        data.countries[country] = { name: country, states: {} };
+    }
+    const countryObj = data.countries[country];
+
+    // 1. Country level
+    if (!state) {
+        countryObj.lat = parseFloat(lat);
+        countryObj.lng = parseFloat(lng);
+        countryObj.radius = Math.min(Math.max(Math.round(radius || 1000), 50), 2000);
+        if (!skipUpload) uploadJSONData('places', true);
+        return true;
+    }
+
+    // 2. State level
+    countryObj.states = countryObj.states || {};
+    if (!countryObj.states[state]) {
+        countryObj.states[state] = { name: state, cities: {} };
+    }
+    const stateObj = countryObj.states[state];
+
+    if (!city) {
+        stateObj.lat = parseFloat(lat);
+        stateObj.lng = parseFloat(lng);
+        stateObj.radius = Math.min(Math.max(Math.round(radius || 150), 25), 200);
+        if (!skipUpload) uploadJSONData('places', true);
+        return true;
+    }
+
+    // 3. City level
+    stateObj.cities = stateObj.cities || {};
+    if (!stateObj.cities[city]) {
+        stateObj.cities[city] = { name: city, places: {} };
+    }
+    const cityObj = stateObj.cities[city];
+
+    if (!place || !place.trim()) {
+        cityObj.lat = parseFloat(lat);
+        cityObj.lng = parseFloat(lng);
+        cityObj.radius = Math.min(Math.max(Math.round(radius || 20), 5), 40);
+        if (!skipUpload) uploadJSONData('places', true);
+        return true;
+    }
+
+    // 4. Place level
+    cityObj.places = cityObj.places || {};
+    cityObj.places[place] = {
+        name: place,
+        lat: parseFloat(lat),
+        lng: parseFloat(lng),
+        radius: Math.min(Math.max(Math.round(radius || 5), 1), 20)
+    };
+
+    if (!skipUpload) uploadJSONData('places', true);
+    return true;
+}
+
+/**
+ * Check if a location already has coordinates in data.countries
+ */
+export function getLocationGeo({ country, state, city, place }) {
+    if (!data.countries || !data.countries[country]) return null;
+    const countryObj = data.countries[country];
+
+    if (!state) {
+        return (countryObj.lat && countryObj.lng) ? countryObj : null;
+    }
+
+    if (!countryObj.states || !countryObj.states[state]) return null;
+    const stateObj = countryObj.states[state];
+
+    if (!city) {
+        return (stateObj.lat && stateObj.lng) ? stateObj : null;
+    }
+
+    if (!stateObj.cities || !stateObj.cities[city]) return null;
+    const cityObj = stateObj.cities[city];
+
+    if (place && place.trim()) {
+        if (cityObj.places && cityObj.places[place] && cityObj.places[place].lat) {
+            return cityObj.places[place];
+        }
+        return null;
+    }
+
+    return (cityObj.lat && cityObj.lng) ? cityObj : null;
+}
+
+/**
+ * Retrieve the node in data.countries hierarchy regardless of whether coordinates are populated
+ */
+export function getPlaceNode({ country, state, city, place }) {
+    if (!data.countries || !country || !data.countries[country]) return null;
+    const countryObj = data.countries[country];
+    if (!state) return countryObj;
+
+    if (!countryObj.states || !countryObj.states[state]) return null;
+    const stateObj = countryObj.states[state];
+    if (!city) return stateObj;
+
+    if (!stateObj.cities || !stateObj.cities[city]) return null;
+    const cityObj = stateObj.cities[city];
+    if (!place || !place.trim()) return cityObj;
+
+    if (cityObj.places && cityObj.places[place]) {
+        return cityObj.places[place];
+    }
+    return null;
+}
+
+/**
+ * Lookup coordinates for a location via swappable GeoService and save into places
+ */
+export async function geocodeAndSaveLocation({ country, state, city, place }) {
+    let type = 'place';
+    if (place && place.trim()) {
+        type = 'place';
+    } else if (city && city.trim()) {
+        type = 'city';
+    } else if (state && state.trim()) {
+        type = 'state';
+    } else if (country && country.trim()) {
+        type = 'country';
+    } else {
+        return null;
+    }
+
+    const result = await lookupLocation({ place, city, state, country, type });
+    if (!result) return null;
+
+    savePlaceGeo({
+        country,
+        state: state || null,
+        city: city || null,
+        place: place || null,
+        lat: result.lat,
+        lng: result.lng,
+        radius: result.radius
+    });
+
+    return result;
+}
+
+/**
+ * Add a new Country to data.countries with optional automated state fetching and geocoding
+ */
+export async function addNewCountry({ country, fetchStates = true, geocode = true, geocodeStates = false, onProgress = null }) {
+    if (!country || !country.trim()) throw new Error('Country name is required.');
+    const countryName = country.trim();
+
+    data.countries = data.countries || {};
+    if (data.countries[countryName]) {
+        throw new Error(`Country "${countryName}" already exists.`);
+    }
+
+    data.countries[countryName] = {
+        name: countryName,
+        states: {}
+    };
+
+    let geocoded = false;
+    let statesCount = 0;
+
+    // 1. Geocode country
+    if (geocode) {
+        try {
+            const geo = await lookupLocation({ country: countryName, type: 'country' });
+            if (geo) {
+                data.countries[countryName].lat = geo.lat;
+                data.countries[countryName].lng = geo.lng;
+                data.countries[countryName].radius = geo.radius || 1000;
+                geocoded = true;
+            }
+        } catch (e) {
+            console.warn('[addNewCountry] Could not geocode country:', e);
+        }
+    }
+
+    // 2. Fetch states
+    if (fetchStates) {
+        try {
+            const states = await fetchStatesForCountry(countryName);
+            if (Array.isArray(states) && states.length > 0) {
+                for (let i = 0; i < states.length; i++) {
+                    const stateName = states[i];
+                    const cleanName = typeof stateName === 'string' ? stateName.trim() : stateName?.name?.trim();
+                    if (cleanName && !data.countries[countryName].states[cleanName]) {
+                        data.countries[countryName].states[cleanName] = {
+                            name: cleanName,
+                            cities: {}
+                        };
+                        statesCount++;
+
+                        if (geocodeStates) {
+                            if (typeof onProgress === 'function') onProgress(i + 1, states.length, cleanName);
+                            try {
+                                const sGeo = await lookupLocation({ country: countryName, state: cleanName, type: 'state' });
+                                if (sGeo) {
+                                    data.countries[countryName].states[cleanName].lat = sGeo.lat;
+                                    data.countries[countryName].states[cleanName].lng = sGeo.lng;
+                                    data.countries[countryName].states[cleanName].radius = sGeo.radius || 150;
+                                }
+                            } catch (e) {
+                                console.warn(`[addNewCountry] Could not geocode state "${cleanName}":`, e);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('[addNewCountry] Could not fetch states for country:', e);
+        }
+    }
+
+    uploadJSONData('places', true);
+    return { country: countryName, geocoded, statesCount };
+}
+
+/**
+ * Add a new State under an existing country in data.countries
+ */
+export async function addNewState({ country, state, geocode = true }) {
+    if (!country || !country.trim()) throw new Error('Country is required.');
+    if (!state || !state.trim()) throw new Error('State name is required.');
+    const countryName = country.trim();
+    const stateName = state.trim();
+
+    data.countries = data.countries || {};
+    if (!data.countries[countryName]) {
+        data.countries[countryName] = { name: countryName, states: {} };
+    }
+    data.countries[countryName].states = data.countries[countryName].states || {};
+
+    if (data.countries[countryName].states[stateName]) {
+        throw new Error(`State "${stateName}" already exists in ${countryName}.`);
+    }
+
+    const stateObj = {
+        name: stateName,
+        cities: {}
+    };
+
+    let geocoded = false;
+    if (geocode) {
+        try {
+            const geo = await lookupLocation({ country: countryName, state: stateName, type: 'state' });
+            if (geo) {
+                stateObj.lat = geo.lat;
+                stateObj.lng = geo.lng;
+                stateObj.radius = geo.radius || 150;
+                geocoded = true;
+            }
+        } catch (e) {
+            console.warn('[addNewState] Could not geocode state:', e);
+        }
+    }
+
+    data.countries[countryName].states[stateName] = stateObj;
+    uploadJSONData('places', true);
+    return { country: countryName, state: stateName, geocoded };
+}
+
+/**
+ * Calculate boundary coverage statistics for all countries and states in data.countries
+ */
+export function getGeoBoundaryCoverage() {
+    const countries = data.countries || {};
+    const geoCountriesFeatures = data.geoCountries?.features || [];
+    const geoStatesFeatures = data.geoStates?.features || [];
+
+    const countryFeatureNames = new Set(geoCountriesFeatures.map(f => f.properties?.name));
+    const stateFeatureKeys = new Set(geoStatesFeatures.map(f => `${f.properties?.country}/${f.properties?.name}`));
+
+    const totalCountries = Object.keys(countries);
+    const coveredCountries = [];
+    const missingCountries = [];
+
+    const totalStates = [];
+    const coveredStates = [];
+    const missingStates = [];
+
+    totalCountries.forEach(countryName => {
+        if (countryFeatureNames.has(countryName)) {
+            coveredCountries.push(countryName);
+        } else {
+            missingCountries.push(countryName);
+        }
+
+        const states = countries[countryName]?.states || {};
+        Object.keys(states).forEach(stateName => {
+            const key = `${countryName}/${stateName}`;
+            totalStates.push(key);
+            if (stateFeatureKeys.has(key)) {
+                coveredStates.push(key);
+            } else {
+                missingStates.push(key);
+            }
+        });
+    });
+
+    return {
+        countries: {
+            total: totalCountries.length,
+            covered: coveredCountries.length,
+            missing: missingCountries
+        },
+        states: {
+            total: totalStates.length,
+            covered: coveredStates.length,
+            missing: missingStates
+        }
+    };
+}
+
+/**
+ * Calculate real-time geocode coordinate coverage statistics across all hierarchy levels in data.countries and data.sightings
+ */
+export function getGeocodeCoverage() {
+    const countries = data.countries || {};
+    const sightings = data.sightings || [];
+
+    const stats = {
+        countries: { total: 0, geocoded: 0, missing: [] },
+        states: { total: 0, geocoded: 0, missing: [] },
+        cities: { total: 0, geocoded: 0, missing: [] },
+        places: { total: 0, geocoded: 0, missing: [] },
+        total: { total: 0, geocoded: 0 },
+        missingList: []
+    };
+
+    const seenKeys = new Set();
+
+    // 1. Scan places.json
+    Object.keys(countries).forEach(country => {
+        const countryObj = countries[country];
+        if (!countryObj) return;
+
+        stats.countries.total++;
+        stats.total.total++;
+        const isCountryGeocoded = countryObj.lat != null && countryObj.lng != null && !isNaN(countryObj.lat) && !isNaN(countryObj.lng);
+        if (isCountryGeocoded) {
+            stats.countries.geocoded++;
+            stats.total.geocoded++;
+        } else {
+            stats.countries.missing.push(country);
+            stats.missingList.push({
+                type: 'country', country, state: '', city: '', place: '',
+                displayName: country, parentContext: '-'
+            });
+        }
+        seenKeys.add(`country|${country}`);
+
+        const states = countryObj.states || {};
+        Object.keys(states).forEach(state => {
+            const stateObj = states[state];
+            if (!stateObj) return;
+
+            stats.states.total++;
+            stats.total.total++;
+            const isStateGeocoded = stateObj.lat != null && stateObj.lng != null && !isNaN(stateObj.lat) && !isNaN(stateObj.lng);
+            if (isStateGeocoded) {
+                stats.states.geocoded++;
+                stats.total.geocoded++;
+            } else {
+                stats.states.missing.push(`${country}/${state}`);
+                stats.missingList.push({
+                    type: 'state', country, state, city: '', place: '',
+                    displayName: state, parentContext: country
+                });
+            }
+            seenKeys.add(`state|${country}|${state}`);
+
+            const cities = stateObj.cities || {};
+            Object.keys(cities).forEach(city => {
+                const cityObj = cities[city];
+                if (!cityObj) return;
+
+                stats.cities.total++;
+                stats.total.total++;
+                const isCityGeocoded = cityObj.lat != null && cityObj.lng != null && !isNaN(cityObj.lat) && !isNaN(cityObj.lng);
+                if (isCityGeocoded) {
+                    stats.cities.geocoded++;
+                    stats.total.geocoded++;
+                } else {
+                    stats.cities.missing.push(`${city}, ${state}`);
+                    stats.missingList.push({
+                        type: 'city', country, state, city, place: '',
+                        displayName: city, parentContext: `${state}, ${country}`
+                    });
+                }
+                seenKeys.add(`city|${country}|${state}|${city}`);
+
+                const places = cityObj.places || {};
+                Object.keys(places).forEach(place => {
+                    const placeObj = places[place];
+                    if (!placeObj) return;
+
+                    stats.places.total++;
+                    stats.total.total++;
+                    const isPlaceGeocoded = placeObj.lat != null && placeObj.lng != null && !isNaN(placeObj.lat) && !isNaN(placeObj.lng);
+                    if (isPlaceGeocoded) {
+                        stats.places.geocoded++;
+                        stats.total.geocoded++;
+                    } else {
+                        stats.places.missing.push(`${place}, ${city}`);
+                        stats.missingList.push({
+                            type: 'place', country, state, city, place,
+                            displayName: place, parentContext: `${city}, ${state}, ${country}`
+                        });
+                    }
+                    seenKeys.add(`place|${country}|${state}|${city}|${place}`);
+                });
+            });
+        });
+    });
+
+    // 2. Scan sightings for unmapped / un-geocoded locations
+    sightings.forEach(s => {
+        const country = s.country && s.country.trim();
+        const state = s.state && s.state.trim();
+        const city = s.city && s.city.trim();
+        const place = s.place && s.place.trim();
+
+        if (country) {
+            const key = `country|${country}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.countries.total++;
+                stats.total.total++;
+                stats.countries.missing.push(country);
+                stats.missingList.push({ type: 'country', country, state: '', city: '', place: '', displayName: country, parentContext: '-' });
+            }
+        }
+        if (country && state) {
+            const key = `state|${country}|${state}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.states.total++;
+                stats.total.total++;
+                stats.states.missing.push(`${country}/${state}`);
+                stats.missingList.push({ type: 'state', country, state, city: '', place: '', displayName: state, parentContext: country });
+            }
+        }
+        if (country && state && city) {
+            const key = `city|${country}|${state}|${city}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.cities.total++;
+                stats.total.total++;
+                stats.cities.missing.push(`${city}, ${state}`);
+                stats.missingList.push({ type: 'city', country, state, city, place: '', displayName: city, parentContext: `${state}, ${country}` });
+            }
+        }
+        if (country && state && city && place) {
+            const key = `place|${country}|${state}|${city}|${place}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                stats.places.total++;
+                stats.total.total++;
+                stats.places.missing.push(`${place}, ${city}`);
+                stats.missingList.push({ type: 'place', country, state, city, place, displayName: place, parentContext: `${city}, ${state}, ${country}` });
+            }
+        }
+    });
+
+    return stats;
+}
+
+/**
+ * Check if a boundary polygon exists in memory for the given country and optional state
+ */
+export function getGeoBoundary({ country, state = null }) {
+    if (!country) return null;
+    if (state && state.trim()) {
+        const features = data.geoStates?.features || [];
+        return features.find(f => f.properties?.country === country && f.properties?.name === state.trim()) || null;
+    } else {
+        const features = data.geoCountries?.features || [];
+        return features.find(f => f.properties?.name === country) || null;
+    }
+}
+
+/**
+ * Helper to simplify coordinate precision
+ */
+function simplifyCoordinates(coords, precision = 2) {
+    if (typeof coords[0] === 'number') {
+        return coords.map(c => parseFloat(c.toFixed(precision)));
+    }
+    return coords.map(c => simplifyCoordinates(c, precision));
+}
+
+let activeBoundaryProvider = 'nominatim';
+
+export function getBoundaryProvider() {
+    return activeBoundaryProvider;
+}
+
+export function setBoundaryProvider(name) {
+    activeBoundaryProvider = name;
+}
+
+/**
+ * Fetch a GeoJSON boundary polygon on-demand using the active boundary provider (OpenStreetMap Nominatim)
+ */
+export async function fetchBoundaryFromOSM({ country, state = null }) {
+    if (!country) throw new Error('Country is required.');
+    const query = state && state.trim() ? `${state.trim()}, ${country}` : country;
+
+    // Use Nominatim search with polygon_geojson=1 and polygon_threshold=0.005 for clean web polygons
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=jsonv2&polygon_geojson=1&polygon_threshold=0.005`;
+
+    const res = await fetch(url, {
+        headers: { 'Accept': 'application/json' }
+    });
+
+    if (!res.ok) {
+        throw new Error(`Nominatim query failed (HTTP ${res.status})`);
+    }
+
+    const results = await res.json();
+    if (!Array.isArray(results) || results.length === 0) {
+        throw new Error(`No OSM results found for "${query}"`);
+    }
+
+    // Find first result with a polygon or multipolygon
+    const candidate = results.find(r => r.geojson && (r.geojson.type === 'Polygon' || r.geojson.type === 'MultiPolygon'));
+    if (!candidate) {
+        throw new Error(`OSM returned results for "${query}", but no polygon boundary geometry was available.`);
+    }
+
+    const simplifiedGeometry = {
+        type: candidate.geojson.type,
+        coordinates: simplifyCoordinates(candidate.geojson.coordinates, 2)
+    };
+
+    // Calculate vertex count for information display
+    let vertexCount = 0;
+    if (simplifiedGeometry.type === 'Polygon') {
+        simplifiedGeometry.coordinates.forEach(ring => vertexCount += ring.length);
+    } else if (simplifiedGeometry.type === 'MultiPolygon') {
+        simplifiedGeometry.coordinates.forEach(poly => poly.forEach(ring => vertexCount += ring.length));
+    }
+
+    const feature = {
+        type: 'Feature',
+        properties: {
+            name: state && state.trim() ? state.trim() : country,
+            ...(state && state.trim() ? { country } : {})
+        },
+        geometry: simplifiedGeometry,
+        _osmInfo: {
+            displayName: candidate.display_name,
+            osmType: candidate.osm_type,
+            osmId: candidate.osm_id,
+            vertexCount
+        }
+    };
+
+    return feature;
+}
+
+/**
+ * Save a GeoJSON boundary feature into memory (geoCountries or geoStates)
+ */
+export function saveGeoBoundary({ level, country, state = null, feature }) {
+    if (!feature || !feature.geometry) throw new Error('Invalid GeoJSON feature.');
+
+    if (level === 'country') {
+        data.geoCountries = data.geoCountries || { type: 'FeatureCollection', features: [] };
+        const idx = data.geoCountries.features.findIndex(f => f.properties?.name === country);
+        const cleanFeature = {
+            type: 'Feature',
+            properties: { name: country },
+            geometry: feature.geometry
+        };
+        if (idx >= 0) {
+            data.geoCountries.features[idx] = cleanFeature;
+        } else {
+            data.geoCountries.features.push(cleanFeature);
+        }
+        return cleanFeature;
+    } else if (level === 'state') {
+        if (!state) throw new Error('State name required.');
+        data.geoStates = data.geoStates || { type: 'FeatureCollection', features: [] };
+        const idx = data.geoStates.features.findIndex(f => f.properties?.country === country && f.properties?.name === state);
+        const cleanFeature = {
+            type: 'Feature',
+            properties: { name: state, country },
+            geometry: feature.geometry
+        };
+        if (idx >= 0) {
+            data.geoStates.features[idx] = cleanFeature;
+        } else {
+            data.geoStates.features.push(cleanFeature);
+        }
+        return cleanFeature;
+    }
+    throw new Error(`Invalid boundary level: ${level}`);
+}
+
+/**
+ * Assemble per-country GeoJSON payload matching data/geo/${country}.json
+ */
+export function getCountryGeoJSON(country) {
+    const countryFeature = data.geoCountries?.features?.find(f => f.properties?.name === country) || null;
+    const stateFeatures = (data.geoStates?.features || []).filter(f => f.properties?.country === country);
+    return {
+        country: countryFeature,
+        states: {
+            type: 'FeatureCollection',
+            features: stateFeatures
+        }
+    };
+}
+
+/**
+ * Upload a single country's boundary file to data/geo/{country}.json
+ */
+export function uploadGeoBoundary(country) {
+    const payload = getCountryGeoJSON(country);
+    const fileName = `${country}.json`;
+    const file = new File([JSON.stringify(payload)], fileName);
+    return FirebaseApi.getFirebase().storage().ref(`data/geo/${country}.json`).put(file);
+}
+
+/**
+ * Upload all country boundary files to data/geo/*.json
+ */
+export async function uploadGeoBoundaries() {
+    await ensureGeoBoundariesLoaded();
+    const countries = Object.keys(data.countries || {});
+    const uploadPromises = countries.map(country => uploadGeoBoundary(country));
+    await Promise.all(uploadPromises);
+    return { success: true, count: countries.length };
+}
+
+/**
+ * Load per-country geo boundary files from Firebase Storage into memory
+ */
+export async function ensureGeoBoundariesLoaded() {
+    const countries = data.countries || {};
+    const countryNames = Object.keys(countries);
+
+    if (!data.geoCountries) {
+        data.geoCountries = { type: 'FeatureCollection', features: [] };
+    }
+    if (!data.geoStates) {
+        data.geoStates = { type: 'FeatureCollection', features: [] };
+    }
+
+    const loadCountryFile = async (country) => {
+        const path = Util.getData(`data/geo/${country}.json`);
+        try {
+            const res = await fetch(path);
+            if (res.ok) {
+                const file = await res.json();
+                if (file.country) {
+                    const idx = data.geoCountries.features.findIndex(f => f.properties?.name === country);
+                    if (idx >= 0) {
+                        data.geoCountries.features[idx] = file.country;
+                    } else {
+                        data.geoCountries.features.push(file.country);
+                    }
+                }
+                if (file.states && file.states.features) {
+                    const existingKeys = new Set(data.geoStates.features.map(f => `${f.properties?.country}/${f.properties?.name}`));
+                    for (const feature of file.states.features) {
+                        const key = `${feature.properties?.country}/${feature.properties?.name}`;
+                        if (!existingKeys.has(key)) {
+                            data.geoStates.features.push(feature);
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn(`[ensureGeoBoundariesLoaded] Could not load geo/${country}.json:`, e);
+        }
+    };
+
+    await Promise.all(countryNames.map(loadCountryFile));
+
+    return { geoCountries: data.geoCountries, geoStates: data.geoStates };
+}
+
+export function replaceCameraCode(codeString, oldCode, newCode) {
+    if (!codeString || typeof codeString !== 'string') return codeString;
+    const parts = codeString.split('+').map(x => x.trim());
+    let changed = false;
+    const newParts = parts.map(part => {
+        if (part === oldCode) {
+            changed = true;
+            return newCode;
+        }
+        return part;
+    });
+    return changed ? newParts.join('+') : codeString;
+}
+
+export function replaceCameraModelInSightings(oldCode, newCode) {
+    if (!oldCode || !newCode || oldCode === newCode) return 0;
+    let count = 0;
+
+    function replaceInMedia(m) {
+        let changed = false;
+        if (m.camera_model) {
+            const replaced = replaceCameraCode(m.camera_model, oldCode, newCode);
+            if (replaced !== m.camera_model) {
+                m.camera_model = replaced;
+                changed = true;
+            }
+        }
+        if (m.exif_data && m.exif_data.camera_model) {
+            const replaced = replaceCameraCode(m.exif_data.camera_model, oldCode, newCode);
+            if (replaced !== m.exif_data.camera_model) {
+                m.exif_data.camera_model = replaced;
+                changed = true;
+            }
+        }
+        return changed;
+    }
+
+    (data.sightings || []).forEach(s => {
+        let sightingChanged = false;
+        if (s.camera_model) {
+            const replaced = replaceCameraCode(s.camera_model, oldCode, newCode);
+            if (replaced !== s.camera_model) {
+                s.camera_model = replaced;
+                sightingChanged = true;
+            }
+        }
+        (s.media || []).forEach(m => {
+            if (replaceInMedia(m)) sightingChanged = true;
+        });
+        if (sightingChanged) count++;
+    });
+
+    if (count > 0) {
+        syncSightingsData(0, true);
+    }
+    return count;
+}
+
+export function replaceAuthorInSightings(oldAuthor, newAuthor) {
+    if (!oldAuthor || !newAuthor || oldAuthor === newAuthor) return 0;
+    let count = 0;
+
+    (data.sightings || []).forEach(s => {
+        let sightingChanged = false;
+        if (s.author === oldAuthor) {
+            s.author = newAuthor;
+            sightingChanged = true;
+        }
+        (s.media || []).forEach(m => {
+            if (m.author === oldAuthor) {
+                m.author = newAuthor;
+                sightingChanged = true;
+            }
+            if (m.exif_data && m.exif_data.author === oldAuthor) {
+                m.exif_data.author = newAuthor;
+                sightingChanged = true;
+            }
+        });
+        if (sightingChanged) count++;
+    });
+
+    if (count > 0) {
+        syncSightingsData(0, true);
+    }
+    return count;
+}
+
+export async function uploadOtherModeFile(mode, type, payload) {
+    const storage = FirebaseApi.getFirebase().storage();
+    const fileName = `${mode}-${type}.json`;
+    const fileBlob = new File(
+        JSON.stringify(payload, null, '\t').split('\n').map(l => l + '\n'),
+        fileName
+    );
+    return await storage.ref(`data/${fileName}`).put(fileBlob);
+}
+
+export async function replaceCameraModelInAllModes(oldCode, newCode) {
+    const activeCount = replaceCameraModelInSightings(oldCode, newCode);
+    const otherModes = (Constants.MODES || ['bird', 'insect', 'reptile']).filter(m => m !== currentMode);
+    for (const mode of otherModes) {
+        try {
+            const fileData = await fetchRemoteModeFile(mode, 'sightings');
+            let modeChanged = false;
+            (fileData.sightings || []).forEach(s => {
+                if (s.camera_model) {
+                    const replaced = replaceCameraCode(s.camera_model, oldCode, newCode);
+                    if (replaced !== s.camera_model) {
+                        s.camera_model = replaced;
+                        modeChanged = true;
+                    }
+                }
+                (s.media || []).forEach(m => {
+                    if (m.camera_model) {
+                        const replaced = replaceCameraCode(m.camera_model, oldCode, newCode);
+                        if (replaced !== m.camera_model) {
+                            m.camera_model = replaced;
+                            modeChanged = true;
+                        }
+                    }
+                    if (m.exif_data && m.exif_data.camera_model) {
+                        const replaced = replaceCameraCode(m.exif_data.camera_model, oldCode, newCode);
+                        if (replaced !== m.exif_data.camera_model) {
+                            m.exif_data.camera_model = replaced;
+                            modeChanged = true;
+                        }
+                    }
+                });
+            });
+            if (modeChanged) {
+                await uploadOtherModeFile(mode, 'sightings', fileData);
+            }
+        } catch (e) {
+            console.warn(`Could not update camera model in mode ${mode}:`, e);
+        }
+    }
+    return activeCount;
+}
+
+export async function replaceAuthorInAllModes(oldAuthor, newAuthor) {
+    const activeCount = replaceAuthorInSightings(oldAuthor, newAuthor);
+    (data.featured || []).forEach(f => {
+        if (f.author === oldAuthor) f.author = newAuthor;
+        if (f.titleLine2 && f.titleLine2.includes(oldAuthor)) {
+            f.titleLine2 = f.titleLine2.replace(oldAuthor, newAuthor);
+        }
+    });
+    const otherModes = (Constants.MODES || ['bird', 'insect', 'reptile']).filter(m => m !== currentMode);
+    for (const mode of otherModes) {
+        try {
+            const fileData = await fetchRemoteModeFile(mode, 'sightings');
+            let modeChanged = false;
+            (fileData.sightings || []).forEach(s => {
+                if (s.author === oldAuthor) {
+                    s.author = newAuthor;
+                    modeChanged = true;
+                }
+                (s.media || []).forEach(m => {
+                    if (m.author === oldAuthor) {
+                        m.author = newAuthor;
+                        modeChanged = true;
+                    }
+                    if (m.exif_data && m.exif_data.author === oldAuthor) {
+                        m.exif_data.author = newAuthor;
+                        modeChanged = true;
+                    }
+                });
+            });
+            if (modeChanged) {
+                await uploadOtherModeFile(mode, 'sightings', fileData);
+            }
+        } catch (e) {
+            console.warn(`Could not update author in mode ${mode}:`, e);
+        }
+    }
+    return activeCount;
+}
+
+
+

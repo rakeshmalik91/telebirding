@@ -1,0 +1,2302 @@
+import Constants from '../constants.js';
+import Util from '../util.js';
+import { getSelectDOM, getSelectOptionsDOM } from '../ui-helpers.js?v=20260713-0645';
+import { showLoader, hideLoader } from '../loader.js';
+import EbirdApi from '../ebird-api.js';
+import { initSearchableSelect, initSearchableSelects, destroySearchableSelect } from '../searchable-select.js?v=20260923_4';
+import { setChips } from './chip-input.js';
+import {
+    data, currentMode, lastUpdatedSpecies, uploadMedia, deleteMedia, moveMediaToTarget, updateField, updateMediaProperty,
+    deleteSighting, moveSighting, moveSightingToTarget, sightingMatches, addFamily, saveSpecies, deleteFamily, deleteSpecies, renameFamily,
+    syncSightingsData, triggerRender, geocodeAndSaveLocation, savePlaceGeo, addNewCountry, addNewState,
+    uploadJSONData, getPlaceNode, getLocationGeo,
+    ensureGeoBoundariesLoaded, getGeoBoundaryCoverage, getGeoBoundary, fetchBoundaryFromOSM, saveGeoBoundary,
+    getGeocodeCoverage, getBoundaryProvider, setBoundaryProvider, togglePinSighting
+} from './data.js';
+import { geoService, lookupLocation, setGeoProvider } from '../geo-service.js';
+import { showToast, customAlert } from './ui.js';
+
+import { openCropper, cropImageWithRatios } from '../cropper.js';
+
+export function getValue(sighting, prop) {
+    return sighting[prop] ? sighting[prop] : '';
+}
+
+export function validateUpdateSpeciesForm() {
+    const updateSpeciesForm = $("#update-species-form");
+    let name = updateSpeciesForm.find("select[data-field=name]").val();
+    let family = updateSpeciesForm.find("select[data-field=family]").val();
+    let tags = updateSpeciesForm.find("input[data-field=tags]").val();
+    const displayName = updateSpeciesForm.find("input[data-field=display-name]").val();
+    const existingSpecies = name && data.species[name];
+    const validDisplayName = !existingSpecies || (displayName && displayName.trim());
+    // Existing records may have a legacy/missing family option. Allow editing
+    // their name and metadata without forcing an unrelated family reassignment.
+    const validFamily = (family && family.trim()) || (existingSpecies && data.species[name].family);
+    if (name && name.trim() && validDisplayName && validFamily && tags && tags.trim()) {
+        updateSpeciesForm.find("button.submit").removeAttr("disabled");
+    } else {
+        updateSpeciesForm.find("button.submit").attr("disabled", "disabled");
+    }
+}
+
+export function fillUpdateSpeciesForm() {
+    const updateSpeciesForm = $("#update-species-form");
+    let nameVal = updateSpeciesForm.find("select[data-field=name]").val();
+    updateSpeciesForm.find("select[data-field=family] option").removeAttr("selected");
+
+    // Check if the value is an existing key
+    if (nameVal && data.species[nameVal]) {
+        const key = nameVal;
+        const species = data.species[key];
+        updateSpeciesForm.find(".species-display-name-row").show();
+        updateSpeciesForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val(species.name || "");
+        setChips(updateSpeciesForm.find(".chip-input-container"), (species.tags || []).join(", "));
+        const familySelect = updateSpeciesForm.find("select[data-field=family]");
+        if (species.family && familySelect.find("option").filter(function () { return this.value === species.family; }).length === 0) {
+            familySelect.append($("<option>", {
+                value: species.family,
+                text: `${species.family} (current value; not in family list)`
+            }));
+        }
+        familySelect.val(species.family || "").trigger("change");
+        updateSpeciesForm.find("input[data-field=latin-name]").val(species.latin_name);
+        updateSpeciesForm.find("input[data-field=ebird-code]").val(species.ebird_code);
+        let count = data.sightings.filter(s => s.species == key).length;
+        updateSpeciesForm.find("span[data-field=sighting-count]").text(count);
+        updateSpeciesForm.find("button.submit").html("Update");
+        if (count == 0) {
+            updateSpeciesForm.find("button.delete").removeAttr("disabled");
+        } else {
+            updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
+        }
+    } else {
+        updateSpeciesForm.find(".species-display-name-row").hide();
+        updateSpeciesForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val("");
+        // New custom name
+        setChips(updateSpeciesForm.find(".chip-input-container"), '');
+        updateSpeciesForm.find("select[data-field=family]").val('').trigger("change");
+        updateSpeciesForm.find("input[data-field=latin-name]").val('');
+        updateSpeciesForm.find("input[data-field=ebird-code]").val('');
+        updateSpeciesForm.find("span[data-field=sighting-count]").text('0');
+        updateSpeciesForm.find("button.submit").html("Add");
+        updateSpeciesForm.find("button.delete").attr("disabled", "disabled");
+
+        // Auto-fill tags if possible
+        if (nameVal && nameVal.trim() && !updateSpeciesForm.find("input[data-field=tags]").val()) {
+            setChips(updateSpeciesForm.find(".chip-input-container"), nameVal.trim().split(/\s+/).slice(-1)[0]);
+        }
+    }
+    
+    validateUpdateSpeciesForm();
+}
+
+export function setupUpdateSpeciesForm() {
+    const updateSpeciesForm = $("#update-species-form");
+
+    if (currentMode != Constants.MODE_BIRD) {
+        updateSpeciesForm.find("input[data-field=ebird-code]").closest('tr').hide();
+    } else {
+        updateSpeciesForm.find("input[data-field=ebird-code]").closest('tr').show();
+    }
+
+    // Remember current selection so we can restore it after rebuilding options
+    // (prefer lastUpdatedSpecies when it exists — e.g. just after adding a new species)
+    const prevNameVal = updateSpeciesForm.find("select[data-field=name]").val();
+    const defaultSpeciesKey = Constants.getDefaultSpecies(currentMode);
+    const preferredKey = (lastUpdatedSpecies && data.species[lastUpdatedSpecies])
+        ? lastUpdatedSpecies
+        : (prevNameVal && data.species[prevNameVal]
+            ? prevNameVal
+            : (defaultSpeciesKey && data.species[defaultSpeciesKey] ? defaultSpeciesKey : ""));
+
+    const familySelect = updateSpeciesForm.find("select[data-field=family]").empty();
+    const speciesSelect = updateSpeciesForm.find("select[data-field=name]").empty();
+    familySelect.append(new Option("", ""));
+    (data.families || []).forEach(family => {
+        familySelect.append(new Option(family.name, family.name));
+    });
+
+    speciesSelect.append(new Option("", ""));
+    Object.values(data.species || {}).forEach(species => {
+        const option = new Option(species.name, species.key);
+        option.dataset.searchTerms = [species.key, ...(species.tags || [])].join(" ");
+        speciesSelect.append(option);
+    });
+
+    if (preferredKey) {
+        speciesSelect.val(preferredKey);
+    }
+
+    fillUpdateSpeciesForm();
+    updateSpeciesForm.find("select[data-field=name]").unbind("change").change(fillUpdateSpeciesForm);
+
+    updateSpeciesForm.find("button.submit").unbind("click").click(function () {
+        let nameVal = updateSpeciesForm.find("select[data-field=name]").val();
+        let key = "";
+        let name = nameVal;
+        if (nameVal && data.species[nameVal]) {
+            key = nameVal;
+            name = data.species[nameVal].name;
+        }
+        const displayNameVal = updateSpeciesForm.find("input[data-field=display-name]").val();
+        if (key && displayNameVal !== undefined) name = displayNameVal.trim() || name;
+        const selectedFamily = updateSpeciesForm.find("select[data-field=family]").val();
+        const family = selectedFamily || (key && data.species[key] ? data.species[key].family : "");
+        saveSpecies(key, name,
+            updateSpeciesForm.find("input[data-field=tags]").val(), family,
+            updateSpeciesForm.find("input[data-field=latin-name]").val(), updateSpeciesForm.find("input[data-field=ebird-code]").val());
+    });
+
+    updateSpeciesForm.find("button.delete").unbind("click").click(function () {
+        let key = updateSpeciesForm.find("select[data-field=name]").val();
+        if (!key || !data.species[key]) return;
+        deleteSpecies(key, () => {
+            updateSpeciesForm.find("select[data-field=name] option").filter(function () { return this.value === key; }).remove();
+            updateSpeciesForm.find("select[data-field=name]").val('').trigger('change');
+            triggerRender();
+        });
+    });
+
+    // Re-init searchable selects on species form dropdowns (destroy first so
+    // rebuilt option lists are picked up after adding/editing a species)
+    updateSpeciesForm.find("select[data-field=name]").attr("placeholder", "Select or type a species...");
+    updateSpeciesForm.find("select[data-field=family]").attr("placeholder", "Select or type a family...");
+    const nameSelectEl = updateSpeciesForm.find("select[data-field=name]")[0];
+    const familySelectEl = updateSpeciesForm.find("select[data-field=family]")[0];
+    destroySearchableSelect(nameSelectEl);
+    destroySearchableSelect(familySelectEl);
+    initSearchableSelect(nameSelectEl);
+    initSearchableSelect(familySelectEl);
+
+    updateSpeciesForm.find("select[data-field=name], select[data-field=family], input[data-field=tags], input[data-field=display-name]").off("change.speciesValidation input.speciesValidation").on("change.speciesValidation input.speciesValidation", validateUpdateSpeciesForm);
+
+    updateSpeciesForm.find("select[data-field=name]").change(function () {
+        let v = $(this).val();
+        if (!v || !v.trim()) return;
+
+        let actualName = data.species[v] ? data.species[v].name : v;
+        actualName = (actualName || '').replaceAll("’", "'");
+
+        if (currentMode == Constants.MODE_INSECT) {
+            let lastWord = actualName.trim().split(/\s+/).slice(-1)[0];
+            let pluralWord = Util.plural(lastWord);
+            let family = data.families.find(f => f.name.toLowerCase() == pluralWord.toLowerCase());
+            if (family) {
+                updateSpeciesForm.find("select[data-field=family]").val(family.name).trigger("change");
+            }
+        } else if (currentMode == Constants.MODE_BIRD && !data.species[v]) {
+            showLoader("ebird-code", "Fetching eBird Code");
+            EbirdApi.fetchEbirdCode(actualName).then(code => {
+                if (code) updateSpeciesForm.find("input[data-field=ebird-code]").val(code).change();
+            }).finally(() => hideLoader("ebird-code"));
+        }
+    });
+    updateSpeciesForm.find("input[data-field=ebird-code]").unbind("change").change(function () {
+        let v = $(this).val();
+        if (!v || !v.trim()) return;
+
+        if (currentMode == Constants.MODE_BIRD) {
+            showLoader("sci-name", "Fetching Scientific Name & Family");
+            EbirdApi.fetchEbirdSciName(v).then(s => {
+                if (s) {
+                    if (s.sciName) updateSpeciesForm.find("input[data-field=latin-name]").val(s.sciName).change();
+                    if (s.familyComName) {
+                        let familySelect = updateSpeciesForm.find("select[data-field=family]");
+                        let matchingOption = familySelect.find("option").filter(function () {
+                            return $(this).text() === s.familyComName;
+                        });
+
+                        if (matchingOption.length > 0) {
+                            familySelect.val(matchingOption.val()).trigger('change');
+                        } else {
+                            // Family doesn't exist, add it
+                            addFamily(s.familyComName, s.familyCode, s.familySciName);
+                            // Re-populate and select
+                            // Since addFamily updates data.families but we need to update UI dropdown
+                            // We can either simple append option or refresh the whole select
+                            familySelect.append("<option value='" + s.familyComName + "'>" + s.familyComName + "</option>");
+                            familySelect.val(s.familyComName).trigger('change');
+                            
+                            // Also update the add-family-form's name dropdown
+                            let addFamilySelect = $("#add-family-form select[data-field=name]");
+                            if (addFamilySelect.length > 0 && addFamilySelect.find("option").filter(function () { return this.value === s.familyComName; }).length === 0) {
+                                addFamilySelect.append(new Option(s.familyComName, s.familyComName));
+                            }
+                        }
+                    }
+                }
+            }).finally(() => hideLoader("sci-name"));
+        }
+    });
+    updateSpeciesForm.find("input[data-field=latin-name]").unbind("change").change(function () {
+        let v = $(this).val();
+        if (v != null && v != undefined) $(this).val(v.toLowerCase().trim());
+    });
+}
+
+export const SUGGEST_LIMIT = 20;
+
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+/**
+ * Calculates the latest usage timestamp for each city and place from sightings.
+ * @param {Array} [sightings] - Defaults to data.sightings
+ * @returns {{ cityLastUsed: Map<string, {displayName: string, timestamp: number, index: number}>, placeLastUsed: Map<string, {displayName: string, timestamp: number, index: number, city: string}> }}
+ */
+export function getLocationsLastUsed(sightings = data.sightings || []) {
+    const cityLastUsed = new Map();
+    const placeLastUsed = new Map();
+
+    if (!Array.isArray(sightings)) return { cityLastUsed, placeLastUsed };
+
+    sightings.forEach((s, idx) => {
+        if (!s) return;
+        let ts = 0;
+        if (s.date) {
+            const m = moment(s.date, ['DD-MM-YYYY', 'YYYY-MM-DD', 'DD/MM/YYYY']);
+            if (m.isValid()) {
+                ts = m.valueOf();
+            }
+        }
+        // If timestamp is not a positive epoch, use -idx so top items in sightings table take precedence
+        const effectiveTs = ts > 0 ? ts : -idx;
+
+        if (s.city && typeof s.city === 'string') {
+            const cityName = s.city.trim();
+            if (cityName) {
+                const key = cityName.toLowerCase();
+                const existing = cityLastUsed.get(key);
+                if (!existing || effectiveTs > existing.timestamp || (effectiveTs === existing.timestamp && idx < existing.index)) {
+                    cityLastUsed.set(key, { displayName: cityName, timestamp: effectiveTs, index: idx });
+                }
+            }
+        }
+
+        if (s.place && typeof s.place === 'string') {
+            const placeName = s.place.trim();
+            if (placeName) {
+                const key = placeName.toLowerCase();
+                const cityName = (s.city && typeof s.city === 'string') ? s.city.trim() : '';
+                const existing = placeLastUsed.get(key);
+                if (!existing || effectiveTs > existing.timestamp || (effectiveTs === existing.timestamp && idx < existing.index)) {
+                    placeLastUsed.set(key, { displayName: placeName, timestamp: effectiveTs, index: idx, city: cityName });
+                }
+            }
+        }
+    });
+
+    return { cityLastUsed, placeLastUsed };
+}
+
+/**
+ * Returns candidate cities sorted by last used (most recent sighting first), limited to `limit`.
+ * @param {Object} [options]
+ * @param {string} [options.country] - Filter to country
+ * @param {string} [options.state] - Filter to state
+ * @param {number} [options.limit=SUGGEST_LIMIT] - Max items to return
+ * @returns {Array<string>}
+ */
+export function getSortedCities({ country = '', state = '', limit = SUGGEST_LIMIT } = {}) {
+    const { cityLastUsed } = getLocationsLastUsed(data.sightings || []);
+    const candidateMap = new Map();
+
+    const selectedCountry = (country || '').trim().toLowerCase();
+    const selectedState = (state || '').trim().toLowerCase();
+
+    // 1. Gather cities from places.json (data.countries)
+    const countries = data.countries || {};
+    Object.keys(countries).forEach(cName => {
+        if (selectedCountry && cName.toLowerCase() !== selectedCountry) return;
+        const countryObj = countries[cName];
+        const states = countryObj.states || {};
+        Object.keys(states).forEach(sName => {
+            if (selectedState && sName.toLowerCase() !== selectedState) return;
+            const stateObj = states[sName];
+            const cities = stateObj.cities || {};
+            Object.keys(cities).forEach(cityName => {
+                const key = cityName.toLowerCase().trim();
+                if (key && !candidateMap.has(key)) {
+                    candidateMap.set(key, cityName.trim());
+                }
+            });
+        });
+    });
+
+    // 2. Gather cities from sightings
+    (data.sightings || []).forEach(s => {
+        if (!s || !s.city || typeof s.city !== 'string') return;
+        if (selectedCountry && (s.country || '').trim().toLowerCase() !== selectedCountry) return;
+        if (selectedState && (s.state || '').trim().toLowerCase() !== selectedState) return;
+        const key = s.city.toLowerCase().trim();
+        if (key && !candidateMap.has(key)) {
+            candidateMap.set(key, s.city.trim());
+        }
+    });
+
+    // 3. Sort candidate cities by last used
+    const candidates = Array.from(candidateMap.values());
+    candidates.sort((a, b) => {
+        const infoA = cityLastUsed.get(a.toLowerCase());
+        const infoB = cityLastUsed.get(b.toLowerCase());
+        const tsA = infoA ? infoA.timestamp : Number.MIN_SAFE_INTEGER;
+        const tsB = infoB ? infoB.timestamp : Number.MIN_SAFE_INTEGER;
+        if (tsB !== tsA) {
+            return tsB - tsA; // higher timestamp (more recent) first
+        }
+        // Tie-breaker: alphabetical A-Z
+        return a.localeCompare(b);
+    });
+
+    return typeof limit === 'number' && limit > 0 ? candidates.slice(0, limit) : candidates;
+}
+
+/**
+ * Returns candidate places sorted by last used (most recent sighting first), limited to `limit`.
+ * @param {Object} [options]
+ * @param {string} [options.country] - Filter to country
+ * @param {string} [options.state] - Filter to state
+ * @param {string} [options.city] - Filter to city
+ * @param {number} [options.limit=SUGGEST_LIMIT] - Max items to return
+ * @returns {Array<string>}
+ */
+export function getSortedPlaces({ country = '', state = '', city = '', limit = SUGGEST_LIMIT } = {}) {
+    const { placeLastUsed } = getLocationsLastUsed(data.sightings || []);
+    const candidateMap = new Map();
+
+    const selectedCountry = (country || '').trim().toLowerCase();
+    const selectedState = (state || '').trim().toLowerCase();
+    const selectedCity = (city || '').trim().toLowerCase();
+
+    // 1. Gather places from places.json (data.countries)
+    const countries = data.countries || {};
+    Object.keys(countries).forEach(cName => {
+        if (selectedCountry && cName.toLowerCase() !== selectedCountry) return;
+        const countryObj = countries[cName];
+        const states = countryObj.states || {};
+        Object.keys(states).forEach(sName => {
+            if (selectedState && sName.toLowerCase() !== selectedState) return;
+            const stateObj = states[sName];
+            const cities = stateObj.cities || {};
+            Object.keys(cities).forEach(cityName => {
+                if (selectedCity && cityName.toLowerCase() !== selectedCity) return;
+                const cityObj = cities[cityName];
+                const places = cityObj.places || {};
+                Object.keys(places).forEach(placeName => {
+                    const key = placeName.toLowerCase().trim();
+                    if (key && !candidateMap.has(key)) {
+                        candidateMap.set(key, placeName.trim());
+                    }
+                });
+            });
+        });
+    });
+
+    // 2. Gather places from sightings
+    (data.sightings || []).forEach(s => {
+        if (!s || !s.place || typeof s.place !== 'string') return;
+        if (selectedCountry && (s.country || '').trim().toLowerCase() !== selectedCountry) return;
+        if (selectedState && (s.state || '').trim().toLowerCase() !== selectedState) return;
+        if (selectedCity && (s.city || '').trim().toLowerCase() !== selectedCity) return;
+        const key = s.place.toLowerCase().trim();
+        if (key && !candidateMap.has(key)) {
+            candidateMap.set(key, s.place.trim());
+        }
+    });
+
+    // 3. Sort candidate places by last used
+    const candidates = Array.from(candidateMap.values());
+    candidates.sort((a, b) => {
+        const infoA = placeLastUsed.get(a.toLowerCase());
+        const infoB = placeLastUsed.get(b.toLowerCase());
+        const tsA = infoA ? infoA.timestamp : Number.MIN_SAFE_INTEGER;
+        const tsB = infoB ? infoB.timestamp : Number.MIN_SAFE_INTEGER;
+        if (tsB !== tsA) {
+            return tsB - tsA; // higher timestamp (more recent) first
+        }
+        // Tie-breaker: alphabetical A-Z
+        return a.localeCompare(b);
+    });
+
+    return typeof limit === 'number' && limit > 0 ? candidates.slice(0, limit) : candidates;
+}
+
+function findCityInPlacesJson(targetCityLower) {
+    const countries = data.countries || {};
+    for (const cName of Object.keys(countries)) {
+        const states = countries[cName]?.states || {};
+        for (const sName of Object.keys(states)) {
+            const cities = states[sName]?.cities || {};
+            for (const c of Object.keys(cities)) {
+                if (c.trim().toLowerCase() === targetCityLower) {
+                    return {
+                        city: c.trim(),
+                        state: sName.trim(),
+                        country: cName.trim()
+                    };
+                }
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * Find country, state, city hierarchy for a given place name.
+ * Searches sightings first (most recent sighting taking precedence),
+ * then falls back to places.json (data.countries).
+ * @param {string} placeName
+ * @param {string} [preferCity]
+ * @returns {{ country: string, state: string, city: string, place: string } | null}
+ */
+export function findHierarchyForPlace(placeName, preferCity = '') {
+    if (!placeName || typeof placeName !== 'string') return null;
+    const targetPlace = placeName.trim().toLowerCase();
+    if (!targetPlace) return null;
+    const targetCity = (preferCity || '').trim().toLowerCase();
+
+    // 1. Search sightings (most recent sighting first)
+    const sightings = data.sightings || [];
+    let bestMatch = null;
+    for (let i = 0; i < sightings.length; i++) {
+        const s = sightings[i];
+        if (!s || !s.place || typeof s.place !== 'string') continue;
+        if (s.place.trim().toLowerCase() === targetPlace) {
+            let sCity = (s.city || '').trim();
+            let sState = (s.state || '').trim();
+            let sCountry = (s.country || '').trim();
+
+            if (sCity && (!sState || !sCountry)) {
+                const cityInfo = findHierarchyForCity(sCity);
+                if (cityInfo) {
+                    if (!sState) sState = cityInfo.state;
+                    if (!sCountry) sCountry = cityInfo.country;
+                }
+            }
+
+            const candidate = {
+                place: s.place.trim(),
+                city: sCity,
+                state: sState,
+                country: sCountry
+            };
+
+            if (targetCity && sCity.toLowerCase() === targetCity) {
+                return candidate;
+            }
+            if (!bestMatch) {
+                bestMatch = candidate;
+            }
+        }
+    }
+    if (bestMatch && (!targetCity || bestMatch.city.toLowerCase() === targetCity)) {
+        return bestMatch;
+    }
+
+    // 2. Search places.json (data.countries)
+    const countries = data.countries || {};
+    for (const cName of Object.keys(countries)) {
+        const states = countries[cName]?.states || {};
+        for (const sName of Object.keys(states)) {
+            const cities = states[sName]?.cities || {};
+            for (const cityName of Object.keys(cities)) {
+                if (targetCity && cityName.trim().toLowerCase() !== targetCity) continue;
+                const places = cities[cityName]?.places || {};
+                for (const pName of Object.keys(places)) {
+                    if (pName.trim().toLowerCase() === targetPlace) {
+                        return {
+                            place: pName.trim(),
+                            city: cityName.trim(),
+                            state: sName.trim(),
+                            country: cName.trim()
+                        };
+                    }
+                }
+            }
+        }
+    }
+
+    return bestMatch || null;
+}
+
+/**
+ * Find country and state hierarchy for a given city name.
+ * Searches sightings first (most recent sighting taking precedence),
+ * then falls back to places.json (data.countries).
+ * @param {string} cityName
+ * @returns {{ country: string, state: string, city: string } | null}
+ */
+export function findHierarchyForCity(cityName) {
+    if (!cityName || typeof cityName !== 'string') return null;
+    const targetCity = cityName.trim().toLowerCase();
+    if (!targetCity) return null;
+
+    // 1. Search sightings (most recent sighting first)
+    const sightings = data.sightings || [];
+    for (let i = 0; i < sightings.length; i++) {
+        const s = sightings[i];
+        if (!s || !s.city || typeof s.city !== 'string') continue;
+        if (s.city.trim().toLowerCase() === targetCity) {
+            let sState = (s.state || '').trim();
+            let sCountry = (s.country || '').trim();
+
+            if (!sState || !sCountry) {
+                const fromPlaces = findCityInPlacesJson(targetCity);
+                if (fromPlaces) {
+                    if (!sState) sState = fromPlaces.state;
+                    if (!sCountry) sCountry = fromPlaces.country;
+                }
+            }
+
+            return {
+                city: s.city.trim(),
+                state: sState,
+                country: sCountry
+            };
+        }
+    }
+
+    // 2. Search places.json (data.countries)
+    return findCityInPlacesJson(targetCity);
+}
+
+/**
+ * Auto-replicates city, state, and country for a given place in a sighting row
+ */
+export function replicateLocationForPlaceInRow(sightingRow, sightingKey, placeVal) {
+    const currentCity = sightingRow.find("input[data-field=city]").val() || '';
+    const hierarchy = findHierarchyForPlace(placeVal, currentCity);
+    if (!hierarchy) return false;
+
+    // 1. City
+    if (hierarchy.city) {
+        const $cityInput = sightingRow.find("input[data-field=city]");
+        if ($cityInput.val() !== hierarchy.city) {
+            $cityInput.val(hierarchy.city);
+            updateField(sightingKey, 'city', hierarchy.city);
+        }
+    }
+
+    // 2. Country & State
+    const $countrySelect = sightingRow.find("select[data-field=country]");
+    const $stateSelect = sightingRow.find("select[data-field=state]");
+    const currentCountry = $countrySelect.val();
+    const currentState = $stateSelect.val();
+
+    let countryChanged = false;
+    if (hierarchy.country) {
+        if (currentCountry !== hierarchy.country) {
+            $countrySelect.val(hierarchy.country);
+            updateField(sightingKey, 'country', hierarchy.country);
+            countryChanged = true;
+        }
+    }
+
+    if (hierarchy.state) {
+        const targetCountry = hierarchy.country || currentCountry;
+        if (countryChanged || !$stateSelect.find(`option[value="${hierarchy.state}"]`).length) {
+            const statesObj = (data.countries && data.countries[targetCountry]) ? data.countries[targetCountry].states : {};
+            $stateSelect.html(getSelectOptionsDOM("state", statesObj || {}, hierarchy.state || ''));
+        }
+        $stateSelect.val(hierarchy.state);
+        if (currentState !== hierarchy.state) {
+            updateField(sightingKey, 'state', hierarchy.state);
+        }
+        $stateSelect.trigger('change.ss');
+    }
+
+    if (hierarchy.country) {
+        $countrySelect.trigger('change.ss');
+    }
+
+    return true;
+}
+
+/**
+ * Auto-replicates state and country for a given city in a sighting row
+ */
+export function replicateLocationForCityInRow(sightingRow, sightingKey, cityVal) {
+    const hierarchy = findHierarchyForCity(cityVal);
+    if (!hierarchy) return false;
+
+    const $countrySelect = sightingRow.find("select[data-field=country]");
+    const $stateSelect = sightingRow.find("select[data-field=state]");
+    const currentCountry = $countrySelect.val();
+    const currentState = $stateSelect.val();
+
+    let countryChanged = false;
+    if (hierarchy.country) {
+        if (currentCountry !== hierarchy.country) {
+            $countrySelect.val(hierarchy.country);
+            updateField(sightingKey, 'country', hierarchy.country);
+            countryChanged = true;
+        }
+    }
+
+    if (hierarchy.state) {
+        const targetCountry = hierarchy.country || currentCountry;
+        if (countryChanged || !$stateSelect.find(`option[value="${hierarchy.state}"]`).length) {
+            const statesObj = (data.countries && data.countries[targetCountry]) ? data.countries[targetCountry].states : {};
+            $stateSelect.html(getSelectOptionsDOM("state", statesObj || {}, hierarchy.state || ''));
+        }
+        $stateSelect.val(hierarchy.state);
+        if (currentState !== hierarchy.state) {
+            updateField(sightingKey, 'state', hierarchy.state);
+        }
+        $stateSelect.trigger('change.ss');
+    }
+
+    if (hierarchy.country) {
+        $countrySelect.trigger('change.ss');
+    }
+
+    return true;
+}
+
+/**
+ * Updates the sighting datalists for City and Place suggestions
+ */
+export function updateSightingDatalists(filterCity = '') {
+    let $cityList = $('#sighting-city-list');
+    let $placeList = $('#sighting-place-list');
+    let $tripList = $('#sighting-trip-list');
+    if (!$cityList.length && typeof document !== 'undefined') {
+        const target = $('#sightings-tab').length ? $('#sightings-tab') : $('body');
+        target.prepend('<datalist id="sighting-city-list"></datalist><datalist id="sighting-place-list"></datalist><datalist id="sighting-trip-list"></datalist>');
+        $cityList = $('#sighting-city-list');
+        $placeList = $('#sighting-place-list');
+        $tripList = $('#sighting-trip-list');
+    } else if (!$tripList.length && typeof document !== 'undefined') {
+        const target = $('#sightings-tab').length ? $('#sightings-tab') : $('body');
+        target.prepend('<datalist id="sighting-trip-list"></datalist>');
+        $tripList = $('#sighting-trip-list');
+    }
+    if ($cityList.length) {
+        const cities = getSortedCities({ limit: SUGGEST_LIMIT });
+        $cityList.html(cities.map(c => `<option value="${escapeHtml(c)}">`).join(''));
+    }
+    if ($placeList.length) {
+        const places = getSortedPlaces({ city: filterCity, limit: SUGGEST_LIMIT });
+        $placeList.html(places.map(p => `<option value="${escapeHtml(p)}">`).join(''));
+    }
+    if ($tripList.length) {
+        const latestByTrip = new Map();
+        const recordTrip = (tid, time) => {
+            if (!tid) return;
+            const prev = latestByTrip.get(tid);
+            if (prev === undefined || time > prev) {
+                latestByTrip.set(tid, time);
+            }
+        };
+        (data.sightings || []).forEach(s => {
+            const tid = (s && s.trip_id) ? String(s.trip_id).trim() : '';
+            if (tid) {
+                const t = s.date ? (moment(s.date, Constants.DATA_DATE_FORMAT).valueOf() || 0) : 0;
+                recordTrip(tid, t);
+            }
+        });
+        (data.stories || []).forEach(st => {
+            const stTime = st && st.date ? (moment(st.date, Constants.DATA_DATE_FORMAT).valueOf() || 0) : 0;
+            (st.sightings || []).forEach(link => {
+                const tid = (link && link.params && link.params.trip_id) ? String(link.params.trip_id).trim() : '';
+                if (tid) recordTrip(tid, stTime);
+            });
+        });
+        const tripIds = Array.from(latestByTrip.entries())
+            .sort((a, b) => b[1] - a[1])
+            .map(([tid]) => tid)
+            .slice(0, 5);
+        $tripList.html(tripIds.map(t => `<option value="${escapeHtml(t)}">`).join(''));
+    }
+}
+
+function getTextDOM(field, value, width, placeholder) {
+    let listAttr = '';
+    if (field === 'city') listAttr = " list='sighting-city-list'";
+    else if (field === 'place') listAttr = " list='sighting-place-list'";
+    else if (field === 'trip_id') listAttr = " list='sighting-trip-list'";
+    let html = `<div class='input-clear-wrapper ${value ? 'has-value' : ''}' style='width:${width}'>`;
+    html += `<input type='text' data-field='${field}'${listAttr} value='${value}' style='width:100%' placeholder='${placeholder}'></input>`;
+    html += `<button type='button' class='input-clear-btn' title='Clear' tabindex='-1'>✕</button>`;
+    html += `</div>`;
+    return html;
+}
+
+export function renderSightingsTable(OFFSET, ROWS, preserveScroll = true) {
+    const table = $("#sightings-table");
+    const prevScroll = (typeof window !== 'undefined' && preserveScroll) ? window.scrollY : 0;
+    const prevHeight = table.outerHeight();
+    if (preserveScroll && prevHeight > 0) {
+        table.css('min-height', prevHeight + 'px');
+    }
+    table.html("");
+    updateSightingDatalists();
+    table.append("<tr>" +
+        "<th class='noborder' style='width: 60px;'></th>" +
+        "<th style='width: 246px;'>Species</th>" +
+        "<th>Media</th>" +
+        "<th style='width: 264px;'>Date & Place</th>" +
+        "<th style='width: 130px;'>Properties</th>" +
+        "<th class='noborder' style='width: 30px;'></th>" +
+        "</tr>");
+    const searchKey = $("input[name=filter-sighting]").val() || "";
+    const filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
+
+    // Update pagination text/buttons here or separate? 
+    // The original code did it at the end of render(). 
+    // I can do it here or split it.
+    // Let's do table rows first.
+
+    filteredSightings.slice(OFFSET, OFFSET + ROWS).forEach(function (sighting, i) {
+        let row = "<tr id='" + sighting.key + "' class='draggable-sighting'>";
+
+        row += "<td class='noborder' style='vertical-align: middle;'>"
+        row += "<div style='display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px;'>"
+        row += "<button type='button' class='delete-sighting' title='Delete sighting'>🗑️</button>";
+        row += "<input class='hide-toggle' type='checkbox' data-field='hidden' " + (sighting.hidden ? "" : "checked") + " title='Hide/Unhide sighting'/>";
+        row += "<button type='button' class='pin-toggle" + (sighting.pinned ? " pinned" : "") + "' data-key='" + sighting.key + "' title='" + (sighting.pinned ? "Unpin sighting" : "Pin sighting") + "'>📌</button>";
+        row += "</div></td>";
+
+        row += "<td>"
+        row += getSelectDOM("species", data.species, getValue(sighting, 'species'), "246px", "data-no-clear='true'");
+        row += "<br>";
+        row += "<textarea data-field='description' style='width:246px;height:70px' placeholder='Enter Description'>" + getValue(sighting, 'description') + "</textarea>";
+        row += getTextDOM("author", getValue(sighting, 'author'), "246px", Constants.DEFAULT_AUTHOR);
+        // Star rating widget
+        let currentRating = parseInt(getValue(sighting, 'rating')) || 0;
+        row += "<div class='star-rating' style='margin-top:4px;'>";
+        for (let s = 1; s <= 5; s++) {
+            row += "<span class='star-btn" + (s <= currentRating ? " active" : "") + "' data-value='" + s + "'>★</span>";
+        }
+        row += "</div>";
+        row += "<div style='margin-top:8px; display:flex; align-items:center;'><input class='unconfirmed-toggle' type='checkbox' data-field='unconfirmed' " + (sighting.unconfirmed ? "checked" : "") + " title='Unconfirmed'/> <span class='label'>Unconfirmed</span></div>";
+        row += "</td>";
+
+        row += "<td><div class='media-container' data-sightingkey='" + sighting.key + "' style='width: 100%; min-width: 300px; min-height: 50px; padding: 5px; border-radius: 4px; border: 1px dashed transparent;'>";
+        (sighting.media || []).forEach(function (media, i) {
+            row += "<div class='thumbnail' draggable='true' data-mediasrc='" + media.src + "' data-sightingkey='" + sighting.key + "' data-fullsrc='" + Util.getMedia(media.src) + "' data-mediatype='" + media.type + "'>";
+            let ext = media.src.split('.').pop().toLowerCase();
+            row += "<div class='media-header'>";
+            row += "<span class='media-ext-badge'>." + ext + "</span>";
+            row += "<button type='button' class='delete-media' data-mediasrc='" + media.src + "' title='Delete media'>🗑️</button>";
+            row += "</div>";
+            if (media.type == 'video') {
+                if (media.thumbnail && media.thumbnail.toLowerCase().endsWith('.jpg')) {
+                    row += "<div style='position: relative; display: block; margin-bottom: 5px; width: 80px; height: 80px;'>";
+                    row += "<img src='" + Util.getMedia(media.thumbnail) + "' class='enlargeable-media' title='Click to enlarge' style='margin-bottom: 0;'/>";
+                    row += "<div class='play-overlay' style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white; opacity: 0.8; pointer-events: none; text-shadow: 0px 0px 4px black;'>▶️</div>";
+                    row += "</div>";
+                } else {
+                    row += "<div class='video-placeholder enlargeable-media' title='Click to enlarge' style='width: 80px; height: 80px; background: #2b303b; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; margin-bottom: 5px; border-radius: 4px;'>📽️</div>";
+                }
+            } else {
+                row += "<img src='" + Util.getMedia(media.src) + "' class='enlargeable-media' title='Click to enlarge'/>";
+            }
+            row += "<textarea class='title-textbox' data-mediasrc='" + media.src + "' style='font-size:0.8em;height:68px;width:80px;resize:none;overflow:hidden;' placeholder='Add title'>" + (media.title || "") + "</textarea>";
+            let cameraModelParts = (media.exif_data ? (media.exif_data.camera_model || "") : "").split('+').map(x => x.trim()).filter(x => x);
+            let camCount = cameraModelParts.length;
+
+            // Combined Camera & Lens Multiselect
+            row += "<div class='camera-select-wrapper' style='display:flex; justify-content: flex-start; align-items: center; gap: 4px; margin-top:2px;'>";
+            row += "<select class='camera-model-select' data-icon-only='true' data-tags='true' data-mediasrc='" + media.src + "' multiple style='width:28px; font-size: 11px;' title='" + (media.exif_data?.camera_model || "Select Camera & Lens") + "'>";
+            let foundParts = new Set();
+            if (data.camera_model) {
+                for (const [k, v] of Object.entries(data.camera_model)) {
+                    const isSelected = cameraModelParts.includes(k);
+                    if (isSelected) foundParts.add(k);
+                    row += "<option value='" + k + "' " + (isSelected ? 'selected' : '') + " title='" + v + "'>" + v + "</option>";
+                }
+            }
+            cameraModelParts.forEach(part => {
+                if (!foundParts.has(part)) {
+                    row += "<option value='" + part + "' selected title='" + part + "'>" + part + "</option>";
+                }
+            });
+            row += "</select>";
+            row += "<span class='camera-count'>" + (camCount > 0 ? camCount : "") + "</span>";
+
+            if (media.type == 'video') {
+                let availableImages = (sighting.media || []).filter(m => m.type !== 'video');
+                if (availableImages.length > 0) {
+                    row += "<select class='thumbnail-select' data-icon-only='true' data-display-icon='🖼️' data-mediasrc='" + media.src + "' title='Set Thumbnail' style='width:28px; font-size: 11px;'>";
+                    row += "<option value='' " + (!media.thumbnail ? 'selected' : '') + " data-icon=\"<span style='font-size:16px; margin-right:4px;'>❌</span>\">Clear Thumbnail</option>";
+                    availableImages.forEach((img, idx) => {
+                        let isSelected = media.thumbnail === img.src;
+                        let iconHtml = "<img src='" + Util.getMedia(img.src) + "' style='width: 30px; height: 30px; object-fit: cover; border-radius: 2px; margin-right:4px;' />";
+                        row += "<option value='" + img.src + "' " + (isSelected ? 'selected' : '') + " data-icon=\"" + iconHtml + "\">Image " + (idx + 1) + "</option>";
+                    });
+                    row += "</select>";
+                }
+            }
+            row += "</div>";
+            row += "</div>";
+        });
+        row += "<button type='button' class='upload-button' title='Add media'>+</button>";
+        row += "<input class='upload' type='file' accept='.jpg,.mp4' multiple hidden/>";
+        row += "</div></td>";
+
+        row += "<td class='place-fields'>";
+        row += "<div class='date-input-wrapper' style='display: flex; align-items: center; gap: 4px; margin-bottom: 4px;'>";
+        row += "<input type='date' data-field='date' value='" + moment(sighting.date, 'DD-MM-YYYY').format('YYYY-MM-DD') + "' style='width:220px'></input>";
+        row += "<button type='button' class='today-date-btn' data-sightingkey='" + sighting.key + "' title='Set to today' style='width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: transparent; border: none; box-shadow: none; color: #94a3b8; font-size: 16px; cursor: pointer;'>🕐</button>";
+        row += "</div>";
+        row += getSelectDOM("time_of_day", Constants.OPT_TIME_OF_DAY, getValue(sighting, 'time_of_day'), "125px");
+        row += getSelectDOM("weather", Constants.OPT_WEATHER, getValue(sighting, 'weather'), "125px") + "<br>";
+        row += getSelectDOM("country", data.countries, getValue(sighting, 'country'), "254px", "data-no-clear='true'") + "<br>";
+        row += getSelectDOM("state", (data.countries[sighting.country] ? data.countries[sighting.country].states : {}), getValue(sighting, 'state'), "254px", "data-no-clear='true'") + "<br>";
+        row += getTextDOM("city", getValue(sighting, 'city'), "254px", "Add city") + "<br>";
+        row += "<div style='display: flex; align-items: center; gap: 4px;'>";
+        row += getTextDOM("place", getValue(sighting, 'place'), "220px", "Add place");
+        row += "<button type='button' class='geocode-sighting-btn' data-sightingkey='" + sighting.key + "' title='Auto-fill coordinates for this place via Nominatim' style='height: 36px; padding: 0 12px; font-size: 13px; cursor: pointer; border-radius: 4px; background: transparent; border: none; box-shadow: none; color: #38bdf8; display: flex; align-items: center; justify-content: center;'>📍</button>";
+        row += "</div>";
+        row += "</td>";
+
+        row += "<td class='property-fields'>";
+        row += getSelectDOM("gender", Constants.OPT_GENDER, getValue(sighting, 'gender'), "120px");
+        row += getSelectDOM("age", Constants.OPT_AGE[currentMode], getValue(sighting, 'age'), "120px");
+        row += getSelectDOM("plumage", Constants.OPT_PLUMAGE[currentMode], getValue(sighting, 'plumage'), "120px");
+        row += getTextDOM("variation", getValue(sighting, 'variation'), "120px", "Add variation");
+        row += getTextDOM("subspecies", getValue(sighting, 'subspecies'), "120px", "Add subspecies");
+        row += getTextDOM("trip_id", getValue(sighting, 'trip_id'), "120px", "Add trip ID");
+        row += "</td>";
+
+        row += "<td class='noborder'>";
+        row += "<div style='display:flex;flex-direction:column;align-items:center;gap:4px;'>";
+        const sightingIndex = data.sightings.findIndex(item => item.key === sighting.key);
+        const isFirstSighting = sightingIndex <= 0;
+        const isLastSighting = sightingIndex === data.sightings.length - 1;
+        row += "<button type='button' class='move-sighting-page move-sighting-prev' data-key='" + sighting.key + "' title='Move up one row' " + (isFirstSighting ? "disabled" : "") + " style='padding:3px 7px;'>↑</button>";
+        row += "<div class='drag-handle' draggable='true' title='Drag to reorder' style='font-size: 28px; cursor: grab; color: #64748b; padding: 4px 5px; text-align: center; user-select: none;'>⋮⋮</div>";
+        row += "<button type='button' class='move-sighting-page move-sighting-next' data-key='" + sighting.key + "' title='Move down one row' " + (isLastSighting ? "disabled" : "") + " style='padding:3px 7px;'>↓</button>";
+        row += "</div>";
+        row += "</td>";
+
+        row += "</tr>";
+
+        table.append(row);
+
+
+        const sightingRow = $("#" + sighting.key);
+
+        // Init searchable selects on large-option dropdowns
+        initSearchableSelect(sightingRow.find("select[data-field=species]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=country]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=state]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=time_of_day]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=weather]")[0]);
+        initSearchableSelect(sightingRow.find("select[data-field=gender]")[0]);
+
+        sightingRow.find('.camera-model-select').each(function () {
+            initSearchableSelect(this);
+        });
+        sightingRow.find('.thumbnail-select').each(function () {
+            initSearchableSelect(this);
+        });
+
+
+
+
+
+        sightingRow.on('dragstart', function (e) {
+            e.originalEvent.dataTransfer.effectAllowed = 'move';
+            e.originalEvent.dataTransfer.setData('text/plain', sighting.key);
+            let rect = this.getBoundingClientRect();
+            e.originalEvent.dataTransfer.setDragImage(this, e.originalEvent.clientX - rect.left, e.originalEvent.clientY - rect.top);
+            $(this).css('opacity', '0.5');
+        });
+        sightingRow.on('dragend', function (e) {
+            $(this).css('opacity', '1');
+            $("tr").removeClass('drag-over-top drag-over-bottom');
+        });
+        sightingRow.on('dragover', function (e) {
+            e.preventDefault();
+            const dt = e.originalEvent && e.originalEvent.dataTransfer;
+            const types = dt && dt.types;
+            const hasFiles = types && (typeof types.includes === 'function' ? types.includes('Files') : Array.from(types).includes('Files'));
+            if (hasFiles) {
+                if (dt) dt.dropEffect = 'copy';
+                $(this).removeClass('drag-over-top drag-over-bottom').addClass('drag-over-file');
+                return;
+            }
+            if (dt) dt.dropEffect = 'move';
+            let bounding = this.getBoundingClientRect();
+            let offset = bounding.y + (bounding.height / 2);
+            if (e.originalEvent.clientY > offset) {
+                $(this).removeClass('drag-over-top drag-over-file').addClass('drag-over-bottom');
+            } else {
+                $(this).removeClass('drag-over-bottom drag-over-file').addClass('drag-over-top');
+            }
+        });
+        sightingRow.on('dragleave', function (e) {
+            $(this).removeClass('drag-over-top drag-over-bottom drag-over-file');
+        });
+        sightingRow.on('drop', function (e) {
+            e.preventDefault();
+            $(this).removeClass('drag-over-top drag-over-bottom drag-over-file');
+            const dt = e.originalEvent && e.originalEvent.dataTransfer;
+            const droppedFiles = dt && dt.files;
+            if (droppedFiles && droppedFiles.length > 0) {
+                e.stopPropagation();
+                const mediaFiles = Array.from(droppedFiles).filter(f =>
+                    f && ((f.type && /^(image|video)\//.test(f.type)) || /\.(jpe?g|png|webp|mp4)$/i.test(f.name || ''))
+                );
+                handleMediaFilesUpload(sighting.key, mediaFiles);
+                return;
+            }
+            let draggedKey = dt ? dt.getData('text/plain') : '';
+            let targetKey = sighting.key;
+            if (draggedKey && draggedKey !== targetKey) {
+                let bounding = this.getBoundingClientRect();
+                let offset = bounding.y + (bounding.height / 2);
+                let dropAfter = e.originalEvent.clientY > offset;
+                moveSightingToTarget(draggedKey, targetKey, dropAfter);
+            }
+        });
+
+        function handleMediaFilesUpload(sightingKey, fileList) {
+            if (!fileList || fileList.length === 0) return;
+            const allFiles = Array.from(fileList);
+            const imageFiles = allFiles.filter(f => f && f.type && f.type.match(/image.*/));
+            const otherFiles = allFiles.filter(f => f && (!f.type || !f.type.match(/image.*/)));
+            if (imageFiles.length > 0) {
+                // Canvas cropping strips EXIF metadata. Keep the original Files
+                // and pass them separately so uploadMedia can read the capture date.
+                const firstImage = imageFiles[0];
+                const onCropDone = async (processedFirst, meta) => {
+                    let finalImages = [processedFirst];
+                    if (imageFiles.length > 1) {
+                        if (meta && meta.action === 'crop' && meta.cropRatios) {
+                            const restCropped = await Promise.all(
+                                imageFiles.slice(1).map(f => cropImageWithRatios(f, meta.cropRatios))
+                            );
+                            finalImages = [processedFirst, ...restCropped];
+                        } else {
+                            finalImages = [processedFirst, ...imageFiles.slice(1)];
+                        }
+                    }
+                    const filesToUpload = [...finalImages, ...otherFiles];
+                    const originalSources = [...imageFiles, ...otherFiles];
+                    uploadMedia(sightingKey, filesToUpload, originalSources);
+                };
+                if (imageFiles.length > 1) {
+                    openCropper(firstImage, onCropDone, { totalCount: imageFiles.length, includeCropMeta: true });
+                } else {
+                    openCropper(firstImage, onCropDone);
+                }
+            } else {
+                showLoader('upload-media', 'Uploading Media...');
+                uploadMedia(sightingKey, allFiles);
+            }
+        }
+
+        sightingRow.find(".upload-button").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            sightingRow.find(".upload").click();
+        });
+        sightingRow.find(".upload").change(function () {
+            if (!this.files || this.files.length === 0) return;
+            handleMediaFilesUpload(sighting.key, this.files);
+            $(this).val(''); // Reset input
+        });
+        sightingRow.find("input[type=text], input[type=date], input[type=date], input[type=checkbox], select, textarea").not(".thumbnail *").change(function () {
+            let value = ($(this).attr('type') == 'checkbox') ? $(this).is(":checked") : $(this).val();
+            updateField(sighting.key, $(this).attr("data-field"), value);
+        });
+        sightingRow.find("input[data-field=place]").on('focus', function () {
+            const rowCity = sightingRow.find("input[data-field=city]").val() || sighting.city || '';
+            updateSightingDatalists(rowCity);
+        }).on('input change', function () {
+            const placeVal = $(this).val().trim();
+            replicateLocationForPlaceInRow(sightingRow, sighting.key, placeVal);
+        });
+        sightingRow.find("input[data-field=city]").on('focus', function () {
+            updateSightingDatalists();
+        }).on('input change', function () {
+            const cityVal = $(this).val().trim();
+            replicateLocationForCityInRow(sightingRow, sighting.key, cityVal);
+        });
+        // Today button click handler
+        sightingRow.find(".today-date-btn").click(function () {
+            const today = moment().format('YYYY-MM-DD');
+            const $dateInput = sightingRow.find("input[data-field=date]");
+            $dateInput.val(today).trigger('change');
+        });
+        // Star rating click handler
+        sightingRow.find(".star-btn").click(function () {
+            let rating = $(this).data('value');
+            // If clicking the same rating that's already set, clear it
+            if (parseInt(getValue(sighting, 'rating')) === rating) {
+                rating = 0;
+            }
+            updateField(sighting.key, 'rating', String(rating));
+            // Update stars visually
+            $(this).closest('.star-rating').find('.star-btn').each(function () {
+                if ($(this).data('value') <= rating) {
+                    $(this).addClass('active');
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
+        });
+        sightingRow.find("select[data-field=country]").change(function () {
+            const firstStateInCountry = Object.keys(data.countries[$(this).val()].states)[0];
+            updateField(sighting.key, 'state', firstStateInCountry);
+        });
+        sightingRow.find(".geocode-sighting-btn").click(async function () {
+            const $btn = $(this);
+            const country = sightingRow.find("select[data-field=country]").val() || sighting.country;
+            const state = sightingRow.find("select[data-field=state]").val() || sighting.state;
+            const city = sightingRow.find("input[data-field=city]").val() || sighting.city;
+            const place = sightingRow.find("input[data-field=place]").val() || sighting.place;
+
+            if (!country || !state || (!city && !place)) {
+                customAlert("Please specify at least Country, State, and City/Place to geocode.");
+                return;
+            }
+
+            $btn.text("⏳").attr("disabled", "disabled");
+            try {
+                const res = await geocodeAndSaveLocation({ country, state, city, place });
+                if (res) {
+                    showToast(`📍 Geocoded ${place || city}: ${res.lat}, ${res.lng} (radius: ${res.radius}km) via ${res.provider}`, 'success');
+                    $btn.text("✅");
+                    setTimeout(() => $btn.text("📍").removeAttr("disabled"), 2500);
+                } else {
+                    customAlert(`Could not locate "${place || city}, ${state}, ${country}".`);
+                    $btn.text("📍").removeAttr("disabled");
+                }
+            } catch (err) {
+                console.error(err);
+                customAlert("Geocoding failed: " + err.message);
+                $btn.text("📍").removeAttr("disabled");
+            }
+        });
+        sightingRow.find("button.delete-media").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            deleteMedia(sighting.key, $(this).attr("data-mediasrc"));
+        });
+        sightingRow.find(".thumbnail").on('dragstart', function (e) {
+            e.stopPropagation();
+            e.originalEvent.dataTransfer.effectAllowed = 'move';
+            e.originalEvent.dataTransfer.setData('text/plain', JSON.stringify({
+                src: $(this).attr('data-mediasrc'),
+                sightingKey: $(this).attr('data-sightingkey')
+            }));
+            $(this).css('opacity', '0.5');
+        }).on('dragend', function (e) {
+            e.stopPropagation();
+            $(this).css('opacity', '1');
+            sightingRow.find(".thumbnail").removeClass('drag-over-left drag-over-right');
+        }).on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.originalEvent.dataTransfer.dropEffect = 'move';
+            let bounding = this.getBoundingClientRect();
+            let offset = bounding.x + (bounding.width / 2);
+            if (e.originalEvent.clientX > offset) {
+                $(this).removeClass('drag-over-left').addClass('drag-over-right');
+            } else {
+                $(this).removeClass('drag-over-right').addClass('drag-over-left');
+            }
+        }).on('dragleave', function (e) {
+            e.stopPropagation();
+            $(this).removeClass('drag-over-left drag-over-right');
+        }).on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).removeClass('drag-over-left drag-over-right');
+            let draggedData = e.originalEvent.dataTransfer.getData('text/plain');
+            let dragged;
+            try {
+                dragged = JSON.parse(draggedData);
+            } catch (err) {
+                return;
+            }
+            let targetSrc = $(this).attr('data-mediasrc');
+            if (dragged.src && dragged.src !== targetSrc) {
+                let bounding = this.getBoundingClientRect();
+                let offset = bounding.x + (bounding.width / 2);
+                let dropAfter = e.originalEvent.clientX > offset;
+                moveMediaToTarget(dragged.sightingKey, sighting.key, dragged.src, targetSrc, dropAfter);
+            }
+        });
+
+        sightingRow.find(".media-container").on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.originalEvent.dataTransfer.dropEffect = 'move';
+            $(this).css('border-color', '#38bdf8');
+        }).on('dragleave', function (e) {
+            e.stopPropagation();
+            $(this).css('border-color', 'transparent');
+        }).on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).css('border-color', 'transparent');
+            if ($(e.target).closest('.thumbnail').length > 0) return; // Handled by thumbnail drop
+            let draggedData = e.originalEvent.dataTransfer.getData('text/plain');
+            let dragged;
+            try {
+                dragged = JSON.parse(draggedData);
+            } catch (err) {
+                return;
+            }
+            let targetSightingKey = $(this).attr('data-sightingkey');
+            if (dragged.src) {
+                moveMediaToTarget(dragged.sightingKey, targetSightingKey, dragged.src, null, true);
+            }
+        });
+        sightingRow.find(".thumbnail .title-textbox").change(function () {
+            updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "title", $(this).val());
+        });
+        sightingRow.find(".thumbnail .thumbnail-select").change(function () {
+            updateMediaProperty(sighting.key, $(this).attr("data-mediasrc"), "thumbnail", $(this).val());
+            triggerRender();
+        });
+        sightingRow.find(".thumbnail .camera-model-select").change(function () {
+            const mediaSrc = $(this).attr("data-mediasrc");
+            let selectedVals = $(this).val() || [];
+            if (!Array.isArray(selectedVals)) selectedVals = [selectedVals];
+
+            let combinedValue = selectedVals.join("+");
+            updateMediaProperty(sighting.key, mediaSrc, "exif_data.camera_model", combinedValue);
+
+            // Update tooltip and count
+            let tooltipNames = selectedVals.map(v => data.camera_model[v] || v).join(", ");
+            $(this).attr("title", tooltipNames || "Select Camera & Lens");
+            $(this).closest('.camera-select-wrapper').find('.camera-count').text(selectedVals.length > 0 ? selectedVals.length : "");
+        });
+        sightingRow.find(".delete-sighting").click(() => deleteSighting(sighting.key));
+        sightingRow.find(".pin-toggle").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            togglePinSighting(sighting.key);
+        });
+        sightingRow.find("select[data-field=country]").change(function () {
+            sightingRow.find("select[data-field=state]").prop('innerHTML', getSelectOptionsDOM("state", data.countries[sighting.country].states, getValue(sighting, 'state')));
+            sightingRow.find("select[data-field=state]").trigger('change');
+        });
+    });
+
+    if (preserveScroll && typeof window !== 'undefined' && prevScroll > 0) {
+        try {
+            if (typeof window.scrollTo === 'function') {
+                window.scrollTo(0, prevScroll);
+            }
+        } catch (e) {}
+
+        if (typeof window.requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => {
+                try {
+                    if (prevScroll > 0 && typeof window.scrollTo === 'function') {
+                        window.scrollTo(0, prevScroll);
+                    }
+                } catch (e) {}
+                table.css('min-height', '');
+            });
+        } else {
+            table.css('min-height', '');
+        }
+    } else {
+        table.css('min-height', '');
+    }
+}
+
+export function updatePaginationControls(OFFSET, ROWS) {
+    const searchKey = $("input[name=filter-sighting]").val() || "";
+    const filteredSightings = data.sightings.filter(b => sightingMatches(b, searchKey));
+
+    $('.page-number').html(OFFSET + " - " + Math.min(OFFSET + ROWS, filteredSightings.length) + " of " + filteredSightings.length);
+
+    if (OFFSET == 0) {
+        $('button.first-page, button.previous').attr("disabled", "disabled");
+    } else {
+        $('button.first-page, button.previous').removeAttr("disabled");
+    }
+
+    if (OFFSET + ROWS >= filteredSightings.length) {
+        $('button.last-page, button.next').attr("disabled", "disabled");
+    } else {
+        $('button.last-page, button.next').removeAttr("disabled");
+    }
+}
+
+export function validateAddFamilyForm() {
+    const addFamilyForm = $("#add-family-form");
+    let name = addFamilyForm.find("select[data-field=name]").val();
+    const displayNameInput = addFamilyForm.find("input[data-field=display-name]");
+    const displayName = displayNameInput.val();
+    const validDisplayName = !data.families.some(f => f.name === name) || (!displayNameInput.length || (displayName && displayName.trim()));
+    if (name && name.trim() && validDisplayName) {
+        addFamilyForm.find("button.submit").removeAttr("disabled");
+    } else {
+        addFamilyForm.find("button.submit").attr("disabled", "disabled");
+    }
+}
+
+// Helper to fill form based on selection
+export function fillAddFamilyForm() {
+    const addFamilyForm = $("#add-family-form");
+    let name = addFamilyForm.find("select[data-field=name]").val();
+    let nameVal = addFamilyForm.find("select[data-field=name]").val();
+    let family = data.families.find(f => f.name == nameVal);
+    if (family) {
+        addFamilyForm.find(".family-display-name-row").show();
+        addFamilyForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val(family.name);
+        addFamilyForm.find("input[data-field=sci-name]").val(family.sci_name || "");
+        addFamilyForm.find("input[data-field=ebird-code]").val(family.ebird_code || "");
+
+        let count = Object.values(data.species).filter(s => s.family == nameVal).length;
+        addFamilyForm.find("span[data-field=species-count]").text(count);
+
+        addFamilyForm.find("button.submit").html("Update");
+        if (count == 0) {
+            addFamilyForm.find("button.delete").removeAttr("disabled");
+        } else {
+            addFamilyForm.find("button.delete").attr("disabled", "disabled");
+        }
+    } else {
+        addFamilyForm.find(".family-display-name-row").hide();
+        addFamilyForm.find("input[data-field=display-name]").prop("disabled", false).prop("readOnly", false).val("");
+        addFamilyForm.find("input[data-field=sci-name]").val("");
+        addFamilyForm.find("input[data-field=ebird-code]").val('');
+        addFamilyForm.find("span[data-field=species-count]").text("0");
+        addFamilyForm.find("button.submit").html("Add");
+        addFamilyForm.find("button.delete").attr("disabled", "disabled");
+    }
+
+    if (currentMode != Constants.MODE_BIRD) {
+        addFamilyForm.find("input[data-field=ebird-code]").closest('tr').hide();
+    } else {
+        addFamilyForm.find("input[data-field=ebird-code]").closest('tr').show();
+    }
+    
+    validateAddFamilyForm();
+}
+
+export function setupAddFamilyForm() {
+    const addFamilyForm = $("#add-family-form");
+    $("#add-family-section").show();
+
+    // Populate family select
+    let $famInput = addFamilyForm.find("select[data-field=name]");
+
+    $famInput.empty();
+    $famInput.append(new Option("", ""));
+    (data.families || []).forEach(family => {
+        $famInput.append(new Option(family.name, family.name));
+    });
+
+    $famInput.val('');
+    fillAddFamilyForm();
+    $famInput.unbind("change").on("change", fillAddFamilyForm);
+    $famInput.off("change.familyValidation input.familyValidation").on("change.familyValidation input.familyValidation", validateAddFamilyForm);
+    addFamilyForm.find("input[data-field=display-name]").off("input.familyValidation change.familyValidation").on("input.familyValidation change.familyValidation", validateAddFamilyForm);
+
+    $famInput.attr("placeholder", "Select or type a family...");
+    initSearchableSelect($famInput[0]);
+
+    addFamilyForm.find("input[data-field=ebird-code]").unbind("change").change(function () {
+        let v = $(this).val();
+        if (!v || !v.trim()) return;
+
+        if (currentMode == Constants.MODE_BIRD) {
+            showLoader("ebird-family", "Fetching Family from eBird");
+            EbirdApi.fetchEbirdSciName(v).then(s => {
+                if (s) {
+                    let fName = s.category == 'family' ? s.comName : s.familyComName;
+                    let fSciName = s.category == 'family' ? s.sciName : s.familySciName;
+                    
+                    if (fName) {
+                        let nameInput = addFamilyForm.find("select[data-field=name]");
+                        if (nameInput.find("option").filter(function () { return this.value === fName; }).length == 0) {
+                            nameInput.append(new Option(fName, fName));
+                        }
+                        nameInput.val(fName).trigger('change');
+                    }
+                    if (fSciName) {
+                        addFamilyForm.find("input[data-field=sci-name]").val(fSciName).change();
+                    }
+                }
+            }).finally(() => hideLoader("ebird-family"));
+        }
+    });
+
+    addFamilyForm.find("button.submit").unbind("click").click(function () {
+        let name = $famInput.val();
+        if (!name) return;
+
+        const existingFamily = data.families.find(f => f.name === name);
+        const oldName = name;
+        const displayNameVal = addFamilyForm.find("input[data-field=display-name]").val();
+        const updatedName = existingFamily ? ((displayNameVal !== undefined ? displayNameVal.trim() : "") || name) : name;
+        if (existingFamily) {
+            if (!renameFamily(name, updatedName,
+                addFamilyForm.find("input[data-field=ebird-code]").val(),
+                addFamilyForm.find("input[data-field=sci-name]").val())) return;
+            name = updatedName;
+        } else {
+            addFamily(name,
+                addFamilyForm.find("input[data-field=ebird-code]").val(),
+                addFamilyForm.find("input[data-field=sci-name]").val());
+        }
+
+        // Keep both family selectors in sync after add/rename.
+        const speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
+        if (existingFamily && oldName !== name) {
+            speciesFamilySelect.find("option").filter(function () { return this.value === oldName; }).remove();
+            $famInput.find("option").filter(function () { return this.value === oldName; }).remove();
+        }
+        if (!speciesFamilySelect.find("option").filter(function () { return this.value === name; }).length) {
+            speciesFamilySelect.append(new Option(name, name));
+        }
+        if (!$famInput.find("option").filter(function () { return this.value === name; }).length) {
+            $famInput.append(new Option(name, name));
+        }
+
+        // Clear form
+        $famInput.val('').trigger('change');
+        triggerRender();
+    });
+
+    addFamilyForm.find("button.delete").unbind("click").click(function () {
+        let name = $famInput.val();
+        if (!name) return;
+
+        deleteFamily(name, () => {
+            // Remove from species form dropdown
+            let speciesFamilySelect = $("#update-species-form").find("select[data-field=family]");
+            speciesFamilySelect.find("option").filter(function () { return this.value === name; }).remove();
+
+            // Remove from select and reset
+            $famInput.find("option").filter(function () { return this.value === name; }).remove();
+            $famInput.val('').trigger('change');
+            triggerRender();
+        });
+    });
+}
+
+$(document).ready(function() {
+    $(document).on('click', '.input-clear-btn', function () {
+        let wrapper = $(this).closest('.input-clear-wrapper');
+        let input = wrapper.find('input');
+        input.val('').trigger('change');
+        wrapper.removeClass('has-value');
+    });
+
+    $(document).on('input change', '.input-clear-wrapper input', function () {
+        let wrapper = $(this).closest('.input-clear-wrapper');
+        if ($(this).val()) {
+            wrapper.addClass('has-value');
+        } else {
+            wrapper.removeClass('has-value');
+        }
+    });
+});
+
+/**
+ * Setup and initialize the Places & Geocoding tab
+ */
+export function setupPlacesTab() {
+    const $placesTab = $('#places-tab');
+    if (!$placesTab.length) return;
+
+    // Provider select
+    const $providerSelect = $('#geo-provider-select');
+    $providerSelect.val(geoService.getActiveProviderName());
+    $providerSelect.off('change').on('change', function () {
+        const newProvider = $(this).val();
+        setGeoProvider(newProvider);
+        $('#geo-provider-status').text(`Active: ${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)}`);
+        showToast(`Switched geocoding provider to ${newProvider}`, 'info');
+    });
+
+    // Geo boundary provider select
+    const $boundaryProviderSelect = $('#boundary-provider-select');
+    if ($boundaryProviderSelect.length) {
+        $boundaryProviderSelect.val(getBoundaryProvider());
+        $boundaryProviderSelect.off('change').on('change', function () {
+            const newProvider = $(this).val();
+            setBoundaryProvider(newProvider);
+            $('#boundary-provider-status').text(`Active: ${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)}`);
+            showToast(`Geo boundary provider set to ${newProvider}`, 'info');
+        });
+    }
+
+    // Populate Country, State, City, Place selectors
+    const $countrySelect = $('#place-lookup-country');
+    const $stateSelect = $('#place-lookup-state');
+    const $cityInput = $('#place-lookup-city');
+    const $cityList = $('#place-lookup-city-list');
+    const $placeInput = $('#place-lookup-place');
+    const $placeList = $('#place-lookup-place-list');
+    const $newStateCountrySelect = $('#new-state-country-select');
+    const $scanCountryFilter = $('#scan-country-filter');
+
+    function updateCurrentCoordsBanner() {
+        const country = $countrySelect.val();
+        const state = $stateSelect.val();
+        const city = $cityInput.val().trim();
+        const place = $placeInput.val().trim();
+
+        if (!country) {
+            $('#place-current-coords-box').hide();
+            $('#btn-batch-regeocode-sub').hide();
+            $('#btn-fetch-geo').text('🔍 Fetch Coordinates');
+            return;
+        }
+
+        const type = place ? 'place' : (city ? 'city' : (state ? 'state' : 'country'));
+        const name = place || city || state || country;
+
+        const node = getPlaceNode({ country, state, city, place });
+        if (node) {
+            if (node.lat && node.lng) {
+                $('#place-current-coords-box').show();
+                $('#place-current-coords-title').text(`Currently Saved (${type.toUpperCase()}): "${name}"`);
+                $('#place-current-coords-text').html(
+                    `📍 <strong>Lat:</strong> ${node.lat}, <strong>Lng:</strong> ${node.lng} &nbsp;|&nbsp; <strong>Radius:</strong> ${node.radius || '-'} km`
+                );
+                $('#btn-fetch-geo').text(`🔄 Re-Geocode ${type.charAt(0).toUpperCase() + type.slice(1)}`);
+            } else {
+                $('#place-current-coords-box').show();
+                $('#place-current-coords-title').text(`Status (${type.toUpperCase()}): "${name}"`);
+                $('#place-current-coords-text').html(`<span style="color: #f59e0b;">⚠️ In places.json, but coordinates are missing!</span>`);
+                $('#btn-fetch-geo').text(`🔍 Geocode ${type.charAt(0).toUpperCase() + type.slice(1)}`);
+            }
+        } else {
+            $('#place-current-coords-box').show();
+            $('#place-current-coords-title').text(`New Location: "${name}"`);
+            $('#place-current-coords-text').html(`<span style="color: #94a3b8;">ℹ️ Not saved in places.json yet</span>`);
+            $('#btn-fetch-geo').text(`🔍 Fetch & Save Coordinates`);
+        }
+
+        // Check for batch sub-location re-geocoding options
+        if (country && !state && !city && !place) {
+            const statesCount = Object.keys(data.countries[country]?.states || {}).length;
+            if (statesCount > 0) {
+                $('#btn-batch-regeocode-sub').show().text(`⚡ Re-Geocode All ${statesCount} States in ${country}`);
+            } else {
+                $('#btn-batch-regeocode-sub').hide();
+            }
+        } else if (country && state && !city && !place) {
+            const stateNode = data.countries[country]?.states?.[state];
+            let subCount = 0;
+            if (stateNode && stateNode.cities) {
+                Object.keys(stateNode.cities).forEach(c => {
+                    subCount++;
+                    subCount += Object.keys(stateNode.cities[c].places || {}).length;
+                });
+            }
+            if (subCount > 0) {
+                $('#btn-batch-regeocode-sub').show().text(`⚡ Re-Geocode All (${subCount}) Cities & Places in ${state}`);
+            } else {
+                $('#btn-batch-regeocode-sub').hide();
+            }
+        } else {
+            $('#btn-batch-regeocode-sub').hide();
+        }
+    }
+
+    function updateCityDatalist() {
+        const c = $countrySelect.val();
+        const s = $stateSelect.val();
+        const cities = getSortedCities({ country: c, state: s, limit: SUGGEST_LIMIT });
+        let options = '';
+        cities.forEach(cityName => {
+            options += `<option value="${escapeHtml(cityName)}">`;
+        });
+        $cityList.html(options);
+    }
+
+    function updatePlaceDatalist() {
+        const c = $countrySelect.val();
+        const s = $stateSelect.val();
+        const city = $cityInput.val().trim();
+        const places = getSortedPlaces({ country: c, state: s, city, limit: SUGGEST_LIMIT });
+        let options = '';
+        places.forEach(placeName => {
+            options += `<option value="${escapeHtml(placeName)}">`;
+        });
+        $placeList.html(options);
+    }
+
+    // ==========================================
+    // Geo Boundaries Management Logic
+    // ==========================================
+    const $boundaryCountrySelect = $('#boundary-inspect-country');
+    const $boundaryStateSelect = $('#boundary-inspect-state');
+    const $boundaryStatusBox = $('#boundary-status-box');
+    const $boundaryStatusText = $('#boundary-status-text');
+
+    async function updateBoundaryCoverageUI() {
+        await ensureGeoBoundariesLoaded();
+        const coverage = getGeoBoundaryCoverage();
+
+        const countryPct = coverage.countries.total > 0 ? Math.round((coverage.countries.covered / coverage.countries.total) * 100) : 0;
+        const statePct = coverage.states.total > 0 ? Math.round((coverage.states.covered / coverage.states.total) * 100) : 0;
+
+        $('#boundary-stat-countries').text(`${coverage.countries.covered} / ${coverage.countries.total} (${countryPct}%)`);
+        $('#boundary-stat-states').text(`${coverage.states.covered} / ${coverage.states.total} (${statePct}%)`);
+
+        if (coverage.countries.missing.length > 0) {
+            $('#boundary-missing-alert').show().html(
+                `⚠️ <strong>Missing country polygons (${coverage.countries.missing.length}):</strong> ${coverage.countries.missing.join(', ')} (falls back to circle on map)`
+            );
+        } else if (coverage.states.missing.length > 0) {
+            $('#boundary-missing-alert').show().html(
+                `⚠️ <strong>Missing state polygons (${coverage.states.missing.length}):</strong> ${coverage.states.missing.slice(0, 6).join(', ')}${coverage.states.missing.length > 6 ? '...' : ''}`
+            );
+        } else {
+            $('#boundary-missing-alert').hide();
+        }
+    }
+
+    function refreshBoundarySelects() {
+        const countries = data.countries || {};
+        let options = '<option value="">-- Select Country --</option>';
+        Object.keys(countries).sort().forEach(c => {
+            options += `<option value="${c}">${c}</option>`;
+        });
+        $boundaryCountrySelect.html(options);
+
+        $boundaryCountrySelect.off('change').on('change', function () {
+            const c = $(this).val();
+            let stateOptions = '<option value="">(Country-level Boundary)</option>';
+            if (c && countries[c] && countries[c].states) {
+                Object.keys(countries[c].states).sort().forEach(s => {
+                    stateOptions += `<option value="${s}">${s}</option>`;
+                });
+            }
+            $boundaryStateSelect.html(stateOptions);
+            updateBoundaryStatus();
+        });
+
+        $boundaryStateSelect.off('change').on('change', function () {
+            updateBoundaryStatus();
+        });
+    }
+
+    function updateBoundaryStatus() {
+        const country = $boundaryCountrySelect.val();
+        const state = $boundaryStateSelect.val();
+
+        if (!country) {
+            $boundaryStatusText.html('<span style="color: #94a3b8;">Select a location above to inspect its boundary.</span>');
+            return;
+        }
+
+        const targetLabel = state ? `${state}, ${country}` : country;
+        const level = state ? 'state' : 'country';
+        const boundary = getGeoBoundary({ country, state });
+
+        if (boundary) {
+            const geom = boundary.geometry || {};
+            let count = 0;
+            if (geom.type === 'Polygon') {
+                geom.coordinates?.forEach(r => count += r.length);
+            } else if (geom.type === 'MultiPolygon') {
+                geom.coordinates?.forEach(p => p.forEach(r => count += r.length));
+            }
+            $boundaryStatusText.html(
+                `<div style="color: #22c55e; font-weight: 600; margin-bottom: 4px;">✅ Boundary Polygon Present (${level.toUpperCase()})</div>` +
+                `<div><strong>Name:</strong> ${targetLabel} &nbsp;|&nbsp; <strong>Geometry:</strong> ${geom.type || 'Polygon'} (${count} points)</div>`
+            );
+        } else {
+            $boundaryStatusText.html(
+                `<div style="color: #f59e0b; font-weight: 600; margin-bottom: 4px;">⚠️ No Boundary Polygon (${level.toUpperCase()})</div>` +
+                `<div>"${targetLabel}" currently falls back to a circular hotspot on the map. Click <strong>"Update Boundary"</strong> below to fetch its polygon outline.</div>`
+            );
+        }
+    }
+
+    // Update boundary button: fetch from OSM if missing, save to memory, sync to Firebase, refresh stats
+    $('#btn-update-boundary').off('click').on('click', async function () {
+        const country = $boundaryCountrySelect.val();
+        const state = $boundaryStateSelect.val();
+        if (!country) {
+            customAlert('Please select a country first.');
+            return;
+        }
+        const targetLabel = state ? `${state}, ${country}` : country;
+        const level = state ? 'state' : 'country';
+        const $btn = $(this);
+        $btn.attr('disabled', 'disabled').text('Updating...');
+
+        try {
+            let boundary = getGeoBoundary({ country, state });
+            if (!boundary) {
+                $boundaryStatusText.html(`<span style="color: #38bdf8;">🌐 Querying OpenStreetMap Nominatim for "${targetLabel}" polygon...</span>`);
+                const feature = await fetchBoundaryFromOSM({ country, state });
+                saveGeoBoundary({ level, country, state, feature });
+                showToast(`Boundary for "${targetLabel}" fetched and saved to memory.`, 'success');
+            } else {
+                showToast(`Boundary for "${targetLabel}" already in memory.`, 'info');
+            }
+            updateBoundaryStatus();
+            updateBoundaryCoverageUI();
+        } catch (err) {
+            console.error('Update boundary failed:', err);
+            $boundaryStatusText.html(`<span style="color: #ef4444;">Error: ${err.message}</span>`);
+            showToast(`Update failed: ${err.message}`, 'error');
+        } finally {
+            setTimeout(() => { $btn.removeAttr('disabled').text('🔄 Update Boundary'); }, 1500);
+        }
+    });
+
+    // Update all states for selected country
+    $('#btn-update-all-states').off('click').on('click', async function () {
+        const country = $boundaryCountrySelect.val();
+        if (!country) {
+            customAlert('Please select a country first.');
+            return;
+        }
+        const $btn = $(this);
+        $btn.attr('disabled', 'disabled').text('Updating...');
+
+        try {
+            const countries = data.countries || {};
+            const states = countries[country]?.states || {};
+            const stateNames = Object.keys(states);
+            if (stateNames.length === 0) {
+                showToast(`No states found for ${country}.`, 'info');
+                return;
+            }
+
+            let fetched = 0;
+            let skipped = 0;
+            const CHUNK_SIZE = 10;
+            let processed = 0;
+            for (const stateName of stateNames) {
+                const boundary = getGeoBoundary({ country, state: stateName });
+                if (!boundary) {
+                    $boundaryStatusText.html(`<span style="color: #38bdf8;">🌐 Fetching ${stateName}, ${country}...</span>`);
+                    const feature = await fetchBoundaryFromOSM({ country, state: stateName });
+                    saveGeoBoundary({ level: 'state', country, state: stateName, feature });
+                    fetched++;
+                    await new Promise(r => setTimeout(r, 1000));
+                } else {
+                    skipped++;
+                }
+                processed++;
+                if (processed % CHUNK_SIZE === 0 || processed === stateNames.length) {
+                    updateBoundaryCoverageUI();
+                }
+            }
+
+            updateBoundaryStatus();
+            showToast(`Updated ${country}: ${fetched} state(s) fetched, ${skipped} already present.`, 'success');
+        } catch (err) {
+            console.error('Update all states failed:', err);
+            $boundaryStatusText.html(`<span style="color: #ef4444;">Error: ${err.message}</span>`);
+            showToast(`Update all states failed: ${err.message}`, 'error');
+        } finally {
+            setTimeout(() => { $btn.removeAttr('disabled').text('🔄 Update All States'); }, 1500);
+        }
+    });
+
+    // ==========================================
+    // Geocode Coverage & Batch Scanner Logic
+    // ==========================================
+    let currentScanList = [];
+
+    function renderScanTable(items, isMissingMode) {
+        currentScanList = items;
+        if (items.length === 0) {
+            $('#btn-autofill-missing').hide();
+            $('#missing-places-list').empty();
+            if (isMissingMode) {
+                $('#missing-places-count').html('<span style="color: #22c55e; font-weight: 500;">✓ All locations have valid coordinates and radius!</span>');
+            } else {
+                $('#missing-places-count').html('<span style="color: #94a3b8;">No matching locations found.</span>');
+            }
+            return;
+        }
+
+        const btnText = isMissingMode ? `⚡ Auto-Fill Missing Coordinates (${items.length})` : `⚡ Re-Geocode All (${items.length})`;
+        $('#btn-autofill-missing').show().text(btnText);
+        $('#missing-places-count').html(isMissingMode
+            ? `<span style="color: #f59e0b; font-weight: 600;">Found ${items.length} location(s) missing coordinates:</span>`
+            : `<span style="color: #c084fc; font-weight: 600;">Found ${items.length} matching location(s) for re-geocode:</span>`
+        );
+
+        let html = '<table style="width: 100%; border-collapse: collapse;">';
+        html += '<tr style="color: #94a3b8; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);"><th style="padding: 6px 4px;">Level</th><th style="padding: 6px 4px;">Name</th><th style="padding: 6px 4px;">Coordinates</th><th style="padding: 6px 4px;">Action</th></tr>';
+        items.forEach((m, idx) => {
+            const badgeColor = m.type === 'country' ? '#ef4444' : (m.type === 'state' ? '#a855f7' : (m.type === 'city' ? '#38bdf8' : '#22c55e'));
+            const coordsText = (m.lat && m.lng) ? `${m.lat}, ${m.lng} (${m.radius || '-'}km)` : '<span style="color: #f87171;">Missing</span>';
+            html += `<tr id="scan-row-${idx}" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 4px;"><span style="background: ${badgeColor}22; color: ${badgeColor}; border: 1px solid ${badgeColor}44; padding: 2px 6px; border-radius: 4px; font-size: 11px; text-transform: uppercase; font-weight: 600;">${m.type}</span></td>
+                <td style="padding: 4px; color: #fff; font-weight: 500;">${m.displayName} <span style="font-size: 11px; color: #64748b;">(${m.parentContext})</span></td>
+                <td style="padding: 4px; font-family: monospace; font-size: 11px; color: #94a3b8;" class="row-coords">${coordsText}</td>
+                <td style="padding: 4px;">
+                    <button class="btn-regeocode-single" data-idx="${idx}" style="padding: 2px 8px; font-size: 11px; background: #0284c7; color: white;">🔄 Re-Geocode</button>
+                </td>
+            </tr>`;
+        });
+        html += '</table>';
+        $('#missing-places-list').html(html);
+
+        // Single row re-geocode
+        $('.btn-regeocode-single').off('click').on('click', async function () {
+            const idx = parseInt($(this).data('idx'), 10);
+            const item = currentScanList[idx];
+            const $row = $(`#scan-row-${idx}`);
+            const $btn = $(this);
+
+            $btn.text('⏳').attr('disabled', 'disabled');
+            try {
+                const res = await lookupLocation({
+                    country: item.country,
+                    state: item.state,
+                    city: item.city,
+                    place: item.place,
+                    type: item.type
+                });
+                if (res) {
+                    savePlaceGeo({
+                        country: item.country,
+                        state: item.state || null,
+                        city: item.city || null,
+                        place: item.place || null,
+                        lat: res.lat,
+                        lng: res.lng,
+                        radius: res.radius
+                    });
+                    $row.find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
+                    $btn.text('✔ Done').css({ background: '#22c55e' });
+                    showToast(`Re-geocoded "${item.displayName}"!`, 'success');
+                    updateCurrentCoordsBanner();
+                    updateGeocodeCoverageUI();
+                } else {
+                    $btn.text('❌ Not found').css({ background: '#ef4444' });
+                }
+            } catch (err) {
+                console.error(err);
+                $btn.text('❌ Error').css({ background: '#ef4444' });
+            }
+        });
+    }
+
+    function updateGeocodeCoverageUI() {
+        const coverage = getGeocodeCoverage();
+
+        const countryPct = coverage.countries.total > 0 ? Math.round((coverage.countries.geocoded / coverage.countries.total) * 100) : 100;
+        const statePct = coverage.states.total > 0 ? Math.round((coverage.states.geocoded / coverage.states.total) * 100) : 100;
+        const cityPct = coverage.cities.total > 0 ? Math.round((coverage.cities.geocoded / coverage.cities.total) * 100) : 100;
+        const placePct = coverage.places.total > 0 ? Math.round((coverage.places.geocoded / coverage.places.total) * 100) : 100;
+
+        $('#geocode-stat-countries').text(`${coverage.countries.geocoded} / ${coverage.countries.total} (${countryPct}%)`)
+            .css('color', countryPct === 100 ? '#22c55e' : '#38bdf8');
+        $('#geocode-stat-states').text(`${coverage.states.geocoded} / ${coverage.states.total} (${statePct}%)`)
+            .css('color', statePct === 100 ? '#22c55e' : '#38bdf8');
+        $('#geocode-stat-cities').text(`${coverage.cities.geocoded} / ${coverage.cities.total} (${cityPct}%)`)
+            .css('color', cityPct === 100 ? '#22c55e' : '#a78bfa');
+        $('#geocode-stat-places').text(`${coverage.places.geocoded} / ${coverage.places.total} (${placePct}%)`)
+            .css('color', placePct === 100 ? '#22c55e' : '#f59e0b');
+
+        if (coverage.missingList.length === 0) {
+            $('#geocode-missing-alert').hide();
+        } else {
+            $('#geocode-missing-alert').show().html(
+                `⚠️ <strong>Missing coordinates (${coverage.missingList.length}):</strong> ${coverage.missingList.slice(0, 4).map(m => m.displayName).join(', ')}${coverage.missingList.length > 4 ? '...' : ''}`
+            );
+        }
+
+        // Always render real-time missing locations list without needing scan button
+        renderScanTable(coverage.missingList, true);
+    }
+
+    function refreshSelects() {
+        const countries = data.countries || {};
+        let countryOptions = '<option value="">-- Select Country --</option>';
+        Object.keys(countries).sort().forEach(c => {
+            countryOptions += `<option value="${c}">${c}</option>`;
+        });
+        $countrySelect.html(countryOptions);
+        $newStateCountrySelect.html(countryOptions);
+        $scanCountryFilter.html(countryOptions);
+
+        $countrySelect.off('change').on('change', function () {
+            const c = $(this).val();
+            let stateOptions = '<option value="">-- All / Country Level --</option>';
+            if (c && countries[c] && countries[c].states) {
+                Object.keys(countries[c].states).sort().forEach(s => {
+                    stateOptions += `<option value="${s}">${s}</option>`;
+                });
+            }
+            $stateSelect.html(stateOptions);
+            $cityInput.val('');
+            $placeInput.val('');
+            updateCityDatalist();
+            updatePlaceDatalist();
+            updateCurrentCoordsBanner();
+        });
+
+        $stateSelect.off('change').on('change', function () {
+            $cityInput.val('');
+            $placeInput.val('');
+            updateCityDatalist();
+            updatePlaceDatalist();
+            updateCurrentCoordsBanner();
+        });
+
+        $cityInput.off('input change').on('input change', function () {
+            const enteredCity = $(this).val().trim();
+            const hierarchy = findHierarchyForCity(enteredCity);
+            if (hierarchy) {
+                if (hierarchy.country && $countrySelect.val() !== hierarchy.country) {
+                    $countrySelect.val(hierarchy.country);
+                    let stateOptions = '<option value="">-- All / Country Level --</option>';
+                    const countries = data.countries || {};
+                    if (countries[hierarchy.country]?.states) {
+                        Object.keys(countries[hierarchy.country].states).sort().forEach(s => {
+                            stateOptions += `<option value="${s}">${s}</option>`;
+                        });
+                    }
+                    $stateSelect.html(stateOptions);
+                }
+                if (hierarchy.state && $stateSelect.val() !== hierarchy.state) {
+                    $stateSelect.val(hierarchy.state);
+                }
+                updateCityDatalist();
+            }
+            updatePlaceDatalist();
+            updateCurrentCoordsBanner();
+        });
+
+        $placeInput.off('input change').on('input change', function () {
+            const enteredPlace = $(this).val().trim();
+            const hierarchy = findHierarchyForPlace(enteredPlace, $cityInput.val().trim());
+            if (hierarchy) {
+                if (hierarchy.city && $cityInput.val().trim().toLowerCase() !== hierarchy.city.toLowerCase()) {
+                    $cityInput.val(hierarchy.city);
+                }
+                if (hierarchy.country && $countrySelect.val() !== hierarchy.country) {
+                    $countrySelect.val(hierarchy.country);
+                    let stateOptions = '<option value="">-- All / Country Level --</option>';
+                    const countries = data.countries || {};
+                    if (countries[hierarchy.country]?.states) {
+                        Object.keys(countries[hierarchy.country].states).sort().forEach(s => {
+                            stateOptions += `<option value="${s}">${s}</option>`;
+                        });
+                    }
+                    $stateSelect.html(stateOptions);
+                }
+                if (hierarchy.state && $stateSelect.val() !== hierarchy.state) {
+                    $stateSelect.val(hierarchy.state);
+                }
+                updateCityDatalist();
+                updatePlaceDatalist();
+            }
+            updateCurrentCoordsBanner();
+        });
+
+        refreshBoundarySelects();
+        updateBoundaryCoverageUI();
+        updateGeocodeCoverageUI();
+    }
+    refreshSelects();
+
+    // Add New Country
+    $('#btn-add-country').off('click').on('click', async function () {
+        const $btn = $(this);
+        const countryName = $('#new-country-name').val().trim();
+        const fetchStates = $('#chk-country-fetch-states').is(':checked');
+        const geocode = $('#chk-country-geocode').is(':checked');
+        const geocodeStates = $('#chk-country-geocode-states').is(':checked');
+        const $status = $('#add-country-status');
+
+        if (!countryName) {
+            customAlert('Please enter a Country name.');
+            return;
+        }
+
+        $btn.text('⏳ Adding...').attr('disabled', 'disabled');
+        $status.show().css({ background: 'rgba(56,189,248,0.1)', color: '#38bdf8' })
+               .text(`Adding "${countryName}"${fetchStates ? ' and fetching states...' : '...'}`);
+
+        try {
+            const res = await addNewCountry({
+                country: countryName,
+                fetchStates,
+                geocode,
+                geocodeStates,
+                onProgress: (current, total, name) => {
+                    $status.text(`Geocoding state [${current}/${total}] "${name}"...`);
+                }
+            });
+            let msg = `Added "${res.country}"!`;
+            if (res.geocoded) msg += ' Country coordinates saved.';
+            if (res.statesCount > 0) msg += ` Populated ${res.statesCount} states/provinces.`;
+
+            $status.css({ background: 'rgba(34,197,94,0.1)', color: '#22c55e' }).text(msg);
+            showToast(`Added country "${res.country}" with ${res.statesCount} states!`, 'success');
+            $('#new-country-name').val('');
+            refreshSelects();
+            $countrySelect.val(res.country).trigger('change');
+            $newStateCountrySelect.val(res.country);
+        } catch (err) {
+            console.error(err);
+            $status.css({ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }).text(err.message);
+            customAlert(err.message);
+        } finally {
+            $btn.text('➕ Add Country').removeAttr('disabled');
+        }
+    });
+
+    // Add New State
+    $('#btn-add-state').off('click').on('click', async function () {
+        const $btn = $(this);
+        const country = $newStateCountrySelect.val();
+        const stateName = $('#new-state-name').val().trim();
+        const geocode = $('#chk-state-geocode').is(':checked');
+        const $status = $('#add-state-status');
+
+        if (!country) {
+            customAlert('Please select an existing Country.');
+            return;
+        }
+        if (!stateName) {
+            customAlert('Please enter a State / Province name.');
+            return;
+        }
+
+        $btn.text('⏳ Adding...').attr('disabled', 'disabled');
+        $status.show().css({ background: 'rgba(168,85,247,0.1)', color: '#c084fc' })
+               .text(`Adding "${stateName}" under ${country}...`);
+
+        try {
+            const res = await addNewState({ country, state: stateName, geocode });
+            let msg = `Added state "${res.state}" under ${res.country}!`;
+            if (res.geocoded) msg += ' Coordinates saved.';
+
+            $status.css({ background: 'rgba(34,197,94,0.1)', color: '#22c55e' }).text(msg);
+            showToast(`Added state "${res.state}"!`, 'success');
+            $('#new-state-name').val('');
+            refreshSelects();
+            $countrySelect.val(country).trigger('change');
+            $stateSelect.val(res.state);
+        } catch (err) {
+            console.error(err);
+            $status.css({ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }).text(err.message);
+            customAlert(err.message);
+        } finally {
+            $btn.text('➕ Add State').removeAttr('disabled');
+        }
+    });
+
+    let currentLookupResult = null;
+
+    // Fetch / Re-geocode selected location
+    $('#btn-fetch-geo').off('click').on('click', async function () {
+        const country = $countrySelect.val();
+        const state = $stateSelect.val();
+        const city = $cityInput.val().trim();
+        const place = $placeInput.val().trim();
+
+        if (!country) {
+            customAlert('Please select at least a Country.');
+            return;
+        }
+
+        const $btn = $(this);
+        const originalText = $btn.text();
+        $btn.text('⏳ Geocoding...').attr('disabled', 'disabled');
+        $('#geo-lookup-result').hide();
+
+        try {
+            const type = place ? 'place' : (city ? 'city' : (state ? 'state' : 'country'));
+            const result = await lookupLocation({
+                place,
+                city,
+                state,
+                country,
+                type
+            });
+
+            if (result) {
+                currentLookupResult = { ...result, country, state, city, place, type };
+                const oldNode = getPlaceNode({ country, state, city, place });
+                let diffText = `<strong>${result.displayName}</strong> (via ${result.provider})`;
+                if (oldNode && oldNode.lat && oldNode.lng) {
+                    diffText += ` &nbsp;|&nbsp; <span style="color: #94a3b8;">Previous: ${oldNode.lat}, ${oldNode.lng} (${oldNode.radius}km)</span>`;
+                }
+                $('#geo-res-name').html(diffText);
+                $('#geo-res-lat-input').val(result.lat);
+                $('#geo-res-lng-input').val(result.lng);
+                $('#geo-res-radius-input').val(result.radius);
+                $('#geo-lookup-result').show();
+                showToast(`Coordinates found via ${result.provider}!`, 'success');
+            } else {
+                const targetName = place || city || state || country;
+                customAlert(`No coordinates found for "${targetName}".`);
+            }
+        } catch (err) {
+            console.error(err);
+            customAlert('Lookup error: ' + err.message);
+        } finally {
+            $btn.text(originalText).removeAttr('disabled');
+        }
+    });
+
+    // Save Re-geocoded Coordinates to Places
+    $('#btn-save-geo-result').off('click').on('click', function () {
+        if (!currentLookupResult) return;
+        const lat = parseFloat($('#geo-res-lat-input').val());
+        const lng = parseFloat($('#geo-res-lng-input').val());
+        const radius = parseFloat($('#geo-res-radius-input').val());
+
+        if (isNaN(lat) || isNaN(lng)) {
+            customAlert('Please provide valid numerical coordinates.');
+            return;
+        }
+
+        savePlaceGeo({
+            country: currentLookupResult.country,
+            state: currentLookupResult.state || null,
+            city: currentLookupResult.city || null,
+            place: currentLookupResult.place || null,
+            lat,
+            lng,
+            radius
+        });
+        const label = currentLookupResult.place || currentLookupResult.city || currentLookupResult.state || currentLookupResult.country;
+        showToast(`Saved "${label}" to places.json!`, 'success');
+        $('#geo-lookup-result').hide();
+        updateCurrentCoordsBanner();
+        updateGeocodeCoverageUI();
+    });
+
+    // Batch Re-Geocode Sub-Locations (States of Country or Cities/Places of State)
+    $('#btn-batch-regeocode-sub').off('click').on('click', async function () {
+        const country = $countrySelect.val();
+        const state = $stateSelect.val();
+        const $btn = $(this);
+        const $progress = $('#sub-regeocode-progress');
+        const $statusText = $('#sub-regeocode-status-text');
+
+        let subList = [];
+        let scopeName = '';
+
+        if (country && !state) {
+            scopeName = `all states in ${country}`;
+            const states = data.countries[country]?.states || {};
+            Object.keys(states).forEach(s => {
+                subList.push({ country, state: s, city: '', place: '', type: 'state', displayName: s });
+            });
+        } else if (country && state) {
+            scopeName = `all cities and places in ${state}`;
+            const stateNode = data.countries[country]?.states?.[state];
+            if (stateNode && stateNode.cities) {
+                Object.keys(stateNode.cities).forEach(cityName => {
+                    subList.push({ country, state, city: cityName, place: '', type: 'city', displayName: cityName });
+                    const cityNode = stateNode.cities[cityName];
+                    if (cityNode && cityNode.places) {
+                        Object.keys(cityNode.places).forEach(placeName => {
+                            subList.push({ country, state, city: cityName, place: placeName, type: 'place', displayName: placeName });
+                        });
+                    }
+                });
+            }
+        }
+
+        if (subList.length === 0) return;
+
+        $btn.attr('disabled', 'disabled');
+        $progress.show();
+
+        let successCount = 0;
+        for (let i = 0; i < subList.length; i++) {
+            const item = subList[i];
+            $statusText.text(`Re-geocoding [${i + 1}/${subList.length}] (${item.type}) "${item.displayName}"...`);
+
+            try {
+                const res = await lookupLocation({
+                    country: item.country,
+                    state: item.state,
+                    city: item.city,
+                    place: item.place,
+                    type: item.type
+                });
+                if (res) {
+                    savePlaceGeo({
+                        country: item.country,
+                        state: item.state || null,
+                        city: item.city || null,
+                        place: item.place || null,
+                        lat: res.lat,
+                        lng: res.lng,
+                        radius: res.radius,
+                        skipUpload: true
+                    });
+                    successCount++;
+                }
+            } catch (e) {
+                console.error(`Failed to geocode ${item.displayName}:`, e);
+            }
+        }
+
+        if (successCount > 0) {
+            try {
+                uploadJSONData('places', true);
+            } catch (err) {
+                console.error('Failed to sync places.json:', err);
+            }
+        }
+
+        $statusText.html(`<span style="color: #22c55e;">Done! Re-geocoded and saved ${successCount} location(s) for ${scopeName}.</span>`);
+        $btn.removeAttr('disabled');
+        showToast(`Successfully re-geocoded ${successCount} location(s)!`, 'success');
+        updateCurrentCoordsBanner();
+    });
+
+    // Scan Mode Switcher (all / country for force re-geocode)
+    $('#scan-mode-select').off('change').on('change', function () {
+        const mode = $(this).val();
+        if (mode === 'country') {
+            $('#scan-country-filter').show();
+        } else {
+            $('#scan-country-filter').hide();
+        }
+    });
+
+    // Force Re-Geocode Scanner (for existing locations)
+    $('#btn-scan-missing-places').off('click').on('click', function () {
+        const mode = $('#scan-mode-select').val() || 'all';
+        const selectedCountry = $('#scan-country-filter').val();
+        const countries = data.countries || {};
+        const scanMap = new Map();
+
+        Object.keys(countries).forEach(country => {
+            if (mode === 'country' && selectedCountry && country !== selectedCountry) return;
+            const countryObj = countries[country];
+            if (!countryObj) return;
+
+            scanMap.set(`country|${country}`, {
+                type: 'country', country, state: '', city: '', place: '',
+                displayName: country, parentContext: '-',
+                lat: countryObj.lat, lng: countryObj.lng, radius: countryObj.radius
+            });
+
+            const states = countryObj.states || {};
+            Object.keys(states).forEach(state => {
+                const stateObj = states[state];
+                if (!stateObj) return;
+
+                scanMap.set(`state|${country}|${state}`, {
+                    type: 'state', country, state, city: '', place: '',
+                    displayName: state, parentContext: country,
+                    lat: stateObj.lat, lng: stateObj.lng, radius: stateObj.radius
+                });
+
+                const cities = stateObj.cities || {};
+                Object.keys(cities).forEach(city => {
+                    const cityObj = cities[city];
+                    if (!cityObj) return;
+
+                    scanMap.set(`city|${country}|${state}|${city}`, {
+                        type: 'city', country, state, city, place: '',
+                        displayName: city, parentContext: `${state}, ${country}`,
+                        lat: cityObj.lat, lng: cityObj.lng, radius: cityObj.radius
+                    });
+
+                    const places = cityObj.places || {};
+                    Object.keys(places).forEach(place => {
+                        const placeObj = places[place];
+                        if (!placeObj) return;
+
+                        scanMap.set(`place|${country}|${state}|${city}|${place}`, {
+                            type: 'place', country, state, city, place,
+                            displayName: place, parentContext: `${city}, ${state}, ${country}`,
+                            lat: placeObj.lat, lng: placeObj.lng, radius: placeObj.radius
+                        });
+                    });
+                });
+            });
+        });
+
+        const scanList = Array.from(scanMap.values());
+        renderScanTable(scanList, false);
+    });
+
+    // Batch Re-geocode / Auto-fill for active list
+    $('#btn-autofill-missing').off('click').on('click', async function () {
+        const $autofillBtn = $(this);
+        $autofillBtn.attr('disabled', 'disabled');
+        $('#autofill-progress').show();
+
+        let successCount = 0;
+        let failCount = 0;
+
+        for (let i = 0; i < currentScanList.length; i++) {
+            const item = currentScanList[i];
+            $('#autofill-status-text').text(`Geocoding [${i + 1}/${currentScanList.length}] (${item.type}) "${item.displayName}" via ${geoService.getActiveProviderName()}...`);
+
+            try {
+                const res = await lookupLocation({
+                    place: item.place,
+                    city: item.city,
+                    state: item.state,
+                    country: item.country,
+                    type: item.type
+                });
+
+                if (res) {
+                    savePlaceGeo({
+                        country: item.country,
+                        state: item.state || null,
+                        city: item.city || null,
+                        place: item.place || null,
+                        lat: res.lat,
+                        lng: res.lng,
+                        radius: res.radius,
+                        skipUpload: true
+                    });
+                    $(`#scan-row-${i}`).find('.row-coords').html(`<span style="color: #22c55e;">${res.lat}, ${res.lng} (${res.radius}km) ✔</span>`);
+                    successCount++;
+                } else {
+                    failCount++;
+                }
+            } catch (e) {
+                console.error(e);
+                failCount++;
+            }
+        }
+
+        if (successCount > 0) {
+            try {
+                uploadJSONData('places', true);
+                refreshSelects();
+            } catch (err) {
+                console.error('Failed to upload places.json after autofill:', err);
+            }
+        }
+
+        $('#autofill-status-text').html(
+            `<span style="color: #22c55e;">Completed: ${successCount} geocoded and saved to places.json.</span>` +
+            (failCount > 0 ? ` <span style="color: #ef4444;">(${failCount} could not be located)</span>` : '')
+        );
+        $autofillBtn.removeAttr('disabled');
+        showToast(`Saved ${successCount} location(s) to places.json!`, 'success');
+        updateCurrentCoordsBanner();
+        updateGeocodeCoverageUI();
+    });
+
+}
+
+export { setupSiteDataTab, renderSiteData } from './site-data.js';
+export { setupStoriesTab, renderStoriesSheet } from './stories.js';
+export { setupSpeciesSubtabs, renderSpeciesHierarchy } from './species-hierarchy.js';
+
+
